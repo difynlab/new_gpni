@@ -1,0 +1,159 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 20px;
+    background-color: #f8f9fa;
+    padding-top: 120px;
+}
+.card {
+    border-radius: 20px;
+    border: 1px solid #CFCFCF;
+    background: #FFF;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.section-header {
+    font-size: 24px;
+    font-weight: 500;
+}
+.order-summary .content {
+    font-size: 14px;
+    font-weight: 400;
+}
+.price {
+    font-weight: 600;
+    color: #0040c3;
+}
+.btn-custom {
+    background-color: #0040c3;
+    border: none;
+    height: 43px;
+    width: 174px;
+    display: block;
+    margin: 10px auto;
+}
+.payment-methods {
+    width: 100%;
+}
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.payment-icons img {
+    width: 60px;
+    height: 40px;
+    margin: 10px;
+}
+.product-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+.product-card {
+    flex: 0 0 266px;
+    border-radius: 20px;
+    border: 1px solid #CFCFCF;
+    background-color: #FFF;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.product-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.product-info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.category-ratings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.category {
+    font-weight: 500;
+    font-size: 13px;
+    color: #000;
+    opacity: 0.5;
+}
+.rating img {
+    height: 16px;
+}
+.product-title {
+    font-weight: 500;
+    font-size: 20px;
+    color: #000;
+    line-height: 30px;
+    margin: 0;
+}
+.item-box {
+    width: 100%;
+    max-width: 604px;
+    display: flex;
+    flex-direction: column;
+}
+.item-details {
+    margin-left: 10px;
+    flex-grow: 1;
+}
+.gap-30 {
+    gap: 30px;
+}
+@media (max-width: 1024px) {
+    .section-header, .product-title {
+        font-size: 22px;
+    }
+    .order-summary .content {
+        font-size: 13px;
+    }
+}
+@media (max-width: 768px) {
+    .card, .item-box {
+        width: 100%;
+    }
+    .d-flex {
+        flex-direction: column;
+    }
+    .product-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .section-header, .product-title {
+        font-size: 20px;
+    }
+    .order-summary .content {
+        font-size: 12px;
+    }
+    .btn-custom {
+        width: 174px;
+        margin: 10px auto;
+    }
+}
+@media (max-width: 375px) {
+    .section-header, .product-title {
+        font-size: 18px;
+    }
+    .order-summary .content {
+        font-size: 11px;
+    }
+    .btn-custom {
+        width: 150px;
+        margin-bottom: 15px;
+    }
+}
+@media (max-width: 320px) {
+    .section-header, .product-title {
+        font-size: 16px;
+    }
+    .order-summary .content {
+        font-size: 10px;
+    }
+    .btn-custom {
+        width: 140px;
+    }
+}

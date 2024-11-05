@@ -1,0 +1,210 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    /* padding: 20px; */
+    margin: 0;
+  }
+
+  .main-content {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .content-wrapper {
+    flex: 1;
+    max-width: 756px;
+    padding-top: 100px;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 434px;
+    margin-left: 30px;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1,
+  h5 {
+    font-weight: 600;
+    color: #0e0e0e;
+  }
+
+  p {
+    color: #505050;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+
+  .content-section {
+    margin-bottom: 15px;
+  }
+
+  .header-metadata {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .date {
+    font-size: 13px;
+    color: #838589;
+    letter-spacing: 1.56px;
+    font-weight: 400;
+    line-height: 30px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .subscribe-form-opened-article {
+    display: flex;
+    background: #f1f0f0;
+    border-radius: 50px;
+    padding: 5px 25px;
+    margin-top: 10px;
+  }
+
+  .subscribe-form-opened-article input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #8b8989ff;
+  }
+
+  .subscribe-form-opened-article input:focus {
+    outline: none;
+  }
+
+  .subscribe-button {
+    background: #0040c3ff;
+    border-radius: 50px;
+    padding: 11px 17px;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+  }
+
+  .article-container {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  .article-container img {
+    width: 100px;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .article-title {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #000;
+  }
+
+  .article-description {
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #505050;
+  }
+
+  .article-metadata {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #505050ff;
+  }
+
+  .latest-articles-section {
+    margin-top: 20px;
+  }
+
+  .small {
+    font-size: 12px;
+  }
+
+  @media (max-width: 992px) {
+    .sidebar {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+
+  /* Add margin for A Gift for You banner */
+  .banner-section {
+    margin-top: 30px;
+  }
+
+  /* Categories Section Styles */
+  .categories {
+    margin-top: 20px;
+  }
+
+  .categories h5 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  .categories-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .category {
+    padding: 3px 8px;
+    background: #f2f2f2;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #505050;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  /* Find Us On Section Styles */
+  .find-us-on h5 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 10px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 16px;
+  }
+
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  .social-icons img {
+    width: 20px;
+    height: 20px;
+  }

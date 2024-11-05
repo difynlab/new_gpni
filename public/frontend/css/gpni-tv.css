@@ -1,0 +1,456 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.rating {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0040c3;
+}
+
+.main-heading {
+    font-size: 49px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #0e0e0e;
+}
+
+.section-heading,
+.coming-soon {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 140%;
+    color: #505050;
+}
+
+.content-text {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+}
+
+.list-item-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #505050;
+    margin-left: 15px;
+}
+
+.btn-enroll {
+    background-color: #1d5bdb;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    /* display: flex; */
+    align-items: center;
+}
+
+.btn-enroll img {
+    margin-left: 10px;
+}
+
+.quote-icon {
+    width: 40px;
+    height: 39.5px;
+}
+
+.speaker-title {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    padding-left: 30px;
+}
+
+.speaker-text {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 140%;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: #3668E8;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.summary-section {
+    background-color: #0040C3;
+    color: #fff;
+}
+
+.summary-section .main-heading {
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 49px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    /* 68.6px */
+}
+
+.summary-section .sub-heading {
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 140%;
+    /* 35px */
+}
+
+
+.webinars-section {
+    padding-top: 90px;
+    padding-bottom: 50px;
+}
+
+.webinars-section .main-heading {
+    font-size: 49px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 140%;
+    color: #0e0e0e;
+}
+
+.webinars-section .sub-heading {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 140%;
+    color: #505050;
+}
+
+.benefits-list {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #505050;
+}
+
+.final-statement {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+
+}
+
+
+.Famous-Global-Speakers-Experts-section {
+    padding-top: 90px;
+    padding-bottom: 50px;
+    color: #FFF;
+    background-color: #0040C3;
+}
+
+.Famous-Global-Speakers-Experts-section .main-heading {
+    font-size: 49px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 140%;
+    color: #FFF;
+}
+
+.Famous-Global-Speakers-Experts-section .sub-heading,
+.Famous-Global-Speakers-Experts-section .additional-info {
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 140%;
+}
+
+.expert-list {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 130%;
+}
+
+
+.Webinar-Seminar-Key-Takeaways-section {
+    padding-top: 90px;
+    padding-bottom: 50px;
+}
+
+.Webinar-Seminar-Key-Takeaways-section .main-heading {
+    font-size: 49px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #0e0e0e;
+}
+
+.Webinar-Seminar-Key-Takeaways-section .sub-heading {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #505050;
+}
+
+.Webinar-Seminar-Key-Takeaways-section .takeaway-list {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #505050;
+}
+
+.learn-more-earn-more {
+    background-color: #0040c3;
+    color: #ffffff;
+    padding: 50px 0;
+}
+
+.learn-more-earn-more h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 120%;
+}
+
+.learn-more-earn-more p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 140%;
+}
+
+.learn-more-earn-more p.italic {
+    font-weight: 500;
+    font-style: italic;
+}
+
+.learn-grow-career-business {
+    background-color: #ffffff;
+    color: #0e0e0e;
+    padding: 50px 0;
+}
+
+.learn-grow-career-business h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 120%;
+}
+
+.learn-grow-career-business p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    color: #505050;
+}
+
+.learn-grow-career-business .feature {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: #505050;
+    margin-bottom: 20px;
+}
+
+.learn-grow-career-business .feature img {
+    margin-right: 15px;
+}
+
+.watch-anytime-anywhere {
+    background-color: #0040c3;
+    color: #ffffff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.watch-anytime-anywhere .container {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.watch-anytime-anywhere h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 49px;
+    line-height: 120%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.watch-anytime-anywhere p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 120%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+.watch-anytime-anywhere a {
+    text-decoration: none;
+}
+
+.btn-sign-up {
+    background-color: #ffffff;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #0040c3;
+    padding: 15px 30px;
+    border-radius: 5px;
+}
+
+.btn-sign-up:hover {
+    background-color: #e0e0e0;
+}
+
+.previous-experts-seminars {
+    background-color: #ffffff;
+    color: #0e0e0e;
+    padding: 50px 0;
+}
+
+.previous-experts-seminars h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 120%;
+    text-align: center;
+    color: #0e0e0e;
+    margin-bottom: 25px;
+}
+
+.previous-experts-seminars p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 140%;
+    text-align: center;
+    color: #505050;
+    margin-bottom: 20px;
+}
+
+.seminar-images {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.seminar-images img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.special-offer-members {
+    background-color: #0040c3;
+    color: #ffffff;
+    padding: 50px 0;
+}
+
+.special-offer-members h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 120%;
+}
+
+.special-offer-members h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 140%;
+}
+
+.special-offer-members p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 140%;
+}
+
+.contact-us {
+    background-color: #ffffff;
+    color: #0e0e0e;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.contact-us h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 140%;
+}
+
+.contact-us p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 140%;
+    color: #505050;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.social-icons div {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #9a9a9a;
+}
+
+.social-icons div img {
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.newsletter {
+    margin-top: 30px;
+}
+
+.newsletter input[type="email"] {
+    width: 100%;
+    max-width: 355px;
+    height: 46px;
+    padding-left: 20px;
+    border: 1px solid #ECECEC;
+    border-radius: 4px;
+}
+
+.newsletter button {
+    background-color: #0040c3;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22.5px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-left: -105px;
+    /* This accounts for button width offset */
+}

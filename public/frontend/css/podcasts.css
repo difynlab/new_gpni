@@ -1,0 +1,245 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hero Section Styles */
+.hero-container {
+    background-color: #0040c3;
+    color: #ffffff;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 2rem 8rem;  /* Increased left padding to move text to the right */
+    box-sizing: border-box;
+}
+
+.hero-content {
+    max-width: 1240px;
+    width: 100%;
+}
+
+.hero-text {
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+
+.highlight {
+    color: #FBBC04;
+}
+
+.play-container {
+    display: flex;
+    align-items: center;
+}
+
+.play-container img:first-child {
+    margin-right: 24px;
+}
+
+@media (max-width: 768px) {
+    .hero-text {
+        font-size: 1.75rem;
+    }
+
+    .play-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Podcast Section Styles */
+.podcast-section {
+    background-color: #fff;
+    color: #0E0E0E;
+    padding: 60px 8rem;  /* Matching the left padding with hero section */
+    text-align: left;
+}
+
+.podcast-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.podcast-image {
+    width: 384px;
+    height: auto;
+}
+
+.podcast-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 24px;
+}
+
+.podcast-header {
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.4;
+}
+
+.podcast-header img {
+    margin-right: 8px;
+}
+
+.podcast-description {
+    max-width: 732px;
+    color: #505050;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.podcast-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.podcast-link span {
+    color: #0040C3;
+}
+
+.podcast-link img {
+    width: 12px;
+    height: 12px;
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 31px;
+    line-height: 160%;
+    color: #0E0E0E;
+    margin-bottom: 30px;
+}
+
+.podcast-main-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 160%;
+    color: #0E0E0E;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #E0E0E0;
+    margin: 30px 0;
+}
+
+/* Journey Section Styles */
+.journey-section {
+    width: 100%;
+    height: 409px;
+    background-color: #0040C3;
+    text-align: center;
+    padding: 40px 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.journey-section h1 {
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 1.2;
+}
+
+.journey-section p {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.register-btn {
+    background-color: #FFFFFF;
+    color: #0040C3;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.explore-more {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.explore-more img {
+    margin-left: 10px;
+}
+
+/* Instagram Section Styles */
+.instagram-section {
+    background-color: #ffffff;
+    color: #0E0E0E;
+    padding: 4rem;
+    text-align: center;
+}
+
+.instagram-section h2 {
+    font-weight: 500;
+    font-size: 3rem; /* 49px */
+    line-height: 1.2;
+    color: #0e0e0f;
+    margin-bottom: 1rem; /* 16px */
+}
+
+.instagram-section p {
+    font-weight: 400;
+    font-size: 1.5625rem; /* 25px */
+    line-height: 1.4;
+    color: #505050;
+    margin-bottom: 2rem; /* 32px */
+}
+
+.instagram-images {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* 32px */
+    flex-wrap: wrap;
+}
+
+.instagram-images img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .instagram-images {
+        flex-direction: column;
+        align-items: center;
+    }
+}

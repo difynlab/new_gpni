@@ -1,0 +1,220 @@
+.membership-section {
+    text-align: center;
+    padding-top: 6.5rem;
+}
+
+.membership-section h2 {
+    color: #0E0E0E;
+    line-height: 120%;
+    /* 73.2px */
+}
+
+.membership-section p {
+    color: rgba(14, 14, 14, 0.90);
+    line-height: 140%; /* 35px */
+}
+
+.feature {
+    text-align: left;
+}
+
+.feature .sub-head  {
+    color: #505050;
+    font-family: Poppins;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 30px */
+}
+
+.feature .sub-description {
+    color: #505050;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 24px */
+}
+
+.feature p {
+    color: #505050;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+}
+
+.feature-icon {
+    width: 33px;
+    height: 33px;
+    margin-right: 10px;
+    color: #2DB98F;
+}
+
+
+.benefits-section h2 {
+    color: #0e0e0e;
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+.benefits-section p {
+    color: #0E0E0E;
+    text-align: center;
+    font-family: "Poppins";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    /* 35px */
+}
+
+.accordion {
+    border-radius: 20px !important;
+}
+
+.accordion-item {
+    background: #f7f6fb !important;
+    margin-bottom: 15px !important;
+    border: none !important;
+    border-radius: 15px !important;
+}
+
+.accordion-item:first-of-type {
+    border-radius: 20px !important;
+}
+
+.accordion-item:last-of-type {
+    border-radius: 20px !important;
+}
+
+/* Apply border-radius to the first accordion button */
+.accordion-item:first-of-type .accordion-button,
+.accordion-item:first-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
+    border-top-left-radius: 20px !important;
+    /* Adjust as needed */
+    border-top-right-radius: 20px !important;
+    /* Adjust as needed */
+}
+
+/* Apply border-radius to the last accordion item when not collapsed */
+.accordion-item:last-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
+    border-bottom-left-radius: 20px !important;
+    /* Adjust as needed */
+    border-bottom-right-radius: 20px !important;
+    /* Adjust as needed */
+}
+
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+    border-radius: 20px !important;
+
+}
+
+/* Ensure the last accordion item always has rounded corners at the bottom */
+.accordion-item:last-of-type,
+.accordion-item:last-of-type .accordion-button {
+    border-bottom-left-radius: 20px !important;
+    /* Adjust as needed */
+    border-bottom-right-radius: 20px !important;
+    /* Adjust as needed */
+}
+
+.accordion-button {
+    font-size: 25px !important;
+    font-weight: 500 !important;
+    line-height: 140% !important;
+    color: #0e0e0e !important;
+    background: #f7f6fb !important;
+    border: none !important;
+    padding: 20px 40px !important;
+    border-radius: 20px !important;
+    /* Add padding for alignment */
+}
+
+.accordion-button::after {
+    background-image: url("../../assets/down-arrow.svg") !important;
+    /* Content icon URL */
+}
+
+.accordion-body {
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    line-height: 140% !important;
+    color: #505050 !important;
+    border-radius: 0 0 20px 20px !important;
+
+}
+
+.accordion-body ul {
+    padding-left: 45px !important;
+    text-align: start !important;
+}
+
+.accordion-body ul li {
+    list-style: disc !important;
+}
+
+.journey-section {
+    text-align: center;
+    color: #ffffff;
+    background: #0040C3;
+    padding: 80px;
+}
+
+.journey-section h2 {
+    margin-bottom: 20px;
+    color: #FFF;
+    text-align: center;
+    line-height: 120%;
+    /* 58.8px */
+}
+
+.journey-section p {
+    color: #FFF;
+    text-align: center;
+    line-height: 120%;
+    /* 30px */
+}
+
+.faq-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.faq-section h2 {
+    color: #0e0e0e;
+    font-size: 49px;
+    font-weight: 500;
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+.faq-section p {
+    color: #0e0e0e;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 140%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.register-button{
+    font-family: "Poppins" !important;
+    line-height: normal;
+    color: #0040c3 !important;
+    background-color: #fff !important;
+    padding: auto;
+    text-align: center;
+    font-size: 1.250rem;
+    font-style: normal;
+    font-weight: 500 !important;
+}
+
+.explore-lesson {
+    font-family: "Poppins" !important;
+    color: #fff !important;
+    font-size: 1.250rem;
+}

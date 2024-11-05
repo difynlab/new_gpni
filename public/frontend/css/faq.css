@@ -1,0 +1,57 @@
+.accordion-item {
+    background: #ffffff !important;
+    margin-bottom: 15px !important;
+    border: none !important;
+    color: #505050 !important;
+    font-family: Poppins !important;
+    font-size: 1.2rem !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: 140% !important;
+    border: 1px solid #C4C4C4 !important;
+    border-radius: 0 !important;
+    /* 28px */
+}
+
+.accordion-button {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    line-height: 140% !important;
+    color: #0e0e0e !important;
+    background: #fff !important;
+    border: none !important;
+    border: 1px solid #0E0E0E !important;
+    border-radius: 0 !important;
+}
+
+.accordion-button::after {
+    background-image: url("/storage/frontend/down-arrow.svg") !important;
+    font-size: 1rem !important;
+    color: #0e0e0e !important;
+    transform: rotate(0deg) !important;
+    transition: transform 0.2s ease !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(-180deg) !important;
+}
+
+.accordion-body {
+    color: #505050 !important;
+    font-family: Poppins !important;
+    font-size: 1.2rem !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 200% !important;
+    border-radius: 0 !important;
+}
+
+.faq-title {
+    color: #000;
+    text-align: center;
+    font-family: "Poppins" !important;
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+}

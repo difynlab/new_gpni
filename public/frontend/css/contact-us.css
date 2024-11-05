@@ -1,0 +1,161 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #505050;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 1440px;
+    /* height: 1937px; */
+    margin: 0 auto;
+    padding: 81.5px;
+}
+
+.header-title {
+    color: #0E0E0E;
+    text-align: center;
+    font-size: 61px;
+    font-weight: 500;
+    line-height: 120%;
+    margin-bottom: 30px;
+}
+
+.description {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+    margin-bottom: 81.5px;
+}
+
+.form-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 33px;
+}
+
+.form-group label {
+    color: #0E0E0E;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.comments-group label {
+    margin-bottom: 1px;
+    /* Reduce margin below the label */
+}
+
+.form-control,
+.form-control:focus,
+textarea.form-textarea,
+textarea.form-textarea:focus {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    padding: 5px 0;
+    /* Reduce padding to bring it closer to the label */
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-submit {
+    display: block;
+    width: 108px;
+    height: 40px;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #0040c3;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 30px auto;
+}
+
+textarea.form-textarea {
+    height: auto;
+    min-height: 100px;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    padding: 5px 0;
+    /* Reduce padding to bring it closer to the label */
+    border-radius: 0;
+    resize: none;
+    outline: none;
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.info-item .icon-background {
+    background-color: #f0f4fb;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.info-item img {
+    width: 48px;
+    height: 48px;
+}
+
+.info-item-content {
+    margin-left: 15px;
+    text-align: left;
+}
+
+.info-item .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #505050;
+    margin: 0;
+}
+
+.info-item .info {
+    font-size: 16px;
+    color: #AAAAAA;
+    margin: 0;
+}
+
+.contact-info-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Additional spacing between the form fields */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row .col-md-6 {
+    flex: 0 0 48%;
+}
+
+.form-group {
+    margin-bottom: 33px;
+}
+
+.form-group.reason-group {
+    margin-bottom: 15px;
+}

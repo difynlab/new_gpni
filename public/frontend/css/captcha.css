@@ -1,0 +1,50 @@
+.captcha {
+    background-color: rgba(0, 64, 195, 0.06);
+    padding: 4%;
+    align-items: center;
+}
+.captcha p {
+    margin-bottom: 0;
+}
+.captcha .text {
+    color: #0040C3;
+    font-size: 16px;
+}
+.captcha .number {
+    font-size: 16px;
+    color: #282828;
+}
+.captcha .sum-value {
+    background-color: rgba(240, 244, 251, 1);
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    text-align: center;
+}
+.captcha .verify-button {
+    color: #0040C3;
+    border: 1px solid #0040C3;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 3px;
+    width: 100px;
+    height: 35px;
+    transition: all 0.3s;
+}
+.captcha .verify-button:hover {
+    color: white;
+    background-color: #0040C3;
+    transition: all 0.3s;
+}
+.captcha .verified-button {
+    background-color: #0040C3;
+    color: white;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 3px;
+    width: 100px;
+    height: 35px;
+    transition: all 0.3s;
+}

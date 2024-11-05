@@ -1,0 +1,341 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #282828;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.container-custom {
+    max-width: 100%;
+    padding: 0 111px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.blue-section {
+    background-color: #0040c3;
+    width: 300px;
+    /* Maintained reduced width of the blue section */
+    min-height: 700px;
+    padding: 40px 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+    box-sizing: border-box;
+    text-align: left;
+    /* Align text to the left */
+    position: relative;
+}
+
+.blue-section img.logo {
+    max-width: 180px;
+    margin-bottom: 30px;
+    text-align: center;
+    /* Center the logo */
+}
+
+.blue-section h2 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    /* Increased space below the header */
+}
+
+.feature-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    width: fit-content;
+    margin-top: 10px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.feature-list li img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.partners {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    margin-top: auto;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.partners-inner {
+    display: flex;
+    animation: scroll 15s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.partner-logo {
+    display: flex;
+    align-items: center;
+}
+
+.partner-logo img {
+    max-height: 80px;
+    /* Increased logo height */
+    margin: 0 20px;
+}
+
+.white-section {
+    padding: 60px;
+    position: relative;
+    /* Ensure dropdown aligns properly */
+}
+
+.white-section h1 {
+    font-weight: 500;
+    font-size: 39px;
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+}
+
+.white-section p.subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #505050;
+    margin-bottom: 40px;
+}
+
+.form-container {
+    width: 702px;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.form-container h1 {
+    font-size: 39px;
+    font-weight: 500;
+    text-align: center;
+    color: #0e0e0e;
+}
+
+.form-container .subheading {
+    font-size: 16px;
+    font-weight: 400;
+    color: #505050;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.social-login-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 560px;
+    gap: 10px;
+}
+
+.social-login-buttons {
+    width: 100%;
+    /* Ensure the container takes full width */
+}
+
+.btn-social {
+    margin: 0 10px;
+    /* Add some spacing between buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 41px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: #282828;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-social:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-social img {
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .social-login-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+.or-separator {
+    display: flex;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.or-separator .line {
+    flex-grow: 1;
+    height: 0.5px;
+    background-color: #D2D2D2;
+}
+
+.or-separator .or-text {
+    margin: 0 10px;
+    color: #d2d2d2;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.form-group .form-control {
+    border-radius: 10px;
+    height: 46px;
+    border: 1px solid #d2d2d2;
+}
+
+
+.form-group .form-control::placeholder {
+    color: #9A9A9A;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.input-group-append .input-group-text {
+    background: transparent;
+    border: none;
+}
+
+.remember-forget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.captcha-container {
+    border-radius: 10px;
+    background: rgba(0, 64, 195, 0.06);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.validate-captcha {
+    color: #0040c3;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: auto;
+}
+
+.captcha-equation {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: #282828;
+    gap: 10px;
+}
+
+.captcha-equation span {
+    margin: 0 5px;
+}
+
+.verify-button {
+    margin-left: auto;
+    background-color: transparent;
+    border: 1px solid #0040C3;
+    color: #0040C3;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .social-login-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.input-group {
+    position: relative;
+
+}
+
+/* Override Bootstrap's border radius reset */
+.input-group>.form-control {
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+}
+
+.input-icon img {
+    width: 20px;
+    /* Adjust the size as needed */
+    height: 20px;
+    /* Adjust the size as needed */
+}
+
+.form-control.pr-5 {
+    padding-right: 35px;
+
+    /* Adjust the padding to make space for the icon */
+}

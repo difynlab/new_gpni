@@ -1,0 +1,233 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.section-title {
+    font-size: 49px;
+    font-weight: 500;
+    color: #0e0e0e;
+    line-height: 1.4;
+    text-align: center;
+    position: relative;
+    /* Ensure relative positioning */
+}
+
+.section-title::before,
+.section-title::after {
+    content: none;
+    /* Ensure no pseudo-elements create lines */
+}
+
+.section-subtitle {
+    font-size: 25px;
+    font-weight: 400;
+    color: #505050;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.section-subtitle-white {
+    color: var(--white, #FFF);
+}
+
+.education-partners p,
+.language-partners p,
+.partner-info p {
+    font-size: 25px;
+    font-weight: 400;
+    color: #505050;
+    line-height: 1.4;
+}
+
+.partner-logos .row {
+    margin-bottom: 20px;
+}
+
+.partner-logos img {
+    max-width: 100%;
+    height: auto;
+}
+
+.partner-logos .col-6,
+.partner-logos .col-md-2 {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-logos .middle-alignment {
+    margin-top: 30px;
+}
+
+.partner-logos .same-size img {
+    max-width: 160px;
+}
+
+.education-table {
+    background-color: #0040c3ff;
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    /* Added for center alignment */
+}
+
+.education-table .section-title {
+    color: var(--white, #FFF);
+    font-size: 49px;
+    font-weight: 500;
+    line-height: 68.6px;
+    /* 140% of 49px */
+}
+
+.education-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+}
+
+.education-table th,
+.education-table td {
+    border: 1px solid #e3e3e3;
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.white-text {
+    color: white !important;
+}
+
+.education-table th {
+    background-color: #f7f6fb;
+    color: #0040c3ff;
+    font-weight: 500;
+}
+
+.education-table td {
+    font-weight: 400;
+}
+
+.education-table .points-column {
+    white-space: nowrap;
+}
+
+.language-partners .sub-title {
+    font-size: 31px;
+    font-weight: 500;
+    color: #0e0e0e;
+    line-height: 1.4;
+    margin-top: 30px;
+}
+
+.language-cards {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.language-card {
+    background-color: #f7f6fb;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: left;
+    width: 300px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.language-card h3 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #0e0e0e;
+}
+
+.language-card p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #0e0e0e;
+}
+
+.language-card:focus {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #0040c3;
+}
+
+.journey-start {
+    background-color: #0040c3ff;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.journey-start .section-title,
+.journey-start .section-subtitle {
+    color: var(--white, #FFF);
+}
+
+.journey-start .signup-btn {
+    background-color: white;
+    color: #0040c3ff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.journey-start .signup-btn:hover {
+    background-color: #0040c3ff;
+    color: white;
+}
+
+.partner-card {
+    display: flex;
+    align-items: center;
+    /* Align items center horizontally */
+    gap: 36px;
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+.partner-card img {
+    flex-shrink: 0;
+    width: 150px;
+    height: auto;
+}
+
+.partner-info {
+    flex-grow: 1;
+}
+
+.partner-info h3 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 10px;
+}
+
+.partner-info a {
+    color: #4285f4;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.partner-info p {
+    font-size: 20px;
+    font-weight: 400;
+    color: #505050;
+    line-height: 1.4;
+}
+
+.hr-divider {
+    margin: 60px 0;
+    border-top: 1px solid #e3e3e3;
+}

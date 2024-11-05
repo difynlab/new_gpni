@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url("../../backend/css/sidebar.css");
+@import url("../../backend/css/breadcrumb.css");
+@import url("../../backend/css/pages.css");
+@import url("../../backend/css/static-pages.css");
+
+
+/* Common styles */
+    * {
+        font-family: "Poppins", sans-serif;
+    }
+    :root {
+        --white: white;
+        --black: #0E0E0E;
+    }
+    h1, h2, h3, h4, h5, h6, p {
+        margin-bottom: 0;
+    }
+    a, a:hover {
+        text-decoration: none;
+    }
+/* Common styles */
+
+
+/* Wrapper styles */
+    .wrapper {
+        padding: 40px 50px 0 50px;
+    }
+    .wrapper .content {
+        padding-left: 16%;
+    }
+/* Wrapper styles */
+
+
+/* Notification box styles */
+    .notification-box {
+        position: absolute;
+        width: 30%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .notification-box .alert {
+        border-radius: 0;
+        margin-bottom: 0;
+    }
+/* Notification box styles */
+
+
+/* Form styles */
+    form .asterisk {
+        color: rgb(221, 5, 5);
+        margin-left: 3px;
+    }
+    form .form-label {
+        color: #2D3748;
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    form .form-control {
+        font-size: 15px;
+        border: 1px solid #EAEAEA;
+        height: 50px;
+        border-radius: 10px;
+    }
+    form textarea.form-control {
+        height: initial;
+    }
+    form .form-control:focus {
+        border-color: #d1d1d1;
+        box-shadow: none;
+    }
+    form .form-control::placeholder {
+        color: #9A9A9A;
+        font-size: 14px;
+    }
+    form .ck.ck-sticky-panel__content {
+        border-color:#EAEAEA!important;
+        border-top-right-radius: 10px!important;
+        border-top-left-radius: 10px!important;
+    }
+    form .ck.ck-toolbar {
+        border-color:#EAEAEA!important;
+        border-top-right-radius: 10px!important;
+        border-top-left-radius: 10px!important;
+    }
+    form .ck.ck-content {
+        height: 250px;
+        border-color:#EAEAEA!important;
+        border-bottom-right-radius: 10px!important;
+        border-bottom-left-radius: 10px!important;
+    }
+    form .ck.ck-editor__editable.ck-focused:not(.ck-editor__nested-editable) {
+        box-shadow: none!important;
+        outline: none;
+    }
+    form .error-message {
+        color: #dd0909;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+/* Form styles */

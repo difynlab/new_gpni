@@ -1,0 +1,214 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20%;
+}
+
+.text-container {
+    text-align: center;
+}
+
+.image-container {
+    padding-top: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-container {
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    z-index: 1;
+}
+
+.since {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10vw;
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: 4.8px;
+    color: #e8e8e8;
+}
+
+.history {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4vw;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #0e0e0e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .since {
+        font-size: 20vw;
+    }
+
+    .history {
+        font-size: 8vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .since {
+        font-size: 25vw;
+    }
+
+    .history {
+        font-size: 10vw;
+    }
+}
+
+.who-we-are {
+    padding: 60px 15px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.who-we-are h2 {
+    color: #0E0E0E;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.who-we-are h3 {
+    color: #0040C3;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.who-we-are p {
+    color: #505050;
+    text-align: center;
+    line-height: 1.4;
+    padding: 0 10%;
+}
+
+@media (max-width: 768px) {
+    .who-we-are p {
+        padding: 0 15px;
+    }
+}
+
+
+.our-story {
+    background-color: #0040C3;
+    color: white;
+    padding: 60px 15px;
+}
+
+.our-story h2 {
+    color: #FFF;
+    font-style: normal;
+    line-height: 120%;
+    /* 58.8px */
+
+}
+
+.our-story p {
+    color: #FFF;
+    line-height: 140%;
+}
+
+.our-story img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.our-partners {
+    background-color: #006bff;
+    color: white;
+    padding: 60px 15px;
+}
+
+.our-partners h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.our-partners p,
+.our-partners li {
+    line-height: 1.5;
+}
+
+.our-partners img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.our-founders {
+    padding: 60px 15px;
+    background-color: white;
+}
+
+.our-founders h2 {
+    color: #505050;
+    text-align: right;
+    font-style: normal;
+    line-height: 120%;
+}
+
+.founder {
+    margin-bottom: 40px;
+    /* text-align: center; */
+}
+
+.founder img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+
+}
+
+.founder h4 {
+    color: #505050;
+    line-height: 140%;
+}
+
+.founder p {
+    color: #505050;
+    line-height: 140%;
+}
+
+.founder .title {
+    color: #505050;
+    line-height: 140%;
+}
+
+.founders img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+
+.custom-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+}
+
+.custom-list li {
+    position: relative;
+    padding-left: 20px; /* Adjust padding to make space for the custom symbol */
+}
+
+.custom-list li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: white; /* Adjust the color as needed */
+}
+
+.gold-standard h2 {
+    color: #505050;
+    line-height: 1.2;
+}
