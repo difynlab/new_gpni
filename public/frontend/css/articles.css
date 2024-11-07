@@ -1,0 +1,341 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+  
+  .card {
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .card img {
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .card-title {
+    font-size: 18px;
+  }
+  
+  .card-text {
+    color: #747474;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+  }
+  
+  .username {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  
+  .custom-text-muted {
+    color: #838589;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 1.56px;
+  }
+  
+  .text-primary {
+    color: #0040c3ff;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .text-primary:hover {
+    text-decoration: none;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .share-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+  }
+  
+  .metadata {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .metadata .divider {
+    width: 1px;
+    height: 16px;
+    background-color: #909090;
+    margin: 0 10px;
+  }
+  
+  .card-footer {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-footer .username {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-footer .username img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .trending-article {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    gap: 18px;
+  }
+  
+  .trending-article:last-child {
+    border-bottom: none;
+  }
+  
+  .trending-article img {
+    width: 184px;
+    height: 102px;
+    border-radius: 0;
+  }
+  
+  .trending-content {
+    flex: 1;
+  }
+  
+  .trending-content h6 {
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+  }
+  
+  .trending-content p {
+    color: #505050;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+    margin-bottom: 20px;
+  }
+  
+  .trending-content .date-and-read {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  
+  .trending-content .time-read {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .trending-content .read-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+  
+  .trending-content .small {
+    font-size: 12px;
+    font-family: 'Poppins';
+    color: #505050;
+    font-weight: 300;
+    font-style: normal;
+    line-height: normal;
+  }
+  
+  .header-metadata {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .find-us-on {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .find-us-on .title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #0b0b0b;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 25px;
+  }
+  
+  .social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .subscribe {
+    margin-top: 40px;
+    text-align: left;
+  }
+  
+  .subscribe h5 {
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .subscribe p {
+    font-size: 14px;
+    color: #505050;
+    margin-bottom: 20px;
+  }
+  
+  .subscribe-form-article {
+    display: flex;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+  }
+  
+  .subscribe-form-article input[type="email"] {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+  }
+  
+  .subscribe-form-article button {
+    padding: 15px 30px;
+    border: none;
+    background-color: #0040c3;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+  
+  .subscribe-form-article input[type="email"]:focus,
+  .subscribe-form-article button:focus {
+    outline: none;
+  }
+  
+  .subscribe-form-article input[type="email"]::placeholder {
+    color: #999;
+  }
+  
+  .instagram-section {
+    width: 100%;
+    max-width: 1225px;
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  .instagram-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+  }
+  
+  .instagram-section p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 140%;
+    color: #505050;
+    max-width: 1090px;
+    margin: 0 auto 50px;
+  }
+  
+  .instagram-images {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1225px;
+    height: 193px;
+    overflow: hidden;
+  }
+  
+  .instagram-images img {
+    width: calc(25% - 10px);
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .all-articles-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .category {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #505050;
+    cursor: pointer;
+    padding: 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .category.active {
+    color: #0040c3;
+    border-bottom-color: #0040c3;
+  }
+
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.read-more-button {
+  text-decoration: none;
+}
+
+.pagination .page-link {
+  font-size: 14px;
+  border: none;
+  box-shadow: none;
+}

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\PolicyContent;
+use App\Models\OurPolicyContent;
 use App\Models\PolicyCategory;
 use App\Models\Policy;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class OurPolicyController extends Controller
 {
     public function index(Request $request)
     {
-        $contents = PolicyContent::find(1);
+        $contents = OurPolicyContent::find(1);
 
         $policies = Policy::where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'asc')->get();
         if($policies->isEmpty() && $request->middleware_language_name != 'English') {

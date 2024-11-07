@@ -27,7 +27,7 @@ class AdvisoryBoardExpertLectureController extends Controller
                 break;
         }
 
-        return view('backend.pages.advisory-board', [
+        return view('backend.pages.advisory-board-and-expert-lectures', [
             'contents' => $contents,
             'language' => $language,
             'short_code' => $short_code

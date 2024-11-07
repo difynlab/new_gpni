@@ -1,16 +1,16 @@
 @extends('backend.layouts.app')
 
-@section('title', 'ISSN Partner')
+@section('title', 'ISSN Official Partners and Affiliates')
 
 @section('content')
 
-    <x-backend.breadcrumb page_name="ISSN Partner"></x-backend.breadcrumb>
+    <x-backend.breadcrumb page_name="ISSN Official Partners and Affiliates"></x-backend.breadcrumb>
 
     <div class="static-pages">
         
         <p class="page-language">{{ ucfirst($language) }} Language</p>
 
-        <form action="{{ route('backend.pages.issn-partner.update', $language) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('backend.pages.issn-official-partners-and-affiliates.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
                 <p class="inner-page-title">Section 1 <span>(Introduction)</span></p>
@@ -53,6 +53,42 @@
                     <div class="col-6 right-column">
                         <x-backend.upload-image old_name="old_section_2_image" old_value="{{ $contents->{'section_2_image_' . $short_code} ?? '' }}" new_name="new_section_2_image" path="pages" class="side-box-uploader"></x-backend.upload-image>
                         <x-backend.input-error field="new_section_2_image"></x-backend.input-error>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <p class="inner-page-title">Section 3</p>
+
+                <div class="row form-input">
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <label for="section_3_title_{{ $short_code }}" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="section_3_title_{{ $short_code }}" name="section_3_title_{{ $short_code }}" value="{{ $contents->{'section_3_title_' . $short_code} ?? '' }}" placeholder="Title">
+                        </div>
+
+                        <div>
+                            <label for="section_3_description_{{ $short_code }}" class="form-label">Description</label>
+                            <textarea class="editor" id="section_3_description_{{ $short_code }}" name="section_3_description_{{ $short_code }}" value="{{ $contents->{'section_3_description_' . $short_code} ?? '' }}">{{ $contents->{'section_3_description_' . $short_code} ?? '' }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-input">
+                    <div class="col-3">
+                        <label class="form-label">Button Label</label>
+
+                        <input type="text" class="form-control mb-3" name="section_3_button_labels[]" placeholder="Label" value="{{ json_decode($contents->{'section_3_labels_links_' . $short_code})[0]->label ?? '' }}">
+
+                        <input type="text" class="form-control" name="section_3_button_labels[]" placeholder="Label" value="{{ json_decode($contents->{'section_3_labels_links_' . $short_code})[1]->label ?? '' }}">
+                    </div>
+
+                    <div class="col-9">
+                        <label class="form-label">Link</label>
+
+                        <input type="url" class="form-control mb-3" name="section_3_button_links[]" placeholder="Link" value="{{ json_decode($contents->{'section_3_labels_links_' . $short_code})[0]->link ?? '' }}">
+
+                        <input type="url" class="form-control" name="section_3_button_links[]" placeholder="Link" value="{{ json_decode($contents->{'section_3_labels_links_' . $short_code})[1]->link ?? '' }}">
                     </div>
                 </div>
             </div>

@@ -55,6 +55,8 @@
                             <th scope="col">Title</th>
                             <th scope="col">Article Category</th>
                             <th scope="col">Language</th>
+                            <th scope="col">Recommending</th>
+                            <th scope="col">Trending</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -68,6 +70,8 @@
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->article_category }}</td>
                                     <td>{{ $article->language }}</td>
+                                    <td>{!! $article->recommending !!}</td>
+                                    <td>{!! $article->trending !!}</td>
                                     <td>{!! $article->status !!}</td>
                                     <td>{!! $article->action !!}</td>
                                 </tr>

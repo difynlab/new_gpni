@@ -6,95 +6,58 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\ArticleContent;
+use App\Models\Setting;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $contents = ArticleContent::find(1);
-        $language = session('language', 'en');
-        
-        switch($language){
-            case 'en':
-                $language_name = 'English';
-                break;
-            case 'zh':
-                $language_name = 'Chinese';
-                break;
-            case 'ja':
-                $language_name = 'Japanese';
-                break;
-            default:
-                $language_name = 'unknown';
-                break;
-        }
-        
-        // Load articles with their category
-        $articles = Article::with('category')->where('language', $language_name)->where('status', '1')->get();
 
-        // Fallback to English if no articles found
-        if($articles->isEmpty() && $language_name !== 'English') {
-            $articles = Article::with('category')->where('language', 'English')->where('status', '1')->get();
+        $articles = Article::where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'desc')->paginate(4);
+        if($articles->isEmpty() && $request->middleware_language_name != 'English') {
+            $articles = Article::where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->get();
         }
 
-        $article_categories = ArticleCategory::where('language', $language_name)->where('status', '1')
-                                ->whereNotNull('name')  // Filter out any null names
-                                ->get();
-
-        // Fallback to English if no categories found
-        if ($article_categories->isEmpty() && $language_name !== 'English') {
-            $article_categories = ArticleCategory::where('language', 'English')->where('status', '1')->get();
+        $recommended_articles = Article::where('recommending', 'Yes')->where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'desc')->paginate(4);
+        if($recommended_articles->isEmpty() && $request->middleware_language_name != 'English') {
+            $recommended_articles = Article::where('recommending', 'Yes')->where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->get();
         }
 
-        return view('frontend.pages.articles', [
+        $trending_articles = Article::where('trending', 'Yes')->where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'desc')->take(5)->get();
+
+        if($trending_articles->isEmpty() && $request->middleware_language_name != 'English') {
+            $trending_articles = Article::where('trending', 'Yes')->where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->take(5)->get();
+        }
+
+        $settings = Setting::find(1);
+
+        return view('frontend.pages.articles.index', [
             'contents' => $contents,
-            'language' => $language,
             'articles' => $articles,
-            'article_categories' => $article_categories
+            'recommended_articles' => $recommended_articles,
+            'trending_articles' => $trending_articles,
+            'settings' => $settings
         ]);
     }
     
-    public function show($id)
+    public function show(Request $request, Article $article)
     {
-        $language = session('language', 'en');
-        
-        switch($language){
-            case 'en':
-                $language_name = 'English';
-                break;
-            case 'zh':
-                $language_name = 'Chinese';
-                break;
-            case 'ja':
-                $language_name = 'Japanese';
-                break;
-            default:
-                $language_name = 'unknown';
-                break;
+        $contents = ArticleContent::find(1);
+
+        $latest_articles = Article::where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'desc')->take(5)->get();
+        if($latest_articles->isEmpty() && $request->middleware_language_name != 'English') {
+            $latest_articles = Article::where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->take(5)->get();
         }
 
-        $articles = Article::findOrFail($id);
+        $settings = Setting::find(1);
 
-        $article_categories = ArticleCategory::where('language', $language_name)->where('status', '1')
-        ->whereNotNull('name')  // Filter out any null names
-        ->get();
-        // Fallback to English if no categories found
-        if ($article_categories->isEmpty() && $language_name !== 'English') {
-            $article_categories = ArticleCategory::where('language', 'English')->where('status', '1')->get();
-        }
-
-         // Load articles with their category
-         $latest_articles = Article::with('category')->where('language', $language_name)->where('status', '1')->get();
-
-         // Fallback to English if no articles found
-         if($latest_articles->isEmpty() && $language_name !== 'English') {
-             $latest_articles = Article::with('category')->where('language', 'English')->where('status', '1')->get();
-         }
-
-        return view('frontend.pages.single-article', [
-            'articles' => $articles,
-            'article_categories' => $article_categories,
-            'latest_articles' => $latest_articles
+        return view('frontend.pages.articles.show', [
+            'contents' => $contents,
+            'article' => $article,
+            'latest_articles' => $latest_articles,
+            'settings' => $settings
         ]);
     }
 }

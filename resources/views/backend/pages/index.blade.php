@@ -82,34 +82,34 @@
                         </tr>
 
                         <tr>
-                            <td>Advisory Board</td>
+                            <td>Advisory Board and Expert Lectures</td>
                             <td>
-                                <a href="{{ route('backend.pages.advisory-board.index', 'english') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.advisory-board-and-expert-lectures.index', 'english') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>English
                                 </a>
 
-                                <a href="{{ route('backend.pages.advisory-board.index', 'chinese') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.advisory-board-and-expert-lectures.index', 'chinese') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>Chinese
                                 </a>
 
-                                <a href="{{ route('backend.pages.advisory-board.index', 'japanese') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.advisory-board-and-expert-lectures.index', 'japanese') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>Japanese
                                 </a>
                             </td>
                         </tr>
 
                         <tr>
-                            <td>ISSN Partner</td>
+                            <td>ISSN Official Partners and Affiliates</td>
                             <td>
-                                <a href="{{ route('backend.pages.issn-partner.index', 'english') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.issn-official-partners-and-affiliates.index', 'english') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>English
                                 </a>
 
-                                <a href="{{ route('backend.pages.issn-partner.index', 'chinese') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.issn-official-partners-and-affiliates.index', 'chinese') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>Chinese
                                 </a>
 
-                                <a href="{{ route('backend.pages.issn-partner.index', 'japanese') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.issn-official-partners-and-affiliates.index', 'japanese') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>Japanese
                                 </a>
                             </td>
@@ -133,17 +133,17 @@
                         </tr>
 
                         <tr>
-                            <td>Policy</td>
+                            <td>Our Policies</td>
                             <td>
-                                <a href="{{ route('backend.pages.policy.index', 'english') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.our-policies.index', 'english') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>English
                                 </a>
 
-                                <a href="{{ route('backend.pages.policy.index', 'chinese') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.our-policies.index', 'chinese') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>Chinese
                                 </a>
 
-                                <a href="{{ route('backend.pages.policy.index', 'japanese') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.our-policies.index', 'japanese') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>Japanese
                                 </a>
                             </td>

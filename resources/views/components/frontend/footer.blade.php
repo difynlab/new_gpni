@@ -91,7 +91,7 @@
                 <ul class="list-unstyled">
                     <li><a href="#">Promotion</a></li>
                     <li><a href="{{ route('frontend.gift-cards') }}">Gift Voucher</a></li>
-                    <li><a href="{{ route('frontend.articles') }}">All Articles</a></li>
+                    <li><a href="{{ route('frontend.articles.index') }}">Articles</a></li>
                     <li><a href="{{ route('frontend.podcasts') }}">Podcasts</a></li>
                     <li><a href="{{ route('frontend.conferences') }}">Conference</a></li>
                     <li><a href="#">GPNi TV & E News</a></li>

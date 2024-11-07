@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->enum('language', ['English', 'Chinese', 'Japanese']);
             $table->string('article_category_id');
+            $table->enum('recommending', ['Yes', 'No']);
+            $table->enum('trending', ['Yes', 'No']);
             $table->text('content')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('author_name')->nullable();

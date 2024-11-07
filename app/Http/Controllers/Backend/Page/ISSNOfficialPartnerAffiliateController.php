@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Backend\Page;
 
 use App\Http\Controllers\Controller;
-use App\Models\ISSNPartnerContent;
+use App\Models\ISSNOfficialPartnerAffiliateContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class ISSNPartnerController extends Controller
+class ISSNOfficialPartnerAffiliateController extends Controller
 {
     public function index($language)
     {
-        $contents = ISSNPartnerContent::find(1);
+        $contents = ISSNOfficialPartnerAffiliateContent::find(1);
 
         switch($language){
             case 'english':
@@ -30,7 +30,7 @@ class ISSNPartnerController extends Controller
                 break;
         }
 
-        return view('backend.pages.issn-partner', [
+        return view('backend.pages.issn-official-partners-and-affiliates', [
             'contents' => $contents,
             'language' => $language,
             'short_code' => $short_code
@@ -48,7 +48,7 @@ class ISSNPartnerController extends Controller
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
         }
 
-        $contents = ISSNPartnerContent::find(1);
+        $contents = ISSNOfficialPartnerAffiliateContent::find(1);
 
         // Section 2 image
             if($request->file('new_section_2_image')) {
@@ -70,9 +70,21 @@ class ISSNPartnerController extends Controller
             }
         // Section 2 image
 
+        // Section 3 labels & links
+            $section_3_labels_links = [];
+            foreach($request->section_3_button_labels as $key => $section_3_button_label) {
+                array_push($section_3_labels_links, [
+                    'label' => $section_3_button_label,
+                    'link' => $request->section_3_button_links[$key]
+                ]);
+            }
+        // Section 3 labels & links
+
         $data = $request->except(
             'old_section_2_image',
             'new_section_2_image',
+            'section_3_button_labels',
+            'section_3_button_links',
         );
 
         switch($language){
@@ -91,6 +103,7 @@ class ISSNPartnerController extends Controller
         }
 
         $data['section_2_image_' . '' . $short_code] = $section_2_image_name;
+        $data['section_3_labels_links_' . '' . $short_code] = json_encode($section_3_labels_links);
         
         $contents->fill($data)->save();
 

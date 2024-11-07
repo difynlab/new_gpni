@@ -21,6 +21,10 @@ class ArticleController extends Controller
 
             $article->article_category = ArticleCategory::find($article->article_category_id)->name;
 
+            $article->recommending = ($article->recommending == 'Yes') ? '<span class="active-status">Yes</span>' : '<span class="inactive-status">No</span>';
+
+            $article->trending = ($article->trending == 'Yes') ? '<span class="active-status">Yes</span>' : '<span class="inactive-status">No</span>';
+
             $article->status = ($article->status == '1') ? '<span class="active-status">Active</span>' : '<span class="inactive-status">Inactive</span>';
         }
 

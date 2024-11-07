@@ -71,10 +71,7 @@
                             <a class="dropdown-item" href="{{ route('frontend.global-education-partners') }}">Global Education Partners</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('frontend.issn-official-partners') }}">ISSN Official Partners & Affiliates</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/pages/Partners/ISSN Official Partners Affiliates.html">Regional & Branding Partners</a>
+                            <a class="dropdown-item" href="{{ route('frontend.issn-official-partners-and-affiliates') }}">ISSN Official Partners & Affiliates</a>
                         </li>
                     </ul>
                 </li>

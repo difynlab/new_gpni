@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('policy_contents', function (Blueprint $table) {
+        Schema::create('our_policy_contents', function (Blueprint $table) {
             $table->id();
 
             $table->text('title_en')->nullable();

@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PolicyContentSeeder extends Seeder
+class OurPolicyContentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class PolicyContentSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('policy_contents')->insert([
+        DB::table('our_policy_contents')->insert([
             'id' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

@@ -83,6 +83,24 @@
                 <p class="inner-page-title">More Details</p>
 
                 <div class="row form-input">
+                    <div class="col-6 mb-4">
+                        <label for="recommending" class="form-label">Recommending<span class="asterisk">*</span></label>
+                        <select class="form-control form-select" id="recommending" name="recommending" required>
+                            <option value="">Recommending?</option>
+                            <option value="Yes" {{ old('recommending', $article->recommending) == 'Yes' ? 'selected' : '' }}>Yes</option>
+                            <option value="No" {{ old('recommending', $article->recommending) == 'No' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="trending" class="form-label">Trending<span class="asterisk">*</span></label>
+                        <select class="form-control form-select" id="trending" name="trending" required>
+                            <option value="">Trending?</option>
+                            <option value="Yes" {{ old('trending', $article->trending) == 'Yes' ? 'selected' : '' }}>Yes</option>
+                            <option value="No" {{ old('trending', $article->trending) == 'No' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
                     <div class="col-6">
                         <div class="mb-5">
                             <label for="reading_time" class="form-label">Reading Time</label>
@@ -94,6 +112,7 @@
                             <textarea class="form-control" rows="4" id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords', $article->meta_keywords) }}" placeholder="Meta Keywords">{{ old('meta_keywords', $article->meta_keywords) }}</textarea>
                         </div>
                     </div>
+                    
                     <div class="col-6 full-height">
                         <label for="meta_description" class="form-label">Meta Description</label>
                         <textarea class="form-control" rows="4" id="meta_description" name="meta_description" value="{{ old('meta_description', $article->meta_description) }}" placeholder="Meta Description">{{ old('meta_description', $article->meta_description) }}</textarea>

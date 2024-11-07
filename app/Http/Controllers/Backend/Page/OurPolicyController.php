@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Backend\Page;
 
 use App\Http\Controllers\Controller;
-use App\Models\PolicyContent;
+use App\Models\OurPolicyContent;
 use Illuminate\Http\Request;
 
-class PolicyController extends Controller
+class OurPolicyController extends Controller
 {
     public function index($language)
     {
-        $contents = PolicyContent::find(1);
+        $contents = OurPolicyContent::find(1);
 
         switch($language){
             case 'english':
@@ -27,7 +27,7 @@ class PolicyController extends Controller
                 break;
         }
 
-        return view('backend.pages.policy', [
+        return view('backend.pages.our-policies', [
             'contents' => $contents,
             'language' => $language,
             'short_code' => $short_code
@@ -36,7 +36,7 @@ class PolicyController extends Controller
 
     public function update(Request $request) {
 
-        $contents = PolicyContent::find(1);
+        $contents = OurPolicyContent::find(1);
 
         $data = $request->all();
         $contents->fill($data)->save();

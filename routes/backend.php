@@ -19,7 +19,7 @@ use App\Http\Controllers\Backend\Course\CourseModuleExamQuestionController;
 use App\Http\Controllers\Backend\Course\CourseReviewController;
 use App\Http\Controllers\Backend\FAQ\FAQController;
 use App\Http\Controllers\Backend\Media\MediaController;
-use App\Http\Controllers\Backend\Page\AdvisoryBoardExpertLectureController as PageAdvisoryBoardController;
+use App\Http\Controllers\Backend\Page\AdvisoryBoardExpertLectureController;
 use App\Http\Controllers\Backend\Page\ArticleController as PageArticleController;
 use App\Http\Controllers\Backend\Page\ConferenceController as PageConferenceController;
 use App\Http\Controllers\Backend\Page\ConnectionController as PageConnectionController;
@@ -30,13 +30,13 @@ use App\Http\Controllers\Backend\Testimonial\TestimonialController;
 use App\Http\Controllers\Backend\Page\HistoryOfGpniController;
 use App\Http\Controllers\Backend\Page\HomepageController;
 use App\Http\Controllers\Backend\Page\InsuranceProfessionalMembershipController;
-use App\Http\Controllers\Backend\Page\ISSNPartnerController as PageISSNPartnerController;
+use App\Http\Controllers\Backend\Page\ISSNOfficialPartnerAffiliateController;
 use App\Http\Controllers\Backend\Page\MasterClassController;
 use App\Http\Controllers\Backend\Page\MembershipController;
 use App\Http\Controllers\Backend\Page\NutritionistController as PageNutritionistController;
 use App\Http\Controllers\Backend\Page\PageController;
 use App\Http\Controllers\Backend\Page\PodcastController as PagePodcastController;
-use App\Http\Controllers\Backend\Page\PolicyController as PagePolicyController;
+use App\Http\Controllers\Backend\Page\OurPolicyController;
 use App\Http\Controllers\Backend\Page\TvController;
 use App\Http\Controllers\Backend\Page\WhyWeAreDifferentController;
 use App\Http\Controllers\Backend\Payment\CoursePaymentController;
@@ -44,7 +44,7 @@ use App\Http\Controllers\Backend\Payment\ProductPaymentController;
 use App\Http\Controllers\Backend\Person\AdminController;
 use App\Http\Controllers\Backend\Person\AdvisoryBoardController as PersonAdvisoryBoardController;
 use App\Http\Controllers\Backend\Person\GlobalEducationPartnerController;
-use App\Http\Controllers\Backend\Person\ISSNPartnerController as PersonISSNPartnerController;
+use App\Http\Controllers\Backend\Person\ISSNPartnerController;
 use App\Http\Controllers\Backend\Person\NutritionistController;
 use App\Http\Controllers\Backend\Person\StudentController;
 use App\Http\Controllers\Backend\Podcast\PodcastController;
@@ -84,17 +84,17 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::get('gift-card/{language}', [GiftCardController::class, 'index'])->name('gift-card.index');
             Route::post('gift-card/{language}', [GiftCardController::class, 'update'])->name('gift-card.update');
 
-            Route::get('advisory-board/{language}', [PageAdvisoryBoardController::class, 'index'])->name('advisory-board.index');
-            Route::post('advisory-board/{language}', [PageAdvisoryBoardController::class, 'update'])->name('advisory-board.update');
+            Route::get('advisory-board-and-expert-lectures/{language}', [AdvisoryBoardExpertLectureController::class, 'index'])->name('advisory-board-and-expert-lectures.index');
+            Route::post('advisory-board-and-expert-lectures/{language}', [AdvisoryBoardExpertLectureController::class, 'update'])->name('advisory-board-and-expert-lectures.update');
 
-            Route::get('issn-partner/{language}', [PageISSNPartnerController::class, 'index'])->name('issn-partner.index');
-            Route::post('issn-partner/{language}', [PageISSNPartnerController::class, 'update'])->name('issn-partner.update');
+            Route::get('issn-official-partners-and-affiliates/{language}', [ISSNOfficialPartnerAffiliateController::class, 'index'])->name('issn-official-partners-and-affiliates.index');
+            Route::post('issn-official-partners-and-affiliates/{language}', [ISSNOfficialPartnerAffiliateController::class, 'update'])->name('issn-official-partners-and-affiliates.update');
 
             Route::get('faq/{language}', [PageFAQController::class, 'index'])->name('faq.index');
             Route::post('faq/{language}', [PageFAQController::class, 'update'])->name('faq.update');
 
-            Route::get('policy/{language}', [PagePolicyController::class, 'index'])->name('policy.index');
-            Route::post('policy/{language}', [PagePolicyController::class, 'update'])->name('policy.update');
+            Route::get('our-policies/{language}', [OurPolicyController::class, 'index'])->name('our-policies.index');
+            Route::post('our-policies/{language}', [OurPolicyController::class, 'update'])->name('our-policies.update');
 
             Route::get('insurance-professional-membership/{language}', [InsuranceProfessionalMembershipController::class, 'index'])->name('insurance-professional-membership.index');
             Route::post('insurance-professional-membership/{language}', [InsuranceProfessionalMembershipController::class, 'update'])->name('insurance-professional-membership.update');
@@ -258,8 +258,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             // Advisory board routes
 
             // ISSN partner routes
-                Route::resource('issn-partners', PersonISSNPartnerController::class)->except('show');
-                Route::post('issn-partners/filter', [PersonISSNPartnerController::class, 'filter'])->name('issn-partners.filter');
+                Route::resource('issn-partners', ISSNPartnerController::class)->except('show');
+                Route::post('issn-partners/filter', [ISSNPartnerController::class, 'filter'])->name('issn-partners.filter');
             // ISSN partner routes
 
             // Global education partners routes

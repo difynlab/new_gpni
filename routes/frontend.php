@@ -6,7 +6,7 @@ use App\Http\Controllers\Frontend\Student\DashboardController;
 use App\Http\Controllers\Frontend\Pages\HistoryOfGpniController;
 use App\Http\Controllers\Frontend\Pages\AdvisoryBoardExpertLectureController;
 use App\Http\Controllers\Frontend\Pages\FAQController;
-use App\Http\Controllers\Frontend\Pages\ISSNOfficialPartnerController;
+use App\Http\Controllers\Frontend\Pages\ISSNOfficialPartnerAffiliateController;
 use App\Http\Controllers\Frontend\Pages\OurPolicyController;
 use App\Http\Controllers\Frontend\Pages\ConferenceController;
 use App\Http\Controllers\Frontend\Pages\InsuranceProfessionalMembershipController;
@@ -50,9 +50,13 @@ Route::middleware(['set_language'])->group(function () {
         Route::get('our-policies', [OurPolicyController::class, 'index'])->name('our-policies');
         Route::get('insurance-and-professional-membership', [InsuranceProfessionalMembershipController::class, 'index'])->name('insurance-and-professional-membership');
         Route::get('global-education-partners', [GlobalEducationPartnersController::class, 'index'])->name('global-education-partners');
-        
-        
-        Route::get('issn-official-partners', [ISSNOfficialPartnerController::class, 'index'])->name('issn-official-partners');
+        Route::get('issn-official-partners-and-affiliates', [ISSNOfficialPartnerAffiliateController::class, 'index'])->name('issn-official-partners-and-affiliates');
+
+        Route::prefix('articles')->name('articles.')->group(function() {
+            Route::get('/', [ArticleController::class, 'index'])->name('index');
+            Route::get('{article}', [ArticleController::class, 'show'])->name('show');
+        });
+
         
         Route::get('gift-cards', [GiftCardController::class, 'index'])->name('gift-cards');
         Route::get('podcasts', [PodcastController::class, 'index'])->name('podcasts');
@@ -61,8 +65,7 @@ Route::middleware(['set_language'])->group(function () {
         Route::get('conferences', [ConferenceController::class, 'index'])->name('conferences');
         Route::get('conferences/{id}', [ConferenceController::class, 'show'])->name('single-conference');
 
-        Route::get('articles', [ArticleController::class, 'index'])->name('articles');
-        Route::get('articles/{id}', [ArticleController::class, 'show'])->name('single-article');
+        
 
         Route::get('nutritionists', [NutritionistController::class, 'index'])->name('nutritionists');
         Route::get('nutritionists/{id}', [NutritionistController::class, 'viewCoach'])->name('view-coach');

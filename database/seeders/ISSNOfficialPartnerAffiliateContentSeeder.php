@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AdvisoryBoardContentSeeder extends Seeder
+class ISSNOfficialPartnerAffiliateContentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class AdvisoryBoardContentSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('advisory_board_contents')->insert([
+        DB::table('issn_official_partner_affiliate_contents')->insert([
             'id' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

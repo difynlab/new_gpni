@@ -14,9 +14,32 @@ return new class extends Migration
         Schema::create('article_contents', function (Blueprint $table) {
             $table->id();
 
-            $table->text('title_en')->nullable();
-            $table->text('title_zh')->nullable();
-            $table->text('title_ja')->nullable();
+            $table->text('section_1_title_en')->nullable();
+            $table->text('section_1_social_title_en')->nullable();
+            $table->text('section_1_newsletter_title_en')->nullable();
+            $table->text('section_1_newsletter_description_en')->nullable();
+            $table->text('section_1_newsletter_placeholder_en')->nullable();
+            $table->text('section_1_newsletter_button_en')->nullable();
+            $table->text('section_2_title_en')->nullable();
+            $table->text('section_2_description_en')->nullable();
+
+            $table->text('section_1_title_zh')->nullable();
+            $table->text('section_1_social_title_zh')->nullable();
+            $table->text('section_1_newsletter_title_zh')->nullable();
+            $table->text('section_1_newsletter_description_zh')->nullable();
+            $table->text('section_1_newsletter_placeholder_zh')->nullable();
+            $table->text('section_1_newsletter_button_zh')->nullable();
+            $table->text('section_2_title_zh')->nullable();
+            $table->text('section_2_description_zh')->nullable();
+
+            $table->text('section_1_title_ja')->nullable();
+            $table->text('section_1_social_title_ja')->nullable();
+            $table->text('section_1_newsletter_title_ja')->nullable();
+            $table->text('section_1_newsletter_description_ja')->nullable();
+            $table->text('section_1_newsletter_placeholder_ja')->nullable();
+            $table->text('section_1_newsletter_button_ja')->nullable();
+            $table->text('section_2_title_ja')->nullable();
+            $table->text('section_2_description_ja')->nullable();
             
             $table->timestamps();
         });

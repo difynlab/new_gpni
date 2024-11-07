@@ -1,19 +1,19 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Policy')
+@section('title', 'Advisory Board and Expert Lectures')
 
 @section('content')
 
-    <x-backend.breadcrumb page_name="Policy"></x-backend.breadcrumb>
+    <x-backend.breadcrumb page_name="Advisory Board and Expert Lectures"></x-backend.breadcrumb>
 
     <div class="static-pages">
         
         <p class="page-language">{{ ucfirst($language) }} Language</p>
 
-        <form action="{{ route('backend.pages.policy.update', $language) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('backend.pages.advisory-board-and-expert-lectures.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
-                <p class="inner-page-title">Section <span>(Introduction)</span></p>
+                <p class="inner-page-title">Introduction</p>
 
                 <div class="row form-input">
                     <div class="col-12">
@@ -24,7 +24,7 @@
 
                         <div>
                             <label for="description_{{ $short_code }}" class="form-label">Description</label>
-                            <textarea class="form-control" rows="5" id="description_{{ $short_code }}" name="description_{{ $short_code }}" value="{{ $contents->{'description_' . $short_code} ?? '' }}" placeholder="Description">{{ $contents->{'description_' . $short_code} ?? '' }}</textarea>
+                            <textarea class="form-control" id="description_{{ $short_code }}" rows="5" name="description_{{ $short_code }}" value="{{ $contents->{'description_' . $short_code} ?? '' }}" placeholder="Description">{{ $contents->{'description_' . $short_code} ?? '' }}</textarea>
                         </div>
                     </div>
                 </div>
