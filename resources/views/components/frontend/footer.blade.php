@@ -72,7 +72,7 @@
                     <li><a href="#">PNE Level 1 With ISSN-SNS</a></li>
                     <li><a href="#">PNE Level 2 With ISSN-CISSN</a></li>
                     <li><a href="#">Small Courses & Seminars</a></li>
-                    <li><a href="{{ route('frontend.contact-us') }}">Contact Us</a></li>
+                    <li><a href="{{ route('frontend.contact-us.index') }}">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 list-of-items">
@@ -90,11 +90,11 @@
                 <h5>Other Resources</h5>
                 <ul class="list-unstyled">
                     <li><a href="#">Promotion</a></li>
-                    <li><a href="{{ route('frontend.gift-cards') }}">Gift Voucher</a></li>
+                    <li><a href="{{ route('frontend.gift-cards.index') }}">Gift Cards</a></li>
                     <li><a href="{{ route('frontend.articles.index') }}">Articles</a></li>
                     <li><a href="{{ route('frontend.podcasts') }}">Podcasts</a></li>
-                    <li><a href="{{ route('frontend.conferences') }}">Conference</a></li>
-                    <li><a href="#">GPNi TV & E News</a></li>
+                    <li><a href="{{ route('frontend.conferences.index') }}">Conferences</a></li>
+                    <li><a href="{{ route('frontend.gpni-tv') }}">GPNi TV & E News</a></li>
                 </ul>
             </div>
         </div>

@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Pages;
+namespace App\Http\Controllers\Frontend\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
-use App\Models\ArticleCategory;
 use App\Models\ArticleContent;
 use App\Models\Setting;
 use Illuminate\Http\Request;

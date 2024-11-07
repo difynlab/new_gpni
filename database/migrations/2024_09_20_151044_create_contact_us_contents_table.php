@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('connection_contents', function (Blueprint $table) {
+        Schema::create('contact_us_contents', function (Blueprint $table) {
             $table->id();
 
             $table->text('title_en')->nullable();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('connection_contents');
+        Schema::dropIfExists('contact_us_contents');
     }
 };

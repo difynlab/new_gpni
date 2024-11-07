@@ -1,28 +1,28 @@
 <?php
 
-use App\Http\Controllers\Frontend\Pages\HomepageController;
+use App\Http\Controllers\Frontend\Page\HomepageController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\Student\DashboardController;
-use App\Http\Controllers\Frontend\Pages\HistoryOfGpniController;
-use App\Http\Controllers\Frontend\Pages\AdvisoryBoardExpertLectureController;
-use App\Http\Controllers\Frontend\Pages\FAQController;
-use App\Http\Controllers\Frontend\Pages\ISSNOfficialPartnerAffiliateController;
-use App\Http\Controllers\Frontend\Pages\OurPolicyController;
-use App\Http\Controllers\Frontend\Pages\ConferenceController;
-use App\Http\Controllers\Frontend\Pages\InsuranceProfessionalMembershipController;
-use App\Http\Controllers\Frontend\Pages\GiftCardController;
-use App\Http\Controllers\Frontend\Pages\PodcastController;
-use App\Http\Controllers\Frontend\Pages\ArticleController;
-use App\Http\Controllers\Frontend\Pages\WhyWeAreDifferentController;
-use App\Http\Controllers\Frontend\Pages\MembershipController;
-use App\Http\Controllers\Frontend\Pages\ContactUsController;
-use App\Http\Controllers\Frontend\Pages\GlobalEducationPartnersController;
-use App\Http\Controllers\Frontend\Pages\NutritionistController;
+use App\Http\Controllers\Frontend\Page\HistoryOfGpniController;
+use App\Http\Controllers\Frontend\Page\AdvisoryBoardExpertLectureController;
+use App\Http\Controllers\Frontend\Page\FAQController;
+use App\Http\Controllers\Frontend\Page\ISSNOfficialPartnerAffiliateController;
+use App\Http\Controllers\Frontend\Page\OurPolicyController;
+use App\Http\Controllers\Frontend\Page\ConferenceController;
+use App\Http\Controllers\Frontend\Page\InsuranceProfessionalMembershipController;
+use App\Http\Controllers\Frontend\Page\GiftCardController;
+use App\Http\Controllers\Frontend\Page\PodcastController;
+use App\Http\Controllers\Frontend\Page\ArticleController;
+use App\Http\Controllers\Frontend\Page\WhyWeAreDifferentController;
+use App\Http\Controllers\Frontend\Page\MembershipController;
+use App\Http\Controllers\Frontend\Page\ContactUsController;
+use App\Http\Controllers\Frontend\Page\GlobalEducationPartnersController;
+use App\Http\Controllers\Frontend\Page\NutritionistController;
 use App\Http\Controllers\Frontend\Student\MyStorageController;
 use App\Http\Controllers\Frontend\Student\CourseDetailController;
 use App\Http\Controllers\Frontend\Student\AskExpertController;
-use App\Http\Controllers\Frontend\Pages\GpniTvController;
-use App\Http\Controllers\Frontend\Pages\CourseController;
+use App\Http\Controllers\Frontend\Page\TvController;
+use App\Http\Controllers\Frontend\Page\CourseController;
 use App\Http\Controllers\Frontend\Student\PasswordController;
 use App\Http\Controllers\Frontend\Student\StudentProfileController;
 use App\Http\Controllers\Frontend\Student\StudentMaterialController;
@@ -31,7 +31,7 @@ use App\Http\Controllers\Frontend\Student\MyOrdersController;
 use App\Http\Controllers\Frontend\Student\QualificationsController;
 use App\Http\Controllers\Frontend\Student\ReferFriendController;
 use App\Http\Controllers\Frontend\Student\CartController;
-use App\Http\Controllers\Frontend\Pages\ProductController;
+use App\Http\Controllers\Frontend\Page\ProductController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +40,7 @@ require __DIR__.'/frontend-auth.php';
 Route::post('/set-language', [LanguageController::class, 'setLanguage'])->name('set-language');
 
 Route::middleware(['set_language'])->group(function () {
-    // Pages routes
+    // Page routes
         Route::get('/', [HomepageController::class, 'index'])->name('homepage');
         Route::get('why-we-are-different', [WhyWeAreDifferentController::class, 'index'])->name('why-we-are-different');
         Route::get('membership', [MembershipController::class, 'index'])->name('membership');
@@ -51,19 +51,33 @@ Route::middleware(['set_language'])->group(function () {
         Route::get('insurance-and-professional-membership', [InsuranceProfessionalMembershipController::class, 'index'])->name('insurance-and-professional-membership');
         Route::get('global-education-partners', [GlobalEducationPartnersController::class, 'index'])->name('global-education-partners');
         Route::get('issn-official-partners-and-affiliates', [ISSNOfficialPartnerAffiliateController::class, 'index'])->name('issn-official-partners-and-affiliates');
-
         Route::prefix('articles')->name('articles.')->group(function() {
             Route::get('/', [ArticleController::class, 'index'])->name('index');
             Route::get('{article}', [ArticleController::class, 'show'])->name('show');
         });
+        Route::prefix('conferences')->name('conferences.')->group(function() {
+            Route::get('/', [ConferenceController::class, 'index'])->name('index');
+            Route::get('{conference}', [ConferenceController::class, 'show'])->name('show');
+        });
+        Route::prefix('contact-us')->name('contact-us.')->group(function() {
+            Route::get('/', [ContactUsController::class, 'index'])->name('index');
+            Route::post('/', [ContactUsController::class, 'store'])->name('store');
+        });
+        Route::prefix('gift-cards')->name('gift-cards.')->group(function() {
+            Route::get('/', [GiftCardController::class, 'index'])->name('index');
+            Route::post('/checkout', [GiftCardController::class, 'checkout'])->name('checkout');
+            Route::get('/success', [GiftCardController::class, 'success'])->name('success');
+        });
+        Route::get('gpni-tv', [TvController::class, 'index'])->name('gpni-tv');
 
-        
-        Route::get('gift-cards', [GiftCardController::class, 'index'])->name('gift-cards');
+
+
+
+
         Route::get('podcasts', [PodcastController::class, 'index'])->name('podcasts');
         
 
-        Route::get('conferences', [ConferenceController::class, 'index'])->name('conferences');
-        Route::get('conferences/{id}', [ConferenceController::class, 'show'])->name('single-conference');
+        
 
         
 
@@ -72,13 +86,10 @@ Route::middleware(['set_language'])->group(function () {
 
         Route::get('pne-level-1-course', [CourseController::class, 'show_pne_level_1'])->name('pne-level-1-course');
         Route::get('master-class', [CourseController::class, 'show_master_class'])->name('master-class');
-
         
-        Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us');
         
-        Route::get('gpni-tv', [GpniTvController::class, 'index'])->name('gpni-tv');
         Route::get('products', [ProductController::class, 'index'])->name('products');
-    // Pages routes
+    // Page routes
 
     // Student routes
         Route::middleware('auth', 'role:student')->group(function () {

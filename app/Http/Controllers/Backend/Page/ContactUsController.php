@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Backend\Page;
 
 use App\Http\Controllers\Controller;
-use App\Models\ConnectionContent;
+use App\Models\ContactUsContent;
 use Illuminate\Http\Request;
 
-class ConnectionController extends Controller
+class ContactUsController extends Controller
 {
     public function index($language)
     {
-        $contents = ConnectionContent::find(1);
+        $contents = ContactUsContent::find(1);
 
         switch($language){
             case 'english':
@@ -27,7 +27,7 @@ class ConnectionController extends Controller
                 break;
         }
 
-        return view('backend.pages.connection', [
+        return view('backend.pages.contact-us', [
             'contents' => $contents,
             'language' => $language,
             'short_code' => $short_code
@@ -36,7 +36,7 @@ class ConnectionController extends Controller
 
     public function update(Request $request) {
 
-        $contents = ConnectionContent::find(1);
+        $contents = ContactUsContent::find(1);
 
         $data = $request->all();
         $contents->fill($data)->save();

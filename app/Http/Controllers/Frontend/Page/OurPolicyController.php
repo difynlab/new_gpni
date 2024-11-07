@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Pages;
+namespace App\Http\Controllers\Frontend\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\OurPolicyContent;

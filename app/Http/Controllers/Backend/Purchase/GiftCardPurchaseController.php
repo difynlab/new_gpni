@@ -12,9 +12,17 @@ class GiftCardPurchaseController extends Controller
     {
         foreach($gift_card_purchases as $gift_card_purchase) {
             $gift_card_purchase->action = '
+            <a href="'. route('backend.purchases.gift-card-purchases.show', $gift_card_purchase->id) .'" class="review-button" title="Details"><i class="bi bi-basket-fill"></i></a>
             <a id="'.$gift_card_purchase->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $gift_card_purchase->payment_status = ($gift_card_purchase->payment_status == '1') ? '<span class="active-status">Paid</span>' : '<span class="inactive-status">Unpaid</span>';
+            $gift_card_purchase->date_time = $gift_card_purchase->date . ' | ' . $gift_card_purchase->time;
+
+            $gift_card_purchase->payment_status = 
+                ($gift_card_purchase->payment_status == 'Completed') 
+                ? '<span class="active-status">Completed</span>' 
+                : (($gift_card_purchase->payment_status == 'Pending') 
+                    ? '<span class="pending-status">Pending</span>' 
+                    : '<span class="inactive-status">Failed</span>');
         }
 
         return $gift_card_purchases;
@@ -33,6 +41,13 @@ class GiftCardPurchaseController extends Controller
         ]);
     }
 
+    public function show(GiftCardPurchase $gift_card_purchase)
+    {
+        return view('backend.purchases.gift-card-purchases.show', [
+            'gift_card_purchase' => $gift_card_purchase
+        ]);
+    }
+
     public function destroy(GiftCardPurchase $gift_card_purchase)
     {
         $gift_card_purchase->status = '0';
@@ -47,21 +62,13 @@ class GiftCardPurchaseController extends Controller
             return redirect()->route('backend.purchases.gift-card-purchases.index');
         }
 
-        $reference_code = $request->reference_code;
-        $buyer_receiver_name = $request->buyer_receiver_name;
+        $transaction_id = $request->transaction_id;
         $date = $request->date;
 
         $gift_card_purchases = GiftCardPurchase::where('status', '1')->orderBy('id', 'desc');
 
-        if($reference_code != null) {
-            $gift_card_purchases->where('reference_code', 'like', '%' . $reference_code . '%');
-        }
-
-        if($buyer_receiver_name != null) {
-            $gift_card_purchases->where(function ($query) use ($buyer_receiver_name) {
-                $query->where('buyer_name', 'like', '%' . $buyer_receiver_name . '%')
-                    ->orWhere('receiver_name', 'like', '%' . $buyer_receiver_name . '%');
-            });
+        if($transaction_id != null) {
+            $gift_card_purchases->where('transaction_id', 'like', '%' . $transaction_id . '%');
         }
 
         if($date != null) {
@@ -75,9 +82,8 @@ class GiftCardPurchaseController extends Controller
         return view('backend.purchases.gift-card-purchases.index', [
             'gift_card_purchases' => $gift_card_purchases,
             'items' => $items,
-            'reference_code' => $reference_code,
-            'buyer_receiver_name' => $buyer_receiver_name,
-            'date' => $date,
+            'transaction_id' => $transaction_id,
+            'date' => $date
         ]);
     }
 }

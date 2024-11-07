@@ -1,16 +1,16 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Connection')
+@section('title', 'Contact Us')
 
 @section('content')
 
-    <x-backend.breadcrumb page_name="Connection"></x-backend.breadcrumb>
+    <x-backend.breadcrumb page_name="Contact Us"></x-backend.breadcrumb>
 
     <div class="static-pages">
         
         <p class="page-language">{{ ucfirst($language) }} Language</p>
 
-        <form action="{{ route('backend.pages.connection.update', $language) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('backend.pages.contact-us.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
                 <p class="inner-page-title">Section <span>(Introduction)</span></p>
