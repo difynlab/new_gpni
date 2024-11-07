@@ -284,7 +284,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->youtube }}" class="text-decoration-none" target="_blank">
-                                    <img src="/{{ asset('storage/frontend/youtube-grey.svg') }}" alt="Youtube Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/youtube-grey.svg') }}" alt="Youtube Icon" class="img-fluid">
                                     <p>Youtube</p>
                                 </a>
                             </div>
