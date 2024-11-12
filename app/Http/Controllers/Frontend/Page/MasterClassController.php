@@ -8,7 +8,6 @@ use App\Models\FAQ;
 use App\Models\MasterClassContent;
 use App\Models\Course;
 use App\Models\CoursePurchase;
-use App\Models\HomepageContent;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

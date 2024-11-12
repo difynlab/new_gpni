@@ -220,7 +220,7 @@
         <div class="container-fluid p-5 my-5" style="background-color: #0040c3;">
             <div class="row justify-content-center text-white">
                 <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
-                    <img src="{{ asset('storage/backend/courses/master-classes/' . $course->master_section_4_image) }}" alt="Merchandise Image" class="img-fluid">
+                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->master_section_4_image) }}" alt="Merchandise Image" class="img-fluid">
                 </div>
                 <div class="col-lg-6 col-md-12 px-4">
                     <div>{!! $course->master_section_4_content !!}</div>
@@ -403,7 +403,7 @@
                         @foreach(json_decode($course->master_section_8_videos) as $master_section_8_video)
                             <div class="col-md-3 mb-3">
                                 <video class="assessment-images" controls>
-                                    <source src="{{ asset('storage/backend/courses/master-classes/' . $master_section_8_video) }}" type="video/mp4">
+                                    <source src="{{ asset('storage/backend/courses/course-videos/' . $master_section_8_video) }}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>

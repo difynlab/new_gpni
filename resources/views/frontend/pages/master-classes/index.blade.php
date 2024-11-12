@@ -111,7 +111,7 @@
                     @foreach(json_decode($contents->{'section_3_points_' . $middleware_language} ?? $contents->section_3_points_en) as $point)
                         <div class="col-md-4">
                             <div class="certification-card">
-                                <img src="{{ asset('storage/backend/courses/master-classes/' . $point->image) }}" alt="Certification Icon">
+                                <img src="{{ asset('storage/backend/courses/course-images/' . $point->image) }}" alt="Certification Icon">
                                 <p>{{ $point->description }}</p>
                             </div>
                         </div>
