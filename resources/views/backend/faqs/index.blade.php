@@ -55,7 +55,6 @@
                             <th scope="col">Language</th>
                             <th scope="col">Type</th>
                             <th scope="col">Question</th>
-                            <th scope="col">Answer</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -69,14 +68,13 @@
                                     <td>{{ $faq->language }}</td>
                                     <td>{{ $faq->type }}</td>
                                     <td>{{ $faq->question }}</td>
-                                    <td>{!! $faq->answer !!}</td>
                                     <td>{!! $faq->status !!}</td>
                                     <td>{!! $faq->action !!}</td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7" style="text-align: center;">No data available in table</td>
+                                <td colspan="6" style="text-align: center;">No data available in table</td>
                             </tr>
                         @endif
                     </tbody>

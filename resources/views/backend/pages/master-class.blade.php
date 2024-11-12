@@ -67,7 +67,7 @@
                                         <div class="col-4 d-flex align-items-center">
                                             <input type="hidden" name="old_section_3_point_files[]" value="{{ $section_3_point->image }}">
 
-                                            <img src="{{ asset('storage/backend/courses/master-classes/' . $section_3_point->image) }}" alt="Image" class="add-more-image">
+                                            <img src="{{ asset('storage/backend/courses/course-images/' . $section_3_point->image) }}" alt="Image" class="add-more-image">
 
                                             <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                         </div>

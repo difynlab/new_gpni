@@ -103,6 +103,8 @@
                             <x-frontend.captcha></x-frontend.captcha>
                         </div>
 
+                        <input type="hidden" name="redirect" value="{{ request('redirect') }}">
+
                         <button type="submit" class="btn btn-primary btn-block submit-button" style="background-color: #0040c3; color: #fff; border: none; border-radius: 10px; height: 46px;" disabled>Login</button>
                     </form>
                 </div>

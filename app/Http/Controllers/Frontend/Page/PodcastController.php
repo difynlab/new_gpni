@@ -5,39 +5,33 @@ namespace App\Http\Controllers\Frontend\Page;
 use App\Http\Controllers\Controller;
 use App\Models\PodcastContent;
 use App\Models\Podcast;
+use Illuminate\Http\Request;
 
 class PodcastController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $contents = PodcastContent::find(1);
-        $language = session('language', 'en');
 
-        switch($language){
-            case 'en':
-                $language_name = 'English';
-                break;
-            case 'zh':
-                $language_name = 'Chinese';
-                break;
-            case 'ja':
-                $language_name = 'Japanese';
-                break;
-            default:
-                $language_name = 'unknown';
-                break;
-        }
+        $podcasts = Podcast::where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'desc')->paginate(4);
 
-        $podcasts = Podcast::where('language', $language_name)->where('status', '1')->orderBy('id', 'asc')->get();
-        if($podcasts->isEmpty() && $language_name !== 'English') {
-            $podcasts = Podcast::where('language', 'English')->where('status', '1')->orderBy('id', 'asc')->get();
+        if($podcasts->isEmpty() && $request->middleware_language_name != 'English') {
+            $podcasts = Podcast::where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->paginate(4);
         }
     
-    
-        return view('frontend.pages.podcast', [
+        return view('frontend.pages.podcasts.index', [
             'contents' => $contents,
-            'language' => $language,
             'podcasts' => $podcasts
+        ]);
+    }
+
+    public function show(Podcast $podcast)
+    {
+        $contents = PodcastContent::find(1);
+
+        return view('frontend.pages.podcasts.show', [
+            'contents' => $contents,
+            'podcast' => $podcast
         ]);
     }
 }

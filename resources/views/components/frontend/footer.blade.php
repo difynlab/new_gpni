@@ -57,8 +57,8 @@
                     <li><a href="{{ route('frontend.why-we-are-different') }}">Why We Are Different</a></li>
                     <li><a href="{{ route('frontend.advisory-board-and-expert-lectures') }}">Advisory Board & Lectures</a></li>
                     <li><a href="{{ route('frontend.membership') }}">Membership</a></li>
-                    <li><a href="{{ route('frontend.nutritionists') }}">Nutritionists</a></li>
-                    <li><a href="{{ route('frontend.products') }}">Products</a></li>
+                    <li><a href="{{ route('frontend.nutritionists.index') }}">Nutritionists</a></li>
+                    <li><a href="{{ route('frontend.products.index') }}">Products</a></li>
                     <li><a href="{{ route('frontend.our-policies') }}">Policies</a></li>
 
                 </ul>
@@ -66,9 +66,9 @@
             <div class="col-lg-3 list-of-items">
                 <h5>Education</h5>
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('frontend.pne-level-1-course') }}">PNE Level 1 + SNS</a></li>
+                    <li><a href="#">PNE Level 1 + SNS</a></li>
                     <li><a href="#">PNE Level 2 Masters + CISSN</a></li>
-                    <li><a href="{{ route('frontend.master-class') }}">Master Classes</a></li>
+                    <li><a href="{{ route('frontend.master-classes.index') }}">Master Classes</a></li>
                     <li><a href="#">PNE Level 1 With ISSN-SNS</a></li>
                     <li><a href="#">PNE Level 2 With ISSN-CISSN</a></li>
                     <li><a href="#">Small Courses & Seminars</a></li>
@@ -92,7 +92,7 @@
                     <li><a href="#">Promotion</a></li>
                     <li><a href="{{ route('frontend.gift-cards.index') }}">Gift Cards</a></li>
                     <li><a href="{{ route('frontend.articles.index') }}">Articles</a></li>
-                    <li><a href="{{ route('frontend.podcasts') }}">Podcasts</a></li>
+                    <li><a href="{{ route('frontend.podcasts.index') }}">Podcasts</a></li>
                     <li><a href="{{ route('frontend.conferences.index') }}">Conferences</a></li>
                     <li><a href="{{ route('frontend.gpni-tv') }}">GPNi TV & E News</a></li>
                 </ul>

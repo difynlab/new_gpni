@@ -13,21 +13,22 @@ use App\Http\Controllers\Frontend\Page\InsuranceProfessionalMembershipController
 use App\Http\Controllers\Frontend\Page\GiftCardController;
 use App\Http\Controllers\Frontend\Page\PodcastController;
 use App\Http\Controllers\Frontend\Page\ArticleController;
+use App\Http\Controllers\Frontend\Page\CertificationClassController;
 use App\Http\Controllers\Frontend\Page\WhyWeAreDifferentController;
 use App\Http\Controllers\Frontend\Page\MembershipController;
 use App\Http\Controllers\Frontend\Page\ContactUsController;
 use App\Http\Controllers\Frontend\Page\GlobalEducationPartnersController;
 use App\Http\Controllers\Frontend\Page\NutritionistController;
 use App\Http\Controllers\Frontend\Student\MyStorageController;
-use App\Http\Controllers\Frontend\Student\CourseDetailController;
-use App\Http\Controllers\Frontend\Student\AskExpertController;
+use App\Http\Controllers\Frontend\Student\CourseController;
+use App\Http\Controllers\Frontend\Student\AskQuestionController;
 use App\Http\Controllers\Frontend\Page\TvController;
-use App\Http\Controllers\Frontend\Page\CourseController;
+use App\Http\Controllers\Frontend\Page\MasterClassController;
 use App\Http\Controllers\Frontend\Student\PasswordController;
 use App\Http\Controllers\Frontend\Student\StudentProfileController;
 use App\Http\Controllers\Frontend\Student\StudentMaterialController;
 use App\Http\Controllers\Frontend\Student\MembersCornerController;
-use App\Http\Controllers\Frontend\Student\MyOrdersController;
+use App\Http\Controllers\Frontend\Student\MyOrderController;
 use App\Http\Controllers\Frontend\Student\QualificationsController;
 use App\Http\Controllers\Frontend\Student\ReferFriendController;
 use App\Http\Controllers\Frontend\Student\CartController;
@@ -53,11 +54,11 @@ Route::middleware(['set_language'])->group(function () {
         Route::get('issn-official-partners-and-affiliates', [ISSNOfficialPartnerAffiliateController::class, 'index'])->name('issn-official-partners-and-affiliates');
         Route::prefix('articles')->name('articles.')->group(function() {
             Route::get('/', [ArticleController::class, 'index'])->name('index');
-            Route::get('{article}', [ArticleController::class, 'show'])->name('show');
+            Route::get('show/{article}', [ArticleController::class, 'show'])->name('show');
         });
         Route::prefix('conferences')->name('conferences.')->group(function() {
             Route::get('/', [ConferenceController::class, 'index'])->name('index');
-            Route::get('{conference}', [ConferenceController::class, 'show'])->name('show');
+            Route::get('show/{conference}', [ConferenceController::class, 'show'])->name('show');
         });
         Route::prefix('contact-us')->name('contact-us.')->group(function() {
             Route::get('/', [ContactUsController::class, 'index'])->name('index');
@@ -65,35 +66,89 @@ Route::middleware(['set_language'])->group(function () {
         });
         Route::prefix('gift-cards')->name('gift-cards.')->group(function() {
             Route::get('/', [GiftCardController::class, 'index'])->name('index');
-            Route::post('/checkout', [GiftCardController::class, 'checkout'])->name('checkout');
-            Route::get('/success', [GiftCardController::class, 'success'])->name('success');
+            Route::post('checkout', [GiftCardController::class, 'checkout'])->name('checkout');
+            Route::get('success', [GiftCardController::class, 'success'])->name('success');
         });
         Route::get('gpni-tv', [TvController::class, 'index'])->name('gpni-tv');
+        Route::prefix('podcasts')->name('podcasts.')->group(function() {
+            Route::get('/', [PodcastController::class, 'index'])->name('index');
+            Route::get('show/{podcast}', [PodcastController::class, 'show'])->name('show');
+        });
+        Route::prefix('nutritionists')->name('nutritionists.')->group(function() {
+            Route::get('/', [NutritionistController::class, 'index'])->name('index');
+            Route::get('show/{nutritionist}', [NutritionistController::class, 'show'])->name('show');
+            Route::post('contact/{nutritionist}', [NutritionistController::class, 'contact'])->name('contact');
+            Route::get('fetch/{nutritionist}', [NutritionistController::class, 'fetch'])->name('fetch');
+        });
+        Route::prefix('master-classes')->name('master-classes.')->group(function() {
+            Route::get('/', [MasterClassController::class, 'index'])->name('index');
+            Route::get('show/{course}', [MasterClassController::class, 'show'])->name('show');
+        });
+        Route::prefix('products')->name('products.')->group(function() {
+            Route::get('/', [ProductController::class, 'index'])->name('index');
+            Route::get('show/{product}', [ProductController::class, 'show'])->name('show');
+        });
 
 
 
 
-
-        Route::get('podcasts', [PodcastController::class, 'index'])->name('podcasts');
-        
-
-        
-
-        
-
-        Route::get('nutritionists', [NutritionistController::class, 'index'])->name('nutritionists');
-        Route::get('nutritionists/{id}', [NutritionistController::class, 'viewCoach'])->name('view-coach');
-
-        Route::get('pne-level-1-course', [CourseController::class, 'show_pne_level_1'])->name('pne-level-1-course');
-        Route::get('master-class', [CourseController::class, 'show_master_class'])->name('master-class');
-        
-        
-        Route::get('products', [ProductController::class, 'index'])->name('products');
+        Route::prefix('certification-courses')->name('certification-courses.')->group(function() {
+            // Route::get('/', [CertificationClassController::class, 'index'])->name('index');
+            Route::get('show/{course}', [CertificationClassController::class, 'show'])->name('show');
+        });
     // Page routes
 
+
     // Student routes
-        Route::middleware('auth', 'role:student')->group(function () {
-            Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::middleware(['auth', 'role:student'])->group(function () {
+            // All payment routes
+                Route::prefix('master-classes')->name('master-classes.')->group(function() {
+                    Route::post('checkout', [MasterClassController::class, 'checkout'])->name('checkout');
+                    Route::get('success', [MasterClassController::class, 'success'])->name('success');
+                });
+
+                Route::prefix('certification-courses')->name('certification-courses.')->group(function() {
+                    Route::post('checkout', [CertificationClassController::class, 'checkout'])->name('checkout');
+                    Route::get('success', [CertificationClassController::class, 'success'])->name('success');
+                });
+
+                Route::prefix('products')->name('products.')->group(function() {
+                    Route::post('checkout', [ProductController::class, 'checkout'])->name('checkout');
+                    Route::get('success', [ProductController::class, 'success'])->name('success');
+                });
+            // All payment routes
+
+            Route::prefix('dashboard')->name('dashboard.')->group(function() {
+                Route::get('/', [DashboardController::class, 'index'])->name('index');
+            });
+
+            Route::prefix('ask-questions')->name('ask-questions.')->group(function() {
+                Route::get('/', [AskQuestionController::class, 'index'])->name('index');
+                Route::post('/', [AskQuestionController::class, 'store'])->name('store');
+                Route::get('histories', [AskQuestionController::class, 'histories'])->name('histories');
+                Route::get('histories/{ask_question}', [AskQuestionController::class, 'show'])->name('show');
+                Route::post('histories/update/{ask_question}', [AskQuestionController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('courses')->name('courses.')->group(function() {
+                Route::get('/', [CourseController::class, 'index'])->name('index');
+                Route::get('{course}', [CourseController::class, 'show'])->name('show');
+                Route::get('{course}/{course_module}/{course_chapter}', [CourseController::class, 'showMore'])->name('show-more');
+            });
+
+            Route::prefix('carts')->name('carts.')->group(function() {
+                Route::get('/', [CartController::class, 'index'])->name('index');
+                Route::post('/', [CartController::class, 'store'])->name('store');
+                Route::post('update-quantity', [CartController::class, 'updateQuantity'])->name('update-quantity');
+                Route::post('delete-item', [CartController::class, 'destroy'])->name('destroy');
+            });
+
+
+
+
+            Route::get('my-orders', [MyOrderController::class, 'index'])->name('my-orders');
+
+
 
             Route::get('change-password', [PasswordController::class, 'index'])->name('change-password');
             Route::post('change-password', [PasswordController::class, 'update'])->name('change-password.update');
@@ -101,27 +156,17 @@ Route::middleware(['set_language'])->group(function () {
             Route::get('payment-flow/{id}', [CourseController::class, 'enrollNow'])->name('payment-flow');
 
             Route::get('my-storage', [MyStorageController::class, 'index'])->name('my-storage');
-            Route::get('course-detail', [CourseDetailController::class, 'index'])->name('course-detail');
-            Route::get('course-detail-open/{id}', [CourseDetailController::class, 'show'])->name('course-detail-open');
 
-            Route::get('ask-expert', [AskExpertController::class, 'index'])->name('ask-expert');
-            Route::get('view-history', [AskExpertController::class, 'viewHistory'])->name('view-history');
-            Route::get('question-and-answer/{id?}', [AskExpertController::class, 'questionAnswer'])->name('question-and-answer');
-            Route::post('ask-expert', [AskExpertController::class, 'store'])->name('ask-expert.store');
-            Route::post('send-reply', [AskExpertController::class, 'sendReply'])->name('send-reply');
-
-            Route::get('course-list', [CourseDetailController::class, 'list'])->name('course-list');
             Route::get('student-profile', [StudentProfileController::class, 'index'])->name('student-profile');
             Route::get('student-materials', [StudentMaterialController::class, 'index'])->name('student-materials');
             Route::get('members-corner', [MembersCornerController::class, 'index'])->name('members-corner');
-            Route::get('my-orders', [MyOrdersController::class, 'index'])->name('my-orders');
+            
             
             Route::get('refer-friend', [ReferFriendController::class, 'index'])->name('refer-friend');
             Route::get('get-history', [ReferFriendController::class, 'showHistory'])->name('get-history');
             Route::post('send-invite', [ReferFriendController::class, 'sendInvite'])->name('send-invite');
 
             Route::get('qualifications', [QualificationsController::class, 'index'])->name('qualifications');
-            Route::get('cart', [CartController::class, 'index'])->name('cart');
         });
     // Student routes 
 });

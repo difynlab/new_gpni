@@ -61,11 +61,14 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'new_image_video' => 'required|max:2048',
+            'new_image' => 'required|max:2048',
+            'new_video' => 'required|max:2048',
             'new_instructor_profile_image' => 'required|max:2048',
         ], [
-            'new_image_video.max' => 'Image or video must not be greater than 2MB',
-            'new_image_video.required' => 'This field is required',
+            'new_image.max' => 'Image must not be greater than 2MB',
+            'new_image.required' => 'This field is required',
+            'new_video.max' => 'Video must not be greater than 2MB',
+            'new_video.required' => 'This field is required',
             'new_instructor_profile_image.max' => 'Image must not be greater than 2MB',
             'new_instructor_profile_image.required' => 'Instructor profile image is required'
         ]);
@@ -74,22 +77,31 @@ class CourseController extends Controller
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Creation failed!');
         }
 
-        if($request->file('new_image_video') != null) {
-            $image_video = $request->file('new_image_video');
-            $image_video_name = Str::random(40) . '.' . $image_video->getClientOriginalExtension();
-            $image_video->storeAs('public/backend/courses/course-image-videos', $image_video_name);
-        }
-        else {
-            $image_video_name = null;
-        }
-
-        if($request->file('new_instructor_profile_image') != null) {
-            $image = $request->file('new_instructor_profile_image');
+        if($request->file('new_image') != null) {
+            $image = $request->file('new_image');
             $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/backend/courses/course-instructors', $image_name);
+            $image->storeAs('public/backend/courses/course-images', $image_name);
         }
         else {
             $image_name = null;
+        }
+
+        if($request->file('new_video') != null) {
+            $video = $request->file('new_video');
+            $video_name = Str::random(40) . '.' . $video->getClientOriginalExtension();
+            $video->storeAs('public/backend/courses/course-videos', $video_name);
+        }
+        else {
+            $video_name = null;
+        }
+
+        if($request->file('new_instructor_profile_image') != null) {
+            $instructor_profile_image = $request->file('new_instructor_profile_image');
+            $instructor_profile_image_name = Str::random(40) . '.' . $instructor_profile_image->getClientOriginalExtension();
+            $instructor_profile_image->storeAs('public/backend/courses/course-instructors', $instructor_profile_image_name);
+        }
+        else {
+            $instructor_profile_image_name = null;
         }
 
         if($request->file('material_logistic') != null) {
@@ -102,9 +114,10 @@ class CourseController extends Controller
         }
 
         $course = new Course();
-        $data = $request->except('old_image_video', 'new_image_video', 'old_instructor_profile_image', 'new_instructor_profile_image', 'material_logistic');
-        $data['image_video'] = $image_video_name;
-        $data['instructor_profile_image'] = $image_name;
+        $data = $request->except('old_image', 'new_image', 'old_video', 'new_video', 'old_instructor_profile_image', 'new_instructor_profile_image', 'material_logistic');
+        $data['image'] = $image_name;
+        $data['video'] = $video_name;
+        $data['instructor_profile_image'] = $instructor_profile_image_name;
         $data['material_logistic'] = $material_logistic_name;
         $course->create($data);
 
@@ -113,21 +126,20 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
-        $image_video_file_extension = pathinfo($course->image_video, PATHINFO_EXTENSION);
-
         return view('backend.courses.edit', [
-            'course' => $course,
-            'image_video_file_extension' => $image_video_file_extension
+            'course' => $course
         ]);
     }
 
     public function update(Request $request, Course $course)
     {
         $validator = Validator::make($request->all(), [
-            'new_image_video' => 'max:2048',
+            'new_image' => 'max:2048',
+            'new_video' => 'max:2048',
             'new_instructor_profile_image' => 'max:2048',
         ], [
-            'new_image_video.max' => 'Image or video must not be greater than 2MB',
+            'new_image.max' => 'Image must not be greater than 2MB',
+            'new_video.max' => 'Video must not be greater than 2MB',
             'new_instructor_profile_image.max' => 'Image must not be greater than 2MB'
         ]);
 
@@ -135,17 +147,30 @@ class CourseController extends Controller
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
         }
 
-        if($request->file('new_image_video') != null) {
-            if($request->old_image_video) {
-                Storage::delete('public/backend/courses/course-image-videos/' . $request->old_image_video);
+        if($request->file('new_image') != null) {
+            if($request->old_image) {
+                Storage::delete('public/backend/courses/course-images/' . $request->old_image);
             }
 
-            $image_video = $request->file('new_image_video');
-            $image_video_name = Str::random(40) . '.' . $image_video->getClientOriginalExtension();
-            $image_video->storeAs('public/backend/courses/course-image-videos', $image_video_name);
+            $image = $request->file('new_image');
+            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/backend/courses/course-images', $image_name);
         }
         else {
-            $image_video_name = $request->old_image_video;
+            $image_name = $request->old_image;
+        }
+
+        if($request->file('new_video') != null) {
+            if($request->old_video) {
+                Storage::delete('public/backend/courses/course-videos/' . $request->old_video);
+            }
+
+            $video = $request->file('new_video');
+            $video_name = Str::random(40) . '.' . $video->getClientOriginalExtension();
+            $video->storeAs('public/backend/courses/course-videos', $video_name);
+        }
+        else {
+            $video_name = $request->old_video;
         }
 
         if($request->file('new_instructor_profile_image') != null) {
@@ -153,12 +178,12 @@ class CourseController extends Controller
                 Storage::delete('public/backend/courses/course-instructors/' . $request->old_instructor_profile_image);
             }
 
-            $image = $request->file('new_instructor_profile_image');
-            $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/backend/courses/course-instructors', $image_name);
+            $instructor_profile_image = $request->file('new_instructor_profile_image');
+            $instructor_profile_image_name = Str::random(40) . '.' . $instructor_profile_image->getClientOriginalExtension();
+            $instructor_profile_image->storeAs('public/backend/courses/course-instructors', $instructor_profile_image_name);
         }
         else {
-            $image_name = $request->old_instructor_profile_image;
+            $instructor_profile_image_name = $request->old_instructor_profile_image;
         }
 
         if($request->file('new_material_logistic') != null) {
@@ -174,9 +199,10 @@ class CourseController extends Controller
             $new_material_logistic_name = $request->old_material_logistic;
         }
 
-        $data = $request->except('old_image_video', 'new_image_video', 'old_instructor_profile_image', 'new_instructor_profile_image', 'old_material_logistic', 'new_material_logistic');
-        $data['image_video'] = $image_video_name;
-        $data['instructor_profile_image'] = $image_name;
+        $data = $request->except('old_image', 'new_image', 'old_video', 'new_video', 'old_instructor_profile_image', 'new_instructor_profile_image', 'old_material_logistic', 'new_material_logistic');
+        $data['image'] = $image_name;
+        $data['video'] = $video_name;
+        $data['instructor_profile_image'] = $instructor_profile_image_name;
         $data['material_logistic'] = $new_material_logistic_name;
         $course->fill($data)->save();
         

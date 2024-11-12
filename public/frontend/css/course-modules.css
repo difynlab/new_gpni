@@ -1,0 +1,160 @@
+.module {
+    margin-bottom: 30px;
+}
+.module-title {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 37.5px;
+    color: #000;
+    margin-bottom: 20px;
+}
+.module-card {
+    border: 0.94px solid #e4e4e4;
+    border-radius: 0;
+    padding: 20px 25px;
+}
+.module h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin: 0;
+    margin-bottom: 15px;
+}
+.module-card a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 19px;
+    color: black;
+    text-decoration: none;
+    margin-bottom: 25px;
+}
+.module-card a:hover {
+    text-decoration: dashed;
+}
+.module-card a:last-child {
+    margin-bottom: 0;
+}
+
+.return-link {
+    display: flex;
+    align-items: center;
+    color: #0040c3;
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.return-link img {
+    margin-right: 5px;
+}
+
+.completed-badge {
+    display: flex;
+    align-items: center;
+    background-color: #2db98f;
+    color: #fff;
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin: 20px;
+        padding-top: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+
+    .module-container {
+        padding: 20px;
+    }
+
+    .module-title {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .module-info h2 {
+        font-size: 18px;
+    }
+
+    .module-description {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .return-link {
+        font-size: 18px;
+    }
+
+    .sidebar-item {
+        font-size: 20px;
+        height: 60px;
+    }
+
+    .profile-card h2 {
+        font-size: 24px;
+    }
+
+    .profile-card p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        margin: 10px;
+        padding-top: 5px;
+    }
+
+    .main-content {
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    .module-container {
+        padding: 10px;
+    }
+
+    .module-title {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .module-info h2 {
+        font-size: 16px;
+    }
+
+    .module-description {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .return-link {
+        font-size: 16px;
+    }
+
+    .sidebar-item {
+        font-size: 18px;
+        height: 50px;
+    }
+
+    .profile-card h2 {
+        font-size: 20px;
+    }
+
+    .profile-card p {
+        font-size: 14px;
+    }
+}

@@ -19,18 +19,25 @@
 
                     <ul class="dropdown-menu" aria-labelledby="educationDropdown">
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">International Courses</a>
+                            <a class="dropdown-item dropdown-toggle" href="#" id="internationalCoursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">International Courses</a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('frontend.pne-level-1-course') }}">PNE Level 1 + SNS</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="pne-level-2.html">PNE Level 2 Masters + CISSN</a>
-                                </li>
+                                <?php 
+                                    $certificate_courses = App\Models\Course::where('language', $middleware_language)->where('type', 'Certification')->where('status', '1')->get();
+
+                                    if($certificate_courses->isEmpty() && $middleware_language != 'English') {
+                                        $certificate_courses = App\Models\Course::where('language', 'English')->where('type', 'Certification')->where('status', '1')->get();
+                                    }
+                                ?>
+
+                                @foreach($certificate_courses as $certificate_course)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('frontend.certification-courses.show', $certificate_course) }}">{{ $certificate_course->title }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('frontend.master-class') }}">Master Classes</a>
+                            <a class="dropdown-item" href="{{ route('frontend.master-classes.index') }}">Master Classes</a>
                         </li>
                     </ul>
                 </li>
@@ -76,32 +83,25 @@
                     </ul>
                 </li>
 
-                <a href="{{ route('frontend.nutritionists') }}" class="nav-item nav-link">Nutritionists</a>
+                <a href="{{ route('frontend.nutritionists.index') }}" class="nav-item nav-link">Nutritionists</a>
 
                 <a href="#" class="nav-item nav-link">
                     <i class="bi bi-search"></i>
                 </a>
 
-                <a href="{{ route('frontend.cart') }}" class="nav-item nav-link position-relative">
+                <a href="{{ route('frontend.carts.index') }}" class="nav-item nav-link position-relative">
                     <i class="bi bi-cart"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{{ \App\Models\Cart::where('user_id', auth()->user()->id)->where('status', 'Active')->count() }}</span>
                 </a>
 
                 <div class="nav-item">
-                    @if(Auth::check())
-                        <!-- If user is logged in, show "Logout" -->
-                        <a href="{{ route('frontend.logout') }}" class="nav-link"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <div class="btn btn-primary px-4">Logout</div>
-                        </a>
-
-                        <!-- Logout form (needed for the logout route to work) -->
-                        <form id="logout-form" action="{{ route('frontend.logout') }}" method="POST" style="display: none;">
+                    @if(auth()->check())
+                        <form method="POST" action="{{ route('frontend.logout') }}">
                             @csrf
+                            <a href="{{ route('frontend.logout') }}" class="nav-link " onclick="event.preventDefault(); this.closest('form').submit();"><span class="btn btn-primary px-4">Logout</span></a>
                         </form>
                     @else
-                        <!-- If user is not logged in, show "Login" -->
-                        <a href="{{ route('frontend.login') }}" class="nav-link">
+                        <a href="{{ route('frontend.login', ['redirect' => route('frontend.dashboard.index')]) }}" class="nav-link">
                             <div class="btn btn-primary px-4">Login</div>
                         </a>
                     @endif
@@ -166,6 +166,24 @@
                     error: function() {
                         alert('Error setting language!');
                     }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownSubmenus = document.querySelectorAll('.dropdown-submenu');
+
+            dropdownSubmenus.forEach(function (submenu) {
+                submenu.addEventListener('mouseover', function () {
+                    const subMenuDropdown = submenu.querySelector('.dropdown-menu');
+                    subMenuDropdown.classList.add('show');
+                });
+
+                submenu.addEventListener('mouseleave', function () {
+                    const subMenuDropdown = submenu.querySelector('.dropdown-menu');
+                    subMenuDropdown.classList.remove('show');
                 });
             });
         });

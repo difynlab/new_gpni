@@ -1,0 +1,121 @@
+.header-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.header-section h1 {
+    font-size: 31px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 10px;
+}
+.header-section a {
+    color: #0040c3;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+}
+.message-input {
+    margin-top: 30px;
+}
+.textarea {
+    height: initial;
+    padding: 16px;
+    border-radius: 15px;
+}
+.form-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 10px;
+}
+.form-control {
+    background-color: transparent;
+}
+.form-control::placeholder {
+    color: #b9b9b9;
+    font-size: 13px;
+    font-weight: 400;
+}
+.btn-send {
+    background-color: #0040c3;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+.icon-history {
+    margin-right: 5px;
+}
+
+/* Chat box styles */
+    .chat-box {
+        overflow-y: scroll;
+        height: 350px;
+        padding-right: 5px;
+    }
+    .chat-box .student-single-message {
+        display: flex;
+        justify-content: end;
+    }
+    .chat-box .student-single-message .student-profile-image {
+        margin-left: 10px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+    .chat-box .student-single-message .student-message {
+        background-color: #0040c3;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+    .chat-box .admin-single-message {
+        display: flex;
+    }
+    .chat-box .admin-single-message .admin-profile-image {
+        margin-right: 10px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+    .chat-box .admin-single-message .admin-message {
+        background-color: rgba(0, 64, 195, 0.2);
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+    .chat-box .single-message:last-child {
+        margin-bottom: 0!important;
+    }
+    .chat-box .student-single-message .time {
+        font-size: 11px;
+        color: rgba(153, 153, 153, 0.77);
+        padding-top: 3px;
+        text-align: end;
+    }
+    .chat-box .admin-single-message .time {
+        font-size: 11px;
+        color: rgba(153, 153, 153, 0.77);
+        padding-top: 3px;
+    }
+    .chat-box::-webkit-scrollbar {
+        width: 6px;
+    }
+    .chat-box::-webkit-scrollbar-thumb {
+        background-color: #68a3ae;
+        border-radius: 10px;
+        width: 15px;
+    }
+    .chat-box::-webkit-scrollbar-thumb:hover {
+        background-color: #125d6a;
+    }
+/* Chat box styles */

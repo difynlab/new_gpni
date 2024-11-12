@@ -16,7 +16,6 @@ return new class extends Migration
 
             $table->string('ask_question_id');
             $table->string('replied_by');
-            $table->string('replied_by_name')->nullable();
             $table->string('message');
             $table->date('date');
             $table->time('time');

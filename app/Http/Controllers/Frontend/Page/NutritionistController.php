@@ -3,70 +3,43 @@
 namespace App\Http\Controllers\Frontend\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactCoach;
 use App\Models\Nutritionist;
 use App\Models\NutritionistContent;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class NutritionistController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $contents = NutritionistContent::find(1);
-        $language = session('language', 'en');
         
-        switch($language){
-            case 'en':
-                $language_name = 'English';
-                break;
-            case 'zh':
-                $language_name = 'Chinese';
-                break;
-            case 'ja':
-                $language_name = 'Japanese';
-                break;
-            default:
-                $language_name = 'unknown';
-                break;
-        }
-        
-        $nutritionists = Nutritionist::where('language', $language_name)->where('status', '1')->get();
+        $nutritionists = Nutritionist::where('language', $request->middleware_language_name)->where('status', '1')->paginate(4);
 
-        if($nutritionists->isEmpty() && $language_name !== 'English') {
-            $nutritionists = Nutritionist::where('language', 'English')->where('status', '1')->get();
+        if($nutritionists->isEmpty() && $request->middleware_language_name != 'English') {
+            $nutritionists = Nutritionist::where('language', 'English')->where('status', '1')->paginate(4);
         }
 
         return view('frontend.pages.nutritionists', [
             'contents' => $contents,
-            'language' => $language,
             'nutritionists' => $nutritionists
         ]);
     }
 
-    public function viewCoach($id)
+    public function fetch(Nutritionist $nutritionist)
     {
-        $contents = NutritionistContent::find(1);
-        $language = session('language', 'en');
-        
-        switch($language){
-            case 'en':
-                $language_name = 'English';
-                break;
-            case 'zh':
-                $language_name = 'Chinese';
-                break;
-            case 'ja':
-                $language_name = 'Japanese';
-                break;
-            default:
-                $language_name = 'unknown';
-                break;
-        }
+        return response()->json($nutritionist);
+    }
 
-        $nutritionists = Nutritionist::findOrFail($id);
+    public function contact(Request $request, Nutritionist $nutritionist) {
+        $contact_coach = new ContactCoach();
+        $data = $request->except('middleware_language', 'middleware_language_name');
+        $data['nutritionist'] = $nutritionist->id;
+        $data['date'] = Carbon::now()->toDateString();
+        $data['status'] = '1';
+        $contact_coach->create($data);
 
-        return view('frontend.pages.view-coach', [
-            'contents' => $contents,
-            'language' => $language,
-            'nutritionists' => $nutritionists
-        ]);
+        return redirect()->back()->with('success', 'Message sent successfully');
     }
 }

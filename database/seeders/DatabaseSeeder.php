@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             ConferenceContentSeeder::class,
             PodcastContentSeeder::class,
             MembershipContentSeeder::class,
-            ConnectionContentSeeder::class,
+            ContactUsContentSeeder::class,
             NutritionistContentSeeder::class,
             GlobalEducationPartnerContentSeeder::class,
             TvContentSeeder::class,
