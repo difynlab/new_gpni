@@ -77,7 +77,6 @@ body {
 .fw-extra-bold {
     font-weight: 800 !important;
 }
-
 /* define font size*/
 .fs-10 {
     font-size: 0.625rem;
@@ -114,6 +113,139 @@ body {
 .fs-61 {
     font-size: 3.812rem;
 }
+
+/* Responsive Font Sizes */
+@media (max-width: 1199.98px) {
+    .fs-61 {
+        font-size: 3rem; /* Reduced from 3.812rem */
+    }
+
+    .fs-49 {
+        font-size: 2.5rem; /* Reduced from 3.062rem */
+    }
+
+    .fs-39 {
+        font-size: 2rem; /* Reduced from 2.438rem */
+    }
+
+    .fs-31 {
+        font-size: 1.5rem; /* Reduced from 1.938rem */
+    }
+
+    .fs-25 {
+        font-size: 1.25rem; /* Reduced from 1.562rem */
+    }
+
+    .fs-20 {
+        font-size: 1rem; /* Reduced from 1.25rem */
+    }
+
+    .fs-16 {
+        font-size: 0.875rem; /* Reduced from 1rem */
+    }
+
+    .fs-13 {
+        font-size: 0.75rem; /* Reduced from 0.812rem */
+    }
+
+    .fs-10 {
+        font-size: 0.625rem; /* Remains the same */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .fs-61 {
+        font-size: 2.5rem; /* Further reduced */
+    }
+
+    .fs-49 {
+        font-size: 1.5rem; /* Further reduced */
+    }
+
+    .fs-39 {
+        font-size: 1.25rem; /* Further reduced */
+    }
+
+    .fs-31 {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .fs-25 {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .fs-20 {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .fs-16 {
+        font-size: 0.75rem; /* Further reduced */
+    }
+
+    .fs-13 {
+        font-size: 0.625rem; /* Further reduced */
+    }
+
+    .fs-10 {
+        font-size: 0.5rem; /* Further reduced */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .fs-61 {
+        font-size: 2rem; /* Further reduced */
+    }
+
+    .fs-49 {
+        font-size: 1.7rem; /* Further reduced */
+    }
+
+    .fs-39 {
+        font-size: 1.5rem; /* Further reduced */
+    }
+
+    .fs-31 {
+        font-size: 1.25rem; /* Further reduced */
+    }
+
+    .fs-25 {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .fs-20 {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .fs-16 {
+        font-size: 0.5rem; /* Further reduced */
+    }
+
+    .fs-13 {
+        font-size: 0.625rem; /* Further reduced */
+    }
+
+    .fs-10 {
+        font-size: 0.5rem; /* Further reduced */
+    }
+}
+/* Responsive Button Sizes */
+.btn-responsive {
+    padding: 0.5rem 1rem; /* Default padding */
+}
+
+@media (max-width: 991.98px) {
+    .btn-responsive {
+        padding: 0.4rem 0.8rem; /* Reduced padding for tablets */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .btn-responsive {
+        padding: 0.3rem 0.6rem; /* Further reduced for mobile */
+        font-size: 0.875rem;
+    }
+}
+
 
 .back-to-top {
     position: fixed;
