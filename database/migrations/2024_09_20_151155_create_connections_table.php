@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
-            $table->string('phone_number');
-            $table->text('reason');
-            $table->text('comments');
+            $table->string('phone');
+            $table->text('question');
+            $table->text('comments')->nullable();
             $table->enum('status', [0, 1])->index();
 
             $table->timestamps();

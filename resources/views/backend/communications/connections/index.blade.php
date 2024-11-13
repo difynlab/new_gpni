@@ -18,8 +18,8 @@
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Phone Number</th>
-                            <th scope="col">Reason</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Question</th>
                             <th scope="col">Comments</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -33,8 +33,8 @@
                                     <td>{{ $connection->first_name }}</td>
                                     <td>{{ $connection->last_name }}</td>
                                     <td>{{ $connection->email }}</td>
-                                    <td>{{ $connection->phone_number }}</td>
-                                    <td>{{ $connection->reason }}</td>
+                                    <td>{{ $connection->phone }}</td>
+                                    <td>{{ $connection->question }}</td>
                                     <td>{{ $connection->comments }}</td>
                                     <td>{!! $connection->action !!}</td>
                                 </tr>

@@ -82,7 +82,7 @@ class MasterClassController extends Controller
         // Section points store function
             $section_3_points = [];
 
-            $this->deleteOldRemovedFiles($contents, 'section_3_points_' . '' . $short_code, $request->old_section_3_point_files, 'master-classes/');
+            $this->deleteOldRemovedFiles($contents, 'section_3_points_' . '' . $short_code, $request->old_section_3_point_files, 'course-images/');
 
             if($request->old_section_3_point_descriptions) {
                 foreach($request->old_section_3_point_descriptions as $key => $old_section_3_point_description) {
@@ -98,7 +98,7 @@ class MasterClassController extends Controller
                     if($request->section_3_point_files && $request->section_3_point_files[$key]) {
                         $image = $request->section_3_point_files[$key];
                         $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-                        $image->storeAs('public/backend/courses/master-classes', $image_name);
+                        $image->storeAs('public/backend/courses/course-images', $image_name);
                     }
 
                     array_push($section_3_points, [

@@ -44,7 +44,6 @@
                             <th scope="col">ID</th>
                             <th scope="col">Student</th>
                             <th scope="col">Date & Time</th>
-                            <th scope="col">Payment Method</th>
                             <th scope="col">Transaction ID</th>
                             <th scope="col">Amount Paid</th>
                             <th scope="col">Payment Status</th>
@@ -59,7 +58,6 @@
                                     <td>#{{ $product_purchase->id }}</td>
                                     <td>{{ $product_purchase->student_id }}</td>
                                     <td>{{ $product_purchase->date_time }}</td>
-                                    <td>{{ ucfirst($product_purchase->payment_method) }}</td>
                                     <td>{{ $product_purchase->transaction_id }}</td>
                                     <td>{{ $product_purchase->amount_paid }}</td>
                                     <td>{!! $product_purchase->payment_status !!}</td>

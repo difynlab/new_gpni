@@ -68,8 +68,8 @@
                         </div>
                     </div>
                     <div class="col-6 right-column">
-                        <x-backend.upload-image-video old_name="old_image_video" old_value="{{ old('image_video') }}" new_name="new_image_video" path="courses" class="side-box-uploader"></x-backend.upload-image-video>
-                        <x-backend.input-error field="new_image_video"></x-backend.input-error>
+                        <x-backend.upload-image old_name="old_image" old_value="{{ old('image') }}" new_name="new_image" path="courses/course-images" class="side-box-uploader"></x-backend.upload-image>
+                        <x-backend.input-error field="new_image"></x-backend.input-error>
                     </div>
                 </div>
 
@@ -86,13 +86,18 @@
                         </div>
 
                         <div>
-                            <x-backend.upload-image old_name="old_instructor_profile_image" old_value="{{ old('instructor_profile_image') }}" new_name="new_instructor_profile_image" path="courses"></x-backend.upload-image>
+                            <x-backend.upload-image old_name="old_instructor_profile_image" old_value="{{ old('instructor_profile_image') }}" new_name="new_instructor_profile_image" label="Instructor Profile" path="courses"></x-backend.upload-image>
                             <x-backend.input-error field="new_instructor_profile_image"></x-backend.input-error>
                         </div>
                     </div>
                     <div class="col-6 right-column">
-                        <label for="image_video_description" class="form-label">Image/ Video Description<span class="asterisk">*</span></label>
-                        <textarea class="form-control" name="image_video_description" value="{{ old('image_video_description') }}" placeholder="Image/ Video Description" required>{{ old('image_video_description') }}</textarea>
+                        <div class="mb-4">
+                            <x-backend.upload-video old_name="old_video" old_value="{{ old('video') }}" new_name="new_video" path="courses/course-videos"></x-backend.upload-video>
+                            <x-backend.input-error field="new_video"></x-backend.input-error>
+                        </div>
+
+                        <label for="short_description" class="form-label">Short Description<span class="asterisk">*</span></label>
+                        <textarea class="form-control" name="short_description" value="{{ old('short_description') }}" placeholder="Short Description" required>{{ old('short_description') }}</textarea>
                     </div>
                 </div>
             </div>
@@ -186,5 +191,4 @@
 @push('after-scripts')
     <script src="{{ asset('backend/js/drag-drop-image.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-video.js') }}"></script>
-    <script src="{{ asset('backend/js/drag-drop-image-video.js') }}"></script>
 @endpush

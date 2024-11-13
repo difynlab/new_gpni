@@ -230,6 +230,7 @@
         margin-right: 10px;
         height: 40px;
         width: 40px;
+        border-radius: 50%;
     }
     .static-pages .chat-box .user-single-message .user-message {
         background-color: rgba(0, 64, 195, 0.2);
@@ -245,6 +246,7 @@
         margin-left: 10px;
         height: 40px;
         width: 40px;
+        border-radius: 50%;
     }
     .static-pages .chat-box .admin-single-message .admin-message {
         background-color: rgba(247, 191, 46, 0.2);

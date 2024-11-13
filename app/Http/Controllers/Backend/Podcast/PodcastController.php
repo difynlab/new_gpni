@@ -46,10 +46,12 @@ class PodcastController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'video' => 'max:2048',
-            'content' => 'required'
+            'content' => 'required',
+            'new_thumbnail' => 'image|max:2048',
         ], [
             'video.max' => 'The video size must not exceed 2 MB',
-            'content.required' => 'This field is required'
+            'content.required' => 'This field is required',
+            'new_thumbnail.max' => 'The thumbnail must not be greater than 2MB'
         ]);
         
         if($validator->fails()) {
@@ -65,12 +67,24 @@ class PodcastController extends Controller
             $video_name = null;
         }
 
+        if($request->file('new_thumbnail') != null) {
+            $thumbnail = $request->file('new_thumbnail');
+            $thumbnail_name = Str::random(40) . '.' . $thumbnail->getClientOriginalExtension();
+            $thumbnail->storeAs('public/backend/podcasts', $thumbnail_name);
+        }
+        else {
+            $thumbnail_name = $request->old_thumbnail;
+        }
+
         $podcast = new Podcast();
         $data = $request->except(
-            'video'
+            'video',
+            'old_thumbnail',
+            'new_thumbnail'
         );
 
         $data['video'] = $video_name;
+        $data['thumbnail'] = $thumbnail_name;
 
         $podcast->create($data);
 
@@ -88,10 +102,12 @@ class PodcastController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'video' => 'nullable|max:2048',
-            'content' => 'required'
+            'content' => 'required',
+            'new_thumbnail' => 'nullable|max:2048'
         ], [
             'video.max' => 'The video size must not exceed 2 MB',
-            'content.required' => 'This field is required'
+            'content.required' => 'This field is required',
+            'new_thumbnail.max' => 'The thumbnail must not be greater than 2MB',
         ]);
         
         if($validator->fails()) {
@@ -111,12 +127,28 @@ class PodcastController extends Controller
             $new_video_name = $request->old_video;
         }
 
+        if($request->file('new_thumbnail') != null) {
+            if($request->old_thumbnail) {
+                Storage::delete('public/backend/podcasts/' . $request->old_thumbnail);
+            }
+
+            $thumbnail = $request->file('new_thumbnail');
+            $thumbnail_name = Str::random(40) . '.' . $thumbnail->getClientOriginalExtension();
+            $thumbnail->storeAs('public/backend/podcasts', $thumbnail_name);
+        }
+        else {
+            $thumbnail_name = $request->old_thumbnail;
+        }
+
         $data = $request->except(
             'old_video',
             'new_video',
+            'old_thumbnail',
+            'new_thumbnail'
         );
         
         $data['video'] = $new_video_name;
+        $data['thumbnail'] = $thumbnail_name;
 
         $podcast->fill($data)->save();
         

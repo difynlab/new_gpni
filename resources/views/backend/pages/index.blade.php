@@ -252,17 +252,17 @@
                         </tr>
 
                         <tr>
-                            <td>Connection</td>
+                            <td>Contact Us</td>
                             <td>
-                                <a href="{{ route('backend.pages.connection.index', 'english') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.contact-us.index', 'english') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>English
                                 </a>
 
-                                <a href="{{ route('backend.pages.connection.index', 'chinese') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.contact-us.index', 'chinese') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>Chinese
                                 </a>
 
-                                <a href="{{ route('backend.pages.connection.index', 'japanese') }}" title="Edit" class="ms-4">
+                                <a href="{{ route('backend.pages.contact-us.index', 'japanese') }}" title="Edit" class="ms-4">
                                     <i class="bi bi-pencil-square me-1"></i>Japanese
                                 </a>
                             </td>

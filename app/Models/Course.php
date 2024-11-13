@@ -10,9 +10,4 @@ class Course extends Model
     use HasFactory;
     
     protected $guarded = [];
-    
-    public function purchases()
-    {
-        return $this->hasMany(CoursePurchase::class, 'course_id');
-    }
 }

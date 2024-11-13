@@ -381,6 +381,10 @@ class CourseInformationController extends Controller
             }
         // Section 16 labels & links
 
+        // Master section 2 points
+            $master_section_2_points = $request->master_section_2_points ? json_encode($request->master_section_2_points) : null;
+        // Master section 2 points
+
         // Master section 3 label & link
             $master_section_3_label_link = [
                 'label' => $request->master_section_3_button_label,
@@ -391,12 +395,12 @@ class CourseInformationController extends Controller
         // Master section 4 image
             if($request->file('new_master_section_4_image')) {
                 if($request->old_master_section_4_image) {
-                    Storage::delete('public/backend/courses/course-image-videos/' . $request->old_master_section_4_image);
+                    Storage::delete('public/backend/courses/course-images/' . $request->old_master_section_4_image);
                 }
 
                 $new_master_section_4_image = $request->file('new_master_section_4_image');
                 $master_section_4_image_name = Str::random(40) . '.' . $new_master_section_4_image->getClientOriginalExtension();
-                $new_master_section_4_image->storeAs('public/backend/courses/course-image-videos', $master_section_4_image_name);
+                $new_master_section_4_image->storeAs('public/backend/courses/course-images', $master_section_4_image_name);
             }
             else {
                 if($course->master_section_4_image) {
@@ -432,7 +436,7 @@ class CourseInformationController extends Controller
 
             if($missing_files->isNotEmpty()) {
                 foreach($missing_files as $key => $missing_file) {
-                    Storage::delete('public/backend/courses/course-image-videos/' . $missing_file);
+                    Storage::delete('public/backend/courses/course-videos/' . $missing_file);
                 }
             }
 
@@ -446,7 +450,7 @@ class CourseInformationController extends Controller
                 foreach($request->master_section_8_video_files as $key => $master_section_8_video_file) {
                     $video = $master_section_8_video_file;
                     $video_name = Str::random(40) . '.' . $video->getClientOriginalExtension();
-                    $video->storeAs('public/backend/courses/course-image-videos', $video_name);
+                    $video->storeAs('public/backend/courses/course-videos', $video_name);
 
                     array_push($master_section_8_video_files, $video_name);
                 }
@@ -530,6 +534,7 @@ class CourseInformationController extends Controller
         $data['certification_section_15_points'] = $certification_section_15_points;
         $data['certification_section_16_labels_links'] = $certification_section_16_labels_links;
 
+        $data['master_section_2_points'] = $master_section_2_points;
         $data['master_section_3_label_link'] = json_encode($master_section_3_label_link);
         $data['master_section_4_image'] = $master_section_4_image_name;
         $data['master_section_4_label_link'] = json_encode($master_section_4_label_link);

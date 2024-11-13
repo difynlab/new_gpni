@@ -44,6 +44,8 @@ return new class extends Migration
             $table->text('section_11_title_en')->nullable();
             $table->text('section_11_sub_title_en')->nullable();
             $table->text('section_11_message_en')->nullable();
+            $table->text('section_11_placeholder_en')->nullable();
+            $table->text('section_11_button_en')->nullable();
 
             $table->text('section_1_title_zh')->nullable();
             $table->text('section_1_content_zh')->nullable();
@@ -75,6 +77,8 @@ return new class extends Migration
             $table->text('section_11_title_zh')->nullable();
             $table->text('section_11_sub_title_zh')->nullable();
             $table->text('section_11_message_zh')->nullable();
+            $table->text('section_11_placeholder_zh')->nullable();
+            $table->text('section_11_button_zh')->nullable();
 
             $table->text('section_1_title_ja')->nullable();
             $table->text('section_1_content_ja')->nullable();
@@ -106,6 +110,8 @@ return new class extends Migration
             $table->text('section_11_title_ja')->nullable();
             $table->text('section_11_sub_title_ja')->nullable();
             $table->text('section_11_message_ja')->nullable();
+            $table->text('section_11_placeholder_ja')->nullable();
+            $table->text('section_11_button_ja')->nullable();
             
             $table->timestamps();
         });

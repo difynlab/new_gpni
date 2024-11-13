@@ -13,12 +13,12 @@
                     @csrf
                     <div class="row align-items-center">
                         <div class="col">
-                            <input type="text" class="form-control" name="reference_code" value="{{ $reference_code ?? '' }}" placeholder="Reference Code">
+                            <input type="text" class="form-control" name="transaction_id" value="{{ $transaction_id ?? '' }}" placeholder="Transaction ID">
                         </div>
 
-                        <div class="col">
+                        <!-- <div class="col">
                             <input type="text" class="form-control" name="buyer_receiver_name" value="{{ $buyer_receiver_name ?? '' }}" placeholder="Buyer/ receiver name">
-                        </div>
+                        </div> -->
 
                         <div class="col">
                             <input type="date" class="form-control" name="date" value="{{ $date ?? '' }}" placeholder="Date">
@@ -42,13 +42,10 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Reference Code</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Receiver Name</th>
+                            <th scope="col">Transaction ID</th>
                             <th scope="col">Receiver Email</th>
-                            <th scope="col">Buyer Name</th>
-                            <th scope="col">Buyer Email</th>
-                            <th scope="col">Date</th>
+                            <th scope="col">Date & Time</th>
+                            <th scope="col">Amount Paid</th>
                             <th scope="col">Payment Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -59,20 +56,17 @@
                             @foreach($gift_card_purchases as $gift_card_purchase)
                                 <tr>
                                     <td>#{{ $gift_card_purchase->id }}</td>
-                                    <td>{{ $gift_card_purchase->reference_code }}</td>
-                                    <td>{{ $gift_card_purchase->amount }}</td>
-                                    <td>{{ $gift_card_purchase->receiver_name }}</td>
+                                    <td>{{ $gift_card_purchase->transaction_id }}</td>
                                     <td>{{ $gift_card_purchase->receiver_email }}</td>
-                                    <td>{{ $gift_card_purchase->buyer_name }}</td>
-                                    <td>{{ $gift_card_purchase->buyer_email }}</td>
-                                    <td>{{ $gift_card_purchase->date }}</td>
+                                    <td>{{ $gift_card_purchase->date_time }}</td>
+                                    <td>{{ $gift_card_purchase->amount_paid }}</td>
                                     <td>{!! $gift_card_purchase->payment_status !!}</td>
                                     <td>{!! $gift_card_purchase->action !!}</td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="10" style="text-align: center;">No data available in table</td>
+                                <td colspan="7" style="text-align: center;">No data available in table</td>
                             </tr>
                         @endif
                     </tbody>

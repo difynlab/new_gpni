@@ -22,7 +22,7 @@ use App\Http\Controllers\Backend\Media\MediaController;
 use App\Http\Controllers\Backend\Page\AdvisoryBoardExpertLectureController;
 use App\Http\Controllers\Backend\Page\ArticleController as PageArticleController;
 use App\Http\Controllers\Backend\Page\ConferenceController as PageConferenceController;
-use App\Http\Controllers\Backend\Page\ConnectionController as PageConnectionController;
+use App\Http\Controllers\Backend\Page\ContactUsController;
 use App\Http\Controllers\Backend\Page\FAQController as PageFAQController;
 use App\Http\Controllers\Backend\Page\GiftCardController;
 use App\Http\Controllers\Backend\Page\GlobalEducationPartnerController as PageGlobalEducationPartnerController;
@@ -39,8 +39,6 @@ use App\Http\Controllers\Backend\Page\PodcastController as PagePodcastController
 use App\Http\Controllers\Backend\Page\OurPolicyController;
 use App\Http\Controllers\Backend\Page\TvController;
 use App\Http\Controllers\Backend\Page\WhyWeAreDifferentController;
-use App\Http\Controllers\Backend\Payment\CoursePaymentController;
-use App\Http\Controllers\Backend\Payment\ProductPaymentController;
 use App\Http\Controllers\Backend\Person\AdminController;
 use App\Http\Controllers\Backend\Person\AdvisoryBoardController as PersonAdvisoryBoardController;
 use App\Http\Controllers\Backend\Person\GlobalEducationPartnerController;
@@ -111,8 +109,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::get('membership/{language}', [MembershipController::class, 'index'])->name('membership.index');
             Route::post('membership/{language}', [MembershipController::class, 'update'])->name('membership.update');
 
-            Route::get('connection/{language}', [PageConnectionController::class, 'index'])->name('connection.index');
-            Route::post('connection/{language}', [PageConnectionController::class, 'update'])->name('connection.update');
+            Route::get('contact-us/{language}', [ContactUsController::class, 'index'])->name('contact-us.index');
+            Route::post('contact-us/{language}', [ContactUsController::class, 'update'])->name('contact-us.update');
 
             Route::get('nutritionist/{language}', [PageNutritionistController::class, 'index'])->name('nutritionist.index');
             Route::post('nutritionist/{language}', [PageNutritionistController::class, 'update'])->name('nutritionist.update');
@@ -292,6 +290,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         Route::prefix('purchases')->name('purchases.')->group(function() {
             Route::prefix('gift-card-purchases')->name('gift-card-purchases.')->group(function() {
                 Route::get('/', [GiftCardPurchaseController::class, 'index'])->name('index');
+                Route::get('/{gift_card_purchase}/show', [GiftCardPurchaseController::class, 'show'])->name('show');
                 Route::post('/filter', [GiftCardPurchaseController::class, 'filter'])->name('filter');
                 Route::delete('/{gift_card_purchase}', [GiftCardPurchaseController::class, 'destroy'])->name('destroy');
             });
@@ -332,20 +331,4 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         Route::resource('webinars', WebinarController::class)->except('show');
         Route::post('webinars/filter', [WebinarController::class, 'filter'])->name('webinars.filter');
     // Webinars routes
-});
-
-Route::middleware(['auth', 'role:student'])->group(function () {
-    // All payment routes
-        Route::prefix('product-payment')->name('product-payment.')->group(function() {
-            Route::get('/', [ProductPaymentController::class, 'index'])->name('index');
-            Route::post('/checkout', [ProductPaymentController::class, 'checkout'])->name('checkout');
-            Route::get('/success', [ProductPaymentController::class, 'success'])->name('success');
-        });
-
-        Route::prefix('course-payment')->name('course-payment.')->group(function() {
-            Route::get('/', [CoursePaymentController::class, 'index'])->name('index');
-            Route::post('/checkout', [CoursePaymentController::class, 'checkout'])->name('checkout');
-            Route::get('/success', [CoursePaymentController::class, 'success'])->name('success');
-        });
-    // All payment routes
 });
