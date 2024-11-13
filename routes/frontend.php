@@ -25,8 +25,8 @@ use App\Http\Controllers\Frontend\Student\AskQuestionController;
 use App\Http\Controllers\Frontend\Page\TvController;
 use App\Http\Controllers\Frontend\Page\MasterClassController;
 use App\Http\Controllers\Frontend\Student\PasswordController;
-use App\Http\Controllers\Frontend\Student\StudentProfileController;
-use App\Http\Controllers\Frontend\Student\StudentMaterialController;
+use App\Http\Controllers\Frontend\Student\ProfileController;
+use App\Http\Controllers\Frontend\Student\BuyStudyMaterialController;
 use App\Http\Controllers\Frontend\Student\MembersCornerController;
 use App\Http\Controllers\Frontend\Student\MyOrderController;
 use App\Http\Controllers\Frontend\Student\QualificationsController;
@@ -116,6 +116,12 @@ Route::middleware(['set_language'])->group(function () {
                     Route::post('checkout', [ProductController::class, 'checkout'])->name('checkout');
                     Route::get('success', [ProductController::class, 'success'])->name('success');
                 });
+
+                Route::prefix('buy-study-materials')->name('buy-study-materials.')->group(function() {
+                    Route::post('checkout', [BuyStudyMaterialController::class, 'checkout'])->name('checkout');
+                    Route::get('success', [BuyStudyMaterialController::class, 'success'])->name('success');
+                });
+    
             // All payment routes
 
             Route::prefix('dashboard')->name('dashboard.')->group(function() {
@@ -143,10 +149,24 @@ Route::middleware(['set_language'])->group(function () {
                 Route::post('delete-item', [CartController::class, 'destroy'])->name('destroy');
             });
 
-
-
-
             Route::get('my-orders', [MyOrderController::class, 'index'])->name('my-orders');
+            
+            Route::get('my-storage', [MyStorageController::class, 'index'])->name('my-storage');
+
+            Route::prefix('refer-friends')->name('refer-friends.')->group(function() {
+                Route::get('/', [ReferFriendController::class, 'index'])->name('index');
+                Route::post('/', [ReferFriendController::class, 'store'])->name('store');
+            });
+
+            Route::prefix('profile')->name('profile.')->group(function() {
+                Route::get('/', [ProfileController::class, 'index'])->name('index');
+                Route::post('/', [ProfileController::class, 'update'])->name('update');
+            });
+
+            Route::get('buy-study-materials', [BuyStudyMaterialController::class, 'index'])->name('buy-study-materials');
+
+
+
 
 
 
@@ -155,16 +175,9 @@ Route::middleware(['set_language'])->group(function () {
 
             Route::get('payment-flow/{id}', [CourseController::class, 'enrollNow'])->name('payment-flow');
 
-            Route::get('my-storage', [MyStorageController::class, 'index'])->name('my-storage');
-
-            Route::get('student-profile', [StudentProfileController::class, 'index'])->name('student-profile');
-            Route::get('student-materials', [StudentMaterialController::class, 'index'])->name('student-materials');
+            
             Route::get('members-corner', [MembersCornerController::class, 'index'])->name('members-corner');
             
-            
-            Route::get('refer-friend', [ReferFriendController::class, 'index'])->name('refer-friend');
-            Route::get('get-history', [ReferFriendController::class, 'showHistory'])->name('get-history');
-            Route::post('send-invite', [ReferFriendController::class, 'sendInvite'])->name('send-invite');
 
             Route::get('qualifications', [QualificationsController::class, 'index'])->name('qualifications');
         });

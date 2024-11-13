@@ -35,9 +35,9 @@
                 </div>
 
                 <div class="card-section">
-                    <a href="{{ route('frontend.student-profile') }}" class="card">
-                        <h2>Student Profile</h2>
-                        <p>View or edit student profile details</p>
+                    <a href="{{ route('frontend.profile.index') }}" class="card">
+                        <h2>Profile</h2>
+                        <p>View or edit your profile details</p>
                     </a>
 
                     <a href="{{ route('frontend.change-password') }}" class="card">

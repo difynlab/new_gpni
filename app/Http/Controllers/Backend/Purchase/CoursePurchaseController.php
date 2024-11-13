@@ -17,7 +17,8 @@ class CoursePurchaseController extends Controller
     {
         foreach($course_purchases as $course_purchase) {
             $course_purchase->action = '
-            <a href="'. route('backend.purchases.course-purchases.certificates.index', $course_purchase->id) .'" class="edit-button" title="Provide Certificate"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('backend.purchases.course-purchases.show', $course_purchase->id) .'" class="review-button" title="Details"><i class="bi bi-calendar-fill"></i></a>
+            <a href="'. route('backend.purchases.course-purchases.certificates.index', $course_purchase->id) .'" class="edit-button" title="Provide Certificate"><i class="bi bi-patch-check-fill"></i></a>
             <a id="'.$course_purchase->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $course_purchase->student_id = User::find($course_purchase->student_id)->first_name . ' ' . User::find($course_purchase->student_id)->last_name;
@@ -48,6 +49,19 @@ class CoursePurchaseController extends Controller
         return view('backend.purchases.course-purchases.index', [
             'course_purchases' => $course_purchases,
             'items' => $items
+        ]);
+    }
+
+    public function show(CoursePurchase $course_purchase)
+    {
+        $student = User::find($course_purchase->student_id)->first_name . ' ' . User::find($course_purchase->student_id)->last_name;
+
+        $course = Course::where('status', '1')->find($course_purchase->course_id)->title;
+
+        return view('backend.purchases.course-purchases.show', [
+            'course_purchase' => $course_purchase,
+            'student' => $student,
+            'course' => $course
         ]);
     }
 

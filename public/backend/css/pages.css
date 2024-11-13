@@ -107,7 +107,7 @@
     padding: 5px 15px;
     border-radius: 20px;
 }
-.pages .table .exam-questions-button, .pages .table .information-button, .pages .table .review-button, .pages .table .edit-button, .pages .table .delete-button {
+.pages .table .exam-questions-button, .pages .table .information-button, .pages .table .review-button, .pages .table .edit-button, .pages .table .delete-button, .pages .table .send-button {
     font-size: 20px;
     -webkit-text-stroke: 0.5px;
     margin: 0 7px;
@@ -124,6 +124,9 @@
 }
 .pages .table .edit-button {
     color: #0040C3;
+}
+.pages .table .send-button {
+    color: #ecb211;
 }
 .pages .table .delete-button {
     color: #E53E3E;
@@ -195,6 +198,20 @@
     height: 100px;
     object-fit: cover;
     border-radius: 50%;
+}
+.pages .modal .send-button {
+    color: var(--white);
+    background: #b4a006;
+    font-size: 15px;
+    border-radius: 0;
+    padding: 5px 20px;
+    transition: all 0.3s;
+}
+.pages .modal .send-button:hover {
+    color: #b4a006;
+    background: var(--white);
+    border: 1px solid #b4a006;
+    transition: all 0.3s;
 }
 
 

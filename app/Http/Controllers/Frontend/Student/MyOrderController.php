@@ -16,8 +16,7 @@ class MyOrderController extends Controller
         $course_purchases = CoursePurchase::where('student_id', $student->id)->where('status', '1')->get();
         $product_orders = ProductOrder::where('student_id', $student->id)->where('status', '1')->get();
 
-        $merge = $course_purchases->merge($product_orders);
-        $purchases = $merge->sortByDesc(['date', 'time']);
+        $purchases = $course_purchases->concat($product_orders)->sortByDesc(['date', 'time']);
 
         return view('frontend.student.my-orders', [
             'purchases' => $purchases,

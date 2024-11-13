@@ -582,3 +582,10 @@ form .error-message {
     width: 30px; /* Adjust based on your preference */
     filter: grayscale(100%); /* Make the comma grey */
 }
+
+.navbar .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}

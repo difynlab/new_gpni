@@ -12,7 +12,7 @@ class GiftCardPurchaseController extends Controller
     {
         foreach($gift_card_purchases as $gift_card_purchase) {
             $gift_card_purchase->action = '
-            <a href="'. route('backend.purchases.gift-card-purchases.show', $gift_card_purchase->id) .'" class="review-button" title="Details"><i class="bi bi-basket-fill"></i></a>
+            <a href="'. route('backend.purchases.gift-card-purchases.show', $gift_card_purchase->id) .'" class="review-button" title="Details"><i class="bi bi-calendar-fill"></i></a>
             <a id="'.$gift_card_purchase->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $gift_card_purchase->date_time = $gift_card_purchase->date . ' | ' . $gift_card_purchase->time;

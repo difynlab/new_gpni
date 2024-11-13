@@ -26,8 +26,8 @@
         </div>
     </a>
 
-    <a href="#" class="sidebar-link">
-        <div class="sidebar-item">
+    <a href="{{ route('frontend.profile.index') }}" class="sidebar-link">
+        <div class="sidebar-item {{ Request::segment(1) == 'profile' ? 'active' : '' }}">
             <img src="{{ asset('storage/frontend/student/profile-icon.svg') }}" alt="Profile icon" width="28" height="28">
             <span>Student Profile</span>
         </div>
@@ -47,15 +47,15 @@
         </div>
     </a>
 
-    <a href="#" class="sidebar-link">
-        <div class="sidebar-item">
+    <a href="{{ route('frontend.my-storage') }}" class="sidebar-link">
+        <div class="sidebar-item {{ Request::segment(1) == 'my-storage' ? 'active' : '' }}">
             <img src="{{ asset('storage/frontend/student/study-tool-icon.svg') }}" alt="Study Tools icon" width="28" height="28">
-            <span>Study Tools</span>
+            <span>My Storage</span>
         </div>
     </a>
 
-    <a href="#" class="sidebar-link">
-        <div class="sidebar-item">
+    <a href="{{ route('frontend.buy-study-materials') }}" class="sidebar-link">
+        <div class="sidebar-item {{ Request::segment(1) == 'buy-study-materials' ? 'active' : '' }}">
             <img src="{{ asset('storage/frontend/student/profile-icon.svg') }}" alt="Buy Study Material icon" width="28" height="28">
             <span>Buy Study Material</span>
         </div>
@@ -75,10 +75,10 @@
         </div>
     </a>
 
-    <a href="#" class="sidebar-link">
-        <div class="sidebar-item">
+    <a href="{{ route('frontend.refer-friends.index') }}" class="sidebar-link">
+        <div class="sidebar-item {{ Request::segment(1) == 'refer-friends' ? 'active' : '' }}">
             <img src="{{ asset('storage/frontend/student/referral-point-icon.svg') }}" alt="Referral Points icon" width="28" height="28">
-            <span>Referral Points</span>
+            <span>Refer Friends</span>
         </div>
     </a>
 </div>
