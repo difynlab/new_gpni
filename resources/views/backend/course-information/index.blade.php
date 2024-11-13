@@ -615,8 +615,38 @@
                             </div>
 
                             <div>
-                                <label for="master_section_2_content" class="form-label">Content</label>
-                                <textarea class="editor" id="master_section_2_content" name="master_section_2_content" value="{{ $course->master_section_2_content ?? '' }}">{{ $course->master_section_2_content ?? '' }}</textarea>
+                                <div class="form-input">
+                                    <div class="row align-items-center mb-2">
+                                        <div class="col-9">
+                                            <label class="form-label mb-0">Points</label>
+                                        </div>
+                                        <div class="col-3 text-end">
+                                            <button type="button" class="add-row-button add-master-section-2-row-button">
+                                                <i class="bi bi-plus-lg"></i>
+                                                Add More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    @if($course->master_section_2_points)
+                                        @foreach(json_decode($course->master_section_2_points) as $master_section_2_point)
+                                            <div class="row single-item mt-2 align-items-center">
+                                                <div class="col-10">
+                                                    <textarea class="form-control textarea" name="master_section_2_points[]" rows="5" placeholder="Description" value="{{ $master_section_2_point }}">{{ $master_section_2_point }}</textarea>
+                                                </div>
+                                                <div class="col-2 d-flex align-items-center">
+                                                    <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
+                                    <div class="row mt-2">
+                                        <div class="col-12">
+                                            <x-backend.input-error field="certification_section_3_point_files.*"></x-backend.input-error>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -659,7 +689,7 @@
 
                     <div class="row form-input">
                         <div class="col-6 left-column">
-                            <x-backend.upload-image old_name="old_master_section_4_image" old_value="{{ $course->master_section_4_image ?? '' }}" new_name="new_master_section_4_image" path="courses/course-image-videos" class="side-box-uploader"></x-backend.upload-image>
+                            <x-backend.upload-image old_name="old_master_section_4_image" old_value="{{ $course->master_section_4_image ?? '' }}" new_name="new_master_section_4_image" path="courses/course-images" class="side-box-uploader"></x-backend.upload-image>
                             <x-backend.input-error field="new_master_section_4_image"></x-backend.input-error>
                         </div>
 
@@ -783,7 +813,7 @@
                             @foreach(json_decode($course->master_section_8_videos) as $master_section_8_video)
                                 <div class="row single-item mt-2 align-items-center">
                                     <div class="col-10">
-                                        <video class="video-player" src="{{ asset('storage/backend/courses/course-image-videos/' . $master_section_8_video) }}" controls></video>
+                                        <video class="video-player" src="{{ asset('storage/backend/courses/course-video/' . $master_section_8_video) }}" controls></video>
                                     </div>
                                     <div class="col-2 d-flex align-items-center">
                                         <input type="hidden" name="old_master_section_8_video_files[]" value="{{ $master_section_8_video }}">
@@ -883,6 +913,19 @@
                         });
                 }
             });
+        });
+
+        $('.add-master-section-2-row-button').on('click', function() {
+            let html = `<div class="row single-item mt-2 align-items-center">
+                            <div class="col-11">
+                                <textarea class="form-control textarea" name="master_section_2_points[]" rows="5" placeholder="Point"></textarea>
+                            </div>
+                            <div class="col-1 d-flex">
+                                <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
+                            </div>
+                        </div>`;
+
+            $(this).closest('.row').parent().append(html);
         });
 
         $('.add-section-3-row-button').on('click', function() {

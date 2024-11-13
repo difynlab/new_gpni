@@ -40,7 +40,7 @@
             </div>
 
             <div class="sidebar mt-5">
-                <a href="{{ route('frontend.gift-cards') }}">
+                <a href="{{ route('frontend.gift-cards.index') }}">
                     <img src="{{ asset('storage/frontend/group-1171276120.svg') }}" alt="Banner" class="img-fluid mb-4 banner-section">
                 </a>
 

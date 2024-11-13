@@ -23,8 +23,9 @@ return new class extends Migration
                 $table->string('no_of_modules');
                 $table->string('no_of_students_enrolled');
                 $table->decimal('price', 10, 2);
-                $table->string('image_video');
-                $table->text('image_video_description');
+                $table->string('image');
+                $table->string('video');
+                $table->text('short_description');
                 $table->string('instructor_name');
                 $table->string('instructor_designation');
                 $table->string('instructor_profile_image');
@@ -90,7 +91,7 @@ return new class extends Migration
             // Master course fields
                 $table->text('master_section_2_title')->nullable();
                 $table->text('master_section_2_description')->nullable();
-                $table->text('master_section_2_content')->nullable();
+                $table->text('master_section_2_points')->nullable();
                 $table->text('master_section_3_title')->nullable();
                 $table->text('master_section_3_description')->nullable();
                 $table->text('master_section_3_label_link')->nullable();

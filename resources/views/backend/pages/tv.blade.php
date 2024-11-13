@@ -261,9 +261,19 @@
                             <input type="text" class="form-control" id="section_11_sub_title_{{ $short_code }}" name="section_11_sub_title_{{ $short_code }}" value="{{ $contents->{'section_11_sub_title_' . $short_code} ?? '' }}" placeholder="Sub Title">
                         </div>
 
-                        <div>
+                        <div class="mb-4">
                             <label for="section_11_message_{{ $short_code }}" class="form-label">Message</label>
                             <input type="text" class="form-control" id="section_11_message_{{ $short_code }}" name="section_11_message_{{ $short_code }}" value="{{ $contents->{'section_11_message_' . $short_code} ?? '' }}" placeholder="Message">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="section_11_placeholder_{{ $short_code }}" class="form-label">Placeholder</label>
+                            <input type="text" class="form-control" id="section_11_placeholder_{{ $short_code }}" name="section_11_placeholder_{{ $short_code }}" value="{{ $contents->{'section_11_placeholder_' . $short_code} ?? '' }}" placeholder="Placeholder">
+                        </div>
+
+                        <div>
+                            <label for="section_11_button_{{ $short_code }}" class="form-label">Button</label>
+                            <input type="text" class="form-control" id="section_11_button_{{ $short_code }}" name="section_11_button_{{ $short_code }}" value="{{ $contents->{'section_11_button_' . $short_code} ?? '' }}" placeholder="Button">
                         </div>
                     </div>
                 </div>

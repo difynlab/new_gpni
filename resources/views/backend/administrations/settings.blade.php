@@ -71,14 +71,19 @@
                         <input type="url" class="form-control" id="weixin" name="weixin" value="{{ old('weixin', $settings->weixin) }}" placeholder="Weixin">
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-6 mb-4">
                         <label for="youtube" class="form-label">Youtube</label>
                         <input type="url" class="form-control" id="youtube" name="youtube" value="{{ old('youtube', $settings->youtube) }}" placeholder="Youtube">
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-6 mb-4">
                         <label for="linkedin" class="form-label">Linkedin</label>
                         <input type="url" class="form-control" id="linkedin" name="linkedin" value="{{ old('linkedin', $settings->linkedin) }}" placeholder="Linkedin">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="twitter" class="form-label">Twitter</label>
+                        <input type="url" class="form-control" id="twitter" name="twitter" value="{{ old('twitter', $settings->twitter) }}" placeholder="Twitter">
                     </div>
                 </div>
             </div>

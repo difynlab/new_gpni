@@ -1,0 +1,413 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading-section {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 61px;
+    line-height: 140%;
+    color: #0e0e0e;
+}
+
+.search-section {
+    position: relative;
+    width: 100%;
+    max-width: 725px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-field {
+    width: 100%;
+    height: 64px;
+    border-radius: 47px;
+    border: 0.84px solid #c9dbfe;
+    background-color: #fdfdfd;
+    padding: 0 30px 0 50px;
+    font-size: 16.88px;
+    color: #969696;
+}
+
+.search-icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+.header-section,
+.course-filter-section,
+.course-cards-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-section h1 {
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 120%;
+    color: #0e0e0e;
+    padding-top: 100px;
+}
+
+.header-section p {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 140%;
+    color: #505050;
+    max-width: 924px;
+    margin: 0 auto;
+}
+
+.course-filter-section {
+    /* display: flex; */
+    /* justify-content: center; */
+    margin-bottom: 20px;
+}
+
+.pagination .page-link {
+    font-size: 14px;
+    box-shadow: none;
+  }
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+.filter-option {
+    margin: 0 15px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+    cursor: pointer;
+}
+
+.filter-option.active {
+    color: #1d5bdb;
+}
+
+.filter-option.inactive {
+    color: #898989;
+}
+
+.card {
+    width: 22rem;
+    margin: 1rem;
+    box-shadow: 0px 1.291px 12.909px 0px #E3E3E3;
+    border-radius: 6.455px;
+}
+
+.card img {
+    border-radius: 10px;
+}
+
+
+.card-price {
+    font-size: 30px;
+    color: #0040c3;
+    font-weight: 500;
+}
+
+.card-enroll {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0040c3;
+    text-transform: uppercase;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+    font-size: 20px;
+    font-weight: 500;
+    color: #898989;
+    border: none;
+    background-color: transparent;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 3px solid #1D5BDB;
+    color: #1D5BDB;
+    font-weight: 600;
+}
+
+.card-body {
+    position: relative;
+    z-index: 10;
+    background: #F6F6F6;
+}
+
+.card-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
+    color: #0e0e0e;
+    /* text-align: center; */
+}
+
+.card-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #656565;
+    /* text-align: center; */
+}
+
+.card-price {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 140%;
+    color: #0040c3;
+    text-align: center;
+}
+
+.card-price-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #898989;
+    text-align: center;
+}
+
+.enroll-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 147px;
+    height: 29px;
+    border: 2px solid #0040c3;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.enroll-button img {
+    margin-left: 5px;
+}
+
+.enroll-button span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    color: #0040c3;
+    text-align: center;
+}
+
+.card-button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #2c68e3;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+}
+
+.learn-more {
+    font-size: 0.875rem;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.card-button {
+    color: #0040c3;
+}
+
+
+.certification-section {
+    text-align: center;
+    margin-top: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.certification-section h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-bottom: 40px;
+}
+
+.certification-card {
+    background: white;
+    max-width: 392px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.certification-card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.certification-card p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    color: #0e0e0e;
+}
+
+
+/* FAQ */
+.faq-container {
+    background-color: #FFF;
+}
+
+.faq-heading {
+    font-size: 3rem;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.faq-body {
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 400;
+}
+
+.arrow-icon {
+    width: 24px;
+    /* Adjust as needed */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.card-header .collapsed .arrow-icon {
+    transform: rotate(-180deg);
+}
+
+.btn-link {
+    width: 100%;
+    text-align: left;
+    /* Align text to the left */
+    display: flex;
+    justify-content: space-between;
+    /* Space between text and arrow */
+    align-items: center;
+}
+
+.faq-container .accordion-item {
+    margin-bottom: 20px;
+    /* Adds bottom margin to each accordion card */
+    border-radius: 20px;
+    color: #FFF;
+    box-shadow: 0 4px 8px rgba(21, 21, 21, 0.1);
+}
+
+.faq-container .accordion-button {
+    background-color: #fff;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 20px;
+    height: 100px;
+}
+
+.faq-container .accordion-item:first-of-type {
+    border-radius: 20px;
+}
+
+.faq-container .accordion-item:last-of-type {
+    border-radius: 20px;
+}
+
+/* Apply border-radius to the first accordion button */
+.faq-container .accordion-item:first-of-type .accordion-button,
+.accordion-item:first-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
+    border-top-left-radius: 20px;
+    /* Adjust as needed */
+    border-top-right-radius: 20px;
+    /* Adjust as needed */
+}
+
+/* Apply border-radius to the last accordion item when not collapsed */
+.faq-container .accordion-item:last-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
+    border-bottom-left-radius: 20px;
+    /* Adjust as needed */
+    border-bottom-right-radius: 20px;
+    /* Adjust as needed */
+}
+
+.faq-container .accordion-item:last-of-type .accordion-button.collapsed {
+    border-radius: 20px;
+}
+
+/* Ensure the last accordion item always has rounded corners at the bottom */
+.faq-container .accordion-item:last-of-type,
+.accordion-item:last-of-type .accordion-button {
+    border-bottom-left-radius: 20px;
+    /* Adjust as needed */
+    border-bottom-right-radius: 20px;
+    /* Adjust as needed */
+}
+
+.faq-container .accordion-button:not(.collapsed)::after {
+    background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'%23e59114\'%3e%3cpath stroke=\'%23e59114\' stroke-width=\'2\' fill-rule=\'evenodd\' d=\'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z\'/%3e%3c/svg%3e');
+    transform: rotate(-180deg);
+}
+
+.faq-container .accordion-button::after {
+    background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'%23666565\'%3e%3cpath stroke=\'%23666565\' stroke-width=\'2\' fill-rule=\'evenodd\' d=\'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z\'/%3e%3c/svg%3e');
+}
+
+.faq-container .accordion-button:hover {
+    background-color: inherit;
+    /* Or use the specific color of the button's non-hover state */
+    color: inherit;
+    /* Adjust if the text color also changes on hover */
+}
+
+.faq-container .accordion-header {
+    background-color: #fff;
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 20px;
+    height: 100px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.faq-container .accordion {
+    border-radius: 20px;
+}
+
+.faq-container .accordion-body {
+    color: #000;
+    background-color: #FFF;
+    border-radius: 0 0 20px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+}

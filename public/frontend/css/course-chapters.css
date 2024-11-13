@@ -1,0 +1,82 @@
+.course-details-container {
+    background-color: #fff;
+}
+
+.course-title {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 37.5px;
+    color: #0e0e0e;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #0e0e0e;
+    margin-bottom: 0;
+}
+.content {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #505050;
+    margin-bottom: 20px;
+}
+
+.accordion-button {
+    background-color: #fff;
+    border: 1px solid #505050;
+    border-radius: 4.71px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 32px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #0e0e0e;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.2s;
+}
+
+.accordion-button img {
+    margin-left: 10px;
+}
+
+.accordion-content {
+    display: none;
+    background-color: #fff;
+    border: 1px solid #505050;
+    border-top: none;
+    padding: 20px 32px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #505050;
+    line-height: 30px;
+}
+
+.accordion-button.active {
+    background-color: #f1f1f1;
+}
+
+.accordion-button.active+.accordion-content {
+    display: block;
+}
+
+.return-link {
+    display: flex;
+    align-items: center;
+    color: #0040c3;
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.return-link img {
+    margin-right: 5px;
+}

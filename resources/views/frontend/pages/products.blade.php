@@ -8,279 +8,114 @@
 
 @section('content')
 
-<div class="container mt-5">
+    <div class="container mt-5">
+        <x-frontend.notification></x-frontend.notification>
 
-        <ul class="nav nav-tabs category-tabs" id="myTab" role="tablist">
+        <nav class="nav nav-tabs category-tabs" id="myTab" role="tablist">
+            <button class="nav-link active }}" id="0-tab" data-bs-toggle="tab" data-bs-target="#products-0-tab" role="tab" aria-controls="0-products-tab" aria-selected="true">
+                All
+            </button>
+
             @foreach($categories as $key => $category)
-            <li class="nav-item">
-                <a class="nav-link {{ $key == 0 ? 'active' : '' }}" id="{{ strtolower($category->name) }}-tab" data-toggle="tab" href="#{{ strtolower($category->name) }}" role="tab" aria-controls="{{ strtolower($category->name) }}" aria-selected="{{ $key == 0 ? 'true' : 'false' }}">
-                    {{ $category->name }}
-                </a>
-            </li>
+                <button class="nav-link" id="{{ $category->id }}-tab" data-bs-toggle="tab" data-bs-target="#products-{{ $category->id }}-tab" role="tab" aria-controls="{{ $category->id }}-products-tab" aria-selected="false">{{ $category->name }}
+                </button>
             @endforeach
-        </ul>
+        </nav>
 
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-                <div class="heading-text py-3">
-                    Books
-                </div>
+            <div class="tab-pane fade show active" id="products-0-tab" role="tabpanel" aria-labelledby="all-tab">
+                @foreach($categories as $category)
+                    <div class="heading-text py-3">{{ $category->name }}</div>
 
-              <!-- Books Contents -->
-                <div class="row row-horizontal px-0">
-                    @foreach($product_books as $product_book)
-                        <!-- Card 1 -->
-                        <div class="col-md-3">
-                            <div class="card-custom">
-                                <img src="{{ asset('storage/backend/products/products/' . $product_book ->thumbnail) }}" alt="Product Image" class="card-img">
-                                <div class="product-info">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="category">{{ $product_book ->name }}</span>
-                                        <span class="rating">
-                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                        </span>
-                                    </div>
-                                    <span class="product-name py-2">{{ $product_book ->description }}</span>
-                                    <div class="product-details">
-                                        <span class="price">${{ $product_book ->price }}</span>
-                                    </div>
-                                </div>
+                    <div class="row row-horizontal px-0">
+                        @foreach($products as $product)
+                            @if($product->product_category_id == $category->id)
+                                <div class="col-md-3 mb-4">
+                                    <div class="card-custom">
+                                        <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
+                                        <div class="product-info">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="category">{{ $category->name }}</span>
+                                                <span class="rating">
+                                                    <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
+                                                </span>
+                                            </div>
+                                            <span class="product-name py-2">{{ $product->name }}</span>
+                                            <div class="product-details">
+                                                <span class="price">${{ $product->price }}</span>
+                                            </div>
+                                        </div>
 
-                                <a href="{{ route('frontend.cart') }}" class="cta-button">
-                                    <img src="{{ asset('storage/frontend/products/fluent-cart-20-regular-2.svg') }}" alt="Cart Icon">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+                                        @if(auth()->check())
+                                            @if(hasUserAddedToCart(auth()->user()->id, $product->id))
+                                                <button class="cta-button-disabled" disabled>
+                                                    Added to Cart
+                                                </button>
+                                            @else
+                                                <form action="{{ route('frontend.carts.store') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                <div class="heading-text py-3">
-                    Clothing
-                </div>
-
-                <!-- Clothing Contents -->
-                <div class="row row-horizontal px-2">
-                    @foreach($product_cloths as $product_cloth)
-                        <!-- Card 1 -->
-                        <div class="col-md-3">
-                            <div class="card-custom">
-                                <img src="{{ asset('storage/backend/products/products/' . $product_book ->thumbnail) }}" alt="Product Image" class="card-img">
-                                <div class="product-info">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="category">{{ $product_cloth ->name }}</span>
-                                        <span class="rating">
-                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                        </span>
-                                    </div>
-                                    <span class="product-name py-2">{{ $product_cloth ->description }}</span>
-                                    <div class="product-details">
-                                        <span class="price">${{ $product_cloth ->price }}</span>
+                                                    <button type="submit" class="cta-button">
+                                                        <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
+                                                        Add to Cart
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        @else
+                                            <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>
+                                        @endif
                                     </div>
                                 </div>
-
-                                <a href="{{ route('frontend.cart') }}" class="cta-button">
-                                    <img src="{{ asset('storage/frontend/products/fluent-cart-20-regular-2.svg') }}" alt="Cart Icon">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                <div class="heading-text py-3">
-                    Courses
-                </div>
-
-                <!-- Courses Contents -->
-                <div class="row row-horizontal px-2">
-                    @foreach($product_courses as $product_course)
-                        <!-- Card 1 -->
-                        <div class="col-md-3">
-                            <div class="card-custom">
-                                <img src="{{ asset('storage/backend/products/products/' . $product_book ->thumbnail) }}" alt="Product Image" class="card-img">
-                                <div class="product-info">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="category">{{ $product_course ->name }}</span>
-                                        <span class="rating">
-                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                        </span>
-                                    </div>
-                                    <span class="product-name py-2">{{ $product_course ->description }}</span>
-                                    <div class="product-details">
-                                        <span class="price">${{ $product_course ->price }}</span>
-                                    </div>
-                                </div>
-
-                                <a href="{{ route('frontend.cart') }}" class="cta-button">
-                                    <img src="{{ asset('storage/frontend/products/fluent-cart-20-regular-2.svg') }}" alt="Cart Icon">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                <div class="heading-text py-3">
-                    Merchandise
-                </div>
-
-                <!-- Merchandise Contents -->
-                <div class="row row-horizontal px-2">
-                    @foreach($product_courses as $product_course)
-                        <!-- Card 1 -->
-                        <div class="col-md-3">
-                            <div class="card-custom">
-                                <img src="{{ asset('storage/backend/products/products/' . $product_book ->thumbnail) }}" alt="Product Image" class="card-img">
-                                <div class="product-info">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="category">{{ $product_course ->name }}</span>
-                                        <span class="rating">
-                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                        </span>
-                                    </div>
-                                    <span class="product-name py-2">{{ $product_course ->description }}</span>
-                                    <div class="product-details">
-                                        <span class="price">${{ $product_course ->price }}</span>
-                                    </div>
-                                </div>
-
-                                <a href="{{ route('frontend.cart') }}" class="cta-button">
-                                    <img src="{{ asset('storage/frontend/products/fluent-cart-20-regular-2.svg') }}" alt="Cart Icon">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <!-- Content for All goes here -->
+                            @endif
+                        @endforeach
+                    </div>
+                @endforeach
             </div>
 
-            <div class="tab-pane fade" id="books" role="tabpanel" aria-labelledby="books-tab">
-                <div class="row row-horizontal">
-                    @foreach($product_books as $product_book)
-                        <!-- Card 1 -->
-                        <div class="col-md-3">
-                            <div class="card-custom">
-                                <img src="{{ asset('storage/backend/products/products/' . $product_book ->thumbnail) }}" alt="Product Image" class="card-img">
-                                <div class="product-info">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="category">{{ $product_book ->name }}</span>
-                                        <span class="rating">
-                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                        </span>
-                                    </div>
-                                    <span class="product-name py-2">{{ $product_book ->description }}</span>
-                                    <div class="product-details">
-                                        <span class="price">${{ $product_book ->price }}</span>
+            @foreach($categories as $category)
+                <div class="tab-pane fade" id="products-{{ $category->id }}-tab" role="tabpanel" aria-labelledby="{{ $category->id }}-products-tab" tabindex="0">
+                    <div class="heading-text py-3">{{ $category->name }}</div>
+
+                    <div class="row row-horizontal px-0">
+                        @foreach($products as $product)
+                            @if($product->product_category_id == $category->id)
+                                <div class="col-md-3 mb-4">
+                                    <div class="card-custom">
+                                        <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
+                                        <div class="product-info">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="category">{{ $category->name }}</span>
+                                                <span class="rating">
+                                                    <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
+                                                </span>
+                                            </div>
+                                            <span class="product-name py-2">{{ $product->name }}</span>
+                                            <div class="product-details">
+                                                <span class="price">${{ $product->price }}</span>
+                                            </div>
+                                        </div>
+
+                                        <form action="{{ route('frontend.carts.store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                            <a type="submit" class="cta-button">
+                                                <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
+                                                Add to cart
+                                            </a>
+                                        </form>
                                     </div>
                                 </div>
-
-                                <a href="{{ route('frontend.cart') }}" class="cta-button">
-                                    <img src="{{ asset('storage/frontend/products/fluent-cart-20-regular-2.svg') }}" alt="Cart Icon">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-
-            <div class="tab-pane fade" id="clothing" role="tabpanel" aria-labelledby="clothing-tab">
-                <div class="row row-horizontal">
-                    @foreach($product_cloths as $product_cloth)
-                        <!-- Card 1 -->
-                        <div class="col-md-3">
-                            <div class="card-custom">
-                                <img src="{{ asset('storage/backend/products/products/' . $product_book ->thumbnail) }}" alt="Product Image" class="card-img">
-                                <div class="product-info">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="category">{{ $product_cloth ->name }}</span>
-                                        <span class="rating">
-                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                        </span>
-                                    </div>
-                                    <span class="product-name py-2">{{ $product_cloth ->description }}</span>
-                                    <div class="product-details">
-                                        <span class="price">${{ $product_cloth ->price }}</span>
-                                    </div>
-                                </div>
-
-                                <a href="{{ route('frontend.cart') }}" class="cta-button">
-                                    <img src="{{ asset('storage/frontend/products/fluent-cart-20-regular-2.svg') }}" alt="Cart Icon">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="courses-tab">
-                <div class="row row-horizontal">
-                    @foreach($product_courses as $product_course)
-                        <!-- Card 1 -->
-                        <div class="col-md-3">
-                            <div class="card-custom">
-                                <img src="{{ asset('storage/backend/products/products/' . $product_book ->thumbnail) }}" alt="Product Image" class="card-img">
-                                <div class="product-info">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="category">{{ $product_course ->name }}</span>
-                                        <span class="rating">
-                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                        </span>
-                                    </div>
-                                    <span class="product-name py-2">{{ $product_course ->description }}</span>
-                                    <div class="product-details">
-                                        <span class="price">${{ $product_course ->price }}</span>
-                                    </div>
-                                </div>
-
-                                <a href="{{ route('frontend.cart') }}" class="cta-button">
-                                    <img src="{{ asset('storage/frontend/products/fluent-cart-20-regular-2.svg') }}" alt="Cart Icon">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="merchandise" role="tabpanel" aria-labelledby="merchandise-tab">
-                <div class="row row-horizontal">
-                    @foreach($product_courses as $product_course)
-                        <!-- Card 1 -->
-                        <div class="col-md-3">
-                            <div class="card-custom">
-                                <img src="{{ asset('storage/backend/products/products/' . $product_book ->thumbnail) }}" alt="Product Image" class="card-img">
-                                <div class="product-info">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="category">{{ $product_course ->name }}</span>
-                                        <span class="rating">
-                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                        </span>
-                                    </div>
-                                    <span class="product-name py-2">{{ $product_course ->description }}</span>
-                                    <div class="product-details">
-                                        <span class="price">${{ $product_course ->price }}</span>
-                                    </div>
-                                </div>
-
-                                <a href="{{ route('frontend.cart') }}" class="cta-button">
-                                    <img src="{{ asset('storage/frontend/products/fluent-cart-20-regular-2.svg') }}" alt="Cart Icon">
-                                    Add to cart
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
-    <!-- Modal HTML structure -->
-    <div class="add-to-cart-modal">
-        <!-- Modal Structure -->
+    <!-- <div class="add-to-cart-modal">
         <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -314,7 +149,7 @@
                                         <span class="category">Clothing</span>
                                         <div class="d-flex align-items-center">
                                             <span class="reviews">567 reviews</span>
-                                            <img src="storage/frontend/rating.svg" alt="Rating" class="ml-2">
+                                            <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating" class="ml-2">
                                         </div>
                                     </div>
 
@@ -339,7 +174,7 @@
                                         occasion.</p>
 
                                     <div>
-                                        <a href="{{ route('frontend.cart') }}" class="size-guide d-flex align-items-center">
+                                        <a href="#" class="size-guide d-flex align-items-center">
                                             <img src="storage/frontend/mdi-ruler.svg" alt="Size guide">
                                             Size guide
                                         </a>
@@ -353,10 +188,13 @@
                                         <div class="size-option"><span>XL</span></div>
                                     </div>
 
-                                    <div class="cta-button mt-4 w-50">
-                                        <img src="storage/frontend/fluent-cart-20-regular.svg" alt="Cart Icon">
-                                        Add to cart
-                                    </div>
+                                    <form action="{{ route('frontend.carts.store') }}" method="POST">
+                                        @csrf
+                                        <a type="submit" class="cta-button">
+                                            <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
+                                            Add to cart
+                                        </a>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -364,7 +202,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
+    </div> -->
 
 @endsection

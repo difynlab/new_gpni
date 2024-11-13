@@ -40,8 +40,19 @@ class AskQuestionController extends Controller
 
     public function edit(AskQuestion $ask_question)
     {
+        if($ask_question->is_viewed != '1') {
+            $ask_question->is_viewed = '1';
+            $ask_question->save();
+        }
+
         $user = User::find($ask_question->user_id);
         $ask_question_replies = AskQuestionReply::where('ask_question_id', $ask_question->id)->where('status', '1')->get();
+        $student_ask_question_replies = AskQuestionReply::where('ask_question_id', $ask_question->id)->where('replied_by', '!=', auth()->user()->id)->where('is_viewed', '0')->where('status', '1')->get();
+
+        foreach($student_ask_question_replies as $student_ask_question_reply) {
+            $student_ask_question_reply->is_viewed = '1';
+            $student_ask_question_reply->save();
+        }
 
         $date_time_string = $ask_question->date . ' ' . $ask_question->time;
         $parsed_date_time = Carbon::parse($date_time_string);
@@ -67,7 +78,6 @@ class AskQuestionController extends Controller
         $ask_question_reply = new AskQuestionReply();
         $ask_question_reply->ask_question_id = $ask_question->id;
         $ask_question_reply->replied_by = auth()->user()->id;
-        $ask_question_reply->replied_by_name = $request->replied_by_name;
         $ask_question_reply->message = $request->message;
         $ask_question_reply->date = Carbon::now()->toDateString();
         $ask_question_reply->time = Carbon::now()->toTimeString();

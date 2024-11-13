@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('weixin')->nullable();
             $table->string('youtube')->nullable();
             $table->string('linkedin')->nullable();
+            $table->string('twitter')->nullable();
 
             $table->string('guest_image');
             $table->string('no_image');

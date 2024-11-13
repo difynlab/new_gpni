@@ -1,0 +1,49 @@
+.header-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.header-section h1 {
+    font-size: 31px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 10px;
+}
+.header-section a {
+    color: #0040c3;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+}
+.form-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0e0e0e;
+}
+.form-control{
+    background-color: transparent;
+    border-radius: 15px;
+}
+.textarea {
+    height: initial;
+    padding: 16px;
+    border-radius: 15px;
+}
+.form-control::placeholder {
+    color: #b9b9b9;
+    font-size: 13px;
+    font-weight: 400;
+    background-color: transparent !important;
+}
+.btn-submit {
+    background-color: #0040c3;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+}
+.icon-history {
+    margin-right: 5px;
+}

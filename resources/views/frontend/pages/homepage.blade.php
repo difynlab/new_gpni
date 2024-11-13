@@ -145,8 +145,10 @@
                                                 <div class="overlay-logo p-3">
                                                     <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
                                                 </div>
+
                                                 <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
                                                 <div class="card-body course-card-body ps-4">
+
                                                     <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                     <div class="apply-now-container d-flex justify-content-between align-items-center w-100">
                                                         <div class="apply-now-text">APPLY NOW</div>
@@ -170,7 +172,7 @@
                                                     <div class="overlay-logo p-3">
                                                         <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
                                                     </div>
-                                                    <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
+                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
                                                     <div class="card-body ps-4">
                                                         <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                         <div
@@ -197,7 +199,7 @@
                                                     <div class="overlay-logo p-3">
                                                         <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
                                                     </div>
-                                                    <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
+                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
                                                     <div class="card-body ps-4">
                                                         <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                         <div

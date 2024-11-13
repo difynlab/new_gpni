@@ -63,13 +63,15 @@ body {
 
 .podcast-card {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     margin-bottom: 60px;
 }
 
 .podcast-image {
-    width: 384px;
+    width: 385px;
     height: auto;
+    flex: 1 1 auto;
+    object-fit: cover;
 }
 
 .podcast-content {
@@ -77,6 +79,7 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-left: 24px;
+    flex: 1 1 auto;
 }
 
 .podcast-header {
@@ -136,6 +139,22 @@ body {
     background-color: #E0E0E0;
     margin: 30px 0;
 }
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.line-clamp-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+.pagination .page-link {
+    font-size: 14px;
+    box-shadow: none;
+  }
 
 /* Journey Section Styles */
 .journey-section {

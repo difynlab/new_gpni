@@ -1,119 +1,282 @@
 body {
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-.heading-section {
-    padding-top: 100px;
-    text-align: center;
+.list-group-item {
+    border: none;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
-.title {
+h1.display-4 {
+    color: #0E0E0E;
+    font-size: 49px;
     font-weight: 600;
-    font-size: 61px;
+    line-height: 120%;
+}
+
+.common-style {
+    color: #505050;
+    font-size: 20px;
+    font-weight: 500;
     line-height: 140%;
-    color: #0e0e0e;
 }
 
-.search-section {
+.common-text-style {
+    color: #898989;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 140%;
+}
+
+.note {
+    color: #0040C3;
+    font-size: 16px;
+    line-height: 140%;
+    background: rgba(0, 64, 195, 0.04);
+    border-radius: 5px;
+    margin-top: 8px;
+    max-width: 100%;
+}
+
+.author-card {
     position: relative;
-    width: 100%;
-    max-width: 725px;
+    padding-left: 130px;
+    display: flex;
+    align-items: center;
+    background-color: #FFC107;
+    border-radius: 10px;
+    color: #fff;
 }
 
-.search-field {
-    width: 100%;
-    height: 64px;
-    border-radius: 47px;
-    border: 0.84px solid #c9dbfe;
-    background-color: #fdfdfd;
-    padding: 0 30px 0 50px;
-    font-size: 16.88px;
-    color: #969696;
-}
-
-.search-icon {
+.by-badge {
+    font-weight: 500;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #FFC107;
     position: absolute;
-    width: 18px;
-    height: 18px;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.header-section,
-.course-filter-section,
-.course-cards-section {
-    text-align: center;
-    margin-bottom: 40px;
+.img-size {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
 }
 
-.header-section h1 {
+.learn-title {
+    font-weight: 500;
+    font-size: 49px;
+    color: #0e0e0e;
+    line-height: 120%;
+}
+
+.learn-subtitle {
+    font-weight: 400;
+    font-size: 25px;
+    color: #505050;
+    line-height: 140%;
+}
+
+.learn-list {
+    color: #898989;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+}
+
+.learn-list img {
+    width: 35px;
+    height: 35px;
+}
+
+@media (max-width: 768px) {
+    .author-card {
+        flex-direction: column;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .author-card img {
+        margin-bottom: 10px;
+    }
+
+    .author-card .ml-4 {
+        margin-left: 0;
+    }
+
+    .learn-title {
+        font-size: 36px;
+    }
+
+    .learn-subtitle {
+        font-size: 18px;
+    }
+
+    .learn-list li {
+        font-size: 16px;
+    }
+
+    .learn-list img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.journey-title {
     font-weight: 500;
     font-size: 49px;
     line-height: 120%;
-    color: #0e0e0e;
-    padding-top: 100px;
+    color: #FFFFFF;
 }
 
-.header-section p {
+.journey-subtitle {
     font-weight: 400;
-    font-size: 25px;
-    line-height: 140%;
-    color: #505050;
-    max-width: 924px;
-    margin: 0 auto;
+    font-size: 20px;
+    line-height: 120%;
+    color: #FFFFFF;
 }
 
-.course-filter-section {
-    display: flex;
-    justify-content: center;
+.journey-button {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #0040C3;
+}
+
+@media (max-width: 768px) {
+    .journey-title {
+        font-size: 36px;
+    }
+
+    .journey-subtitle {
+        font-size: 18px;
+    }
+
+    .journey-button {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+}
+
+.journey-container {
+    background-color: #0040C3;
+}
+
+.content-header {
+    padding: 20px;
+}
+
+.content-header .nav-link {
+    font-weight: 500;
+    font-size: 20px;
+    color: #898989;
+    line-height: 140%;
+    margin-right: 20px;
+}
+
+.content-header .nav-link.active {
+    color: #0040c3;
+}
+
+.content-box {
+    border: 0.5px solid #c4c4c4;
+    border-radius: 15px;
+    padding: 50px;
+    margin-top: 20px;
+}
+
+.content-box .content-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 200%;
+    color: #505050;
     margin-bottom: 20px;
 }
 
-.filter-option {
-    margin: 0 15px;
-    font-weight: 500;
-    font-size: 20px;
+.content-box .content-description {
+    font-size: 16px;
     line-height: 140%;
-    cursor: pointer;
+    color: #505050;
+    margin-bottom: 30px;
 }
 
-.filter-option.active {
-    color: #1d5bdb;
+.content-box .info-note {
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
 }
 
-.filter-option.inactive {
-    color: #898989;
+.content-box .info-note img {
+    margin-right: 10px;
 }
 
-.card {
-    width: 22rem;
-    margin: 1rem;
-    box-shadow: 0px 1.291px 12.909px 0px #E3E3E3;
-    border-radius: 6.455px;
+.content-box .info-note .text-warning,
+.content-box .info-note .text-primary {
+    font-size: 16px;
+    line-height: 24px;
 }
 
-.card img {
-    border-radius: 10px;
+.content-box .info-note .text-warning {
+    color: #ffb700;
 }
 
-
-.card-price {
-    font-size: 30px;
+.content-box .info-note .text-primary {
     color: #0040c3;
-    font-weight: 500;
 }
 
-.card-enroll {
-    font-size: 12px;
-    font-weight: 600;
-    color: #0040c3;
-    text-transform: uppercase;
+.info-note.primary {
+    background: #f5f8fd;
+}
+
+.info-note.warning {
+    background: #fff7e1;
+}
+
+@media (max-width: 768px) {
+    .content-header {
+        padding: 10px;
+    }
+
+    .content-header .nav-link {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .content-box {
+        padding: 15px;
+    }
+
+    .content-box .content-title,
+    .content-box .info-note .text-warning,
+    .content-box .info-note .text-primary {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .content-box .content-description {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .content-box .info-note {
+        padding: 10px;
+    }
 }
 
 .nav-tabs {
@@ -136,173 +299,676 @@ body {
     font-weight: 600;
 }
 
-.card-body {
-    position: relative;
-    z-index: 10;
-    background: #F6F6F6;
+.course-content {
+    border: 0.5px solid #c4c4c4;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
 }
 
-.card-title {
-    font-family: 'Poppins', sans-serif;
+.course-content .content-title {
     font-weight: 500;
-    font-size: 23px;
-    line-height: 140%;
-    color: #0e0e0e;
-    /* text-align: center; */
+    font-size: 25px;
+    line-height: 200%;
+    color: #505050;
+    margin-bottom: 20px;
 }
 
-.card-text {
-    font-family: 'Poppins', sans-serif;
+.course-content .content-description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #505050;
+    margin-bottom: 30px;
+}
+
+.course-content .learn-more-link {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 15.31px;
+    line-height: 22.97px;
+    color: #0040c3;
+    text-decoration: none;
+    margin-top: 30px;
+}
+
+.course-content .learn-more-link img {
+    margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+    .course-content-header {
+        padding: 10px;
+    }
+
+    .course-content-header .nav-link {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .course-content {
+        padding: 15px;
+    }
+
+    .course-content .content-title,
+    .course-content .learn-more-link {
+        font-size: 20px;
+        line-height: 120%;
+    }
+
+    .course-content .content-description {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+.modules-content {
+    border: 0.5px solid #c4c4c4;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.modules-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 200%;
+    color: #505050;
+    margin-bottom: 20px;
+}
+
+.module-item {
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
-    color: #656565;
-    /* text-align: center; */
+    color: #505050;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-.card-price {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 140%;
-    color: #0040c3;
-    text-align: center;
+.module-item:last-child {
+    border-bottom: none;
 }
 
-.card-price-label {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 18px;
-    color: #898989;
-    text-align: center;
+@media (max-width: 768px) {
+    .modules-content {
+        padding: 15px;
+    }
+
+    .modules-title,
+    .module-item {
+        font-size: 14px;
+        line-height: 20px;
+    }
 }
 
-.enroll-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 147px;
-    height: 29px;
-    border: 2px solid #0040c3;
-    border-radius: 15px;
-    text-decoration: none;
+.testimonial-section {
+    max-width: 934px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.enroll-button img {
-    margin-left: 5px;
-}
-
-.enroll-button span {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 18px;
-    color: #0040c3;
-    text-align: center;
-}
-
-.card-button {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 18px;
-    color: #2c68e3;
-    cursor: pointer;
-    justify-content: center;
+.testimonial-header {
     display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.learn-more {
-    font-size: 0.875rem;
-    color: #007bff;
-    cursor: pointer;
-    text-decoration: none;
+.testimonial-header img {
+    width: 64px;
+    height: 65px;
+    margin-right: 16px;
 }
 
-.card-button {
+.testimonial-name {
+    font-weight: 500;
+    font-size: 20px;
+    color: #505050;
+    margin-bottom: 5px;
+}
+
+.testimonial-stars img {
+    width: 100px;
+    height: auto;
+}
+
+.testimonial-content {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 180%;
+    color: #3e3e3e;
+}
+
+@media (max-width: 768px) {
+    .testimonial-section {
+        padding: 15px;
+    }
+
+    .testimonial-name {
+        font-size: 18px;
+    }
+
+    .testimonial-content {
+        font-size: 14px;
+        line-height: 160%;
+    }
+}
+
+.merchandise-title {
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 120%;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+.merchandise-description,
+.merchandise-note {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 140%;
+    color: #FFFFFF;
+}
+
+.merchandise-note {
+    margin-top: 20px;
+}
+
+.btn-light {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 10px 20px;
     color: #0040c3;
 }
 
-.certification-section {
-    text-align: center;
-    margin-top: 50px;
-    padding-left: 100px;
-    padding-right: 100px;
+@media (max-width: 768px) {
+    .merchandise-title {
+        font-size: 36px;
+    }
+
+    .merchandise-description,
+    .merchandise-note {
+        font-size: 18px;
+    }
+
+    .btn-light {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
 }
 
-.certification-section h1 {
-    font-family: 'Poppins', sans-serif;
+
+.advisory-title {
     font-weight: 500;
     font-size: 49px;
     line-height: 120%;
     color: #0e0e0e;
-    margin-bottom: 40px;
 }
 
-.certification-card {
-    background: white;
-    max-width: 392px;
-    margin: auto;
-    padding: 20px;
+.nav-arrow {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+.board-images img {
+    border-radius: 50%;
+}
+
+.learn-more {
+    font-weight: 500;
+    font-size: 20px;
+    color: #0040c3;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .advisory-title {
+        font-size: 36px;
+    }
+
+    .nav-arrow {
+        width: 24px;
+        height: 24px;
+    }
+
+    .learn-more {
+        font-size: 18px;
+    }
+}
+
+.rounded-circle-wrapper {
+    background-color: #F7BF2E; /* Change the color code to your desired color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rounded-circle-wrapper img {
+    border-radius: 50%;
+}
+
+
+.nav-arrow {
+    cursor: pointer;
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+}
+
+
+
+.regions-languages-section {
+    background-color: #0040C3;
+    color: white;
+    padding: 60px 15px;
+}
+
+.regions-languages-section h2 {
+    color: #FFF;
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    font-family: Poppins;
+    font-size: 49px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    /* 58.8px */
 }
 
-.certification-card img {
-    width: 100px;
-    height: 100px;
+.regions-languages-section p {
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    /* 35px */
+}
+.map-background {
+    position: relative;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 65%;
+    padding: 10px;
+}
+
+.text-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    text-align: left;
+    width: 100%;
+}
+
+.text-container li {
+    background-image: url('../../../storage/frontend/charm-circle-tick-3.svg');
+    padding: 5px;
+    border-radius: 4px;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    height: 35px;
+    background-size: 13px 13px;
+    background-position: left center;
+    display: flex;
+    align-items: center;
+}
+
+.language-heading{
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 30px */
+}
+.text-container ul, .regions-list,
+.languages-list,
+.population-list {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+.regions-list li::before,
+.population-list li::before {
+    /* content: url('/assets/charm-circle-tick-3.svg'); */
+    content: url('../../../storage/frontend/charm-circle-tick-3.svg');
+    /* background-image: url('../../../storage/frontend/charm-circle-tick-3.svg'); */
+    display: inline-block;
+    margin-left: -1em;
+    margin-right: 0.5em; /* Add space between the tick icon and the text */
+    transform: scale(0.3); /* Adjust the scale value to reduce the size */
+    width: 0.5em; /* Optional: Set a specific width */
+    height: 0.5em; /* Optional: Set a specific height */
+}
+
+/* Hide default list style */
+.regions-list li,
+.languages-list li,
+.population-list li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    height: 25px;
+}
+
+.languages-list li {
+    list-style-type: none !important;
+    /* Removes the bullet points */
+    background-repeat: no-repeat;
+    /* Prevents the background image from repeating */
+    padding-left: 35px; /* Increased padding to provide more space for the image */
+    height: 35px;
+    /* Adjust based on your image size */
+    background-size: 30px 30px;
+    /* Adjust based on your image size */
+    background-position: left center;
+    /* Aligns the image to the left and vertically centers it */
+    display: flex;
+    align-items: center;
+    /* Centers the text vertically next to the image */
+}
+
+.languages-list li {
+    background-image: url('../../../storage/frontend/charm-circle-tick-3.svg');
+    background-size: 12px 12px;
+    /* Adjusts the size of the icon */
+    background-position: 10px center; /* Adjusts the position to leave space between the icon and text */
+}
+
+.languages-box {
+    border: 1px solid #648AD6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.regions-text {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.text-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.image-container {
+    margin: 0 15px; 
+}
+
+.map-background {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.regions-text {
+    position: absolute;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.text-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.regions-list li {
+    margin-right: 80px; /* Adjust the value as needed */
+}
+
+@media (max-width: 768px) {
+    .regions-list li {
+        margin-right: 10px; /* Adjust the value as needed */
+    }
+}
+
+.custom-testimonial-section {
+    padding: 30px 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.custom-testimonial-header {
+    font-weight: 300;
+    font-size: 20px;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.quote {
+    font-weight: 500;
+    font-size: 32px;
+    color: #0040c3;
+    line-height: 1.5;
     margin-bottom: 20px;
 }
 
-.certification-card p {
+.stars {
+    color: gold;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.student-name {
+    font-weight: 400;
+    font-size: 20px;
+    color: #505050;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    color: #0040c3;
+}
+
+.card-text {
+    color: #505050;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.stars {
+    font-size: 16px;
+}
+
+.font-weight-bold {
+    font-size: 13px;
+    color: #505050;
+}
+
+
+
+.student-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.line {
+    width: 23px;
+    height: 2px;
+    background-color: #0e0e0e;
+}
+
+
+
+.experts-title {
+    font-size: 49px;
+    font-weight: 500;
+    color: #0e0e0e;
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+.experts-description {
+    font-size: 25px;
+    font-weight: 400;
+    color: #505050;
+    line-height: 140%;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.bg-dark {
+    background-color: #000;
+}
+
+.bg-dark p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    margin: 0;
+}
+
+.assessment-container {
+    display: flex;
+    width: 100%;
+    max-width: 1225px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.assessment-images {
+    width: 295px;
+    height: 193px;
+    flex-shrink: 0;
+}
+
+.contact-us {
+    background-color: #0040C3;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.contact-us h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 49px;
+    line-height: 140%;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+.video-player {
+    width: 100%;
+    height: 325px;
+    object-fit: cover;
+}
+
+.contact-us p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 140%;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.social-icons div {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+}
+
+.social-icons div img {
+    display: block;
+    margin: 0 auto 5px;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.faq-title {
+    font-size: 49px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.faq-subtitle {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 140%;
+    margin: 0 auto 40px;
     color: #0e0e0e;
 }
 
-
-/* FAQ */
 .faq-container {
-    background-color: #FFF;
+    max-width: 1154px;
+    margin: 0 auto;
 }
 
-.faq-heading {
-    font-size: 3rem;
-    color: #000;
-    font-family: 'Poppins', sans-serif;
+/* .faq-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    width: 90%; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    font-size: 25px;
     font-weight: 500;
-}
-
-.faq-body {
-    font-size: 1.5rem;
-    color: #000;
-    font-weight: 400;
-}
-
-.arrow-icon {
-    width: 24px;
-    /* Adjust as needed */
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.card-header .collapsed .arrow-icon {
-    transform: rotate(-180deg);
-}
-
-.btn-link {
-    width: 100%;
-    text-align: left;
-    /* Align text to the left */
     display: flex;
     justify-content: space-between;
-    /* Space between text and arrow */
     align-items: center;
-}
+} */
+
 
 .faq-container .accordion-item {
     margin-bottom: 20px;
@@ -395,4 +1061,103 @@ body {
     border-radius: 0 0 20px 20px;
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
+}
+
+
+@media (max-width: 768px) {
+    .faq-title {
+        font-size: 36px;
+    }
+
+    .faq-subtitle {
+        font-size: 18px;
+    }
+
+    .faq-item {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .faq-question {
+        font-size: 20px;
+    }
+
+    .faq-question::after {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-us h1 {
+        font-size: 36px;
+    }
+
+    .contact-us p {
+        font-size: 18px;
+    }
+
+    .contact-us-icons .icon-item p {
+        font-size: 14px;
+    }
+
+    .contact-us-icons .icon-item img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .experts-title {
+        font-size: 36px;
+    }
+
+    .experts-description {
+        font-size: 18px;
+    }
+
+    .assessment-images {
+        width: 100%;
+        height: auto;
+    }
+
+    .assessment-container .col-md-3 {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-testimonial-section .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .custom-testimonial-section .col-md-6 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .custom-testimonial-section .col-md-6 img {
+        width: 80%;
+        height: auto;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-text {
+        font-size: 14px;
+    }
+
+    .stars {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    .font-weight-bold {
+        font-size: 12px;
+    }
 }

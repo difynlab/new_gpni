@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('student_id');
             $table->string('course_id');
             $table->date('date')->nullable();
+            $table->date('completion_date')->nullable();
             $table->time('time')->nullable();
             $table->string('mode')->nullable();
             $table->string('transaction_id')->nullable()->unique();

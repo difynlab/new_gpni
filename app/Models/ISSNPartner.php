@@ -10,6 +10,5 @@ class ISSNPartner extends Model
     use HasFactory;
 
     protected $guarded = [];
-
     protected $table = 'issn_partners';
 }

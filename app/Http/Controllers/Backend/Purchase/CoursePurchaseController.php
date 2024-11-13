@@ -33,7 +33,6 @@ class CoursePurchaseController extends Controller
                     : '<span class="inactive-status">Failed</span>');
 
             $course_purchase->course_access_status = ($course_purchase->course_access_status == 'Active') ? '<span class="active-status">Active</span>' : '<span class="inactive-status">Revoked</span>';
-
         }
 
         return $course_purchases;

@@ -18,8 +18,8 @@
                     <div class="col-8">
                         <div class="chat-box">
                             <div class="single-message user-single-message mb-3">
-                                @if($user->profile_image)
-                                    <img src="{{ asset('storage/backend/users/' . $user->profile_image) }}" class="user-profile-image" alt="Profile Image">
+                                @if($user->image)
+                                    <img src="{{ asset('storage/backend/persons/students/' . $user->image) }}" class="user-profile-image" alt="Profile Image">
                                 @else
                                     <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_profile_image) }}" class="user-profile-image" alt="Profile Image">
                                 @endif
@@ -34,8 +34,8 @@
                             @foreach($ask_question_replies as $ask_question_reply)
                                 @if($user->id == $ask_question_reply->replied_by)
                                     <div class="single-message user-single-message mb-3">
-                                        @if($user->profile_image)
-                                            <img src="{{ asset('storage/backend/users/' . $user->profile_image) }}" class="user-profile-image" alt="Profile Image">
+                                        @if($user->image)
+                                            <img src="{{ asset('storage/backend/persons/students/' . $user->image) }}" class="user-profile-image" alt="Profile Image">
                                         @else
                                             <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_profile_image) }}" class="user-profile-image" alt="Profile Image">
                                         @endif
@@ -52,8 +52,8 @@
                                             <p class="time">{{ $ask_question_reply->time_difference }}</p>
                                         </div>
 
-                                        @if($user->profile_image)
-                                            <img src="{{ asset('storage/backend/users/' . $user->profile_image) }}" class="admin-profile-image" alt="Profile Image">
+                                        @if(App\Models\User::find($ask_question_reply->replied_by)->image)
+                                            <img src="{{ asset('storage/backend/persons/admins/' . App\Models\User::find($ask_question_reply->replied_by)->image) }}" class="admin-profile-image" alt="Profile Image">
                                         @else
                                             <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_profile_image) }}" class="admin-profile-image" alt="Profile Image">
                                         @endif
@@ -68,11 +68,6 @@
             <div class="section">
                 <div class="row form-input justify-content-center">
                     <div class="col-8">
-                        <div class="mb-4">
-                            <label for="replied_by_name" class="form-label">Replied By Name<span class="asterisk">*</span></label>
-                            <input type="text" class="form-control" id="replied_by_name" name="replied_by_name" value="{{ old('replied_by_name') }}" placeholder="Replied By Name" required>
-                        </div>
-                        
                         <div>
                             <label for="message" class="form-label">Message<span class="asterisk">*</span></label>
                             <textarea class="form-control" rows="3" id="message" name="message" value="{{ old('message') }}" placeholder="Message" required>{{ old('message') }}</textarea>

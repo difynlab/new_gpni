@@ -19,7 +19,9 @@ class AuthenticationController extends Controller
             $request->session()->regenerate();
 
             if(Auth::user()->role == 'student') {
-                return redirect()->route('frontend.dashboard');
+                $redirect_url = $request->input('redirect', route('frontend.dashboard.index'));
+        
+                return redirect()->intended($redirect_url);
             }
         }
 
@@ -36,6 +38,6 @@ class AuthenticationController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('frontend.login');
+        return redirect()->route('frontend.homepage');
     }
 }

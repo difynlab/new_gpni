@@ -10,7 +10,7 @@ body{
     border: none
 }
 
-.category-tabs .nav-item .nav-link {
+.category-tabs .nav-link {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     font-size: 20px;
@@ -23,8 +23,8 @@ body{
     border: none
 }
 
-.category-tabs .nav-item .nav-link.active,
-.category-tabs .nav-item .nav-link:hover {
+.category-tabs .nav-link.active,
+.category-tabs .nav-link:hover {
     color: #0040c3;
     border-bottom: 3px solid #0040c3
 }
@@ -33,11 +33,14 @@ body{
     background: #fff;
     border-radius: 20px;
     border: 1px solid #cfcfcf;
-    padding: 10px
+    padding: 10px;
+    height: 550px;
 }
 
 .card-img {
     width: 100%;
+    height: 300px;
+    object-fit: cover;
     border-radius: 20px
 }
 
@@ -102,7 +105,32 @@ body{
     padding: 8px 32px;
     margin-top: 10px;
     text-decoration: none;
-    white-space: nowrap
+    white-space: nowrap;
+    width: 100%;
+    background-color: white;
+    transition: all 0.3s;
+}
+.cta-button:hover {
+    color: white;
+    background-color: #0040c3;
+    transition: all 0.3s;
+}
+.cta-button-disabled {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    border-radius: 5px;
+    padding: 8px 32px;
+    margin-top: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+    background-color: rgb(161 161 161);
 }
 
 .cta-button img {
@@ -272,8 +300,8 @@ body{
     display: block;
 }
 
-.hover-card-custom:hover {
-    border: 1px solid #505050;
+.card-custom:hover {
+    border: 1px solid #b1b1b1;
 }
 
 .color-radio:checked+.color-label svg {

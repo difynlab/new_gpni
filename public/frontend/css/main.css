@@ -425,10 +425,10 @@ form .error-message {
         border-bottom: 0px !important;
     }
 
-    .modal-dialog {
+    /* .modal-dialog {
         max-width: 90%;
         max-height: fit-content;
-    }
+    } */
 
     .form-control {
         border-radius: 50px;

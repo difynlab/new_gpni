@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
 
             $table->text('title_en')->nullable();
+            $table->text('sub_title_en')->nullable();
+
             $table->text('title_zh')->nullable();
+            $table->text('sub_title_zh')->nullable();
+            
             $table->text('title_ja')->nullable();
+            $table->text('sub_title_ja')->nullable();
             
             $table->timestamps();
         });

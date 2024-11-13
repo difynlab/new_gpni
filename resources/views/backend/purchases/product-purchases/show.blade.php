@@ -29,8 +29,8 @@
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label">Payment Method</label>
-                            <input class="form-control" value="{{ ucfirst($product_purchase->payment_method) }}" readonly>
+                            <label class="form-label">Payment Mode</label>
+                            <input class="form-control" value="{{ ucfirst($product_purchase->mode) }}" readonly>
                         </div>
 
                         <div>
