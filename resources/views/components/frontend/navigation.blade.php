@@ -100,7 +100,6 @@
 
                 <div class="nav-item dropdown">
                     @if(auth()->check())
-
                         @if(auth()->user()->image)
                             <img src="{{ asset('storage/backend/persons/students/' . auth()->user()->image) }}" alt="Image" class="profile-image" data-bs-toggle="dropdown" aria-expanded="false">
                         @else

@@ -4,7 +4,7 @@
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/my-storage.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/my-storage-corner.css') }}">
 @endpush
 
 @section('content')

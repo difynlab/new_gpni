@@ -61,12 +61,14 @@
         </div>
     </a>
 
-    <a href="{{ route('frontend.member-corner') }}" class="sidebar-link">
-        <div class="sidebar-item {{ Request::segment(1) == 'member-corner' ? 'active' : '' }}">
-            <img src="{{ asset('storage/frontend/student/profile-icon.svg') }}" alt="Member COrner" width="28" height="28">
-            <span>Member Corner</span>
-        </div>
-    </a>
+    @if(auth()->user()->member =='Yes' )
+        <a href="{{ route('frontend.member-corner') }}" class="sidebar-link">
+            <div class="sidebar-item {{ Request::segment(1) == 'member-corner' ? 'active' : '' }}">
+                <img src="{{ asset('storage/frontend/student/profile-icon.svg') }}" alt="Member COrner" width="28" height="28">
+                <span>Member Corner</span>
+            </div>
+        </a>
+    @endif
 
     <a href="{{ route('frontend.ask-questions.index') }}" class="sidebar-link">
         <div class="sidebar-item {{ Request::segment(1) == 'ask-questions' ? 'active' : '' }}">
