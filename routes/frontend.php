@@ -24,10 +24,9 @@ use App\Http\Controllers\Frontend\Student\CourseController;
 use App\Http\Controllers\Frontend\Student\AskQuestionController;
 use App\Http\Controllers\Frontend\Page\TvController;
 use App\Http\Controllers\Frontend\Page\MasterClassController;
-use App\Http\Controllers\Frontend\Student\PasswordController;
 use App\Http\Controllers\Frontend\Student\ProfileController;
 use App\Http\Controllers\Frontend\Student\BuyStudyMaterialController;
-use App\Http\Controllers\Frontend\Student\MembersCornerController;
+use App\Http\Controllers\Frontend\Student\MemberCornerController;
 use App\Http\Controllers\Frontend\Student\MyOrderController;
 use App\Http\Controllers\Frontend\Student\QualificationsController;
 use App\Http\Controllers\Frontend\Student\ReferFriendController;
@@ -165,18 +164,9 @@ Route::middleware(['set_language'])->group(function () {
 
             Route::get('buy-study-materials', [BuyStudyMaterialController::class, 'index'])->name('buy-study-materials');
 
+            Route::get('member-corner', [MemberCornerController::class, 'index'])->name('member-corner');
 
 
-
-
-
-            Route::get('change-password', [PasswordController::class, 'index'])->name('change-password');
-            Route::post('change-password', [PasswordController::class, 'update'])->name('change-password.update');
-
-            Route::get('payment-flow/{id}', [CourseController::class, 'enrollNow'])->name('payment-flow');
-
-            
-            Route::get('members-corner', [MembersCornerController::class, 'index'])->name('members-corner');
             
 
             Route::get('qualifications', [QualificationsController::class, 'index'])->name('qualifications');

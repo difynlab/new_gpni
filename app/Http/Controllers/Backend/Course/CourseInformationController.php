@@ -67,7 +67,7 @@ class CourseInformationController extends Controller
         // Section 3 points
             $certification_section_3_points = [];
 
-            $this->deleteOldRemovedFiles($course, 'certification_section_3_points', $request->old_certification_section_3_point_files, 'course-image-videos/');
+            $this->deleteOldRemovedFiles($course, 'certification_section_3_points', $request->old_certification_section_3_point_files, 'course-images/');
 
             if($request->old_certification_section_3_point_descriptions) {
                 foreach($request->old_certification_section_3_point_descriptions as $key => $old_certification_section_3_point_description) {
@@ -83,7 +83,7 @@ class CourseInformationController extends Controller
                     if($request->certification_section_3_point_files && $request->certification_section_3_point_files[$key]) {
                         $image = $request->certification_section_3_point_files[$key];
                         $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-                        $image->storeAs('public/backend/courses/course-image-videos', $image_name);
+                        $image->storeAs('public/backend/courses/course-images', $image_name);
                     }
 
                     array_push($certification_section_3_points, [
@@ -99,12 +99,12 @@ class CourseInformationController extends Controller
         // Section 4 video
             if($request->file('new_certification_section_4_video')) {
                 if($request->old_certification_section_4_video) {
-                    Storage::delete('public/backend/courses/course-image-videos/' . $request->old_certification_section_4_video);
+                    Storage::delete('public/backend/courses/course-videos/' . $request->old_certification_section_4_video);
                 }
 
                 $new_certification_section_4_video = $request->file('new_certification_section_4_video');
                 $certification_section_4_video_name = Str::random(40) . '.' . $new_certification_section_4_video->getClientOriginalExtension();
-                $new_certification_section_4_video->storeAs('public/backend/courses/course-image-videos', $certification_section_4_video_name);
+                $new_certification_section_4_video->storeAs('public/backend/courses/course-videos', $certification_section_4_video_name);
             }
             else {
                 if($course->certification_section_4_video) {
@@ -119,7 +119,7 @@ class CourseInformationController extends Controller
         // Section 6 points
             $certification_section_6_teams = [];
 
-            $this->deleteOldRemovedFiles($course, 'certification_section_6_teams', $request->old_certification_section_6_team_files, 'course-image-videos/');
+            $this->deleteOldRemovedFiles($course, 'certification_section_6_teams', $request->old_certification_section_6_team_files, 'course-images/');
 
             if($request->old_certification_section_6_team_names) {
                 foreach($request->old_certification_section_6_team_names as $key => $old_certification_section_6_team_name) {
@@ -135,7 +135,7 @@ class CourseInformationController extends Controller
                     if($request->certification_section_6_team_files && $request->certification_section_6_team_files[$key]) {
                         $image = $request->certification_section_6_team_files[$key];
                         $image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
-                        $image->storeAs('public/backend/courses/course-image-videos', $image_name);
+                        $image->storeAs('public/backend/courses/course-images', $image_name);
                     }
 
                     array_push($certification_section_6_teams, [
@@ -151,12 +151,12 @@ class CourseInformationController extends Controller
         // Section 7 video
             if($request->file('new_certification_section_7_video')) {
                 if($request->old_certification_section_7_video) {
-                    Storage::delete('public/backend/courses/course-image-videos/' . $request->old_certification_section_7_video);
+                    Storage::delete('public/backend/courses/course-videos/' . $request->old_certification_section_7_video);
                 }
 
                 $new_certification_section_7_video = $request->file('new_certification_section_7_video');
                 $certification_section_7_video_name = Str::random(40) . '.' . $new_certification_section_7_video->getClientOriginalExtension();
-                $new_certification_section_7_video->storeAs('public/backend/courses/course-image-videos', $certification_section_7_video_name);
+                $new_certification_section_7_video->storeAs('public/backend/courses/course-videos', $certification_section_7_video_name);
             }
             else {
                 if($course->certification_section_7_video) {
@@ -188,12 +188,12 @@ class CourseInformationController extends Controller
         // Section 9 image
             if($request->file('new_certification_section_9_image')) {
                 if($request->old_certification_section_9_image) {
-                    Storage::delete('public/backend/courses/course-image-videos/' . $request->old_certification_section_9_image);
+                    Storage::delete('public/backend/courses/course-images/' . $request->old_certification_section_9_image);
                 }
 
                 $new_certification_section_9_image = $request->file('new_certification_section_9_image');
                 $certification_section_9_image_name = Str::random(40) . '.' . $new_certification_section_9_image->getClientOriginalExtension();
-                $new_certification_section_9_image->storeAs('public/backend/courses/course-image-videos', $certification_section_9_image_name);
+                $new_certification_section_9_image->storeAs('public/backend/courses/course-images', $certification_section_9_image_name);
             }
             else {
                 if($course->certification_section_9_image) {
@@ -208,12 +208,12 @@ class CourseInformationController extends Controller
         // Section 10 video
             if($request->file('new_certification_section_10_video')) {
                 if($request->old_certification_section_10_video) {
-                    Storage::delete('public/backend/courses/course-image-videos/' . $request->old_certification_section_10_video);
+                    Storage::delete('public/backend/courses/course-videos/' . $request->old_certification_section_10_video);
                 }
 
                 $new_certification_section_10_video = $request->file('new_certification_section_10_video');
                 $certification_section_10_video_name = Str::random(40) . '.' . $new_certification_section_10_video->getClientOriginalExtension();
-                $new_certification_section_10_video->storeAs('public/backend/courses/course-image-videos', $certification_section_10_video_name);
+                $new_certification_section_10_video->storeAs('public/backend/courses/course-videos', $certification_section_10_video_name);
             }
             else {
                 if($course->certification_section_10_video) {
@@ -253,12 +253,12 @@ class CourseInformationController extends Controller
         // Section 11 video
             if($request->file('new_certification_section_11_video')) {
                 if($request->old_certification_section_11_video) {
-                    Storage::delete('public/backend/courses/course-image-videos/' . $request->old_certification_section_11_video);
+                    Storage::delete('public/backend/courses/course-videos/' . $request->old_certification_section_11_video);
                 }
 
                 $new_certification_section_11_video = $request->file('new_certification_section_11_video');
                 $certification_section_11_video_name = Str::random(40) . '.' . $new_certification_section_11_video->getClientOriginalExtension();
-                $new_certification_section_11_video->storeAs('public/backend/courses/course-image-videos', $certification_section_11_video_name);
+                $new_certification_section_11_video->storeAs('public/backend/courses/course-videos', $certification_section_11_video_name);
             }
             else {
                 if($course->certification_section_11_video) {
@@ -323,12 +323,12 @@ class CourseInformationController extends Controller
         // Section 15 video
             if($request->file('new_certification_section_15_video')) {
                 if($request->old_certification_section_15_video) {
-                    Storage::delete('public/backend/courses/course-image-videos/' . $request->old_certification_section_15_video);
+                    Storage::delete('public/backend/courses/course-videos/' . $request->old_certification_section_15_video);
                 }
 
                 $new_certification_section_15_video = $request->file('new_certification_section_15_video');
                 $certification_section_15_video_name = Str::random(40) . '.' . $new_certification_section_15_video->getClientOriginalExtension();
-                $new_certification_section_15_video->storeAs('public/backend/courses/course-image-videos', $certification_section_15_video_name);
+                $new_certification_section_15_video->storeAs('public/backend/courses/course-videos', $certification_section_15_video_name);
             }
             else {
                 if($course->certification_section_15_video) {

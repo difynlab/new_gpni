@@ -10,9 +10,17 @@
         <form action="{{ route('backend.persons.students.information.update', $student) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
-                <p class="inner-page-title">Primary Practice Details</p>
+                <p class="inner-page-title">Primary Details</p>
 
                 <div class="row form-input">
+                    <div class="col-6 mb-4">
+                        <label for="member" class="form-label">Member Status</label>
+                        <select class="form-control form-select" id="member" name="member">
+                            <option value="Yes" {{ old('member', $student->member) == 'Yes' ? 'selected' : '' }}>Yes</option>
+                            <option value="No" {{ old('member', $student->member) == 'No' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
                     <div class="col-6 mb-4">
                         <label for="business_name" class="form-label">Business Name</label>
                         <input type="text" class="form-control" id="business_name" name="business_name" placeholder="Business Name" value="{{ old('business_name', $student->business_name) }}">
@@ -132,7 +140,7 @@
                         </select>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12">
                         <label for="self_introduction" class="form-label">Self Introduction</label>
                         <textarea class="form-control" rows="5" id="self_introduction" name="self_introduction" value="{{ old('self_introduction', $student->self_introduction) }}" placeholder="Self Introduction">{{ old('self_introduction', $student->self_introduction) }}</textarea>
                     </div>

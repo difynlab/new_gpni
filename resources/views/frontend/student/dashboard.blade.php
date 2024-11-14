@@ -42,10 +42,10 @@
 
                     <a href="{{ route('frontend.change-password') }}" class="card">
                         <h2>Change Password</h2>
-                        <p>Change student account password</p>
+                        <p>Change your account password</p>
                     </a>
 
-                    <a href="#" class="card">
+                    <a href="{{ route('frontend.courses.index') }}" class="card">
                         <h2>Courses</h2>
                         <p>Access your course related details</p>
                     </a>

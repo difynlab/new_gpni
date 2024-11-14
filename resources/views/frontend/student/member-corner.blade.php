@@ -1,10 +1,10 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'My Storage')
+@section('title', 'Member Corner')
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/my-storage.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/my-storage-corner.css') }}">
 @endpush
 
 @section('content')
@@ -16,7 +16,7 @@
             <div class="col-12 col-md-9 main-content">
                 <div class="container-main">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="header">My Storage</div>
+                        <div class="header">Member Corner</div>
                     </div>
                     
                     <ul class="nav nav-pills justify-content-evenly mb-4" id="pills-tab" role="tablist">

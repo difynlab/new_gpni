@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\Auth\AuthenticationController;
+use App\Http\Controllers\Frontend\Auth\ChangePasswordController;
 use App\Http\Controllers\Frontend\Auth\ForgotPasswordController;
 use App\Http\Controllers\Frontend\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\Auth\RegisterController;
@@ -18,6 +19,9 @@ Route::middleware(['set_language'])->group(function () {
 
     Route::get('reset-password/{email}/{token}', [ResetPasswordController::class, 'index'])->name('password.reset');
     Route::post('reset-password', [ResetPasswordController::class, 'store'])->name('password.store');
+
+    Route::get('change-password', [ChangePasswordController::class, 'index'])->name('change-password');
+    Route::post('change-password', [ChangePasswordController::class, 'update'])->name('change-password.update');
 
     Route::middleware('auth', 'role:student')->group(function () {
         Route::post('logout', [AuthenticationController::class, 'logout'])->name('logout');

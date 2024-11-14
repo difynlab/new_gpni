@@ -1,17 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Student;
+namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class PasswordController extends Controller
+class ChangePasswordController extends Controller
 {
     public function index()
     {
-        return view('frontend.student.change-password');
+        $student = Auth::user();
+
+        return view('frontend.auth.change-password', [
+            'student' => $student
+        ]);
     }
 
     public function update(Request $request)
@@ -36,7 +40,7 @@ class PasswordController extends Controller
 
         Auth::logout();
 
-        return redirect()->back()->with('success', 'Successfully updated!');
+        return redirect()->route('frontend.login')->with('success', 'Password changed successfully');
     }
 
 }

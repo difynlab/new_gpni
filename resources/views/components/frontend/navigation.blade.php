@@ -119,7 +119,7 @@
                             </li>
                         </ul>
                     @else
-                        <a href="{{ route('frontend.login', ['redirect' => route('frontend.dashboard.index')]) }}" class="nav-link">
+                        <a href="{{ route('frontend.login') }}" class="nav-link">
                             <div class="btn btn-primary px-4">Login</div>
                         </a>
                     @endif

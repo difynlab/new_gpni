@@ -175,7 +175,7 @@
                     <div class="video-section">
                         <div class="video-container">
                             <video controls>
-                                <source src="{{ asset('storage/backend/courses/course-image-videos/' . $course->certification_section_4_video) }}" type="video/mp4">
+                                <source src="{{ asset('storage/backend/courses/course-videos/' . $course->certification_section_4_video) }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -383,7 +383,7 @@
                 <div class="col-lg-6 image-container">
                     <!-- <img src="/storage/frontend/div.col-lg-6.svg" alt="Person Image" class="img-fluid person"> -->
                     @if($course -> certification_section_9_image)
-                        <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course -> certification_section_9_image) }}" alt="Person Image" class="img-fluid person">
+                        <img src="{{ asset('storage/backend/courses/course-images/' . $course -> certification_section_9_image) }}" alt="Person Image" class="img-fluid person">
                     @else
                         <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" alt="Person Image" class="img-fluid person">
                     @endif

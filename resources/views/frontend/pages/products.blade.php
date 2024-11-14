@@ -96,15 +96,25 @@
                                             </div>
                                         </div>
 
-                                        <form action="{{ route('frontend.carts.store') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        @if(auth()->check())
+                                            @if(hasUserAddedToCart(auth()->user()->id, $product->id))
+                                                <button class="cta-button-disabled" disabled>
+                                                    Added to Cart
+                                                </button>
+                                            @else
+                                                <form action="{{ route('frontend.carts.store') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                                            <a type="submit" class="cta-button">
-                                                <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
-                                                Add to cart
-                                            </a>
-                                        </form>
+                                                    <button type="submit" class="cta-button">
+                                                        <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
+                                                        Add to Cart
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        @else
+                                            <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>
+                                        @endif
                                     </div>
                                 </div>
                             @endif

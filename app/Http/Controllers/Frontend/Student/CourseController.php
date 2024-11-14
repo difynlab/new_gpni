@@ -55,11 +55,26 @@ class CourseController extends Controller
     {
         $student = Auth::user();
 
+        $books = json_decode($course_chapter->books) ?? null;
+        $videos = json_decode($course_chapter->videos) ?? null;
+        $video_links = json_decode($course_chapter->video_links) ?? null;
+        $additional_videos = json_decode($course_chapter->additional_videos) ?? null;
+        $additional_video_links = json_decode($course_chapter->additional_video_links) ?? null;
+        $presentation_medias = json_decode($course_chapter->presentation_medias) ?? null;
+        $downloadable_resources = json_decode($course_chapter->downloadable_resources) ?? null;
+
         return view('frontend.student.courses.more', [
             'course' => $course,
             'course_module' => $course_module,
             'course_chapter' => $course_chapter,
-            'student' => $student
+            'student' => $student,
+            'books' => $books,
+            'videos' => $videos,
+            'video_links' => $video_links,
+            'additional_videos' => $additional_videos,
+            'additional_video_links' => $additional_video_links,
+            'presentation_medias' => $presentation_medias,
+            'downloadable_resources' => $downloadable_resources
         ]);
     }
 }

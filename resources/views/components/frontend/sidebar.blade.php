@@ -61,10 +61,10 @@
         </div>
     </a>
 
-    <a href="#" class="sidebar-link">
-        <div class="sidebar-item">
-            <img src="{{ asset('storage/frontend/student/profile-icon.svg') }}" alt="Buy Study Material icon" width="28" height="28">
-            <span>Members Corner</span>
+    <a href="{{ route('frontend.member-corner') }}" class="sidebar-link">
+        <div class="sidebar-item {{ Request::segment(1) == 'member-corner' ? 'active' : '' }}">
+            <img src="{{ asset('storage/frontend/student/profile-icon.svg') }}" alt="Member COrner" width="28" height="28">
+            <span>Member Corner</span>
         </div>
     </a>
 

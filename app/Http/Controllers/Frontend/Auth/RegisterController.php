@@ -290,7 +290,7 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Account creation failed!');
         }
 
-        $data = $request->except('confirm_password');
+        $data = $request->except('confirm_password', 'middleware_language_name', 'middleware_language');
         $data['role'] = 'student';
         $data['status'] = '1';
 
@@ -298,6 +298,6 @@ class RegisterController extends Controller
         Auth::login($student);
         $request->session()->regenerate();
 
-        return redirect()->route('frontend.dashboard')->with('success', 'Successfully created!');
+        return redirect()->route('frontend.dashboard.index');
     }
 }
