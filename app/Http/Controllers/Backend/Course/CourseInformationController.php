@@ -35,6 +35,7 @@ class CourseInformationController extends Controller
     public function update(Request $request, Course $course)
     {
         $validator = Validator::make($request->all(), [
+            'new_certification_section_2_image' => 'nullable|max:2048',
             'certification_section_3_point_files.*' => 'nullable|max:2048',
             'new_certification_section_4_video' => 'nullable|max:2048',
             'certification_section_6_team_files.*' => 'nullable|max:2048',
@@ -42,6 +43,7 @@ class CourseInformationController extends Controller
             'new_certification_section_9_image' => 'nullable|max:2048',
             'new_certification_section_10_video' => 'nullable|max:2048',
         ], [
+            'new_certification_section_2_image.max' => 'Image must not be greater than 2MB',
             'certification_section_3_point_files.*.max' => 'Each image must not be greater than 2MB',
             'new_certification_section_4_video.max' => 'Video must not be greater than 2MB',
             'certification_section_6_team_files.*.max' => 'Each image must not be greater than 2MB',
@@ -53,6 +55,26 @@ class CourseInformationController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
         }
+
+        // Section 2 image
+            if($request->file('new_certification_section_2_image')) {
+                if($request->old_certification_section_2_image) {
+                    Storage::delete('public/backend/courses/course-images/' . $request->old_certification_section_2_image);
+                }
+
+                $new_certification_section_2_image = $request->file('new_certification_section_2_image');
+                $certification_section_2_image_name = Str::random(40) . '.' . $new_certification_section_2_image->getClientOriginalExtension();
+                $new_certification_section_2_image->storeAs('public/backend/courses/course-images', $certification_section_2_image_name);
+            }
+            else {
+                if($course->certification_section_2_image) {
+                    $certification_section_2_image_name = $request->old_certification_section_2_image;
+                }
+                else {
+                    $certification_section_2_image_name = null;
+                }
+            }
+        // Section 2 image
 
         // Section 2 points
             $certification_section_2_points = [];
@@ -460,6 +482,8 @@ class CourseInformationController extends Controller
         // Master section 8 videos
 
         $data = $request->except(
+            'old_certification_section_2_image',
+            'new_certification_section_2_image',
             'certification_section_3_point_descriptions',
             'certification_section_3_point_files',
             'old_certification_section_3_point_descriptions',
@@ -514,6 +538,7 @@ class CourseInformationController extends Controller
             'old_master_section_8_video_files'
         );
 
+        $data['certification_section_2_image'] = $certification_section_2_image_name;
         $data['certification_section_2_points'] = $certification_section_2_points;
         $data['certification_section_3_points'] = $final_certification_section_3_points;
         $data['certification_section_4_video'] = $certification_section_4_video_name;

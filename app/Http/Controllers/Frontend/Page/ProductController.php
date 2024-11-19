@@ -37,7 +37,7 @@ class ProductController extends Controller
         $quantities = $request->quantities;
 
         $product_order = new ProductOrder();
-        $product_order->student_id = Auth::user()->id;
+        $product_order->user_id = Auth::user()->id;
         $product_order->status = '1';
         $product_order->save();
 

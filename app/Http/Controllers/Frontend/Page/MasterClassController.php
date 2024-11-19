@@ -66,7 +66,7 @@ class MasterClassController extends Controller
     public function checkout(Request $request)
     {
         $course_order = new CoursePurchase();
-        $course_order->student_id = Auth::user()->id;
+        $course_order->user_id = Auth::user()->id;
         $course_order->course_id = $request->course_id;
         $course_order->status = '1';
         $course_order->save();

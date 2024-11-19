@@ -30,7 +30,7 @@ class CourseModuleExamQuestionController extends Controller
 
         $course = Course::where('status', '!=', '0')->find($course_module->course_id);
 
-        $course_module_exam_questions = CourseModuleExamQuestion::where('module_id', $course_module->id)->where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
+        $course_module_exam_questions = CourseModuleExamQuestion::where('course_id', $course->id)->where('module_id', $course_module->id)->where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
 
         $course_module_exam_questions = $this->processCourseModuleExamQuestions($course_module_exam_questions);
 

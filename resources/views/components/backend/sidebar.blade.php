@@ -52,6 +52,23 @@
                 </a>
             </li>
 
+            <div class="accordion" id="exam-result-accordion">
+                <button class="link accordion-dropdown collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#exam-result-data-collapse">
+                    <img src="{{ asset('storage/backend/sidebar/article.png') }}" alt="Icon">
+                    <span>Results</span>
+                </button>
+
+                <div id="exam-result-data-collapse" class="accordion-collapse collapse {{ in_array(Request::segment(3), ['module-exams', 'final-exams']) ? 'show' : '' }}" data-bs-parent="#exam-result-accordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><a href="{{ route('backend.exam-results.module-exams') }}" class="link {{ Request::segment(3) == 'module-exams' ? 'active' : null }}">Module Exams</a></li>
+
+                            <li><a href="{{ route('backend.exam-results.final-exams') }}" class="link {{ Request::segment(3) == 'final-exams' ? 'active' : null }}">Final Exams</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <li>
                 <a href="{{ route('backend.promotions.index') }}" class="link {{ Request::segment(2) == 'promotions' ? 'active' : null }}">
                     <img src="{{ asset('storage/backend/sidebar/promotion.png') }}" alt="Icon">

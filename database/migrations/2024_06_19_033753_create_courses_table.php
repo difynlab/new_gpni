@@ -37,11 +37,13 @@ return new class extends Migration
                 $table->text('course_introduction')->nullable();
                 $table->text('course_content')->nullable();
                 $table->text('course_chapter')->nullable();
+                $table->text('certificate_images')->nullable();
             // Common fields
 
             // Certification course fields
                 $table->text('certification_section_2_title')->nullable();
                 $table->text('certification_section_2_description')->nullable();
+                $table->text('certification_section_2_image')->nullable();
                 $table->text('certification_section_2_points')->nullable();
                 $table->text('certification_section_3_title')->nullable();
                 $table->text('certification_section_3_points')->nullable();
@@ -119,6 +121,8 @@ return new class extends Migration
             // Material & logistic field
 
             $table->enum('final_exam', ['Yes', 'No'])->default('No');
+            $table->enum('time_required', ['Yes', 'No'])->default('No');
+            $table->time('exam_time')->nullable();
 
             $table->enum('status', [0, 1, 2])->index();
             $table->timestamps();

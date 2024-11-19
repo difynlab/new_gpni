@@ -179,15 +179,6 @@
                             @endif
                         </div>
                     </div>
-
-                    <div class="info-note">
-                        <div class="note-content">
-                            <img src="{{ asset('storage/frontend/bi-exclamation-circle.svg') }}" alt="Info Icon" width="20" height="20">
-                            <span>Note: You can proceed to the next module only after passing this test exam.</span>
-                        </div>
-                    </div>
-
-                    <button class="exam-button">Take the Module Exam</button>
                 </div>
             </div>
         </div>

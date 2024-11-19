@@ -55,6 +55,7 @@ use App\Http\Controllers\Backend\Purchase\CoursePurchaseController;
 use App\Http\Controllers\Backend\Purchase\GiftCardPurchaseController;
 use App\Http\Controllers\Backend\Purchase\MaterialPurchaseController;
 use App\Http\Controllers\Backend\Purchase\ProductPurchaseController;
+use App\Http\Controllers\Backend\Result\ExamResultController;
 use App\Http\Controllers\Backend\Webinar\WebinarController;
 use Illuminate\Support\Facades\Route;
 
@@ -341,4 +342,20 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         Route::resource('webinars', WebinarController::class)->except('show');
         Route::post('webinars/filter', [WebinarController::class, 'filter'])->name('webinars.filter');
     // Webinars routes
+
+
+    // Exam results routes
+        Route::prefix('exam-results')->name('exam-results.')->group(function() {
+            Route::get('module-exams', [ExamResultController::class, 'moduleExams'])->name('module-exams');
+            Route::get('module-exams/{course_module_exam}', [ExamResultController::class, 'moduleExamResult'])->name('module-exam-result');
+            Route::delete('module-exams/{course_module_exam}', [ExamResultController::class, 'moduleExamResultDestroy'])->name('module-exam-result-destroy');
+            Route::post('module-exams', [ExamResultController::class, 'moduleExamsFilter'])->name('module-exam-filter');
+            
+
+            Route::get('final-exams', [ExamResultController::class, 'finalExams'])->name('final-exams');
+            Route::get('final-exams/{course_final_exam}', [ExamResultController::class, 'finalExamResult'])->name('final-exam-result');
+            Route::delete('final-exams/{course_final_exam}', [ExamResultController::class, 'finalExamResultDestroy'])->name('final-exam-result-destroy');
+            Route::post('final-exams', [ExamResultController::class, 'finalExamsFilter'])->name('final-exam-filter');
+        });
+    // Exam results routes
 });

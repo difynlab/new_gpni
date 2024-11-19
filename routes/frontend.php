@@ -13,7 +13,7 @@ use App\Http\Controllers\Frontend\Page\InsuranceProfessionalMembershipController
 use App\Http\Controllers\Frontend\Page\GiftCardController;
 use App\Http\Controllers\Frontend\Page\PodcastController;
 use App\Http\Controllers\Frontend\Page\ArticleController;
-use App\Http\Controllers\Frontend\Page\CertificationClassController;
+use App\Http\Controllers\Frontend\Page\CertificationCourseController;
 use App\Http\Controllers\Frontend\Page\WhyWeAreDifferentController;
 use App\Http\Controllers\Frontend\Page\MembershipController;
 use App\Http\Controllers\Frontend\Page\ContactUsController;
@@ -32,7 +32,8 @@ use App\Http\Controllers\Frontend\Student\QualificationsController;
 use App\Http\Controllers\Frontend\Student\ReferFriendController;
 use App\Http\Controllers\Frontend\Student\CartController;
 use App\Http\Controllers\Frontend\Page\ProductController;
-
+use App\Http\Controllers\Frontend\Student\FinalExamController;
+use App\Http\Controllers\Frontend\Student\ModuleExamController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/frontend-auth.php';
@@ -87,13 +88,9 @@ Route::middleware(['set_language'])->group(function () {
             Route::get('/', [ProductController::class, 'index'])->name('index');
             Route::get('show/{product}', [ProductController::class, 'show'])->name('show');
         });
-
-
-
-
         Route::prefix('certification-courses')->name('certification-courses.')->group(function() {
-            // Route::get('/', [CertificationClassController::class, 'index'])->name('index');
-            Route::get('show/{course}', [CertificationClassController::class, 'show'])->name('show');
+            Route::get('show/{course}', [CertificationCourseController::class, 'show'])->name('show');
+            Route::get('purchase/{course}', [CertificationCourseController::class, 'purchase'])->name('purchase');
         });
     // Page routes
 
@@ -107,8 +104,8 @@ Route::middleware(['set_language'])->group(function () {
                 });
 
                 Route::prefix('certification-courses')->name('certification-courses.')->group(function() {
-                    Route::post('checkout', [CertificationClassController::class, 'checkout'])->name('checkout');
-                    Route::get('success', [CertificationClassController::class, 'success'])->name('success');
+                    Route::post('checkout', [CertificationCourseController::class, 'checkout'])->name('checkout');
+                    Route::get('success', [CertificationCourseController::class, 'success'])->name('success');
                 });
 
                 Route::prefix('products')->name('products.')->group(function() {
@@ -165,9 +162,18 @@ Route::middleware(['set_language'])->group(function () {
             Route::get('buy-study-materials', [BuyStudyMaterialController::class, 'index'])->name('buy-study-materials');
 
             Route::get('member-corner', [MemberCornerController::class, 'index'])->name('member-corner');
-
-
             
+            Route::prefix('module-exams')->name('module-exams.')->group(function() {
+                Route::get('{course}/{course_module}', [ModuleExamController::class, 'index'])->name('index');
+                Route::post('{course}/{course_module}', [ModuleExamController::class, 'store'])->name('store');
+                Route::get('{course}/{course_module}/{course_module_exam}/results', [ModuleExamController::class, 'results'])->name('results');
+            });
+
+            Route::prefix('final-exam')->name('final-exam.')->group(function() {
+                Route::get('{course}', [FinalExamController::class, 'index'])->name('index');
+                Route::post('{course}', [FinalExamController::class, 'store'])->name('store');
+                Route::get('{course}/{course_final_exam}/results', [FinalExamController::class, 'results'])->name('results');
+            });
 
             Route::get('qualifications', [QualificationsController::class, 'index'])->name('qualifications');
         });

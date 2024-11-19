@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use App\Models\CourseChapter;
 
 use App\Http\Controllers\Controller;
+use App\Models\CourseFinalExam;
+use App\Models\CourseModuleExam;
 
 class CourseController extends Controller
 {
@@ -16,12 +18,12 @@ class CourseController extends Controller
     {
         $student = Auth::user();
 
-        $course_ids = CoursePurchase::where('student_id', $student->id)->where('payment_status', 'Completed')->where('course_access_status', 'Active')->where('refund_status', 'Not Refunded')->where('status', '1')->pluck('course_id')->toArray();
+        $course_ids = CoursePurchase::where('user_id', $student->id)->where('payment_status', 'Completed')->where('course_access_status', 'Active')->where('refund_status', 'Not Refunded')->where('status', '1')->pluck('course_id')->toArray();
 
         $courses = Course::whereIn('id', $course_ids)->where('status', '1')->orderBy('id', 'desc')->get();
 
         foreach($courses as $course) {
-            $course_purchase = CoursePurchase::where('course_id', $course->id)->where('student_id', $student->id)->first();
+            $course_purchase = CoursePurchase::where('course_id', $course->id)->where('user_id', $student->id)->first();
 
             $course->date = $course_purchase && $course_purchase->date ? Carbon::parse($course_purchase->date)->format('d M Y') : null;
 
@@ -38,11 +40,14 @@ class CourseController extends Controller
     {
         $student = Auth::user();
 
-        $course_modules = CourseModule::where('course_id', $course->id)->where('status', '1')->get();
+        $course_modules = CourseModule::where('course_id', $course->id)->where('status', '1')->orderBy('id', 'asc')->get();
 
         foreach($course_modules as $course_module) {
             $course_module->chapters = CourseChapter::where('course_id', $course->id)->where('module_id', $course_module->id)->where('status', '1')->get();
+            $course_module->course_module_exam = CourseModuleExam::where('course_id', $course->id)->where('module_id', $course_module->id)->where('status', '1')->orderBy('id', 'desc')->first();
         }
+
+        $course->course_final_exam = CourseFinalExam::where('course_id', $course->id)->where('status', '1')->orderBy('id', 'desc')->first();
 
         return view('frontend.student.courses.show', [
             'course' => $course,

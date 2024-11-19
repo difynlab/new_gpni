@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\GlobalEducationPartnerContent;
-use App\Models\MembershipContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;

@@ -226,8 +226,6 @@
                 url: edit_url,
                 method: 'GET',
                 success: function(data) {
-                    console.log(data);
-
                     $('.edit-module-form-modal #title').val(data['title']);
                     $('.edit-module-form-modal #description').val(data['description']);
                     $('.edit-module-form-modal #module_exam').val(data['module_exam']);

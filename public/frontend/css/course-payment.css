@@ -144,7 +144,7 @@ body {
     color: white;
 }
 
-.order-details .section-title {
+.order-details .title {
     font-size: 20px;
     font-weight: 300;
     line-height: 120%;
@@ -196,7 +196,9 @@ body {
 }
 
 .additional-option {
-    display: none;
+    /* display: none; */
+    text-align: center;
+    margin-bottom: 35px;
 }
 
 input[type="radio"][name="paymentMethod"][value="oneTimePayment"]:checked~.additional-option {
@@ -243,7 +245,7 @@ input[type="radio"][name="paymentMethod"][value="oneTimePayment"]:checked~.addit
         font-size: 35px;
     }
 
-    .order-details .section-title {
+    .order-details .title {
         font-size: 18px;
     }
 
@@ -300,7 +302,7 @@ input[type="radio"][name="paymentMethod"][value="oneTimePayment"]:checked~.addit
         font-size: 30px;
     }
 
-    .order-details .section-title {
+    .order-details .title {
         font-size: 16px;
     }
 
@@ -319,7 +321,7 @@ input[type="radio"][name="paymentMethod"][value="oneTimePayment"]:checked~.addit
 
 
 .information-box {
-    display: none;
+    display: flex;
     padding: 15px;
     border-radius: 10px;
     background: rgba(255, 183, 0, 0.06);
@@ -345,4 +347,19 @@ input[type="radio"][name="paymentMethod"][value="oneTimePayment"]:checked~.addit
 
 #pay-now-radio:checked~.order-details .pay-now-button {
     display: block;
+}
+
+.pay-now {
+    display: block;
+    width: 100%;
+    background: white;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    transition: all 0.3s;
+}
+.pay-now:hover {
+    background-color: black;
+    color: white;
+    transition: all 0.3s;
 }

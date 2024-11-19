@@ -64,13 +64,15 @@ class CourseController extends Controller
             'new_image' => 'required|max:2048',
             'new_video' => 'required|max:2048',
             'new_instructor_profile_image' => 'required|max:2048',
+            'new_certificate_images.*' => 'max:2048',
         ], [
             'new_image.max' => 'Image must not be greater than 2MB',
             'new_image.required' => 'This field is required',
             'new_video.max' => 'Video must not be greater than 2MB',
             'new_video.required' => 'This field is required',
             'new_instructor_profile_image.max' => 'Image must not be greater than 2MB',
-            'new_instructor_profile_image.required' => 'Instructor profile image is required'
+            'new_instructor_profile_image.required' => 'Instructor profile image is required',
+            'new_certificate_images.*.max' => 'Each image must not be greater than 2MB'
         ]);
 
         if($validator->fails()) {
@@ -104,6 +106,20 @@ class CourseController extends Controller
             $instructor_profile_image_name = null;
         }
 
+        if($request->file('new_certificate_images') != null) {
+            $certificate_images = [];
+            foreach($request->file('new_certificate_images') as $image) {
+                $certificate_image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('public/backend/courses/certificate-images', $certificate_image_name);
+                $certificate_images[] = $certificate_image_name;
+            }
+
+            $certificate_images = json_encode($certificate_images);
+        }
+        else {
+            $certificate_images = null;
+        }
+
         if($request->file('material_logistic') != null) {
             $material_logistic = $request->file('material_logistic');
             $material_logistic_name = Str::random(40) . '.' . $material_logistic->getClientOriginalExtension();
@@ -114,10 +130,11 @@ class CourseController extends Controller
         }
 
         $course = new Course();
-        $data = $request->except('old_image', 'new_image', 'old_video', 'new_video', 'old_instructor_profile_image', 'new_instructor_profile_image', 'material_logistic');
+        $data = $request->except('old_image', 'new_image', 'old_video', 'new_video', 'old_instructor_profile_image', 'new_instructor_profile_image', 'material_logistic', 'old_certificate_images', 'new_certificate_images');
         $data['image'] = $image_name;
         $data['video'] = $video_name;
         $data['instructor_profile_image'] = $instructor_profile_image_name;
+        $data['certificate_images'] = $certificate_images;
         $data['material_logistic'] = $material_logistic_name;
         $course->create($data);
 
@@ -137,10 +154,12 @@ class CourseController extends Controller
             'new_image' => 'max:2048',
             'new_video' => 'max:2048',
             'new_instructor_profile_image' => 'max:2048',
+            'new_certificate_images.*' => 'max:2048'
         ], [
             'new_image.max' => 'Image must not be greater than 2MB',
             'new_video.max' => 'Video must not be greater than 2MB',
-            'new_instructor_profile_image.max' => 'Image must not be greater than 2MB'
+            'new_instructor_profile_image.max' => 'Image must not be greater than 2MB',
+            'new_certificate_images.*.max' => 'Each image must not be greater than 2MB'
         ]);
 
         if($validator->fails()) {
@@ -186,6 +205,34 @@ class CourseController extends Controller
             $instructor_profile_image_name = $request->old_instructor_profile_image;
         }
 
+        if($request->file('new_certificate_images') != null) {
+            if($request->old_certificate_images) {
+                $encoded_string = htmlspecialchars_decode($request->old_certificate_images);
+                $images = json_decode($encoded_string);
+
+                foreach($images as $image) {
+                    Storage::delete('public/backend/courses/certificate-images/' . $image);
+                }
+            }
+
+            $certificate_images = [];
+            foreach($request->file('new_certificate_images') as $image) {
+                $certificate_image_name = Str::random(40) . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('public/backend/courses/certificate-images', $certificate_image_name);
+                $certificate_images[] = $certificate_image_name;
+            }
+
+            $certificate_images = json_encode($certificate_images);
+        }
+        else {
+            if($course->certificate_images) {
+                $certificate_images = htmlspecialchars_decode($request->old_certificate_images);
+            }
+            else {
+                $certificate_images = null;
+            }
+        }
+
         if($request->file('new_material_logistic') != null) {
             if($request->old_material_logistic) {
                 Storage::delete('public/backend/courses/material-and-logistics/' . $request->old_material_logistic);
@@ -199,10 +246,11 @@ class CourseController extends Controller
             $new_material_logistic_name = $request->old_material_logistic;
         }
 
-        $data = $request->except('old_image', 'new_image', 'old_video', 'new_video', 'old_instructor_profile_image', 'new_instructor_profile_image', 'old_material_logistic', 'new_material_logistic');
+        $data = $request->except('old_image', 'new_image', 'old_video', 'new_video', 'old_instructor_profile_image', 'new_instructor_profile_image', 'old_material_logistic', 'new_material_logistic', 'old_certificate_images', 'new_certificate_images');
         $data['image'] = $image_name;
         $data['video'] = $video_name;
         $data['instructor_profile_image'] = $instructor_profile_image_name;
+        $data['certificate_images'] = $certificate_images;
         $data['material_logistic'] = $new_material_logistic_name;
         $course->fill($data)->save();
         

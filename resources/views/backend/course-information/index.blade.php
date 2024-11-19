@@ -26,6 +26,11 @@
                                 <input type="text" class="form-control" id="certification_section_2_description" name="certification_section_2_description" value="{{ $course->certification_section_2_description ?? '' }}" placeholder="Description">
                             </div>
 
+                            <div class="mb-4">
+                                <x-backend.upload-image old_name="old_certification_section_2_image" old_value="{{ $course->certification_section_2_image ?? '' }}" new_name="new_certification_section_2_image" path="courses/course-images"></x-backend.upload-image>
+                                <x-backend.input-error field="new_certification_section_2_image"></x-backend.input-error>
+                            </div>
+
                             <div class="form-input">
                                 <div class="row align-items-center mb-2">
                                     <div class="col-9">

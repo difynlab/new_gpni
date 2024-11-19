@@ -56,7 +56,7 @@
                             @foreach($product_purchases as $product_purchase)
                                 <tr>
                                     <td>#{{ $product_purchase->id }}</td>
-                                    <td>{{ $product_purchase->student_id }}</td>
+                                    <td>{{ $product_purchase->user_id }}</td>
                                     <td>{{ $product_purchase->date_time }}</td>
                                     <td>{{ $product_purchase->transaction_id }}</td>
                                     <td>{{ $product_purchase->amount_paid }}</td>

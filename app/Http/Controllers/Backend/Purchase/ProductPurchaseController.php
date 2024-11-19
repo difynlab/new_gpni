@@ -20,7 +20,7 @@ class ProductPurchaseController extends Controller
             <a href="'. route('backend.purchases.product-purchases.show', $product_purchase->id) .'" class="edit-button" title="View"><i class="bi bi-calendar-fill"></i></a>
             <a id="'.$product_purchase->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $product_purchase->student_id = User::find($product_purchase->student_id)->first_name . ' ' . User::find($product_purchase->student_id)->last_name;
+            $product_purchase->user_id = User::find($product_purchase->user_id)->first_name . ' ' . User::find($product_purchase->user_id)->last_name;
 
             $product_purchase->date_time = $product_purchase->date . ' | ' . $product_purchase->time;
 
@@ -53,7 +53,7 @@ class ProductPurchaseController extends Controller
 
     public function show(ProductOrder $product_purchase)
     {
-        $student = User::find($product_purchase->student_id)->first_name . ' ' . User::find($product_purchase->student_id)->last_name;
+        $student = User::find($product_purchase->user_id)->first_name . ' ' . User::find($product_purchase->user_id)->last_name;
 
         return view('backend.purchases.product-purchases.show', [
             'product_purchase' => $product_purchase,

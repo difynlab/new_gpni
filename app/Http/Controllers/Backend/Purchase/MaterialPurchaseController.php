@@ -8,7 +8,6 @@ use App\Models\Course;
 use App\Models\MaterialPurchase;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class MaterialPurchaseController extends Controller
@@ -21,7 +20,7 @@ class MaterialPurchaseController extends Controller
             <a id="'.$material_purchase->id.'" class="send-button" title="Send"><i class="bi bi-envelope-fill"></i></a>
             <a id="'.$material_purchase->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $material_purchase->student_id = User::find($material_purchase->student_id)->first_name . ' ' . User::find($material_purchase->student_id)->last_name;
+            $material_purchase->user_id = User::find($material_purchase->user_id)->first_name . ' ' . User::find($material_purchase->user_id)->last_name;
 
             $material_purchase->course_id = Course::find($material_purchase->course_id)->title;
 
@@ -53,7 +52,7 @@ class MaterialPurchaseController extends Controller
 
     public function show(MaterialPurchase $material_purchase)
     {
-        $student = User::find($material_purchase->student_id)->first_name . ' ' . User::find($material_purchase->student_id)->last_name;
+        $student = User::find($material_purchase->user_id)->first_name . ' ' . User::find($material_purchase->user_id)->last_name;
 
         $course = Course::where('status', '1')->find($material_purchase->course_id)->title;
 
@@ -66,7 +65,7 @@ class MaterialPurchaseController extends Controller
 
     public function send(MaterialPurchase $material_purchase) {
         $course = Course::where('status', '1')->find($material_purchase->course_id);
-        $student = User::where('status', '1')->find($material_purchase->student_id);
+        $student = User::where('status', '1')->find($material_purchase->user_id);
 
         $file_name = $course->material_logistic;
         $file_path = storage_path('app/public/backend/courses/material-and-logistics/' . $file_name);

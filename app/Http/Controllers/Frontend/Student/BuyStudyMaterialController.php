@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend\Student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\CoursePurchase;
 use App\Models\Course;
 use App\Models\MaterialPurchase;
 use Illuminate\Http\Request;
@@ -16,7 +15,7 @@ class BuyStudyMaterialController extends Controller
         $student = Auth::user();
 
         $courses = Course::join('course_purchases', 'courses.id', '=', 'course_purchases.course_id')
-        ->where('course_purchases.student_id', $student->id)
+        ->where('course_purchases.user_id', $student->id)
         ->where('course_purchases.payment_status', 'Completed')
         ->where('course_purchases.refund_status', 'Not Refunded')
         ->where('course_purchases.status', '1')
@@ -35,7 +34,7 @@ class BuyStudyMaterialController extends Controller
     public function checkout(Request $request)
     {
         $material_purchase = new MaterialPurchase();
-        $material_purchase->student_id = Auth::user()->id;
+        $material_purchase->user_id = Auth::user()->id;
         $material_purchase->course_id = $request->course_id;
         $material_purchase->status = '1';
         $material_purchase->save();

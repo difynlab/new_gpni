@@ -57,7 +57,7 @@
                             @foreach($course_purchases as $course_purchase)
                                 <tr>
                                     <td>#{{ $course_purchase->id }}</td>
-                                    <td>{{ $course_purchase->student_id }}</td>
+                                    <td>{{ $course_purchase->user_id }}</td>
                                     <td>{{ $course_purchase->course_id }}</td>
                                     <td>{{ $course_purchase->date_time }}</td>
                                     <td>{{ $course_purchase->amount_paid }}</td>

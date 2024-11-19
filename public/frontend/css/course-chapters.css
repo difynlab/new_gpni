@@ -113,20 +113,3 @@
 .note-content img {
     margin-right: 10px;
 }
-.exam-button {
-    background-color: #0040c3;
-    color: #FFF;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 10px;
-    transition: all 0.3s;
-}
-.exam-button:hover {
-    background-color: #02256a;
-    transition: all 0.3s;
-}
