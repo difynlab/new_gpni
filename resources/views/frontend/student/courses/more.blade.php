@@ -16,7 +16,7 @@
             <div class="col-12 col-md-9 main-content">
                 <div class="course-details-container">
                     <a href="{{ route('frontend.courses.show', $course) }}" class="return-link pt-2">
-                        <img src="{{ asset('storage/frontend/student/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
+                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
                         Return to course
                     </a>
 

@@ -59,7 +59,7 @@
                                 </video>
                             </div>
                             <div class="col-md-8">
-                                <img src="{{ asset('storage/frontend/entypo-quote-4.svg') }}" alt="quote-icon" class="quote-icon mb-3">
+                                <img src="{{ asset('storage/frontend/quote.svg') }}" alt="quote-icon" class="quote-icon mb-3">
                                 <div class="speaker-text">{!! $recent_webinar->content !!}</div>
                             </div>
                         </div>
@@ -252,7 +252,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="mailto:{{ $settings->email }}" class="text-decoration-none">
-                                    <img src="{{ asset('storage/frontend/email-grey.svg') }}" alt="Email Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/email-gray.svg') }}" alt="Email Icon" class="img-fluid">
                                     <p>{{ $settings->email }}</p>
                                 </a>
                             </div>
@@ -260,7 +260,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->instagram }}" class="text-decoration-none" target="_blank">
-                                    <img src="{{ asset('storage/frontend/insta-grey.svg') }}" alt="Instagram Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/instagram-gray.svg') }}" alt="Instagram Icon" class="img-fluid">
                                     <p>Instagram</p>
                                 </a>
                             </div>
@@ -268,7 +268,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->twitter }}" class="text-decoration-none" target="_blank">
-                                    <img src="{{ asset('storage/frontend/twitter-greey.svg') }}" alt="Twitter Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/twitter-gray.svg') }}" alt="Twitter Icon" class="img-fluid">
                                     <p>Twitter</p>
                                 </a>
                             </div>
@@ -276,7 +276,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->linkedin }}" class="text-decoration-none" target="_blank">
-                                    <img src="{{ asset('storage/frontend/linkedin-grey.svg') }}" alt="LinkedIn Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/linkedin-gray.svg') }}" alt="LinkedIn Icon" class="img-fluid">
                                     <p>LinkedIn</p>
                                 </a>
                             </div>
@@ -284,7 +284,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->youtube }}" class="text-decoration-none" target="_blank">
-                                    <img src="{{ asset('storage/frontend/youtube-grey.svg') }}" alt="Youtube Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/youtube-gray.svg') }}" alt="Youtube Icon" class="img-fluid">
                                     <p>Youtube</p>
                                 </a>
                             </div>
@@ -292,7 +292,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->fb }}" class="text-decoration-none" target="_blank">
-                                    <img src="{{ asset('storage/frontend/facebook-grey.svg') }}" alt="Facebook Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/facebook-gray.svg') }}" alt="Facebook Icon" class="img-fluid">
                                     <p>Facebook</p>
                                 </a>
                             </div>

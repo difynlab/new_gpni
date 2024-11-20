@@ -19,7 +19,7 @@
                         <h1>History & Replies</h1>
 
                         <a href="{{ route('frontend.ask-questions.index') }}">
-                            <img src="{{ asset('storage/frontend/student/question-icon.svg') }}" class="icon-question" alt="Question Icon" width="28" height="28">
+                            <img src="{{ asset('storage/frontend/question-icon.svg') }}" class="icon-question" alt="Question Icon" width="28" height="28">
                             Ask a Question Now
                         </a>
                     </div>

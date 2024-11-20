@@ -3,7 +3,7 @@
         <div class="row py-3">
             <div class="col-md-4 text-start">
                 <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->footer_logo) }}" alt="GPNi" style="width: 286px; margin-bottom: 20px;">
-                <p>Powered by <img src="{{ asset('storage/frontend/footer/powered-by-white.svg') }}" alt="Power Logo" style="width: 20px;"></p>
+                <p>Powered by <img src="{{ asset('storage/frontend/powered-by-white.svg') }}" alt="Power Logo" style="width: 20px;"></p>
             </div>
 
             <div class="col-md-4 text-start">
@@ -11,23 +11,23 @@
 
                 <div class="d-flex flex-wrap justify-content-start">
                     <a href="#" class="social-icon">
-                        <img src="{{ asset('storage/frontend/footer/instagram.svg') }}" alt="Instagram" width="12" height="13">
+                        <img src="{{ asset('storage/frontend/instagram.svg') }}" alt="Instagram" width="12" height="13">
                         Instagram
                     </a>
                     <a href="#" class="social-icon">
-                        <img src="{{ asset('storage/frontend/footer/facebook.svg') }}" alt="Facebook" width=" 8" height="15" ;>
+                        <img src="{{ asset('storage/frontend/facebook.svg') }}" alt="Facebook" width=" 8" height="15" ;>
                         Facebook
                     </a>
                     <a href="#" class="social-icon">
-                        <img src="{{ asset('storage/frontend/footer/youtube.svg') }}" alt="YouTube" width="15" height="10">
+                        <img src="{{ asset('storage/frontend/youtube.svg') }}" alt="YouTube" width="15" height="10">
                         Youtube
                     </a>
                     <a href="#" class="social-icon">
-                        <img src="{{ asset('storage/frontend/footer/twitter.svg') }}" alt="Twitter" width="12" height="12">
+                        <img src="{{ asset('storage/frontend/twitter.svg') }}" alt="Twitter" width="12" height="12">
                         Twitter
                     </a>
                     <a href="#" class="social-icon">
-                        <img src="{{ asset('storage/frontend/footer/linkedin.svg') }}" alt="LinkedIn" width="13" height="12">
+                        <img src="{{ asset('storage/frontend/linkedin.svg') }}" alt="LinkedIn" width="13" height="12">
                         LinkedIn
                     </a>
                 </div>
@@ -43,8 +43,8 @@
                     </div>
                 </div>
                 <div>
-                    <a href="#"><img src="{{ asset('storage/frontend/footer/app-store.svg') }}" alt="App Store" style="width: 120px; margin-right: 10px;"></a>
-                    <a href="#"><img src="{{ asset('storage/frontend/footer/play-store.svg') }}" alt="Google Play" style="width: 120px;"></a>
+                    <a href="#"><img src="{{ asset('storage/frontend/app-store.svg') }}" alt="App Store" style="width: 120px; margin-right: 10px;"></a>
+                    <a href="#"><img src="{{ asset('storage/frontend/play-store.svg') }}" alt="Google Play" style="width: 120px;"></a>
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
 
     <div class="footer-bottom d-flex justify-content-center align-content-center">
         <div class="footer-bottom-content">
-            <img src="{{ asset('storage/frontend/footer/map.svg') }}" alt="Map Icon">
+            <img src="{{ asset('storage/frontend/pin-icon.svg') }}" alt="Map Icon">
             USA &nbsp; • &nbsp; Copyright © 2023 by GPNi&reg; Corporation Limited. All Rights Reserved &nbsp; •
             &nbsp;
             <a href="#">Privacy Policy</a>

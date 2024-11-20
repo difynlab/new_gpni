@@ -19,7 +19,7 @@
 
             <section class="search-section mt-5">
                 <input type="text" class="search-field" placeholder="Search">
-                <img src="{{ asset('storage/frontend/search-grey.svg') }}" class="search-icon" alt="Search Icon">
+                <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" class="search-icon" alt="Search Icon">
             </section>
 
             <header class="header-section">
@@ -61,7 +61,7 @@
                                             <div class="d-flex justify-content-between align-items-center mt-3">
                                                 <a href="{{ route('frontend.master-classes.show', $all_course) }}" class="enroll-button">
                                                     <span>Enroll Now</span>
-                                                    <img src="{{ asset('storage/frontend/arrow-right.svg') }}" alt="Arrow Icon" width="12" height="10">
+                                                    <img src="{{ asset('storage/frontend/small-arrow-right.svg') }}" alt="Arrow Icon" width="12" height="10">
                                                 </a>
                                                 
                                                 <div class="d-flex flex-column align-items-end">

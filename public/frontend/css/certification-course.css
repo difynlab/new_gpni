@@ -7,7 +7,7 @@ body {
     margin: 0 auto;
     padding: 60px 100px;
     background-color: #e8ecf1;
-    background: url('../../../storage/frontend/backround-gpni-pne.png') no-repeat center center;
+    background: url('../../../storage/frontend/certification-course-background.png') no-repeat center center;
     background-size: cover;
 }
 .certification-section {
@@ -141,7 +141,7 @@ a.btn-primary {
     align-items: center;
     justify-content: center;
     padding: 40px;
-    background: url('/assets/Plans payment.svg') no-repeat center center;
+    background: url('../../../storage/frontend/payment-plans-background.svg') no-repeat center center;
     background-size: cover;
 }
 
@@ -1384,7 +1384,7 @@ course-content {
 
 .advanced-certification-section {
     padding: 60px 20px;
-    background: url('/assets/Frame 1171275945.svg') no-repeat center center;
+    background: url('../../../storage/frontend/advanced-certification-background.svg') no-repeat center center;
     background-size: cover;
 }
 
@@ -1486,7 +1486,7 @@ course-content {
 
 .masters-pack-section {
     padding: 60px 20px;
-    background: url('/assets/Desktop - 7.svg') no-repeat center center;
+    background: url('../../../storage/frontend/master-packs-background.svg') no-repeat center center;
     background-size: cover;
     color: #ffffff;
     text-align: center;

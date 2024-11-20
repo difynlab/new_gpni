@@ -65,7 +65,7 @@
                 <div class="contact-info-row">
                     <div class="info-item">
                         <div class="icon-background">
-                            <img src="{{ asset('storage/frontend/mdi-email-outline.svg') }}" alt="Email Icon">
+                            <img src="{{ asset('storage/frontend/email.svg') }}" alt="Email Icon">
                         </div>
                         <div class="info-item-content">
                             <p class="title">Email</p>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="info-item">
                         <div class="icon-background">
-                            <img src="{{ asset('storage/frontend/solar-phone-linear.svg') }}" alt="Phone Icon">
+                            <img src="{{ asset('storage/frontend/phone.svg') }}" alt="Phone Icon">
                         </div>
                         <div class="info-item-content">
                             <p class="title">Phone</p>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="info-item">
                         <div class="icon-background">
-                            <img src="{{ asset('storage/frontend/la-fax.svg') }}" alt="Fax Icon">
+                            <img src="{{ asset('storage/frontend/fax.svg') }}" alt="Fax Icon">
                         </div>
                         <div class="info-item-content">
                             <p class="title">Fax</p>

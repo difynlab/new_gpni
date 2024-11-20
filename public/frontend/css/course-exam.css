@@ -247,13 +247,6 @@
     margin-right: 5px;
     width: 15px;
 }
-.success-icon {
-    width: 124px;
-    height: 124px;
-    margin: 0 auto 24px;
-    background: url('./assets/https-lottiefiles-com-animations-successful-5-n-3-ar-jk-i-ou.svg') no-repeat center;
-    background-size: contain;
-}
 .title {
     font-size: 31px;
     font-weight: 500;

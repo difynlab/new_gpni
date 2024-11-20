@@ -134,7 +134,7 @@
 }
 
 .accordion-button::after {
-    background-image: url("../../assets/down-arrow.svg") !important;
+    background-image: url("../../../storage/frontend/accordion-down-arrow.svg") !important;
     /* Content icon URL */
 }
 

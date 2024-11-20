@@ -618,7 +618,7 @@ h1.display-4 {
 }
 
 .text-container li {
-    background-image: url('../../../storage/frontend/charm-circle-tick-3.svg');
+    background-image: url('../../../storage/frontend/circle-tick.svg');
     padding: 5px;
     border-radius: 4px;
     background-repeat: no-repeat;
@@ -650,15 +650,13 @@ h1.display-4 {
 }
 .regions-list li::before,
 .population-list li::before {
-    /* content: url('/assets/charm-circle-tick-3.svg'); */
-    content: url('../../../storage/frontend/charm-circle-tick-3.svg');
-    /* background-image: url('../../../storage/frontend/charm-circle-tick-3.svg'); */
+    content: url('../../../storage/frontend/circle-tick.svg');
     display: inline-block;
     margin-left: -1em;
-    margin-right: 0.5em; /* Add space between the tick icon and the text */
-    transform: scale(0.3); /* Adjust the scale value to reduce the size */
-    width: 0.5em; /* Optional: Set a specific width */
-    height: 0.5em; /* Optional: Set a specific height */
+    margin-right: 0.5em;
+    transform: scale(0.3);
+    width: 0.5em;
+    height: 0.5em;
 }
 
 /* Hide default list style */
@@ -689,7 +687,7 @@ h1.display-4 {
 }
 
 .languages-list li {
-    background-image: url('../../../storage/frontend/charm-circle-tick-3.svg');
+    background-image: url('../../../storage/frontend/circle-tick.svg');
     background-size: 12px 12px;
     /* Adjusts the size of the icon */
     background-position: 10px center; /* Adjusts the position to leave space between the icon and text */

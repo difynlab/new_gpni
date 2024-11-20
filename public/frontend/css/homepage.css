@@ -177,7 +177,7 @@
 /* Partner Container */
 .partners-container{
     padding: auto;
-    background-image: url('/assets/world-map.svg');
+    background-image: url('../../../storage/frontend/world-map-white.svg');
     background-color: #FFFFFF;
     background-size:contain;
     background-repeat: no-repeat;
@@ -281,7 +281,7 @@
 /* Nutritionist Container */
 .nutritionist-container{
     background-color: #0040c3;
-    background-image: url('../img/nutritionist.svg');
+    background-image: url('../../../storage/frontend/nutritionist-background.svg');
     background-size:auto;
     background-repeat:repeat-y;
     background-position: center;

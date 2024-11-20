@@ -338,7 +338,7 @@
                                         <div class="modal-body p-4">
                                             <div class="row align-items-center">
                                                 <div class="col-md-2 col-4">
-                                                    <img class="expert-image-15 rounded-circle" alt="" src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}"/>
+                                                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="expert-image-15 rounded-circle" alt=""/>
                                                 </div>
                                                 <div class="col-md-8 col-12 d-flex align-items-center">
                                                     <div>

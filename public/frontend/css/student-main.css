@@ -41,7 +41,6 @@ body {
     border-radius: 10px;
 }
 .sidebar-profile-card {
-    background-image: url('/storage/frontend/background-01-1.svg');
     text-align: center;
     padding: 20px 0;
     position: relative;

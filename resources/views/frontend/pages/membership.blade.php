@@ -31,7 +31,7 @@
                 <div class="col-12 col-md-6 py-md-0 py-2">
                     @if($contents->section_2_top_description_en)
                         <div class="feature d-flex align-items-center mb-4">
-                            <img src="/storage/frontend/charm-circle-tick-2.svg" alt="Tick Icon" class="feature-icon">
+                            <img src="/storage/frontend/circle-tick.svg" alt="Tick Icon" class="feature-icon">
                             <div>
                                 {!! $contents->{'section_2_top_description_' . $middleware_language} ?? $contents->section_2_top_description_en !!}
                             </div>
@@ -40,7 +40,7 @@
 
                     @if($contents->section_2_bottom_description_en)
                         <div class="feature d-flex align-items-center">
-                            <img src="/storage/frontend/charm-circle-tick-2.svg" alt="Tick Icon" class="feature-icon">
+                            <img src="/storage/frontend/circle-tick.svg" alt="Tick Icon" class="feature-icon">
                             <div>
                                 {!! $contents->{'section_2_bottom_description_' . $middleware_language} ?? $contents->section_2_bottom_description_en !!}
                             </div>

@@ -19,7 +19,7 @@
                     <h1>{{ $contents->{'sub_title_' . $middleware_language} ?? $contents->sub_title_en }}</h1>
 
                     <div class="search-field">
-                        <img src="{{ asset('storage/frontend/search-grey.svg') }}" alt="Search Icon">
+                        <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" alt="Search Icon">
                         <input type="text" placeholder="Search for courses">
                     </div>
                 </div>
@@ -43,11 +43,11 @@
 
                                     <div class="coach-location-row">
                                         <div class="coach-location-item">
-                                            <img src="{{ asset('storage/frontend/fluent-globe-location-20-regular.svg') }}" alt="Location Icon" width="20px" height="20px">
+                                            <img src="{{ asset('storage/frontend/globe-icon.svg') }}" alt="Location Icon" width="20px" height="20px">
                                             <span>Australia</span>
                                         </div>
                                         <div class="coach-location-item" id="{{ $nutritionist->id }}">
-                                            <img src="{{ asset('storage/frontend/material-symbols-connect-without-contact.svg') }}" alt="Contact Icon" width="20px" height="20px">
+                                            <img src="{{ asset('storage/frontend/connect-icon.svg') }}" alt="Contact Icon" width="20px" height="20px">
                                             <span>Contact Coach</span>
                                         </div>
                                     </div>

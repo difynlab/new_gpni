@@ -111,7 +111,7 @@ body {
 
 .order-details {
     background-color: #0040c3;
-    background-image: url('/assets/background-loggedin.svg');
+    background-image: url('../../../storage/frontend/order-details-background.svg');
     background-size: cover;
     background-blend-mode: overlay;
     border-radius: 15px;

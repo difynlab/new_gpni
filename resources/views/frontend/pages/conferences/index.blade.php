@@ -27,7 +27,7 @@
                         </div>
                         <a href="{{ route('frontend.conferences.show', $conference) }}" class="view-more">
                             <span>View More details</span>
-                            <img src="{{ asset('storage/frontend/fluent-arrow-up-16-filled-5.svg') }}" alt="Arrow Icon">
+                            <img src="{{ asset('storage/frontend/small-arrow-right.svg') }}" alt="Arrow Icon">
                         </a>
                     </div>
                 @endforeach

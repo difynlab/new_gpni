@@ -37,7 +37,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <span class="category">{{ $category->name }}</span>
                                                 <span class="rating">
-                                                    <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
+                                                    <img src="{{ asset('storage/frontend/rating.svg') }}" alt="Rating">
                                                 </span>
                                             </div>
                                             <span class="product-name py-2">{{ $product->name }}</span>
@@ -57,7 +57,7 @@
                                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
 
                                                     <button type="submit" class="cta-button">
-                                                        <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
+                                                        <img src="{{ asset('storage/frontend/cart.svg') }}" alt="Cart Icon">
                                                         Add to Cart
                                                     </button>
                                                 </form>
@@ -87,7 +87,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <span class="category">{{ $category->name }}</span>
                                                 <span class="rating">
-                                                    <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
+                                                    <img src="{{ asset('storage/frontend/rating.svg') }}" alt="Rating">
                                                 </span>
                                             </div>
                                             <span class="product-name py-2">{{ $product->name }}</span>
@@ -107,7 +107,7 @@
                                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
 
                                                     <button type="submit" class="cta-button">
-                                                        <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
+                                                        <img src="{{ asset('storage/frontend/cart.svg') }}" alt="Cart Icon">
                                                         Add to Cart
                                                     </button>
                                                 </form>

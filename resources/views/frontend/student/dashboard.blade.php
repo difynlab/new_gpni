@@ -21,7 +21,7 @@
                         <h1>Welcome Back, {{ $student->first_name . ' ' . $student->last_name}}!</h1>
 
                         <div class="location">
-                            <img src="{{ asset('storage/frontend/student/location-icon.svg') }}" alt="Location icon" width="24" height="24" class="me-2">
+                            <img src="{{ asset('storage/frontend/location-icon.svg') }}" alt="Location icon" width="24" height="24" class="me-2">
                             {{ $student->country }}
                         </div>
 
@@ -30,7 +30,7 @@
                     @if($student->image)
                         <img src="{{ asset('storage/backend/persons/students/' . $student->image) }}" alt="Profile image" width="171" height="148">
                     @else
-                        <img src="{{ asset('storage/frontend/student/sample-profile-image.svg') }}" alt="Profile image" width="171" height="148">
+                        <img src="{{ asset('storage/frontend/sample-profile-image.svg') }}" alt="Profile image" width="171" height="148">
                     @endif
                 </div>
 

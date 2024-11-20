@@ -30,6 +30,6 @@ class ValidateRole
             return redirect()->route('backend.login');
         }
 
-        return redirect()->route('login');
+        return redirect()->route('frontend.login');
     }
 }

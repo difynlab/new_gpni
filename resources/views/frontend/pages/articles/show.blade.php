@@ -41,7 +41,7 @@
 
             <div class="sidebar mt-5">
                 <a href="{{ route('frontend.gift-cards.index') }}">
-                    <img src="{{ asset('storage/frontend/group-1171276120.svg') }}" alt="Banner" class="img-fluid mb-4 banner-section">
+                    <img src="{{ asset('storage/frontend/banner.svg') }}" alt="Banner" class="img-fluid mb-4 banner-section">
                 </a>
 
                 <h5 class="mt-4">Latest Articles</h5>
@@ -78,13 +78,13 @@
                     <div class="title">{{ $contents->{'section_1_social_title_' . $middleware_language} ?? $contents->section_1_social_title_en }}</div>
                     <div class="social-icons">
                         <a href="{{ $settings->fb }}">
-                            <img src="{{ asset('storage/frontend/FBICON.svg') }}" alt="Facebook">
+                            <img src="{{ asset('storage/frontend/fb-icon.svg') }}" alt="Facebook">
                         </a>
                         <a href="{{ $settings->linkedin }}">
-                            <img src="{{ asset('storage/frontend/linkedinicon.svg') }}" alt="LinkedIn">
+                            <img src="{{ asset('storage/frontend/linkedin-icon.svg') }}" alt="LinkedIn">
                         </a>
                         <a href="{{ $settings->youtube }}">
-                            <img src="{{ asset('storage/frontend/youtubeicon.svg') }}" alt="YouTube">
+                            <img src="{{ asset('storage/frontend/youtube-icon.svg') }}" alt="YouTube">
                         </a>
                     </div>
                 </div>
@@ -110,10 +110,10 @@
 
                 <!-- This will be dynamic after connecting with the instagram feed -->
                     <div class="instagram-images">
-                        <img src="{{ asset('storage/frontend/followuson1.jpg') }}" alt="Instagram post 1">
-                        <img src="{{ asset('storage/frontend/followuson2.jpg') }}" alt="Instagram post 2">
-                        <img src="{{ asset('storage/frontend/followuson3.jpg') }}" alt="Instagram post 3">
-                        <img src="{{ asset('storage/frontend/followuson4.jpg') }}" alt="Instagram post 4">
+                        <img src="{{ asset('storage/frontend/follow-us-on-1.jpg') }}" alt="Instagram post 1">
+                        <img src="{{ asset('storage/frontend/follow-us-on-2.jpg') }}" alt="Instagram post 2">
+                        <img src="{{ asset('storage/frontend/follow-us-on-3.jpg') }}" alt="Instagram post 3">
+                        <img src="{{ asset('storage/frontend/follow-us-on-4.jpg') }}" alt="Instagram post 4">
                     </div>
                 <!-- This will be dynamic after connecting with the instagram feed -->
             </div>

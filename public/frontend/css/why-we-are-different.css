@@ -136,7 +136,7 @@
 }
 
 .languages-list li {
-    background-image: url('/storage/frontend/charm-circle-tick-3.svg');
+    /* background-image: url('../../../storage/frontend/circle-tick.svg'); */
     background-size: 12px 12px;
     /* Adjusts the size of the icon */
     background-position: 10px center; /* Adjusts the position to leave space between the icon and text */

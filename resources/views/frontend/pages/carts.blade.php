@@ -68,7 +68,7 @@
                         <div class="card payment-methods">
                             <h5 class="section-header">We accept</h5>
                             <div class="payment-icons">
-                                <img src="{{ asset('storage/frontend/visa-logo-png-2026-1.svg') }}" alt="Visa">
+                                <img src="{{ asset('storage/frontend/visa-card.svg') }}" alt="Visa">
                                 <img src="{{ asset('storage/frontend/mastercard.svg') }}" alt="MasterCard">
                                 <img src="{{ asset('storage/frontend/amex.svg') }}" alt="American Express">
                                 <img src="{{ asset('storage/frontend/discover.svg') }}" alt="Discover">

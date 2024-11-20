@@ -9,6 +9,7 @@ use App\Models\CoursePurchase;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class CoursePurchaseController extends Controller
@@ -126,12 +127,22 @@ class CoursePurchaseController extends Controller
 
         return view('backend.purchases.course-purchases.certificate', [
             'course_purchase' => $course_purchase,
-            'certificate' => $certificate,
+            'certificate' => $certificate
         ]);
     }
 
     public function certificateUpdate(Request $request, CourseCertificate $course_certificate)
     {
+        $validator = Validator::make($request->all(), [
+            'new_certificate' => 'nullable|max:2048'
+        ], [
+            'new_certificate.max' => 'The file must not be greater than 2MB'
+        ]);
+        
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
+        }
+
         if($request->file('new_certificate') != null) {
             if($request->old_certificate) {
                 Storage::delete('public/backend/courses/course-certificates/' . $request->old_certificate);

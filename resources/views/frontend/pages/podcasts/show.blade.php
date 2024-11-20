@@ -21,7 +21,7 @@
         <section class="content-section">
             <div class="container">
                 <div class="date">
-                    <img src="{{ asset('storage/frontend/icons.svg') }}" alt="Icon" width="21" height="21">
+                    <img src="{{ asset('storage/frontend/small-calendar-icon.svg') }}" alt="Icon" width="21" height="21">
                     <span class="ms-2">{{ $podcast->created_at->format('d M Y') }}</span>
                 </div>
 
@@ -40,7 +40,7 @@
 
                         <a href="{{ json_decode($contents->{'section_3_labels_links_' . $middleware_language})[1]->link ?? json_decode($contents->section_3_labels_links_en)[1]->link }}" class="btn-explore">
                             {{ json_decode($contents->{'section_3_labels_links_' . $middleware_language})[1]->label ?? json_decode($contents->section_3_labels_links_en)[1]->label }}
-                            <img src="{{ asset('storage/frontend/podarrow.svg') }}" alt="Arrow Icon">
+                            <img src="{{ asset('storage/frontend/right-white-arrow.svg') }}" alt="Arrow Icon">
                         </a>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
 
                          <!-- This will be dynamic after connecting with the instagram feed -->
                             <div class="instagram-images">
-                                <img src="{{ asset('storage/frontend/followuson1.jpg') }}" alt="Instagram post 1">
-                                <img src="{{ asset('storage/frontend/followuson2.jpg') }}" alt="Instagram post 2">
-                                <img src="{{ asset('storage/frontend/followuson3.jpg') }}" alt="Instagram post 3">
-                                <img src="{{ asset('storage/frontend/followuson4.jpg') }}" alt="Instagram post 4">
+                                <img src="{{ asset('storage/frontend/follow-us-on-1.jpg') }}" alt="Instagram post 1">
+                                <img src="{{ asset('storage/frontend/follow-us-on-2.jpg') }}" alt="Instagram post 2">
+                                <img src="{{ asset('storage/frontend/follow-us-on-3.jpg') }}" alt="Instagram post 3">
+                                <img src="{{ asset('storage/frontend/follow-us-on-4.jpg') }}" alt="Instagram post 4">
                             </div>
                         <!-- This will be dynamic after connecting with the instagram feed -->
                     </div>

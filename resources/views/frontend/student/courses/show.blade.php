@@ -109,7 +109,7 @@
                     @endif
 
                     <a href="{{ route('frontend.courses.index') }}" class="return-link">
-                        <img src="{{ asset('storage/frontend/student/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
+                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
                         Return to course
                     </a>
                 </div>

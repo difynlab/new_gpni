@@ -20,7 +20,7 @@
 
                         <h1>Student Profile</h1>
                         <a class="profile-action edit-profile">
-                            <img src="{{ asset('storage/frontend/iconamoon-edit-light.svg') }}" alt="Edit icon" width="20" height="20">
+                            <img src="{{ asset('storage/frontend/profile-edit-icon.svg') }}" alt="Edit icon" width="20" height="20">
                             Edit profile details
                         </a>
                     </div>
@@ -283,7 +283,7 @@
                                     @if($student->image)
                                         <img src="{{ asset('storage/backend/persons/students/' . $student->image) }}" alt="Profile image" style="width: 100%; height: 400px; object-fit: contain;">
                                     @else
-                                        <img src="{{ asset('storage/frontend/student/sample-profile-image.svg') }}" alt="Profile image" style="width: 100%; height: 400px; object-fit: contain;">
+                                        <img src="{{ asset('storage/frontend/sample-profile-image.svg') }}" alt="Profile image" style="width: 100%; height: 400px; object-fit: contain;">
                                     @endif
 
                                     <input type="hidden" name="old_image" value="{{ $student->image }}">

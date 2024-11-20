@@ -26,7 +26,7 @@
 
                     <div class="rating pt-4">
                         <span>5.0</span>
-                        <img src="/storage/frontend/frame-1171275930.svg" alt="Rating Stars">
+                        <img src="/storage/frontend/stars.svg" alt="Rating Stars">
                         <span>(9)</span>
                     </div>
                 </section>
@@ -44,7 +44,7 @@
                         <a href="{{ route('frontend.certification-courses.purchase', $course) }}" class="btn btn-primary">Enroll Now</a>
                     @endif
                 @else
-                    <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn pay-now">Login for Pay</a>
+                    <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn btn-primary">Login for Purchase</a>
                 @endif
                 
             </div>
@@ -104,7 +104,7 @@
                                     @foreach(json_decode($course->certification_section_2_points) as $certification_section_2_point)
                                         <label class="plan plan-normal">
                                             <div class="check-container">
-                                                <img src="{{ asset('storage/frontend/check-square-contained-filled.svg') }}" alt="Check">
+                                                <img src="{{ asset('storage/frontend/check-lightning.svg') }}" alt="Check">
                                             </div>
 
                                             <div class="plan-description">{!! $certification_section_2_point !!}</div>
@@ -214,7 +214,7 @@
                             <div class="d-flex flex-wrap">
                                 <a href="{{ json_decode($course->certification_section_7_labels_links)[0]->link }}" class="btn-custom btn-enroll">{{ json_decode($course->certification_section_7_labels_links)[0]->label }}</a>
 
-                                <a href="{{ json_decode($course->certification_section_7_labels_links)[1]->link }}" class="btn-contact">{{ json_decode($course->certification_section_7_labels_links)[1]->label }} <img src="{{ asset('storage/frontend/arrow-indication-10.svg') }}" alt="Arrow" class="ms-2"></a>
+                                <a href="{{ json_decode($course->certification_section_7_labels_links)[1]->link }}" class="btn-contact">{{ json_decode($course->certification_section_7_labels_links)[1]->label }} <img src="{{ asset('storage/frontend/arrow-right.svg') }}" alt="Arrow" class="ms-2"></a>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 d-flex justify-content-center">
@@ -272,7 +272,7 @@
                             <div>
                                 <div class="testimonial-name">Lenka Sutra</div>
                                 <div class="testimonial-stars">
-                                    <img src="/storage/frontend/frame-1171275930.svg" alt="Rating Stars">
+                                    <img src="/storage/frontend/stars.svg" alt="Rating Stars">
                                 </div>
                             </div>
                         </div>
@@ -397,7 +397,7 @@
 
                 <a href="{{ json_decode($course->certification_section_12_label_link)->link }}" class="view-more-link">
                     {{ json_decode($course->certification_section_12_label_link)->label }}
-                    <img src="{{ asset('storage/frontend/arrow-indication-10.svg') }}" alt="Arrow Icon">
+                    <img src="{{ asset('storage/frontend/arrow-right.svg') }}" alt="Arrow Icon">
                 </a>
             </section>
         @endif
@@ -434,7 +434,7 @@
                 <div>
                     <a href="{{ json_decode($course->certification_section_13_labels_links)[0]->link }}" class="btn-enroll">{{ json_decode($course->certification_section_13_labels_links)[0]->label }}</a>
 
-                    <a href="{{ json_decode($course->certification_section_13_labels_links)[1]->link }}" class="btn-contact border-0">{{ json_decode($course->certification_section_13_labels_links)[1]->label }} <img src="{{ asset('storage/frontend/arrow-indication-10.svg') }}" alt="Arrow"></a>
+                    <a href="{{ json_decode($course->certification_section_13_labels_links)[1]->link }}" class="btn-contact border-0">{{ json_decode($course->certification_section_13_labels_links)[1]->label }} <img src="{{ asset('storage/frontend/arrow-right.svg') }}" alt="Arrow"></a>
                 </div>
             </section>
         @endif
@@ -444,16 +444,16 @@
                 <div class="student-testimonial-content">
                     <div class="student-testimonial-text">
                         <div class="student-testimonial-header">
-                            <img src="/storage/frontend/line-42.svg" alt="Line">
+                            <img src="{{ asset('storage/frontend/dash.svg') }}" alt="Line">
                             <div class="header-text">{{ $course->certification_section_14_title }}</div>
                         </div>
                         <div class="student-testimonial-quote">“I was looking for the perfect course that combined theoretical
                             knowledge and practical experience in sports nutrition for many years.</div>
                         <div class="student-testimonial-author">Lenka Sutra</div>
-                        <img src="/storage/frontend/frame-1171275930.svg" alt="Rating Stars">
+                        <img src="/storage/frontend/stars.svg" alt="Rating Stars">
                     </div>
                     <div>
-                        <img src="/storage/frontend/group-1171276142.svg" alt="Student Photo" class="img-fluid">
+                        <img src="/storage/frontend/student-image.svg" alt="Student Photo" class="img-fluid">
                     </div>
                 </div>
             </section>
@@ -471,11 +471,11 @@
                             <div class="student-review-footer">
                                 <div class="student-review-rating">
                                     <span>Rated 5/5 stars</span>
-                                    <img src="/storage/frontend/frame-1171275930.svg" alt="Star">
+                                    <img src="/storage/frontend/stars.svg" alt="Star">
                                 </div>
                                 <div>
                                     <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch"> <img src="/storage/frontend/check blue.svg" alt="check" width="10px"
+                                    <p class="student-review-batch"> <img src="/storage/frontend/check-blue-icon.svg" alt="check" width="10px"
                                             height="10px">
                                         2022 Batch</p>
                                 </div>
@@ -493,11 +493,11 @@
                             <div class="student-review-footer">
                                 <div class="student-review-rating">
                                     <span>Rated 5/5 stars</span>
-                                    <img src="/storage/frontend/frame-1171275930.svg" alt="Star">
+                                    <img src="/storage/frontend/stars.svg" alt="Star">
                                 </div>
                                 <div>
                                     <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch"> <img src="/storage/frontend/check blue.svg" alt="check" width="10px"
+                                    <p class="student-review-batch"> <img src="/storage/frontend/check-blue-icon.svg" alt="check" width="10px"
                                             height="10px">
                                         2022 Batch</p>
                                 </div>
@@ -515,11 +515,11 @@
                             <div class="student-review-footer">
                                 <div class="student-review-rating">
                                     <span>Rated 5/5 stars</span>
-                                    <img src="/storage/frontend/frame-1171275930.svg" alt="Star">
+                                    <img src="/storage/frontend/stars.svg" alt="Star">
                                 </div>
                                 <div>
                                     <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch"> <img src="/storage/frontend/check blue.svg" alt="check" width="10px"
+                                    <p class="student-review-batch"> <img src="/storage/frontend/check-blue-icon.svg" alt="check" width="10px"
                                             height="10px">
                                         2022 Batch</p>
                                 </div>
@@ -573,7 +573,7 @@
 
                 <a href="{{ json_decode($course->certification_section_15_label_link)->link }}" class="contact-us-btn">
                     {{ json_decode($course->certification_section_15_label_link)->label }}
-                    <img src="{{ asset('storage/frontend/arrow-indication-13.svg') }}" alt="Arrow Icon">
+                    <img src="{{ asset('storage/frontend/arrow-right.svg') }}" alt="Arrow Icon">
                 </a>
             </section>
         @endif
@@ -591,7 +591,7 @@
                     <div class="btn-group">
                         <a href="{{ json_decode($course->certification_section_16_labels_links)[0]->link }}" class="btn-custom">{{ json_decode($course->certification_section_16_labels_links)[0]->label }}</a>
 
-                        <a href="{{ json_decode($course->certification_section_16_labels_links)[1]->link }}" class="btn-custom secondary border-0">{{ json_decode($course->certification_section_16_labels_links)[1]->label }} <img src="{{ asset('storage/frontend/arrow-indication-10.svg') }}" alt="Arrow"></a>
+                        <a href="{{ json_decode($course->certification_section_16_labels_links)[1]->link }}" class="btn-custom secondary border-0">{{ json_decode($course->certification_section_16_labels_links)[1]->label }} <img src="{{ asset('storage/frontend/arrow-right.svg') }}" alt="Arrow"></a>
                     </div>
                 </div>
             </section>

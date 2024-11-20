@@ -40,7 +40,7 @@
                             <div class="course-actions">
                                 <a href="{{ route('frontend.courses.show', $course) }}">
                                     View Details
-                                    <img src="{{ asset('storage/frontend/student/arrow-icon.svg') }}" alt="Arrow">
+                                    <img src="{{ asset('storage/frontend/arrow-icon.svg') }}" alt="Arrow">
                                 </a>
                             </div>
                         </div>

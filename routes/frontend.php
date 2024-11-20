@@ -28,7 +28,7 @@ use App\Http\Controllers\Frontend\Student\ProfileController;
 use App\Http\Controllers\Frontend\Student\BuyStudyMaterialController;
 use App\Http\Controllers\Frontend\Student\MemberCornerController;
 use App\Http\Controllers\Frontend\Student\MyOrderController;
-use App\Http\Controllers\Frontend\Student\QualificationsController;
+use App\Http\Controllers\Frontend\Student\QualificationController;
 use App\Http\Controllers\Frontend\Student\ReferFriendController;
 use App\Http\Controllers\Frontend\Student\CartController;
 use App\Http\Controllers\Frontend\Page\ProductController;
@@ -175,7 +175,7 @@ Route::middleware(['set_language'])->group(function () {
                 Route::get('{course}/{course_final_exam}/results', [FinalExamController::class, 'results'])->name('results');
             });
 
-            Route::get('qualifications', [QualificationsController::class, 'index'])->name('qualifications');
+            Route::get('qualifications', [QualificationController::class, 'index'])->name('qualifications');
         });
     // Student routes 
 });

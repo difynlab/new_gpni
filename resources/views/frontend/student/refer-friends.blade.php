@@ -35,7 +35,7 @@
                     </form>
 
                     <a class="view-history" style="cursor: pointer;">
-                        <img src="{{ asset('storage/frontend/student/history-clock-icon.svg') }}" class="icon-history" alt="History Icon" width="22" height="22">
+                        <img src="{{ asset('storage/frontend/history-clock-icon.svg') }}" class="icon-history" alt="History Icon" width="22" height="22">
                         View History
                     </a>
                     

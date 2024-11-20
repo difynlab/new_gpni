@@ -14,7 +14,7 @@
                 <h1 class="display-4">{{ $course->title }}</h1>
                 <div class="d-flex align-items-center mt-3">
                     <span class="me-2" style="font-size: 16px; font-weight: 500; color: #898989;">5.0</span>
-                    <img src="{{ asset('storage/frontend/frame-1171275930.svg') }}" alt="Rating" class="me-2" style="width: 120px;">
+                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating" class="me-2" style="width: 120px;">
                     <span style="font-size: 16px; font-weight: 500; color: #898989;">(9)</span>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="list-group-item bg-light d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/frontend/clarity-language-solid.svg') }}" alt="Language" class="me-3 img-size">
+                            <img src="{{ asset('storage/frontend/course-language.svg') }}" alt="Language" class="me-3 img-size">
                             <div class="common-style">Language</div>
                         </div>
                         <div class="common-text-style">{{ $course->language }}</div>
@@ -40,7 +40,7 @@
                     <div class="list-group-item bg-light">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('storage/frontend/fluent-person-feedback-24-filled.svg') }}" alt="Course Type"
+                                <img src="{{ asset('storage/frontend/course-type.svg') }}" alt="Course Type"
                                     class="me-3 img-size">
                                 <div class="common-style">Course Type</div>
                             </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="list-group-item bg-light d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/frontend/material-symbols-play-lesson-rounded.svg') }}" alt="No. of Modules"
+                            <img src="{{ asset('storage/frontend/course-modules.svg') }}" alt="No. of Modules"
                                 class="me-3 img-size">
                             <div class="common-style">No. of Modules</div>
                         </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="list-group-item bg-light d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/frontend/mdi-users-group.svg') }}" alt="No. Of Student Enrolled" class="me-3 img-size">
+                            <img src="{{ asset('storage/frontend/course-students.svg') }}" alt="No. Of Student Enrolled" class="me-3 img-size">
                             <div class="common-style">No. Of Student Enrolled</div>
                         </div>
                         <div class="common-text-style">{{ $course->no_of_students_enrolled }}</div>
@@ -122,7 +122,7 @@
                     @foreach(json_decode($course->master_section_2_points) as $master_section_2_point)
                         <div class="col-md-6">
                             <div class="learn-list d-flex">
-                                <img src="{{ asset('storage/frontend/charm-circle-tick-2.svg') }}" alt="Tick" class="me-3">
+                                <img src="{{ asset('storage/frontend/circle-tick.svg') }}" alt="Tick" class="me-3">
                                 {{ $master_section_2_point }}
                             </div>
                         </div>
@@ -191,7 +191,7 @@
                         <div>
                             <div class="testimonial-name">Lenka Sutra</div>
                             <div class="testimonial-stars">
-                                <img src="/storage/frontend/frame-1171275930.svg" alt="Rating Stars">
+                                <img src="/storage/frontend/stars.svg" alt="Rating Stars">
                             </div>
                         </div>
                     </div>
@@ -257,7 +257,7 @@
                 <div class="text-center mt-4">
                     <a href="{{ json_decode($course->master_section_5_label_link)->link }}" class="learn-more">
                         <span>{{ json_decode($course->master_section_5_label_link)->label }}</span>
-                        <img src="{{ asset('storage/frontend/arrow-indication-10.svg') }}" alt="Arrow" class="ms-1">
+                        <img src="{{ asset('storage/frontend/small-arrow-right.svg') }}" alt="Arrow" class="ms-1">
                     </a>
                 </div>
             @endif
@@ -273,7 +273,7 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-md-8">
                         <div class="map-background d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('storage/frontend/world map.svg') }}" alt="World Map" class="img-fluid">
+                            <img src="{{ asset('storage/frontend/world-map.svg') }}" alt="World Map" class="img-fluid">
 
                             <div class="regions-text">
                                 <div class="text-container">
@@ -314,7 +314,7 @@
                     <div class="stars mb-2">★★★★★</div>
                 </div>
                 <div class="col-md-6 d-flex justify-content-center">
-                    <img src="/storage/frontend/review.png" alt="Student" class="img-fluid rounded">
+                    <img src="/storage/frontend/student-image.svg" alt="Student" class="img-fluid rounded">
                 </div>
             </div>
 
@@ -335,7 +335,7 @@
                             <div>
                                 <span class="font-weight-bold d-block mb-1">Verified Student</span>
                                 <span class="d-block">
-                                    <img src="/storage/frontend/correct-blue.png" alt="Verified" class="me-2">
+                                    <img src="/storage/frontend/check-blue-icon.svg" alt="Verified" class="me-2">
                                     2022 Batch
                                 </span>
                             </div>
@@ -358,7 +358,7 @@
                             <div>
                                 <span class="font-weight-bold d-block mb-1">Verified Student</span>
                                 <span class="d-block">
-                                    <img src="/storage/frontend/correct-blue.png" alt="Verified" class="me-2">
+                                    <img src="/storage/frontend/check-blue-icon.svg" alt="Verified" class="me-2">
                                     2022 Batch
                                 </span>
                             </div>
@@ -381,7 +381,7 @@
                             <div>
                                 <span class="font-weight-bold d-block mb-1">Verified Student</span>
                                 <span class="d-block">
-                                    <img src="/storage/frontend/correct-blue.png" alt="Verified" class="me-2">
+                                    <img src="/storage/frontend/check-blue-icon.svg" alt="Verified" class="me-2">
                                     2022 Batch
                                 </span>
                             </div>
@@ -425,7 +425,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="mailto: {{ $settings->email }}" class="text-decoration-none">
-                                    <img src="{{ asset('storage/frontend/mdi_email-outline.svg') }}" alt="Email Icon" class="img-fluid white-fill">
+                                    <img src="{{ asset('storage/frontend/email-white.svg') }}" alt="Email Icon" class="img-fluid white-fill">
                                     <p>{{ $settings->email }}</p>
                                 </a>
                             </div>
@@ -433,7 +433,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->instagram }}" class="text-decoration-none" target="_blank">
-                                    <img src="{{ asset('storage/frontend/insta-white.svg') }}" alt="Instagram Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/instagram-white.svg') }}" alt="Instagram Icon" class="img-fluid">
                                     <p>Instagram</p>
                                 </a>
                             </div>
@@ -465,7 +465,7 @@
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->fb }}" class="text-decoration-none" target="_blank">
-                                    <img src="{{ asset('storage/frontend/facebook-whi.svg') }}" alt="Facebook Icon" class="img-fluid">
+                                    <img src="{{ asset('storage/frontend/facebook-white.svg') }}" alt="Facebook Icon" class="img-fluid">
                                     <p>Facebook</p>
                                 </a>
                             </div>

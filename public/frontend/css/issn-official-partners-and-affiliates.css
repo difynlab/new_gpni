@@ -29,7 +29,7 @@ body {
 .partners-section {
     padding: 50px 15px;
     background-color: #ffffff;
-    background-image: url  ("/storage/frontend/world-map.svg");
+    background-image: url("../../../storage/frontend/world-map-white.svg");
     /* Background image for world map */
     background-size: cover;
     background-position: center;

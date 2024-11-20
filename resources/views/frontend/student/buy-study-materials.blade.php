@@ -35,7 +35,6 @@
                         <button type="submit" class="btn btn-pay-now">Pay Now</button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

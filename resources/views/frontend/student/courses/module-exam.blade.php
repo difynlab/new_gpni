@@ -18,7 +18,7 @@
 
                 <div class="modal-footer text-center">
                     <a href="{{ route('frontend.courses.show', $course) }}" class="return-link mx-3">
-                        <img src="{{ asset('storage/frontend/student/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
+                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
                         Return to course
                     </a>
                     <button class="btn confirm-button start-exam-button mx-3">Start Exam</button>
@@ -127,15 +127,15 @@
 
                                 <div class="legend-container">
                                     <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/student/left-chevron-icon.svg') }}">
+                                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}">
                                         <span class="legend">Attempted</span>
                                     </div>
                                     <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/student/left-chevron-icon.svg') }}">
+                                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}">
                                         <span class="legend">Not Attempted</span>
                                     </div>
                                     <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/student/left-chevron-icon.svg') }}">
+                                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}">
                                         <span class="legend">Incomplete</span>
                                     </div>
                                 </div>

@@ -22,7 +22,7 @@
                     <div class="header-section">
                         <h1>Ask the Expert</h1>
                         <a href="{{ route('frontend.ask-questions.histories') }}">
-                            <img src="{{ asset('storage/frontend/student/history-clock-icon.svg') }}" class="icon-history" alt="History Icon" width="22" height="22">
+                            <img src="{{ asset('storage/frontend/history-clock-icon.svg') }}" class="icon-history" alt="History Icon" width="22" height="22">
                             View History & Replies
                         </a>
                     </div>
