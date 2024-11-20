@@ -74,29 +74,31 @@
             <div class="container">
                 <h2 class="fs-49 ff-poppins-medium">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}</h2>
 
-                @foreach($advisory_boards as $key => $advisory_board)
-                    <div class="row founder align-items-center">
-                        @if($key == 0)
-                            <div class="col-lg-2 text-center text-md-start">
-                                <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" alt="{{ $advisory_board->name }}" class="img-fluid">
-                            </div>
-                            <div class="col-lg-10 text-center text-md-start">
-                                <h4 class="p-0 m-0 fs-31 ff-poppins-semibold">{{ $advisory_board->name }}</h4>
-                                <div class="title py-2 fs-20 ff-poppins-regular">{{ $advisory_board->designations }}</div>
-                                <div class="pt-3 fs-25">{!! $advisory_board->description !!}</div>
-                            </div>
-                        @else
-                            <div class="col-lg-10 text-center text-md-end order-2 order-md-1">
-                                <h4 class="p-0 m-0 fs-31 ff-poppins-semibold">{{ $advisory_board->name }}</h4>
-                                <div class="title py-2 fs-20 ff-poppins-regular">{{ $advisory_board->designations }}</div>
-                                <div class="pt-3 fs-25">{!! $advisory_board->description !!}</div>
-                            </div>
-                            <div class="col-lg-2 text-center text-md-start order-1 order-md-2">
-                                <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" alt="{{ $advisory_board->name }}" class="img-fluid">
-                            </div>
-                        @endif
-                    </div>
-                @endforeach
+                @if($advisory_boards->isNotEmpty())
+                    @foreach($advisory_boards as $key => $advisory_board)
+                        <div class="row founder align-items-center">
+                            @if($key == 0)
+                                <div class="col-lg-2 text-center text-md-start">
+                                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" alt="{{ $advisory_board->name }}" class="img-fluid">
+                                </div>
+                                <div class="col-lg-10 text-center text-md-start">
+                                    <h4 class="p-0 m-0 fs-31 ff-poppins-semibold">{{ $advisory_board->name }}</h4>
+                                    <div class="title py-2 fs-20 ff-poppins-regular">{{ $advisory_board->designations }}</div>
+                                    <div class="pt-3 fs-25">{!! $advisory_board->description !!}</div>
+                                </div>
+                            @else
+                                <div class="col-lg-10 text-center text-md-end order-2 order-md-1">
+                                    <h4 class="p-0 m-0 fs-31 ff-poppins-semibold">{{ $advisory_board->name }}</h4>
+                                    <div class="title py-2 fs-20 ff-poppins-regular">{{ $advisory_board->designations }}</div>
+                                    <div class="pt-3 fs-25">{!! $advisory_board->description !!}</div>
+                                </div>
+                                <div class="col-lg-2 text-center text-md-start order-1 order-md-2">
+                                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" alt="{{ $advisory_board->name }}" class="img-fluid">
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     @endif

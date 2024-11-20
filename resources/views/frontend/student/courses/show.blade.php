@@ -16,7 +16,7 @@
             <div class="col-12 col-md-9 main-content">
                 <div class="module-container">
                     <h1 class="module-title">{{ $course->title }}</h1>
-    
+
                     @foreach($course_modules as $key => $course_module)
                         <div class="module">
                             <div class="row mb-3 align-items-center">
@@ -30,7 +30,17 @@
                                 </div>
 
                                 @php
-                                    $previous_module_completed = ($key === 0) || hasStudentCompletedModuleExam($student->id, $course_modules[$key - 1]->course_id, $course_modules[$key - 1]->id) || ($course_modules[$key - 1]->module_exam !== 'Yes');
+                                    $all_previous_modules_completed = true;
+
+                                    for($i = 0; $i < $key; $i++) {
+                                        if(
+                                            $course_modules[$i]->module_exam == 'Yes' &&
+                                            !hasStudentCompletedModuleExam($student->id, $course_modules[$i]->course_id, $course_modules[$i]->id)
+                                        ) {
+                                            $all_previous_modules_completed = false;
+                                            break;
+                                        }
+                                    }
                                 @endphp
 
                                 @if($course_module->module_exam == 'Yes')
@@ -51,17 +61,17 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                        @elseif($previous_module_completed)
+                                        @elseif($all_previous_modules_completed)
                                             <a href="{{ route('frontend.module-exams.index', [$course, $course_module]) }}" class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You can proceed to the next module only after passing this test exam" data-bs-custom-class="custom-tooltip">Take Module Exam</a>
                                         @else
-                                            <button class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You must complete the previous module exam first" data-bs-custom-class="custom-tooltip" disabled>Exam Locked</button>
+                                            <button class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You must complete all previous module exams first" data-bs-custom-class="custom-tooltip" disabled>Exam Locked</button>
                                         @endif
                                     </div>
                                 @endif
                             </div>
 
                             @if(count($course_module->chapters) > 0)
-                                @if($previous_module_completed)
+                                @if($all_previous_modules_completed)
                                     <div class="module-card">
                                         @foreach($course_module->chapters as $chapter)
                                             <a href="{{ route('frontend.courses.show-more', ['course' => $course, 'course_module' => $course_module, 'course_chapter' => $chapter]) }}">

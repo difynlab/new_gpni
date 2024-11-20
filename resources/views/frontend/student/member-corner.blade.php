@@ -45,33 +45,35 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach($medias as $media)
-                                        <tr>
-                                            <td>{{ $media->id }}</td>
-                                            <td>
-                                                {{ $media->name }}
-                                            </td>
-                                            <td>
-                                                @if($media->type == 'Image')
-                                                    <img src="{{ asset('storage/backend/medias/' . $media->image) }}" alt="{{ $media->name }}" style="width: 300px; height: 170px; object-fit: cover;">
-                                                @elseif($media->type == 'Video')
-                                                    <video class="video-player" src="{{ asset('storage/backend/medias/' . $media->video) }}" controls style="width: 300px; height: 170px; object-fit: cover;"></video>
-                                                @elseif($media->type == 'Vimeo Video Link')
-                                                    <a class="text-decoration-none" href="{{ $media->vimeo_video_link }}" target="_blank">Watch on Vimeo</a>
-                                                @elseif($media->type == 'PDF')
-                                                    <a class="text-decoration-none" href="{{ asset('storage/backend/medias/' . $media->pdf) }}" target="_blank">Download</a>
-                                                @elseif($media->type == 'Word')
-                                                    <a class="text-decoration-none" href="{{ asset('storage/backend/medias/' . $media->word) }}" target="_blank">Download</a>
-                                                @elseif($media->type == 'Excel')
-                                                    <a class="text-decoration-none" href="{{ asset('storage/backend/medias/' . $media->excel) }}" target="_blank">Download</a>
-                                                @elseif($media->type == 'PPT')
-                                                    <a class="text-decoration-none" href="{{ asset('storage/backend/medias/' . $media->ppt) }}" target="_blank">Download</a>
-                                                @elseif($media->type == 'Audio')
-                                                    <audio src="{{ asset('storage/backend/medias/' . $media->audio) }}" type="audio/mpeg" controls></audio>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    @if($medias->isNotEmpty())
+                                        @foreach($medias as $media)
+                                            <tr>
+                                                <td>{{ $media->id }}</td>
+                                                <td>
+                                                    {{ $media->name }}
+                                                </td>
+                                                <td>
+                                                    @if($media->type == 'Image')
+                                                        <img src="{{ asset('storage/backend/medias/' . $media->image) }}" alt="{{ $media->name }}" style="width: 300px; height: 170px; object-fit: cover;">
+                                                    @elseif($media->type == 'Video')
+                                                        <video class="video-player" src="{{ asset('storage/backend/medias/' . $media->video) }}" controls style="width: 300px; height: 170px; object-fit: cover;"></video>
+                                                    @elseif($media->type == 'Vimeo Video Link')
+                                                        <a class="text-decoration-none" href="{{ $media->vimeo_video_link }}" target="_blank">Watch on Vimeo</a>
+                                                    @elseif($media->type == 'PDF')
+                                                        <a class="text-decoration-none" href="{{ asset('storage/backend/medias/' . $media->pdf) }}" target="_blank">Download</a>
+                                                    @elseif($media->type == 'Word')
+                                                        <a class="text-decoration-none" href="{{ asset('storage/backend/medias/' . $media->word) }}" target="_blank">Download</a>
+                                                    @elseif($media->type == 'Excel')
+                                                        <a class="text-decoration-none" href="{{ asset('storage/backend/medias/' . $media->excel) }}" target="_blank">Download</a>
+                                                    @elseif($media->type == 'PPT')
+                                                        <a class="text-decoration-none" href="{{ asset('storage/backend/medias/' . $media->ppt) }}" target="_blank">Download</a>
+                                                    @elseif($media->type == 'Audio')
+                                                        <audio src="{{ asset('storage/backend/medias/' . $media->audio) }}" type="audio/mpeg" controls></audio>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
 

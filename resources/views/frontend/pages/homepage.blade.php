@@ -98,66 +98,41 @@
                     <p class="mb-1 professional-body ff-poppins-regular fs-25">{{ $contents->{'section_3_description_' . $middleware_language} ?? $contents->section_3_description_en }}</p>
                 </div>
 
-                <div class="tab-class pt-5 text-center ">
-                    <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active pill-link"
-                                data-bs-toggle="pill" href="#tab-1">
-                                <div class="tab-text mt-n1 mb-0">
-                                    All
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-md-tart text-center mx-3 pb-3 pill-link"
-                                data-bs-toggle="pill" href="#tab-2">
-                                <div class="tab-text mt-n1 mb-0">
-                                    International Certificates
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 pill-link" data-bs-toggle="pill"
-                                href="#tab-3">
-                                <div class="tab-text mt-n1 mb-0">
-                                    Master Classes
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="row g-4">
-                                <div class="tab-content" id="tab1Content">
-                                    <div class="scrollable-container">
-                                        @foreach($courses as $course)
-                                            <div class="card">
-                                                <div class="overlay-logo p-3">
-                                                    <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
-                                                </div>
-                                                <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
-                                                <div class="card-body ps-4">
-                                                    <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
-                                                    <div
-                                                        class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                        <div class="apply-now-text">APPLY NOW</div>
-                                                        <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                @if($courses->isNotEmpty())
+                    <div class="tab-class pt-5 text-center ">
+                        <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
+                            <li class="nav-item">
+                                <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active pill-link"
+                                    data-bs-toggle="pill" href="#tab-1">
+                                    <div class="tab-text mt-n1 mb-0">
+                                        All
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="d-flex align-items-center text-md-tart text-center mx-3 pb-3 pill-link"
+                                    data-bs-toggle="pill" href="#tab-2">
+                                    <div class="tab-text mt-n1 mb-0">
+                                        International Certificates
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 pill-link" data-bs-toggle="pill"
+                                    href="#tab-3">
+                                    <div class="tab-text mt-n1 mb-0">
+                                        Master Classes
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
 
-                        <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="tab-content" id="tab1Content">
-                                    <div class="scrollable-container">
-                                        @foreach($courses as $course)
-                                            @if($course->type == "Certification")
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane fade show p-0 active">
+                                <div class="row g-4">
+                                    <div class="tab-content" id="tab1Content">
+                                        <div class="scrollable-container">
+                                            @foreach($courses as $course)
                                                 <div class="card">
                                                     <div class="overlay-logo p-3">
                                                         <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
@@ -172,41 +147,68 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endif
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div id="tab-3" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="tab-content" id="tab1Content">
-                                    <div class="scrollable-container">
-                                        @foreach($courses as $course)
-                                            @if($course->type == "Masters")
-                                                <div class="card">
-                                                    <div class="overlay-logo p-3">
-                                                        <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
-                                                    </div>
-                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
-                                                    <div class="card-body ps-4">
-                                                        <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
-                                                        <div
-                                                            class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                            <div class="apply-now-text">APPLY NOW</div>
-                                                            <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                            <div id="tab-2" class="tab-pane fade show p-0">
+                                <div class="row g-4">
+                                    <div class="tab-content" id="tab1Content">
+                                        <div class="scrollable-container">
+                                            @foreach($courses as $course)
+                                                @if($course->type == "Certification")
+                                                    <div class="card">
+                                                        <div class="overlay-logo p-3">
+                                                            <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
+                                                        </div>
+                                                        <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
+                                                        <div class="card-body ps-4">
+                                                            <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
+                                                            <div
+                                                                class="apply-now-container d-flex justify-content-between align-items-center w-100">
+                                                                <div class="apply-now-text">APPLY NOW</div>
+                                                                <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="tab-3" class="tab-pane fade show p-0">
+                                <div class="row g-4">
+                                    <div class="tab-content" id="tab1Content">
+                                        <div class="scrollable-container">
+                                            @foreach($courses as $course)
+                                                @if($course->type == "Masters")
+                                                    <div class="card">
+                                                        <div class="overlay-logo p-3">
+                                                            <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
+                                                        </div>
+                                                        <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
+                                                        <div class="card-body ps-4">
+                                                            <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
+                                                            <div
+                                                                class="apply-now-container d-flex justify-content-between align-items-center w-100">
+                                                                <div class="apply-now-text">APPLY NOW</div>
+                                                                <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
                 <div class="text-center mt-5 pt-5">
                     <a href="{{ json_decode($contents->{'section_3_label_link_' . $middleware_language})->link ?? json_decode($contents->section_3_label_link_en)->link }}" class="py-sm-4 px-sm-5 ff-poppins-medium fs-20 explore-course-text">
@@ -325,7 +327,7 @@
                     <p class="mb-4 expert-body fs-25 ff-poppins-regular">{{ $contents->{'section_7_description_' . $middleware_language} ?? $contents->section_7_description_en }}</p>
                 </div>
 
-                @if(!$advisory_boards->isEmpty())
+                @if($advisory_boards->isNotEmpty())
                     <div class="row text-center g-4 pt-4 d-flex justify-content-center">
                         @foreach($advisory_boards as $advisory_board)
                             <div class="col-6 col-md-2">
@@ -424,25 +426,28 @@
                     <div class="mb-3 faq-heading h1">{{ $contents->{'section_9_title_' . $middleware_language} ?? $contents->section_9_title_en }}</div>
                     <p class="mb-4 faq-body">{{ $contents->{'section_9_description_' . $middleware_language} ?? $contents->section_9_description_en }}</p>
                 </div>
-                <div class="my-3">
-                    <div class="accordion" id="accordionFAQ">
-                        @foreach($faqs as $faq)
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed p-2 p-md-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ $faq->id }}" aria-expanded="false" aria-controls="collapse_{{ $faq->id }}">
-                                        {{ $faq->{'question'} }}
-                                    </button>
-                                </h2>
 
-                                <div id="collapse_{{ $faq->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                                    <div class="accordion-body">
-                                        {!! $faq->{'answer'} !!}
+                @if($faqs->isNotEmpty())
+                    <div class="my-3">
+                        <div class="accordion" id="accordionFAQ">
+                            @foreach($faqs as $faq)
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed p-2 p-md-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ $faq->id }}" aria-expanded="false" aria-controls="collapse_{{ $faq->id }}">
+                                            {{ $faq->{'question'} }}
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapse_{{ $faq->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                        <div class="accordion-body">
+                                            {!! $faq->{'answer'} !!}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     @endif

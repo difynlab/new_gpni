@@ -31,11 +31,13 @@
                     <div class="custom-selection">
                         <h5 class="text-primary">Choose Gift Card Style</h5>
                         <div class="d-flex flex-wrap">
-                            @foreach($images as $image)
-                                <div class="style-card">
-                                    <img src="{{ asset('storage/backend/pages/' . $image) }}" alt="Gift Card Image">
-                                </div>
-                            @endforeach
+                            @if(count($images) > 0)
+                                @foreach($images as $image)
+                                    <div class="style-card">
+                                        <img src="{{ asset('storage/backend/pages/' . $image) }}" alt="Gift Card Image">
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

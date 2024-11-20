@@ -26,7 +26,7 @@
 
                     <div class="rating pt-4">
                         <span>5.0</span>
-                        <img src="/storage/frontend/stars.svg" alt="Rating Stars">
+                        <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating Stars">
                         <span>(9)</span>
                     </div>
                 </section>
@@ -268,11 +268,11 @@
                 <div class="tab-pane fade" id="review">
                     <section class="testimonial-section">
                         <div class="testimonial-header">
-                            <img src="/storage/frontend/expert-image.svg" alt="Lenka Sutra">
+                            <img src="{{ asset('storage/frontend/expert-image.svg') }}" alt="Lenka Sutra">
                             <div>
                                 <div class="testimonial-name">Lenka Sutra</div>
                                 <div class="testimonial-stars">
-                                    <img src="/storage/frontend/stars.svg" alt="Rating Stars">
+                                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating Stars">
                                 </div>
                             </div>
                         </div>
@@ -379,7 +379,7 @@
             <section class="advisory-board-section container">
                 <h2 class="advisory-board-title">{{ $course->certification_section_12_title }}</h2>
 
-                @if(!$advisory_boards->isEmpty())
+                @if($advisory_boards->isNotEmpty())
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 g-4">
                         @foreach($advisory_boards as $advisory_board)
                             <div class="col">
@@ -450,10 +450,10 @@
                         <div class="student-testimonial-quote">“I was looking for the perfect course that combined theoretical
                             knowledge and practical experience in sports nutrition for many years.</div>
                         <div class="student-testimonial-author">Lenka Sutra</div>
-                        <img src="/storage/frontend/stars.svg" alt="Rating Stars">
+                        <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating Stars">
                     </div>
                     <div>
-                        <img src="/storage/frontend/student-image.svg" alt="Student Photo" class="img-fluid">
+                        <img src="{{ asset('storage/frontend/student-image.svg') }}" alt="Student Photo" class="img-fluid">
                     </div>
                 </div>
             </section>
@@ -471,13 +471,14 @@
                             <div class="student-review-footer">
                                 <div class="student-review-rating">
                                     <span>Rated 5/5 stars</span>
-                                    <img src="/storage/frontend/stars.svg" alt="Star">
+                                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Star">
                                 </div>
                                 <div>
                                     <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch"> <img src="/storage/frontend/check-blue-icon.svg" alt="check" width="10px"
-                                            height="10px">
-                                        2022 Batch</p>
+                                    <p class="student-review-batch">
+                                        <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="check" width="10px" height="10px">
+                                        2022 Batch
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -493,11 +494,11 @@
                             <div class="student-review-footer">
                                 <div class="student-review-rating">
                                     <span>Rated 5/5 stars</span>
-                                    <img src="/storage/frontend/stars.svg" alt="Star">
+                                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Star">
                                 </div>
                                 <div>
                                     <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch"> <img src="/storage/frontend/check-blue-icon.svg" alt="check" width="10px"
+                                    <p class="student-review-batch"> <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="check" width="10px"
                                             height="10px">
                                         2022 Batch</p>
                                 </div>
@@ -515,11 +516,11 @@
                             <div class="student-review-footer">
                                 <div class="student-review-rating">
                                     <span>Rated 5/5 stars</span>
-                                    <img src="/storage/frontend/stars.svg" alt="Star">
+                                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Star">
                                 </div>
                                 <div>
                                     <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch"> <img src="/storage/frontend/check-blue-icon.svg" alt="check" width="10px"
+                                    <p class="student-review-batch"> <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="check" width="10px"
                                             height="10px">
                                         2022 Batch</p>
                                 </div>

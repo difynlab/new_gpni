@@ -187,11 +187,11 @@
             <div class="tab-pane fade" id="review">
                 <section class="testimonial-section">
                     <div class="testimonial-header">
-                        <img src="/storage/frontend/expert-image.svg" alt="Lenka Sutra">
+                        <img src="{{ asset('storage/frontend/expert-image.svg') }}" alt="Lenka Sutra">
                         <div>
                             <div class="testimonial-name">Lenka Sutra</div>
                             <div class="testimonial-stars">
-                                <img src="/storage/frontend/stars.svg" alt="Rating Stars">
+                                <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating Stars">
                             </div>
                         </div>
                     </div>
@@ -237,7 +237,7 @@
                 <h2 class="advisory-title">{{ $course->master_section_5_title }}</h2>
             </div>
 
-            @if(!$advisory_boards->isEmpty())
+            @if($advisory_boards->isNotEmpty())
                 <div class="row justify-content-center">
                     <div class="col-md-12 d-flex justify-content-between align-items-center">
                         <div class="board-images">
@@ -314,7 +314,7 @@
                     <div class="stars mb-2">★★★★★</div>
                 </div>
                 <div class="col-md-6 d-flex justify-content-center">
-                    <img src="/storage/frontend/student-image.svg" alt="Student" class="img-fluid rounded">
+                    <img src="{{ asset('storage/frontend/student-image.svg') }}" alt="Student" class="img-fluid rounded">
                 </div>
             </div>
 
@@ -335,7 +335,7 @@
                             <div>
                                 <span class="font-weight-bold d-block mb-1">Verified Student</span>
                                 <span class="d-block">
-                                    <img src="/storage/frontend/check-blue-icon.svg" alt="Verified" class="me-2">
+                                    <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="Verified" class="me-2">
                                     2022 Batch
                                 </span>
                             </div>
@@ -358,7 +358,7 @@
                             <div>
                                 <span class="font-weight-bold d-block mb-1">Verified Student</span>
                                 <span class="d-block">
-                                    <img src="/storage/frontend/check-blue-icon.svg" alt="Verified" class="me-2">
+                                    <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="Verified" class="me-2">
                                     2022 Batch
                                 </span>
                             </div>
@@ -381,7 +381,7 @@
                             <div>
                                 <span class="font-weight-bold d-block mb-1">Verified Student</span>
                                 <span class="d-block">
-                                    <img src="/storage/frontend/check-blue-icon.svg" alt="Verified" class="me-2">
+                                    <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="Verified" class="me-2">
                                     2022 Batch
                                 </span>
                             </div>
@@ -481,7 +481,7 @@
             <h2 class="faq-title text-center">{{ $course->master_section_10_title }}</h2>
             <p class="faq-subtitle text-center">{{ $course->master_section_10_description }}</p>
 
-            @if(!$faqs->isEmpty())
+            @if($faqs->isNotEmpty())
                 <div class="faq-container mt-5">
                     <div class="accordion" id="accordionExample">
                         @foreach($faqs as $faq)

@@ -19,35 +19,37 @@
 
                             <hr>
 
-                            @foreach($items as $item)
-                                <div class="d-flex align-items-center my-2">
-                                    <img src="{{ asset('storage/backend/products/products/' . $item->product->thumbnail) }}" alt="{{ $item->product->name }}" style="width: 30%; height: 30%; margin-right: 20px; object-fit: cover;">
+                            @if($items->isNotEmpty())
+                                @foreach($items as $item)
+                                    <div class="d-flex align-items-center my-2">
+                                        <img src="{{ asset('storage/backend/products/products/' . $item->product->thumbnail) }}" alt="{{ $item->product->name }}" style="width: 30%; height: 30%; margin-right: 20px; object-fit: cover;">
 
-                                    <div class="item-details">
-                                        <h5 style="font-size: 18px; font-weight: 600;">{{ $item->product->name }}</h5>
+                                        <div class="item-details">
+                                            <h5 style="font-size: 18px; font-weight: 600;">{{ $item->product->name }}</h5>
 
-                                        @if($item->product->colors || $item->product->available_sizes)
-                                            <p style="font-size: 13px; margin: 0;">{{ $item->product->colors }} / {{ $item->product->available_sizes }}</p>
-                                        @endif
+                                            @if($item->product->colors || $item->product->available_sizes)
+                                                <p style="font-size: 13px; margin: 0;">{{ $item->product->colors }} / {{ $item->product->available_sizes }}</p>
+                                            @endif
 
-                                        <div class="d-flex align-items-center my-2">
-                                            <i class="bi bi-dash-circle" onclick="updateQuantity({{ $item->id }}, 'decrease')" style="cursor: pointer;"></i>
-                                            
-                                            <span class="mx-3" style="width: 15px; text-align: center;" id="quantity-{{ $item->id }}">{{ $item->quantity }}</span>
+                                            <div class="d-flex align-items-center my-2">
+                                                <i class="bi bi-dash-circle" onclick="updateQuantity({{ $item->id }}, 'decrease')" style="cursor: pointer;"></i>
+                                                
+                                                <span class="mx-3" style="width: 15px; text-align: center;" id="quantity-{{ $item->id }}">{{ $item->quantity }}</span>
 
-                                            <input type="hidden" name="quantities[]" id="quantity-input-{{ $item->id }}" value="{{ $item->quantity }}">
+                                                <input type="hidden" name="quantities[]" id="quantity-input-{{ $item->id }}" value="{{ $item->quantity }}">
 
-                                            <input type="hidden" name="products[]" value="{{ $item->product_id }}">
+                                                <input type="hidden" name="products[]" value="{{ $item->product_id }}">
 
-                                            <i class="bi bi-plus-circle" onclick="updateQuantity({{ $item->id }}, 'increase')" style="cursor: pointer;"></i>
+                                                <i class="bi bi-plus-circle" onclick="updateQuantity({{ $item->id }}, 'increase')" style="cursor: pointer;"></i>
+                                            </div>
+
+                                            <span class="price total-product-price" id="total-price-{{ $item->id }}" style="font-size: 20px;">${{ $item->total_price }}</span>
                                         </div>
-
-                                        <span class="price total-product-price" id="total-price-{{ $item->id }}" style="font-size: 20px;">${{ $item->total_price }}</span>
+                                    
+                                        <i class="bi bi-trash-fill fs-5" onclick="deleteItem({{ $item->id }})" style="cursor: pointer;"></i>
                                     </div>
-                                
-                                    <i class="bi bi-trash-fill fs-5" onclick="deleteItem({{ $item->id }})" style="cursor: pointer;"></i>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
                     </div>
 
@@ -87,45 +89,47 @@
             </div>
         </div>
         <div class="row">
-            @foreach($other_products as $product)
-                <div class="col-3">
-                    <div class="product-card">
-                        <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
-                        <div class="product-info">
-                            <div class="d-flex justify-content-between">
-                                <span class="category"></span>
-                                <span class="rating">
-                                    <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                </span>
+            @if($other_products->isNotEmpty())
+                @foreach($other_products as $product)
+                    <div class="col-3">
+                        <div class="product-card">
+                            <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
+                            <div class="product-info">
+                                <div class="d-flex justify-content-between">
+                                    <span class="category"></span>
+                                    <span class="rating">
+                                        <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
+                                    </span>
+                                </div>
+                                <span class="product-name py-2">{{ $product->name }}</span>
+                                <div class="product-details">
+                                    <span class="price">${{ $product->price }}</span>
+                                </div>
                             </div>
-                            <span class="product-name py-2">{{ $product->name }}</span>
-                            <div class="product-details">
-                                <span class="price">${{ $product->price }}</span>
-                            </div>
-                        </div>
 
-                        @if(auth()->check())
-                            @if(hasUserAddedToCart(auth()->user()->id, $product->id))
-                                <button class="cta-button-disabled" disabled>
-                                    Added to Cart
-                                </button>
-                            @else
-                                <form action="{{ route('frontend.carts.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                                    <button type="submit" class="cta-button">
-                                        <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
-                                        Add to Cart
+                            @if(auth()->check())
+                                @if(hasUserAddedToCart(auth()->user()->id, $product->id))
+                                    <button class="cta-button-disabled" disabled>
+                                        Added to Cart
                                     </button>
-                                </form>
+                                @else
+                                    <form action="{{ route('frontend.carts.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                        <button type="submit" class="cta-button">
+                                            <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
+                                            Add to Cart
+                                        </button>
+                                    </form>
+                                @endif
+                            @else
+                                <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>
                             @endif
-                        @else
-                            <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>
-                        @endif
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
     </div> -->
 

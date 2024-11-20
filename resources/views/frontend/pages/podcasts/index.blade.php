@@ -27,41 +27,43 @@
         <div class="podcast-section container">
             <div class="section-title">{{ $contents->{'section_2_title_' . $middleware_language} ?? $contents->section_2_title_en }}</div>
 
-            @foreach($podcasts as $podcast)
-                <div class="podcast-card">
+            @if($podcasts->isNotEmpty())
+                @foreach($podcasts as $podcast)
+                    <div class="podcast-card">
 
-                    @if($podcast->thumbnail)
-                        <img src="{{ asset('storage/backend/podcasts/'. $podcast->thumbnail) }}" alt="Main Image" class="img-fluid podcast-image">
-                    @else
-                        <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="img-fluid podcast-image">
-                    @endif
+                        @if($podcast->thumbnail)
+                            <img src="{{ asset('storage/backend/podcasts/'. $podcast->thumbnail) }}" alt="Main Image" class="img-fluid podcast-image">
+                        @else
+                            <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="img-fluid podcast-image">
+                        @endif
 
-                    <div class="podcast-content">
-                        <div class="podcast-header">
-                            <div>
-                                <img src="{{ asset('storage/frontend/small-calendar-icon.svg') }}" alt="Calendar Icon">
-                                <span>{{ $podcast->created_at->format('d M Y') }}</span>
+                        <div class="podcast-content">
+                            <div class="podcast-header">
+                                <div>
+                                    <img src="{{ asset('storage/frontend/small-calendar-icon.svg') }}" alt="Calendar Icon">
+                                    <span>{{ $podcast->created_at->format('d M Y') }}</span>
+                                </div>
+                                <div>
+                                    <img src="{{ asset('storage/frontend/play-icon-gray.svg') }}" alt="Listen Icon">
+                                    <span>Listen Now</span>
+                                </div>
                             </div>
-                            <div>
-                                <img src="{{ asset('storage/frontend/play-icon-gray.svg') }}" alt="Listen Icon">
-                                <span>Listen Now</span>
+                            <div class="podcast-main-title line-clamp-2">{{ $podcast->title }}</div>
+                            <div class="podcast-description line-clamp-4">{!! $podcast->content !!}</div>
+                            <div class="podcast-link">
+                                <a href="{{ route('frontend.podcasts.show', $podcast) }}" class="text-decoration-none">
+                                    <span>Watch Now</span>
+                                    <img src="{{ asset('storage/frontend/medium-arrow-right.svg') }}" alt="Watch Icon">
+                                </a>
                             </div>
-                        </div>
-                        <div class="podcast-main-title line-clamp-2">{{ $podcast->title }}</div>
-                        <div class="podcast-description line-clamp-4">{!! $podcast->content !!}</div>
-                        <div class="podcast-link">
-                            <a href="{{ route('frontend.podcasts.show', $podcast) }}" class="text-decoration-none">
-                                <span>Watch Now</span>
-                                <img src="{{ asset('storage/frontend/medium-arrow-right.svg') }}" alt="Watch Icon">
-                            </a>
                         </div>
                     </div>
-                </div>
 
-                <div class="divider"></div>
-            @endforeach
+                    <div class="divider"></div>
+                @endforeach
 
-            {{ $podcasts->links("pagination::bootstrap-5") }}
+                {{ $podcasts->links("pagination::bootstrap-5") }}
+            @endif
         </div>
     @endif
 

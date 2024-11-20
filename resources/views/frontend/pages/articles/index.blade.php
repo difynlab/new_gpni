@@ -26,52 +26,54 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="latest-articles-tab-pane" role="tabpanel" aria-labelledby="latest-articles-tab" tabindex="0">
                             <div class="row">
-                                @foreach($articles as $article)
-                                    <div class="col-md-6 col-sm-12 my-3 card-wrapper">
-                                        <div class="card bg-light">
-                                            <div class="position-relative">
-                                                @if($article->thumbnail)
-                                                    <img src="{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}" alt="Main Image" class="img-fluid w-100">
-                                                @else
-                                                    <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="img-fluid w-100">
-                                                @endif
-                                                <div class="share-icon position-absolute">
-                                                    <button class="btn btn-light">
-                                                        <img src="{{ asset('storage/frontend/share-icon.svg') }}" alt="Share Icon">
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-3">
-                                                <div class="header-metadata mb-2">
-                                                    <img src="{{ asset('storage/frontend/calendar.svg') }}" alt="Icon" class="icon mr-2">
-                                                    <span class="text-muted">{{ $article->created_at->format('d M,Y') }}</span>
-                                                    <div class="divider">|</div>
-                                                    <span class="custom-text-muted">{{ App\Models\ArticleCategory::find($article->article_category_id)->name }}</span>
-                                                </div>
-                                                <h5 class="text-primary mb-2">{{ $article->title }}</h5>
-
-                                                <div class="text-muted card-text mb-4 line-clamp-4">{!! $article->content !!}</div>
-
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="d-flex align-items-center">
-                                                        @if($article->author_image)
-                                                            <img src="{{ asset('storage/backend/articles/author-images/'.$article->author_image) }}" alt="User" class="rounded-circle" 
-                                                            style="width:40px; height:40px;">
-                                                        @else
-                                                            <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="rounded-circle" style="width:40px; height:40px;">
-                                                        @endif 
-                                                        <span class="username">{{ $article->author_name ?? 'Unknown'}}</span>
+                                @if($articles->isNotEmpty())
+                                    @foreach($articles as $article)
+                                        <div class="col-md-6 col-sm-12 my-3 card-wrapper">
+                                            <div class="card bg-light">
+                                                <div class="position-relative">
+                                                    @if($article->thumbnail)
+                                                        <img src="{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}" alt="Main Image" class="img-fluid w-100">
+                                                    @else
+                                                        <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="img-fluid w-100">
+                                                    @endif
+                                                    <div class="share-icon position-absolute">
+                                                        <button class="btn btn-light">
+                                                            <img src="{{ asset('storage/frontend/share-icon.svg') }}" alt="Share Icon">
+                                                        </button>
                                                     </div>
-                                                    <a href="{{ route('frontend.articles.show', $article) }}" class="text-primary read-more-button">
-                                                        <span>Read More</span>
-                                                        <i class="fas fa-arrow-circle-right ms-2"></i>
-                                                    </a>
+                                                </div>
+
+                                                <div class="p-3">
+                                                    <div class="header-metadata mb-2">
+                                                        <img src="{{ asset('storage/frontend/calendar.svg') }}" alt="Icon" class="icon mr-2">
+                                                        <span class="text-muted">{{ $article->created_at->format('d M,Y') }}</span>
+                                                        <div class="divider">|</div>
+                                                        <span class="custom-text-muted">{{ App\Models\ArticleCategory::find($article->article_category_id)->name }}</span>
+                                                    </div>
+                                                    <h5 class="text-primary mb-2">{{ $article->title }}</h5>
+
+                                                    <div class="text-muted card-text mb-4 line-clamp-4">{!! $article->content !!}</div>
+
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="d-flex align-items-center">
+                                                            @if($article->author_image)
+                                                                <img src="{{ asset('storage/backend/articles/author-images/'.$article->author_image) }}" alt="User" class="rounded-circle" 
+                                                                style="width:40px; height:40px;">
+                                                            @else
+                                                                <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="rounded-circle" style="width:40px; height:40px;">
+                                                            @endif 
+                                                            <span class="username">{{ $article->author_name ?? 'Unknown'}}</span>
+                                                        </div>
+                                                        <a href="{{ route('frontend.articles.show', $article) }}" class="text-primary read-more-button">
+                                                            <span>Read More</span>
+                                                            <i class="fas fa-arrow-circle-right ms-2"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                @endif
                             </div>
 
                             {{ $articles->links("pagination::bootstrap-5") }}
@@ -79,52 +81,54 @@
 
                         <div class="tab-pane fade" id="recommended-tab-pane" role="tabpanel" aria-labelledby="recommended-tab" tabindex="0">
                             <div class="row">
-                                @foreach($recommended_articles as $recommended_article)
-                                    <div class="col-md-6 col-sm-12 my-3 card-wrapper">
-                                        <div class="card bg-light">
-                                            <div class="position-relative">
-                                                @if($recommended_article->thumbnail)
-                                                    <img src="{{ asset('storage/backend/articles/articles/'. $recommended_article->thumbnail) }}" alt="Main Image" class="img-fluid w-100">
-                                                @else
-                                                    <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="img-fluid w-100">
-                                                @endif
-                                                <div class="share-icon position-absolute">
-                                                    <button class="btn btn-light">
-                                                        <img src="{{ asset('storage/frontend/share-icon.svg') }}" alt="Share Icon">
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-3">
-                                                <div class="header-metadata mb-2">
-                                                    <img src="{{ asset('storage/frontend/calendar.svg') }}" alt="Icon" class="icon mr-2">
-                                                    <span class="text-muted">{{ $recommended_article->created_at->format('d M,Y') }}</span>
-                                                    <div class="divider">|</div>
-                                                    <span class="custom-text-muted">{{ App\Models\ArticleCategory::find($recommended_article->article_category_id)->name }}</span>
-                                                </div>
-                                                <h5 class="text-primary mb-2">{{ $recommended_article->title }}</h5>
-
-                                                <div class="text-muted card-text mb-4 line-clamp-4">{!! $recommended_article->content !!}</div>
-
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="d-flex align-items-center">
-                                                        @if($recommended_article->author_image)
-                                                            <img src="{{ asset('storage/backend/articles/author-images/'.$recommended_article->author_image) }}" alt="User" class="rounded-circle" 
-                                                            style="width:40px; height:40px;">
-                                                        @else
-                                                            <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="rounded-circle" style="width:40px; height:40px;">
-                                                        @endif 
-                                                        <span class="username">{{ $recommended_article->author_name ?? 'Unknown'}}</span>
+                                @if($recommended_articles->isNotEmpty())
+                                    @foreach($recommended_articles as $recommended_article)
+                                        <div class="col-md-6 col-sm-12 my-3 card-wrapper">
+                                            <div class="card bg-light">
+                                                <div class="position-relative">
+                                                    @if($recommended_article->thumbnail)
+                                                        <img src="{{ asset('storage/backend/articles/articles/'. $recommended_article->thumbnail) }}" alt="Main Image" class="img-fluid w-100">
+                                                    @else
+                                                        <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="img-fluid w-100">
+                                                    @endif
+                                                    <div class="share-icon position-absolute">
+                                                        <button class="btn btn-light">
+                                                            <img src="{{ asset('storage/frontend/share-icon.svg') }}" alt="Share Icon">
+                                                        </button>
                                                     </div>
-                                                    <a href="{{ route('frontend.articles.show', $recommended_article) }}" class="text-primary read-more-button">
-                                                        <span>Read More</span>
-                                                        <i class="fas fa-arrow-circle-right ms-2"></i>
-                                                    </a>
+                                                </div>
+
+                                                <div class="p-3">
+                                                    <div class="header-metadata mb-2">
+                                                        <img src="{{ asset('storage/frontend/calendar.svg') }}" alt="Icon" class="icon mr-2">
+                                                        <span class="text-muted">{{ $recommended_article->created_at->format('d M,Y') }}</span>
+                                                        <div class="divider">|</div>
+                                                        <span class="custom-text-muted">{{ App\Models\ArticleCategory::find($recommended_article->article_category_id)->name }}</span>
+                                                    </div>
+                                                    <h5 class="text-primary mb-2">{{ $recommended_article->title }}</h5>
+
+                                                    <div class="text-muted card-text mb-4 line-clamp-4">{!! $recommended_article->content !!}</div>
+
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="d-flex align-items-center">
+                                                            @if($recommended_article->author_image)
+                                                                <img src="{{ asset('storage/backend/articles/author-images/'.$recommended_article->author_image) }}" alt="User" class="rounded-circle" 
+                                                                style="width:40px; height:40px;">
+                                                            @else
+                                                                <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image" class="rounded-circle" style="width:40px; height:40px;">
+                                                            @endif 
+                                                            <span class="username">{{ $recommended_article->author_name ?? 'Unknown'}}</span>
+                                                        </div>
+                                                        <a href="{{ route('frontend.articles.show', $recommended_article) }}" class="text-primary read-more-button">
+                                                            <span>Read More</span>
+                                                            <i class="fas fa-arrow-circle-right ms-2"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                @endif
                             </div>
 
                             {{ $recommended_articles->links("pagination::bootstrap-5") }}
@@ -136,34 +140,36 @@
                     <div class="trending-articles-section">
                         <h5>Trending Articles</h5>
                         
-                        @foreach($trending_articles as $trending_article)
-                            <a href="{{ route('frontend.articles.show', $trending_article) }}" class="text-decoration-none">
-                                <div class="trending-article">
-                                    @if($trending_article->thumbnail)
-                                        <img src="{{ asset('storage/backend/articles/articles/' . $trending_article->thumbnail) }}" alt="Trending Image">
-                                    @else
-                                        <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" alt="Trending Image">
-                                    @endif
+                        @if($trending_articles->isNotEmpty())
+                            @foreach($trending_articles as $trending_article)
+                                <a href="{{ route('frontend.articles.show', $trending_article) }}" class="text-decoration-none">
+                                    <div class="trending-article">
+                                        @if($trending_article->thumbnail)
+                                            <img src="{{ asset('storage/backend/articles/articles/' . $trending_article->thumbnail) }}" alt="Trending Image">
+                                        @else
+                                            <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" alt="Trending Image">
+                                        @endif
 
-                                    <div class="trending-content">
-                                        <h6>{{ $trending_article->title }}</h6>
+                                        <div class="trending-content">
+                                            <h6>{{ $trending_article->title }}</h6>
 
-                                        <div class="line-clamp-2">{!! $trending_article->content !!}</div>
+                                            <div class="line-clamp-2">{!! $trending_article->content !!}</div>
 
-                                        <div class="date-and-read mt-3">
-                                            <span class="small">{{ $trending_article->created_at->format('M d,Y') }}</span>
-                                            
-                                            @if($trending_article->reading_time)
-                                                <span class="small time-read">
-                                                    <img src="{{ asset('storage/frontend/clock.svg') }}" alt="Clock" class="read-icon">
-                                                    {{ $trending_article->reading_time }}
-                                                </span>
-                                            @endif
+                                            <div class="date-and-read mt-3">
+                                                <span class="small">{{ $trending_article->created_at->format('M d,Y') }}</span>
+                                                
+                                                @if($trending_article->reading_time)
+                                                    <span class="small time-read">
+                                                        <img src="{{ asset('storage/frontend/clock.svg') }}" alt="Clock" class="read-icon">
+                                                        {{ $trending_article->reading_time }}
+                                                    </span>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        @endforeach
+                                </a>
+                            @endforeach
+                        @endif
                     </div>
 
                     <div class="find-us-on">

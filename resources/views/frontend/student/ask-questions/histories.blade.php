@@ -25,28 +25,30 @@
                     </div>
 
                     <div class="questions-list">
-                        @foreach($ask_questions as $ask_question)
-                            <a href="{{ route('frontend.ask-questions.show', $ask_question) }}" style="text-decoration: none; color: inherit;">
-                                <div class="question-card">
-                                    <div class="question-header">
-                                        <div class="d-flex align-items-center">
-                                            <div class="title">{{ $ask_question->subject }}</div>
+                        @if($ask_questions->isNotEmpty())
+                            @foreach($ask_questions as $ask_question)
+                                <a href="{{ route('frontend.ask-questions.show', $ask_question) }}" style="text-decoration: none; color: inherit;">
+                                    <div class="question-card">
+                                        <div class="question-header">
+                                            <div class="d-flex align-items-center">
+                                                <div class="title">{{ $ask_question->subject }}</div>
 
-                                            @if($ask_question->replied)
-                                                <div class="answered-status-badge">Answered Question</div>
-                                            @else
-                                                <div class="unanswered-status-badge">Unanswered Question</div>
-                                            @endif
+                                                @if($ask_question->replied)
+                                                    <div class="answered-status-badge">Answered Question</div>
+                                                @else
+                                                    <div class="unanswered-status-badge">Unanswered Question</div>
+                                                @endif
+                                            </div>
+                                            
+                                            <div class="question-date">{{ $ask_question->date }} {{ $ask_question->time }}</div>
                                         </div>
-                                        
-                                        <div class="question-date">{{ $ask_question->date }} {{ $ask_question->time }}</div>
+                                        <div class="question-content">
+                                            Question: {{ $ask_question->initial_message }}
+                                        </div>
                                     </div>
-                                    <div class="question-content">
-                                        Question: {{ $ask_question->initial_message }}
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
+                                </a>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

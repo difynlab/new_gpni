@@ -21,7 +21,7 @@
 
                 <div class="mb-5">{!! $contents->{'section_1_description_' . $middleware_language} ?? $contents->section_1_description_en !!}</div>
 
-                @if(!$global_education_partners->isEmpty())
+                @if($global_education_partners->isNotEmpty())
                     <div class="partner-logos">
                         <div class="row justify-content-center">
                             @foreach($global_education_partners as $global_education_partner)
@@ -50,13 +50,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(json_decode($contents->{'section_2_points_' . $middleware_language} ?? $contents->section_2_points_en) as $section_2_point)
-                            <tr>
-                                <td>{!! $section_2_point->partner_name !!}</td>
-                                <td>{!! $section_2_point->course_name !!}</td>
-                                <td>{!! $section_2_point->points !!}</td>
-                            </tr>
-                        @endforeach
+                        @if($contents->section_2_points_en)
+                            @foreach(json_decode($contents->{'section_2_points_' . $middleware_language} ?? $contents->section_2_points_en) as $section_2_point)
+                                <tr>
+                                    <td>{!! $section_2_point->partner_name !!}</td>
+                                    <td>{!! $section_2_point->course_name !!}</td>
+                                    <td>{!! $section_2_point->points !!}</td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -71,12 +73,14 @@
                 <h3 class="sub-title">{{ $contents->{'section_3_sub_title_' . $middleware_language} ?? $contents->section_3_sub_title_en }}</h3>
 
                 <div class="language-cards">
-                    @foreach(json_decode($contents->{'section_3_languages_' . $middleware_language} ?? $contents->section_3_languages_en) as $section_3_language)
-                        <div class="language-card" tabindex="0">
-                            <p>{{ $contents->{'section_3_language_title_' . $middleware_language} ?? $contents->section_3_language_title_en }}</p>
-                            <h3>{{ $section_3_language }}</h3>
-                        </div>
-                    @endforeach
+                    @if($contents->section_3_languages_en)
+                        @foreach(json_decode($contents->{'section_3_languages_' . $middleware_language} ?? $contents->section_3_languages_en) as $section_3_language)
+                            <div class="language-card" tabindex="0">
+                                <p>{{ $contents->{'section_3_language_title_' . $middleware_language} ?? $contents->section_3_language_title_en }}</p>
+                                <h3>{{ $section_3_language }}</h3>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </section>

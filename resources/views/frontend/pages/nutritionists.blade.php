@@ -27,7 +27,7 @@
         </div>
     @endif
 
-    @if(!$nutritionists->isEmpty())
+    @if($nutritionists->isNotEmpty())
         <div class="coaches-section">
             <div class="container">
                 <div class="row">

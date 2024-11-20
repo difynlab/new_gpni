@@ -28,12 +28,13 @@
                                         $certificate_courses = App\Models\Course::where('language', 'English')->where('type', 'Certification')->where('status', '1')->get();
                                     }
                                 ?>
-
-                                @foreach($certificate_courses as $certificate_course)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('frontend.certification-courses.show', $certificate_course) }}">{{ $certificate_course->title }}</a>
-                                    </li>
-                                @endforeach
+                                @if($certificate_courses->isNotEmpty())
+                                    @foreach($certificate_courses as $certificate_course)
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('frontend.certification-courses.show', $certificate_course) }}">{{ $certificate_course->title }}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </li>
                         <li>

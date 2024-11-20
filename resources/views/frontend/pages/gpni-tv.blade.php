@@ -49,7 +49,7 @@
                     <p class="sub-heading pb-5">{{ $contents->{'section_2_sub_title_' . $middleware_language} ?? $contents->section_2_sub_title_en }}</p>
                 </div>
 
-                @if(!$recent_webinars->isEmpty())
+                @if($recent_webinars->isNotEmpty())
                     @foreach($recent_webinars as $recent_webinar)
                         <div class="row align-items-center mb-5">
                             <div class="col-md-4 text-center">
@@ -202,7 +202,7 @@
 
                 <div>{!! $contents->{'section_9_content_' . $middleware_language} ?? $contents->section_9_content_en !!}</div>
                 
-                @if(!$previous_webinars->isEmpty())
+                @if($previous_webinars->isNotEmpty())
                     <div class="container-fluid">
                         <div class="row">
                             @foreach($previous_webinars as $previous_webinar)

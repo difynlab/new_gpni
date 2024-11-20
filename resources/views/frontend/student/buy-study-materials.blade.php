@@ -27,9 +27,11 @@
                             <label for="course" class="form-label">Select your course</label>
                             <select class="form-control form-select custom-select" name="course_id" required>
                                 <option value="">Choose your course</option>
-                                @foreach($courses as $course)
-                                    <option value="{{ $course->id }}">{{ $course->title }}</option>
-                                @endforeach
+                                @if($courses->isNotEmpty())
+                                    @foreach($courses as $course)
+                                        <option value="{{ $course->id }}">{{ $course->title }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <button type="submit" class="btn btn-pay-now">Pay Now</button>
