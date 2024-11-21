@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class CourseController extends Controller
 {
@@ -152,12 +153,18 @@ class CourseController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'new_image' => 'max:2048',
-            'new_video' => 'max:2048',
+            'new_video' => [
+                'max:2048',
+                Rule::requiredIf(function () use ($request) {
+                    return is_null($request->old_video);
+                }),
+            ],
             'new_instructor_profile_image' => 'max:2048',
             'new_certificate_images.*' => 'max:2048'
         ], [
             'new_image.max' => 'Image must not be greater than 2MB',
             'new_video.max' => 'Video must not be greater than 2MB',
+            'new_video.required' => 'New video is required if there is no old video',
             'new_instructor_profile_image.max' => 'Image must not be greater than 2MB',
             'new_certificate_images.*.max' => 'Each image must not be greater than 2MB'
         ]);
