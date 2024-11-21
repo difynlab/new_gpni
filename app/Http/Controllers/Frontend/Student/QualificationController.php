@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CourseCertificate;
+use App\Models\CourseFinalExam;
 use App\Models\CoursePurchase;
 
 class QualificationController extends Controller
@@ -19,14 +20,17 @@ class QualificationController extends Controller
         $courses = Course::where('status', '1')->get();
 
         $obtained_certificates = $purchases->map(function ($purchase) use ($certificates, $courses) {
-            $certificate = $certificates->firstWhere('course_purchase_id', $purchase->id);
-            $course = $courses->firstWhere('id', $purchase->course_id);
-        
-            return [
-                'course_title' => $course->title,
-                'certificate_url' => $certificate->certificate,
-                'issued_date_time' => $certificate->certificate_issued_date . ' | ' . $certificate->certificate_issued_time,
-            ];
+
+            if(CourseFinalExam::where('course_id', $purchase->course_id)->where('result', 'Pass')->where('status', '1')->exists()) {
+                $certificate = $certificates->firstWhere('course_purchase_id', $purchase->id);
+                $course = $courses->firstWhere('id', $purchase->course_id);
+            
+                return [
+                    'course_title' => $course->title,
+                    'certificate_url' => $certificate->certificate,
+                    'issued_date_time' => $certificate->certificate_issued_date . ' | ' . $certificate->certificate_issued_time,
+                ];
+            }
         });
 
         return view('frontend.student.qualifications', [

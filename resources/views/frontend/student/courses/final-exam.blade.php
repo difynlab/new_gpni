@@ -14,6 +14,17 @@
                 <div class="modal-body text-center">
                     <p class="title">Are you ready?</p>
                     <p class="description">Please click the button when you are ready</p>
+                    
+                    <ul>
+                        <li>Read all questions carefully</li>
+                        <li>Do not press any keys during the exam unnecessarily</li>
+                        <li>Each question carries equal marks</li>
+                        <li>A minimum score of 75.00% is required to pass the exam</li>
+                        <li>Each question has only one correct answer</li>
+                        <li>Avoid switching between tabs during the exam. If detected, the exam will be automatically submitted</li>
+                        <li>Keep an eye on the remaining time</li>
+                        <li>Once the time is up, you cannot answer any more questions. You will only be able to submit your answers</li>
+                    </ul>
                 </div>
 
                 <div class="modal-footer text-center">
@@ -120,21 +131,27 @@
 
                                 <div class="question-nav">
                                     @foreach($questions as $key => $question)
-                                        <div class="question-box" id="questionBox{{ $key + 1 }}"><span>{{ $key + 1 }}</span></div>
+                                        <div class="box text-center">
+                                            <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}" class="invisible">
+
+                                            <div class="question-box" id="questionBox{{ $key + 1 }}">
+                                                <span>{{ $key + 1 }}</span>
+                                            </div>
+                                        </div>
                                     @endforeach
                                 </div>
 
                                 <div class="legend-container">
                                     <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}">
+                                        <img src="{{ asset('storage/frontend/attempted.svg') }}">
                                         <span class="legend">Attempted</span>
                                     </div>
                                     <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}">
+                                        <img src="{{ asset('storage/frontend/not-attempted.svg') }}">
                                         <span class="legend">Not Attempted</span>
                                     </div>
                                     <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}">
+                                        <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}">
                                         <span class="legend">Incomplete</span>
                                     </div>
                                 </div>
@@ -214,8 +231,6 @@
 @push('after-scripts')
     <script>
         $(document).ready(function() {
-            $('#start-exam-modal').modal('show');
-
             const examContainer = document.getElementById('exam-container');
             let isLocked = false;
 
@@ -226,7 +241,7 @@
                     });
                 }
                 else {
-                    alert('Fullscreen mode is not supported in your browser');
+                    alert('Fullscreen mode is not supported in your browser.');
                 }
             }
 
@@ -277,6 +292,21 @@
                         $(`#question${currentQuestionIndex}`).addClass('d-none');
                         $(`#question${index}`).removeClass('d-none');
                         currentQuestionIndex = index;
+
+                        $('.question-box').each(function (i) {
+                            if(i < index) {
+                                const questionBox = $(this);
+                                const flagImg = questionBox.closest('.box').find('img');
+
+                                if(!questionBox.hasClass('attempted')) {
+                                    flagImg.removeClass('invisible');
+                                }
+                                else {
+                                    flagImg.addClass('invisible');
+                                }
+                            }
+                        });
+
                         $('.prev-button').toggleClass('disabled', currentQuestionIndex === 0);
                         $('.next-button').toggleClass('disabled', !answeredQuestions[currentQuestionIndex]);
                     }
@@ -302,6 +332,8 @@
                         }
 
                         $(`#questionBox${+questionIndex + 1}`).addClass('attempted');
+
+                        $(`#questionBox${+questionIndex + 1}`).closest('.box').find('img').addClass('invisible');
 
                         $(this).siblings().find('.radio').removeClass('active');
                         $(this).siblings().find('.radio').find('.radio-inner').removeClass('active');
@@ -331,101 +363,104 @@
                     });
 
                     $('.question-box').on('click', function () {
-                        const questionIndex = $(this).index();
+                        const questionIndex = $('.question-box').index(this);
                         showQuestion(questionIndex);
                     });
                 // Navigation and submission
-            });
 
-            document.addEventListener('fullscreenchange', () => {
-                if(!document.fullscreenElement) {
-                    blockInteraction();
-                }
-            });
-
-            function blockInteraction() {
-                if(isLocked) {
-                    return;
-                }
-
-                isLocked = true;
-
-                $('#exam-container').append(`
-                    <div id="lock-screen" style="
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.8);
-                        color: white;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        z-index: 9999;
-                    ">
-                        <p>You have exited fullscreen mode. Please re-enter fullscreen to continue the exam.</p>
-                        <button id="re-enter-fullscreen" class="btn btn-primary">Re-enter Fullscreen</button>
-                    </div>
-                `);
-
-                $('#re-enter-fullscreen').on('click', () => {
-                    $('#lock-screen').remove();
-                    enterFullscreen();
-                    isLocked = false;
-                });
-            }
-
-            document.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-            });
-
-            // document.addEventListener('keydown', (e) => {
-            //     if(
-            //         e.key === 'F12' ||
-            //         (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-            //         (e.ctrlKey && e.shiftKey && e.key === 'J') ||
-            //         (e.ctrlKey && e.key === 'U')
-            //     ){
-            //         e.preventDefault();
-            //     }
-            // });
-
-            document.addEventListener('copy', (e) => {
-                e.preventDefault();
-            });
-
-            document.addEventListener('cut', (e) => {
-                e.preventDefault();
-            });
-
-            document.addEventListener('paste', (e) => {
-                e.preventDefault();
-            });
-
-            let suspicionCount = 0;
-            document.addEventListener('visibilitychange', () => {
-                if(document.hidden) {
-                    suspicionCount++;
-                    if(suspicionCount > 3) {
-                        $('#lock-screen').remove();
-                        $('#timer-modal .title').text('Disqualified');
-                        $('#timer-modal .description').text('You have been disqualified for switching tabs multiple times');
-
-                        $('#timer-modal').modal('show');
-                        
-                        setTimeout(() => {
-                            $('#timer-modal-form').submit();
-                        }, 5000);
+                document.addEventListener('fullscreenchange', () => {
+                    if(!document.fullscreenElement) {
+                        blockInteraction();
                     }
-                }
-            });
+                });
 
-            document.addEventListener('keydown', (e) => {
-                if(e.altKey ||(e.ctrlKey && e.key === 'Tab')) {
-                    e.preventDefault();
+                function blockInteraction() {
+                    if(isLocked) {
+                        return;
+                    }
+
+                    isLocked = true;
+
+                    $('#exam-container').append(`
+                        <div id="lock-screen" style="
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0, 0, 0, 0.8);
+                            color: white;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 9999;
+                        ">
+                            <p>You have exited fullscreen mode. Please re-enter fullscreen to continue the exam.</p>
+                            <button id="re-enter-fullscreen" class="btn btn-primary">Re-enter Fullscreen</button>
+                        </div>
+                    `);
+
+                    $('#re-enter-fullscreen').on('click', () => {
+                        $('#lock-screen').remove();
+                        enterFullscreen();
+                        isLocked = false;
+                    });
                 }
+
+                document.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if(
+                        e.key === 'F12' ||
+                        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+                        (e.ctrlKey && e.key === 'U')
+                    ){
+                        e.preventDefault();
+                    }
+                });
+
+                document.addEventListener('copy', (e) => {
+                    e.preventDefault();
+                });
+
+                document.addEventListener('cut', (e) => {
+                    e.preventDefault();
+                });
+
+                document.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                });
+
+                let suspicionCount = 0;
+                document.addEventListener('visibilitychange', () => {
+                    if(document.hidden) {
+                        alert('Avoid switching between tabs during the exam. If detected, the exam will be automatically submitted');
+
+                        suspicionCount++;
+                        if(suspicionCount > 3) {
+                            $('#lock-screen').remove();
+                            $('#timer-modal .title').text('Disqualified');
+                            $('#timer-modal .description').text('You have been disqualified for switching tabs multiple times');
+                            $('#timer-modal .confirm-button').addClass('d-none');
+
+                            $('#timer-modal').modal('show');
+                            
+                            setTimeout(() => {
+                                $('#timer-modal-form').submit();
+                            }, 2000);
+                        }
+                    }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if(e.altKey ||(e.ctrlKey && e.key === 'Tab')) {
+                        e.preventDefault();
+                    }
+                });
             });
         });
     </script>
@@ -434,6 +469,12 @@
         <script>
             $(document).ready(function() {
                 $('#success-modal').modal('show');
+            });
+        </script>
+    @else
+        <script>
+            $(document).ready(function() {
+                $('#start-exam-modal').modal('show');
             });
         </script>
     @endif

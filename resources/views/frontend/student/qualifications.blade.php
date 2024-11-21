@@ -29,15 +29,17 @@
                     <div class="certificate-list">
                         @if(count($obtained_certificates) > 0)
                             @foreach($obtained_certificates as $obtained_certificate)
-                                <div class="certificate-card">
-                                    <div class="certificate-header">
-                                        <div class="title">{{ $obtained_certificate['course_title'] }}</div>
+                                @if($obtained_certificate)
+                                    <div class="certificate-card">
+                                        <div class="certificate-header">
+                                            <div class="title">{{ $obtained_certificate['course_title'] }}</div>
 
-                                        <a href="{{ asset('storage/backend/courses/course-certificates/' . $obtained_certificate['certificate_url']) }}" class="download-button" download><i class="bi bi-download"></i></a>
+                                            <a href="{{ asset('storage/backend/courses/course-certificates/' . $obtained_certificate['certificate_url']) }}" class="download-button" download><i class="bi bi-download"></i></a>
+                                        </div>
+
+                                        <p class="certificate-issued">Issued on: <span>{{ $obtained_certificate['issued_date_time'] }}</span></p>
                                     </div>
-
-                                    <p class="certificate-issued">Issued on: <span>{{ $obtained_certificate['issued_date_time'] }}</span></p>
-                                </div>
+                                @endif
                             @endforeach
                         @else
                             <p class="no-qualifications">Please complete the courses to obtain the certificates</p>
