@@ -528,7 +528,7 @@ form .error-message {
 
     .subscribe-form {
         position: relative;
-        width: 355px;
+        width: 327px;
     }
 
     @media (max-width: 768px) {

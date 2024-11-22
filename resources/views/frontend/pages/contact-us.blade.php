@@ -45,8 +45,8 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-12 reason-group">
-                            <label for="question" class="required">Question</label>
-                            <input type="text" class="form-control" id="question" name="question" required>
+                            <label for="question" class="required">Reason</label>
+                            <input type="text" class="form-control" id="question" name="Reason" required>
                         </div>
                     </div>
 

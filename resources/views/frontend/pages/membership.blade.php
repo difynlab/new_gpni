@@ -49,11 +49,12 @@
                 </div>
             @endif
 
+            
             @if($contents->section_3_title_en)
                 <div class="benefits-section py-5">
                     <h2 class="text-center mb-4 pt-3 fs-49 ff-poppins-medium">{{ $contents->{'section_3_title_' . $middleware_language} ?? $contents->section_3_title_en }}</h2>
                     <div class="text-center mb-5 fs-25 ff-poppins-regular">{!! $contents->{'section_3_description_' . $middleware_language} ?? $contents->section_3_description_en !!}</div>
-
+            
                     <div class="accordion px-5" id="benefitsAccordion">
                         @foreach(json_decode($contents->{'section_3_labels_contents' . $middleware_language} ?? $contents->section_3_labels_contents_en) as $key => $label_content)
                             <div class="accordion-item">

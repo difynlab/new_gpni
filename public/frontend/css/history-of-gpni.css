@@ -2,15 +2,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20%;
+    padding-top: 5%; /* Default top padding */
+    position: relative;
 }
 
 .text-container {
     text-align: center;
+    position: absolute;
+    top: 5%; /* Default top position */
+    z-index: 1;
 }
 
 .image-container {
-    padding-top: 20%;
+    padding-top: 5%; /* Default top padding */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -19,13 +23,6 @@
 .image-container img {
     max-width: 100%;
     height: auto;
-}
-
-.text-container {
-    position: absolute;
-    top: 20%;
-    text-align: center;
-    z-index: 1;
 }
 
 .since {
@@ -66,6 +63,7 @@
     }
 }
 
+/* Section 2 - Who We Are */
 .who-we-are {
     padding: 60px 15px;
     text-align: center;
@@ -75,19 +73,31 @@
 .who-we-are h2 {
     color: #0E0E0E;
     text-align: center;
-    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 49px; /* Adjust font size for larger laptops */
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 58.8px */
 }
 
 .who-we-are h3 {
     color: #0040C3;
     text-align: center;
-    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 31px; /* Adjust font size for larger laptops */
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 37.2px */
 }
 
 .who-we-are p {
     color: #505050;
     text-align: center;
-    line-height: 1.4;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px; /* Adjust font size for larger laptops */
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 35px */
     padding: 0 10%;
 }
 
@@ -97,7 +107,72 @@
     }
 }
 
+/* Responsive adjustments for section_2 */
+@media (min-width: 1440px) {
+    .who-we-are p {
+        font-size: 25px; /* Ensure font size is consistent */
+        line-height: 140%; /* Ensure line height is consistent */
+    }
 
+    .who-we-are p span {
+        display: block;
+    }
+}
+
+@media (max-width: 1024px) {
+    .who-we-are h2 {
+        font-size: 5vw; /* Adjust font size for tablets */
+    }
+
+    .who-we-are h3 {
+        font-size: 3.5vw; /* Adjust font size for tablets */
+    }
+
+    .who-we-are p {
+        font-size: 2.5vw; /* Adjust font size for tablets */
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .who-we-are h2 {
+        font-size: 5vw; /* Adjust font size for smaller devices */
+    }
+
+    .who-we-are h3 {
+        font-size: 4vw; /* Adjust font size for smaller devices */
+    }
+
+    .who-we-are p {
+        font-size: 3vw; /* Adjust font size for smaller devices */
+        padding: 0 15px;
+    }
+
+    .who-we-are h3 span {
+        white-space: nowrap; /* Ensure "Nutrition Key" stays together */
+    }
+}
+
+@media (max-width: 480px) {
+    .who-we-are h2 {
+        font-size: 6vw; /* Adjust font size for smallest devices */
+    }
+
+    .who-we-are h3 {
+        font-size: 5vw; /* Adjust font size for smallest devices */
+    }
+
+    .who-we-are p {
+        font-size: 4vw; /* Adjust font size for smallest devices */
+        padding: 0 15px;
+    }
+
+    .who-we-are h3 span {
+        white-space: nowrap; /* Ensure "Nutrition Key" stays together */
+    }
+}
+
+/* Section 3 - Our Story */
 .our-story {
     background-color: #0040C3;
     color: white;
@@ -106,15 +181,20 @@
 
 .our-story h2 {
     color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 49px; /* Adjust font size for larger laptops */
     font-style: normal;
-    line-height: 120%;
-    /* 58.8px */
-
+    font-weight: 500;
+    line-height: 120%; /* 58.8px */
 }
 
 .our-story p {
     color: #FFF;
-    line-height: 140%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px; /* Adjust font size for larger laptops */
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 35px */
 }
 
 .our-story img {
@@ -123,8 +203,50 @@
     border-radius: 8px;
 }
 
+@media (max-width: 1024px) {
+    .our-story h2 {
+        font-size: 5vw; /* Adjust font size for tablets */
+    }
+
+    .our-story p {
+        font-size: 2.5vw; /* Adjust font size for tablets */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .our-story h2 {
+        font-size: 5vw; /* Adjust font size for smaller devices */
+        text-align: center; /* Center align for smaller devices */
+    }
+
+    .our-story p {
+        font-size: 3vw; /* Adjust font size for smaller devices */
+        text-align: center; /* Center align for smaller devices */
+    }
+
+    .our-story .col-md-6 {
+        text-align: center; /* Center align for smaller devices */
+    }
+}
+
+@media (max-width: 480px) {
+    .our-story h2 {
+        font-size: 6vw; /* Adjust font size for smallest devices */
+        text-align: center; /* Center align for smallest devices */
+    }
+
+    .our-story p {
+        font-size: 4vw; /* Adjust font size for smallest devices */
+        text-align: center; /* Center align for smallest devices */
+    }
+
+    .our-story .col-md-6 {
+        text-align: center; /* Center align for smallest devices */
+    }
+}
+
 .our-partners {
-    background-color: #006bff;
+    background-color: #0040C3;
     color: white;
     padding: 60px 15px;
 }
@@ -132,6 +254,20 @@
 .our-partners h2 {
     margin-bottom: 20px;
     color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 49px; /* Adjust font size for larger laptops */
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 58.8px */
+    white-space: nowrap; /* Ensure "Our Official Partners" stays in one line */
+    text-align: left; /* Left align the heading by default */
+    
+}
+.clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 }
 
 .our-partners p,
@@ -142,8 +278,86 @@
 .our-partners img {
     max-width: 100%;
     height: auto;
+    margin-bottom: 20px; /* Add space between image and heading */
 }
 
+.our-partners p {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px; /* Adjust font size for larger laptops */
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 35px */
+    text-align: left; /* Left align the paragraph by default */
+}
+
+/* Responsive adjustments for section_5 */
+@media (max-width: 1024px) {
+    .our-partners h2 {
+        font-size: 4.4vw; /* Adjust font size for tablets */
+        white-space: nowrap; /* Ensure "Our Official Partners" stays in one line */
+        text-align: left; /* Left align the heading for tablets */
+    }
+
+    .our-partners p {
+        font-size: 2.5vw; /* Adjust font size for tablets */
+        text-align: left; /* Left align the paragraph for tablets */
+    }
+
+    .our-partners .col-md-6 {
+        text-align: left; /* Left align for tablets */
+        margin-bottom: 20px; /* Add space between columns */
+    }
+
+    .our-partners img {
+        margin-bottom: 20px; /* Add space between image and heading */
+        max-width: 80%; /* Reduce image size for tablets */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .our-partners h2 {
+        font-size: 5vw; /* Adjust font size for smaller devices */
+        text-align: center; /* Center align the heading for smaller devices */
+    }
+
+    .our-partners p {
+        font-size: 3vw; /* Adjust font size for smaller devices */
+        text-align: center; /* Center align the paragraph for smaller devices */
+    }
+
+    .our-partners .col-md-6 {
+        text-align: center; /* Center align for smaller devices */
+        margin-bottom: 10px; /* Reduce space between columns */
+    }
+
+    .our-partners img {
+        margin-bottom: 10px; /* Reduce space between image and heading */
+        max-width: 70%; /* Reduce image size for smaller devices */
+    }
+}
+
+@media (max-width: 480px) {
+    .our-partners h2 {
+        font-size: 6vw; /* Adjust font size for smallest devices */
+        text-align: center; /* Center align the heading for smallest devices */
+    }
+
+    .our-partners p {
+        font-size: 4vw; /* Adjust font size for smallest devices */
+        text-align: center; /* Center align the paragraph for smallest devices */
+    }
+
+    .our-partners img {
+        margin-bottom: 10px; /* Reduce space between image and heading */
+        max-width: 60%; /* Reduce image size for smallest devices */
+    }
+
+    .our-partners .col-md-6 {
+        text-align: center; /* Center align for smallest devices */
+        margin-bottom: 10px; /* Reduce space between columns */
+    }
+}
 
 .our-founders {
     padding: 60px 15px;
@@ -153,13 +367,15 @@
 .our-founders h2 {
     color: #505050;
     text-align: right;
+    font-family: 'Poppins', sans-serif;
+    font-size: 49px; /* Adjust font size for larger laptops */
     font-style: normal;
-    line-height: 120%;
+    font-weight: 500;
+    line-height: 120%; /* 58.8px */
 }
 
 .founder {
     margin-bottom: 40px;
-    /* text-align: center; */
 }
 
 .founder img {
@@ -167,29 +383,97 @@
     height: auto;
     border-radius: 50%;
     margin-bottom: 20px;
-
 }
 
 .founder h4 {
     color: #505050;
     line-height: 140%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 31px; /* Adjust font size for larger laptops */
+    font-style: normal;
+    font-weight: 500;
 }
 
 .founder p {
     color: #505050;
-    line-height: 140%;
+    /* line-height: 0.5; */
+    font-family: 'Poppins', sans-serif;
+    /* font-size: 25px; */
+    font-style: normal;
+    font-weight: 400;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* max-height: 20px;  */
 }
 
 .founder .title {
     color: #505050;
     line-height: 140%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px; /* Adjust font size for larger laptops */
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* Responsive adjustments for section_4 */
+@media (max-width: 1024px) {
+    .our-founders h2 {
+        font-size: 5vw; /* Adjust font size for tablets */
+    }
+
+    .founder h4 {
+        font-size: 4vw; /* Adjust font size for tablets */
+    }
+
+    .founder p {
+        font-size: 3vw; /* Adjust font size for tablets */
+    }
+
+    .founder .title {
+        font-size: 2.5vw; /* Adjust font size for tablets */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .our-founders h2 {
+        font-size: 5vw; /* Adjust font size for smaller devices */
+    }
+
+    .founder h4 {
+        font-size: 4vw; /* Adjust font size for smaller devices */
+    }
+
+    .founder p {
+        font-size: 3vw; /* Adjust font size for smaller devices */
+    }
+
+    .founder .title {
+        font-size: 2.5vw; /* Adjust font size for smaller devices */
+    }
+}
+
+@media (max-width: 480px) {
+    .our-founders h2 {
+        font-size: 6vw; /* Adjust font size for smallest devices */
+    }
+
+    .founder h4 {
+        font-size: 5vw; /* Adjust font size for smallest devices */
+    }
+
+    .founder p {
+        font-size: 4vw; /* Adjust font size for smallest devices */
+    }
+
+    .founder .title {
+        font-size: 3vw; /* Adjust font size for smallest devices */
+    }
 }
 
 .founders img {
     max-width: 100%;
     border-radius: 50%;
 }
-
 
 .custom-list {
     list-style: none; /* Remove default bullets */
@@ -208,7 +492,284 @@
     color: white; /* Adjust the color as needed */
 }
 
+.gold-standard {
+    padding: 60px 15px;
+}
+
 .gold-standard h2 {
     color: #505050;
-    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 49px; /* Default font size */
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 58.8px */
+    white-space: nowrap; /* Ensure the text stays in one line */
+    text-align: left; /* Left align the heading by default */
+}
+
+.gold-standard p {
+    color: #505050;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px; /* Default font size */
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 35px */
+    text-align: left; /* Left align the paragraph by default */
+}
+
+.gold-standard img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive adjustments for section_6 */
+@media (max-width: 1440px) {
+    .gold-standard h2 {
+        font-size: 39px; /* Adjust font size for laptops with width 1440px */
+        white-space: nowrap; /* Ensure the text stays in one line */
+    }
+
+    .gold-standard p {
+        font-size: 20px; /* Adjust font size for laptops with width 1440px */
+    }
+}
+
+@media (max-width: 1024px) {
+    .gold-standard h2 {
+        font-size: 31px; /* Adjust font size for tablets and smaller devices */
+        white-space: nowrap; /* Ensure the text stays in one line */
+        text-align: left; /* Left align the heading for tablets */
+    }
+
+    .gold-standard p {
+        font-size: 16px; /* Adjust font size for tablets and smaller devices */
+        text-align: left; /* Left align the paragraph for tablets */
+    }
+
+    .gold-standard .row {
+        flex-direction: row; /* Ensure row direction for tablets */
+    }
+
+    .gold-standard .col-lg-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        text-align: left; /* Left align for tablets */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .gold-standard h2 {
+        font-size: 25px; /* Adjust font size for mobile devices */
+        white-space: nowrap; /* Ensure the text stays in one line */
+        text-align: center; /* Center align the heading for mobile devices */
+    }
+
+    .gold-standard p {
+        font-size: 13px; /* Adjust font size for mobile devices */
+        text-align: center; /* Center align the paragraph for mobile devices */
+    }
+
+    .gold-standard .row {
+        flex-direction: column; /* Change to column direction for smaller devices */
+    }
+
+    .gold-standard .col-lg-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center; /* Center align for mobile devices */
+    }
+}
+
+@media (max-width: 480px) {
+    .gold-standard h2 {
+        font-size: 20px; /* Adjust font size for smaller mobile devices */
+        white-space: nowrap; /* Ensure the text stays in one line */
+        text-align: center; /* Center align the heading for smaller mobile devices */
+    }
+
+    .gold-standard p {
+        font-size: 10px; /* Adjust font size for smaller mobile devices */
+        text-align: center; /* Center align the paragraph for smaller mobile devices */
+    }
+}
+
+/* Responsive adjustments for section_1 */
+
+/* For laptops with width 1024px */
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+    .section {
+        padding-top: 20%; /* Increase top padding for laptops */
+    }
+
+    .text-container {
+        top: 20%; /* Increase top position for laptops */
+        position: relative; /* Ensure text is not in front of the image */
+    }
+
+    .since {
+        font-size: 8vw;
+    }
+
+    .history {
+        font-size: 3vw;
+    }
+}
+
+/* For laptops with width 1240px */
+@media (min-width: 1240px) and (max-width: 1439.98px) {
+    .section {
+        padding-top: 15%; /* Adjust top padding for laptops */
+    }
+
+    .text-container {
+        top: 15%; /* Adjust top position for laptops */
+        position: relative; /* Ensure text is not in front of the image */
+    }
+
+    .since {
+        font-size: 30vw; /* Increase font size for laptops */
+    }
+
+    .history {
+        font-size: 15vw; /* Increase font size for laptops */
+    }
+
+    .gold-standard h2 {
+        font-size: 14vw; /* Increase font size for laptops */
+    }
+
+    .text-container .since {
+        font-size: 30vw; /* Increase font size for "since" */
+    }
+
+    .text-container .history {
+        font-size: 15vw; /* Increase font size for "our history" */
+    }
+
+    .text-container .year {
+        font-size: 18vw; /* Increase font size for "2018" */
+    }
+}
+
+/* For larger laptops with width 1440px */
+@media (min-width: 1440px) {
+    .section {
+        padding-top: 15%; /* Adjust top padding for larger laptops */
+    }
+
+    .text-container {
+        top: 15%; /* Adjust top position for larger laptops */
+        position: relative; /* Ensure text is not in front of the image */
+    }
+
+    .since {
+        font-size: 16vw; /* Adjust font size for larger laptops */
+    }
+
+    .history {
+        font-size: 8vw; /* Adjust font size for larger laptops */
+    }
+
+    .text-container .since {
+        font-size: 16vw; /* Adjust font size for "since" */
+    }
+
+    .text-container .history {
+        font-size: 8vw; /* Adjust font size for "our history" */
+    }
+
+    .text-container .year {
+        font-size: 10vw; /* Adjust font size for "2018" */
+    }
+}
+
+/* For tablets and smaller devices */
+@media (max-width: 1024px) {
+    .since {
+        font-size: 10vw; /* Adjust font size for tablets */
+    }
+
+    .history {
+        font-size: 4vw; /* Adjust font size for tablets */
+    }
+
+    .text-container {
+        top: 5%; /* Default top position */
+    }
+
+    .image-container {
+        padding-top: 5%; /* Default top padding */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .since {
+        font-size: 8vw;
+    }
+
+    .history {
+        font-size: 4vw;
+    }
+
+    .text-container {
+        position: relative;
+        top: auto;
+        transform: none;
+        width: 100%;
+        padding: 0 15px;
+        margin-bottom: -5px; /* Reduce the gap */
+    }
+
+    .image-container {
+        position: relative;
+        padding-top: 0; /* Reduce the gap */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .since {
+        font-size: 12vw;
+    }
+
+    .history {
+        font-size: 5vw;
+    }
+
+    .text-container {
+        position: relative;
+        top: auto;
+        transform: none;
+        width: 100%;
+        padding: 0 15px;
+        margin-bottom: -5px; /* Reduce the gap */
+    }
+
+    .image-container {
+        position: relative;
+        padding-top: 0; /* Reduce the gap */
+    }
+}
+
+@media (max-width: 480px) {
+    .since {
+        font-size: 15vw;
+    }
+
+    .history {
+        font-size: 7vw;
+    }
+
+    .text-container {
+        position: relative;
+        top: auto;
+        transform: none;
+        width: 100%;
+        padding: 0 15px;
+        margin-bottom: -20px; /* Reduce the gap */
+    }
+
+    .image-container {
+        position: relative;
+        padding-top: 0; /* Reduce the gap */
+    }
 }

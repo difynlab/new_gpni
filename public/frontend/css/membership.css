@@ -1,27 +1,33 @@
 .membership-section {
     text-align: center;
-    padding-top: 6.5rem;
+    padding-top: 6.5rem; /* Default padding */
+    padding-left: 108.5px; /* Add space on the left */
+    padding-right: 108.5px; /* Add space on the right */
 }
 
 .membership-section h2 {
     color: #0E0E0E;
     line-height: 120%;
-    /* 73.2px */
+    font-size: 3.812rem; /* 61px */
 }
 
 .membership-section p {
     color: rgba(14, 14, 14, 0.90);
     line-height: 140%; /* 35px */
+    font-size: 1.562rem; /* 25px */
 }
 
 .feature {
     text-align: left;
+    margin-bottom: 0; /* Remove space between break barriers and borders */
+    display: flex;
+    align-items: center;
 }
 
 .feature .sub-head  {
     color: #505050;
     font-family: Poppins;
-    font-size: 25px;
+    font-size: 1.562rem; /* 25px */
     font-style: normal;
     font-weight: 500;
     line-height: 120%; /* 30px */
@@ -42,7 +48,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 24px */
+    margin-bottom: 0; /* Remove bottom margin */
 }
 
 .feature-icon {
@@ -50,24 +56,32 @@
     height: 33px;
     margin-right: 10px;
     color: #2DB98F;
+    align-self: center; /* Center the icon vertically */
 }
 
+.benefits-section {
+    text-align: center;
+    padding: 40px 0;
+    padding-left: 108.5px; /* Add space on the left */
+    padding-right: 108.5px; /* Add space on the right */
+}
 
 .benefits-section h2 {
     color: #0e0e0e;
+    font-size: 3.812rem; /* 61px */
+    font-weight: 500;
     line-height: 120%;
     margin-bottom: 20px;
 }
 
 .benefits-section p {
-    color: #0E0E0E;
-    text-align: center;
-    font-family: "Poppins";
-    font-size: 25px;
-    font-style: normal;
+    color: #0e0e0e;
+    font-size: 1.562rem; /* 25px */
     font-weight: 400;
     line-height: 140%;
-    /* 35px */
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 0; /* Remove bottom margin */
 }
 
 .accordion {
@@ -93,67 +107,56 @@
 .accordion-item:first-of-type .accordion-button,
 .accordion-item:first-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
     border-top-left-radius: 20px !important;
-    /* Adjust as needed */
     border-top-right-radius: 20px !important;
-    /* Adjust as needed */
 }
 
 /* Apply border-radius to the last accordion item when not collapsed */
 .accordion-item:last-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
     border-bottom-left-radius: 20px !important;
-    /* Adjust as needed */
     border-bottom-right-radius: 20px !important;
-    /* Adjust as needed */
 }
-
 
 .accordion-item:last-of-type .accordion-button.collapsed {
     border-radius: 20px !important;
-
 }
 
 /* Ensure the last accordion item always has rounded corners at the bottom */
 .accordion-item:last-of-type,
 .accordion-item:last-of-type .accordion-button {
     border-bottom-left-radius: 20px !important;
-    /* Adjust as needed */
     border-bottom-right-radius: 20px !important;
-    /* Adjust as needed */
 }
 
 .accordion-button {
-    font-size: 25px !important;
-    font-weight: 500 !important;
-    line-height: 140% !important;
-    color: #0e0e0e !important;
-    background: #f7f6fb !important;
-    border: none !important;
-    padding: 20px 40px !important;
-    border-radius: 20px !important;
-    /* Add padding for alignment */
+    font-size: 1.562rem; /* 25px */
+    font-weight: 500;
+    line-height: 140%;
+    color: #0e0e0e;
+    background: #f7f6fb;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 20px;
 }
 
 .accordion-button::after {
-    background-image: url("../../assets/down-arrow.svg") !important;
-    /* Content icon URL */
+    background-image: url("../../assets/down-arrow.svg");
 }
 
 .accordion-body {
-    font-size: 20px !important;
-    font-weight: 400 !important;
-    line-height: 140% !important;
-    color: #505050 !important;
-    border-radius: 0 0 20px 20px !important;
-
+    font-size: 1.25rem; /* 20px */
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+    border-radius: 0 0 20px 20px;
 }
 
 .accordion-body ul {
-    padding-left: 45px !important;
-    text-align: start !important;
+    padding-left: 45px;
+    text-align: start;
 }
 
 .accordion-body ul li {
-    list-style: disc !important;
+    list-style: disc;
 }
 
 .journey-section {
@@ -217,4 +220,305 @@
     font-family: "Poppins" !important;
     color: #fff !important;
     font-size: 1.250rem;
+}
+
+/* Custom font size classes */
+.fs-61 { font-size: 61px; }
+.fs-48 { font-size: 48px; }
+.fs-36 { font-size: 36px; }
+.fs-25 { font-size: 25px; }
+.fs-20 { font-size: 20px; }
+.fs-16 { font-size: 16px; }
+
+/* Responsive font size classes */
+@media (max-width: 768px) {
+    .fs-md-48 { font-size: 48px; }
+    .fs-md-20 { font-size: 20px; }
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 1199.98px) {
+    .membership-section {
+        padding-top: 4rem; /* Reduced top padding for large devices */
+        padding-left: 50px; /* Adjust left padding for large devices */
+        padding-right: 50px; /* Adjust right padding for large devices */
+    }
+
+    .membership-section h2 {
+        font-size: 3rem; /* Reduced from 3.812rem */
+    }
+
+    .membership-section p {
+        font-size: 1.25rem; /* Reduced from 1.562rem */
+    }
+
+    .feature .sub-head {
+        font-size: 1.25rem; /* Reduced from 1.562rem */
+    }
+
+    .feature .sub-description {
+        font-size: 18px; /* Reduced from 20px */
+    }
+
+    .feature p {
+        font-size: 18px; /* Reduced from 20px */
+    }
+
+    .feature-icon {
+        width: 28px; /* Reduced from 33px */
+        height: 28px; /* Reduced from 33px */
+    }
+
+    /* Reduce space between break barriers and borders */
+    .feature {
+        margin-bottom: 0; /* Remove space for large devices */
+    }
+
+    .img-fluid {
+        margin-bottom: 1.5rem; /* Increased space for large devices */
+    }
+
+    .benefits-section {
+        padding-left: 50px; /* Adjust left padding for large devices */
+        padding-right: 50px; /* Adjust right padding for large devices */
+    }
+
+    .benefits-section h2 {
+        font-size: 2.5rem; /* Reduced from 3.812rem */
+    }
+
+    .benefits-section p {
+        font-size: 1.25rem; /* Reduced from 1.562rem */
+    }
+
+    .accordion-button {
+        font-size: 1.25rem; /* Reduced from 1.562rem */
+        padding: 15px 30px; /* Adjust padding */
+    }
+
+    .accordion-body {
+        font-size: 1rem; /* Reduced from 1.25rem */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .membership-section {
+        padding-top: 3rem; /* Reduced top padding for medium devices */
+        padding-left: 30px; /* Adjust left padding for medium devices */
+        padding-right: 30px; /* Adjust right padding for medium devices */
+    }
+
+    .membership-section h2 {
+        font-size: 2.5rem; /* Further reduced */
+    }
+
+    .membership-section p {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .feature .sub-head {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .feature .sub-description {
+        font-size: 16px; /* Further reduced */
+    }
+
+    .feature p {
+        font-size: 16px; /* Further reduced */
+    }
+
+    .feature-icon {
+        width: 24px; /* Further reduced */
+        height: 24px; /* Further reduced */
+    }
+
+    /* Ensure "Welcome to join us" is in one line */
+    .welcome-text {
+        font-size: 1.5rem; /* Adjust as needed */
+        white-space: nowrap;
+    }
+
+    /* Reduce space between break barriers and borders */
+    .feature {
+        margin-bottom: 0; /* Remove space for medium devices */
+    }
+
+    .img-fluid {
+        margin-bottom: 2rem; /* Increased space for medium devices */
+    }
+
+    .benefits-section {
+        padding-left: 30px; /* Adjust left padding for medium devices */
+        padding-right: 30px; /* Adjust right padding for medium devices */
+    }
+
+    .benefits-section h2 {
+        font-size: 2rem; /* Further reduced */
+    }
+
+    .benefits-section p {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .accordion-button {
+        font-size: 1rem; /* Further reduced */
+        padding: 10px 20px; /* Adjust padding */
+    }
+
+    .accordion-body {
+        font-size: 0.875rem; /* Further reduced */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .membership-section {
+        padding-top: 2rem; /* Reduced top padding for small devices */
+        padding-left: 20px; /* Adjust left padding for small devices */
+        padding-right: 20px; /* Adjust right padding for small devices */
+    }
+
+    .membership-section h2 {
+        font-size: 2rem; /* Further reduced */
+    }
+
+    .membership-section p {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .feature .sub-head {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .feature .sub-description {
+        font-size: 14px; /* Further reduced */
+    }
+
+    .feature p {
+        font-size: 14px; /* Further reduced */
+    }
+
+    .feature-icon {
+        width: 20px; /* Further reduced */
+        height: 20px; /* Further reduced */
+    }
+
+    /* Ensure "Welcome to join us" is in one line */
+    .welcome-text {
+        font-size: 0.75rem; /* Adjust as needed */
+        white-space: nowrap;
+    }
+
+    /* Reduce space between break barriers and borders */
+    .feature {
+        margin-bottom: 0; /* Remove space for small devices */
+    }
+
+    .img-fluid {
+        margin-bottom: 2.5rem; /* Increased space for small devices */
+    }
+
+    .benefits-section {
+        padding-left: 20px; /* Adjust left padding for small devices */
+        padding-right: 20px; /* Adjust right padding for small devices */
+    }
+
+    .benefits-section h2 {
+        font-size: 1.5rem; /* Further reduced */
+    }
+
+    .benefits-section p {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .accordion-button {
+        font-size: 0.875rem; /* Further reduced */
+        padding: 8px 16px; /* Adjust padding */
+    }
+
+    .accordion-body {
+        font-size: 0.75rem; /* Further reduced */
+    }
+}
+
+@media (max-width: 575.98px) {
+    .membership-section {
+        padding-top: 1.5rem; /* Further reduced top padding for extra small devices */
+        padding-left: 10px; /* Adjust left padding for extra small devices */
+        padding-right: 10px; /* Adjust right padding for extra small devices */
+    }
+
+    .membership-section h2 {
+        font-size: 1.5rem; /* Further reduce font size for extra small devices */
+    }
+
+    .membership-section p {
+        font-size: 0.75rem; /* Further reduce font size for extra small devices */
+    }
+
+    .feature .sub-head {
+        font-size: 0.75rem; /* Further reduced */
+    }
+
+    .feature .sub-description {
+        font-size: 12px; /* Further reduced */
+    }
+
+    .feature p {
+        font-size: 12px; /* Further reduced */
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+
+    .feature-icon {
+        width: 16px; /* Further reduced */
+        height: 16px; /* Further reduced */
+    }
+
+    .welcome-text {
+        font-size: 0.5rem; /* Further reduce font size for extra small devices */
+        white-space: nowrap;
+    }
+
+    /* Reduce space between break barriers and borders */
+    .feature {
+        margin-bottom: 0; /* Remove space for extra small devices */
+    }
+
+    .img-fluid {
+        margin-bottom: 3rem; /* Increased space for extra small devices */
+    }
+
+    .benefits-section {
+        padding-left: 10px; /* Adjust left padding for extra small devices */
+        padding-right: 10px; /* Adjust right padding for extra small devices */
+    }
+
+    .benefits-section h2 {
+        font-size: 1.25rem; /* Further reduced */
+    }
+
+    .benefits-section p {
+        font-size: 0.75rem; /* Further reduced */
+    }
+
+    .accordion-button {
+        font-size: 0.75rem; /* Further reduced */
+        padding: 6px 12px; /* Adjust padding */
+    }
+
+    .accordion-body {
+        font-size: 0.625rem; /* Further reduced */
+    }
+}
+
+/* Specific adjustments for laptops and tablets */
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .membership-section {
+        padding-top: 10rem; /* Increased top padding for laptops with 1024px to 1440px width */
+    }
+
+    .welcome-text {
+        font-size: 1.5rem; /* Adjust as needed */
+        white-space: nowrap;
+    }
 }
