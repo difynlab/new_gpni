@@ -38,11 +38,7 @@
                                 @else
                                     @foreach($purchases as $purchase)
                                     <tr>
-                                        @if(isset($purchase->course_id))
-                                            <td>Course Purchase</td>
-                                        @else
-                                            <td>Product Purchase</td>
-                                        @endif
+                                        <td>{{ $purchase->order_type }}</td>
                                         <td>{{ $purchase->transaction_id }}</td>
                                         <td>${{ $purchase->amount_paid }}</td>
                                         <td>{{ $purchase->date . ' | ' . $purchase->time }}</td>
