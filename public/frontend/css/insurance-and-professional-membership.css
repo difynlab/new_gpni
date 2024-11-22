@@ -8,21 +8,19 @@ body {
 }
 
 .title-main {
+    width: 70%;
     color: #0E0E0E;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 61px;
-    font-style: normal;
     font-weight: 500;
     line-height: 120%;
-    /* 73.2px */
+    padding: 3rem;
     margin-bottom: 50px;
 }
 
 .content-text {
     color: #505050;
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
     font-weight: 400;
     line-height: 1.4;
 }
@@ -30,15 +28,63 @@ body {
 .content-text-white {
     color: #FFF;
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    font-weight: 400;
     line-height: 140%;
-    /* 35px */
+    font-style:normal;
+    font-weight: 300;
+}
+
+
+.content-text-white h2 {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 49px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+
+.content-text-white p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    line-height: 140%;
+
+}
+
+
+.content-text-white ul {
+    list-style: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
+    line-height: 140%; 
+}
+
+.content-text-white ul li {
+    position: relative; /* Position relative for pseudo-element */
+    padding-left: 20px; /* Add padding to make space for the icon */
+}
+
+.content-text-white ul li::before {
+    content: '>'; /* Custom icon */
+    position: absolute; /* Position absolute for pseudo-element */
+    left: 0; /* Align icon to the left */
+    color: #FFF; /* Icon color */
+    /* font-weight: bold; Icon weight */
+}
+
+.insurance-text ul {
+    list-style: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
+    line-height: 140%; 
+}
+
+.insurance-text ul li::before {
+    content: '•'; /* Custom round bullet */
+
+  
 }
 
 .title {
     font-family: 'Poppins', sans-serif;
-    font-size: 49px;
     font-weight: 500;
     line-height: 1.2;
     margin-bottom: 20px;
@@ -47,16 +93,14 @@ body {
 .title-white {
     color: #FFF;
     font-family: 'Poppins', sans-serif;
-    font-size: 49px;
     font-weight: 500;
     line-height: 120%;
-    /* 58.8px */
     margin-bottom: 30px;
 }
 
 .img-fluid-custom {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    object-fit: cover;
 }
 
 .d-flex-custom {
@@ -73,6 +117,11 @@ body {
     background-color: #0040c3;
 }
 
+.img-approved{
+    width: 85%;
+    object-fit: cover;
+}
+
 .highlight-box {
     border-radius: 10px;
     border: 1px solid rgba(233, 233, 233, 0.69);
@@ -80,17 +129,14 @@ body {
     margin-top: 20px;
     color: #FFF;
     background-color: #0040c3;
-    max-width: 1171px;
     width: 100%;
 }
 
 .highlight-text-bold {
     color: #FFF;
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
     font-weight: 600;
     line-height: 140%;
-    /* 35px */
     margin-bottom: 10px;
     text-align: left;
 }
@@ -98,10 +144,8 @@ body {
 .highlight-text-regular {
     color: #FFF;
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
     font-weight: 400;
     line-height: 140%;
-    /* 35px */
     text-align: left;
 }
 
@@ -115,52 +159,80 @@ ul li {
     margin-bottom: 10px;
 }
 
-@media (max-width: 1200px) {
-    .highlight-box {
+/* Define a media query for mobile devices */
+@media screen and (max-width: 480px) {
+    .section {
+        padding: 4px;
+    }
+
+
+    .title-main {
+        padding: 1rem;
         width: 100%;
     }
 
-    .d-flex-custom {
-        flex-direction: column;
-        align-items: center;
+    .img-fluid-custom {
+        max-width: 100%; 
     }
-
-    .highlight-text-regular {
+    .highlight-box {
         text-align: center;
-    }
-
-    .highlight-text-bold {
-        text-align: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .d-flex-custom {
-        flex-direction: column;
-        align-items: center;
     }
 
     .content-text,
     .content-text-white {
         text-align: center;
     }
+    .content-text-white h2{
+        font-size: 2rem;
+    } 
+
+    .content-text-white ul 
+    {
+        text-align: left;
+    }
+    
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .section {
+        padding: 0px;
+    }
+    
+    .title-main {
+        padding: 2rem; 
+        width: 70%;
+    }
+
 
     .img-fluid-custom {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .title,
-    .title-white {
-        text-align: center;
-    }
-
-    .approve-section ul {
-        text-align: left;
-        display: inline-block;
+        max-width: 95%; 
     }
 
     .highlight-box {
         text-align: center;
+    }
+
+    .content-text-white h2{
+        font-size: 2rem;
+    } 
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+    .section {
+        padding: 50px 0;
+    }
+
+    .title-main {
+        padding: 3rem; 
+    }
+
+    .img-fluid-custom {
+        max-width: 610px; /* Adjust image width for larger screens */
+    }
+
+    .highlight-box {
+        text-align: left;
     }
 }

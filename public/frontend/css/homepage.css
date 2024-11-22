@@ -5,6 +5,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     color: #6f6d6d;
+    padding-top: 0;
 }
 .international-society-of-sport a{
     color: #6f6d6d;
@@ -16,8 +17,35 @@
 }
 .image-header img {
     width: 100%;
-    height: 550px;
     object-fit: cover;
+}
+/* Responsive Top Gap Adjustments */
+@media (max-width: 767.98px) {
+    .hero-header {
+        padding-top: 1rem !important;
+    }
+
+    .container.my-5 {
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .container.py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .hero-header h1 {
+        margin-top: 0 !important;
+    }
+
+    .international-society-of-sport {
+        margin-top: 1rem !important;
+    }
+
+    .image-header img {
+        max-height: 250px;
+    }
 }
 /*** Video Container ***/
 .video-container {
@@ -58,27 +86,73 @@
 @media (min-width: 768px) {
     .overlay-text {
         width: 30%;
-       /* Adjust width for larger screens */
         top: 54px;
-       /* Adjust top position if needed */
         text-align: left;
-       /* Align text to the left for larger screens */
-   }
+    }
     .overlay-text ul li {
         padding-left: 30px;
         padding-bottom: 24px;
-   }
+    }
+}
+@media (max-width: 767.98px) {
+    .overlay-text {
+        padding: 10px;
+        right: 75px;
+    }
+    .overlay-text ul li {
+        padding-left: 15px;
+        padding-bottom: 10px;
+    }
 }
 /*** Professional Education Container ***/
-.professional-body{
+.professional-body {
     color: #505050;
 }
+
 .pill-link {
     text-decoration: none;
 }
-.explore-course-text{
+
+.explore-course-text {
     text-decoration: none;
     color: #0040C3;
+}
+.course-card {
+    border-radius: 10px;
+    background: linear-gradient(0deg, rgba(38, 38, 38, 0.75) 0%, rgba(38, 38, 38, 0.75) 100%), url('<path-to-image>') lightgray 50% / cover no-repeat, #D9D9D9;
+    overflow: hidden; /* Ensure the border-radius is applied to the content inside the card */
+}
+
+.course-card-body {
+    padding: 1rem; /* Adjust padding as needed */
+}
+
+.apply-now-container {
+    background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background to the container */
+    padding: 0.5rem; /* Adjust padding as needed */
+    border-radius: 5px; /* Add border-radius to the container */
+}
+
+.apply-now-text {
+    color: #fff; /* Ensure the text color is white */
+}
+
+.card-title {
+    color: #fff; /* Ensure the text color is white */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    
+    .tab-text {
+        font-size: 1rem !important; /* Adjust font size for smaller screens */
+    }
+    .card-title {
+        font-size: 1.25rem; /* Adjust font size for smaller screens */
+    }
+    .apply-now-text {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
 }
 /* Testimonial Container */
 .testimonial-container {
@@ -122,11 +196,9 @@
     width: 100%;
     border-radius: 10px;
     background-color: #000;
-   /* Added black background instead of white */
 }
 .testimonials-wrapper {
     height: 550px;
-   /* Adjusted height for larger video container */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -183,28 +255,40 @@
     background-repeat: no-repeat;
     background-position:top;
 }
-.partners-heading{
+
+.partners-heading {
     color: #000000;
     line-height: 1.2;
 }
-.partners-body{
+
+.partners-body {
     color: #505050;
 }
+
 .event-image {
-    width: 85%;
-   /* Make the image fill the width of its container */
-    object-fit: cover;
-   /* Cover the container without distorting the image */
+    width: auto; /* Ensure the image takes up the full width of its container */
+    height: 70%; /* Maintain aspect ratio */
+    object-fit: fill; /* Ensure the image covers the container while maintaining aspect ratio */
 }
+
 .custom-row-gap {
     margin-bottom: 2rem;
-   /* Adjusts the gap between rows */
 }
+
 @media (max-width: 768px) {
+    .partners-container {
+        background-size:auto; /* Ensure the background image covers the entire container */
+        background-repeat: no-repeat; /* Prevent the background image from repeating */
+        background-position: center; /* Center the background image */
+    }
     .custom-row-gap {
         margin-bottom: 1rem;
-       /* Smaller gap for smaller screens */
-   }
+    }
+    .event-image {
+        width: auto; /* Ensure the image takes up the full width of its container */
+        height: 50%; /* Maintain aspect ratio */
+        object-fit: fill; /* Ensure the image covers the container while maintaining aspect ratio */
+    }
 }
 /* Journey Container */
 .journey-container {
@@ -233,6 +317,14 @@
 }
 .explore-lesson {
     color: #fff !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn-responsive {
+        padding: 0.3rem 0.6rem; /* Further reduced for mobile */
+        font-size: 0.875rem;
+    }
 }
 /* Expert Container */
 .expert-container{
@@ -272,24 +364,99 @@
 .expert-modal{
     max-width: 70%;
 }
+/* Custom styles for expert images */
 .expert-select {
-    cursor: pointer;
-    object-fit: cover;
     width: 100%;
-    height: 185px;
+    max-width: 185px; /* Adjust as needed */
+    height: auto;
+    border-radius: 50%; /* Ensures the image is a circle */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
 }
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .expert-select {
+        max-width: 120px; /* Increase size for smaller screens */
+    }
+}
+
+/* Ensure modal content is left-aligned */
+.expert-content {
+    text-align: left;
+}
+
+/* Expert modal adjustments */
+.expert-modal {
+    max-width: 70%;
+}
+
+@media (max-width: 767.98px) {
+    .expert-modal {
+        max-width: 90%; /* Adjust modal width for smaller screens */
+    }
+}
+
+/* Additional responsive adjustments for modal content */
+@media (max-width: 767.98px) {
+    .expert-modal .modal-body {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+    .expert-modal .row.align-items-center {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        text-align: center; /* Center align text for better readability */
+    }
+    .expert-modal .col-md-2, .expert-modal .col-md-8, .expert-modal .col-md-1 {
+        width: 100%; /* Make columns full width */
+        margin-bottom: 1rem; /* Add space between items */
+    }
+    .expert-modal .col-md-1 {
+        text-align: right; /* Keep close button aligned to the right */
+    }
+}
+
+/* Ensure close button is always in the top right corner */
+.btn-close-custom {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+/* Center name and designation under image on mobile */
+@media (max-width: 767.98px) {
+    .expert-name, .qualification {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Align name and designation next to image on tablets and larger screens */
+@media (min-width: 768px) {
+    .expert-modal .row.align-items-center {
+        flex-direction: row; /* Align items horizontally on larger screens */
+        text-align: left; /* Left align text for better readability */
+    }
+    .expert-modal .col-md-2, .expert-modal .col-md-8, .expert-modal .col-md-1 {
+        width: auto; /* Reset width */
+        margin-bottom: 0; /* Remove space between items */
+    }
+    .expert-modal .col-md-8 {
+        display: flex;
+        align-items: center;
+    }
+}
+
 /* Nutritionist Container */
-.nutritionist-container{
+.nutritionist-container {
     background-color: #0040c3;
-    background-image: url('../../../storage/frontend/nutritionist-background.svg');
-    background-size:auto;
-    background-repeat:repeat-y;
+    background-image: url('../img/nutritionist.svg');
+    background-size: auto;
+    background-repeat: repeat-y;
     background-position: center;
 }
-.nutritionist-heading{
+.nutritionist-heading {
     color: #fff;
 }
-.nutritionist-body{
+.nutritionist-body {
     color: #fff;
     text-align: center;
     line-height: 140%;
@@ -297,7 +464,7 @@
 .custom-search-bar .input-group {
     background-color: #fff;
     border-radius: 30px;
-    width:100%;
+    width: 100%;
 }
 .custom-search-bar .form-control, .custom-search-bar .btn {
     border-radius: 35px;
@@ -308,28 +475,24 @@
 }
 .custom-search-bar .input-group-text, .custom-search-bar .form-control, .custom-search-bar .btn {
     border: none;
-   /* Removes the border */
     box-shadow: none;
-   /* Removes the box shadow */
 }
-/* To maintain a cohesive look, you might want to apply a border to the entire input group instead */
 .custom-search-bar .input-group {
     border: 1px solid #ced4da;
-   /* Example border, adjust as needed */
     border-radius: 47px;
 }
-.search-button{
+.search-button {
     font-size: 0.9rem;
     font-weight: 300;
 }
-.input-group-text{
-    background-color:#fff !important;
-    border-radius: 8px !important;
+.input-group-text {
+    background-color: #fff !important;
+    border-radius: 12px !important;
     border: none;
     font-size: 1.2rem;
     padding: 0.1rem !important;
 }
-.list-heading{
+.list-heading {
     font-size: 1.2rem;
     color: #fff;
     font-family: 'Poppins', sans-serif;
@@ -471,25 +634,21 @@
 .apply-now-text {
     font-size: 1.5rem;
     color: #fff;
-}
-/* FAQ */
+}/* FAQ Container */
 .faq-container {
     background-color: #FFF;
 }
 .faq-heading {
-    font-size: 3rem;
     color: #000;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
 .faq-body {
-    font-size: 1.5rem;
     color: #000;
     font-weight: 400;
 }
 .arrow-icon {
-    width: 24px;
-   /* Adjust as needed */
+    width: 24px; /* Adjust as needed */
     height: auto;
     transition: transform 0.3s ease;
 }
@@ -498,16 +657,13 @@
 }
 .btn-link {
     width: 100%;
-    text-align: left;
-   /* Align text to the left */
+    text-align: left; /* Align text to the left */
     display: flex;
-    justify-content: space-between;
-   /* Space between text and arrow */
+    justify-content: space-between; /* Space between text and arrow */
     align-items: center;
 }
 .faq-container .accordion-item {
-    margin-bottom: 20px;
-   /* Adds bottom margin to each accordion card */
+    margin-bottom: 20px; /* Adds bottom margin to each accordion card */
     border-radius: 20px;
     color: #FFF;
     box-shadow: 0 4px 8px rgba(21, 21, 21, 0.1);
@@ -528,27 +684,21 @@
 }
 /* Apply border-radius to the first accordion button */
 .faq-container .accordion-item:first-of-type .accordion-button, .accordion-item:first-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
-    border-top-left-radius: 20px;
-   /* Adjust as needed */
-    border-top-right-radius: 20px;
-   /* Adjust as needed */
+    border-top-left-radius: 20px; /* Adjust as needed */
+    border-top-right-radius: 20px; /* Adjust as needed */
 }
 /* Apply border-radius to the last accordion item when not collapsed */
 .faq-container .accordion-item:last-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
-    border-bottom-left-radius: 20px;
-   /* Adjust as needed */
-    border-bottom-right-radius: 20px;
-   /* Adjust as needed */
+    border-bottom-left-radius: 20px; /* Adjust as needed */
+    border-bottom-right-radius: 20px; /* Adjust as needed */
 }
 .faq-container .accordion-item:last-of-type .accordion-button.collapsed{
     border-radius: 20px;
 }
 /* Ensure the last accordion item always has rounded corners at the bottom */
 .faq-container .accordion-item:last-of-type, .accordion-item:last-of-type .accordion-button {
-    border-bottom-left-radius: 20px;
-   /* Adjust as needed */
-    border-bottom-right-radius: 20px;
-   /* Adjust as needed */
+    border-bottom-left-radius: 20px; /* Adjust as needed */
+    border-bottom-right-radius: 20px; /* Adjust as needed */
 }
 .faq-container .accordion-button:not(.collapsed)::after {
     background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'%23e59114\'%3e%3cpath stroke=\'%23e59114\' stroke-width=\'2\' fill-rule=\'evenodd\' d=\'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z\'/%3e%3c/svg%3e');
@@ -558,10 +708,8 @@
     background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'%23666565\'%3e%3cpath stroke=\'%23666565\' stroke-width=\'2\' fill-rule=\'evenodd\' d=\'M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z\'/%3e%3c/svg%3e');
 }
 .faq-container .accordion-button:hover {
-    background-color: inherit;
-   /* Or use the specific color of the button's non-hover state */
-    color: inherit;
-   /* Adjust if the text color also changes on hover */
+    background-color: inherit; /* Or use the specific color of the button's non-hover state */
+    color: inherit; /* Adjust if the text color also changes on hover */
 }
 .faq-container .accordion-header {
     background-color: #fff;
@@ -582,4 +730,15 @@
     border-radius: 0 0 20px 20px;
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .accordion-button {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+        padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+    }
+    .accordion-body {
+        font-size: 0.875rem; /* Adjust font size for smaller screens */
+    }
 }

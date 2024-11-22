@@ -1,14 +1,13 @@
 .policies-section {
-    /* text-align: center; */
-    padding-top: 6rem !important;
-    padding: 40px 0;
+    padding-top: 6rem !important; /* Reduce top padding */
+    padding: 20px 20px; /* Adjust padding to left and right */
 }
 
 .policies-section h2 {
     color: #0E0E0E;
     text-align: center;
     font-family: "Poppins";
-    font-size: 61px;
+    font-size: 3.812rem; /* 61px */
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
@@ -17,9 +16,9 @@
 
 .policies-section p {
     color: rgba(14, 14, 14, 0.90);
-    text-align: center;
+    text-align: left; /* Center align the text */
     font-family: "Poppins";
-    font-size: 25px;
+    font-size: 1.562rem; /* 25px */
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
@@ -30,9 +29,18 @@
     margin-top: 20px;
 }
 
+.policies-section .description {
+    text-align: center;
+    font-size: 1.562rem; /* 25px */
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    color: rgba(14, 14, 14, 0.90);
+}
+
 .nav-tabs .nav-link {
     color: #505050;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     font-weight: 500;
     padding: 10px 15px;
     background-color: transparent;
@@ -44,7 +52,6 @@
     border: none;
     position: relative;
     background-color: transparent;
-
 }
 
 .nav-tabs .nav-link.active::after {
@@ -63,7 +70,7 @@
     border: none;
     color: #505050;
     font-family: Poppins;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     font-style: normal;
     font-weight: 600;
     line-height: 140%;
@@ -73,7 +80,7 @@
 }
 
 .accordion-button {
-    font-size: 25px;
+    font-size: 1.562rem; /* 25px */
     font-weight: 500;
     line-height: 140%;
     color: #0e0e0e;
@@ -81,7 +88,7 @@
     border: none;
     border-radius: 5px;
     border: 1px solid #C4C4C4;
-
+    text-align: left; 
 }
 
 .accordion-item:first-of-type {
@@ -92,7 +99,7 @@
     border-radius: 5px;
 }
 
-/* Apply border-radius to the first accordion button */
+/* Apply border-heradius to the first accordion button */
 .accordion-item:first-of-type .accordion-button,
 .accordion-item:first-of-type .accordion-collapse.collapse:not(.show) .accordion-body {
     border-top-left-radius: 5px;
@@ -109,19 +116,16 @@
     /* Adjust as needed */
 }
 
-
 .accordion-item:last-of-type .accordion-button.collapsed {
     border-radius: 5px;
-
 }
 
 /* Ensure the last accordion item always has rounded corners at the bottom */
 .accordion-item:last-of-type,
 .accordion-item:last-of-type .accordion-button {
     border-bottom-left-radius: 5px;
-    /* Adjust as needed */
     border-bottom-right-radius: 5px;
-    /* Adjust as needed */
+    
 }
 
 .accordion-button::after {
@@ -135,13 +139,172 @@
 .accordion-button:not(.collapsed)::after {
     transform: rotate(-180deg);
 }
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(-180deg);
+}
 
 .accordion-body {
     color: #505050;
     font-family: Poppins;
-    font-size: 25px;
+    font-size: 1.562rem; /* 25px */
     font-style: normal;
     font-weight: 400;
     line-height: 200%;
     /* 50px */
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1440px) {
+    .policies-section {
+        padding-top: 8rem !important; /* Add top padding for 1440px */
+        padding: 20px 20px; /* Adjust padding for 1440px */
+    }
+
+    .policies-section h2 {
+        font-size: 3.812rem; /* Same font size for 1440px */
+    }
+
+    .policies-section p,
+    .policies-section .description {
+        font-size: 1.562rem; /* Same font size for 1440px */
+    }
+
+    .policies-section .description {
+        display: flex;
+        flex-wrap: nowrap; /* Ensure text stays in one line */
+        justify-content: center;
+    }
+
+    .policies-section .description span {
+        white-space: nowrap; /* Ensure text stays in one line */
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 1.25rem; /* Same font size for 1440px */
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .policies-section {
+        padding-top: 4rem !important; /* Reduce top padding for large devices */
+        padding: 20px 15px; /* Adjust padding for large devices */
+    }
+
+    .policies-section h2 {
+        font-size: 3rem; /* Reduced from 3.812rem */
+    }
+
+    .policies-section p,
+    .policies-section .description {
+        font-size: 1.25rem; /* Reduced from 1.562rem */
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 1rem; /* Reduced from 1.25rem */
+    }
+}
+
+@media (max-width: 1024px) {
+    .policies-section {
+        padding-top: 8rem !important; /* Add top padding for laptops */
+        padding: 20px 15px; /* Adjust padding for laptops */
+    }
+
+    .policies-section h2 {
+        font-size: 2.5rem; /* Reduced from 3.812rem */
+    }
+
+    .policies-section p,
+    .policies-section .description {
+        font-size: 1rem; /* Reduced from 1.562rem */
+    }
+
+    .policies-section .description {
+        display: flex;
+        flex-wrap: nowrap; /* Ensure text stays in one line */
+        justify-content: center;
+    }
+
+    .policies-section .description span {
+        white-space: nowrap; /* Ensure text stays in one line */
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 0.75rem; /* Reduced from 1.25rem */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .policies-section {
+        padding-top: 3rem !important; /* Reduce top padding for medium devices */
+        padding: 20px 10px; /* Adjust padding for medium devices */
+    }
+
+    .policies-section h2 {
+        font-size: 2rem; /* Further reduced */
+    }
+
+    .policies-section p,
+    .policies-section .description,
+    .accordion-button,
+    .accordion-body {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 0.75rem; /* Further reduced */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .policies-section {
+        padding-top: 2rem !important; /* Reduce top padding for small devices */
+        padding: 20px 5px; /* Adjust padding for small devices */
+    }
+
+    .policies-section h2 {
+        font-size: 1.5rem; /* Further reduced */
+    }
+
+    .policies-section p,
+    .policies-section .description,
+    .accordion-button,
+    .accordion-body {
+        font-size: 0.75rem; /* Further reduced */
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 0.625rem; /* Further reduced */
+    }
+
+    .accordion-button::after {
+        font-size: 0.625rem; /* Reduce icon size for small devices */
+    }
+}
+
+@media (max-width: 575.98px) {
+    .policies-section {
+        padding-top: 1rem !important; /* Reduce top padding for extra small devices */
+        padding: 10px 5px; /* Adjust padding for extra small devices */
+    }
+
+    .policies-section h2 {
+        font-size: 1.25rem; /* Further reduced */
+    }
+
+    .policies-section p,
+    .policies-section .description,
+    .accordion-button,
+    .accordion-body {
+        font-size: 0.625rem; /* Further reduced */
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 0.5rem; /* Further reduced */
+    }
+
+    .accordion-button::after {
+        font-size: 0.5rem; /* Further reduce icon size for extra small devices */
+    }
 }

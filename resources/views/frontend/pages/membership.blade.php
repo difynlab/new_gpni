@@ -49,6 +49,7 @@
                 </div>
             @endif
 
+            
             @if($contents->section_3_title_en)
                 <div class="benefits-section py-5">
                     <h2 class="text-center mb-4 pt-3 fs-49 ff-poppins-medium">{{ $contents->{'section_3_title_' . $middleware_language} ?? $contents->section_3_title_en }}</h2>
