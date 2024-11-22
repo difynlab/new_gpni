@@ -97,6 +97,7 @@
             </div>
         </div>
     @endif
+
     
     @if($contents->section_3_title_en)
         <div class="py-5">
@@ -106,46 +107,70 @@
                     <p class="mb-1 professional-body ff-poppins-regular fs-25 fs-md-20">{{ $contents->{'section_3_description_' . $middleware_language} ?? $contents->section_3_description_en }}</p>
                 </div>
 
-                @if($courses->isNotEmpty())
-                    <div class="tab-class pt-5 text-center ">
-                        <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
-                            <li class="nav-item">
-                                <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active pill-link"
-                                    data-bs-toggle="pill" href="#tab-1">
-                                    <div class="tab-text mt-n1 mb-0">
-                                        All
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="d-flex align-items-center text-md-tart text-center mx-3 pb-3 pill-link"
-                                    data-bs-toggle="pill" href="#tab-2">
-                                    <div class="tab-text mt-n1 mb-0">
-                                        International Certificates
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 pill-link" data-bs-toggle="pill"
-                                    href="#tab-3">
-                                    <div class="tab-text mt-n1 mb-0">
-                                        Master Classes
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+                <div class="tab-class pt-5 text-center">
+                    <ul class="nav nav-pills d-flex flex-wrap justify-content-center mb-5">
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active pill-link"
+                                data-bs-toggle="pill" href="#tab-1">
+                                <div class="tab-text mt-n1 mb-0">
+                                    All
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-center mx-3 pb-3 pill-link"
+                                data-bs-toggle="pill" href="#tab-2">
+                                <div class="tab-text mt-n1 mb-0">
+                                    International Certificates
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 pill-link" data-bs-toggle="pill"
+                                href="#tab-3">
+                                <div class="tab-text mt-n1 mb-0">
+                                    Master Classes
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
 
-                        <div class="tab-content">
-                            <div id="tab-1" class="tab-pane fade show p-0 active">
-                                <div class="row g-4">
-                                    <div class="tab-content" id="tab1Content">
-                                        <div class="scrollable-container">
-                                            @foreach($courses as $course)
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                <div class="tab-content" id="tab1Content">
+                                    <div class="scrollable-container">
+                                        @foreach($courses as $course)
+                                            <div class="card course-card">
+                                                <div class="overlay-logo p-3">
+                                                    <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
+                                                </div>
+                                                <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
+                                                <div class="card-body course-card-body ps-4">
+                                                    <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
+                                                    <div class="apply-now-container d-flex justify-content-between align-items-center w-100">
+                                                        <div class="apply-now-text">APPLY NOW</div>
+                                                        <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-2" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="tab-content" id="tab1Content">
+                                    <div class="scrollable-container">
+                                        @foreach($courses as $course)
+                                            @if($course->type == "Certification")
                                                 <div class="card">
                                                     <div class="overlay-logo p-3">
                                                         <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
                                                     </div>
-                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
+                                                    <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
                                                     <div class="card-body ps-4">
                                                         <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                         <div
@@ -155,68 +180,41 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div id="tab-2" class="tab-pane fade show p-0">
-                                <div class="row g-4">
-                                    <div class="tab-content" id="tab1Content">
-                                        <div class="scrollable-container">
-                                            @foreach($courses as $course)
-                                                @if($course->type == "Certification")
-                                                    <div class="card">
-                                                        <div class="overlay-logo p-3">
-                                                            <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
-                                                        </div>
-                                                        <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
-                                                        <div class="card-body ps-4">
-                                                            <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
-                                                            <div
-                                                                class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                                <div class="apply-now-text">APPLY NOW</div>
-                                                                <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
-                                                            </div>
+                        <div id="tab-3" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="tab-content" id="tab1Content">
+                                    <div class="scrollable-container">
+                                        @foreach($courses as $course)
+                                            @if($course->type == "Masters")
+                                                <div class="card">
+                                                    <div class="overlay-logo p-3">
+                                                        <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
+                                                    </div>
+                                                    <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
+                                                    <div class="card-body ps-4">
+                                                        <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
+                                                        <div
+                                                            class="apply-now-container d-flex justify-content-between align-items-center w-100">
+                                                            <div class="apply-now-text">APPLY NOW</div>
+                                                            <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
                                                         </div>
                                                     </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="tab-3" class="tab-pane fade show p-0">
-                                <div class="row g-4">
-                                    <div class="tab-content" id="tab1Content">
-                                        <div class="scrollable-container">
-                                            @foreach($courses as $course)
-                                                @if($course->type == "Masters")
-                                                    <div class="card">
-                                                        <div class="overlay-logo p-3">
-                                                            <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
-                                                        </div>
-                                                        <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
-                                                        <div class="card-body ps-4">
-                                                            <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
-                                                            <div
-                                                                class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                                <div class="apply-now-text">APPLY NOW</div>
-                                                                <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endif
+                </div>
 
                 <div class="text-center mt-5 pt-5">
                     <a href="{{ json_decode($contents->{'section_3_label_link_' . $middleware_language})->link ?? json_decode($contents->section_3_label_link_en)->link }}" class="py-sm-4 px-sm-5 ff-poppins-medium fs-20 explore-course-text">
@@ -229,46 +227,46 @@
     @endif
 
     @if($contents->section_4_title_en)
-        <div class="testimonial-container">
-            <div class="container py-5">
-                <div class="text-center">
-                    <div class="mb-3 mb-md-5 testimonial-heading">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->{'section_4_title_en'} }}</div>
-                    <b class="mb-1 testimonial-body">
-                        {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->{'section_4_description_en'} }}
-                    </b>
-                </div>
-                <div class="row g-4 pt-5">
-                    <div class="col-md-6 d-flex justify-content-center align-items-center">
-                        <div class="student-video">
-                            <video controls>
-                                <source src="/assets/GPNi Student Testimonial： Holly Priestland.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
+    <div class="testimonial-container">
+        <div class="container py-5">
+            <div class="text-center">
+                <div class="mb-3 mb-md-5 testimonial-heading">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->{'section_4_title_en'} }}</div>
+                <b class="mb-1 testimonial-body">
+                    {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->{'section_4_description_en'} }}
+                </b>
+            </div>
+            <div class="row g-4 pt-5">
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div class="student-video">
+                        <video controls>
+                            <source src="/assets/GPNi Student Testimonial： Holly Priestland.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
+                </div>
 
-                    <div class="col-md-6 testimonials-wrapper">
-                        @foreach($testimonials as $index => $testimonial)
-                            <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
-                                <img src="{{ asset('storage/frontend/homepage/section4/quotes-2.svg') }}" alt="Quote Icon" class="quote">
-                                <p>{!! $testimonial->content !!}</p>
-                                <div class="author">
-                                    <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
-                                    <div>
-                                        <p>{!! $testimonial->name !!}</p>
-                                        <p>{!! $testimonial->designation !!}</p>
-                                    </div>
+                <div class="col-md-6 testimonials-wrapper">
+                    @foreach($testimonials as $index => $testimonial)
+                        <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
+                            <img src="{{ asset('storage/frontend/homepage/section4/quotes-2.svg') }}" alt="Quote Icon" class="quote">
+                            <p>{!! $testimonial->content !!}</p>
+                            <div class="author">
+                                <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
+                                <div>
+                                    <p>{!! $testimonial->name !!}</p>
+                                    <p>{!! $testimonial->designation !!}</p>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    @endif
+    </div>
+@endif
 
     @if($contents->section_5_title_en)
-        <div class="partners-container">
+    <div class="partners-container">
             <div class="container">
                 <div class="text-center">
                     <div class="mb-3 mb-md-5 ff-poppins-medium fs-49 partners-heading mt-5 pt-5 px-5">{{ $contents->{'section_5_title_' . $middleware_language} ?? $contents->section_5_title_en }}</div>
@@ -327,41 +325,82 @@
                     <p class="mb-4 expert-body fs-25 ff-poppins-regular">{{ $contents->{'section_7_description_' . $middleware_language} ?? $contents->section_7_description_en }}</p>
                 </div>
 
-                @if($advisory_boards->isNotEmpty())
-                    <div class="row text-center g-4 pt-4 d-flex justify-content-center">
-                        @foreach($advisory_boards as $advisory_board)
-                            <div class="col-6 col-md-2">
-                                <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="img-fluid rounded-circle expert-select" data-bs-toggle="modal" data-bs-target="#expert-modal-{{ $advisory_board->id }}" id="{{ $advisory_board->id }}">
-                            </div>
+                
+@if(!$advisory_boards->isEmpty())
+    <div class="container">
+        <!-- First two rows with 5 experts each -->
+        <div class="row text-center g-4 pt-4 d-flex justify-content-center">
+            @foreach($advisory_boards->take(10) as $index => $advisory_board)
+                @if($index % 5 == 0 && $index != 0)
+                    </div><div class="row text-center g-4 pt-4 d-flex justify-content-center">
+                @endif
+                <div class="col-6 col-md-2">
+                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="img-fluid rounded-circle expert-select" data-bs-toggle="modal" data-bs-target="#expert-modal-{{ $advisory_board->id }}" id="{{ $advisory_board->id }}">
+                </div>
 
-                            <div class="modal fade" id="expert-modal-{{ $advisory_board->id }}" tabindex="-1" role="dialog" aria-labelledby="expert-modal-label" aria-hidden="true">
-                                <div class="modal-dialog expert-modal modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-body p-4">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-2 col-4">
-                                                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="expert-image-15 rounded-circle" alt=""/>
-                                                </div>
-                                                <div class="col-md-8 col-12 d-flex align-items-center">
-                                                    <div>
-                                                        <div class="expert-name">{{ $advisory_board->name }}</div>
-                                                        <div class="qualification">{{ $advisory_board->designations }}</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1 col-4 text-right">
-                                                    <button type="button" class="btn-close position-absolute btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                            </div>
-                                            <div class="mt-4 expert-content">
-                                                {!! $advisory_board->description !!}
-                                            </div>
+                <div class="modal fade" id="expert-modal-{{ $advisory_board->id }}" tabindex="-1" role="dialog" aria-labelledby="expert-modal-label" aria-hidden="true">
+                    <div class="modal-dialog expert-modal modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-4">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 col-4">
+                                        <img class="expert-image-15 rounded-circle" alt="" src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}"/>
+                                    </div>
+                                    <div class="col-md-8 col-12 d-flex align-items-center flex-column">
+                                        <div class="text-center">
+                                            <div class="expert-name">{{ $advisory_board->name }}</div>
+                                            <div class="qualification">{{ $advisory_board->designations }}</div>
                                         </div>
                                     </div>
+                                    <div class="col-md-1 col-4 text-right">
+                                        <button type="button" class="btn-close position-absolute btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                                <div class="mt-4 expert-content text-left">
+                                    {!! $advisory_board->description !!}
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
                     </div>
-                @endif
+                </div>
+            @endforeach
+        </div>
+        <!-- Third row with 4 experts -->
+        <div class="row text-center g-4 pt-4 d-flex justify-content-center">
+            @foreach($advisory_boards->slice(10, 4) as $advisory_board)
+                <div class="col-6 col-md-2">
+                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="img-fluid rounded-circle expert-select" data-bs-toggle="modal" data-bs-target="#expert-modal-{{ $advisory_board->id }}" id="{{ $advisory_board->id }}">
+                </div>
+
+                <div class="modal fade" id="expert-modal-{{ $advisory_board->id }}" tabindex="-1" role="dialog" aria-labelledby="expert-modal-label" aria-hidden="true">
+                    <div class="modal-dialog expert-modal modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-4">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 col-4">
+                                        <img class="expert-image-15 rounded-circle" alt="" src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}"/>
+                                    </div>
+                                    <div class="col-md-8 col-12 d-flex align-items-center flex-column">
+                                        <div class="text-center">
+                                            <div class="expert-name">{{ $advisory_board->name }}</div>
+                                            <div class="qualification">{{ $advisory_board->designations }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-4 text-right">
+                                        <button type="button" class="btn-close position-absolute btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                                <div class="mt-4 expert-content text-left">
+                                    {!! $advisory_board->description !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@endif
 
                 <div class="text-center mt-5 pt-5 explore-course-text">
                     <a href="{{ json_decode($contents->{'section_7_label_link_' . $middleware_language})->link ?? json_decode($contents->section_7_label_link_en)->link }}" class="py-sm-4 px-sm-5 fw-medium learn-more">
@@ -425,69 +464,65 @@
                     <div class="mb-3 faq-heading h1 fs-49 ">{{ $contents->{'section_9_title_' . $middleware_language} ?? $contents->section_9_title_en }}</div>
                     <p class="mb-4 faq-body fs-25 fs-md-20">{{ $contents->{'section_9_description_' . $middleware_language} ?? $contents->section_9_description_en }}</p>
                 </div>
+                <div class="my-3">
+                    <div class="accordion" id="accordionFAQ">
+                        @foreach($faqs as $faq)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed p-2 p-md-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ $faq->id }}" aria-expanded="false" aria-controls="collapse_{{ $faq->id }}">
+                                        {{ $faq->{'question'} }}
+                                    </button>
+                                </h2>
 
-                @if($faqs->isNotEmpty())
-                    <div class="my-3">
-                        <div class="accordion" id="accordionFAQ">
-                            @foreach($faqs as $faq)
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed p-2 p-md-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ $faq->id }}" aria-expanded="false" aria-controls="collapse_{{ $faq->id }}">
-                                            {{ $faq->{'question'} }}
-                                        </button>
-                                    </h2>
-
-                                    <div id="collapse_{{ $faq->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                                        <div class="accordion-body">
-                                            {!! $faq->{'answer'} !!}
-                                        </div>
+                                <div id="collapse_{{ $faq->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                    <div class="accordion-body">
+                                        {!! $faq->{'answer'} !!}
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     @endif
-
 @endsection
 
 @push('after-scripts')
-    <script>
-        function rotateTestimonials() {
-            const testimonials = document.querySelectorAll('.testimonial');
-            const numberOfTestimonials = testimonials.length;
-            let clearIndex = Array.from(testimonials).findIndex(t => t.classList.contains('clear'));
+<script>
+    function rotateTestimonials() {
+        const testimonials = document.querySelectorAll('.testimonial');
+        const numberOfTestimonials = testimonials.length;
+        let clearIndex = Array.from(testimonials).findIndex(t => t.classList.contains('clear'));
 
-            if (clearIndex >= 0) {
-                testimonials[clearIndex].classList.remove('clear');
-                testimonials[clearIndex].classList.add('blurry');
-            }
-
-            // The next clear testimonial
-            const nextClearIndex = (clearIndex + 1) % numberOfTestimonials;
-            testimonials[nextClearIndex].classList.add('clear');
-            testimonials[nextClearIndex].classList.remove('blurry');
-
-            // Update each testimonial positioning
-            testimonials.forEach((t, i) => {
-                const diff = (i - nextClearIndex + numberOfTestimonials) % numberOfTestimonials;
-                if (diff === 0) {
-                    t.style.top = '50%';
-                    t.style.transform = 'translateY(-50%)';
-                } else if (diff === 1) {
-                    t.style.top = '100%';
-                    t.style.transform = 'translateY(-100%)';
-                } else if (diff === 2) {
-                    t.style.top = '0%';
-                    t.style.transform = 'translateY(0)';
-                }
-            });
+        if (clearIndex >= 0) {
+            testimonials[clearIndex].classList.remove('clear');
+            testimonials[clearIndex].classList.add('blurry');
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            setInterval(rotateTestimonials, 3000);
+        // The next clear testimonial
+        const nextClearIndex = (clearIndex + 1) % numberOfTestimonials;
+        testimonials[nextClearIndex].classList.add('clear');
+        testimonials[nextClearIndex].classList.remove('blurry');
+
+        // Update each testimonial positioning
+        testimonials.forEach((t, i) => {
+            const diff = (i - nextClearIndex + numberOfTestimonials) % numberOfTestimonials;
+            if (diff === 0) {
+                t.style.top = '50%';
+                t.style.transform = 'translateY(-50%)';
+            } else if (diff === 1) {
+                t.style.top = '100%';
+                t.style.transform = 'translateY(-100%)';
+            } else if (diff === 2) {
+                t.style.top = '0%';
+                t.style.transform = 'translateY(0)';
+            }
         });
-    </script>
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        setInterval(rotateTestimonials, 3000);
+    });
+</script>
 @endpush
