@@ -97,7 +97,6 @@
             </div>
         </div>
     @endif
-
     
     @if($contents->section_3_title_en)
         <div class="py-5">
@@ -230,46 +229,46 @@
     @endif
 
     @if($contents->section_4_title_en)
-    <div class="testimonial-container">
-        <div class="container py-5">
-            <div class="text-center">
-                <div class="mb-3 mb-md-5 testimonial-heading">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->{'section_4_title_en'} }}</div>
-                <b class="mb-1 testimonial-body">
-                    {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->{'section_4_description_en'} }}
-                </b>
-            </div>
-            <div class="row g-4 pt-5">
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <div class="student-video">
-                        <video controls>
-                            <source src="/assets/GPNi Student Testimonial： Holly Priestland.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+        <div class="testimonial-container">
+            <div class="container py-5">
+                <div class="text-center">
+                    <div class="mb-3 mb-md-5 testimonial-heading">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->{'section_4_title_en'} }}</div>
+                    <b class="mb-1 testimonial-body">
+                        {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->{'section_4_description_en'} }}
+                    </b>
                 </div>
+                <div class="row g-4 pt-5">
+                    <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        <div class="student-video">
+                            <video controls>
+                                <source src="/assets/GPNi Student Testimonial： Holly Priestland.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
 
-                <div class="col-md-6 testimonials-wrapper">
-                    @foreach($testimonials as $index => $testimonial)
-                        <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
-                            <img src="{{ asset('storage/frontend/homepage/section4/quotes-2.svg') }}" alt="Quote Icon" class="quote">
-                            <p>{!! $testimonial->content !!}</p>
-                            <div class="author">
-                                <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
-                                <div>
-                                    <p>{!! $testimonial->name !!}</p>
-                                    <p>{!! $testimonial->designation !!}</p>
+                    <div class="col-md-6 testimonials-wrapper">
+                        @foreach($testimonials as $index => $testimonial)
+                            <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
+                                <img src="{{ asset('storage/frontend/homepage/section4/quotes-2.svg') }}" alt="Quote Icon" class="quote">
+                                <p>{!! $testimonial->content !!}</p>
+                                <div class="author">
+                                    <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
+                                    <div>
+                                        <p>{!! $testimonial->name !!}</p>
+                                        <p>{!! $testimonial->designation !!}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-@endif
+    @endif
 
     @if($contents->section_5_title_en)
-    <div class="partners-container" style="background-image: url('{{ asset('storage/frontend/world-map.svg') }}');">
+        <div class="partners-container">
             <div class="container">
                 <div class="text-center">
                     <div class="mb-3 mb-md-5 ff-poppins-medium fs-49 partners-heading mt-5 pt-5 px-5">{{ $contents->{'section_5_title_' . $middleware_language} ?? $contents->section_5_title_en }}</div>
@@ -451,43 +450,44 @@
             </div>
         </div>
     @endif
+
 @endsection
 
 @push('after-scripts')
-<script>
-    function rotateTestimonials() {
-        const testimonials = document.querySelectorAll('.testimonial');
-        const numberOfTestimonials = testimonials.length;
-        let clearIndex = Array.from(testimonials).findIndex(t => t.classList.contains('clear'));
+    <script>
+        function rotateTestimonials() {
+            const testimonials = document.querySelectorAll('.testimonial');
+            const numberOfTestimonials = testimonials.length;
+            let clearIndex = Array.from(testimonials).findIndex(t => t.classList.contains('clear'));
 
-        if (clearIndex >= 0) {
-            testimonials[clearIndex].classList.remove('clear');
-            testimonials[clearIndex].classList.add('blurry');
+            if (clearIndex >= 0) {
+                testimonials[clearIndex].classList.remove('clear');
+                testimonials[clearIndex].classList.add('blurry');
+            }
+
+            // The next clear testimonial
+            const nextClearIndex = (clearIndex + 1) % numberOfTestimonials;
+            testimonials[nextClearIndex].classList.add('clear');
+            testimonials[nextClearIndex].classList.remove('blurry');
+
+            // Update each testimonial positioning
+            testimonials.forEach((t, i) => {
+                const diff = (i - nextClearIndex + numberOfTestimonials) % numberOfTestimonials;
+                if (diff === 0) {
+                    t.style.top = '50%';
+                    t.style.transform = 'translateY(-50%)';
+                } else if (diff === 1) {
+                    t.style.top = '100%';
+                    t.style.transform = 'translateY(-100%)';
+                } else if (diff === 2) {
+                    t.style.top = '0%';
+                    t.style.transform = 'translateY(0)';
+                }
+            });
         }
 
-        // The next clear testimonial
-        const nextClearIndex = (clearIndex + 1) % numberOfTestimonials;
-        testimonials[nextClearIndex].classList.add('clear');
-        testimonials[nextClearIndex].classList.remove('blurry');
-
-        // Update each testimonial positioning
-        testimonials.forEach((t, i) => {
-            const diff = (i - nextClearIndex + numberOfTestimonials) % numberOfTestimonials;
-            if (diff === 0) {
-                t.style.top = '50%';
-                t.style.transform = 'translateY(-50%)';
-            } else if (diff === 1) {
-                t.style.top = '100%';
-                t.style.transform = 'translateY(-100%)';
-            } else if (diff === 2) {
-                t.style.top = '0%';
-                t.style.transform = 'translateY(0)';
-            }
+        window.addEventListener('DOMContentLoaded', () => {
+            setInterval(rotateTestimonials, 3000);
         });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        setInterval(rotateTestimonials, 3000);
-    });
-</script>
+    </script>
 @endpush
