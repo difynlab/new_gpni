@@ -31,7 +31,7 @@
                 <div class="col-12 col-md-6 py-md-0 py-2">
                     @if($contents->section_2_top_description_en)
                         <div class="feature d-flex align-items-center mb-4">
-                            <img src="/storage/frontend/charm-circle-tick-2.svg" alt="Tick Icon" class="feature-icon">
+                            <img src="{{ asset('storage/frontend/circle-tick.svg') }}" alt="Tick Icon" class="feature-icon">
                             <div>
                                 {!! $contents->{'section_2_top_description_' . $middleware_language} ?? $contents->section_2_top_description_en !!}
                             </div>
@@ -40,7 +40,7 @@
 
                     @if($contents->section_2_bottom_description_en)
                         <div class="feature d-flex align-items-center">
-                            <img src="/storage/frontend/charm-circle-tick-2.svg" alt="Tick Icon" class="feature-icon">
+                            <img src="{{ asset('storage/frontend/circle-tick.svg') }}" alt="Tick Icon" class="feature-icon">
                             <div>
                                 {!! $contents->{'section_2_bottom_description_' . $middleware_language} ?? $contents->section_2_bottom_description_en !!}
                             </div>
@@ -54,21 +54,23 @@
                 <div class="benefits-section py-5">
                     <h2 class="text-center mb-4 pt-3 fs-49 ff-poppins-medium">{{ $contents->{'section_3_title_' . $middleware_language} ?? $contents->section_3_title_en }}</h2>
                     <div class="text-center mb-5 fs-25 ff-poppins-regular">{!! $contents->{'section_3_description_' . $middleware_language} ?? $contents->section_3_description_en !!}</div>
-            
-                    <div class="accordion px-5" id="benefitsAccordion">
-                        @foreach(json_decode($contents->{'section_3_labels_contents' . $middleware_language} ?? $contents->section_3_labels_contents_en) as $key => $label_content)
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading{{ $key }}">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $key }}" aria-expanded="false" aria-controls="collapse{{ $key }}"> {{ $label_content->title }}</button>
-                                </h2>
-                                <div id="collapse{{ $key }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $key }}" data-bs-parent="#benefitsAccordion">
-                                    <div class="accordion-body">
-                                        <div>{!! $label_content->content !!}</div>
+
+                    @if($contents->section_3_labels_contents_en)
+                        <div class="accordion px-5" id="benefitsAccordion">
+                            @foreach(json_decode($contents->{'section_3_labels_contents' . $middleware_language} ?? $contents->section_3_labels_contents_en) as $key => $label_content)
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading{{ $key }}">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $key }}" aria-expanded="false" aria-controls="collapse{{ $key }}"> {{ $label_content->title }}</button>
+                                    </h2>
+                                    <div id="collapse{{ $key }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $key }}" data-bs-parent="#benefitsAccordion">
+                                        <div class="accordion-body">
+                                            <div>{!! $label_content->content !!}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             @endif
 
@@ -98,24 +100,26 @@
 
                     <div>{!! $contents->{'section_5_description_' . $middleware_language} ?? $contents->section_5_description_en !!}</div>
 
-                    <div class="accordion px-5" id="faqAccordion">
-                        @foreach($faqs as $faq)
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        {{ $faq->question }}
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                    data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                    {!! $faq->answer !!}
+                    @if($faqs->isNotEmpty())
+                        <div class="accordion px-5" id="faqAccordion">
+                            @foreach($faqs as $faq)
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            {{ $faq->question }}
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                        data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                        {!! $faq->answer !!}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             @endif
         </div>

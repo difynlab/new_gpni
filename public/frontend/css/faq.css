@@ -25,7 +25,7 @@
 }
 
 .accordion-button::after {
-    background-image: url("/storage/frontend/down-arrow.svg") !important;
+    background-image: url("../../../storage/frontend/accordion-down-arrow.svg") !important;
     font-size: 1rem !important;
     color: #0e0e0e !important;
     transform: rotate(0deg) !important;

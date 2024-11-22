@@ -28,12 +28,13 @@
                                         $certificate_courses = App\Models\Course::where('language', 'English')->where('type', 'Certification')->where('status', '1')->get();
                                     }
                                 ?>
-
-                                @foreach($certificate_courses as $certificate_course)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('frontend.certification-courses.show', $certificate_course) }}">{{ $certificate_course->title }}</a>
-                                    </li>
-                                @endforeach
+                                @if($certificate_courses->isNotEmpty())
+                                    @foreach($certificate_courses as $certificate_course)
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('frontend.certification-courses.show', $certificate_course) }}">{{ $certificate_course->title }}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </li>
                         <li>
@@ -98,14 +99,27 @@
                     @endif
                 </a>
 
-                <div class="nav-item">
+                <div class="nav-item dropdown">
                     @if(auth()->check())
-                        <form method="POST" action="{{ route('frontend.logout') }}">
-                            @csrf
-                            <a href="{{ route('frontend.logout') }}" class="nav-link " onclick="event.preventDefault(); this.closest('form').submit();"><span class="btn btn-primary px-4">Logout</span></a>
-                        </form>
+                        @if(auth()->user()->image)
+                            <img src="{{ asset('storage/backend/persons/students/' . auth()->user()->image) }}" alt="Image" class="profile-image" data-bs-toggle="dropdown" aria-expanded="false">
+                        @else
+                            <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="profile-image" data-bs-toggle="dropdown" aria-expanded="false">
+                        @endif
+
+                        <ul class="dropdown-menu" aria-labelledby="partnersDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('frontend.dashboard.index') }}">Dashboard</a>
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('frontend.logout') }}">
+                                    @csrf
+                                    <a href="{{ route('frontend.logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                                </form>
+                            </li>
+                        </ul>
                     @else
-                        <a href="{{ route('frontend.login', ['redirect' => route('frontend.dashboard.index')]) }}" class="nav-link">
+                        <a href="{{ route('frontend.login') }}" class="nav-link">
                             <div class="btn btn-primary px-4">Login</div>
                         </a>
                     @endif

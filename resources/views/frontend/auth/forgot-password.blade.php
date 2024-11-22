@@ -11,32 +11,20 @@
     
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center min-vh-100">
-        <!-- Blue Section -->
-        <div class="col-lg-4 blue-section">
-            <img src="/storage/frontend/gpni-removebg-pre.png" alt="GPNi Logo" class="logo">
-            <h2>{!! $translation['heading'] !!}</h2>
-            <div class="feature-section">
-                <ul class="feature-list">
-                    <li><img src="/storage/frontend/typcn-tick.svg" alt="Tick Icon"><span>{{ $translation['qualified_coaches'] }}</span></li>
-                    <li><img src="/storage/frontend/typcn-tick.svg" alt="Tick Icon"><span>{{ $translation['on_demand_learning'] }}</span></li>
-                    <li><img src="/storage/frontend/typcn-tick.svg" alt="Tick Icon"><span>{{ $translation['social_network'] }}</span></li>
-                    <li><img src="/storage/frontend/typcn-tick.svg" alt="Tick Icon"><span>{{ $translation['global_certification'] }}</span></li>
-                </ul>
-            </div>
-        </div>
+        
+        <x-frontend.auth></x-frontend.auth>
 
-        <!-- White Section -->
         <div class="col-lg-5 offset-lg-1 white-section">
             <x-frontend.notification></x-frontend.notification>
 
-            <h1>{{ $translation['forgot_password'] }}</h1>
-            <p class="subtitle">{{ $translation['subtitle'] }}</p>
+            <h1>Forgot Password</h1>
+            <p class="subtitle">Please provide your email address below to reset your password</p>
 
             <form method="POST" action="{{ route('frontend.password.email') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="email">{{ $translation['email_label'] }}</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="{{ $translation['email_placeholder'] }}" value="{{ old('email') }}" required>
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Your email address" value="{{ old('email') }}" required>
                     <x-frontend.input-error field="email"></x-frontend.input-error>
                 </div>
 
@@ -44,9 +32,8 @@
                     <x-frontend.captcha></x-frontend.captcha>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block submit-button" style="background-color: #0040c3; color: #fff; border: none; border-radius: 10px; height: 46px;" disabled>{{ $translation['send_reset_link'] }}</button>
+                <button type="submit" class="btn btn-primary btn-block submit-button" style="background-color: #0040c3; color: #fff; border: none; border-radius: 10px; height: 46px;" disabled>Send Reset Link</button>
             </form>
-
         </div>
     </div>
 </div>

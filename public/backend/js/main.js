@@ -2,7 +2,7 @@
     document.querySelectorAll('.editor').forEach(element => {
         ClassicEditor
             .create(element)
-            .then(new_editor => {})
+            .then(newEditor => {})
             .catch(error => {
                 console.error(error);
             });

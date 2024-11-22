@@ -1,0 +1,57 @@
+.container-main {
+    padding: 30px;
+    background-color: #F7F6FB;
+    border: 1px solid #e0eaff;
+    border-radius: 15px;
+}
+.header-section {
+    margin-bottom: 30px;
+}
+.header-section h1 {
+    font-size: 31px;
+    font-weight: 500;
+    color: #0e0e0e;
+}
+.form-label {
+    font-size: 20px;
+    font-weight: 400;
+    color: #505050;
+    text-align: left;
+    display: block;
+}
+.form-select-placeholder {
+    color: #b9b9b9;
+}
+.btn-pay-now {
+    background-color: #0040c3;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    display: block;
+}
+.form-label {
+    font-size: 20px;
+    font-weight: 400;
+    color: #505050;
+    margin-bottom: 10px;
+    text-align: left;
+    display: block;
+}
+.custom-select {
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 4px;
+}
+.custom-select-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+.form-control::placeholder {
+    color: #9a9a9a;
+}

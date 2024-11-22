@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\Course;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\Models\CourseFinal;
 use App\Models\CourseFinalExamQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

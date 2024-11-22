@@ -19,7 +19,7 @@
 
             <section class="search-section mt-5">
                 <input type="text" class="search-field" placeholder="Search">
-                <img src="{{ asset('storage/frontend/search-grey.svg') }}" class="search-icon" alt="Search Icon">
+                <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" class="search-icon" alt="Search Icon">
             </section>
 
             <header class="header-section">
@@ -46,33 +46,35 @@
                 <div class="tab-pane fade show active" id="all-courses-tab-pane" role="tabpanel" aria-labelledby="all-courses-tab" tabindex="0">
                     <div class="container py-5">
                         <div class="row g-3 mb-3">
-                            @foreach($all_courses as $all_course)
-                                <div class="col-md-4 mb-4">
-                                    <div class="card h-100">
-                                        <img src="{{ asset('storage/backend/courses/course-images/' . $all_course->image) }}" class="card-img-top" alt="Card Image">
+                            @if($all_courses->isNotEmpty())
+                                @foreach($all_courses as $all_course)
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card h-100">
+                                            <img src="{{ asset('storage/backend/courses/course-images/' . $all_course->image) }}" class="card-img-top" alt="Card Image">
 
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $all_course->title }}</h5>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $all_course->title }}</h5>
 
-                                            <p class="card-text line-clamp-3">{{ $all_course->short_description }}</p>
+                                                <p class="card-text line-clamp-3">{{ $all_course->short_description }}</p>
 
-                                            <a href="{{ route('frontend.master-classes.show', $all_course) }}" class="learn-more">Learn More</a>
+                                                <a href="{{ route('frontend.master-classes.show', $all_course) }}" class="learn-more">Learn More</a>
 
-                                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                                <a href="{{ route('frontend.master-classes.show', $all_course) }}" class="enroll-button">
-                                                    <span>Enroll Now</span>
-                                                    <img src="{{ asset('storage/frontend/arrow-right.svg') }}" alt="Arrow Icon" width="12" height="10">
-                                                </a>
-                                                
-                                                <div class="d-flex flex-column align-items-end">
-                                                    <div class="card-price-label">PRICE</div>
-                                                    <div class="card-price">${{ $all_course->price }}</div>
+                                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                                    <a href="{{ route('frontend.master-classes.show', $all_course) }}" class="enroll-button">
+                                                        <span>Enroll Now</span>
+                                                        <img src="{{ asset('storage/frontend/small-arrow-right.svg') }}" alt="Arrow Icon" width="12" height="10">
+                                                    </a>
+                                                    
+                                                    <div class="d-flex flex-column align-items-end">
+                                                        <div class="card-price-label">PRICE</div>
+                                                        <div class="card-price">${{ $all_course->price }}</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
 
                         {{ $all_courses->links("pagination::bootstrap-5") }}
@@ -82,19 +84,21 @@
                 <div class="tab-pane fade" id="upcoming-courses-tab-pane" role="tabpanel" aria-labelledby="upcoming-courses-tab" tabindex="0">
                     <div class="container py-5">
                         <div class="row g-3 mb-3">
-                            @foreach($upcoming_courses as $upcoming_course)
-                                <div class="col-md-4 mb-4">
-                                    <div class="card h-100">
-                                        <img src="{{ asset('storage/backend/courses/course-images/' . $upcoming_course->image) }}" class="card-img-top" alt="Card Image">
+                            @if($upcoming_courses->isNotEmpty())
+                                @foreach($upcoming_courses as $upcoming_course)
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card h-100">
+                                            <img src="{{ asset('storage/backend/courses/course-images/' . $upcoming_course->image) }}" class="card-img-top" alt="Card Image">
 
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $upcoming_course->title }}</h5>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $upcoming_course->title }}</h5>
 
-                                            <p class="card-text line-clamp-3">{{ $upcoming_course->short_description }}</p>
+                                                <p class="card-text line-clamp-3">{{ $upcoming_course->short_description }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
 
                         {{ $upcoming_courses->links("pagination::bootstrap-5") }}
@@ -108,14 +112,16 @@
                 <h1>{{ $contents->{'section_3_title_' . $middleware_language} ?? $contents->section_3_title_en }}</h1>
 
                 <div class="row gy-4">
-                    @foreach(json_decode($contents->{'section_3_points_' . $middleware_language} ?? $contents->section_3_points_en) as $point)
-                        <div class="col-md-4">
-                            <div class="certification-card">
-                                <img src="{{ asset('storage/backend/courses/course-images/' . $point->image) }}" alt="Certification Icon">
-                                <p>{{ $point->description }}</p>
+                    @if($contents->section_3_points_en)
+                        @foreach(json_decode($contents->{'section_3_points_' . $middleware_language} ?? $contents->section_3_points_en) as $point)
+                            <div class="col-md-4">
+                                <div class="certification-card">
+                                    <img src="{{ asset('storage/backend/courses/course-images/' . $point->image) }}" alt="Certification Icon">
+                                    <p>{{ $point->description }}</p>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
         @endif
@@ -131,7 +137,7 @@
                         <div class="faq-body">{{ $contents->{'section_5_description_' . $middleware_language} ?? $contents->section_5_description_en }}</div>
                     </div>
 
-                    @if(!$faqs->isEmpty())
+                    @if($faqs->isNotEmpty())
                         <div class="mt-5">
                             <div class="accordion" id="accordionExample">
                                 @foreach($faqs as $faq)

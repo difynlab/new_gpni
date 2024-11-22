@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('product_orders', function (Blueprint $table) {
             $table->id();
 
-            $table->string('student_id');
+            $table->string('user_id');
             $table->date('date')->nullable();
             $table->time('time')->nullable();
             $table->string('mode')->nullable();

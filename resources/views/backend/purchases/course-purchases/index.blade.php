@@ -45,7 +45,6 @@
                             <th scope="col">Student</th>
                             <th scope="col">Course</th>
                             <th scope="col">Date & Time</th>
-                            <th scope="col">Transaction ID</th>
                             <th scope="col">Amount Paid</th>
                             <th scope="col">Payment Status</th>
                             <th scope="col">Course Access Status</th>
@@ -58,10 +57,9 @@
                             @foreach($course_purchases as $course_purchase)
                                 <tr>
                                     <td>#{{ $course_purchase->id }}</td>
-                                    <td>{{ $course_purchase->student_id }}</td>
+                                    <td>{{ $course_purchase->user_id }}</td>
                                     <td>{{ $course_purchase->course_id }}</td>
                                     <td>{{ $course_purchase->date_time }}</td>
-                                    <td>{{ $course_purchase->transaction_id }}</td>
                                     <td>{{ $course_purchase->amount_paid }}</td>
                                     <td>{!! $course_purchase->payment_status !!}</td>
                                     <td>{!! $course_purchase->course_access_status !!}</td>
@@ -70,7 +68,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="9" style="text-align: center;">No data available in table</td>
+                                <td colspan="8" style="text-align: center;">No data available in table</td>
                             </tr>
                         @endif
                     </tbody>

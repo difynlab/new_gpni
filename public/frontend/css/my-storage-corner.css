@@ -1,0 +1,221 @@
+.container-main {
+    padding: 30px;
+    background-color: #F7F6FB;
+    border: 1px solid #e0eaff;
+    border-radius: 15px;
+}
+.header {
+    font-size: 31px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+}
+.add-new-button {
+    font-weight: 500;
+    font-size: 13px;
+    background-color: #0040c3;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.btn-primary {
+    background-color: #0040c3;
+}
+
+.search-field {
+    background-color: #fdfdfd;
+    border: 0.84px solid #c9dbfe;
+    border-radius: 47px;
+    padding: 0 25px;
+    height: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.search-field input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.search-field img {
+    width: 18px;
+    height: 18px;
+}
+.table th {
+    vertical-align: middle;
+    font-size: 16px;
+    color: #444444;
+    padding: 15px;
+}
+.table td {
+    vertical-align: middle;
+    font-size: 14px;
+    padding: 15px;
+}
+.table td:last-child {
+    text-align: center;
+    vertical-align: middle;
+}
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pagination-details {
+    font-size: 13px;
+    color: #656565;
+}
+.pagination-links {
+    display: flex;
+    gap: 10px;
+}
+.page-link {
+    padding: 8px 17px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #656565;
+}
+.current-page {
+    background-color: #0040c3;
+    color: #fff;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    width: 720px;
+    position: relative;
+}
+.header {
+    font-size: 25px;
+    font-weight: 500;
+    color: #0e0e0e;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.upload-section {
+    background-color: #f7f7f7;
+    border: 1px dashed #0040c3;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+}
+.upload-icon {
+    width: 63px;
+    height: 63px;
+    margin-bottom: 20px;
+}
+.upload-text {
+    font-size: 20px;
+    font-weight: 400;
+    color: #898989;
+    margin-bottom: 20px;
+}
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.divider img {
+    width: 100px;
+}
+.browse-button {
+    background-color: #0040c3;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 20px;
+}
+.file-size-text {
+    font-size: 13px;
+    font-weight: 400;
+    color: #898989;
+}
+.header {
+    font-size: 31px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 10px;
+}
+.subtext {
+    font-size: 16px;
+    font-weight: 400;
+    color: #898989;
+    margin-bottom: 30px;
+}
+.close-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+.cancel-button {
+    color: #bd3d44;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.delete-button {
+    background-color: #bd3d44;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.header {
+    font-size: 25px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 10px;
+}
+.subtext {
+    font-size: 16px;
+    font-weight: 400;
+    color: #898989;
+    margin-top: 10px;
+    text-align: center;
+}
+.close-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.container-main .nav-item {
+    margin: 0;
+}
+.container-main .nav-pills .nav-link {
+    color: #444444!important;
+    background: none!important;
+    border: 1px solid #adadad;
+    font-size: 13px;
+}
+.container-main .nav-pills .nav-link:hover {
+    border: 1px solid #0040c3;
+}
+.container-main .nav-pills .nav-link.active {
+    background: #0040c3!important;
+    color: white!important;
+    border: 1px solid #0040c3;
+}

@@ -129,10 +129,7 @@
 }
 
 .accordion-button::after {
-    background-image: url("/storage/frontend/down-arrow.svg");
-    background-size: 50%; /* Adjust the size of the background image */
-    background-repeat: no-repeat; /* Ensure the background image does not repeat */
-    background-position: center; /* Center the background image */
+    background-image: url("../../../storage/frontend/accordion-down-arrow.svg");
     font-size: 1rem;
     color: #0e0e0e;
     transform: rotate(0deg);

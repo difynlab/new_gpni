@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('course_purchases', function (Blueprint $table) {
             $table->id();
 
-            $table->string('student_id');
+            $table->string('user_id');
             $table->string('course_id');
             $table->date('date')->nullable();
             $table->date('completion_date')->nullable();

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->enum('language', ['English', 'Chinese', 'Japanese']);
             $table->string('image')->nullable();
             $table->enum('role', ['admin', 'student']);
+            $table->enum('member', ['Yes', 'No'])->default('No');
             $table->enum('status', [0, 1, 2])->index();
 
             $table->string('business_name')->nullable();

@@ -26,6 +26,11 @@
                                 <input type="text" class="form-control" id="certification_section_2_description" name="certification_section_2_description" value="{{ $course->certification_section_2_description ?? '' }}" placeholder="Description">
                             </div>
 
+                            <div class="mb-4">
+                                <x-backend.upload-image old_name="old_certification_section_2_image" old_value="{{ $course->certification_section_2_image ?? '' }}" new_name="new_certification_section_2_image" path="courses/course-images"></x-backend.upload-image>
+                                <x-backend.input-error field="new_certification_section_2_image"></x-backend.input-error>
+                            </div>
+
                             <div class="form-input">
                                 <div class="row align-items-center mb-2">
                                     <div class="col-9">
@@ -89,7 +94,7 @@
                                             <div class="col-4 d-flex align-items-center">
                                                 <input type="hidden" name="old_certification_section_3_point_files[]" value="{{ $certification_section_3_point->image }}">
 
-                                                <img src="{{ asset('storage/backend/courses/course-image-videos/' . $certification_section_3_point->image) }}" alt="Image" class="add-more-image">
+                                                <img src="{{ asset('storage/backend/courses/course-images/' . $certification_section_3_point->image) }}" alt="Image" class="add-more-image">
 
                                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                             </div>
@@ -113,7 +118,7 @@
                     <div class="row form-input">
                         <div class="col-12">
                             <div>
-                                <x-backend.upload-video old_name="old_certification_section_4_video" old_value="{{ $course->certification_section_4_video ?? '' }}" new_name="new_certification_section_4_video" path="courses/course-image-videos"></x-backend.upload-video>
+                                <x-backend.upload-video old_name="old_certification_section_4_video" old_value="{{ $course->certification_section_4_video ?? '' }}" new_name="new_certification_section_4_video" path="courses/course-videos"></x-backend.upload-video>
                                 <x-backend.input-error field="new_certification_section_4_video"></x-backend.input-error>
                             </div>
                         </div>
@@ -202,7 +207,7 @@
                                             <div class="col-4 d-flex align-items-center">
                                                 <input type="hidden" name="old_certification_section_6_team_files[]" value="{{ $certification_section_6_team->image }}">
 
-                                                <img src="{{ asset('storage/backend/courses/course-image-videos/' . $certification_section_6_team->image) }}" alt="Image" class="add-more-image">
+                                                <img src="{{ asset('storage/backend/courses/course-images/' . $certification_section_6_team->image) }}" alt="Image" class="add-more-image">
 
                                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                                             </div>
@@ -236,7 +241,7 @@
                             </div>
                         </div>
                         <div class="col-6 right-column">
-                            <x-backend.upload-video old_name="old_certification_section_7_video" old_value="{{ $course->certification_section_7_video ?? '' }}" new_name="new_certification_section_7_video" path="courses/course-image-videos" class="side-box-uploader"></x-backend.upload-video>
+                            <x-backend.upload-video old_name="old_certification_section_7_video" old_value="{{ $course->certification_section_7_video ?? '' }}" new_name="new_certification_section_7_video" path="courses/course-videos" class="side-box-uploader"></x-backend.upload-video>
                             <x-backend.input-error field="new_certification_section_7_video"></x-backend.input-error>
                         </div>
                     </div>
@@ -265,7 +270,7 @@
 
                     <div class="row form-input">
                         <div class="col-6 left-column">
-                            <x-backend.upload-image old_name="old_certification_section_9_image" old_value="{{ $course->certification_section_9_image ?? '' }}" new_name="new_certification_section_9_image" path="courses/course-image-videos" class="side-box-uploader"></x-backend.upload-image>
+                            <x-backend.upload-image old_name="old_certification_section_9_image" old_value="{{ $course->certification_section_9_image ?? '' }}" new_name="new_certification_section_9_image" path="courses/course-images" class="side-box-uploader"></x-backend.upload-image>
                             <x-backend.input-error field="new_certification_section_9_image"></x-backend.input-error>
                         </div>
 
@@ -290,7 +295,7 @@
                         </div>
 
                         <div class="col-6 left-column">
-                            <x-backend.upload-video old_name="old_certification_section_10_video" old_value="{{ $course->certification_section_10_video ?? '' }}" new_name="new_certification_section_10_video" path="courses/course-image-videos" class="side-box-uploader"></x-backend.upload-video>
+                            <x-backend.upload-video old_name="old_certification_section_10_video" old_value="{{ $course->certification_section_10_video ?? '' }}" new_name="new_certification_section_10_video" path="courses/course-videos" class="side-box-uploader"></x-backend.upload-video>
                             <x-backend.input-error field="new_certification_section_10_video"></x-backend.input-error>
                         </div>
                     </div>
@@ -352,7 +357,7 @@
                         </div>
 
                         <div class="col-6 left-column">
-                            <x-backend.upload-video old_name="old_certification_section_11_video" old_value="{{ $course->certification_section_11_video ?? '' }}" new_name="new_certification_section_11_video" path="courses/course-image-videos" class="side-box-uploader"></x-backend.upload-video>
+                            <x-backend.upload-video old_name="old_certification_section_11_video" old_value="{{ $course->certification_section_11_video ?? '' }}" new_name="new_certification_section_11_video" path="courses/course-videos" class="side-box-uploader"></x-backend.upload-video>
                             <x-backend.input-error field="new_certification_section_11_video"></x-backend.input-error>
                         </div>
                     </div>
@@ -513,7 +518,7 @@
                         </div>
 
                         <div class="col-6 left-column">
-                            <x-backend.upload-video old_name="old_certification_section_15_video" old_value="{{ $course->certification_section_15_video ?? '' }}" new_name="new_certification_section_15_video" path="courses/course-image-videos" class="side-box-uploader"></x-backend.upload-video>
+                            <x-backend.upload-video old_name="old_certification_section_15_video" old_value="{{ $course->certification_section_15_video ?? '' }}" new_name="new_certification_section_15_video" path="courses/course-videos" class="side-box-uploader"></x-backend.upload-video>
                             <x-backend.input-error field="new_certification_section_15_video"></x-backend.input-error>
                         </div>
                     </div>
@@ -905,7 +910,7 @@
                 if(!element.classList.contains('ckeditor-initialized')) {
                     ClassicEditor
                         .create(element)
-                        .then(new_editor => {
+                        .then(newEditor => {
                             element.classList.add('ckeditor-initialized');
                         })
                         .catch(error => {

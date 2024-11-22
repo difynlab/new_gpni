@@ -13,7 +13,7 @@
             <h2>{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h2>
             <div class="text-center">{!! $contents->{'description_' . $middleware_language} ?? $contents->description_en !!}</div>
 
-            @if(!$policy_categories->isEmpty())
+            @if($policy_categories->isNotEmpty())
                 <ul class="nav nav-tabs justify-content-center pt-5" id="policiesTabs" role="tablist">
                     @foreach($policy_categories as $key => $policy_category)
                         <li class="nav-item" role="presentation">

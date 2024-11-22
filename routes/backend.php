@@ -53,7 +53,9 @@ use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\Promotion\PromotionController;
 use App\Http\Controllers\Backend\Purchase\CoursePurchaseController;
 use App\Http\Controllers\Backend\Purchase\GiftCardPurchaseController;
+use App\Http\Controllers\Backend\Purchase\MaterialPurchaseController;
 use App\Http\Controllers\Backend\Purchase\ProductPurchaseController;
+use App\Http\Controllers\Backend\Result\ExamResultController;
 use App\Http\Controllers\Backend\Webinar\WebinarController;
 use Illuminate\Support\Facades\Route;
 
@@ -297,6 +299,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
             Route::prefix('course-purchases')->name('course-purchases.')->group(function() {
                 Route::get('/', [CoursePurchaseController::class, 'index'])->name('index');
+                Route::get('/{course_purchase}/show', [CoursePurchaseController::class, 'show'])->name('show');
                 Route::post('/filter', [CoursePurchaseController::class, 'filter'])->name('filter');
                 Route::delete('/{course_purchase}', [CoursePurchaseController::class, 'destroy'])->name('destroy');
 
@@ -313,6 +316,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
                 Route::post('/filter', [ProductPurchaseController::class, 'filter'])->name('filter');
 
                 Route::get('/products/{product_purchase}', [ProductPurchaseController::class, 'products'])->name('products');
+            });
+
+            Route::prefix('material-purchases')->name('material-purchases.')->group(function() {
+                Route::get('/', [MaterialPurchaseController::class, 'index'])->name('index');
+                Route::get('/{material_purchase}/show', [MaterialPurchaseController::class, 'show'])->name('show');
+                Route::post('/{material_purchase}/send', [MaterialPurchaseController::class, 'send'])->name('send');
+                Route::post('/filter', [MaterialPurchaseController::class, 'filter'])->name('filter');
+                Route::delete('/{material_purchase}', [MaterialPurchaseController::class, 'destroy'])->name('destroy');
             });
         });
     // All purchase routes
@@ -331,4 +342,20 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         Route::resource('webinars', WebinarController::class)->except('show');
         Route::post('webinars/filter', [WebinarController::class, 'filter'])->name('webinars.filter');
     // Webinars routes
+
+
+    // Exam results routes
+        Route::prefix('exam-results')->name('exam-results.')->group(function() {
+            Route::get('module-exams', [ExamResultController::class, 'moduleExams'])->name('module-exams');
+            Route::get('module-exams/{course_module_exam}', [ExamResultController::class, 'moduleExamResult'])->name('module-exam-result');
+            Route::delete('module-exams/{course_module_exam}', [ExamResultController::class, 'moduleExamResultDestroy'])->name('module-exam-result-destroy');
+            Route::post('module-exams', [ExamResultController::class, 'moduleExamsFilter'])->name('module-exam-filter');
+            
+
+            Route::get('final-exams', [ExamResultController::class, 'finalExams'])->name('final-exams');
+            Route::get('final-exams/{course_final_exam}', [ExamResultController::class, 'finalExamResult'])->name('final-exam-result');
+            Route::delete('final-exams/{course_final_exam}', [ExamResultController::class, 'finalExamResultDestroy'])->name('final-exam-result-destroy');
+            Route::post('final-exams', [ExamResultController::class, 'finalExamsFilter'])->name('final-exam-filter');
+        });
+    // Exam results routes
 });

@@ -42,7 +42,6 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Transaction ID</th>
                             <th scope="col">Receiver Email</th>
                             <th scope="col">Date & Time</th>
                             <th scope="col">Amount Paid</th>
@@ -56,7 +55,6 @@
                             @foreach($gift_card_purchases as $gift_card_purchase)
                                 <tr>
                                     <td>#{{ $gift_card_purchase->id }}</td>
-                                    <td>{{ $gift_card_purchase->transaction_id }}</td>
                                     <td>{{ $gift_card_purchase->receiver_email }}</td>
                                     <td>{{ $gift_card_purchase->date_time }}</td>
                                     <td>{{ $gift_card_purchase->amount_paid }}</td>
@@ -66,7 +64,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7" style="text-align: center;">No data available in table</td>
+                                <td colspan="6" style="text-align: center;">No data available in table</td>
                             </tr>
                         @endif
                     </tbody>

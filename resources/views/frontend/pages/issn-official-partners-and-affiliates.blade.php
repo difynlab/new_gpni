@@ -18,7 +18,7 @@
                     <div>{!! $contents->{'section_1_description_'. $middleware_language} ?? $contents->section_1_description_en !!}</div>
 
                     <div class="image-container">
-                        @if(!$partners->isEmpty())
+                        @if($partners->isNotEmpty())
                             @foreach($partners as $partner)
                                 <div class="image-container">
                                     <img src="{{ asset('storage/backend/persons/issn-partners/' . $partner->image) }}" alt="Partner Logo">

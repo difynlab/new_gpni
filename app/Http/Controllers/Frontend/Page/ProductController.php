@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\ProductCategory;
 use App\Models\Product;
 use App\Models\ProductOrder;
@@ -36,7 +37,7 @@ class ProductController extends Controller
         $quantities = $request->quantities;
 
         $product_order = new ProductOrder();
-        $product_order->student_id = Auth::user()->id;
+        $product_order->user_id = Auth::user()->id;
         $product_order->status = '1';
         $product_order->save();
 
@@ -102,6 +103,10 @@ class ProductController extends Controller
             $product_order->payment_status = 'Completed';
             $product_order->save();
         }
+
+        $ordered_product_ids = ProductOrderDetail::where('product_order_id', $product_order_id)->pluck('product_id')->toArray();
+
+        Cart::whereIn('product_id', $ordered_product_ids)->where('status', 'Active')->update(['status' => 'Purchased']);
 
         return redirect()->route('frontend.products.index')->with('success', 'Product/s purchased successfully');
     }

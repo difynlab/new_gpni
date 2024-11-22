@@ -139,7 +139,8 @@
 }
 
 .accordion-button::after {
-    background-image: url("../../assets/down-arrow.svg");
+    background-image: url("../../../storage/frontend/accordion-down-arrow.svg") !important;
+    /* Content icon URL */
 }
 
 .accordion-body {

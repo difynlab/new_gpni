@@ -493,3 +493,111 @@
         margin-right: 5px;
     }
 /* Static page table styles */
+
+
+/* Exam results page */
+    .static-pages .exam-header {
+        margin-bottom: 30px;
+    }
+    .static-pages .exam-title-section {
+        margin-bottom: 20px;
+    }
+    .static-pages .exam-title {
+        font-size: 30px;
+        font-weight: 500;
+        color: #1e1e1e;
+        margin: 0;
+    }
+    .static-pages .exam-details {
+        font-size: 20px;
+        color: #505050;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+    .static-pages .exam-result {
+        padding: 20px 30px;
+        border-radius: 0px;
+        border: 1px solid #0040c3;
+        background-color: #f4f8ff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .static-pages .result-item {
+        color: #0040c3;
+    }
+    .static-pages .result-heading {
+        font-weight: 400;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    .static-pages .result-value {
+        font-weight: 500;
+        font-size: 24px;
+    }
+    .static-pages .result-highlight {
+        background-color: rgba(45, 185, 143, 0.10);
+        border-radius: 0px;
+        padding: 15px 50px;
+        color: #2db98f;
+    }
+    .static-pages .result-highlight-fail {
+        border-radius: 0px;
+        background-color: rgba(234, 67, 53, 0.10);
+        padding: 15px 50px;
+        color: #ea4335;
+    }
+    .static-pages .question-card {
+        margin-bottom: 25px;
+    }
+    .static-pages .question-card:last-child {
+        margin-bottom: 0;
+    }
+    .static-pages .question-card .info{
+        background: #fcfcfcff;
+        border: 1px solid #e9e9e9ff;
+        padding: 25px;
+    }
+    .static-pages .info .form-check {
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+    }
+    .static-pages .answers {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 16px;
+    }
+    .static-pages .radio {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2px solid #B8D0FF;
+        margin-right: 12px;
+        background-color: #fff;
+        accent-color: blue;
+        margin-right: 10px;
+        transition: all 0.3s;
+    }
+    .static-pages .status {
+        display: flex;
+        align-items: center;
+        border-radius: 0;
+        padding: 10px 20px;
+        font-size: 15px;
+        width: 40%;
+    }
+    .static-pages .status.correct {
+        background: #2db98f1a;
+        color: #2db98f;
+    }
+    .static-pages .status.incorrect {
+        background: #ea43351a;
+        color: #ea4335;
+    }
+    .static-pages .status.unattempted {
+        background: #5050501a;
+        color: #505050;
+    }
+/* Exam results page */

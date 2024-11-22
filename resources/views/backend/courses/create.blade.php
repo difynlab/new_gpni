@@ -86,7 +86,7 @@
                         </div>
 
                         <div>
-                            <x-backend.upload-image old_name="old_instructor_profile_image" old_value="{{ old('instructor_profile_image') }}" new_name="new_instructor_profile_image" label="Instructor Profile" path="courses"></x-backend.upload-image>
+                            <x-backend.upload-image old_name="old_instructor_profile_image" old_value="{{ old('instructor_profile_image') }}" new_name="new_instructor_profile_image" label="Instructor Profile" path="courses/course-instructors"></x-backend.upload-image>
                             <x-backend.input-error field="new_instructor_profile_image"></x-backend.input-error>
                         </div>
                     </div>
@@ -138,9 +138,14 @@
                             <textarea class="editor" id="course_content" name="course_content" value="{{ old('course_content') }}">{{ old('course_content') }}</textarea>
                         </div>
 
-                        <div>
+                        <div class="mb-4">
                             <label for="course_chapter" class="form-label">Course Chapter</label>
                             <textarea class="editor" id="course_chapter" name="course_chapter" value="{{ old('course_chapter') }}">{{ old('course_chapter') }}</textarea>
+                        </div>
+
+                        <div>
+                            <x-backend.upload-multi-images image_count="2" old_name="old_certificate_images" old_value="{{ old('old_certificate_images') }}" new_name="new_certificate_images[]" path="courses/certificate-images"></x-backend.upload-multi-images>
+                            <x-backend.input-error field="new_certificate_images.*"></x-backend.input-error>
                         </div>
                     </div>
                 </div>
@@ -178,6 +183,19 @@
                                 <option value="No" {{ old('final_exam') == 'No' ? 'selected' : '' }}>No</option>
                             </select>
                         </div>
+
+                        <div class="mt-4">
+                            <label for="time_required" class="form-label">Time Required<span class="asterisk">*</span></label>
+                            <select class="form-control form-select time-required" id="time_required" name="time_required" required>
+                                <option value="Yes">Yes</option>
+                                <option value="No" selected>No</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-4 d-none exam-time-div">
+                            <label for="exam_time" class="form-label">Exam Time<span class="asterisk">*</span></label>
+                            <input type="time" class="form-control" step="1" id="exam-time" name="exam_time">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,4 +209,20 @@
 @push('after-scripts')
     <script src="{{ asset('backend/js/drag-drop-image.js') }}"></script>
     <script src="{{ asset('backend/js/drag-drop-video.js') }}"></script>
+    <script src="{{ asset('backend/js/drag-drop-images.js') }}"></script>
+
+    <script>
+        $('.time-required').on('change', function() {
+            let value = $(this).val();
+
+            if(value == 'Yes') {
+                $(this).closest('div').next().removeClass('d-none');
+                $(this).closest('div').next().find('input').attr('required', true);
+            }
+            else {
+                $(this).closest('div').next().addClass('d-none');
+                $(this).closest('div').next().find('input').attr('required', false);
+            }
+        });
+    </script>
 @endpush

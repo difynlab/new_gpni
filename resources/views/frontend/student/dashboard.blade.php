@@ -21,7 +21,7 @@
                         <h1>Welcome Back, {{ $student->first_name . ' ' . $student->last_name}}!</h1>
 
                         <div class="location">
-                            <img src="{{ asset('storage/frontend/student/location-icon.svg') }}" alt="Location icon" width="24" height="24" class="me-2">
+                            <img src="{{ asset('storage/frontend/location-icon.svg') }}" alt="Location icon" width="24" height="24" class="me-2">
                             {{ $student->country }}
                         </div>
 
@@ -30,22 +30,22 @@
                     @if($student->image)
                         <img src="{{ asset('storage/backend/persons/students/' . $student->image) }}" alt="Profile image" width="171" height="148">
                     @else
-                        <img src="{{ asset('storage/frontend/student/sample-profile-image.svg') }}" alt="Profile image" width="171" height="148">
+                        <img src="{{ asset('storage/frontend/sample-profile-image.svg') }}" alt="Profile image" width="171" height="148">
                     @endif
                 </div>
 
                 <div class="card-section">
-                    <a href="{{ route('frontend.student-profile') }}" class="card">
-                        <h2>Student Profile</h2>
-                        <p>View or edit student profile details</p>
+                    <a href="{{ route('frontend.profile.index') }}" class="card">
+                        <h2>Profile</h2>
+                        <p>View or edit your profile details</p>
                     </a>
 
                     <a href="{{ route('frontend.change-password') }}" class="card">
                         <h2>Change Password</h2>
-                        <p>Change student account password</p>
+                        <p>Change your account password</p>
                     </a>
 
-                    <a href="#" class="card">
+                    <a href="{{ route('frontend.courses.index') }}" class="card">
                         <h2>Courses</h2>
                         <p>Access your course related details</p>
                     </a>

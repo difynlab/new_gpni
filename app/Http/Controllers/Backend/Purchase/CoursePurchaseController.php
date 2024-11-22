@@ -9,6 +9,7 @@ use App\Models\CoursePurchase;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class CoursePurchaseController extends Controller
@@ -17,10 +18,11 @@ class CoursePurchaseController extends Controller
     {
         foreach($course_purchases as $course_purchase) {
             $course_purchase->action = '
-            <a href="'. route('backend.purchases.course-purchases.certificates.index', $course_purchase->id) .'" class="edit-button" title="Provide Certificate"><i class="bi bi-pencil-square"></i></a>
+            <a href="'. route('backend.purchases.course-purchases.show', $course_purchase->id) .'" class="review-button" title="Details"><i class="bi bi-calendar-fill"></i></a>
+            <a href="'. route('backend.purchases.course-purchases.certificates.index', $course_purchase->id) .'" class="edit-button" title="Provide Certificate"><i class="bi bi-patch-check-fill"></i></a>
             <a id="'.$course_purchase->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
-            $course_purchase->student_id = User::find($course_purchase->student_id)->first_name . ' ' . User::find($course_purchase->student_id)->last_name;
+            $course_purchase->user_id = User::find($course_purchase->user_id)->first_name . ' ' . User::find($course_purchase->user_id)->last_name;
             $course_purchase->course_id = Course::find($course_purchase->course_id)->title;
 
             $course_purchase->date_time = $course_purchase->date . ' | ' . $course_purchase->time;
@@ -48,6 +50,19 @@ class CoursePurchaseController extends Controller
         return view('backend.purchases.course-purchases.index', [
             'course_purchases' => $course_purchases,
             'items' => $items
+        ]);
+    }
+
+    public function show(CoursePurchase $course_purchase)
+    {
+        $student = User::find($course_purchase->user_id)->first_name . ' ' . User::find($course_purchase->user_id)->last_name;
+
+        $course = Course::where('status', '1')->find($course_purchase->course_id)->title;
+
+        return view('backend.purchases.course-purchases.show', [
+            'course_purchase' => $course_purchase,
+            'student' => $student,
+            'course' => $course
         ]);
     }
 
@@ -112,12 +127,22 @@ class CoursePurchaseController extends Controller
 
         return view('backend.purchases.course-purchases.certificate', [
             'course_purchase' => $course_purchase,
-            'certificate' => $certificate,
+            'certificate' => $certificate
         ]);
     }
 
     public function certificateUpdate(Request $request, CourseCertificate $course_certificate)
     {
+        $validator = Validator::make($request->all(), [
+            'new_certificate' => 'nullable|max:2048'
+        ], [
+            'new_certificate.max' => 'The file must not be greater than 2MB'
+        ]);
+        
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
+        }
+
         if($request->file('new_certificate') != null) {
             if($request->old_certificate) {
                 Storage::delete('public/backend/courses/course-certificates/' . $request->old_certificate);

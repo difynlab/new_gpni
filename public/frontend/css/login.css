@@ -339,3 +339,13 @@ body {
 
     /* Adjust the padding to make space for the icon */
 }
+
+
+.toggle-password {
+    color: #9A9A9A;
+    cursor: pointer;
+    position: absolute;
+    top: 32px;
+    font-size: 20px;
+    right: 15px;
+}

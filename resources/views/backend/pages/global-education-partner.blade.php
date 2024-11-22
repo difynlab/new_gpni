@@ -316,7 +316,7 @@
                 if(!element.classList.contains('ckeditor-initialized')) {
                     ClassicEditor
                         .create(element)
-                        .then(new_editor => {
+                        .then(newEditor => {
                             element.classList.add('ckeditor-initialized');
                         })
                         .catch(error => {
@@ -359,7 +359,7 @@
                 if(!element.classList.contains('ckeditor-initialized')) {
                     ClassicEditor
                         .create(element)
-                        .then(new_editor => {
+                        .then(newEditor => {
                             element.classList.add('ckeditor-initialized');
                         })
                         .catch(error => {

@@ -16,102 +16,122 @@
                 All
             </button>
 
-            @foreach($categories as $key => $category)
-                <button class="nav-link" id="{{ $category->id }}-tab" data-bs-toggle="tab" data-bs-target="#products-{{ $category->id }}-tab" role="tab" aria-controls="{{ $category->id }}-products-tab" aria-selected="false">{{ $category->name }}
-                </button>
-            @endforeach
+            @if($categories->isNotEmpty())
+                @foreach($categories as $key => $category)
+                    <button class="nav-link" id="{{ $category->id }}-tab" data-bs-toggle="tab" data-bs-target="#products-{{ $category->id }}-tab" role="tab" aria-controls="{{ $category->id }}-products-tab" aria-selected="false">{{ $category->name }}
+                    </button>
+                @endforeach
+            @endif
         </nav>
 
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="products-0-tab" role="tabpanel" aria-labelledby="all-tab">
-                @foreach($categories as $category)
-                    <div class="heading-text py-3">{{ $category->name }}</div>
+                @if($categories->isNotEmpty())
+                    @foreach($categories as $category)
+                        <div class="heading-text py-3">{{ $category->name }}</div>
 
-                    <div class="row row-horizontal px-0">
-                        @foreach($products as $product)
-                            @if($product->product_category_id == $category->id)
-                                <div class="col-md-3 mb-4">
-                                    <div class="card-custom">
-                                        <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
-                                        <div class="product-info">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="category">{{ $category->name }}</span>
-                                                <span class="rating">
-                                                    <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                                </span>
-                                            </div>
-                                            <span class="product-name py-2">{{ $product->name }}</span>
-                                            <div class="product-details">
-                                                <span class="price">${{ $product->price }}</span>
+                        <div class="row row-horizontal px-0">
+                            @if($products->isNotEmpty())
+                                @foreach($products as $product)
+                                    @if($product->product_category_id == $category->id)
+                                        <div class="col-md-3 mb-4">
+                                            <div class="card-custom">
+                                                <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
+                                                <div class="product-info">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="category">{{ $category->name }}</span>
+                                                        <span class="rating">
+                                                            <img src="{{ asset('storage/frontend/rating.svg') }}" alt="Rating">
+                                                        </span>
+                                                    </div>
+                                                    <span class="product-name py-2">{{ $product->name }}</span>
+                                                    <div class="product-details">
+                                                        <span class="price">${{ $product->price }}</span>
+                                                    </div>
+                                                </div>
+
+                                                @if(auth()->check())
+                                                    @if(hasUserAddedToCart(auth()->user()->id, $product->id))
+                                                        <button class="cta-button-disabled" disabled>
+                                                            Added to Cart
+                                                        </button>
+                                                    @else
+                                                        <form action="{{ route('frontend.carts.store') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                                            <button type="submit" class="cta-button">
+                                                                <img src="{{ asset('storage/frontend/cart.svg') }}" alt="Cart Icon">
+                                                                Add to Cart
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                @else
+                                                    <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>
+                                                @endif
                                             </div>
                                         </div>
-
-                                        @if(auth()->check())
-                                            @if(hasUserAddedToCart(auth()->user()->id, $product->id))
-                                                <button class="cta-button-disabled" disabled>
-                                                    Added to Cart
-                                                </button>
-                                            @else
-                                                <form action="{{ route('frontend.carts.store') }}" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                                                    <button type="submit" class="cta-button">
-                                                        <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
-                                                        Add to Cart
-                                                    </button>
-                                                </form>
-                                            @endif
-                                        @else
-                                            <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>
-                                        @endif
-                                    </div>
-                                </div>
+                                    @endif
+                                @endforeach
                             @endif
-                        @endforeach
-                    </div>
-                @endforeach
+                        </div>
+                    @endforeach
+                @endif
             </div>
 
-            @foreach($categories as $category)
-                <div class="tab-pane fade" id="products-{{ $category->id }}-tab" role="tabpanel" aria-labelledby="{{ $category->id }}-products-tab" tabindex="0">
-                    <div class="heading-text py-3">{{ $category->name }}</div>
+            @if($categories->isNotEmpty())
+                @foreach($categories as $category)
+                    <div class="tab-pane fade" id="products-{{ $category->id }}-tab" role="tabpanel" aria-labelledby="{{ $category->id }}-products-tab" tabindex="0">
+                        <div class="heading-text py-3">{{ $category->name }}</div>
 
-                    <div class="row row-horizontal px-0">
-                        @foreach($products as $product)
-                            @if($product->product_category_id == $category->id)
-                                <div class="col-md-3 mb-4">
-                                    <div class="card-custom">
-                                        <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
-                                        <div class="product-info">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="category">{{ $category->name }}</span>
-                                                <span class="rating">
-                                                    <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                                </span>
-                                            </div>
-                                            <span class="product-name py-2">{{ $product->name }}</span>
-                                            <div class="product-details">
-                                                <span class="price">${{ $product->price }}</span>
+                        <div class="row row-horizontal px-0">
+                            @if($products->isNotEmpty())
+                                @foreach($products as $product)
+                                    @if($product->product_category_id == $category->id)
+                                        <div class="col-md-3 mb-4">
+                                            <div class="card-custom">
+                                                <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
+                                                <div class="product-info">
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="category">{{ $category->name }}</span>
+                                                        <span class="rating">
+                                                            <img src="{{ asset('storage/frontend/rating.svg') }}" alt="Rating">
+                                                        </span>
+                                                    </div>
+                                                    <span class="product-name py-2">{{ $product->name }}</span>
+                                                    <div class="product-details">
+                                                        <span class="price">${{ $product->price }}</span>
+                                                    </div>
+                                                </div>
+
+                                                @if(auth()->check())
+                                                    @if(hasUserAddedToCart(auth()->user()->id, $product->id))
+                                                        <button class="cta-button-disabled" disabled>
+                                                            Added to Cart
+                                                        </button>
+                                                    @else
+                                                        <form action="{{ route('frontend.carts.store') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                                            <button type="submit" class="cta-button">
+                                                                <img src="{{ asset('storage/frontend/cart.svg') }}" alt="Cart Icon">
+                                                                Add to Cart
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                @else
+                                                    <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>
+                                                @endif
                                             </div>
                                         </div>
-
-                                        <form action="{{ route('frontend.carts.store') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                                            <a type="submit" class="cta-button">
-                                                <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
-                                                Add to cart
-                                            </a>
-                                        </form>
-                                    </div>
-                                </div>
+                                    @endif
+                                @endforeach
                             @endif
-                        @endforeach
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
     </div>
 
