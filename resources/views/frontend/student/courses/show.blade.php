@@ -93,7 +93,7 @@
                     @endforeach
 
                     @if($course->final_exam == 'Yes')
-                        @if(hasStudentCompletedAllModuleExams($student->id, $course_module->course_id))
+                        @if(hasStudentCompletedAllModuleExams($student->id, $course->id))
                             @if(hasStudentCompletedFinalExam($student->id, $course->id))
                                 <div class="row">
                                     <div class="col-6">
