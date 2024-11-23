@@ -14,7 +14,6 @@
 }
 
 .accordion-button {
-    font-size: 1.2rem !important;
     font-weight: 500 !important;
     line-height: 140% !important;
     color: #0e0e0e !important;
@@ -26,7 +25,7 @@
 
 .accordion-button::after {
     background-image: url("../../../storage/frontend/accordion-down-arrow.svg") !important;
-    font-size: 1rem !important;
+    background-size: 20px !important;
     color: #0e0e0e !important;
     transform: rotate(0deg) !important;
     transition: transform 0.2s ease !important;
@@ -39,7 +38,6 @@
 .accordion-body {
     color: #505050 !important;
     font-family: Poppins !important;
-    font-size: 1.2rem !important;
     font-style: normal !important;
     font-weight: 400 !important;
     line-height: 200% !important;
@@ -50,8 +48,28 @@
     color: #000;
     text-align: center;
     font-family: "Poppins" !important;
-    font-size: 61px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 140%;
+}
+
+
+/* Define a media query for mobile devices */
+@media screen and (max-width: 480px) {
+    .accordion-button::after {
+        background-size: 15px !important;
+    }
+   
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .accordion-button::after {
+        background-size: 20px !important;
+    }
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+ 
 }
