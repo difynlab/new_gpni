@@ -26,7 +26,6 @@ body {
     align-items: center;
     color: #ffffff;
     box-sizing: border-box;
-    margin-top: 30px; /* Add more top space */
 }
 
 @media (min-width: 1440px) {
@@ -233,6 +232,7 @@ body {
     border-radius: 10px;
     height: 46px;
     border: 1px solid #d2d2d2;
+    background-color: #ffffff !important; /* Ensure the background color is white */
 }
 
 .form-group .form-control::placeholder {
@@ -258,7 +258,7 @@ body {
 
 .captcha-container {
     border-radius: 10px;
-    background: rgba(0, 64, 195, 0.06);
+    background: rgba(0, 64, 195, 0.06); /* Apply background color to captcha container */
     display: flex;
     align-items: center;
     padding: 20px;
@@ -349,9 +349,9 @@ body {
 .submit-button {
     width: 160px;
     height: 40px;
-    color: #FFF;
+    color: #FFF !important;
     background-color: #0040C3 !important; /* Ensure the background color is applied */
-    border: 1.345px solid #FFF;
+    border: 1.345px solid #FFF !important;
     border-radius: 3px; /* Remove rounded corners */
     font-size: 14px;
     font-weight: 500;
@@ -360,6 +360,17 @@ body {
     margin: 20px auto 0 auto; /* Center the button and add top space */
     display: block;
     flex-shrink: 0;
-    box-shadow: none; /* Remove any box shadow */
-    outline: none; /* Remove any outline */
+    box-shadow: none !important; /* Remove any box shadow */
+    outline: none !important; /* Remove any outline */
+    background-image: none !important; /* Remove any background image */
+}
+
+/* Add space between username and password fields */
+.form-group + .form-group {
+    margin-top: 20px; /* Adjust the value as needed */
+}
+
+/* Ensure specific background color for username, password fields, and login button */
+#username, #password, .submit-button {
+    background-color: #ffffff !important; /* Ensure the background color is white */
 }
