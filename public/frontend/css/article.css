@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     /* padding: 20px; */
     margin: 0;
   }
@@ -8,21 +8,16 @@ body {
   .main-content {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+    /* margin: 0 auto;
+    padding: 0 15px; */
   }
 
   .content-wrapper {
     flex: 1;
-    max-width: 756px;
-    padding-top: 100px;
   }
 
   .sidebar {
     width: 100%;
-    max-width: 434px;
-    margin-left: 30px;
   }
 
   .img-fluid {
@@ -38,8 +33,7 @@ body {
 
   p {
     color: #505050;
-    font-size: 16px;
-    line-height: 24px;
+    line-height: normal;
     font-weight: 400;
   }
 
@@ -128,13 +122,6 @@ body {
     color: #505050;
   }
 
-  .article-metadata {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    color: #505050ff;
-  }
 
   .latest-articles-section {
     margin-top: 20px;
@@ -154,6 +141,7 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     overflow: hidden;
   }
 
@@ -163,13 +151,19 @@ body {
   }
   
   .subscribe h5 {
-    font-weight: 600;
     margin-bottom: 20px;
+    color: #0B0B0B;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
   
   .subscribe p {
-    font-size: 14px;
-    color: #505050;
+    color: #838589;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     margin-bottom: 20px;
   }
   
@@ -189,13 +183,14 @@ body {
   }
   
   .subscribe-form-article button {
-    padding: 15px 30px;
+    padding:7px 7px !important;
     border: none;
     background-color: #0040c3;
     color: white;
     font-size: 14px;
     cursor: pointer;
     border-radius: 50px;
+    font-weight: 400;
   }
   
   .subscribe-form-article input[type="email"]:focus,
@@ -206,7 +201,6 @@ body {
   .subscribe-form-article input[type="email"]::placeholder {
     color: #999;
   }
-
   .instagram-section {
     width: 100%;
     max-width: 1225px;
@@ -217,7 +211,6 @@ body {
   .instagram-section h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 49px;
     line-height: 120%;
     color: #0e0e0e;
     margin-bottom: 20px;
@@ -226,7 +219,6 @@ body {
   .instagram-section p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 25px;
     line-height: 140%;
     color: #505050;
     max-width: 1090px;
@@ -236,16 +228,93 @@ body {
   .instagram-images {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    max-width: 1225px;
-    height: 193px;
-    overflow: hidden;
   }
   
   .instagram-images img {
     width: calc(25% - 10px);
     height: 100%;
     object-fit: cover;
+  }
+
+  .article-container {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  
+  .article-container:last-child {
+    border-bottom: none;
+  }
+  
+  .article-container img {
+    width: 184px;
+    height: 102px;
+    border-radius: 0;
+  }
+
+  
+  .article-details {
+    flex: 1;
+  }
+  
+  .article-details h6 {
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+  }
+  
+  .article-details p {
+    color: #505050;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+    margin-bottom: 20px;
+  }
+  
+  .article-details .date-and-read {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  
+  .article-details .time-read {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .article-details .read-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+  
+  .article-details .small {
+    font-size: 12px;
+    font-family: 'Poppins';
+    color: #505050;
+    font-weight: 300;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  .title-clamp{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
 
@@ -289,17 +358,41 @@ body {
   }
 
   /* Find Us On Section Styles */
-  .find-us-on h5 {
-    font-size: 16px;
-    font-weight: 500;
-    color: #0e0e0e;
-    margin-bottom: 10px;
+  .find-us-on {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
+  
+  .find-us-on .title {
+    font-weight: 400;
+    line-height: 24px;
+    color: #0b0b0b;
+  }
+    
+  .custom-text-muted {
+    color: #838589;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 1.56px;
+  }
+  
+  .author-title{
+    color:#0E0E0E;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
 
   .social-icons {
     display: flex;
     gap: 16px;
   }
+
 
   .social-icons a {
     display: flex;
@@ -313,3 +406,104 @@ body {
     width: 20px;
     height: 20px;
   }
+
+  
+/* Laptop/tablet specific styles */
+@media screen and (max-width: 1024px) {
+  .custom-text-muted {
+    line-height: 15px;
+    letter-spacing: -0.5px;
+  }
+  .date-and-read {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    width: 100%;
+  }
+  
+  .time-read {
+    white-space: nowrap;
+  }
+  
+  .read-icon {
+    min-width: 12px;
+  }
+
+  
+}
+
+/* Define a media query for mobile devices */
+@media screen and (max-width: 480px) {
+  .custom-text-muted {
+    line-height: 30px;
+    letter-spacing: 1.56px;
+  }
+
+  .card-text {
+    line-height: 18px;
+    font-size: 12px !important;
+  }
+
+  .username {
+    line-height: 20px;
+    font-size: 11px !important;
+  }
+
+  .read-more-button{
+    font-size: 11px !important;
+  }
+
+  .trending-article-title{
+    font-size: 14px !important;
+  }
+
+  .trending-article-description{
+    font-size: 11px !important;
+  }
+
+  .find-us-on .title {
+    font-size: 14px !important;
+  }
+
+  .subscribe h5 {
+    font-size: 14px !important;
+  }
+
+  .subscribe p {
+    font-size: 12px !important;
+  }
+
+  .subscribe-form-article button {
+    padding:10px 15px !important;
+  }
+
+  .subscribe-form-article input[type="email"]{
+    font-size: 12px !important;
+  }
+
+  .subscribe-form-article button {
+    font-size: 12px !important;
+  }
+
+  .content-section{
+    font-size: 12px;
+  }
+
+  .author-title{
+    font-size: 14px;
+  }
+
+  .latest-article-title{
+    font-size: 14px;
+  }
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+  
+}
