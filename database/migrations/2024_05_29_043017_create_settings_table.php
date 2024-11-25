@@ -33,6 +33,8 @@ return new class extends Migration
             $table->string('guest_image');
             $table->string('no_image');
             $table->string('no_profile_image');
+
+            $table->decimal('membership_price', 10, 2);
             
             $table->timestamps();
         });

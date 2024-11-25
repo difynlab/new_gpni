@@ -7,6 +7,8 @@ use App\Models\Course;
 use App\Models\CourseFinalExam;
 use App\Models\CourseFinalExamAnswer;
 use App\Models\CourseFinalExamQuestion;
+use App\Models\CoursePurchase;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,6 +66,13 @@ class FinalExamController extends Controller
 
         $marks = ($total_correct_answers / $total_questions) * 100;
         $result = ($marks >= 75) ? 'Pass' : 'Fail';
+
+        if($result == 'Pass') {
+            $course_purchase = CoursePurchase::where('user_id', $student->id)->where('course_id', $course->id)->where('status', '1')->where('course_access_status', 'Active')->first();
+
+            $course_purchase->completion_date = Carbon::now()->toDateString();
+            $course_purchase->save();
+        }
 
         $course_final_exam->total_correct_answers = $total_correct_answers;
         $course_final_exam->marks = $marks;

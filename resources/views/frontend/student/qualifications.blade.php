@@ -42,7 +42,7 @@
                                 @endif
                             @endforeach
                         @else
-                            <p class="no-qualifications">No certificates provided</p>
+                            <p class="no-data">Oh! no certificates provided</p>
                         @endif
                     </div>
                 </div>

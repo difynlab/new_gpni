@@ -30,7 +30,7 @@
                                     <p>
                                         Started: {{ $course->date }} | Completed: {{ $course->completion_date ?? 'Not Yet'}}
                                         
-                                        @if($course->completion_date)
+                                        @if(hasStudentCompletedFinalExam($student->id, $course->id))
                                             <span class="badge-completed">Completed</span>
                                         @else
                                             <span class="badge-in-progress">Inprogress</span>
@@ -46,6 +46,8 @@
                                 </div>
                             </div>
                         @endforeach
+                    @else
+                        <p class="no-data">Oh! you need to purchase the courses first</p>
                     @endif
                 </div>
             </div>

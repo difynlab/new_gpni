@@ -64,12 +64,18 @@
                             <input type="text" class="form-control" id="section_3_title_{{ $short_code }}" name="section_3_title_{{ $short_code }}" value="{{ $contents->{'section_3_title_' . $short_code} ?? '' }}" placeholder="Title">
                         </div>
 
-                        <div>
+                        <div class="mb-4">
                             <label for="section_3_description_{{ $short_code }}" class="form-label">Description</label>
                             <textarea class="editor" id="section_3_description_{{ $short_code }}" name="section_3_description_{{ $short_code }}" value="{{ $contents->{'section_3_description_' . $short_code} ?? '' }}">{{ $contents->{'section_3_description_' . $short_code} ?? '' }}</textarea>
                         </div>
+
+                        <div>
+                            <label class="form-label">Button</label>
+                            <input class="form-control" type="text" id="section_3_button_{{ $short_code }}" name="section_3_button_{{ $short_code }}" value="{{ $contents->{'section_3_button_' . $short_code} ?? '' }}" placeholder="Button">
+                        </div>
                     </div>
                 </div>
+
 
                 <div class="row form-input">
                     <div class="col-12">

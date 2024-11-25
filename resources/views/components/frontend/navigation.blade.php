@@ -93,7 +93,7 @@
                 <a href="{{ route('frontend.carts.index') }}" class="nav-item nav-link position-relative">
                     <i class="bi bi-cart"></i>
                     @if(auth()->check())
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{{ \App\Models\Cart::where('user_id', auth()->user()->id)->where('status', 'Active')->count() }}</span>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{{ App\Models\Cart::where('user_id', auth()->user()->id)->where('status', 'Active')->count() }}</span>
                     @else
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
                     @endif

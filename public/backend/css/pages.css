@@ -107,7 +107,7 @@
     padding: 5px 15px;
     border-radius: 20px;
 }
-.pages .table .exam-questions-button, .pages .table .information-button, .pages .table .review-button, .pages .table .edit-button, .pages .table .delete-button, .pages .table .send-button {
+.pages .table .exam-questions-button, .pages .table .information-button, .pages .table .review-button, .pages .table .edit-button, .pages .table .delete-button, .pages .table .send-button, .pages .table .courses-button {
     font-size: 20px;
     -webkit-text-stroke: 0.5px;
     margin: 0 7px;
@@ -118,6 +118,10 @@
 }
 .pages .table .information-button {
     color: #088813;
+}
+.pages .table .courses-button {
+    color: #f2db09;
+    color: black;
 }
 .pages .table .review-button {
     color: #8d9c08;

@@ -17,6 +17,7 @@ class StudentController extends Controller
         foreach($students as $student) {
             $student->action = '
             <a href="'. route('backend.persons.students.information.index', $student->id) .'" class="information-button" title="Information"><i class="bi bi-info-circle-fill"></i></a>
+            <a href="'. route('backend.persons.students.courses.index', $student->id) .'" class="courses-button" title="Courses"><i class="bi bi-mortarboard-fill"></i></a>
             <a href="'. route('backend.persons.students.edit', $student->id) .'" class="edit-button" title="Edit"><i class="bi bi-pencil-square"></i></a>
             <a id="'.$student->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 

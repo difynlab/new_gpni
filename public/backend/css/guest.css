@@ -26,7 +26,7 @@
         width: 100%;
         border-radius: 20px;
         object-fit: cover;
-        filter: brightness(60%);
+        /* filter: brightness(60%); */
     }
     .guest-page .form {
         padding: 0 0 0 10%;

@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\Course\CourseInformationController;
 use App\Http\Controllers\Backend\Course\CourseModuleController;
 use App\Http\Controllers\Backend\Course\CourseModuleExamQuestionController;
 use App\Http\Controllers\Backend\Course\CourseReviewController;
+use App\Http\Controllers\Backend\Course\StudentCourseController;
 use App\Http\Controllers\Backend\FAQ\FAQController;
 use App\Http\Controllers\Backend\Media\MediaController;
 use App\Http\Controllers\Backend\Page\AdvisoryBoardExpertLectureController;
@@ -245,6 +246,18 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
                 Route::prefix('students')->name('students.')->group(function() {
                     Route::get('{student}/information', [StudentController::class, 'informationIndex'])->name('information.index');
                     Route::post('{student}/information', [StudentController::class, 'informationUpdate'])->name('information.update');
+
+                    Route::prefix('{student}/courses')->name('courses.')->group(function() {
+                        // Student courses routes
+                            Route::get('/', [StudentCourseController::class, 'index'])->name('index');
+                            Route::get('create', [StudentCourseController::class, 'create'])->name('create');
+                            Route::post('/', [StudentCourseController::class, 'store'])->name('store');
+                            Route::get('{course_purchase}/edit', [StudentCourseController::class, 'edit'])->name('edit');
+                            Route::post('filter', [StudentCourseController::class, 'filter'])->name('filter');
+                            Route::post('{course_purchase}', [StudentCourseController::class, 'update'])->name('update');
+                            Route::delete('{course_purchase}', [StudentCourseController::class, 'destroy'])->name('destroy');
+                        // Student courses routes
+                    });
                 });
             // Students routes
 

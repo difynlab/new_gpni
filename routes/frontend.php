@@ -118,7 +118,11 @@ Route::middleware(['set_language'])->group(function () {
                     Route::post('checkout', [BuyStudyMaterialController::class, 'checkout'])->name('checkout');
                     Route::get('success', [BuyStudyMaterialController::class, 'success'])->name('success');
                 });
-    
+
+                Route::prefix('membership')->name('membership.')->group(function() {
+                    Route::post('checkout', [MembershipController::class, 'checkout'])->name('checkout');
+                    Route::get('success', [MembershipController::class, 'success'])->name('success');
+                });
             // All payment routes
 
             Route::prefix('dashboard')->name('dashboard.')->group(function() {

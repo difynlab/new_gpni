@@ -15,7 +15,19 @@ class QualificationController extends Controller
     {
         $student = Auth::user();
         
-        $purchases = CoursePurchase::where('user_id', $student->id)->where('payment_status', 'Completed')->where('status', '1')->get();
+        $purchases = CoursePurchase::
+        where('user_id', $student->id)
+        ->where(function ($query) {
+            $query->where('payment_status', 'Completed')
+                  ->orWhereNull('payment_status');
+        })
+        ->where('course_access_status', 'Active')
+        ->where(function ($query) {
+            $query->where('refund_status', 'Not Refunded')
+                  ->orWhereNull('refund_status');
+        })
+        ->where('status', '1')->get();
+
         $purchase_ids = $purchases->pluck('id')->toArray();
         $certificates = CourseCertificate::whereIn('course_purchase_id', $purchase_ids)->where('status', '1')->get();
         $courses = Course::where('status', '1')->get();

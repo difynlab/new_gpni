@@ -32,6 +32,8 @@ class SettingSeeder extends Seeder
             'no_image' => 'no-image.jpg',
             'no_profile_image' => 'no-profile-image.png',
 
+            'membership_price' => '249.00',
+
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

@@ -17,6 +17,23 @@
     font-size: 1.562rem; /* 25px */
 }
 
+.btn-pay-now {
+    background-color: #0040c3;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    padding: 25px 50px;
+    display: inline-block;
+    margin-bottom: 60px;
+    transition: all 0.3s;
+}
+.btn-pay-now:hover {
+    background-color: #04215c;
+    transition: all 0.3s;
+}
+
 .feature {
     text-align: left;
     margin-bottom: 0; /* Remove space between break barriers and borders */
