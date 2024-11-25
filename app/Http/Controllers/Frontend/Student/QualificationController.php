@@ -16,7 +16,8 @@ class QualificationController extends Controller
         $student = Auth::user();
         
         $purchases = CoursePurchase::where('user_id', $student->id)->where('payment_status', 'Completed')->where('status', '1')->get();
-        $certificates = CourseCertificate::where('status', '1')->get();
+        $purchase_ids = $purchases->pluck('id')->toArray();
+        $certificates = CourseCertificate::whereIn('course_purchase_id', $purchase_ids)->where('status', '1')->get();
         $courses = Course::where('status', '1')->get();
 
         $obtained_certificates = $certificates->map(function ($certificate) use ($purchases, $courses) {

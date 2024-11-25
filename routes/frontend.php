@@ -34,6 +34,7 @@ use App\Http\Controllers\Frontend\Student\CartController;
 use App\Http\Controllers\Frontend\Page\ProductController;
 use App\Http\Controllers\Frontend\Student\FinalExamController;
 use App\Http\Controllers\Frontend\Student\ModuleExamController;
+use App\Http\Controllers\Frontend\Student\TechnicalSupportController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/frontend-auth.php';
@@ -176,6 +177,11 @@ Route::middleware(['set_language'])->group(function () {
             });
 
             Route::get('qualifications', [QualificationController::class, 'index'])->name('qualifications');
+
+            Route::prefix('technical-supports')->name('technical-supports.')->group(function() {
+                Route::get('/', [TechnicalSupportController::class, 'index'])->name('index');
+                Route::post('/', [TechnicalSupportController::class, 'store'])->name('store');
+            });
         });
     // Student routes 
 });

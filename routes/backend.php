@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\Communication\AskQuestionController;
 use App\Http\Controllers\Backend\Communication\ConnectionController;
 use App\Http\Controllers\Backend\Communication\ContactCoachController;
 use App\Http\Controllers\Backend\Communication\ReferFriendController;
+use App\Http\Controllers\Backend\Communication\TechnicalSupportController;
 use App\Http\Controllers\Backend\Conference\ConferenceController;
 use App\Http\Controllers\Backend\Course\CourseChapterController;
 use App\Http\Controllers\Backend\Course\CourseController;
@@ -284,6 +285,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::resource('connections', ConnectionController::class)->except(['create', 'show']);
             
             Route::resource('refer-friends', ReferFriendController::class)->only(['index', 'destroy']);
+
+            Route::prefix('technical-supports')->name('technical-supports.')->group(function() {
+                Route::get('/', [TechnicalSupportController::class, 'index'])->name('index');
+                Route::post('/filter', [TechnicalSupportController::class, 'filter'])->name('filter');
+                Route::delete('/{technical_support}', [TechnicalSupportController::class, 'destroy'])->name('destroy');
+            });
         });
     // All communication routes
 

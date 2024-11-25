@@ -42,7 +42,7 @@
                                 @endif
                             @endforeach
                         @else
-                            <p class="no-qualifications">Please complete the courses to obtain the certificates</p>
+                            <p class="no-qualifications">No certificates provided</p>
                         @endif
                     </div>
                 </div>
