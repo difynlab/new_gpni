@@ -19,16 +19,20 @@ class QualificationController extends Controller
         $certificates = CourseCertificate::where('status', '1')->get();
         $courses = Course::where('status', '1')->get();
 
-        $obtained_certificates = $purchases->map(function ($purchase) use ($certificates, $courses) {
+        $obtained_certificates = $certificates->map(function ($certificate) use ($purchases, $courses) {
+
+            $purchase = $purchases->find($certificate->course_purchase_id);
 
             if(CourseFinalExam::where('course_id', $purchase->course_id)->where('result', 'Pass')->where('status', '1')->exists()) {
-                $certificate = $certificates->firstWhere('course_purchase_id', $purchase->id);
                 $course = $courses->firstWhere('id', $purchase->course_id);
-            
+
+                $certificate_url = $certificate->certificate;
+                $issued_date_time = $certificate->certificate_issued_date . ' | ' . $certificate->certificate_issued_time;
+                
                 return [
                     'course_title' => $course->title,
-                    'certificate_url' => $certificate->certificate,
-                    'issued_date_time' => $certificate->certificate_issued_date . ' | ' . $certificate->certificate_issued_time,
+                    'certificate_url' => $certificate_url,
+                    'issued_date_time' => $issued_date_time,
                 ];
             }
         });
