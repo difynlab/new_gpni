@@ -56,6 +56,7 @@ use App\Http\Controllers\Backend\Promotion\PromotionController;
 use App\Http\Controllers\Backend\Purchase\CoursePurchaseController;
 use App\Http\Controllers\Backend\Purchase\GiftCardPurchaseController;
 use App\Http\Controllers\Backend\Purchase\MaterialPurchaseController;
+use App\Http\Controllers\Backend\Purchase\MembershipPurchaseController;
 use App\Http\Controllers\Backend\Purchase\ProductPurchaseController;
 use App\Http\Controllers\Backend\Result\ExamResultController;
 use App\Http\Controllers\Backend\Webinar\WebinarController;
@@ -344,6 +345,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
                 Route::post('/{material_purchase}/send', [MaterialPurchaseController::class, 'send'])->name('send');
                 Route::post('/filter', [MaterialPurchaseController::class, 'filter'])->name('filter');
                 Route::delete('/{material_purchase}', [MaterialPurchaseController::class, 'destroy'])->name('destroy');
+            });
+
+            Route::prefix('membership-purchases')->name('membership-purchases.')->group(function() {
+                Route::get('/', [MembershipPurchaseController::class, 'index'])->name('index');
+                Route::get('/{membership_purchase}/show', [MembershipPurchaseController::class, 'show'])->name('show');
+                Route::post('/{membership_purchase}/send', [MembershipPurchaseController::class, 'send'])->name('send');
+                Route::post('/filter', [MembershipPurchaseController::class, 'filter'])->name('filter');
+                Route::delete('/{membership_purchase}', [MembershipPurchaseController::class, 'destroy'])->name('destroy');
             });
         });
     // All purchase routes

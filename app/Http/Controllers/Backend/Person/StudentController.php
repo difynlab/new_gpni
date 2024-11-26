@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Person;
 
 use App\Http\Controllers\Controller;
+use App\Models\MembershipPurchase;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;

@@ -58,7 +58,11 @@
 
                     @if(auth()->check())
                         @if(hasUserPurchasedMembership(auth()->user()->id))
-                            <button type="submit" class="btn-pay-now">Already Purchased</button>
+                            @if(auth()->user()->member == 'Yes')
+                                <button type="submit" class="btn-pay-now">Already Purchased</button>
+                            @else
+                                <button type="submit" class="btn-pay-now">Your membership is disabled. Please contact the support team</button>
+                            @endif
                         @else
                             <form action="{{ route('frontend.membership.checkout') }}" method="POST">
                                 @csrf
