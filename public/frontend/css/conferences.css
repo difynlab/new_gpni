@@ -10,17 +10,13 @@ body {
 }
 
 .card-container {
-    width: 1240px;
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 28px;
-    /* gap between cards */
 }
 
 .conference-card {
-    width: 606px;
-    height: 200px;
+    /* width: 606px;
+    height: 200px; */
     padding: 21px 28px;
     background: #fff;
     border: 0.69px solid #d7d7d7;
@@ -78,12 +74,6 @@ body {
     height: 17px;
 }
 
-/*.heading {
-    text-align: center;
-    font-size: 61px;
-    font-weight: 600;
-    margin-bottom: 40px;
-}*/
 .heading {
     text-align: center;
     /* Center-align the text */
@@ -102,15 +92,79 @@ body {
     margin-bottom: 40px;
 }
 
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 1240px) {
     .card-container {
-        width: 100%;
         padding: 10px;
-        gap: 20px;
     }
 
     .conference-card {
         width: 100%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .heading {
+        font-size: 2.5rem; /* Further reduced */
+    }
+
+    .conference-card .text-section .title {
+        font-size: 1.25rem; /* Further reduced */
+    }
+
+    .conference-card .text-section .item .label,
+    .conference-card .text-section .item .value {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .conference-card .view-more {
+        font-size: 1rem; /* Further reduced */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .heading {
+        font-size: 2rem; /* Further reduced */
+    }
+
+    .conference-card .text-section .title {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .conference-card .text-section .item .label,
+    .conference-card .text-section .item .value {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .conference-card .view-more {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .card-container{
+        justify-content: center;
+    }
+}
+
+/* Base styles for text truncation */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Apply line clamping for tablet devices */
+@media (min-width: 481px) and (max-width: 768px) {
+    .conference-card .text-section .title {
+        font-size: 1rem; /* Adjust font size if needed */
+        line-height: 1.2; /* Adjust line height if needed */
     }
 }

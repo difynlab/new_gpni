@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
   }
   
   h5,
@@ -24,34 +24,47 @@ body {
   .card-text {
     color: #747474;
     font-family: Poppins;
-    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 25px;
   }
   
   .username {
-    font-size: 14px;
     margin-left: 10px;
+    color: #747474;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px; /* 230.769% */
   }
   
   .custom-text-muted {
     color: #838589;
     font-family: Poppins;
-    font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: 30px;
     letter-spacing: 1.56px;
   }
   
-  .text-primary {
-    color: #0040c3ff;
+  .text-primary-title {
+    color: #0040C3;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 33px; /* 150% */    
     display: inline-flex;
     align-items: center;
   }
+
+  .title-clamp {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
   
-  .text-primary:hover {
+  .text-primary-title {
     text-decoration: none;
   }
   
@@ -171,20 +184,20 @@ body {
   }
   
   .header-metadata {
-    display: flex;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
   }
   
   .find-us-on {
-    margin-top: 40px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
   
   .find-us-on .title {
-    font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     color: #0b0b0b;
@@ -206,13 +219,19 @@ body {
   }
   
   .subscribe h5 {
-    font-weight: 600;
     margin-bottom: 20px;
+    color: #0B0B0B;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
   
   .subscribe p {
-    font-size: 14px;
-    color: #505050;
+    color: #838589;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     margin-bottom: 20px;
   }
   
@@ -232,13 +251,14 @@ body {
   }
   
   .subscribe-form-article button {
-    padding: 15px 30px;
+    padding:7px 15px !important;
     border: none;
     background-color: #0040c3;
     color: white;
     font-size: 14px;
     cursor: pointer;
     border-radius: 50px;
+    font-weight: 400;
   }
   
   .subscribe-form-article input[type="email"]:focus,
@@ -260,7 +280,6 @@ body {
   .instagram-section h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 49px;
     line-height: 120%;
     color: #0e0e0e;
     margin-bottom: 20px;
@@ -269,7 +288,6 @@ body {
   .instagram-section p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 25px;
     line-height: 140%;
     color: #505050;
     max-width: 1090px;
@@ -279,10 +297,6 @@ body {
   .instagram-images {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    max-width: 1225px;
-    height: 193px;
-    overflow: hidden;
   }
   
   .instagram-images img {
@@ -293,8 +307,7 @@ body {
   
   .all-articles-heading {
     font-family: 'Poppins', sans-serif;
-    font-size: 32px;
-    font-weight: 600;
+    font-weight: 500;
     color: #000000;
     margin-bottom: 20px;
     text-align: center;
@@ -302,9 +315,8 @@ body {
   
   .category {
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
     font-weight: 500;
-    color: #505050;
+    color: #B8BAC1;
     cursor: pointer;
     padding: 0;
     padding-bottom: 5px;
@@ -332,10 +344,110 @@ body {
 
 .read-more-button {
   text-decoration: none;
+  color: #0040C3;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px; /* 230.769% */
 }
 
 .pagination .page-link {
   font-size: 14px;
   border: none;
   box-shadow: none;
+}
+
+.trending-content-title{
+  color: #000;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+/* Laptop/tablet specific styles */
+@media screen and (max-width: 1024px) {
+  .custom-text-muted {
+    line-height: 15px;
+    letter-spacing: -0.5px;
+  }
+  .date-and-read {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    width: 100%;
+  }
+  
+  .time-read {
+    white-space: nowrap;
+  }
+  
+  .read-icon {
+    min-width: 12px;
+  }
+
+  
+}
+
+/* Define a media query for mobile devices */
+@media screen and (max-width: 480px) {
+  .custom-text-muted {
+    line-height: 30px;
+    letter-spacing: 1.56px;
+  }
+
+  .card-text {
+    line-height: 18px;
+    font-size: 12px !important;
+  }
+
+  .username {
+    line-height: 20px;
+    font-size: 11px !important;
+  }
+
+  .read-more-button{
+    font-size: 11px !important;
+  }
+
+  .trending-article-title{
+    font-size: 14px !important;
+  }
+
+  .trending-article-description{
+    font-size: 11px !important;
+  }
+
+  .find-us-on .title {
+    font-size: 14px !important;
+  }
+
+  .subscribe h5 {
+    font-size: 14px !important;
+  }
+
+  .subscribe p {
+    font-size: 12px !important;
+  }
+
+  .subscribe-form-article button {
+    padding:10px 15px !important;
+  }
+
+  .subscribe-form-article input[type="email"]{
+    font-size: 12px !important;
+  }
+
+  .subscribe-form-article button {
+    font-size: 12px !important;
+  }
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+  
 }

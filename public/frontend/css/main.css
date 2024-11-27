@@ -1,5 +1,5 @@
 /* Import Poppins and Open Sans fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;600&family=Poppins:wght@400;500;600;700&display=swap');
 
 
 /********** Template CSS **********/
@@ -82,6 +82,10 @@ body {
     font-size: 0.625rem;
 }
 
+.fs-12{
+    font-size: 0.75rem;
+}
+
 .fs-13 {
     font-size: 0.812rem;
 }
@@ -100,6 +104,9 @@ body {
 
 .fs-31 {
     font-size: 1.938rem;
+}
+.fs-36{
+    font-size: 2.250rem;
 }
 
 .fs-39 {
@@ -128,6 +135,10 @@ body {
         font-size: 2rem; /* Reduced from 2.438rem */
     }
 
+    .fs-36{
+        font-size: 1.875rem; /* Reduced from 2.250rem */
+    }
+
     .fs-31 {
         font-size: 1.5rem; /* Reduced from 1.938rem */
     }
@@ -148,8 +159,12 @@ body {
         font-size: 0.75rem; /* Reduced from 0.812rem */
     }
 
-    .fs-10 {
+    .fs-12{
         font-size: 0.625rem; /* Remains the same */
+    }
+
+    .fs-10 {
+        font-size: 0.5rem; /* Reduced from 0.625rem */
     }
 }
 
@@ -164,6 +179,10 @@ body {
 
     .fs-39 {
         font-size: 1.25rem; /* Further reduced */
+    }
+
+    .fs-36{
+        font-size: 1.125rem; /* Further reduced */
     }
 
     .fs-31 {
@@ -186,6 +205,11 @@ body {
         font-size: 0.625rem; /* Further reduced */
     }
 
+    .fs-12{
+
+        font-size: 0.625rem; /* Further reduced */
+    }
+
     .fs-10 {
         font-size: 0.5rem; /* Further reduced */
     }
@@ -204,6 +228,10 @@ body {
         font-size: 1.5rem; /* Further reduced */
     }
 
+    .fs-36{
+        font-size: 1.375rem; /* Further reduced */
+    }
+
     .fs-31 {
         font-size: 1.25rem; /* Further reduced */
     }
@@ -219,8 +247,13 @@ body {
     .fs-16 {
         font-size: 0.5rem; /* Further reduced */
     }
+    
 
     .fs-13 {
+        font-size: 0.625rem; /* Further reduced */
+    }
+
+    .fs-12{
         font-size: 0.625rem; /* Further reduced */
     }
 

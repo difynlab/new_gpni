@@ -10,7 +10,6 @@
 
 .full-page-layout h1 {
     font-weight: 500;
-    font-size: 49px;
     line-height: 120%;
     /* text-align: center; */
     color: #0e0e0e;
@@ -18,7 +17,6 @@
 
 .full-page-layout h2 {
     font-weight: 400;
-    font-size: 25px;
     line-height: 140%;
     color: #505050;
     text-align: center;
@@ -26,7 +24,6 @@
 
 .full-page-layout p {
     font-weight: 400;
-    font-size: 25px;
     line-height: 140%;
     color: #505050;
 }
@@ -67,7 +64,6 @@
 .content-section .date {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 20px;
     line-height: 146%;
     display: flex;
     align-items: center;
@@ -78,7 +74,6 @@
 .content-section h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 49px;
     line-height: 120%;
     color: #0e0e0e;
     margin-top: 20px;
@@ -87,7 +82,6 @@
 .content-section p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 25px;
     line-height: 140%;
     color: #505050;
     margin-top: 20px;
@@ -101,7 +95,6 @@
 .second-content-section .title {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 39px;
     line-height: 120%;
     color: #0e0e0e;
     margin-bottom: 20px;
@@ -110,7 +103,6 @@
 .second-content-section .description {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 25px;
     line-height: 250%;
     color: #505050;
 }
@@ -133,7 +125,6 @@
 .cta-section h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 49px;
     line-height: 120%;
     color: #ffffff;
 
@@ -142,7 +133,6 @@
 .cta-section h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 25px;
     line-height: 120%;
     margin-bottom: 30px;
     color: #ffffff;
@@ -162,7 +152,6 @@
     border: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 20px;
     line-height: 30px;
     padding: 10px 20px;
     border-radius: 5px;
@@ -174,7 +163,6 @@
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 20px;
     line-height: 30px;
     display: flex;
     align-items: center;
@@ -184,49 +172,58 @@
 
 /* Instagram Section Styles */
 .instagram-section {
-    background-color: #ffffff;
-    color: #0E0E0E;
-    padding: 4rem;
+    width: 100%;
+    max-width: 1225px;
+    margin: 50px auto;
     text-align: center;
 }
 
 .instagram-section h2 {
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 3rem; /* 49px */
-    line-height: 1.2;
-    color: #0e0e0f;
-    margin-bottom: 1rem; /* 16px */
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-bottom: 20px;
 }
 
 .instagram-section p {
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 1.5625rem; /* 25px */
-    line-height: 1.4;
+    line-height: 140%;
     color: #505050;
-    margin-bottom: 2rem; /* 32px */
+    max-width: 1090px;
+    margin: 0 auto 50px;
 }
 
 .instagram-images {
     display: flex;
-    justify-content: center;
-    gap: 2rem; /* 32px */
-    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .instagram-images img {
-    width: 100%;
-    max-width: 240px;
-    height: auto;
-}
-
-@media (max-width: 768px) {
-    .instagram-images {
-        flex-direction: column;
-        align-items: center;
-    }
+    width: calc(25% - 10px);
+    height: 100%;
+    object-fit: cover;
 }
 
 .cta-section .btn-explore img {
     margin-left: 8px;
     /* Space between text and icon */
+}
+
+.podcast-content h4{
+    font-size: 2.438rem;
+}
+
+@media (max-width: 991.98px) {
+    .podcast-content h4{
+        font-size: 1.25rem; /* Further reduced */
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    .podcast-content h4{
+        font-size: 1.5rem; /* Further reduced */
+    }
 }

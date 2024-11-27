@@ -34,24 +34,13 @@ body {
     width: 100%;
 }
 
-.title-arrow {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    margin-right: 120px;
-    /* Gap between arrow and text */
-}
-
 .event-title {
     font-weight: 500;
-    font-size: 39px;
-    /* Updated font size */
-    line-height: 47px;
+    line-height: 120%;
     color: #0E0E0E;
     margin: 0;
     text-align: center;
     display: inline-block;
-    /* Ensure the title is inline-block */
     max-width: 788px;
 }
 
@@ -64,7 +53,6 @@ body {
 
 .event-title span {
     display: block;
-    /* Ensures each part of the title is on a separate line */
 }
 
 .table-container img {
@@ -85,10 +73,9 @@ body {
 }
 
 .event-info-title {
-    flex-basis: 300px;
+    /* flex-basis: 300px; */
     padding: 22px 20px;
     background: #eaeaea;
-    font-size: 25px;
     line-height: 130%;
     color: #0e0e0e;
     white-space: nowrap;
@@ -97,7 +84,6 @@ body {
 .event-info-value {
     flex-grow: 1;
     padding: 22px 15px;
-    font-size: 20px;
     line-height: 130%;
     color: #505050;
     overflow: hidden;
@@ -124,7 +110,6 @@ body {
 
 .form-group label {
     color: #0E0E0E;
-    font-size: 17px;
     font-weight: 500;
     display: block;
     background-color: transparent;
@@ -136,6 +121,7 @@ body {
     border-radius: 0;
     padding: 5px 0;
     width: 100%;
+    height: 35px !important;
     outline: none;
     box-shadow: none;
     background-color: transparent;
@@ -143,6 +129,9 @@ body {
 
 .form-control:focus {
     border-bottom: 1px solid #505050;
+    background-color: transparent; /* Ensure background is transparent */
+    outline: none; /* Remove outline */
+    box-shadow: none; /* Remove box shadow */
 }
 
 .form-control::placeholder {
@@ -157,7 +146,6 @@ body {
     background-color: #0040c3;
     color: white;
     font-weight: 500;
-    font-size: 20px;
     border: none;
     cursor: pointer;
     margin: 30px 0;
@@ -173,7 +161,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    width: 262px;
+    /* width: 262px; */
 }
 
 .icon-background {
@@ -193,14 +181,12 @@ body {
 }
 
 .title {
-    font-size: 20px;
     font-weight: 500;
     color: #505050;
     margin: 0;
 }
 
 .info {
-    font-size: 16px;
     color: #AAAAAA;
     margin: 0;
 }
@@ -208,13 +194,14 @@ body {
 .contact-info-row {
     display: flex;
     justify-content: space-around;
-    gap: 10px;
+    /* gap: 10px; */
 }
 
 .form-row {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    padding-bottom: 35px;
 }
 
 .form-row .col-md-6 {
@@ -224,7 +211,6 @@ body {
 .get-in-touch-header {
     text-align: left;
     font-weight: 500;
-    font-size: 39px;
     line-height: 120%;
     color: #0E0E0E;
     margin-bottom: 20px;
@@ -236,18 +222,17 @@ body {
 
 .price-title {
     font-weight: 500;
-    font-size: 39px;
     line-height: 120%;
     margin-top: 20px;
 }
 
 .price-table-container {
     overflow: hidden;
-    margin: 0; /* Align table to the left */
+    margin: 0;
 }
 
 .price-table {
-    width: 65%;
+    width: 100%;
     border-collapse: collapse;
     background: #ffffff;
     border: 1px solid #5b5b5b;
@@ -284,17 +269,37 @@ body {
 
     .title-container {
         flex-direction: column;
-        /* Adjust layout for small screens */
         padding: 0;
     }
+    .event-info-title,
+    .event-info-warning-title{
+        font-size: 0.8rem !important;
 
-    .title-arrow {
-        margin-right: 0;
-        margin-bottom: 15px;
-        /* Adjust spacing for small screens */
     }
 
-    .event-title {
-        font-size: 26px;
+    .btn-submit {
+        width: 100%;
+    }
+
+    .info-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contact-info-row {
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 0.8rem;
+
+    }
+
+    .form-row{
+        padding-bottom: 0px;
+    }
+
+    .form-group{
+        padding-bottom: 20px;
     }
 }
