@@ -15,8 +15,21 @@ class MyOrderController extends Controller
     {
         $student = Auth::user();
 
-        $course_purchases = CoursePurchase::where('user_id', $student->id)->where('status', '1')->get();
-        $product_orders = ProductOrder::where('user_id', $student->id)->where('status', '1')->get();
+        $course_purchases = CoursePurchase::where('user_id', $student->id)
+            ->where('status', '1')
+            ->get()
+            ->map(function ($item) {
+                $item->order_type = 'Course Purchase';
+                return $item;
+            });
+
+        $product_orders = ProductOrder::where('user_id', $student->id)
+            ->where('status', '1')
+            ->get()
+            ->map(function ($item) {
+                $item->order_type = 'Product Purchase';
+                return $item;
+            });
 
         $material_purchases = MaterialPurchase::where('user_id', $student->id)
             ->where('status', '1')
