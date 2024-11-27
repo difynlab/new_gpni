@@ -18,8 +18,7 @@ body {
 .blue-section {
     background-color: #0040c3;
     width: 300px;
-    /* Maintained reduced width of the blue section */
-    min-height: 700px;
+    min-height: 600px; /* Reduced the minimum height */
     padding: 40px 20px;
     border-radius: 15px;
     display: flex;
@@ -27,16 +26,23 @@ body {
     align-items: center;
     color: #ffffff;
     box-sizing: border-box;
-    text-align: left;
-    /* Align text to the left */
-    position: relative;
+    margin-top: 30px; /* Add more top space */
+}
+
+@media (min-width: 1440px) {
+    .blue-section {
+        width: 498px;
+        height: 650px; /* Adjust the height for larger screens */
+        flex-shrink: 0;
+        border-radius: 15px;
+        background: #0040C3;
+        margin-top: 60px; /* Add more top space for larger screens */
+    }
 }
 
 .blue-section img.logo {
     max-width: 180px;
     margin-bottom: 30px;
-    text-align: center;
-    /* Center the logo */
 }
 
 .blue-section h2 {
@@ -44,7 +50,6 @@ body {
     font-weight: 500;
     line-height: 1.2;
     margin-bottom: 30px;
-    /* Increased space below the header */
 }
 
 .feature-section {
@@ -110,14 +115,13 @@ body {
 
 .partner-logo img {
     max-height: 80px;
-    /* Increased logo height */
     margin: 0 20px;
 }
 
 .white-section {
     padding: 60px;
     position: relative;
-    /* Ensure dropdown aligns properly */
+    flex: 1; /* Ensure the white section takes the remaining space */
 }
 
 .white-section h1 {
@@ -137,7 +141,8 @@ body {
 }
 
 .form-container {
-    width: 702px;
+    width: 100%;
+    max-width: 702px;
     padding: 40px;
     background-color: #fff;
 }
@@ -166,12 +171,10 @@ body {
 
 .social-login-buttons {
     width: 100%;
-    /* Ensure the container takes full width */
 }
 
 .btn-social {
     margin: 0 10px;
-    /* Add some spacing between buttons */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,7 +193,6 @@ body {
     color: #282828;
     font-size: 13px;
     font-weight: 500;
-    transition: background-color 0.3s;
 }
 
 .btn-social:hover {
@@ -233,7 +235,6 @@ body {
     border: 1px solid #d2d2d2;
 }
 
-
 .form-group .form-control::placeholder {
     color: #9A9A9A;
     font-family: Poppins;
@@ -262,6 +263,7 @@ body {
     align-items: center;
     padding: 20px;
     color: #ffffff;
+    margin-bottom: 20px; /* Add space between captcha container and button */
 }
 
 .validate-captcha {
@@ -309,7 +311,6 @@ body {
 
 .input-group {
     position: relative;
-
 }
 
 /* Override Bootstrap's border radius reset */
@@ -324,22 +325,16 @@ body {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-
 }
 
 .input-icon img {
     width: 20px;
-    /* Adjust the size as needed */
     height: 20px;
-    /* Adjust the size as needed */
 }
 
 .form-control.pr-5 {
     padding-right: 35px;
-
-    /* Adjust the padding to make space for the icon */
 }
-
 
 .toggle-password {
     color: #9A9A9A;
@@ -348,4 +343,23 @@ body {
     top: 32px;
     font-size: 20px;
     right: 15px;
+}
+
+/* Login button styles */
+.submit-button {
+    width: 160px;
+    height: 40px;
+    color: #FFF;
+    background-color: #0040C3 !important; /* Ensure the background color is applied */
+    border: 1.345px solid #FFF;
+    border-radius: 3px; /* Remove rounded corners */
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    margin: 20px auto 0 auto; /* Center the button and add top space */
+    display: block;
+    flex-shrink: 0;
+    box-shadow: none; /* Remove any box shadow */
+    outline: none; /* Remove any outline */
 }

@@ -15,26 +15,26 @@
                 <x-frontend.notification></x-frontend.notification>
             </div>
 
-            <h1 class="header-title pt-5">{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h1>
+            <h1 class="header-title fs-49 pt-5 text-center">{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h1>
 
-            <p class="description">{{ $contents->{'sub_title_' . $middleware_language} ?? $contents->sub_title_en }}</p>
+            <p class="description fs-25 text-center">{{ $contents->{'sub_title_' . $middleware_language} ?? $contents->sub_title_en }}</p>
 
-            <p class="description">{{ $contents->{'description_' . $middleware_language} ?? $contents->description_en }}</p>
+            <p class="description fs-25 text-center">{{ $contents->{'description_' . $middleware_language} ?? $contents->description_en }}</p>
 
             <div class="row mt-5">
                 <div class="col-lg-6 col-md-12">
                     <div class="selected-card mb-4">
                         <div class="card-image-container" id="cardImageContainer">
-                            <img src="{{ asset('storage/backend/pages/' . $images[0]) }}" alt="Gift Card" id="main-card-image">
+                            <img src="{{ asset('storage/backend/pages/' . $images[0]) }}" alt="Gift Card" id="main-card-image" class="img-fluid">
                         </div>
                     </div>
                     <div class="custom-selection">
-                        <h5 class="text-primary">Choose Gift Card Style</h5>
+                        <h5 class="text-primary fs-20">Choose Gift Card Style</h5>
                         <div class="d-flex flex-wrap">
                             @if(count($images) > 0)
                                 @foreach($images as $image)
                                     <div class="style-card">
-                                        <img src="{{ asset('storage/backend/pages/' . $image) }}" alt="Gift Card Image">
+                                        <img src="{{ asset('storage/backend/pages/' . $image) }}" alt="Gift Card Image" class="img-fluid">
                                     </div>
                                 @endforeach
                             @endif
@@ -46,37 +46,37 @@
                     <form action="{{ route('frontend.gift-cards.checkout') }}" method="POST" onsubmit="return validateForm()">
                         @csrf
                         <div class="form-group">
-                            <label for="receiver-name">Receiver Name</label>
+                            <label for="receiver-name" class="fs-16">Receiver Name</label>
                             <input type="text" class="form-control" id="receiver-name" name="receiver_name" placeholder="Enter the receiver name" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="receiver-email" class="required">Receiver's Email</label>
+                            <label for="receiver-email" class="required fs-16">Receiver's Email</label>
                             <input type="email" class="form-control" id="receiver-email" name="receiver_email" placeholder="Ex: sample@gmail.com" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="required">Select Amount</label>
-                            <div class="d-flex flex-wrap">
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2" onclick="setAmount(50)">$50</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2" onclick="setAmount(100)">$100</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2" onclick="setAmount(250)">$250</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2" onclick="setAmount(500)">$500</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2" onclick="customAmount()">Custom</button>
+                            <label class="required fs-16">Select Amount</label>
+                            <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(50)">$50</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(100)">$100</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(250)">$250</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(500)">$500</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="customAmount()">Custom</button>
                             </div>
                         </div>
 
                         <div class="form-group d-none" id="custom-amount-section">
-                            <label for="custom-amount">Enter the amount you want to proceed with</label>
+                            <label for="custom-amount" class="fs-16">Enter the amount you want to proceed with</label>
                             <input type="number" class="form-control" id="custom-amount" name="amount" placeholder="Please enter the amount here">
                         </div>
 
                         <div class="form-group">
-                            <label for="message" class="required">Message</label>
+                            <label for="message" class="required fs-16">Message</label>
                             <textarea class="form-control form-textarea" id="message" rows="3" name="message" placeholder="Leave your message here" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-submit">Proceed Checkout</button>
+                        <button type="submit" class="btn btn-submit btn-responsive">Proceed Checkout</button>
                     </form>
                 </div>
             </div>

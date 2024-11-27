@@ -15,8 +15,8 @@
                 <x-frontend.notification></x-frontend.notification>
 
                 <div class="container">
-                    <h1>{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h1>
-                    <h1>{{ $contents->{'sub_title_' . $middleware_language} ?? $contents->sub_title_en }}</h1>
+                    <h1 class="fs-49">{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h1>
+                    <h1 class="fs-39">{{ $contents->{'sub_title_' . $middleware_language} ?? $contents->sub_title_en }}</h1>
 
                     <div class="search-field">
                         <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" alt="Search Icon">
@@ -39,7 +39,7 @@
 
                                     <img src="{{ asset('storage/backend/persons/nutritionists/' . $nutritionist->image) }}" class="image" alt="User Image">
 
-                                    <div class="coach-name">{{ $nutritionist->name }}</div>
+                                    <div class="coach-name fs-20">{{ $nutritionist->name }}</div>
 
                                     <div class="coach-location-row">
                                         <div class="coach-location-item">
@@ -53,7 +53,7 @@
                                     </div>
 
                                     <div class="coach-info-row">
-                                        <div class="coach-info">Age: {{ $nutritionist->age }}</div>
+                                        <div class="coach-info fs-16">Age: {{ $nutritionist->age }}</div>
 
                                         @if($nutritionist->credentials)
                                             <div class="coach-info">Credentials: 
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
 
-                                <span class="view-profile-btn" id="{{ $nutritionist->id }}" data-bs-toggle="modal" data-bs-target="#view-modal">View Profile</span>
+                                <span class="view-profile-btn btn-responsive" id="{{ $nutritionist->id }}" data-bs-toggle="modal" data-bs-target="#view-modal">View Profile</span>
                             </div>
                         </div>
                     @endforeach
