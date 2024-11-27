@@ -16,8 +16,8 @@ class BuyStudyMaterialController extends Controller
 
         $courses = Course::join('course_purchases', 'courses.id', '=', 'course_purchases.course_id')
         ->where('course_purchases.user_id', $student->id)
-        ->where('course_purchases.payment_status', 'Completed')
-        ->where('course_purchases.refund_status', 'Not Refunded')
+        ->whereIN('course_purchases.payment_status', ['Completed', null])
+        ->where('course_purchases.refund_status', ['Not Refunded', null])
         ->where('course_purchases.status', '1')
         ->where('courses.material_logistic', '!=', null)
         ->where('courses.material_logistic_price', '!=', null)

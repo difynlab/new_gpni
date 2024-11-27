@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Frontend\Page;
 use App\Http\Controllers\Controller;
 use App\Models\MembershipContent;
 use App\Models\FAQ;
+use App\Models\MembershipPurchase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MembershipController extends Controller
 {
@@ -23,5 +25,64 @@ class MembershipController extends Controller
             'contents' => $contents,
             'faqs' => $faqs
         ]);
+    }
+
+    public function checkout(Request $request)
+    {
+        $membership_purchase = new MembershipPurchase();
+        $membership_purchase->user_id = Auth::user()->id;
+        $membership_purchase->status = '1';
+        $membership_purchase->save();
+
+        $total_order_amount_in_cents = $request->price * 100;
+
+        \Stripe\Stripe::setApiKey(config('stripe.sk'));
+        $session = \Stripe\Checkout\Session::create([
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'product_data' => [
+                            'name' => 'Membership'
+                        ],
+                        'unit_amount' => $total_order_amount_in_cents
+                    ],
+                    'quantity' => 1,
+                ]
+            ],
+            'mode' => 'payment',
+            'success_url' => route('frontend.membership.success', ['membership_purchase_id' => $membership_purchase->id]) . '&session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('frontend.membership')
+        ]);
+
+        return redirect()->away($session->url);
+    }
+
+    public function success(Request $request)
+    {
+        \Stripe\Stripe::setApiKey(config('stripe.sk'));
+
+        $session_id = $request->query('session_id');
+        $membership_purchase_id = $request->query('membership_purchase_id');
+
+        $session = \Stripe\Checkout\Session::retrieve($session_id);
+
+        $membership_purchase = MembershipPurchase::find($membership_purchase_id);
+
+        if($membership_purchase) {
+            $membership_purchase->date = now()->toDateString();
+            $membership_purchase->time = now()->toTimeString();
+            $membership_purchase->mode = $session->mode;
+            $membership_purchase->transaction_id = $session->id;
+            $membership_purchase->amount_paid = $session->amount_total / 100;
+            $membership_purchase->payment_status = 'Completed';
+            $membership_purchase->save();
+
+            $user = Auth::user();
+            $user->member = 'Yes';
+            $user->save();
+        }
+
+        return redirect()->route('frontend.membership')->with('success', 'Membership purchased successfully');
     }
 }

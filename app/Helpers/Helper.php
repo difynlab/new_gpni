@@ -6,6 +6,7 @@ use App\Models\CourseFinalExam;
 use App\Models\CourseModule;
 use App\Models\CourseModuleExam;
 use App\Models\CoursePurchase;
+use App\Models\MembershipPurchase;
 use App\Models\User;
 
 if(!function_exists('hasUserPurchasedCourse')) {
@@ -47,7 +48,7 @@ if(!function_exists('hasStudentCompletedModuleExam')) {
             return false;
         }
 
-        return CourseModuleExam::where('user_id', $user_id)->where('course_id', $course_id)->where('module_id', $course_module_id)->where('status', '1')->exists();
+        return CourseModuleExam::where('user_id', $user_id)->where('course_id', $course_id)->where('module_id', $course_module_id)->where('result', 'Pass')->where('status', '1')->exists();
     }
 }
 
@@ -87,5 +88,18 @@ if(!function_exists('hasStudentCompletedFinalExam')) {
         }
 
         return CourseFinalExam::where('user_id', $user_id)->where('course_id', $course_id)->where('status', '1')->exists();
+    }
+}
+
+if(!function_exists('hasUserPurchasedMembership')) {
+    function hasUserPurchasedMembership($user_id)
+    {
+        $user = User::find($user_id);
+
+        if(!$user) {
+            return false;
+        }
+
+        return MembershipPurchase::where('user_id', $user_id)->where('status', '1')->exists();
     }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable()->unique();
-            $table->string('country');
+            $table->string('country')->nullable();
             $table->enum('language', ['English', 'Chinese', 'Japanese']);
             $table->string('image')->nullable();
             $table->enum('role', ['admin', 'student']);

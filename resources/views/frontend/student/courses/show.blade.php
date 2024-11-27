@@ -22,10 +22,12 @@
                             <div class="row mb-3 align-items-center">
                                 <div class="col-8">
                                     <h2>{{ $course_module->title }}</h2>
-                                    @if(hasStudentCompletedModuleExam($student->id, $course_module->course_id, $course_module->id) && $course_module->course_module_exam['result'] == 'Pass')
-                                        <span class="completed-badge">Completed</span>
-                                    @else
-                                        <span class="in-progress-badge">In Progress</span>
+                                    @if($course_module->module_exam == 'Yes')
+                                        @if(hasStudentCompletedModuleExam($student->id, $course_module->course_id, $course_module->id))
+                                            <span class="completed-badge">Completed</span>
+                                        @else
+                                            <span class="in-progress-badge">In Progress</span>
+                                        @endif
                                     @endif
                                 </div>
 
@@ -64,7 +66,7 @@
                                         @elseif($all_previous_modules_completed)
                                             <a href="{{ route('frontend.module-exams.index', [$course, $course_module]) }}" class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You can proceed to the next module only after passing this test exam" data-bs-custom-class="custom-tooltip">Take Module Exam</a>
                                         @else
-                                            <button class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You must complete all previous module exams first" data-bs-custom-class="custom-tooltip" disabled>Exam Locked</button>
+                                            <button class="exam-locked-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You must complete all previous module exams first" data-bs-custom-class="custom-tooltip" disabled>Exam Locked</button>
                                         @endif
                                     </div>
                                 @endif
@@ -93,7 +95,7 @@
                     @endforeach
 
                     @if($course->final_exam == 'Yes')
-                        @if(hasStudentCompletedAllModuleExams($student->id, $course_module->course_id))
+                        @if(hasStudentCompletedAllModuleExams($student->id, $course->id))
                             @if(hasStudentCompletedFinalExam($student->id, $course->id))
                                 <div class="row">
                                     <div class="col-6">

@@ -32,7 +32,9 @@ class CoursePurchaseController extends Controller
                 ? '<span class="active-status">Completed</span>' 
                 : (($course_purchase->payment_status == 'Pending') 
                     ? '<span class="pending-status">Pending</span>' 
-                    : '<span class="inactive-status">Failed</span>');
+                    : (($course_purchase->payment_status == 'Failed') 
+                    ? '<span class="pending-status">Failed</span>' 
+                    : '<span class="active-status">Directly Added</span>'));
 
             $course_purchase->course_access_status = ($course_purchase->course_access_status == 'Active') ? '<span class="active-status">Active</span>' : '<span class="inactive-status">Revoked</span>';
         }

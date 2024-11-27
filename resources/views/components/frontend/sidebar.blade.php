@@ -77,6 +77,13 @@
         </div>
     </a>
 
+    <a href="{{ route('frontend.technical-supports.index') }}" class="sidebar-link">
+        <div class="sidebar-item {{ Request::segment(1) == 'technical-supports' ? 'active' : '' }}">
+            <img src="{{ asset('storage/frontend/ask-question-icon.svg') }}" alt="Technical Supports icon" width="28" height="28">
+            <span>Technical Supports</span>
+        </div>
+    </a>
+
     <a href="{{ route('frontend.refer-friends.index') }}" class="sidebar-link">
         <div class="sidebar-item {{ Request::segment(1) == 'refer-friends' ? 'active' : '' }}">
             <img src="{{ asset('storage/frontend/referral-point-icon.svg') }}" alt="Referral Points icon" width="28" height="28">

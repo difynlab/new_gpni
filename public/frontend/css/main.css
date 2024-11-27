@@ -755,3 +755,8 @@ form .error-message {
     object-fit: cover;
     cursor: pointer;
 }
+
+figure.image img {
+    width: 100%;
+    object-fit: cover;
+}

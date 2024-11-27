@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Administration\CKEditorController;
 use App\Http\Controllers\Backend\Administration\DashboardController;
 use App\Http\Controllers\Backend\Administration\MyProfileController;
 use App\Http\Controllers\Backend\Administration\SettingsController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Backend\Communication\AskQuestionController;
 use App\Http\Controllers\Backend\Communication\ConnectionController;
 use App\Http\Controllers\Backend\Communication\ContactCoachController;
 use App\Http\Controllers\Backend\Communication\ReferFriendController;
+use App\Http\Controllers\Backend\Communication\TechnicalSupportController;
 use App\Http\Controllers\Backend\Conference\ConferenceController;
 use App\Http\Controllers\Backend\Course\CourseChapterController;
 use App\Http\Controllers\Backend\Course\CourseController;
@@ -17,6 +19,7 @@ use App\Http\Controllers\Backend\Course\CourseInformationController;
 use App\Http\Controllers\Backend\Course\CourseModuleController;
 use App\Http\Controllers\Backend\Course\CourseModuleExamQuestionController;
 use App\Http\Controllers\Backend\Course\CourseReviewController;
+use App\Http\Controllers\Backend\Course\StudentCourseController;
 use App\Http\Controllers\Backend\FAQ\FAQController;
 use App\Http\Controllers\Backend\Media\MediaController;
 use App\Http\Controllers\Backend\Page\AdvisoryBoardExpertLectureController;
@@ -54,6 +57,7 @@ use App\Http\Controllers\Backend\Promotion\PromotionController;
 use App\Http\Controllers\Backend\Purchase\CoursePurchaseController;
 use App\Http\Controllers\Backend\Purchase\GiftCardPurchaseController;
 use App\Http\Controllers\Backend\Purchase\MaterialPurchaseController;
+use App\Http\Controllers\Backend\Purchase\MembershipPurchaseController;
 use App\Http\Controllers\Backend\Purchase\ProductPurchaseController;
 use App\Http\Controllers\Backend\Result\ExamResultController;
 use App\Http\Controllers\Backend\Webinar\WebinarController;
@@ -66,7 +70,12 @@ Route::get('/admin', function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+
     Route::resource('dashboard', DashboardController::class)->only('index');
+
+    // CkEditor upload route
+        Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+    // CkEditor upload route
 
     // All page related routes
         Route::get('pages', [PageController::class, 'index'])->name('pages.index');
@@ -244,6 +253,18 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
                 Route::prefix('students')->name('students.')->group(function() {
                     Route::get('{student}/information', [StudentController::class, 'informationIndex'])->name('information.index');
                     Route::post('{student}/information', [StudentController::class, 'informationUpdate'])->name('information.update');
+
+                    Route::prefix('{student}/courses')->name('courses.')->group(function() {
+                        // Student courses routes
+                            Route::get('/', [StudentCourseController::class, 'index'])->name('index');
+                            Route::get('create', [StudentCourseController::class, 'create'])->name('create');
+                            Route::post('/', [StudentCourseController::class, 'store'])->name('store');
+                            Route::get('{course_purchase}/edit', [StudentCourseController::class, 'edit'])->name('edit');
+                            Route::post('filter', [StudentCourseController::class, 'filter'])->name('filter');
+                            Route::post('{course_purchase}', [StudentCourseController::class, 'update'])->name('update');
+                            Route::delete('{course_purchase}', [StudentCourseController::class, 'destroy'])->name('destroy');
+                        // Student courses routes
+                    });
                 });
             // Students routes
 
@@ -284,6 +305,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
             Route::resource('connections', ConnectionController::class)->except(['create', 'show']);
             
             Route::resource('refer-friends', ReferFriendController::class)->only(['index', 'destroy']);
+
+            Route::prefix('technical-supports')->name('technical-supports.')->group(function() {
+                Route::get('/', [TechnicalSupportController::class, 'index'])->name('index');
+                Route::post('/filter', [TechnicalSupportController::class, 'filter'])->name('filter');
+                Route::delete('/{technical_support}', [TechnicalSupportController::class, 'destroy'])->name('destroy');
+            });
         });
     // All communication routes
 
@@ -324,6 +351,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
                 Route::post('/{material_purchase}/send', [MaterialPurchaseController::class, 'send'])->name('send');
                 Route::post('/filter', [MaterialPurchaseController::class, 'filter'])->name('filter');
                 Route::delete('/{material_purchase}', [MaterialPurchaseController::class, 'destroy'])->name('destroy');
+            });
+
+            Route::prefix('membership-purchases')->name('membership-purchases.')->group(function() {
+                Route::get('/', [MembershipPurchaseController::class, 'index'])->name('index');
+                Route::get('/{membership_purchase}/show', [MembershipPurchaseController::class, 'show'])->name('show');
+                Route::post('/{membership_purchase}/send', [MembershipPurchaseController::class, 'send'])->name('send');
+                Route::post('/filter', [MembershipPurchaseController::class, 'filter'])->name('filter');
+                Route::delete('/{membership_purchase}', [MembershipPurchaseController::class, 'destroy'])->name('destroy');
             });
         });
     // All purchase routes

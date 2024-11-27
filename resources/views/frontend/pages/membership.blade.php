@@ -9,7 +9,8 @@
 @section('content')
 
     <div class="container-fluid membership-section">
-        
+        <x-frontend.notification></x-frontend.notification>
+
         @if($contents->section_1_title_en)
             <h2 class="ff-poppins-medium fs-61">{{ $contents->{'section_1_title_' . $middleware_language} ?? $contents->section_1_title_en }}</h2>
             <div class="px-4 ff-poppins-regular fs-25 pt-2">{!! $contents->{'section_1_description_' . $middleware_language} ?? $contents->section_1_description_en !!}
@@ -54,6 +55,25 @@
                 <div class="benefits-section py-5">
                     <h2 class="text-center mb-4 pt-3 fs-49 ff-poppins-medium">{{ $contents->{'section_3_title_' . $middleware_language} ?? $contents->section_3_title_en }}</h2>
                     <div class="text-center mb-5 fs-25 ff-poppins-regular">{!! $contents->{'section_3_description_' . $middleware_language} ?? $contents->section_3_description_en !!}</div>
+
+                    @if(auth()->check())
+                        @if(hasUserPurchasedMembership(auth()->user()->id))
+                            @if(auth()->user()->member == 'Yes')
+                                <button type="submit" class="btn-pay-now">Already Purchased</button>
+                            @else
+                                <button type="submit" class="btn-pay-now">Your membership is disabled. Please contact the support team</button>
+                            @endif
+                        @else
+                            <form action="{{ route('frontend.membership.checkout') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="price" value="{{ App\Models\Setting::find(1)->membership_price }}">
+
+                                <button type="submit" class="btn-pay-now">{{ $contents->{'section_3_button_' . $middleware_language} ?? $contents->section_3_button_en }}</button>
+                            </form>
+                        @endif
+                    @else
+                        <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn-pay-now text-decoration-none">Login for Purchase</a>
+                    @endif
 
                     @if($contents->section_3_labels_contents_en)
                         <div class="accordion px-5" id="benefitsAccordion">

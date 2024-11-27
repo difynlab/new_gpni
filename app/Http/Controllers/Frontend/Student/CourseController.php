@@ -18,7 +18,18 @@ class CourseController extends Controller
     {
         $student = Auth::user();
 
-        $course_ids = CoursePurchase::where('user_id', $student->id)->where('payment_status', 'Completed')->where('course_access_status', 'Active')->where('refund_status', 'Not Refunded')->where('status', '1')->pluck('course_id')->toArray();
+        $course_ids = CoursePurchase::
+        where('user_id', $student->id)
+        ->where(function ($query) {
+            $query->where('payment_status', 'Completed')
+                  ->orWhereNull('payment_status');
+        })
+        ->where('course_access_status', 'Active')
+        ->where(function ($query) {
+            $query->where('refund_status', 'Not Refunded')
+                  ->orWhereNull('refund_status');
+        })
+        ->where('status', '1')->pluck('course_id')->toArray();
 
         $courses = Course::whereIn('id', $course_ids)->where('status', '1')->orderBy('id', 'desc')->get();
 
