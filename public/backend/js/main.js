@@ -1,7 +1,11 @@
 // html editor
     document.querySelectorAll('.editor').forEach(element => {
         ClassicEditor
-            .create(element)
+            .create(element, {
+                ckfinder: {
+                    uploadUrl: uploadUrl,
+                },
+            })
             .then(newEditor => {})
             .catch(error => {
                 console.error(error);

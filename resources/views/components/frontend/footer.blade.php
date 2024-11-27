@@ -105,9 +105,9 @@
             <img src="{{ asset('storage/frontend/pin-icon.svg') }}" alt="Map Icon">
             USA &nbsp; • &nbsp; Copyright © 2023 by GPNi&reg; Corporation Limited. All Rights Reserved &nbsp; •
             &nbsp;
-            <a href="#">Privacy Policy</a>
+            <a href="{{ route('frontend.our-policies') }}">Privacy Policy</a>
             &nbsp; • &nbsp;
-            <a href="#">FAQs</a>
+            <a href="{{ route('frontend.faqs') }}">FAQs</a>
         </div>
     </div>
 </div>

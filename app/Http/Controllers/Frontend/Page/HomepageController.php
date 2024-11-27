@@ -8,12 +8,48 @@ use App\Models\Course;
 use App\Models\FAQ;
 use App\Models\Testimonial;
 use App\Models\HomepageContent;
+use App\Models\StageUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
 {
     public function index(Request $request)
     {
+        $stage_users = StageUser::where('status', '1')->get();
+
+        foreach($stage_users as $key => $stage_user) {
+            $user = new User();
+
+            if($stage_user->primary_language == 'english') {
+                $primary_language = 'English';
+            }
+            elseif($stage_user->primary_language == 'chinese') {
+                $primary_language = 'Chinese';
+            }
+            elseif($stage_user->primary_language == 'korean') {
+                $primary_language = 'Korean';
+            }
+            else {
+                $primary_language = 'English';
+            }
+
+            if(User::where('email', $stage_user->email)->exists()) {
+                continue;
+            }
+
+            $user->first_name = $stage_user->first_name;
+            $user->last_name = $stage_user->last_name;
+            $user->email = $stage_user->email;
+            $user->password = $stage_user->password;
+            $user->country = $stage_user->country;
+            $user->language = $primary_language;
+            $user->role = 'student';
+            $user->member = 'No';
+            $user->status = '1';
+            $user->save();
+        }
+
         $contents = HomepageContent::find(1);
 
         $courses = Course::where('language', $request->middleware_language_name)->where('status', '1')->get();

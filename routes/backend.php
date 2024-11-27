@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Administration\CKEditorController;
 use App\Http\Controllers\Backend\Administration\DashboardController;
 use App\Http\Controllers\Backend\Administration\MyProfileController;
 use App\Http\Controllers\Backend\Administration\SettingsController;
@@ -69,7 +70,12 @@ Route::get('/admin', function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+
     Route::resource('dashboard', DashboardController::class)->only('index');
+
+    // CkEditor upload route
+        Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
+    // CkEditor upload route
 
     // All page related routes
         Route::get('pages', [PageController::class, 'index'])->name('pages.index');
