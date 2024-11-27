@@ -327,7 +327,7 @@
                         const questionIndex = $(this).closest('.question-section').attr('id').replace('question', '');
                         answeredQuestions[questionIndex] = true;
 
-                        if(currentQuestionIndex == questionIndex) {
+                        if(currentQuestionIndex == questionIndex && currentQuestionIndex < totalQuestions - 1) {
                             $('.next-button').removeClass('disabled');
                         }
 
@@ -360,6 +360,9 @@
                                 <input type="hidden" name="answers[${questionId}]" value="${selectedAnswer}">
                             `);
                         }
+
+                        let remaining_questions = $('.remaining-questions-count span').text();
+                        $('.remaining-questions-count span').text(remaining_questions - 1)
                     });
 
                     $('.question-box').on('click', function () {

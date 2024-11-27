@@ -71,25 +71,28 @@
                     <li><a href="{{ route('frontend.master-classes.index') }}">Master Classes</a></li>
                     <li><a href="#">PNE Level 1 With ISSN-SNS</a></li>
                     <li><a href="#">PNE Level 2 With ISSN-CISSN</a></li>
-                    <li><a href="#">Small Courses & Seminars</a></li>
+                    <!-- <li><a href="#">Small Courses & Seminars</a></li> -->
                     <li><a href="{{ route('frontend.contact-us.index') }}">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 list-of-items">
                 <h5>Partners</h5>
                 <ul class="list-unstyled">
-                    <li><a href="/pages/Partners/Insurance.html">Insurance & Professional Membership</a></li>
-                    <li><a href="/pages/Partners/GPNI Global Education Partners.html">Approved Education
-                            Partners</a></li>
-                    <li><a href="/pages/Partners/ISSN Official Partners Affiliates.html">Issn&reg; Official Partners
-                            & Affiliates</a></li>
-                    <li><a href="#">Regional & Branding Partners</a></li>
+                    <li>
+                        <a href="{{ route('frontend.insurance-and-professional-membership') }}">Insurance & Professional Membership</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('frontend.global-education-partners') }}">Global Education Partners</a>
+                        </li>
+                    <li>
+                        <a href="{{ route('frontend.issn-official-partners-and-affiliates') }}">Issn&reg; Official Partners & Affiliates</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-lg-3 list-of-items">
                 <h5>Other Resources</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">Promotion</a></li>
+                    <!-- <li><a href="#">Promotion</a></li> -->
                     <li><a href="{{ route('frontend.gift-cards.index') }}">Gift Cards</a></li>
                     <li><a href="{{ route('frontend.articles.index') }}">Articles</a></li>
                     <li><a href="{{ route('frontend.podcasts.index') }}">Podcasts</a></li>

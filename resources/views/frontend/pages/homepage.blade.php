@@ -98,7 +98,6 @@
         </div>
     @endif
 
-    
     @if($contents->section_3_title_en)
         <div class="py-5">
             <div class="container pt-4 mt-4">
@@ -145,7 +144,7 @@
                                                 <div class="overlay-logo p-3">
                                                     <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
                                                 </div>
-                                                <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
+                                                <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
                                                 <div class="card-body course-card-body ps-4">
                                                     <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                     <div class="apply-now-container d-flex justify-content-between align-items-center w-100">
@@ -170,7 +169,7 @@
                                                     <div class="overlay-logo p-3">
                                                         <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
                                                     </div>
-                                                    <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
+                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
                                                     <div class="card-body ps-4">
                                                         <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                         <div
@@ -197,7 +196,7 @@
                                                     <div class="overlay-logo p-3">
                                                         <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
                                                     </div>
-                                                    <img src="{{ asset('storage/backend/courses/course-image-videos/' . $course->image_video) }}" alt="Menu Item" class="card-img-top">
+                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
                                                     <div class="card-body ps-4">
                                                         <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                         <div
@@ -227,46 +226,67 @@
     @endif
 
     @if($contents->section_4_title_en)
-    <div class="testimonial-container">
-        <div class="container py-5">
-            <div class="text-center">
-                <div class="mb-3 mb-md-5 testimonial-heading">{{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->{'section_4_title_en'} }}</div>
-                <b class="mb-1 testimonial-body">
-                    {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->{'section_4_description_en'} }}
-                </b>
-            </div>
-            <div class="row g-4 pt-5">
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <div class="student-video">
-                        <video controls>
-                            <source src="/assets/GPNi Student Testimonial： Holly Priestland.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+        <div class="testimonial-container">
+            <div class="container py-5">
+                <div class="text-center">
+                    <div class="mb-3 mb-md-5 testimonial-heading">
+                        {{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}
                     </div>
+                    <b class="mb-1 testimonial-body">
+                        {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en }}
+                    </b>
                 </div>
 
-                <div class="col-md-6 testimonials-wrapper">
-                    @foreach($testimonials as $index => $testimonial)
-                        <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
-                            <img src="{{ asset('storage/frontend/homepage/section4/quotes-2.svg') }}" alt="Quote Icon" class="quote">
-                            <p>{!! $testimonial->content !!}</p>
-                            <div class="author">
-                                <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
-                                <div>
-                                    <p>{!! $testimonial->name !!}</p>
-                                    <p>{!! $testimonial->designation !!}</p>
-                                </div>
-                            </div>
+                <div class="row g-4 pt-5">
+                    <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        <div class="student-video">
+                            @if($contents->{'section_4_video_' . $middleware_language})
+                                <video controls>
+                                    <source src="{{ asset('storage/backend/pages/' . $contents->{'section_4_video_' . $middleware_language}) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            @elseif($contents->section_4_video_en)
+                                <video controls>
+                                    <source src="{{ asset('storage/backend/pages/' . $contents->section_4_video_en) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            @else
+                                <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}">
+                            @endif
                         </div>
-                    @endforeach
+                    </div>
+
+                    <div class="col-md-6 testimonials-wrapper">
+                        @foreach($testimonials as $index => $testimonial)
+                            <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
+                                
+                                <img src="{{ asset('storage/frontend/testimonial-quote.svg') }}" alt="Quote Icon" class="quote">
+
+                                <p>{{ $testimonial->content }}</p>
+
+                                <div class="author">
+                                    @if($testimonial->image)
+                                        <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
+                                    @else
+                                        <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}">
+                                    @endif
+                                    
+                                    <div>
+                                        <p>{{ $testimonial->name }}</p>
+                                        <p>{{ $testimonial->designation }}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-@endif
+    @endif
 
     @if($contents->section_5_title_en)
-    <div class="partners-container">
+        <div class="partners-container">
             <div class="container">
                 <div class="text-center">
                     <div class="mb-3 mb-md-5 ff-poppins-medium fs-49 partners-heading mt-5 pt-5 px-5">{{ $contents->{'section_5_title_' . $middleware_language} ?? $contents->section_5_title_en }}</div>
@@ -326,81 +346,81 @@
                 </div>
 
                 
-@if(!$advisory_boards->isEmpty())
-    <div class="container">
-        <!-- First two rows with 5 experts each -->
-        <div class="row text-center g-4 pt-4 d-flex justify-content-center">
-            @foreach($advisory_boards->take(10) as $index => $advisory_board)
-                @if($index % 5 == 0 && $index != 0)
-                    </div><div class="row text-center g-4 pt-4 d-flex justify-content-center">
+                @if(!$advisory_boards->isEmpty())
+                    <div class="container">
+                        <!-- First two rows with 5 experts each -->
+                        <div class="row text-center g-4 pt-4 d-flex justify-content-center">
+                            @foreach($advisory_boards->take(10) as $index => $advisory_board)
+                                @if($index % 5 == 0 && $index != 0)
+                                    </div><div class="row text-center g-4 pt-4 d-flex justify-content-center">
+                                @endif
+                                <div class="col-6 col-md-2">
+                                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="img-fluid rounded-circle expert-select" data-bs-toggle="modal" data-bs-target="#expert-modal-{{ $advisory_board->id }}" id="{{ $advisory_board->id }}">
+                                </div>
+
+                                <div class="modal fade" id="expert-modal-{{ $advisory_board->id }}" tabindex="-1" role="dialog" aria-labelledby="expert-modal-label" aria-hidden="true">
+                                    <div class="modal-dialog expert-modal modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body p-4">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-2 col-4">
+                                                        <img class="expert-image-15 rounded-circle" alt="" src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}"/>
+                                                    </div>
+                                                    <div class="col-md-8 col-12 d-flex align-items-center flex-column">
+                                                        <div class="text-center">
+                                                            <div class="expert-name">{{ $advisory_board->name }}</div>
+                                                            <div class="qualification">{{ $advisory_board->designations }}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1 col-4 text-right">
+                                                        <button type="button" class="btn-close position-absolute btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-4 expert-content text-left">
+                                                    {!! $advisory_board->description !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <!-- Third row with 4 experts -->
+                        <div class="row text-center g-4 pt-4 d-flex justify-content-center">
+                            @foreach($advisory_boards->slice(10, 4) as $advisory_board)
+                                <div class="col-6 col-md-2">
+                                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="img-fluid rounded-circle expert-select" data-bs-toggle="modal" data-bs-target="#expert-modal-{{ $advisory_board->id }}" id="{{ $advisory_board->id }}">
+                                </div>
+
+                                <div class="modal fade" id="expert-modal-{{ $advisory_board->id }}" tabindex="-1" role="dialog" aria-labelledby="expert-modal-label" aria-hidden="true">
+                                    <div class="modal-dialog expert-modal modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body p-4">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-2 col-4">
+                                                        <img class="expert-image-15 rounded-circle" alt="" src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}"/>
+                                                    </div>
+                                                    <div class="col-md-8 col-12 d-flex align-items-center flex-column">
+                                                        <div class="text-center">
+                                                            <div class="expert-name">{{ $advisory_board->name }}</div>
+                                                            <div class="qualification">{{ $advisory_board->designations }}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1 col-4 text-right">
+                                                        <button type="button" class="btn-close position-absolute btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-4 expert-content text-left">
+                                                    {!! $advisory_board->description !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 @endif
-                <div class="col-6 col-md-2">
-                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="img-fluid rounded-circle expert-select" data-bs-toggle="modal" data-bs-target="#expert-modal-{{ $advisory_board->id }}" id="{{ $advisory_board->id }}">
-                </div>
-
-                <div class="modal fade" id="expert-modal-{{ $advisory_board->id }}" tabindex="-1" role="dialog" aria-labelledby="expert-modal-label" aria-hidden="true">
-                    <div class="modal-dialog expert-modal modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body p-4">
-                                <div class="row align-items-center">
-                                    <div class="col-md-2 col-4">
-                                        <img class="expert-image-15 rounded-circle" alt="" src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}"/>
-                                    </div>
-                                    <div class="col-md-8 col-12 d-flex align-items-center flex-column">
-                                        <div class="text-center">
-                                            <div class="expert-name">{{ $advisory_board->name }}</div>
-                                            <div class="qualification">{{ $advisory_board->designations }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 col-4 text-right">
-                                        <button type="button" class="btn-close position-absolute btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                </div>
-                                <div class="mt-4 expert-content text-left">
-                                    {!! $advisory_board->description !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <!-- Third row with 4 experts -->
-        <div class="row text-center g-4 pt-4 d-flex justify-content-center">
-            @foreach($advisory_boards->slice(10, 4) as $advisory_board)
-                <div class="col-6 col-md-2">
-                    <img src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}" class="img-fluid rounded-circle expert-select" data-bs-toggle="modal" data-bs-target="#expert-modal-{{ $advisory_board->id }}" id="{{ $advisory_board->id }}">
-                </div>
-
-                <div class="modal fade" id="expert-modal-{{ $advisory_board->id }}" tabindex="-1" role="dialog" aria-labelledby="expert-modal-label" aria-hidden="true">
-                    <div class="modal-dialog expert-modal modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body p-4">
-                                <div class="row align-items-center">
-                                    <div class="col-md-2 col-4">
-                                        <img class="expert-image-15 rounded-circle" alt="" src="{{ asset('storage/backend/persons/advisory-boards/' . $advisory_board->image) }}"/>
-                                    </div>
-                                    <div class="col-md-8 col-12 d-flex align-items-center flex-column">
-                                        <div class="text-center">
-                                            <div class="expert-name">{{ $advisory_board->name }}</div>
-                                            <div class="qualification">{{ $advisory_board->designations }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 col-4 text-right">
-                                        <button type="button" class="btn-close position-absolute btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                </div>
-                                <div class="mt-4 expert-content text-left">
-                                    {!! $advisory_board->description !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-@endif
 
                 <div class="text-center mt-5 pt-5 explore-course-text">
                     <a href="{{ json_decode($contents->{'section_7_label_link_' . $middleware_language})->link ?? json_decode($contents->section_7_label_link_en)->link }}" class="py-sm-4 px-sm-5 fw-medium learn-more">
@@ -486,43 +506,44 @@
             </div>
         </div>
     @endif
+
 @endsection
 
 @push('after-scripts')
-<script>
-    function rotateTestimonials() {
-        const testimonials = document.querySelectorAll('.testimonial');
-        const numberOfTestimonials = testimonials.length;
-        let clearIndex = Array.from(testimonials).findIndex(t => t.classList.contains('clear'));
+    <script>
+        function rotateTestimonials() {
+            const testimonials = document.querySelectorAll('.testimonial');
+            const numberOfTestimonials = testimonials.length;
+            let clearIndex = Array.from(testimonials).findIndex(t => t.classList.contains('clear'));
 
-        if (clearIndex >= 0) {
-            testimonials[clearIndex].classList.remove('clear');
-            testimonials[clearIndex].classList.add('blurry');
+            if (clearIndex >= 0) {
+                testimonials[clearIndex].classList.remove('clear');
+                testimonials[clearIndex].classList.add('blurry');
+            }
+
+            // The next clear testimonial
+            const nextClearIndex = (clearIndex + 1) % numberOfTestimonials;
+            testimonials[nextClearIndex].classList.add('clear');
+            testimonials[nextClearIndex].classList.remove('blurry');
+
+            // Update each testimonial positioning
+            testimonials.forEach((t, i) => {
+                const diff = (i - nextClearIndex + numberOfTestimonials) % numberOfTestimonials;
+                if (diff === 0) {
+                    t.style.top = '50%';
+                    t.style.transform = 'translateY(-50%)';
+                } else if (diff === 1) {
+                    t.style.top = '100%';
+                    t.style.transform = 'translateY(-100%)';
+                } else if (diff === 2) {
+                    t.style.top = '0%';
+                    t.style.transform = 'translateY(0)';
+                }
+            });
         }
 
-        // The next clear testimonial
-        const nextClearIndex = (clearIndex + 1) % numberOfTestimonials;
-        testimonials[nextClearIndex].classList.add('clear');
-        testimonials[nextClearIndex].classList.remove('blurry');
-
-        // Update each testimonial positioning
-        testimonials.forEach((t, i) => {
-            const diff = (i - nextClearIndex + numberOfTestimonials) % numberOfTestimonials;
-            if (diff === 0) {
-                t.style.top = '50%';
-                t.style.transform = 'translateY(-50%)';
-            } else if (diff === 1) {
-                t.style.top = '100%';
-                t.style.transform = 'translateY(-100%)';
-            } else if (diff === 2) {
-                t.style.top = '0%';
-                t.style.transform = 'translateY(0)';
-            }
+        window.addEventListener('DOMContentLoaded', () => {
+            setInterval(rotateTestimonials, 3000);
         });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        setInterval(rotateTestimonials, 3000);
-    });
-</script>
+    </script>
 @endpush

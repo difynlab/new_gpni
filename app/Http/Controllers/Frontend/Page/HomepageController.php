@@ -31,9 +31,9 @@ class HomepageController extends Controller
             $advisory_boards = AdvisoryBoard::where('language', 'English')->where('status', '1')->get();
         }
 
-        $testimonials = Testimonial::where('language', $request->middleware_language_name)->where('status', '1')->get();
+        $testimonials = Testimonial::where('language', $request->middleware_language_name)->where('type', 'common')->where('status', '1')->get();
         if($testimonials->isEmpty() && $request->middleware_language_name != 'English') {
-            $testimonials = Testimonial::where('language', 'English')->where('status', '1')->get();
+            $testimonials = Testimonial::where('language', 'English')->where('type', 'common')->where('status', '1')->get();
         }
 
         return view('frontend.pages.homepage', [

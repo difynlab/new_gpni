@@ -114,7 +114,7 @@
                 <p class="inner-page-title">Section 4 <span>(Testimonials)</span></p>
 
                 <div class="row form-input">
-                    <div class="col-12">
+                    <div class="col-6 left-column">
                         <div class="mb-4">
                             <label for="section_4_title_{{ $short_code }}" class="form-label">Title</label>
                             <input type="text" class="form-control" id="section_4_title_{{ $short_code }}" name="section_4_title_{{ $short_code }}" value="{{ $contents->{'section_4_title_' . $short_code} ?? '' }}" placeholder="Title">
@@ -122,8 +122,13 @@
 
                         <div>
                             <label for="section_4_description_{{ $short_code }}" class="form-label">Description</label>
-                            <textarea class="form-control" rows="5" name="section_4_description_{{ $short_code }}" value="{{ $contents->{'section_4_description_' . $short_code} ?? '' }}" placeholder="Description">{{ $contents->{'section_4_description_' . $short_code} ?? '' }}</textarea>
+                            <textarea class="form-control" rows="10" name="section_4_description_{{ $short_code }}" value="{{ $contents->{'section_4_description_' . $short_code} ?? '' }}" placeholder="Description">{{ $contents->{'section_4_description_' . $short_code} ?? '' }}</textarea>
                         </div>
+                    </div>
+
+                    <div class="col-6 right-column">
+                        <x-backend.upload-video old_name="old_section_4_video" old_value="{{ $contents->{'section_4_video_' . $short_code} ?? '' }}" new_name="new_section_4_video" class="side-box-uploader" path="pages"></x-backend.upload-video>
+                        <x-backend.input-error field="new_section_4_video"></x-backend.input-error>
                     </div>
                 </div>
             </div>

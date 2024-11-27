@@ -157,7 +157,7 @@
 /* Testimonial Container */
 .testimonial-container {
     background-color: #0040c3;
-    background-image: url('/assets/chat-removebg-preview 1.svg');
+    background-image: url('../../../storage/frontend/testimonial-background.svg');
     background-size: auto;
     background-repeat: repeat-y;
     background-position: center;
@@ -448,7 +448,7 @@
 /* Nutritionist Container */
 .nutritionist-container {
     background-color: #0040c3;
-    background-image: url('../img/nutritionist.svg');
+    background-image: url('../../../storage/frontend/nutritionist-background.svg');
     background-size: auto;
     background-repeat: repeat-y;
     background-position: center;

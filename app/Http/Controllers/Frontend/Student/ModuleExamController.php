@@ -15,7 +15,7 @@ class ModuleExamController extends Controller
 {
     public function index(Course $course, CourseModule $course_module)
     {
-        $questions = CourseModuleExamQuestion::where('course_id', $course->id)->where('module_id', $course_module->id)->where('status', '1')->get();
+        $questions = CourseModuleExamQuestion::where('course_id', $course->id)->where('module_id', $course_module->id)->where('status', '1')->inRandomOrder()->get();
         
         return view('frontend.student.courses.module-exam', [
             'course' => $course,

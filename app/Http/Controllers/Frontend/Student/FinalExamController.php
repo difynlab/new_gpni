@@ -16,7 +16,7 @@ class FinalExamController extends Controller
 {
     public function index(Course $course)
     {
-        $questions = CourseFinalExamQuestion::where('course_id', $course->id)->where('status', '1')->get();
+        $questions = CourseFinalExamQuestion::where('course_id', $course->id)->where('status', '1')->inRandomOrder()->get();
         
         return view('frontend.student.courses.final-exam', [
             'course' => $course,

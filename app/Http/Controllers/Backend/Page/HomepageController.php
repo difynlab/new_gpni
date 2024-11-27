@@ -41,10 +41,12 @@ class HomepageController extends Controller
         $validator = Validator::make($request->all(), [
             'new_section_1_image' => 'max:2048',
             'new_section_2_video' => 'max:5120',
+            'new_section_4_video' => 'max:5120',
             'new_section_5_images.*' => 'max:2048',
         ], [
             'new_section_1_image.max' => 'Image must not be greater than 2MB',
             'new_section_2_video.max' => 'Video must not be greater than 5MB',
+            'new_section_4_video.max' => 'Video must not be greater than 5MB',
             'new_section_5_images.*.max' => 'Each image must not be greater than 2MB'
         ]);
 
@@ -110,6 +112,26 @@ class HomepageController extends Controller
                 'link' => $request->section_3_button_link
             ];
         // Section 3 labels & links
+
+        // Section 4 video
+            if($request->file('new_section_4_video')) {
+                if($request->old_section_4_video) {
+                    Storage::delete('public/backend/pages/' . $request->old_section_4_video);
+                }
+
+                $new_section_4_video = $request->file('new_section_4_video');
+                $section_4_video_name = Str::random(40) . '.' . $new_section_4_video->getClientOriginalExtension();
+                $new_section_4_video->storeAs('public/backend/pages', $section_4_video_name);
+            }
+            else {
+                if($contents->section_4_video_ . '' . $language) {
+                    $section_4_video_name = $request->old_section_4_video;
+                }
+                else {
+                    $section_4_video_name = null;
+                }
+            }
+        // Section 4 video
 
         // Section 5 images
             if($request->file('new_section_5_images') != null) {
@@ -177,6 +199,8 @@ class HomepageController extends Controller
             'new_section_2_video',
             'section_3_button_label',
             'section_3_button_link',
+            'old_section_4_video',
+            'new_section_4_video',
             'old_section_5_images',
             'new_section_5_images',
             'section_6_button_labels',
@@ -207,6 +231,7 @@ class HomepageController extends Controller
         $data['section_2_video_' . '' . $short_code] = $section_2_video_name;
         $data['section_2_points_' . '' . $short_code] = json_encode($data['section_2_points_' . '' . $short_code]);
         $data['section_3_label_link_' . '' . $short_code] = json_encode($section_3_label_link);
+        $data['section_4_video_' . '' . $short_code] = $section_4_video_name;
         $data['section_5_images_' . '' . $short_code] = $section_5_images;
         $data['section_6_labels_links_' . '' . $short_code] = json_encode($section_6_labels_links);
         $data['section_7_label_link_' . '' . $short_code] = json_encode($section_7_label_link);
