@@ -8,7 +8,7 @@ body {
 
 .container-custom {
     max-width: 100%;
-    padding: 0 111px;
+    padding: 0 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body {
 
 .blue-section {
     background-color: #0040c3;
-    width: 300px;
+    width: 100%;
     min-height: 600px; /* Reduced the minimum height */
     padding: 40px 20px;
     border-radius: 15px;
@@ -36,6 +36,27 @@ body {
         border-radius: 15px;
         background: #0040C3;
         margin-top: 60px; /* Add more top space for larger screens */
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .blue-section {
+        width: 80%;
+        margin: 0 auto; /* Center the blue section */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .blue-section {
+        width: 70%;
+        margin: 0 auto; /* Center the blue section */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .blue-section {
+        width: 90%;
+        margin: 0 auto; /* Center the blue section */
     }
 }
 
@@ -262,7 +283,6 @@ body {
     display: flex;
     align-items: center;
     padding: 20px;
-    color: #ffffff;
     margin-bottom: 20px; /* Add space between captcha container and button */
 }
 
@@ -300,12 +320,132 @@ body {
 @media (max-width: 768px) {
     .form-container {
         width: 100%;
+        max-width: 100%;
         padding: 20px;
     }
 
     .social-login-buttons {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .white-section {
+        padding: 20px;
+    }
+
+    .form-container h1 {
+        font-size: 24px;
+    }
+
+    .form-container .subheading {
+        font-size: 14px;
+    }
+
+    .form-group .form-control {
+        height: 40px;
+        font-size: 12px;
+    }
+
+    .remember-forget {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .remember-forget .form-check-label,
+    .remember-forget a {
+        font-size: 12px;
+    }
+
+    .captcha-container {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .validate-captcha,
+    .captcha-equation {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .verify-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .submit-button {
+        width: 140px;
+        height: 36px;
+        font-size: 12px;
+    }
+
+    .dont-have-account,
+    .register-now {
+        font-size: 12px;
+    }
+
+    .blue-section {
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .blue-section h2 {
+        font-size: 20px;
+    }
+
+    .blue-section img.logo {
+        max-width: 150px;
+    }
+
+    .feature-list li {
+        font-size: 14px;
+    }
+
+    .partners-inner {
+        animation: scroll 10s linear infinite;
+    }
+
+    .partner-logo img {
+        max-height: 60px;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .captcha-container {
+        padding: 15px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .validate-captcha,
+    .captcha-equation {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .verify-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .submit-button {
+        width: 140px;
+        height: 36px;
+        font-size: 12px;
     }
 }
 
@@ -345,14 +485,14 @@ body {
     right: 15px;
 }
 
-/* Login button styles */
+/* Update the submit button styles */
 .submit-button {
     width: 160px;
     height: 40px;
     color: #FFF !important;
     background-color: #0040C3 !important; /* Ensure the background color is applied */
-    border: 1.345px solid #FFF !important;
-    border-radius: 3px; /* Remove rounded corners */
+    border: 1.345px solid #0040C3 !important; /* Changed from #FFF to #0040C3 */
+    border-radius: 10px; /* Rounded corners */
     font-size: 14px;
     font-weight: 500;
     text-align: center;
@@ -363,6 +503,11 @@ body {
     box-shadow: none !important; /* Remove any box shadow */
     outline: none !important; /* Remove any outline */
     background-image: none !important; /* Remove any background image */
+    transition: all 0.3s ease; /* Optional: for smooth hover effect */
+}
+
+.submit-button:hover {
+    opacity: 0.9; /* Optional: add hover effect */
 }
 
 /* Add space between username and password fields */
@@ -370,7 +515,34 @@ body {
     margin-top: 20px; /* Adjust the value as needed */
 }
 
-/* Ensure specific background color for username, password fields, and login button */
-#username, #password, .submit-button {
+/* Ensure specific background color for username and password fields */
+#username, #password {
     background-color: #ffffff !important; /* Ensure the background color is white */
 }
+
+/* Styles for "Don’t have an account?" text */
+.dont-have-account {
+    color: #505050;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Styles for "Register Now" link */
+.register-now {
+    color: #2C68E3;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 15.6px */
+    text-decoration: none;
+}
+
+.register-now:hover {
+    text-decoration: underline;
+}
+
