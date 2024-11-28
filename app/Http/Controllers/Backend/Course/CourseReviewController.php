@@ -49,9 +49,9 @@ class CourseReviewController extends Controller
     public function store(Request $request, Course $course)
     {
         $validator = Validator::make($request->all(), [
-            'new_video' => 'nullable|max:2048'
+            'new_video' => 'nullable|max:5120'
         ], [
-            'new_video.max' => 'Video must not be greater than 2MB'
+            'new_video.max' => 'Video must not be greater than 5MB'
         ]);
 
         if($validator->fails()) {
@@ -91,9 +91,9 @@ class CourseReviewController extends Controller
     public function update(Request $request, Course $course, CourseReview $course_review)
     {
         $validator = Validator::make($request->all(), [
-            'new_video' => 'nullable|max:2048'
+            'new_video' => 'nullable|max:5120'
         ], [
-            'new_video.max' => 'The video must not be greater than 2MB'
+            'new_video.max' => 'The video must not be greater than 5MB'
         ]);
         
         if($validator->fails()) {

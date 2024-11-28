@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -31,7 +32,7 @@ class AdminController extends Controller
     {
         $items = $request->items ?? 10;
 
-        $admins = User::where('role', 'admin')->where('id', '!=', auth()->user()->id)->where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
+        $admins = User::where('role', 'admin')->where('id', '!=', Auth::user()->id)->where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
         $admins = $this->processAdmins($admins);
 
         return view('backend.persons.admins.index', [
@@ -675,7 +676,7 @@ class AdminController extends Controller
         $name = $request->name;
         $language = $request->language;
 
-        $admins = User::where('role', 'admin')->where('id', '!=', auth()->user()->id)->where('status', '!=', '0')->orderBy('id', 'desc');
+        $admins = User::where('role', 'admin')->where('id', '!=', Auth::user()->id)->where('status', '!=', '0')->orderBy('id', 'desc');
 
         if($name != null) {
             $admins->where(function ($query) use ($name) {

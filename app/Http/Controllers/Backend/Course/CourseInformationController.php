@@ -37,19 +37,19 @@ class CourseInformationController extends Controller
         $validator = Validator::make($request->all(), [
             'new_certification_section_2_image' => 'nullable|max:2048',
             'certification_section_3_point_files.*' => 'nullable|max:2048',
-            'new_certification_section_4_video' => 'nullable|max:2048',
+            'new_certification_section_4_video' => 'nullable|max:5120',
             'certification_section_6_team_files.*' => 'nullable|max:2048',
-            'new_certification_section_7_video' => 'nullable|max:2048',
+            'new_certification_section_7_video' => 'nullable|max:5120',
             'new_certification_section_9_image' => 'nullable|max:2048',
-            'new_certification_section_10_video' => 'nullable|max:2048',
+            'new_certification_section_10_video' => 'nullable|max:5120',
         ], [
             'new_certification_section_2_image.max' => 'Image must not be greater than 2MB',
             'certification_section_3_point_files.*.max' => 'Each image must not be greater than 2MB',
-            'new_certification_section_4_video.max' => 'Video must not be greater than 2MB',
+            'new_certification_section_4_video.max' => 'Video must not be greater than 5MB',
             'certification_section_6_team_files.*.max' => 'Each image must not be greater than 2MB',
-            'new_certification_section_7_video.max' => 'Video must not be greater than 2MB',
+            'new_certification_section_7_video.max' => 'Video must not be greater than 5MB',
             'new_certification_section_9_image.max' => 'Image must not be greater than 2MB',
-            'new_certification_section_10_video.max' => 'Video must not be greater than 2MB',
+            'new_certification_section_10_video.max' => 'Video must not be greater than 5MB',
         ]);
 
         if($validator->fails()) {
