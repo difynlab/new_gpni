@@ -52,7 +52,10 @@
             @foreach($questions_answers as $key => $question_answer)
                 <div class="question-card">
                     <div class="info">
-                        <div class="mb-2">Q{{ $key + 1}}. {{ $question_answer['question'] }}</div>
+                        <div class="question mb-2">
+                            <p>Q{{ $key + 1}}.</p>
+                            <div>{!! $question_answer['question'] !!}</div>
+                        </div>
 
                         @if($question_answer['selected_answer'] && $question_answer['is_correct'] == 'Yes')
                             <div class="status correct">
@@ -72,25 +75,25 @@
                             <div class="form-check">
                                 <input type="radio" class="radio" {{ $question_answer['selected_answer'] == 'A' ? 'checked' : ''}}>
                                 <label class="form-check-label">
-                                    A) {{ $question_answer['options']['A'] }}
+                                    A) {!! $question_answer['options']['A'] !!}
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input type="radio" class="radio" {{ $question_answer['selected_answer'] == 'B' ? 'checked' : ''}}>
                                 <label class="form-check-label">
-                                    B) {{ $question_answer['options']['B'] }}
+                                    B) {!! $question_answer['options']['B'] !!}
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input type="radio" class="radio" {{ $question_answer['selected_answer'] == 'C' ? 'checked' : ''}}>
                                 <label class="form-check-label">
-                                    C) {{ $question_answer['options']['C'] }}
+                                    C) {!! $question_answer['options']['C'] !!}
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input type="radio" class="radio" {{ $question_answer['selected_answer'] == 'D' ? 'checked' : ''}}>
                                 <label class="form-check-label">
-                                    D) {{ $question_answer['options']['D'] }}
+                                    D) {!! $question_answer['options']['D'] !!}
                                 </label>
                             </div>
                         </div>

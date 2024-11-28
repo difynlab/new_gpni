@@ -66,6 +66,10 @@ body {
     font-size: 25px;
     font-weight: 500;
     color: #505050;
+    margin-bottom: 0;
+}
+.payment-option-subtitle {
+    margin-top: 10px;
 }
 
 .payment-option-subtitle {

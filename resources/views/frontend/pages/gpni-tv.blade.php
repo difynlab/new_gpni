@@ -9,13 +9,23 @@
 @section('content')
 
     @if($contents->section_1_title_en)
-        <div class="container my-5 py-5"> 
+        <div class="container my-5 py-5">
+            <x-frontend.notification></x-frontend.notification>
+
             <div class="row d-flex align-items-center">
                 <div class="col-lg-7">
                     <div class="d-flex align-items-center mb-3">
                         <span class="rating me-2">{{ $contents->{'section_1_rating_title_' . $middleware_language} ?? $contents->section_1_rating_title_en }}</span>
                         
-                        {{ $contents->{'section_1_rating_' . $middleware_language} ?? $contents->section_1_rating_en }}
+                        @if($contents->{'section_1_rating_' . $middleware_language})
+                            @for($i = 1; $i <= $contents->{'section_1_rating_' . $middleware_language}; $i++)
+                                <i class="bi bi-star-fill"></i>
+                            @endfor
+                        @elseif($contents->section_1_rating_en)
+                            @for($i = 1; $i <= $contents->section_1_rating_en; $i++)
+                                <i class="bi bi-star-fill"></i>
+                            @endfor
+                        @endif
                     </div>
 
                     <h1>{{ $contents->{'section_1_title_' . $middleware_language} ?? $contents->section_1_title_en }}</h1>
@@ -303,10 +313,15 @@
                 <div class="newsletter mt-4">
                     <h2 class="mb-3" style="color: #0040c3;">{{ $contents->{'section_11_message_' . $middleware_language} ?? $contents->section_11_message_en }}</h2>
                     
-                    <div class="d-flex justify-content-center flex-wrap">
-                        <input type="email" class="form-control mb-2 mb-md-0" placeholder="{{ $contents->{'section_11_placeholder_' . $middleware_language} ?? $contents->section_11_placeholder_en }}">
-                        <button class="btn btn-primary ml-md-2">{{ $contents->{'section_11_button_' . $middleware_language} ?? $contents->section_11_button_en }}</button>
-                    </div>
+                    <form action="{{ route('frontend.subscription') }}" method="POST">
+                        @csrf
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <input type="email" class="form-control mb-2 mb-md-0" name="email" placeholder="{{ $contents->{'section_11_placeholder_' . $middleware_language} ?? $contents->section_11_placeholder_en }}" required>
+                            <button class="btn btn-primary ml-md-2">{{ $contents->{'section_11_button_' . $middleware_language} ?? $contents->section_11_button_en }}</button>
+
+                            <x-frontend.input-error field="email"></x-frontend.input-error>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

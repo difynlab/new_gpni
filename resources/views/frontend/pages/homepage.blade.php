@@ -140,19 +140,25 @@
                                 <div class="tab-content" id="tab1Content">
                                     <div class="scrollable-container">
                                         @foreach($courses as $course)
-                                            <div class="card course-card">
-                                                <div class="overlay-logo p-3">
-                                                    <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
-                                                </div>
-                                                <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
-                                                <div class="card-body course-card-body ps-4">
-                                                    <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
-                                                    <div class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                        <div class="apply-now-text">APPLY NOW</div>
-                                                        <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                            @if($course->type == "Certification")
+                                                <a href="{{ route('frontend.certification-courses.show', $course) }}">
+                                            @else
+                                                <a href="{{ route('frontend.master-classes.show', $course) }}">
+                                            @endif
+                                                <div class="card course-card">
+                                                    <div class="overlay-logo p-3">
+                                                        <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
+                                                    </div>
+                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
+                                                    <div class="card-body course-card-body ps-4">
+                                                        <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
+                                                        <div class="apply-now-container d-flex justify-content-between align-items-center w-100">
+                                                            <div class="apply-now-text">APPLY NOW</div>
+                                                            <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         @endforeach
                                     </div>
                                 </div>
@@ -165,20 +171,22 @@
                                     <div class="scrollable-container">
                                         @foreach($courses as $course)
                                             @if($course->type == "Certification")
-                                                <div class="card">
-                                                    <div class="overlay-logo p-3">
-                                                        <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
-                                                    </div>
-                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
-                                                    <div class="card-body ps-4">
-                                                        <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
-                                                        <div
-                                                            class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                            <div class="apply-now-text">APPLY NOW</div>
-                                                            <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                                <a href="{{ route('frontend.certification-courses.show', $course) }}">
+                                                    <div class="card">
+                                                        <div class="overlay-logo p-3">
+                                                            <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
+                                                        </div>
+                                                        <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
+                                                        <div class="card-body ps-4">
+                                                            <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
+                                                            <div
+                                                                class="apply-now-container d-flex justify-content-between align-items-center w-100">
+                                                                <div class="apply-now-text">APPLY NOW</div>
+                                                                <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             @endif
                                         @endforeach
                                     </div>
@@ -192,20 +200,22 @@
                                     <div class="scrollable-container">
                                         @foreach($courses as $course)
                                             @if($course->type == "Masters")
-                                                <div class="card">
-                                                    <div class="overlay-logo p-3">
-                                                        <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
-                                                    </div>
-                                                    <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
-                                                    <div class="card-body ps-4">
-                                                        <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
-                                                        <div
-                                                            class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                            <div class="apply-now-text">APPLY NOW</div>
-                                                            <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                                <a href="{{ route('frontend.master-classes.show', $course) }}">
+                                                    <div class="card">
+                                                        <div class="overlay-logo p-3">
+                                                            <img src="{{ asset('storage/frontend/issn.png') }}" alt="Logo" width="100%">
+                                                        </div>
+                                                        <img src="{{ asset('storage/backend/courses/course-images/' . $course->image) }}" alt="Menu Item" class="card-img-top">
+                                                        <div class="card-body ps-4">
+                                                            <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
+                                                            <div
+                                                                class="apply-now-container d-flex justify-content-between align-items-center w-100">
+                                                                <div class="apply-now-text">APPLY NOW</div>
+                                                                <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             @endif
                                         @endforeach
                                     </div>

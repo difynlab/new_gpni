@@ -76,7 +76,7 @@
                             <textarea class="form-control form-textarea" id="message" rows="3" name="message" placeholder="Leave your message here" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-submit btn-responsive">Proceed Checkout</button>
+                        <button type="submit" class="btn btn-submit btn-responsive">{{ $contents->{'button_' . $middleware_language} ?? $contents->button_en }}</button>
                     </form>
                 </div>
             </div>

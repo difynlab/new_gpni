@@ -135,6 +135,13 @@
 .pages .table .delete-button {
     color: #E53E3E;
 }
+.pages .table .line-clamp-5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .pages .modal .modal-content {
     border-radius: 0;
     padding: 10px;

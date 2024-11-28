@@ -47,7 +47,7 @@ class GiftCardController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
         }
-        
+
         $contents = GiftCardContent::find(1);
 
         // Images
@@ -71,8 +71,8 @@ class GiftCardController extends Controller
                 $images = json_encode($images);
             }
             else {
-                if($contents->images . '' . $language) {
-                    $images = htmlspecialchars_decode($request->images);
+                if($contents->images_ . '' . $language) {
+                    $images = htmlspecialchars_decode($request->old_images);
                 }
                 else {
                     $images = null;

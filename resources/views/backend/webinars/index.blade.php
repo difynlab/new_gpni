@@ -57,6 +57,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Video</th>
+                            <th scope="col">Content</th>
                             <th scope="col">Type</th>
                             <th scope="col">Language</th>
                             <th scope="col">Status</th>
@@ -70,6 +71,11 @@
                                 <tr>
                                     <td>#{{ $webinar->id }}</td>
                                     <td>{!! $webinar->video !!}</td>
+                                    <td>
+                                        <div class="line-clamp-5">
+                                            {!! $webinar->content !!}
+                                        </div>
+                                    </td>
                                     <td>{{ $webinar->type }}</td>
                                     <td>{{ $webinar->language }}</td>
                                     <td>{!! $webinar->status !!}</td>

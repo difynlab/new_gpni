@@ -199,18 +199,20 @@
                     <span>Communications</span>
                 </button>
 
-                <div id="communications-data-collapse" class="accordion-collapse collapse {{ in_array(Request::segment(3), ['contact-coaches', 'ask-questions', 'connections', 'refer-friends', 'technical-supports']) ? 'show' : '' }}" data-bs-parent="#communications-accordion">
+                <div id="communications-data-collapse" class="accordion-collapse collapse {{ in_array(Request::segment(3), ['contact-coaches', 'ask-questions', 'connections', 'refer-friends', 'technical-supports', 'subscriptions']) ? 'show' : '' }}" data-bs-parent="#communications-accordion">
                     <div class="accordion-body">
                         <ul>
                             <li><a href="{{ route('backend.communications.contact-coaches.index') }}" class="link {{ Request::segment(3) == 'contact-coaches' ? 'active' : null }}">Contact Coaches</a></li>
 
                             <li><a href="{{ route('backend.communications.ask-questions.index') }}" class="link {{ Request::segment(3) == 'ask-questions' ? 'active' : null }}">Ask Questions</a></li>
 
-                            <li><a href="{{ route('backend.communications.connections.index') }}" class="link {{ Request::segment(3) == 'connections' ? 'active' : null }}">Connections</a></li>
+                            <li><a href="{{ route('backend.communications.connections.index') }}" class="link {{ Request::segment(3) == 'connections' ? 'active' : null }}">Inquiries from Users</a></li>
 
                             <li><a href="{{ route('backend.communications.refer-friends.index') }}" class="link {{ Request::segment(3) == 'refer-friends' ? 'active' : null }}">Refer Friends</a></li>
 
                             <li><a href="{{ route('backend.communications.technical-supports.index') }}" class="link {{ Request::segment(3) == 'technical-supports' ? 'active' : null }}">Technical Supports</a></li>
+
+                            <li><a href="{{ route('backend.communications.subscriptions.index') }}" class="link {{ Request::segment(3) == 'subscriptions' ? 'active' : null }}">Subscriptions</a></li>
                         </ul>
                     </div>
                 </div>

@@ -20,36 +20,42 @@
                             <span class="radio-custom"></span>
                             <div>
                                 <h5 class="payment-option-title">One time payment method</h5>
-                                <p class="payment-option-subtitle">Course material & Logistics is available <b>only for ${{ $course->material_logistic_price }}</b> with course fee</p>
+                                @if($course->material_logistic && $course->material_logistic_price)
+                                    <p class="payment-option-subtitle">Course material & Logistics is available <b>only for ${{ $course->material_logistic_price }}</b> with course fee</p>
+                                @endif
                             </div>
                         </label>
                     </div>
 
-                    <div class="additional-option">
-                        <input class="form-check-input" type="checkbox" id="checkbox">
+                    @if($course->material_logistic && $course->material_logistic_price)
+                        <div class="additional-option">
+                            <input class="form-check-input" type="checkbox" id="checkbox">
 
-                        <label class="form-check-label ms-1" for="checkbox" style="cursor: pointer;">
-                            Add Course Material & Logistics into order card
-                        </label>
-                    </div>
+                            <label class="form-check-label ms-1" for="checkbox" style="cursor: pointer;">
+                                Add Course Material & Logistics into order card
+                            </label>
+                        </div>
+                    @endif
 
-                    <div class="card-custom mb-3">
-                        <label class="radio-container">
-                            <input type="radio" name="payment_mode" value="subscription" class="radio" id="subscription-payment">
-                            <span class="radio-custom"></span>
-                            <div>
-                                <h5 class="payment-option-title">Monthly Payment Method ({{ $course->instalment_months }} Months)</h5>
-                                <p class="payment-option-subtitle">Per month ${{ $course->instalment_price }}</p>
-                                <ul class="payment-option-subtitle px-3 pt-2">
-                                    <li>Course material & Logistics needs to be purchased separately</li>
-                                </ul>
-                            </div>
-                        </label>
-                    </div>
-                    <div id="info-box" class="information-box d-none">
-                        <img src="{{ asset('storage/frontend/info-note.svg') }}" alt="Info Note">
-                        <p><b>Please Note : </b>Course Material & logistics are not provided as part of this option. But, you can purchase them separately in the Student Center.</p>
-                    </div>
+                    @if($course->instalment_months && $course->instalment_price && $course->instalment_price_id)
+                        <div class="card-custom mb-3">
+                            <label class="radio-container">
+                                <input type="radio" name="payment_mode" value="subscription" class="radio" id="subscription-payment">
+                                <span class="radio-custom"></span>
+                                <div>
+                                    <h5 class="payment-option-title">Monthly Payment Method ({{ $course->instalment_months }} Months)</h5>
+                                    <p class="payment-option-subtitle">Per month ${{ $course->instalment_price }}</p>
+                                    <ul class="payment-option-subtitle px-3 pt-2">
+                                        <li>Course material & Logistics needs to be purchased separately</li>
+                                    </ul>
+                                </div>
+                            </label>
+                        </div>
+                        <div id="info-box" class="information-box d-none">
+                            <img src="{{ asset('storage/frontend/info-note.svg') }}" alt="Info Note">
+                            <p><b>Please Note : </b>Course Material & logistics are not provided as part of this option. But, you can purchase them separately in the Student Center.</p>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-4">
