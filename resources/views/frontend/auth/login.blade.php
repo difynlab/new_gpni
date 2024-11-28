@@ -76,7 +76,7 @@
 
                         <input type="hidden" name="redirect" value="{{ request('redirect') }}">
 
-                        <button type="submit" class="btn submit-button disabled">Login</button>
+                        <button type="submit" class="btn submit-button" disabled>Login</button>
                     </form>
 
                     <!-- New Text and Link -->
