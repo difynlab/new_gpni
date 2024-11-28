@@ -24,19 +24,12 @@
     text-align: center;
     width: 60px; /* Adjust width as needed */
 }
-.captcha .verify-button-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-}
 .captcha .verify-button {
     color: #0040C3;
     border: 1px solid #0040C3;
     font-size: 13px;
     font-weight: 500;
     border-radius: 3px;
-    width: 100px;
     height: 35px;
     transition: all 0.3s;
 }
@@ -52,7 +45,6 @@
     font-size: 13px;
     font-weight: 500;
     border-radius: 3px;
-    width: 100px;
     height: 35px;
     transition: all 0.3s;
 }
@@ -82,5 +74,25 @@
         margin-top: 10px;
         align-self: center; /* Center the button */
         display: block;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .captcha .verify-button {
+        margin-top: -5px; /* Move the button a little bit up */
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .captcha .verify-button {
+        margin-top: -5px; /* Move the button a little bit up */
+        margin-left: 0; /* Remove the gap between the button and the number */
+    }
+}
+
+@media (min-width: 1200px) {
+    .captcha .verify-button {
+        margin-top: -5px; /* Move the button a little bit up */
+        margin-left: 5px; /* Reduce the gap between the button and the number */
     }
 }

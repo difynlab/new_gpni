@@ -1,17 +1,15 @@
-<div class="row captcha align-items-center">
-    <div class="col-12 col-md-4 text-center text-md-start">
-        <p class="text">Validate Captcha</p>
+<div class="row captcha">
+    <div class="col-12 col-md-4 mb-3 mb-md-0">
+        <p class="text text-center">Validate Captcha</p>
     </div>
     <div class="col-12 col-md-8">
-        <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
-            <p class="number number-1"></p>
-            <p class="number">+</p>
-            <p class="number number-2"></p>
-            <p class="number">=</p>
-            <input type="text" class="form-control sum-value" placeholder="?" required>
-        </div>
-        <div class="verify-button-container">
-            <button type="button" class="btn verify-button btn-responsive">Verify</button>
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-2">
+            <p class="number number-1 mb-0"></p>
+            <p class="number mb-0">+</p>
+            <p class="number number-2 mb-0"></p>
+            <p class="number mb-0">=</p>
+            <input type="text" class="form-control sum-value mb-0" placeholder="?" required>
+            <button type="button" class="btn verify-button">Verify</button>
         </div>
     </div>
 </div>
