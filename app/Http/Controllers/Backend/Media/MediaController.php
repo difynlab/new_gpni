@@ -46,20 +46,20 @@ class MediaController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'image' => 'nullable|image|max:2048',
-            'video' => 'nullable|max:2048',
+            'video' => 'nullable|max:5120',
             'pdf' => 'nullable|max:2048',
             'word' => 'nullable|max:2048',
             'excel' => 'nullable|max:2048',
             'ppt' => 'nullable|max:2048',
             'audio' => 'nullable|max:2048',
         ], [
-            'image.max' => 'The image size must not exceed 2 MB',
-            'video.max' => 'The video size must not exceed 2 MB',
-            'pdf.max' => 'The pdf size must not exceed 2 MB',
-            'word.max' => 'The word size must not exceed 2 MB',
-            'excel.max' => 'The excel size must not exceed 2 MB',
-            'ppt.max' => 'The powerpoint size must not exceed 2 MB',
-            'audio.max' => 'The audio size must not exceed 2 MB'
+            'image.max' => 'The image size must not exceed 2MB',
+            'video.max' => 'The video size must not exceed 5MB',
+            'pdf.max' => 'The pdf size must not exceed 2MB',
+            'word.max' => 'The word size must not exceed 2MB',
+            'excel.max' => 'The excel size must not exceed 2MB',
+            'ppt.max' => 'The powerpoint size must not exceed 2MB',
+            'audio.max' => 'The audio size must not exceed 2MB'
         ]);
         
         if($validator->fails()) {
@@ -155,20 +155,20 @@ class MediaController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'new_image' => 'nullable|image|max:2048',
-            'new_video' => 'nullable|max:2048',
+            'new_video' => 'nullable|max:5120',
             'new_pdf' => 'nullable|max:2048',
             'new_word' => 'nullable|max:2048',
             'new_excel' => 'nullable|max:2048',
             'new_ppt' => 'nullable|max:2048',
             'new_audio' => 'nullable|max:2048',
         ], [
-            'new_image.max' => 'The image size must not exceed 2 MB',
-            'new_video.max' => 'The video size must not exceed 2 MB',
-            'new_pdf.max' => 'The pdf size must not exceed 2 MB',
-            'new_word.max' => 'The word size must not exceed 2 MB',
-            'new_excel.max' => 'The excel size must not exceed 2 MB',
-            'new_ppt.max' => 'The powerpoint size must not exceed 2 MB',
-            'new_audio.max' => 'The audio size must not exceed 2 MB'
+            'new_image.max' => 'The image size must not exceed 2MB',
+            'new_video.max' => 'The video size must not exceed 5MB',
+            'new_pdf.max' => 'The pdf size must not exceed 2MB',
+            'new_word.max' => 'The word size must not exceed 2MB',
+            'new_excel.max' => 'The excel size must not exceed 2MB',
+            'new_ppt.max' => 'The powerpoint size must not exceed 2MB',
+            'new_audio.max' => 'The audio size must not exceed 2MB'
         ]);
         
         if($validator->fails()) {
