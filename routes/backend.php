@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\Communication\AskQuestionController;
 use App\Http\Controllers\Backend\Communication\ConnectionController;
 use App\Http\Controllers\Backend\Communication\ContactCoachController;
 use App\Http\Controllers\Backend\Communication\ReferFriendController;
+use App\Http\Controllers\Backend\Communication\SubscriptionController;
 use App\Http\Controllers\Backend\Communication\TechnicalSupportController;
 use App\Http\Controllers\Backend\Conference\ConferenceController;
 use App\Http\Controllers\Backend\Course\CourseChapterController;
@@ -76,6 +77,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     // CkEditor upload route
         Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
     // CkEditor upload route
+
 
     // All page related routes
         Route::get('pages', [PageController::class, 'index'])->name('pages.index');
@@ -311,6 +313,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
                 Route::post('/filter', [TechnicalSupportController::class, 'filter'])->name('filter');
                 Route::delete('/{technical_support}', [TechnicalSupportController::class, 'destroy'])->name('destroy');
             });
+
+            Route::resource('subscriptions', SubscriptionController::class)->only(['index', 'destroy']);
         });
     // All communication routes
 

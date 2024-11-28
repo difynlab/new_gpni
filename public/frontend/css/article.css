@@ -16,6 +16,12 @@ body {
     flex: 1;
   }
 
+  .error-message {
+      color: #dd0909;
+      font-size: 14px;
+      margin-top: 5px;
+  }
+
   .sidebar {
     width: 100%;
   }

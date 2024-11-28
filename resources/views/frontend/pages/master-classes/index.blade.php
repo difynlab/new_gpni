@@ -74,6 +74,8 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            @else
+                                <p class="no-data">No courses are available right now, but stay tuned, exciting new courses are on the way! Check back soon!</p>
                             @endif
                         </div>
 
@@ -98,6 +100,8 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            @else
+                                <p class="no-data">No upcoming master classes are available right now, but stay tuned, exciting new courses are on the way! Check back soon or explore our current offerings to keep learning and growing!</p>
                             @endif
                         </div>
 

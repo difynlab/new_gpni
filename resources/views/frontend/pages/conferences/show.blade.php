@@ -13,9 +13,15 @@
         <x-frontend.notification></x-frontend.notification>
 
         <section class="container-shadow">
+            <a href="{{ route('frontend.conferences.index') }}" class="return-link">
+                <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
+                Back to conferences
+            </a>
+
             <div class="event-title-wrapper text-center">
                 <div class="title-container">
                     <div class="event-title-container">
+                        
                         <h1 class="event-title fs-61">
                             <span>{{ $conference->title }}</span>
                         </h1>

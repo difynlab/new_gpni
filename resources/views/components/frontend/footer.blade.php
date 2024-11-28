@@ -2,31 +2,33 @@
     <div class="container py-5">
         <div class="row py-3">
             <div class="col-md-4 text-start">
-                <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->footer_logo) }}" alt="GPNi" style="width: 286px; margin-bottom: 20px;">
-                <p>Powered by <img src="{{ asset('storage/frontend/powered-by-white.svg') }}" alt="Power Logo" style="width: 20px;"></p>
+                <a href="{{ route('frontend.homepage') }}">
+                    <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->footer_logo) }}" alt="GPNi" style="width: 286px; margin-bottom: 20px;">
+                    <p>Powered by <img src="{{ asset('storage/frontend/powered-by-white.svg') }}" alt="Power Logo" style="width: 20px;"></p>
+                </a>
             </div>
 
             <div class="col-md-4 text-start">
                 <div class="footer-title">Get in touch with us</div>
 
                 <div class="d-flex flex-wrap justify-content-start">
-                    <a href="#" class="social-icon">
+                    <a href="{{ App\Models\Setting::find(1)->instagram }}" class="social-icon" target="blank">
                         <img src="{{ asset('storage/frontend/instagram.svg') }}" alt="Instagram" width="12" height="13">
                         Instagram
                     </a>
-                    <a href="#" class="social-icon">
+                    <a href="{{ App\Models\Setting::find(1)->fb }}" class="social-icon" target="blank">
                         <img src="{{ asset('storage/frontend/facebook.svg') }}" alt="Facebook" width=" 8" height="15" ;>
                         Facebook
                     </a>
-                    <a href="#" class="social-icon">
+                    <a href="{{ App\Models\Setting::find(1)->youtube }}" class="social-icon" target="blank">
                         <img src="{{ asset('storage/frontend/youtube.svg') }}" alt="YouTube" width="15" height="10">
                         Youtube
                     </a>
-                    <a href="#" class="social-icon">
+                    <a href="{{ App\Models\Setting::find(1)->twitter }}" class="social-icon" target="blank">
                         <img src="{{ asset('storage/frontend/twitter.svg') }}" alt="Twitter" width="12" height="12">
                         Twitter
                     </a>
-                    <a href="#" class="social-icon">
+                    <a href="{{ App\Models\Setting::find(1)->linkedin }}" class="social-icon" target="blank">
                         <img src="{{ asset('storage/frontend/linkedin.svg') }}" alt="LinkedIn" width="13" height="12">
                         LinkedIn
                     </a>
@@ -36,16 +38,25 @@
             <div class="col-md-4 text-start">
                 <div class="footer-title">Get the latest from us</div>
 
-                <div class="subscribe-form pb-3">
-                    <div class="d-flex flex-column flex-md-row align-items-md-center">
-                        <input type="text" class="form-control subscribe-input flex-grow-1 mb-3 mb-md-0 mr-md-3" placeholder="Enter email address">
-                        <button class="btn subscribe-button">Subscribe</button>
+                <form action="{{ route('frontend.subscription') }}" method="POST">
+                    @csrf
+                    <div class="subscribe-form pb-3">
+                        <div class="d-flex flex-column flex-md-row align-items-md-center mb-3">
+                            <input type="email" class="form-control subscribe-input flex-grow-1 mb-3 mb-md-0 mr-md-3" name="email" placeholder="Enter email address" required>
+                            <button type="submit" class="btn subscribe-button">Subscribe</button>
+                        </div>
+
+                        <x-frontend.input-error field="email"></x-frontend.input-error>
+
+                        <x-frontend.notification></x-frontend.notification>
                     </div>
-                </div>
+                </form>
+
                 <div>
                     <a href="#"><img src="{{ asset('storage/frontend/app-store.svg') }}" alt="App Store" style="width: 120px; margin-right: 10px;"></a>
                     <a href="#"><img src="{{ asset('storage/frontend/play-store.svg') }}" alt="Google Play" style="width: 120px;"></a>
                 </div>
+
             </div>
         </div>
         

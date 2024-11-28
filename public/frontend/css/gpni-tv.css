@@ -15,6 +15,10 @@ body {
     color: #0e0e0e;
 }
 
+.bi-star-fill {
+    color: #e4c107;
+}
+
 .section-heading,
 .coming-soon {
     font-size: 20px;

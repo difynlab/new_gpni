@@ -51,10 +51,15 @@
     color: #0e0e0e;
 }
 .certificate-header .download-button {
-    font-size: 20px;
+    font-size: 16px;
     color: #1F9254;
-    -webkit-text-stroke: 0.5px;
+    text-decoration: none;
     cursor: pointer;
+}
+.certificate-header .download-button i {
+    font-size: 20px;
+    -webkit-text-stroke: 0.5px;
+    margin-left: 10px;
 }
 .certificate-issued {
     font-size: 16px;

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\Page\HomepageController;
-use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\Frontend\Common\LanguageController;
 use App\Http\Controllers\Frontend\Student\DashboardController;
 use App\Http\Controllers\Frontend\Page\HistoryOfGpniController;
 use App\Http\Controllers\Frontend\Page\AdvisoryBoardExpertLectureController;
@@ -35,11 +35,12 @@ use App\Http\Controllers\Frontend\Page\ProductController;
 use App\Http\Controllers\Frontend\Student\FinalExamController;
 use App\Http\Controllers\Frontend\Student\ModuleExamController;
 use App\Http\Controllers\Frontend\Student\TechnicalSupportController;
+use App\Http\Controllers\Frontend\Common\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/frontend-auth.php';
 
-Route::post('/set-language', [LanguageController::class, 'setLanguage'])->name('set-language');
+Route::post('set-language', [LanguageController::class, 'setLanguage'])->name('set-language');
 
 Route::middleware(['set_language'])->group(function () {
     // Page routes
@@ -94,6 +95,10 @@ Route::middleware(['set_language'])->group(function () {
             Route::get('purchase/{course}', [CertificationCourseController::class, 'purchase'])->name('purchase');
         });
     // Page routes
+
+    // Subscription route
+        Route::post('subscription', [SubscriptionController::class, 'store'])->name('subscription');
+    // Subscription route
 
 
     // Student routes

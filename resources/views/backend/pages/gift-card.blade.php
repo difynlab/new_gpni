@@ -32,9 +32,14 @@
                             <textarea class="form-control" rows="5" id="description_{{ $short_code }}" name="description_{{ $short_code }}" value="{{ $contents->{'description_' . $short_code} ?? '' }}" placeholder="Description">{{ $contents->{'description_' . $short_code} ?? '' }}</textarea>
                         </div>
 
-                        <div>
+                        <div class="mb-4">
                             <x-backend.upload-multi-images image_count="5" old_name="old_images" old_value="{{ $contents->{'images_' . $short_code} ?? '' }}" new_name="new_images[]" path="pages"></x-backend.upload-multi-images>
-                            <x-backend.input-error field="new_section_5_images.*"></x-backend.input-error>
+                            <x-backend.input-error field="new_images.*"></x-backend.input-error>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Button</label>
+                            <input class="form-control" type="text" id="button_{{ $short_code }}" name="button_{{ $short_code }}" value="{{ $contents->{'button_' . $short_code} ?? '' }}" placeholder="Button">
                         </div>
                     </div>
                 </div>

@@ -34,7 +34,7 @@
                                         <div class="certificate-header">
                                             <div class="title">{{ $obtained_certificate['course_title'] }}</div>
 
-                                            <a href="{{ asset('storage/backend/courses/course-certificates/' . $obtained_certificate['certificate_url']) }}" class="download-button" download><i class="bi bi-download"></i></a>
+                                            <a href="{{ asset('storage/backend/courses/course-certificates/' . $obtained_certificate['certificate_url']) }}" class="download-button" download>Download<i class="bi bi-download"></i></a>
                                         </div>
 
                                         <p class="certificate-issued">Issued on: <span>{{ $obtained_certificate['issued_date_time'] }}</span></p>
@@ -42,7 +42,7 @@
                                 @endif
                             @endforeach
                         @else
-                            <p class="no-data">Oh! no certificates provided</p>
+                            <p class="no-data">No certificates provided</p>
                         @endif
                     </div>
                 </div>

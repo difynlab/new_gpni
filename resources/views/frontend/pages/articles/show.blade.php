@@ -9,6 +9,8 @@
 @section('content')
 
 <div class="container my-lg-5 pt-lg-5">
+    <x-frontend.notification></x-frontend.notification>
+
     <div class="main-content row">
         <div class="col-lg-8">
             <div class="content-wrapper mt-5">
@@ -122,14 +124,13 @@
                         {{ $contents->{'section_1_newsletter_description_' . $middleware_language} ??
                         $contents->section_1_newsletter_description_en }}</p>
 
-                    <form class="subscribe-form-article">
-                        <input type="email" class="fs-16"
-                            placeholder="{{ $contents->{'section_1_newsletter_placeholder_' . $middleware_language} ?? $contents->section_1_newsletter_placeholder_en }}"
-                            required>
-                        <button type="submit" class="m-2">{{ $contents->{'section_1_newsletter_button_' .
-                            $middleware_language} ??
-                            $contents->section_1_newsletter_button_en }}</button>
+                    <form class="subscribe-form-article" action="{{ route('frontend.subscription') }}" method="POST">
+                        @csrf
+                        <input type="email" class="fs-16" name="email" placeholder="{{ $contents->{'section_1_newsletter_placeholder_' . $middleware_language} ?? $contents->section_1_newsletter_placeholder_en }}" required>
+                        <button type="submit" class="m-2">{{ $contents->{'section_1_newsletter_button_' . $middleware_language} ?? $contents->section_1_newsletter_button_en }}</button>
                     </form>
+
+                    <x-frontend.input-error field="email"></x-frontend.input-error>
                 </div>
             </div>
         </div>

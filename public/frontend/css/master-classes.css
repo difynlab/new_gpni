@@ -105,6 +105,14 @@ body {
     color: #898989;
 }
 
+.no-data {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: #b85656;
+}
+
 .card {
     width: 22rem;
     margin: 1rem;

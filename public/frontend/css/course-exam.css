@@ -56,8 +56,14 @@
 .bottom-section {
     margin-bottom: 45px;
 }
+.question-section p {
+    margin-bottom: 0;
+}
 .question {
     font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 .options {
     margin-top: 20px;
@@ -67,13 +73,17 @@
     align-items: center;
     margin-bottom: 20px;
     cursor: pointer;
+    gap: 10px;
+}
+.option:last-child {
+    margin-bottom: 0;
 }
 .radio {
     width: 26px;
     height: 26px;
     border-radius: 50%;
     border: 2px solid #B8D0FF;
-    margin-right: 12px;
+    /* margin-right: 12px; */
     background-color: #fff;
     display: flex;
     justify-content: center;

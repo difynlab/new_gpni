@@ -47,7 +47,7 @@
                             </div>
                         @endforeach
                     @else
-                        <p class="no-data">Oh! you need to purchase the courses first</p>
+                        <p class="no-data">You need to purchase the courses first</p>
                     @endif
                 </div>
             </div>

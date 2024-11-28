@@ -75,20 +75,63 @@
                             @foreach($questions as $key => $question)
                                 @if($key == 0)
                                     <div class="question-section" data-question-id="{{ $question->id }}" id="question{{$key}}">
-                                        <p class="question">Q1. {{ $question->question }}</p>
+                                        <div class="question">
+                                            <p>Q1.</p>
+                                            <div>{!! $question->question !!}</div>
+                                        </div>
 
                                         <div class="options">
                                             <div class="option" data-answer="A">
-                                                <div class="radio"><div class="radio-inner"></div></div>A) {{ $question->option_a }}
+                                                <div class="radio">
+                                                    <div class="radio-inner"></div>
+                                                </div>
+
+                                                <p>
+                                                    A)
+                                                </p>
+
+                                                <div>
+                                                    {!! $question->option_a !!}
+                                                </div>
                                             </div>
                                             <div class="option" data-answer="B">
-                                                <div class="radio"><div class="radio-inner"></div></div>B) {{ $question->option_b }}
+                                                <div class="radio">
+                                                    <div class="radio-inner"></div>
+                                                </div>
+                                                
+                                                <p>
+                                                    B)
+                                                </p>
+
+                                                <div>
+                                                    {!! $question->option_b !!}
+                                                </div>
                                             </div>
                                             <div class="option" data-answer="C">
-                                                <div class="radio"><div class="radio-inner"></div></div>C) {{ $question->option_c }}
+                                                <div class="radio">
+                                                    <div class="radio-inner"></div>
+                                                </div>
+                                                
+                                                <p>
+                                                    C)
+                                                </p>
+
+                                                <div>
+                                                    {!! $question->option_c !!}
+                                                </div>
                                             </div>
                                             <div class="option" data-answer="D">
-                                                <div class="radio"><div class="radio-inner"></div></div>D) {{ $question->option_d }}
+                                                <div class="radio">
+                                                    <div class="radio-inner"></div>
+                                                </div>
+                                                
+                                                <p>
+                                                    D)
+                                                </p>
+
+                                                <div>
+                                                    {!! $question->option_d !!}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -100,20 +143,63 @@
                                     </div>
                                 @else
                                     <div class="question-section d-none" data-question-id="{{ $question->id }}" id="question{{$key}}">
-                                        <p class="question">Q{{ $key + 1 }}. {{ $question->question }}</p>
+                                        <div class="question">
+                                            <p>Q{{ $key + 1 }}.</p>
+                                            <div>{!! $question->question !!}</div>
+                                        </div>
 
                                         <div class="options">
                                             <div class="option" data-answer="A">
-                                                <div class="radio"><div class="radio-inner"></div></div>A) {{ $question->option_a }}
+                                                <div class="radio">
+                                                    <div class="radio-inner"></div>
+                                                </div>
+                                                
+                                                <p>
+                                                    A)
+                                                </p>
+
+                                                <div>
+                                                    {!! $question->option_a !!}
+                                                </div>
                                             </div>
                                             <div class="option" data-answer="B">
-                                                <div class="radio"><div class="radio-inner"></div></div>B) {{ $question->option_b }}
+                                                <div class="radio">
+                                                    <div class="radio-inner"></div>
+                                                </div>
+                                                
+                                                <p>
+                                                    B)
+                                                </p>
+
+                                                <div>
+                                                    {!! $question->option_b !!}
+                                                </div>
                                             </div>
                                             <div class="option" data-answer="C">
-                                                <div class="radio"><div class="radio-inner"></div></div>C) {{ $question->option_c }}
+                                                <div class="radio">
+                                                    <div class="radio-inner"></div>
+                                                </div>
+                                                
+                                                <p>
+                                                    C)
+                                                </p>
+
+                                                <div>
+                                                    {!! $question->option_c !!}
+                                                </div>
                                             </div>
                                             <div class="option" data-answer="D">
-                                                <div class="radio"><div class="radio-inner"></div></div>D) {{ $question->option_d }}
+                                                <div class="radio">
+                                                    <div class="radio-inner"></div>
+                                                </div>
+                                                
+                                                <p>
+                                                    D)
+                                                </p>
+
+                                                <div>
+                                                    {!! $question->option_d !!}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -412,21 +498,6 @@
                     });
                 }
 
-                document.addEventListener('contextmenu', (e) => {
-                    e.preventDefault();
-                });
-
-                document.addEventListener('keydown', (e) => {
-                    if(
-                        e.key === 'F12' ||
-                        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-                        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
-                        (e.ctrlKey && e.key === 'U')
-                    ){
-                        e.preventDefault();
-                    }
-                });
-
                 document.addEventListener('copy', (e) => {
                     e.preventDefault();
                 });
@@ -465,6 +536,21 @@
                         e.preventDefault();
                     }
                 });
+            });
+
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if(
+                    e.key === 'F12' ||
+                    (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                    (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+                    (e.ctrlKey && e.key === 'U')
+                ){
+                    e.preventDefault();
+                }
             });
         });
     </script>

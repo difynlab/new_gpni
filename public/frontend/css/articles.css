@@ -3,6 +3,12 @@ body {
     background-color: #ffffff;
   }
   
+  .error-message {
+      color: #dd0909;
+      font-size: 14px;
+      margin-top: 5px;
+  }
+
   h5,
   h6 {
     font-weight: 600;
