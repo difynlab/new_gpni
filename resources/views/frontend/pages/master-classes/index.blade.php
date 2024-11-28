@@ -133,14 +133,13 @@
                                     <img src="{{ asset('storage/backend/courses/course-images/' . $point->image) }}" alt="Certification Icon">
                                     <p>{{ $point->description }}</p>
                                 </div>
-                            @endforeach
-                        @endif
-                    </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         @endif
 
-        <!-- Testimonial Section -->
         @if($contents->section_4_title_en)
             <div class="testimonial-container">
                 <div class="container py-5">

@@ -34,9 +34,9 @@ class MasterClassController extends Controller
             $upcoming_courses = Course::where('language', 'English')->where('course_status', 'Upcoming')->where('type', 'Masters')->where('status', '1')->paginate(6);
         }
 
-        $testimonials = Testimonial::where('language', $request->middleware_language_name)->where('type', 'common')->where('status', '1')->get();
+        $testimonials = Testimonial::where('language', $request->middleware_language_name)->where('type', 'Master Class')->where('status', '1')->get();
         if($testimonials->isEmpty() && $request->middleware_language_name != 'English') {
-            $testimonials = Testimonial::where('language', 'English')->where('type', 'common')->where('status', '1')->get();
+            $testimonials = Testimonial::where('language', 'English')->where('type', 'Master Class')->where('status', '1')->get();
         }
 
         return view('frontend.pages.master-classes.index', [
