@@ -24,6 +24,11 @@
                         </div>
 
                         <div class="mb-4">
+                            <label class="form-label">Currency</label>
+                            <input class="form-control" value="{{ strtoupper($membership_purchase->currency) }}" readonly>
+                        </div>
+
+                        <div class="mb-4">
                             <label class="form-label">Payment Mode</label>
                             <input class="form-control" value="{{ ucfirst($membership_purchase->mode) }}" readonly>
                         </div>

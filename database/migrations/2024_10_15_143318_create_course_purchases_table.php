@@ -21,6 +21,7 @@ return new class extends Migration
             $table->time('time')->nullable();
             $table->string('mode')->nullable();
             $table->string('transaction_id')->nullable()->unique();
+            $table->string('currency');
             $table->decimal('amount_paid', 8, 2)->nullable();
             $table->string('discount_applied')->nullable();
             $table->enum('payment_status', ['Completed', 'Pending', 'Failed'])->nullable()->default('Pending');

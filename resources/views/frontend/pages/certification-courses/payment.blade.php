@@ -21,7 +21,7 @@
                             <div>
                                 <h5 class="payment-option-title">One time payment method</h5>
                                 @if($course->material_logistic && $course->material_logistic_price)
-                                    <p class="payment-option-subtitle">Course material & Logistics is available <b>only for ${{ $course->material_logistic_price }}</b> with course fee</p>
+                                    <p class="payment-option-subtitle">Course material & Logistics is available <b>only for {{ $currency_symbol }}{{ $course->material_logistic_price }}</b> with course fee</p>
                                 @endif
                             </div>
                         </label>
@@ -44,7 +44,7 @@
                                 <span class="radio-custom"></span>
                                 <div>
                                     <h5 class="payment-option-title">Monthly Payment Method ({{ $course->instalment_months }} Months)</h5>
-                                    <p class="payment-option-subtitle">Per month ${{ $course->instalment_price }}</p>
+                                    <p class="payment-option-subtitle">Per month {{ $currency_symbol }}{{ $course->instalment_price }}</p>
                                     <ul class="payment-option-subtitle px-3 pt-2">
                                         <li>Course material & Logistics needs to be purchased separately</li>
                                     </ul>
@@ -69,13 +69,13 @@
 
                     <div class="d-flex justify-content-between my-3 PNE-level">
                         <div>{{ $course->title }}</div> 
-                        <div id="course-price">$<span>{{ $course->price }}</span></div>
+                        <div id="course-price">{{ $currency_symbol }}<span>{{ $course->price }}</span></div>
                     </div>
 
                     <div id="material-details" class="d-none">
                         <div class="d-flex justify-content-between my-3 PNE-level">
                             <div>Course Material & Logistics</div>
-                            <div id="material-logistic-price">$<span>{{ $course->material_logistic_price }}</span></div>
+                            <div id="material-logistic-price">{{ $currency_symbol }}<span>{{ $course->material_logistic_price }}</span></div>
                         </div>
                     </div>
 
@@ -83,19 +83,19 @@
 
                     <div class="d-flex justify-content-between my-4 title">
                         <div>Sub Total</div>
-                        <div id="sub-total">$<span>{{ $course->price }}</span></div>
+                        <div id="sub-total">{{ $currency_symbol }}<span>{{ $course->price }}</span></div>
                     </div>
 
                     <div class="d-flex justify-content-between my-4 title">
                         <div>Discount</div>
-                        <div id="course-discount">$<span>0.0</span></div>
+                        <div id="course-discount">{{ $currency_symbol }}<span>0.0</span></div>
                     </div>
 
                     <div class="line"></div>
 
                     <div class="d-flex justify-content-between my-4 title">
                         <div>Total</div>
-                        <div id="total-amount">$<span>{{ $course->price }}</span></div>
+                        <div id="total-amount">{{ $currency_symbol }}<span>{{ $course->price }}</span></div>
 
                         <input type="hidden" id="dynamic-course-price" value="{{ $course->price }}">
                         <input type="hidden" id="dynamic-material-price" value="{{ $course->material_logistic_price }}">

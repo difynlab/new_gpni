@@ -60,7 +60,7 @@
                                     <td>{{ $course_purchase->user_id }}</td>
                                     <td>{{ $course_purchase->course_id }}</td>
                                     <td>{{ $course_purchase->date_time }}</td>
-                                    <td>{{ $course_purchase->amount_paid }}</td>
+                                    <td>{{ $course_purchase->currency === 'usd' ? '$' : '¥' }}{{ $course_purchase->amount_paid }}</td>
                                     <td>{!! $course_purchase->payment_status !!}</td>
                                     <td>{!! $course_purchase->course_access_status !!}</td>
                                     <td>{!! $course_purchase->action !!}</td>

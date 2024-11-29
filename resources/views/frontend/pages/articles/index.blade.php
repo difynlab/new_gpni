@@ -35,63 +35,63 @@
                             aria-labelledby="latest-articles-tab" tabindex="0">
                             <div class="row">
                                 @if($articles->isNotEmpty())
-                                @foreach($articles as $article)
-                                <div class="col-md-6 col-sm-12 my-3 card-wrapper">
-                                    <div class="card shadow-none border-0">
-                                        <div class="position-relative">
-                                            @if($article->thumbnail)
-                                            <img src="{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}"
-                                                alt="Main Image" class="img-fluid w-100">
-                                            @else
-                                            <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}"
-                                                alt="Main Image" class="img-fluid w-100">
-                                            @endif
-                                            <div class="share-icon position-absolute">
-                                                <button class="btn btn-light" onclick="shareContent('{{ $article->title }}', '{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}')">
-                                                    <img src="{{ asset('storage/frontend/share-icon.svg') }}" alt="Share Icon">
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <div class="header-metadata mb-2 fs-13 pt-3">
-                                                <img src="{{ asset('storage/frontend/calendar.svg') }}" alt="Icon"
-                                                    class="icon mr-2">
-                                                <span class="custom-text-muted date-meta fs-13">{{
-                                                    $article->created_at->format('d M,Y') }}</span>
-                                                <div class="divider">|</div>
-                                                <span class="custom-text-muted fs-13">{{
-                                                    App\Models\ArticleCategory::find($article->article_category_id)->name
-                                                    }}</span>
-                                            </div>
-                                            <h5 class="text-primary-title fs-22 mb-2 title-clamp">{{ $article->title }}</h5>
-                                            <div class="fs-16 card-text mb-4 line-clamp-4">{!! $article->content !!}</div>
-                                            <svg height="1" width="100%" class="mb-3">
-                                                <line x1="0" y1="0" x2="100%" y2="0"
-                                                    style="stroke-width: 0.5px; stroke: #747474;"></line>
-                                            </svg>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="d-flex align-items-center">
-                                                    @if($article->author_image)
-                                                    <img src="{{ asset('storage/backend/articles/author-images/'.$article->author_image) }}"
-                                                        alt="User" class="rounded-circle" style="width:40px; height:40px;">
+                                    @foreach($articles as $article)
+                                        <div class="col-md-6 col-sm-12 my-3 card-wrapper">
+                                            <div class="card shadow-none border-0">
+                                                <div class="position-relative">
+                                                    @if($article->thumbnail)
+                                                    <img src="{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}"
+                                                        alt="Main Image" class="img-fluid w-100">
                                                     @else
                                                     <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}"
-                                                        alt="Main Image" class="rounded-circle"
-                                                        style="width:40px; height:40px;">
+                                                        alt="Main Image" class="img-fluid w-100">
                                                     @endif
-                                                    <span class="username fs-13">{{ $article->author_name ?? 'Unknown'}}</span>
+                                                    <div class="share-icon position-absolute">
+                                                        <button class="btn btn-light" onclick="shareContent('{{ $article->title }}', '{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}')">
+                                                            <img src="{{ asset('storage/frontend/share-icon.svg') }}" alt="Share Icon">
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <a href="{{ route('frontend.articles.show', $article) }}"
-                                                    class="fs-13 read-more-button">
-                                                    <span>Read More</span>
-                                                    <i class="fas fa-arrow-circle-right ms-2"></i>
-                                                </a>
+
+                                                <div>
+                                                    <div class="header-metadata mb-2 fs-13 pt-3">
+                                                        <img src="{{ asset('storage/frontend/calendar.svg') }}" alt="Icon"
+                                                            class="icon mr-2">
+                                                        <span class="custom-text-muted date-meta fs-13">{{
+                                                            $article->created_at->format('d M,Y') }}</span>
+                                                        <div class="divider">|</div>
+                                                        <span class="custom-text-muted fs-13">{{
+                                                            App\Models\ArticleCategory::find($article->article_category_id)->name
+                                                            }}</span>
+                                                    </div>
+                                                    <h5 class="text-primary-title fs-22 mb-2 title-clamp">{{ $article->title }}</h5>
+                                                    <div class="fs-16 card-text mb-4 line-clamp-4">{!! $article->content !!}</div>
+                                                    <svg height="1" width="100%" class="mb-3">
+                                                        <line x1="0" y1="0" x2="100%" y2="0"
+                                                            style="stroke-width: 0.5px; stroke: #747474;"></line>
+                                                    </svg>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="d-flex align-items-center">
+                                                            @if($article->author_image)
+                                                            <img src="{{ asset('storage/backend/articles/author-images/'.$article->author_image) }}"
+                                                                alt="User" class="rounded-circle" style="width:40px; height:40px;">
+                                                            @else
+                                                            <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}"
+                                                                alt="Main Image" class="rounded-circle"
+                                                                style="width:40px; height:40px;">
+                                                            @endif
+                                                            <span class="username fs-13">{{ $article->author_name ?? 'Unknown'}}</span>
+                                                        </div>
+                                                        <a href="{{ route('frontend.articles.show', $article) }}"
+                                                            class="fs-13 read-more-button">
+                                                            <span>Read More</span>
+                                                            <i class="fas fa-arrow-circle-right ms-2"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
 
@@ -176,48 +176,48 @@
                         <h5 class="fs-16 trending-article-title py-2">Trending Articles</h5>
 
                         @if($trending_articles->isNotEmpty())
-                        @foreach($trending_articles as $trending_article)
-                        <a href="{{ route('frontend.articles.show', $trending_article) }}" class="text-decoration-none">
-                            <div class="trending-article">
-                                <div class="row g-3 w-100">
-                                    <div class="col-4 col-lg-6">
-                                        @if($trending_article->thumbnail)
-                                        <img src="{{ asset('storage/backend/articles/articles/' . $trending_article->thumbnail) }}"
-                                            alt="Trending Image" class="img-fluid object-fit-cover">
+                            @foreach($trending_articles as $trending_article)
+                                <a href="{{ route('frontend.articles.show', $trending_article) }}" class="text-decoration-none">
+                                    <div class="trending-article">
+                                        <div class="row g-3 w-100">
+                                            <div class="col-4 col-lg-6">
+                                                @if($trending_article->thumbnail)
+                                                <img src="{{ asset('storage/backend/articles/articles/' . $trending_article->thumbnail) }}"
+                                                    alt="Trending Image" class="img-fluid object-fit-cover">
 
-                                        @else
-                                        <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}"
-                                            alt="Trending Image" class="img-fluid object-fit-cover">
-                                        @endif
-                                    </div>
-                                    <div class="col-8 col-lg-6">
-                                        <div class="trending-content">
-                                            <h6 class="trending-content-title title-clamp fs-13">{{ $trending_article->title }}
-                                            </h6>
-
-                                            <div class="line-clamp-2">{!! $trending_article->content !!}</div>
-
-                                            <div
-                                                class="date-and-read d-flex justify-content-between align-items-center flex-wrap gap-2 mt-2 mt-md-3">
-                                                <!-- Date -->
-                                                <span class="small text-muted">{{ $trending_article->created_at->format('M d,Y')
-                                                    }}</span>
-
-                                                <!-- Reading time -->
-                                                @if($trending_article->reading_time)
-                                                <span class="small time-read d-flex align-items-center gap-1">
-                                                    <img src="{{ asset('storage/frontend/clock.svg') }}" alt="Clock"
-                                                        class="read-icon" style="width: 12px; height: 12px;">
-                                                    <span class="d-inline-block">{{ $trending_article->reading_time }}</span>
-                                                </span>
+                                                @else
+                                                <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}"
+                                                    alt="Trending Image" class="img-fluid object-fit-cover">
                                                 @endif
+                                            </div>
+                                            <div class="col-8 col-lg-6">
+                                                <div class="trending-content">
+                                                    <h6 class="trending-content-title title-clamp fs-13">{{ $trending_article->title }}
+                                                    </h6>
+
+                                                    <div class="line-clamp-2">{!! $trending_article->content !!}</div>
+
+                                                    <div
+                                                        class="date-and-read d-flex justify-content-between align-items-center flex-wrap gap-2 mt-2 mt-md-3">
+                                                        <!-- Date -->
+                                                        <span class="small text-muted">{{ $trending_article->created_at->format('M d,Y')
+                                                            }}</span>
+
+                                                        <!-- Reading time -->
+                                                        @if($trending_article->reading_time)
+                                                        <span class="small time-read d-flex align-items-center gap-1">
+                                                            <img src="{{ asset('storage/frontend/clock.svg') }}" alt="Clock"
+                                                                class="read-icon" style="width: 12px; height: 12px;">
+                                                            <span class="d-inline-block">{{ $trending_article->reading_time }}</span>
+                                                        </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
-                        @endforeach
+                                </a>
+                            @endforeach
                         @endif
                     </div>
 
@@ -251,7 +251,7 @@
                         <form class="subscribe-form-article" action="{{ route('frontend.subscription') }}" method="POST">
                             @csrf
                             <input type="email" class="fs-16" name="email" placeholder="{{ $contents->{'section_1_newsletter_placeholder_' . $middleware_language} ?? $contents->section_1_newsletter_placeholder_en }}" required>
-                            <button type="submit" class="m-2">{{ $contents->{'section_1_newsletter_button_' . $middleware_language} ?? contents->section_1_newsletter_button_en }}</button>
+                            <button type="submit" class="m-2">{{ $contents->{'section_1_newsletter_button_' . $middleware_language} ?? $contents->section_1_newsletter_button_en }}</button>
                         </form>
 
                         <x-frontend.input-error field="email"></x-frontend.input-error>
@@ -293,24 +293,24 @@
 @endsection
 
 @push('after-scripts')
-<script>
-    function shareContent(title, imagePath) {
-        if (navigator.share) {
-            navigator.share({
-                title: title,
-                text: `Check out this article: ${title}`,
-                url: window.location.href,
-            }).then(() => {
-                console.log('Thanks for sharing!');
-            }).catch(err => {
-                console.error('Error sharing:', err);
-            });
-        } else {
-            const shareUrl = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent(`Check out this article: ${title}`);
-            const twitterUrl = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${text}`;
-            window.open(twitterUrl, '_blank');
+    <script>
+        function shareContent(title, imagePath) {
+            if(navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: `Check out this article: ${title}`,
+                    url: window.location.href,
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch(err => {
+                    console.error('Error sharing:', err);
+                });
+            } else {
+                const shareUrl = encodeURIComponent(window.location.href);
+                const text = encodeURIComponent(`Check out this article: ${title}`);
+                const twitterUrl = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${text}`;
+                window.open(twitterUrl, '_blank');
+            }
         }
-    }
-</script>
+    </script>
 @endpush

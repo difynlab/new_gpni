@@ -23,13 +23,16 @@
                                 International Courses <i class="fa fa-angle-right ms-1"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="internationalCoursesDropdown">
-                                <?php 
-                                    $certificate_courses = App\Models\Course::where('language', $middleware_language)->where('type', 'Certification')->where('status', '1')->get();
+                                @php
+                                    $languages = [
+                                        'en' => 'English',
+                                        'zh' => 'Chinese',
+                                        'ja' => 'Japanese'
+                                    ];
 
-                                    if($certificate_courses->isEmpty() && $middleware_language != 'English') {
-                                        $certificate_courses = App\Models\Course::where('language', 'English')->where('type', 'Certification')->where('status', '1')->get();
-                                    }
-                                ?>
+                                    $certificate_courses = App\Models\Course::where('language', $languages[$middleware_language])->where('type', 'Certification')->where('status', '1')->get();
+                                @endphp
+                                
                                 @if($certificate_courses->isNotEmpty())
                                     @foreach($certificate_courses as $certificate_course)
                                         <li>

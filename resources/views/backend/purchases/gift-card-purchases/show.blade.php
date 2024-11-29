@@ -29,6 +29,11 @@
                         </div>
 
                         <div class="mb-4">
+                            <label class="form-label">Currency</label>
+                            <input class="form-control" value="{{ strtoupper($gift_card_purchase->currency) }}" readonly>
+                        </div>
+
+                        <div class="mb-4">
                             <label class="form-label">Time</label>
                             <input class="form-control" value="{{ $gift_card_purchase->time }}" readonly>
                         </div>
@@ -41,11 +46,6 @@
                         <div class="mb-4">
                             <label class="form-label">Transaction ID</label>
                             <input class="form-control" value="{{ $gift_card_purchase->transaction_id }}" readonly>
-                        </div>
-
-                        <div>
-                            <label class="form-label">Refund Status</label>
-                            <input class="form-control" value="{{ $gift_card_purchase->refund_status }}" readonly>
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@
 
                         <div class="mb-4">
                             <label class="form-label">Amount Paid</label>
-                            <input class="form-control" value="{{ $gift_card_purchase->amount_paid }}" readonly>
+                            <input class="form-control" value="{{ $gift_card_purchase->currency === 'usd' ? '$' : '¥' }}{{ $gift_card_purchase->amount_paid }}" readonly>
                         </div>
 
                         <div class="mb-4">
@@ -75,9 +75,14 @@
                             <input class="form-control" value="{{ $gift_card_purchase->payment_status }}" readonly>
                         </div>
 
-                        <div>
+                        <div class="mb-4">
                             <label class="form-label">Receipt URL</label>
                             <input class="form-control" value="{{ $gift_card_purchase->receipt_url }}" readonly>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Refund Status</label>
+                            <input class="form-control" value="{{ $gift_card_purchase->refund_status }}" readonly>
                         </div>
                     </div>
                 </div>

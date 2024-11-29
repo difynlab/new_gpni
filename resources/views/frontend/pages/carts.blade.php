@@ -43,7 +43,7 @@
                                                 <i class="bi bi-plus-circle" onclick="updateQuantity({{ $item->id }}, 'increase')" style="cursor: pointer;"></i>
                                             </div>
 
-                                            <span class="price total-product-price" id="total-price-{{ $item->id }}" style="font-size: 20px;">${{ $item->total_price }}</span>
+                                            <span class="price total-product-price" id="total-price-{{ $item->id }}" style="font-size: 20px;">{{ $currency_symbol }}{{ $item->total_price }}</span>
                                         </div>
                                     
                                         <i class="bi bi-trash-fill fs-5" onclick="deleteItem({{ $item->id }})" style="cursor: pointer;"></i>
@@ -58,10 +58,10 @@
                             <h5 class="section-header">Order Summary</h5>
                             <div class="content">
                                 <p>No. of items: {{ $items->sum('quantity') }}</p>
-                                <p>Shipping Fee: <span>${{ number_format($shipping_cost, 2) }}</span></p>
-                                <p>Sub total: <span class="sub-total-price">${{ number_format($items->sum('total_price'), 2) }}</span></p>
+                                <p>Shipping Fee: <span>{{ $currency_symbol }}{{ number_format($shipping_cost, 2) }}</span></p>
+                                <p>Sub total: <span class="sub-total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price'), 2) }}</span></p>
 
-                                <h5>Total: <span class="price total-price">${{ number_format($items->sum('total_price') + $shipping_cost, 2) }}</span></h5>
+                                <h5>Total: <span class="price total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price') + $shipping_cost, 2) }}</span></h5>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-custom">Place Order</button>
@@ -103,7 +103,7 @@
                                 </div>
                                 <span class="product-name py-2">{{ $product->name }}</span>
                                 <div class="product-details">
-                                    <span class="price">${{ $product->price }}</span>
+                                    <span class="price">{{ $currency_symbol }}{{ $product->price }}</span>
                                 </div>
                             </div>
 

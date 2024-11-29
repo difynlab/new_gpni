@@ -66,8 +66,6 @@
                         @else
                             <form action="{{ route('frontend.membership.checkout') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="price" value="{{ App\Models\Setting::find(1)->membership_price }}">
-
                                 <button type="submit" class="btn-pay-now">{{ $contents->{'section_3_button_' . $middleware_language} ?? $contents->section_3_button_en }}</button>
                             </form>
                         @endif

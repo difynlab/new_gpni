@@ -24,6 +24,11 @@
                         </div>
 
                         <div class="mb-4">
+                            <label class="form-label">Currency</label>
+                            <input class="form-control" value="{{ strtoupper($course_purchase->currency) }}" readonly>
+                        </div>
+
+                        <div class="mb-4">
                             <label class="form-label">Time</label>
                             <input class="form-control" value="{{ $course_purchase->time }}" readonly>
                         </div>
@@ -37,11 +42,6 @@
                             <label class="form-label">Transaction ID</label>
                             <input class="form-control" value="{{ $course_purchase->transaction_id }}" readonly>
                         </div>
-
-                        <div>
-                            <label class="form-label">Refund Status</label>
-                            <input class="form-control" value="{{ $course_purchase->refund_status }}" readonly>
-                        </div>
                     </div>
 
                     <div class="col-6">
@@ -52,7 +52,7 @@
 
                         <div class="mb-4">
                             <label class="form-label">Amount Paid</label>
-                            <input class="form-control" value="{{ $course_purchase->amount_paid }}" readonly>
+                            <input class="form-control" value="{{ $course_purchase->currency === 'usd' ? '$' : '¥' }}{{ $course_purchase->amount_paid }}" readonly>
                         </div>
 
                         <div class="mb-4">
@@ -65,9 +65,14 @@
                             <input class="form-control" value="{{ $course_purchase->payment_status }}" readonly>
                         </div>
 
-                        <div>
+                        <div class="mb-4">
                             <label class="form-label">Receipt URL</label>
                             <input class="form-control" value="{{ $course_purchase->receipt_url }}" readonly>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Refund Status</label>
+                            <input class="form-control" value="{{ $course_purchase->refund_status }}" readonly>
                         </div>
                     </div>
                 </div>

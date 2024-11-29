@@ -58,10 +58,10 @@
                         <div class="form-group">
                             <label class="required fs-16">Select Amount</label>
                             <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(50)">$50</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(100)">$100</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(250)">$250</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(500)">$500</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(50)">{{ $currency_symbol }}50</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(100)">{{ $currency_symbol }}100</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(250)">{{ $currency_symbol }}250</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(500)">{{ $currency_symbol }}500</button>
                                 <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="customAmount()">Custom</button>
                             </div>
                         </div>

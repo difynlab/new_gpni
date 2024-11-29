@@ -15,19 +15,22 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        $currency_symbol = ($request->middleware_language === 'en') ? '$' : '¥';
+
         $categories = ProductCategory::where('language', $request->middleware_language_name)->where('status', '1')->get();
-        if($categories->isEmpty() && $request->middleware_language_name != 'English') {
-            $categories = ProductCategory::where('language', 'English')->where('status', '1')->get();
-        }
+        // if($categories->isEmpty() && $request->middleware_language_name != 'English') {
+        //     $categories = ProductCategory::where('language', 'English')->where('status', '1')->get();
+        // }
 
         $products = Product::where('language', $request->middleware_language_name)->where('status', '1')->get();
-        if($products->isEmpty() && $request->middleware_language_name != 'English') {
-            $products = Product::where('language', 'English')->where('status', '1')->get(8);
-        }
+        // if($products->isEmpty() && $request->middleware_language_name != 'English') {
+        //     $products = Product::where('language', 'English')->where('status', '1')->get(8);
+        // }
 
         return view('frontend.pages.products', [
             'categories' => $categories,
-            'products' => $products
+            'products' => $products,
+            'currency_symbol' => $currency_symbol
         ]);
     }
 
@@ -36,8 +39,19 @@ class ProductController extends Controller
         $products = $request->products;
         $quantities = $request->quantities;
 
+        if($request->middleware_language == 'en') {
+            $currency = 'usd';
+        }
+        elseif($request->middleware_language == 'zh') {
+            $currency = 'cny';
+        }
+        else {
+            $currency = 'jpy';
+        }
+
         $product_order = new ProductOrder();
         $product_order->user_id = Auth::user()->id;
+        $product_order->currency = $currency;
         $product_order->status = '1';
         $product_order->save();
 
@@ -58,7 +72,7 @@ class ProductController extends Controller
             $total_order_amount += $product_order_detail->total_cost;
         }
 
-        $total_order_amount_in_cents = $total_order_amount * 100;
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$total_order_amount : (int)($total_order_amount * 100);
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
@@ -66,7 +80,7 @@ class ProductController extends Controller
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'usd',
+                        'currency' => $currency,
                         'product_data' => [
                             'name' => 'Your Order Payment'
                         ],

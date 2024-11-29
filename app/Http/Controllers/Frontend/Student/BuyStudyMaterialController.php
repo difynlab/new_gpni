@@ -33,21 +33,34 @@ class BuyStudyMaterialController extends Controller
 
     public function checkout(Request $request)
     {
+        $course = Course::find($request->course_id);
+
+        if($course->language == 'English') {
+            $currency = 'usd';
+        }
+        elseif($course->language == 'Chinese') {
+            $currency = 'cny';
+        }
+        else {
+            $currency = 'jpy';
+        }
+
         $material_purchase = new MaterialPurchase();
         $material_purchase->user_id = Auth::user()->id;
         $material_purchase->course_id = $request->course_id;
+        $material_purchase->currency = $currency;
         $material_purchase->status = '1';
         $material_purchase->save();
 
         $course = Course::where('status', '1')->find($request->course_id);
-        $total_order_amount_in_cents = $course->material_logistic_price * 100;
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$course->material_logistic_price : (int)($course->material_logistic_price * 100);
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $session = \Stripe\Checkout\Session::create([
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'usd',
+                        'currency' => $currency,
                         'product_data' => [
                             'name' => $course->title
                         ],

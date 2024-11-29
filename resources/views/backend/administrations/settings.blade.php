@@ -15,14 +15,24 @@
                 <p class="inner-page-title">Site Details <span>(Important)</span></p>
 
                 <div class="row form-input">
-                    <div class="col-6 mb-4">
+                    <div class="col-12 mb-4">
                         <label for="name" class="form-label">Name<span class="asterisk">*</span></label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $settings->name) }}" placeholder="Name" required>
                     </div>
 
-                    <div class="col-6 mb-4">
-                        <label for="membership_price" class="form-label">Membership Price<span class="asterisk">*</span></label>
-                        <input type="text" class="form-control" id="membership_price" name="membership_price" value="{{ old('membership_price', $settings->membership_price) }}" placeholder="Membership Price" required>
+                    <div class="col-4 mb-4">
+                        <label for="membership_price_en" class="form-label">Membership Price (English)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="membership_price_en" name="membership_price_en" value="{{ old('membership_price_en', $settings->membership_price_en) }}" placeholder="Membership Price (English)" required>
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <label for="membership_price_zh" class="form-label">Membership Price (Chinese)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="membership_price_zh" name="membership_price_zh" value="{{ old('membership_price_zh', $settings->membership_price_zh) }}" placeholder="Membership Price (Chinese)" required>
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <label for="membership_price_ja" class="form-label">Membership Price (Japanese)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="membership_price_ja" name="membership_price_ja" value="{{ old('membership_price_ja', $settings->membership_price_ja) }}" placeholder="Membership Price (Japanese)" required>
                     </div>
 
                     <div class="col-4 mb-4">

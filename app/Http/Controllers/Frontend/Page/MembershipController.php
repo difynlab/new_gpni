@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MembershipContent;
 use App\Models\FAQ;
 use App\Models\MembershipPurchase;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,19 +30,33 @@ class MembershipController extends Controller
 
     public function checkout(Request $request)
     {
+        if($request->middleware_language == 'en') {
+            $currency = 'usd';
+            $amount = Setting::find(1)->membership_price_en;
+        }
+        elseif($request->middleware_language == 'zh') {
+            $currency = 'cny';
+            $amount = Setting::find(1)->membership_price_zh;
+        }
+        else {
+            $currency = 'jpy';
+            $amount = Setting::find(1)->membership_price_ja;
+        }
+
         $membership_purchase = new MembershipPurchase();
         $membership_purchase->user_id = Auth::user()->id;
+        $membership_purchase->currency = $currency;
         $membership_purchase->status = '1';
         $membership_purchase->save();
 
-        $total_order_amount_in_cents = $request->price * 100;
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$amount : (int)($amount * 100);
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $session = \Stripe\Checkout\Session::create([
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'usd',
+                        'currency' => $currency,
                         'product_data' => [
                             'name' => 'Membership'
                         ],

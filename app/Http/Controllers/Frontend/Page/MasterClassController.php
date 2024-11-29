@@ -18,6 +18,7 @@ class MasterClassController extends Controller
     public function index(Request $request)
     {
         $contents = MasterClassContent::find(1);
+        $currency_symbol = ($request->middleware_language === 'en') ? '$' : '¥';
 
         $faqs = FAQ::where('language', $request->middleware_language_name)->where('type', 'Master Class')->where('status', '1')->get();
         if($faqs->isEmpty() && $request->middleware_language_name != 'English') {
@@ -25,14 +26,14 @@ class MasterClassController extends Controller
         }
         
         $all_courses = Course::where('language', $request->middleware_language_name)->where('type', 'Masters')->where('status', '1')->paginate(6);
-        if($all_courses->isEmpty() && $request->middleware_language_name != 'English') {
-            $all_courses = Course::where('language', 'English')->where('type', 'Masters')->where('status', '1')->paginate(6);
-        }
+        // if($all_courses->isEmpty() && $request->middleware_language_name != 'English') {
+        //     $all_courses = Course::where('language', 'English')->where('type', 'Masters')->where('status', '1')->paginate(6);
+        // }
 
         $upcoming_courses = Course::where('language', $request->middleware_language_name)->where('course_status', 'Upcoming')->where('type', 'Masters')->where('status', '1')->paginate(6);
-        if($upcoming_courses->isEmpty() && $request->middleware_language_name != 'English') {
-            $upcoming_courses = Course::where('language', 'English')->where('course_status', 'Upcoming')->where('type', 'Masters')->where('status', '1')->paginate(6);
-        }
+        // if($upcoming_courses->isEmpty() && $request->middleware_language_name != 'English') {
+        //     $upcoming_courses = Course::where('language', 'English')->where('course_status', 'Upcoming')->where('type', 'Masters')->where('status', '1')->paginate(6);
+        // }
 
         $testimonials = Testimonial::where('language', $request->middleware_language_name)->where('type', 'Master Class')->where('status', '1')->get();
         if($testimonials->isEmpty() && $request->middleware_language_name != 'English') {
@@ -44,12 +45,15 @@ class MasterClassController extends Controller
             'faqs' => $faqs,
             'all_courses' => $all_courses,
             'upcoming_courses' => $upcoming_courses,
-            'testimonials' => $testimonials
+            'testimonials' => $testimonials,
+            'currency_symbol' => $currency_symbol
         ]);
     }
 
     public function show(Request $request, Course $course)
     {
+        $currency_symbol = ($request->middleware_language === 'en') ? '$' : '¥';
+
         $advisory_boards = AdvisoryBoard::where('language', $request->middleware_language_name)->where('status', '1')->get();
         if($advisory_boards->isEmpty() && $request->middleware_language_name != 'English') {
             $advisory_boards = AdvisoryBoard::where('language', 'English')->where('status', '1')->get();
@@ -66,27 +70,39 @@ class MasterClassController extends Controller
             'course' => $course,
             'advisory_boards' => $advisory_boards,
             'faqs' => $faqs,
-            'settings' => $settings
+            'settings' => $settings,
+            'currency_symbol' => $currency_symbol
         ]);
     }
 
     public function checkout(Request $request)
     {
+        if($request->middleware_language == 'en') {
+            $currency = 'usd';
+        }
+        elseif($request->middleware_language == 'zh') {
+            $currency = 'cny';
+        }
+        else {
+            $currency = 'jpy';
+        }
+
         $course_order = new CoursePurchase();
         $course_order->user_id = Auth::user()->id;
         $course_order->course_id = $request->course_id;
+        $course_order->currency = $currency;
         $course_order->status = '1';
         $course_order->save();
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
-        $total_order_amount_in_cents = $request->price * 100;
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$request->price : (int)($request->price * 100);
 
         $session = \Stripe\Checkout\Session::create([
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'usd',
+                        'currency' => $currency,
                         'product_data' => [
                             'name' => $request->course_name
                         ],

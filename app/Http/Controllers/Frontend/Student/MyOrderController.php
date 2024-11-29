@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\CoursePurchase;
+use App\Models\GiftCardPurchase;
 use App\Models\MaterialPurchase;
 use App\Models\MembershipPurchase;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,8 @@ class MyOrderController extends Controller
                         ->concat($material_purchases)
                         ->concat($membership_purchases)
                         ->sortByDesc(['date', 'time']);
+
+        // dd($purchases);
 
         return view('frontend.student.my-orders', [
             'purchases' => $purchases,

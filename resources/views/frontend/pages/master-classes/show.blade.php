@@ -100,7 +100,7 @@
                             <input type="hidden" name="payment_mode" value="payment">
                             <input type="hidden" name="price" value="{{ $course->price }}">
 
-                            <button type="submit" class="btn btn-primary btn-block" style="font-size: 20px; font-weight: 500; line-height: 30px;">Enroll Now for ${{ $course->price }}</button>
+                            <button type="submit" class="btn btn-primary btn-block" style="font-size: 20px; font-weight: 500; line-height: 30px;">Enroll Now for {{ $currency_symbol }}{{ $course->price }}</button>
                         </form>
                     @endif
                 @else

@@ -49,7 +49,7 @@
 
                 <div class="row form-input">
                     <div class="col-12">
-                        <div class="mb-4">
+                        <div class="mb-2">
                             <div class="row align-items-center mb-2">
                                 <div class="col-9">
                                     <label class="form-label mb-0">Book/s</label>
@@ -69,13 +69,16 @@
                                 <div class="col-3">
                                     <input type="file" class="form-control" name="book_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx">
                                 </div>
-                                <div class="col-12 mt-2">
-                                    <x-backend.input-error field="book_files.*"></x-backend.input-error>
-                                </div>
                             </div>
                         </div>
 
-                        <div class="mb-4">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <x-backend.input-error field="book_files.*"></x-backend.input-error>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
                             <div class="row align-items-center mb-2">
                                 <div class="col-9">
                                     <label class="form-label">Video/s</label>
@@ -95,9 +98,12 @@
                                 <div class="col-3">
                                     <input type="file" class="form-control" name="video_files[]" accept="video/*">
                                 </div>
-                                <div class="col-12 mt-2">
-                                    <x-backend.input-error field="video_files.*"></x-backend.input-error>
-                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <x-backend.input-error field="video_files.*"></x-backend.input-error>
                             </div>
                         </div>
 
@@ -132,7 +138,7 @@
 
                 <div class="row form-input">
                     <div class="col-12">
-                        <div class="mb-4">
+                        <div class="mb-2">
                             <div class="row align-items-center mb-2">
                                 <div class="col-9">
                                     <label class="form-label mb-0">Additional Video/s</label>
@@ -152,9 +158,12 @@
                                 <div class="col-3">
                                     <input type="file" class="form-control" name="additional_video_files[]" accept="video/*">
                                 </div>
-                                <div class="col-12 mt-2">
-                                    <x-backend.input-error field="additional_video_files.*"></x-backend.input-error>
-                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <x-backend.input-error field="additional_video_files.*"></x-backend.input-error>
                             </div>
                         </div>
 
@@ -178,7 +187,7 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div class="mb-2">
                             <div class="row align-items-center mb-2">
                                 <div class="col-9">
                                     <label class="form-label">Presentation Media/s</label>
@@ -198,9 +207,12 @@
                                 <div class="col-3">
                                     <input type="file" class="form-control" name="presentation_media_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx">
                                 </div>
-                                <div class="col-12 mt-2">
-                                    <x-backend.input-error field="presentation_media_files.*"></x-backend.input-error>
-                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <x-backend.input-error field="presentation_media_files.*"></x-backend.input-error>
                             </div>
                         </div>
                     </div>
@@ -231,10 +243,13 @@
                             <div class="col-3">
                                 <input type="file" class="form-control" name="downloadable_resource_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx">
                             </div>
-                            <div class="col-12 mt-2">
-                                <x-backend.input-error field="downloadable_resource_files.*"></x-backend.input-error>
-                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <x-backend.input-error field="downloadable_resource_files.*"></x-backend.input-error>
                     </div>
                 </div>
             </div>

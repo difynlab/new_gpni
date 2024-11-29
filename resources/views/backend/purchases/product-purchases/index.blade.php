@@ -59,7 +59,7 @@
                                     <td>{{ $product_purchase->user_id }}</td>
                                     <td>{{ $product_purchase->date_time }}</td>
                                     <td>{{ $product_purchase->transaction_id }}</td>
-                                    <td>{{ $product_purchase->amount_paid }}</td>
+                                    <td>{{ $product_purchase->currency === 'usd' ? '$' : '¥' }}{{ $product_purchase->amount_paid }}</td>
                                     <td>{!! $product_purchase->payment_status !!}</td>
                                     <td>{!! $product_purchase->action !!}</td>
                                 </tr>

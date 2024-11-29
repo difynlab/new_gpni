@@ -53,15 +53,15 @@
 
                     <tbody>
                         @if(count($material_purchases) > 0)
-                            @foreach($material_purchases as $course_purchase)
+                            @foreach($material_purchases as $material_purchase)
                                 <tr>
-                                    <td>#{{ $course_purchase->id }}</td>
-                                    <td>{{ $course_purchase->user_id }}</td>
-                                    <td>{{ $course_purchase->course_id }}</td>
-                                    <td>{{ $course_purchase->date_time }}</td>
-                                    <td>{{ $course_purchase->amount_paid }}</td>
-                                    <td>{!! $course_purchase->payment_status !!}</td>
-                                    <td>{!! $course_purchase->action !!}</td>
+                                    <td>#{{ $material_purchase->id }}</td>
+                                    <td>{{ $material_purchase->user_id }}</td>
+                                    <td>{{ $material_purchase->course_id }}</td>
+                                    <td>{{ $material_purchase->date_time }}</td>
+                                    <td>{{ $material_purchase->currency === 'usd' ? '$' : '¥' }}{{ $material_purchase->amount_paid }}</td>
+                                    <td>{!! $material_purchase->payment_status !!}</td>
+                                    <td>{!! $material_purchase->action !!}</td>
                                 </tr>
                             @endforeach
                         @else

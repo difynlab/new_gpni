@@ -16,12 +16,12 @@ class ArticleController extends Controller
 
         $articles = Article::where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'desc')->paginate(4);
         if($articles->isEmpty() && $request->middleware_language_name != 'English') {
-            $articles = Article::where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->get();
+            $articles = Article::where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->paginate(4);
         }
 
         $recommended_articles = Article::where('recommending', 'Yes')->where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'desc')->paginate(4);
         if($recommended_articles->isEmpty() && $request->middleware_language_name != 'English') {
-            $recommended_articles = Article::where('recommending', 'Yes')->where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->get();
+            $recommended_articles = Article::where('recommending', 'Yes')->where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->paginate(4);
         }
 
         $trending_articles = Article::where('trending', 'Yes')->where('language', $request->middleware_language_name)->where('status', '1')->orderBy('id', 'desc')->take(5)->get();

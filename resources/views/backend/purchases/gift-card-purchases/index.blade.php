@@ -57,7 +57,7 @@
                                     <td>#{{ $gift_card_purchase->id }}</td>
                                     <td>{{ $gift_card_purchase->receiver_email }}</td>
                                     <td>{{ $gift_card_purchase->date_time }}</td>
-                                    <td>{{ $gift_card_purchase->amount_paid }}</td>
+                                    <td>{{ $gift_card_purchase->currency === 'usd' ? '$' : '¥' }}{{ $gift_card_purchase->amount_paid }}</td>
                                     <td>{!! $gift_card_purchase->payment_status !!}</td>
                                     <td>{!! $gift_card_purchase->action !!}</td>
                                 </tr>

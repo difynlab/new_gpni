@@ -19,6 +19,11 @@
                         </div>
 
                         <div class="mb-4">
+                            <label class="form-label">Currency</label>
+                            <input class="form-control" value="{{ strtoupper($product_purchase->currency) }}" readonly>
+                        </div>
+
+                        <div class="mb-4">
                             <label class="form-label">Date</label>
                             <input class="form-control" value="{{ $product_purchase->date }}" readonly>
                         </div>
@@ -42,7 +47,7 @@
                     <div class="col-6">
                         <div class="mb-4">
                             <label class="form-label">Amount Paid</label>
-                            <input class="form-control" value="{{ $product_purchase->amount_paid }}" readonly>
+                            <input class="form-control" value="{{ $product_purchase->currency === 'usd' ? '$' : '¥' }}{{ $product_purchase->amount_paid }}" readonly>
                         </div>
 
                         <div class="mb-4">

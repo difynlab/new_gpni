@@ -24,18 +24,32 @@ class CertificationCourseController extends Controller
         ]);
     }
 
-    public function purchase(Course $course)
+    public function purchase(Request $request, Course $course)
     {
+        $currency_symbol = ($request->middleware_language === 'en') ? '$' : '¥';
+        
         return view('frontend.pages.certification-courses.payment', [
-            'course' => $course
+            'course' => $course,
+            'currency_symbol' => $currency_symbol
         ]);
     }
 
     public function checkout(Request $request)
     {
+        if($request->middleware_language == 'en') {
+            $currency = 'usd';
+        }
+        elseif($request->middleware_language == 'zh') {
+            $currency = 'cny';
+        }
+        else {
+            $currency = 'jpy';
+        }
+
         $course_order = new CoursePurchase();
         $course_order->user_id = Auth::user()->id;
         $course_order->course_id = $request->course_id;
+        $course_order->currency = $currency;
         $course_order->status = '1';
         $course_order->save();
 
@@ -44,23 +58,23 @@ class CertificationCourseController extends Controller
         if($request->payment_mode == 'payment') {
 
             if($request->material_logistic == 'No') {
-                $total_order_amount_in_cents = $request->price * 100;
+                $total_order_amount_in_cents = $currency === 'jpy' ? (int)$request->price : (int)($request->price * 100);
             }
             else {
-                $total_order_amount_in_cents = ($request->price + $request->material_logistic_price) * 100;
+                $total_order_amount_in_cents = $currency === 'jpy' ? (int)$request->price + $request->material_logistic_price : (int)($request->price + $request->material_logistic_price * 100);
             }
 
             $session = \Stripe\Checkout\Session::create([
                 'line_items' => [
                     [
                         'price_data' => [
-                            'currency' => 'usd',
+                            'currency' => $currency,
                             'product_data' => [
                                 'name' => $request->course_name
                             ],
                             'unit_amount' => $total_order_amount_in_cents
                         ],
-                        'quantity' => 1,
+                        'quantity' => 1
                     ]
                 ],
                 'mode' => 'payment',
@@ -72,10 +86,12 @@ class CertificationCourseController extends Controller
             $price_id = $request->price_id;
 
             $session = \Stripe\Checkout\Session::create([
-                'line_items' => [[
-                    'price' => $price_id,
-                    'quantity' => 1,
-                ]],
+                'line_items' => [
+                    [
+                        'price' => $price_id,
+                        'quantity' => 1
+                    ]
+                ],
                 'mode' => 'subscription',
                 'success_url' => route('frontend.certification-courses.success', ['course_order_id' => $course_order->id, 'material_logistic' => $request->material_logistic]) . '&session_id={CHECKOUT_SESSION_ID}',
                 'cancel_url' => route('frontend.certification-courses.show', $request->course_id)

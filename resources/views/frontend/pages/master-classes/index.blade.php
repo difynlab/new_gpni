@@ -65,7 +65,7 @@
                                                     
                                                     <div class="d-flex flex-column align-items-end">
                                                         <div class="card-price-label">PRICE</div>
-                                                        <div class="card-price">${{ $all_course->price }}</div>
+                                                        <div class="card-price">{{ $currency_symbol }}{{ $all_course->price }}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,7 +103,7 @@
                                                     
                                                     <div class="d-flex flex-column align-items-end">
                                                         <div class="card-price-label">PRICE</div>
-                                                        <div class="card-price">${{ $upcoming_course->price }}</div>
+                                                        <div class="card-price">{{ $currency_symbol }}{{ $upcoming_course->price }}</div>
                                                     </div>
                                                 </div>
                                             </div>

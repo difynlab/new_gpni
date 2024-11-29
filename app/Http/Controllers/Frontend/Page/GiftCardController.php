@@ -12,24 +12,37 @@ class GiftCardController extends Controller
     public function index(Request $request)
     {
         $contents = GiftCardContent::find(1);
+        $currency_symbol = ($request->middleware_language === 'en') ? '$' : '¥';
         $images = json_decode($contents->{'images_' . $request->middleware_language} ?? $contents->images_en);
 
         return view('frontend.pages.gift-cards', [
             'contents' => $contents,
-            'images' => $images
+            'images' => $images,
+            'currency_symbol' => $currency_symbol
         ]);
     }
 
     public function checkout(Request $request)
     {
+        if($request->middleware_language == 'en') {
+            $currency = 'usd';
+        }
+        elseif($request->middleware_language == 'zh') {
+            $currency = 'cny';
+        }
+        else {
+            $currency = 'jpy';
+        }
+
         $gift_card_purchase = new GiftCardPurchase();
         $gift_card_purchase->receiver_name = $request->receiver_name;
         $gift_card_purchase->receiver_email = $request->receiver_email;
         $gift_card_purchase->message = $request->message;
+        $gift_card_purchase->currency = $currency;
         $gift_card_purchase->status = '1';
         $gift_card_purchase->save();
 
-        $total_order_amount_in_cents = $request->amount * 100;
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$request->amount : (int)($request->amount * 100);
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
@@ -37,7 +50,7 @@ class GiftCardController extends Controller
             'line_items' => [
                 [
                     'price_data' => [
-                        'currency' => 'usd',
+                        'currency' => $currency,
                         'product_data' => [
                             'name' => 'Your Gift Card Payment'
                         ],

@@ -69,7 +69,7 @@
                                     <td>#{{ $course->id }}</td>
                                     <td>{{ $course->title }}</td>
                                     <td>{{ $course->type }}</td>
-                                    <td>${{ $course->price }}</td>
+                                    <td>{{ $course->price }}</td>
                                     <td>{{ $course->language }}</td>
                                     <td>{!! $course->module !!}</td>
                                     <td>{!! $course->status !!}</td>

@@ -7,6 +7,7 @@ use App\Models\CourseModule;
 use App\Models\CourseModuleExam;
 use App\Models\CoursePurchase;
 use App\Models\MembershipPurchase;
+use App\Models\Product;
 use App\Models\User;
 
 if(!function_exists('hasUserPurchasedCourse')) {
@@ -27,7 +28,7 @@ if(!function_exists('hasUserAddedToCart')) {
     function hasUserAddedToCart($user_id, $product_id)
     {
         $user = User::find($user_id);
-        $product = Course::find($product_id);
+        $product = Product::find($product_id);
 
         if(!$user || !$product) {
             return false;
@@ -100,6 +101,6 @@ if(!function_exists('hasUserPurchasedMembership')) {
             return false;
         }
 
-        return MembershipPurchase::where('user_id', $user_id)->where('status', '1')->exists();
+        return MembershipPurchase::where('user_id', $user_id)->where('payment_status', 'Completed')->where('status', '1')->exists();
     }
 }

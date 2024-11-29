@@ -34,7 +34,9 @@ return new class extends Migration
             $table->string('no_image');
             $table->string('no_profile_image');
 
-            $table->decimal('membership_price', 10, 2);
+            $table->decimal('membership_price_en', 10, 2);
+            $table->decimal('membership_price_zh', 10, 2);
+            $table->decimal('membership_price_ja', 10, 2);
             
             $table->timestamps();
         });

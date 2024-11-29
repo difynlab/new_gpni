@@ -57,7 +57,7 @@
                                     <td>#{{ $membership_purchase->id }}</td>
                                     <td>{{ $membership_purchase->user_id }}</td>
                                     <td>{{ $membership_purchase->date_time }}</td>
-                                    <td>{{ $membership_purchase->amount_paid }}</td>
+                                    <td>{{ $membership_purchase->currency === 'usd' ? '$' : '¥' }}{{ $membership_purchase->amount_paid }}</td>
                                     <td>{!! $membership_purchase->payment_status !!}</td>
                                     <td>{!! $membership_purchase->action !!}</td>
                                 </tr>

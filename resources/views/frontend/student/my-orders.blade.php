@@ -37,17 +37,13 @@
                                     </tr>
                                 @else
                                     @foreach($purchases as $purchase)
-                                    <tr>
-                                        @if(isset($purchase->course_id))
-                                            <td>Course Purchase</td>
-                                        @else
-                                            <td>Product Purchase</td>
-                                        @endif
-                                        <td>{{ $purchase->transaction_id }}</td>
-                                        <td>${{ $purchase->amount_paid }}</td>
-                                        <td>{{ $purchase->date . ' | ' . $purchase->time }}</td>
-                                        <td>{{ $purchase->payment_status }}</td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ $purchase->order_type }}</td>
+                                            <td>{{ $purchase->transaction_id }}</td>
+                                            <td>{{ $purchase->currency === 'usd' ? '$' : '¥' }}{{ $purchase->amount_paid }}</td>
+                                            <td>{{ $purchase->date . ' | ' . $purchase->time }}</td>
+                                            <td>{{ $purchase->payment_status }}</td>
+                                        </tr>
                                     @endforeach
                                 @endif
                             </tbody>

@@ -35,6 +35,9 @@ class CourseController extends Controller
 
             $course->module = '<a href="'. route('backend.courses.modules.index', $course->id) .'" class="message">Module/Chapter</a>';
 
+            $currency_symbol = ($course->language === 'English') ? '$' : '¥';
+            $course->price = $currency_symbol . '' . $course->price;
+
             $course->status = ($course->status == '1') ? '<span class="active-status">Active</span>' : '<span class="inactive-status">Inactive</span>';
         }
 
@@ -44,7 +47,6 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $items = $request->items ?? 10;
-
         $courses = Course::where('status', '!=', '0')->orderBy('id', 'desc')->paginate($items);
         $courses = $this->processCourses($courses);
 

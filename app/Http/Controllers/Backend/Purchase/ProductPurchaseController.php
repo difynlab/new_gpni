@@ -72,6 +72,11 @@ class ProductPurchaseController extends Controller
             $ordered_product->image = '<img src="'. asset('storage/backend/products/products/' . $product->thumbnail) .'" class="table-image">';
             $ordered_product->name = $product->name;
             $ordered_product->category = ProductCategory::find($product->product_category_id)->name;
+
+            $currency_symbol = ($product->language === 'English') ? '$' : '¥';
+            $ordered_product->price = $currency_symbol . '' . $ordered_product->price;
+            $ordered_product->shipping_cost = $currency_symbol . '' . $ordered_product->shipping_cost;
+            $ordered_product->total_cost = $currency_symbol . '' . $ordered_product->total_cost;
         }
 
         return view('backend.purchases.product-purchases.products', [

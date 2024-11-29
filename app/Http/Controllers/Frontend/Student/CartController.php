@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
+        $currency_symbol = ($request->middleware_language === 'en') ? '$' : '¥';
         $items = Cart::where('user_id', $user->id)->where('status', 'Active')->get();
 
         $shipping_cost = 0;
@@ -27,7 +28,8 @@ class CartController extends Controller
         return view('frontend.pages.carts', [
             'items' => $items,
             'other_products' => $other_products,
-            'shipping_cost' => $shipping_cost
+            'shipping_cost' => $shipping_cost,
+            'currency_symbol' => $currency_symbol,
         ]);
     }
 

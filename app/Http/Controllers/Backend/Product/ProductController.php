@@ -23,6 +23,9 @@ class ProductController extends Controller
 
             $product->category = ProductCategory::find($product->product_category_id)->name;
 
+            $currency_symbol = ($product->language === 'English') ? '$' : '¥';
+            $product->price = $currency_symbol . '' . $product->price;
+
             $product->status = ($product->status == '1') ? '<span class="active-status">Active</span>' : '<span class="inactive-status">Inactive</span>';
         }
 
