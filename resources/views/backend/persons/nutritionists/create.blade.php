@@ -68,8 +68,8 @@
                     </div>
 
                     <div class="col-12 mb-4">
-                        <label for="self_introduction" class="form-label">Self Introduction</label>
-                        <textarea class="form-control" rows="5" id="self_introduction" name="self_introduction" value="{{ old('self_introduction') }}" placeholder="Self Introduction">{{ old('self_introduction') }}</textarea>
+                        <label for="self_introduction" class="form-label">Self Introduction<span class="asterisk">*</span></label>
+                        <textarea class="form-control" rows="5" id="self_introduction" name="self_introduction" placeholder="Self Introduction" required>{{ old('self_introduction') }}</textarea>
                     </div>
 
                     <div class="col-12">
