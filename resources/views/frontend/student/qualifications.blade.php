@@ -19,10 +19,10 @@
                         <h1>Qualifications</h1>
                     </div>
 
-                    <form action="" method="POST">
+                    <form action="{{ route('frontend.qualifications') }}" method="GET">
                         <div class="search-bar">
                             <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" alt="Search Icon" width="18" height="18">
-                            <input type="text" placeholder="Search for Qualifications">
+                            <input type="text" name="qualification" placeholder="Search for Qualifications" value="{{ $qualification ?? '' }}">
                         </div>
                     </form>
 

@@ -455,15 +455,17 @@
                         <div class="d-flex justify-content-center">
                             <div class="w-100 w-md-50">
                                 <div class="custom-search-bar">
-                                    <div class="input-group mb-3 mt-5 d-flex justify-content-center align-items-center">
-                                        <span class="input-group-text" id="basic-addon1">
-                                            <i class="ps-3 bi bi-search"></i>
-                                        </span>
-                                        <input type="text" class="form-control form-control-lg p-3" placeholder="Search by name or certification number" aria-label="Search" aria-describedby="basic-addon1">
-                                        <div class="p-2 d-flex align-items-center">
-                                            <button class="btn btn-primary btn-lg search-button btn-responsive m-2" type="button">Search Now</button>
+                                    <form action="{{ route('frontend.nutritionists.index') }}" method="GET">
+                                        <div class="input-group mb-3 mt-5 d-flex justify-content-center align-items-center">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="ps-3 bi bi-search"></i>
+                                            </span>
+                                            <input type="text" class="form-control form-control-lg p-3" name="nutritionist" placeholder="Search by name or certification number" aria-label="Search" aria-describedby="basic-addon1" required>
+                                            <div class="p-2 d-flex align-items-center">
+                                                <button class="btn btn-primary btn-lg search-button btn-responsive m-2" type="submit">Search Now</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

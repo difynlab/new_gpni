@@ -96,6 +96,7 @@ Route::middleware(['set_language'])->group(function () {
         });
     // Page routes
 
+
     // Subscription route
         Route::post('subscription', [SubscriptionController::class, 'store'])->name('subscription');
     // Subscription route

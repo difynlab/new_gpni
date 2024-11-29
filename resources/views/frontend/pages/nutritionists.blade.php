@@ -18,10 +18,12 @@
                     <h1 class="fs-49">{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h1>
                     <h1 class="fs-39">{{ $contents->{'sub_title_' . $middleware_language} ?? $contents->sub_title_en }}</h1>
 
-                    <div class="search-field">
-                        <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" alt="Search Icon">
-                        <input type="text" placeholder="Search for courses">
-                    </div>
+                    <form action="{{ route('frontend.nutritionists.index') }}" method="GET">
+                        <div class="search-field">
+                            <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" alt="Search Icon">
+                            <input type="text" name="nutritionist" value="{{ $nutritionist ?? '' }}" placeholder="Search">
+                        </div>
+                    </form>
                 </div>
             </section>
         </div>
@@ -44,7 +46,7 @@
                                     <div class="coach-location-row">
                                         <div class="coach-location-item">
                                             <img src="{{ asset('storage/frontend/globe-icon.svg') }}" alt="Location Icon" width="20px" height="20px">
-                                            <span>Australia</span>
+                                            <span>{{ $nutritionist->country }}</span>
                                         </div>
                                         <div class="coach-location-item" id="{{ $nutritionist->id }}">
                                             <img src="{{ asset('storage/frontend/connect-icon.svg') }}" alt="Contact Icon" width="20px" height="20px">
