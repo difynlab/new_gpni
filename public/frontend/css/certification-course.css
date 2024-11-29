@@ -1,7 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #fff;
-    padding-top: 120px;
+    padding-top: 90px;
 }
 .header-section {
     margin: 0 auto;
@@ -17,7 +17,6 @@ body {
 }
 .certification-section .title {
     font-weight: 500;
-    font-size: 49px;
     line-height: 140%;
     color: #0040c3;
     margin-bottom: 25px;
@@ -44,7 +43,6 @@ body {
 }
 .header-section .description {
     font-weight: 400;
-    font-size: 16px;
     line-height: 160%;
     color: #505050;
 }
@@ -52,7 +50,6 @@ a.btn-primary {
     background-color: #0040c3;
     border: none;
     font-weight: 500;
-    font-size: 20px;
     line-height: 30px;
     padding: 10px;
     border-radius: 5px;
@@ -75,23 +72,10 @@ a.btn-primary {
     }
 }
 
-
-
-
-
-.video-section video {
-    width: 100%;
-    height: auto;
-}
-
-
-
-
 @media (max-width: 768px) {
     .header-section {
         padding: 20px;
     }
-
 }
 
 .course-details {
@@ -106,24 +90,25 @@ a.btn-primary {
 
 .course-item .label {
     font-weight: 400;
-    font-size: 20px;
     line-height: 140%;
     color: #505050;
 }
 
 .course-item .value {
     font-weight: 400;
-    font-size: 20px;
     line-height: 140%;
     color: #9a9a9a;
     margin-top: 8px;
 }
 
-/* Line 41 */
-.line-divider {
-    height: 52px;
-    border-left: 1px solid #d3d3d3;
-    margin: 0 20px;
+.vertical-line {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 50%;
+    background-color: #d3d3d3;
 }
 
 @media (max-width: 768px) {
@@ -131,7 +116,7 @@ a.btn-primary {
         margin: 10px 0;
     }
 
-    .line-divider {
+    .vertical-line {
         display: none;
     }
 }
@@ -145,7 +130,6 @@ a.btn-primary {
     background-size: cover;
 }
 
-
 .image-section {
     flex: 1;
     display: flex;
@@ -154,12 +138,10 @@ a.btn-primary {
 
 .text-section {
     flex: 1;
-    padding-left: 150px;
 }
 
 .text-section h1 {
     font-weight: 500;
-    font-size: 37px;
     line-height: 120%;
     color: #0e0e0e;
     margin-bottom: 30px;
@@ -167,11 +149,9 @@ a.btn-primary {
 
 .text-section .description {
     font-weight: 400;
-    font-size: 19px;
     line-height: 140%;
     color: #505050;
     margin-bottom: 24px;
-
 }
 
 .plan {
@@ -195,12 +175,12 @@ a.btn-primary {
 }
 
 .check-container {
-    display: flex;
-    align-items: center;
-    padding: 8px;
+    display: inline-block;
+    padding: 10px;
     background-color: #e6f0ff;
     border-radius: 8px;
     margin-bottom: 12px;
+    width: 3rem;
 }
 
 .plan-title {
@@ -211,10 +191,26 @@ a.btn-primary {
 
 .plan-description {
     font-weight: 400;
-    font-size: 16px;
     line-height: 160%;
     color: #4f4d55;
     margin-top: 8px;
+}
+
+.plan-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-description .check-container {
+    display: inline-block;
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+.plan-description .description-content strong {
+    display: block;
+    margin-bottom: 5px; /* Adjust as needed */
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 }
 
 .plans-payment {
@@ -222,7 +218,7 @@ a.btn-primary {
 }
 
 .image-section img {
-    width: 100%;
+    width: 60%;
     height: auto;
 }
 
@@ -268,11 +264,6 @@ a.btn-primary {
     font-size: 18px;
 }
 
-.plan-description {
-    font-size: 16px;
-    color: #6c757d;
-}
-
 
 /* .certification-section {
     margin-top: 50px;
@@ -283,7 +274,6 @@ a.btn-primary {
 .certification-section h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 49px;
     line-height: 120%;
     color: #0e0e0e;
     margin-bottom: 40px;
@@ -307,7 +297,6 @@ a.btn-primary {
 .certification-card p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 20px;
     line-height: 140%;
     color: #0e0e0e;
 }
@@ -338,20 +327,16 @@ a.btn-primary {
 
 .text-content {
     flex: 1;
-    min-width: 300px;
 }
 
 .text-content h1 {
     font-weight: 500;
-    font-size: 36px;
-    line-height: 54px;
     color: #0040c3;
     margin-bottom: 20px;
 }
 
 .text-content p {
     font-weight: 400;
-    font-size: 16px;
     line-height: 24px;
     color: #505050;
     margin-bottom: 0;
@@ -359,7 +344,6 @@ a.btn-primary {
 
 .testimonial-content {
     flex: 1;
-    min-width: 300px;
 }
 
 .testimonial-stars img {
@@ -394,18 +378,9 @@ a.btn-primary {
         padding: 30px;
     }
 
-    .content-wrapper {
-        flex-direction: column;
-    }
-
-    .text-content h1 {
-        font-size: 25px;
-        line-height: 42px;
-    }
 
     .text-content p,
     .testimonial-text {
-        font-size: 12px;
         line-height: 20px;
     }
 }
@@ -418,16 +393,12 @@ a.btn-primary {
 
 .team-section .title {
     font-weight: 500;
-    font-size: 39px;
-    line-height: 58.5px;
     color: #0e0e0e;
     margin-bottom: 10px;
 }
 
 .team-section .description {
     font-weight: 400;
-    font-size: 20px;
-    line-height: 30px;
     color: #505050;
     margin-bottom: 30px;
 }
@@ -445,26 +416,8 @@ a.btn-primary {
 
 .profile-card .name {
     font-weight: 400;
-    font-size: 24px;
-    line-height: 36px;
+    /* line-height: 36px; */
     color: #0040c3;
-}
-
-@media (max-width: 768px) {
-    .team-section .title {
-        font-size: 28px;
-        line-height: 42px;
-    }
-
-    .team-section .description {
-        font-size: 16px;
-        line-height: 24px;
-    }
-
-    .profile-card .name {
-        font-size: 18px;
-        line-height: 27px;
-    }
 }
 
 .enrollment-section {
@@ -474,16 +427,12 @@ a.btn-primary {
 
 .program-title {
     font-weight: 500;
-    font-size: 36px;
-    line-height: 54px;
     color: #0040c3;
     margin-bottom: 20px;
 }
 
 .program-description {
     font-weight: 400;
-    font-size: 20px;
-    line-height: 30px;
     color: #505050;
     margin-bottom: 20px;
 }
@@ -519,11 +468,6 @@ a.btn-primary {
 }
 
 @media (max-width: 768px) {
-    .program-title {
-        font-size: 28px;
-        line-height: 42px;
-    }
-
     .program-description,
     .btn-custom {
         font-size: 16px;
@@ -541,7 +485,6 @@ a.btn-primary {
 
 .content-header .nav-link {
     font-weight: 500;
-    font-size: 20px;
     color: #898989;
     line-height: 140%;
     margin-right: 20px;
@@ -644,7 +587,6 @@ a.btn-primary {
 }
 
 .nav-tabs .nav-link {
-    font-size: 20px;
     font-weight: 500;
     color: #898989;
     border: none;
@@ -1001,7 +943,6 @@ course-content {
     text-align: center;
     border-radius: 5px;
     font-weight: 500;
-    font-size: 20px;
     text-decoration: none;
     margin-top: 20px;
 }
@@ -1018,7 +959,6 @@ course-content {
     }
 
     .gpni-btn {
-        font-size: 18px;
         padding: 10px 15px;
     }
 }
@@ -1037,7 +977,6 @@ course-content {
 
 .advisory-board-title {
     font-weight: 500;
-    font-size: 39px;
     line-height: 120%;
     color: #0e0e0e;
     margin-bottom: 40px;
@@ -1065,7 +1004,6 @@ course-content {
 
 .advisory-board-name {
     font-weight: 500;
-    font-size: 20px;
     line-height: 120%;
     color: #000000;
 }
@@ -1079,7 +1017,6 @@ course-content {
 
 .view-more-link {
     font-weight: 500;
-    font-size: 20px;
     line-height: 30px;
     color: #0040c3;
     display: inline-flex;
@@ -1092,17 +1029,6 @@ course-content {
     margin-left: 10px;
 }
 
-@media (max-width: 768px) {
-    .advisory-board-title {
-        font-size: 28px;
-        line-height: 42px;
-    }
-
-    .view-more-link {
-        font-size: 18px;
-    }
-}
-
 
 .payment-options-section {
     padding: 60px 20px;
@@ -1111,15 +1037,13 @@ course-content {
 
 .payment-options-title {
     font-weight: 500;
-    font-size: 39px;
-    line-height: 58.5px;
+    line-height: 1.2;
     color: #0e0e0e;
     margin-bottom: 20px;
 }
 
 .payment-options-description {
     font-weight: 400;
-    font-size: 20px;
     line-height: 30px;
     color: #505050;
     margin-bottom: 50px;
@@ -1181,6 +1105,21 @@ course-content {
     color: #0e0e0e;
 }
 
+.enroll-button{
+    line-height: normal;
+    color: #fff !important;
+    background-color: #0040c3 !important;
+    padding: auto;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500 !important;
+}
+
+.explore-lesson {
+    color: #fff !important;
+}
+
+
 .btn-enroll,
 .btn-contact {
     display: inline-block;
@@ -1202,14 +1141,6 @@ course-content {
 }
 
 @media (max-width: 768px) {
-    .payment-options-title {
-        font-size: 28px;
-    }
-
-    .payment-options-description {
-        font-size: 16px;
-    }
-
     .btn-enroll,
     .btn-contact {
         padding: 10px 15px;
@@ -1253,7 +1184,6 @@ course-content {
 
 .student-testimonial-quote {
     font-weight: 500;
-    font-size: 32px;
     line-height: 48px;
     color: #0040c3;
     margin-bottom: 40px;
@@ -1261,7 +1191,6 @@ course-content {
 
 .student-testimonial-author {
     font-weight: 400;
-    font-size: 16px;
     line-height: 24px;
     color: #505050;
 }
@@ -1271,18 +1200,6 @@ course-content {
         flex-direction: column;
     }
 
-    .student-testimonial-quote {
-        font-size: 24px;
-        line-height: 36px;
-    }
-
-    .student-testimonial-header .header-text {
-        font-size: 18px;
-    }
-
-    .student-testimonial-author {
-        font-size: 14px;
-    }
 }
 
 .student-reviews-section {
@@ -1308,7 +1225,6 @@ course-content {
 
 .student-review-name {
     font-weight: 500;
-    font-size: 20px;
     line-height: 30px;
     color: #0040c3;
     margin-bottom: 10px;
@@ -1316,7 +1232,6 @@ course-content {
 
 .student-review-text {
     font-weight: 400;
-    font-size: 16px;
     line-height: 24px;
     color: #505050;
     margin-bottom: 20px;
@@ -1363,13 +1278,6 @@ course-content {
 }
 
 @media (max-width: 768px) {
-    .student-review-name {
-        font-size: 18px;
-    }
-
-    .student-review-text {
-        font-size: 14px;
-    }
 
     .student-review-footer {
         flex-direction: column;
@@ -1390,7 +1298,6 @@ course-content {
 
 .advanced-certification-title {
     font-weight: 500;
-    font-size: 39px;
     text-align: center;
     line-height: 140%;
     color: #0e0e0e;
@@ -1399,7 +1306,6 @@ course-content {
 
 .advanced-certification-text {
     font-weight: 400;
-    font-size: 20px;
     line-height: 180%;
     color: #505050;
 }
@@ -1432,10 +1338,8 @@ course-content {
 
 .contact-us-btn {
     font-weight: 500;
-    font-size: 20px;
     color: #0040c3;
     text-decoration: none;
-    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1471,18 +1375,6 @@ course-content {
     padding: 10px 20px;
 }
 
-@media (max-width: 768px) {
-    .advanced-certification-title {
-        font-size: 28px;
-        line-height: 42px;
-    }
-
-    .advanced-certification-text {
-        font-size: 16px;
-        line-height: 24px;
-    }
-}
-
 
 .masters-pack-section {
     padding: 60px 20px;
@@ -1512,7 +1404,6 @@ course-content {
 
 .masters-pack-title {
     font-weight: 600;
-    font-size: 36px;
     line-height: 54px;
     margin-bottom: 20px;
 }
@@ -1555,21 +1446,17 @@ course-content {
     gap: 10px;
 }
 
+.vertical-line {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 50%;
+    background-color: #d3d3d3;
+}
+
 @media (max-width: 768px) {
-    .masters-pack-title {
-        font-size: 28px;
-        line-height: 42px;
-    }
-
-    .masters-pack-subtitle {
-        font-size: 24px;
-        line-height: 36px;
-    }
-
-    .masters-pack-description {
-        font-size: 16px;
-        line-height: 24px;
-    }
 
     .btn-custom {
         font-size: 18px;
@@ -1580,4 +1467,87 @@ course-content {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+/* Define a media query for mobile */
+@media screen and (max-width: 480px) {
+
+    body {
+        padding-top: 0;
+    }
+
+    .fs-16{
+        font-size: 13px;
+    }
+    .plans-payment {
+        background: none;
+    }
+
+    .plan-description .description-content strong {
+        font-size: 14px;
+    }
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    body {
+        padding-top: 0;
+    }
+    .plans-payment {
+        background: none;
+    }
+    .plan-description .description-content strong {
+        font-size: 14px;
+    }
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+    .nav-tabs {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Section 2 Image */
+.section-2-image {
+    width: 653px;
+    height: 798px;
+}
+
+/* Section 4 Video */
+.section-4-video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.section-4-video {
+    width: 1200px;
+    height: 720px;
+}
+
+/* Section 7 Video */
+.section-7-video {
+    width: 650px;
+    height: 330px;
+}
+
+/* Section 9 Image */
+.section-9-image {
+    width: 342px;
+    height: 375px;
+}
+
+/* Section 10 Video */
+.section-10-video {
+    width: 586px;
+    height: 330px;
+}
+
+/* Section 15 Video */
+.section-15-video {
+    width: 608px;
+    height: 462px;
 }

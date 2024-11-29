@@ -759,3 +759,21 @@ figure.image img {
     width: 100%;
     object-fit: cover;
 }
+
+/* Ensure the dropdown arrow points to the right */
+.dropdown-submenu .dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-submenu .dropdown-toggle i.fa-angle-right {
+    transform: rotate(0deg);
+}
+
+/* Ensure the dropdown menu is aligned properly */
+.dropdown-submenu .dropdown-menu {
+    left: 100%;
+    top: 0;
+    margin-top: 0;
+    margin-left: 0;
+    border-radius: 0.25rem;
+}

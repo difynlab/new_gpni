@@ -47,7 +47,7 @@
                                                 alt="Main Image" class="img-fluid w-100">
                                             @endif
                                             <div class="share-icon position-absolute">
-                                                <button class="btn btn-light">
+                                                <button class="btn btn-light" onclick="shareContent('{{ $article->title }}', '{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}')">
                                                     <img src="{{ asset('storage/frontend/share-icon.svg') }}" alt="Share Icon">
                                                 </button>
                                             </div>
@@ -114,7 +114,7 @@
                                                 alt="Main Image" class="img-fluid w-100">
                                             @endif
                                             <div class="share-icon position-absolute">
-                                                <button class="btn btn-light">
+                                                <button class="btn btn-light" onclick="shareContent('{{ $recommended_article->title }}', '{{ asset('storage/backend/articles/articles/'. $recommended_article->thumbnail) }}')">
                                                     <img src="{{ asset('storage/frontend/share-icon.svg') }}" alt="Share Icon">
                                                 </button>
                                             </div>
@@ -291,3 +291,26 @@
     @endif
 
 @endsection
+
+@push('after-scripts')
+<script>
+    function shareContent(title, imagePath) {
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                text: `Check out this article: ${title}`,
+                url: window.location.href,
+            }).then(() => {
+                console.log('Thanks for sharing!');
+            }).catch(err => {
+                console.error('Error sharing:', err);
+            });
+        } else {
+            const shareUrl = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(`Check out this article: ${title}`);
+            const twitterUrl = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${text}`;
+            window.open(twitterUrl, '_blank');
+        }
+    }
+</script>
+@endpush

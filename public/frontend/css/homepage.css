@@ -405,7 +405,7 @@
 .expert-select {
     width: 100%;
     max-width: 185px; /* Adjust as needed */
-    height: auto;
+    height: 100%;
     border-radius: 50%; /* Ensures the image is a circle */
     object-fit: cover; /* Ensures the image covers the container without distortion */
 }

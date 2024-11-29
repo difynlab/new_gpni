@@ -19,8 +19,10 @@
 
                     <ul class="dropdown-menu" aria-labelledby="educationDropdown">
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#" id="internationalCoursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">International Courses</a>
-                            <ul class="dropdown-menu">
+                            <a class="dropdown-item dropdown-toggle" href="#" id="internationalCoursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                International Courses <i class="fa fa-angle-right ms-1"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="internationalCoursesDropdown">
                                 <?php 
                                     $certificate_courses = App\Models\Course::where('language', $middleware_language)->where('type', 'Certification')->where('status', '1')->get();
 
