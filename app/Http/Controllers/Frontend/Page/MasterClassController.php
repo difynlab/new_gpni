@@ -9,6 +9,7 @@ use App\Models\MasterClassContent;
 use App\Models\Course;
 use App\Models\CoursePurchase;
 use App\Models\Setting;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,11 +34,17 @@ class MasterClassController extends Controller
             $upcoming_courses = Course::where('language', 'English')->where('course_status', 'Upcoming')->where('type', 'Masters')->where('status', '1')->paginate(6);
         }
 
+        $testimonials = Testimonial::where('language', $request->middleware_language_name)->where('type', 'Master Class')->where('status', '1')->get();
+        if($testimonials->isEmpty() && $request->middleware_language_name != 'English') {
+            $testimonials = Testimonial::where('language', 'English')->where('type', 'Master Class')->where('status', '1')->get();
+        }
+
         return view('frontend.pages.master-classes.index', [
             'contents' => $contents,
             'faqs' => $faqs,
             'all_courses' => $all_courses,
-            'upcoming_courses' => $upcoming_courses
+            'upcoming_courses' => $upcoming_courses,
+            'testimonials' => $testimonials
         ]);
     }
 

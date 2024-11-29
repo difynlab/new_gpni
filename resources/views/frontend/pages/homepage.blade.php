@@ -239,7 +239,7 @@
         <div class="testimonial-container">
             <div class="container py-5">
                 <div class="text-center">
-                    <div class="mb-3 mb-md-5 testimonial-heading">
+                    <div class="mb-3 mb-md-5 testimonial-heading fs-49 fs-md-36 fs-25">
                         {{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}
                     </div>
                     <b class="mb-1 testimonial-body">
@@ -251,17 +251,17 @@
                     <div class="col-md-6 d-flex justify-content-center align-items-center">
                         <div class="student-video">
                             @if($contents->{'section_4_video_' . $middleware_language})
-                                <video controls>
+                                <video controls class="responsive-video">
                                     <source src="{{ asset('storage/backend/pages/' . $contents->{'section_4_video_' . $middleware_language}) }}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             @elseif($contents->section_4_video_en)
-                                <video controls>
+                                <video controls class="responsive-video">
                                     <source src="{{ asset('storage/backend/pages/' . $contents->section_4_video_en) }}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             @else
-                                <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}">
+                                <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" class="responsive-video">
                             @endif
                         </div>
                     </div>
@@ -308,13 +308,13 @@
                         <div class="row px-5 pb-5 gx-1 custom-row-gap">
                             @if($contents->{'section_5_images_' . $middleware_language})
                                 @foreach(json_decode($contents->{'section_5_images_' . $middleware_language}) as $section_5_image)
-                                    <div class="col-md-3 col-6 pt-2 pt-md-5 d-flex justify-content-center align-items-center">
+                                    <div class="col-md-3 col-6 d-flex justify-content-center align-items-center">
                                         <img src="{{ asset('storage/backend/pages/' . $section_5_image) }}" alt="Image" class="event-image img-fluid">
                                     </div>
                                 @endforeach
                             @else
                                 @foreach(json_decode($contents->section_5_images_en) as $section_5_image)
-                                    <div class="col-md-3 col-6 mt-5 d-flex justify-content-center align-items-center">
+                                    <div class="col-md-3 col-6 d-flex justify-content-center align-items-center">
                                         <img src="{{ asset('storage/backend/pages/' . $section_5_image) }}" alt="Image" class="event-image img-fluid">
                                     </div>
                                 @endforeach
@@ -324,7 +324,7 @@
                 @endif
             </div>
         </div>
-    @endif    
+    @endif
 
     @if($contents->section_6_title_en)
         <div class="journey-container">

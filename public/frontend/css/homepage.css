@@ -168,13 +168,26 @@
     padding: 0;
 }
 .testimonial-heading {
-    font-size: 3rem;
+    font-size: 3.062rem; /* fs-49 */
     color: #fff;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     text-align: center;
     margin-bottom: 50px;
 }
+
+@media (max-width: 1199.98px) {
+    .testimonial-heading {
+        font-size: 2.25rem; /* fs-36 */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .testimonial-heading {
+        font-size: 1.562rem; /* fs-25 */
+    }
+}
+
 .testimonial-body {
     font-size: 1.5rem;
     font-size: 20px;
@@ -185,7 +198,6 @@
 }
 .student-video {
     background-color: transparent;
-   /* Removed white background */
     border-radius: 10px;
     padding: 20px;
     text-align: center;
@@ -246,6 +258,31 @@
     transform: scale(1);
     z-index: 1;
 }
+.responsive-video {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Adjust the max-height as needed */
+    border-radius: 10px;
+    background-color: #000;
+}
+
+@media (max-width: 767.98px) {
+    .responsive-video {
+        max-height: 250px; /* Adjust the max-height for smaller screens */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .responsive-video {
+        max-height: 350px; /* Adjust the max-height for medium screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    .responsive-video {
+        max-height: 400px; /* Adjust the max-height for larger screens */
+    }
+}
 /* Partner Container */
 .partners-container{
     padding: auto;
@@ -267,7 +304,7 @@
 
 .event-image {
     width: auto; /* Ensure the image takes up the full width of its container */
-    height: 70%; /* Maintain aspect ratio */
+    height: 30%; /* Maintain aspect ratio */
     object-fit: fill; /* Ensure the image covers the container while maintaining aspect ratio */
 }
 
@@ -621,7 +658,7 @@
     margin-bottom: 0.5rem;
     color: #fff;
     font-family: 'Poppins', sans-serif;
-    font-size:2.3rem;
+    font-size:1.8rem;
     font-weight: 400;
 }
 .apply-now {
