@@ -55,18 +55,14 @@
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title">{{ $all_course->title }}</h5>
 
-                                                <p class="card-text line-clamp-2">{{ $all_course->short_description }}</p>
+                                                <p class="card-text">{{ \Illuminate\Support\Str::words($all_course->short_description, 6, '...') }}<a href="{{ route('frontend.master-classes.show', $all_course) }}" class="learn-more"> Learn More</a></p>
 
-                                                <div class="mt-auto d-flex justify-content-between align-items-center">
+                                                <div class="card-footer">
                                                     <a href="{{ route('frontend.master-classes.show', $all_course) }}" class="enroll-button">
                                                         <span>Enroll Now</span>
                                                         <img src="{{ asset('storage/frontend/small-arrow-right.svg') }}" alt="Arrow Icon" width="12" height="10">
                                                     </a>
-                                                    
-                                                    <div class="d-flex flex-column align-items-end">
-                                                        <div class="card-price-label">PRICE</div>
-                                                        <div class="card-price">{{ $currency_symbol }}{{ $all_course->price }}</div>
-                                                    </div>
+                                                    <div class="card-price">{{ $currency_symbol }}{{ $all_course->price }}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,18 +89,14 @@
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title">{{ $upcoming_course->title }}</h5>
 
-                                                <p class="card-text line-clamp-2">{{ $upcoming_course->short_description }}</p>
+                                                <p class="card-text">{{ \Illuminate\Support\Str::words($upcoming_course->short_description, 6, '...') }}<a href="{{ route('frontend.master-classes.show', $upcoming_course) }}" class="learn-more"> Learn More</a></p>
 
-                                                <div class="mt-auto d-flex justify-content-between align-items-center">
+                                                <div class="card-footer">
                                                     <a href="{{ route('frontend.master-classes.show', $upcoming_course) }}" class="enroll-button">
                                                         <span>Enroll Now</span>
                                                         <img src="{{ asset('storage/frontend/small-arrow-right.svg') }}" alt="Arrow Icon" width="12" height="10">
                                                     </a>
-                                                    
-                                                    <div class="d-flex flex-column align-items-end">
-                                                        <div class="card-price-label">PRICE</div>
-                                                        <div class="card-price">{{ $currency_symbol }}{{ $upcoming_course->price }}</div>
-                                                    </div>
+                                                    <div class="card-price">{{ $currency_symbol }}{{ $upcoming_course->price }}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,66 +131,65 @@
                 </div>
             </div>
         @endif
-
         @if($contents->section_4_title_en)
-            <div class="testimonial-container">
-                <div class="container py-5">
-                    <div class="text-center">
-                        <div class="mb-3 mb-md-5 testimonial-heading">
-                            {{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}
+        <div class="testimonial-container">
+            <div class="container py-5">
+                <div class="text-center">
+                    <div class="mb-3 mb-md-5 testimonial-heading fs-49 fs-md-36 fs-25">
+                        {{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}
+                    </div>
+                    <b class="mb-1 testimonial-body">
+                        {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en }}
+                    </b>
+                </div>
+
+                <div class="row g-4 pt-5">
+                    <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        <div class="student-video">
+                            @if($contents->{'section_4_video_' . $middleware_language})
+                                <video controls class="responsive-video">
+                                    <source src="{{ asset('storage/backend/pages/' . $contents->{'section_4_video_' . $middleware_language}) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            @elseif($contents->section_4_video_en)
+                                <video controls class="responsive-video">
+                                    <source src="{{ asset('storage/backend/pages/' . $contents->section_4_video_en) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            @else
+                                <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" class="responsive-video">
+                            @endif
                         </div>
-                        <b class="mb-1 testimonial-body">
-                            {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en }}
-                        </b>
                     </div>
 
-                    <div class="row g-4 pt-5">
-                        <div class="col-md-6 d-flex justify-content-center align-items-center">
-                            <div class="student-video">
-                                @if($contents->{'section_4_video_' . $middleware_language})
-                                    <video controls>
-                                        <source src="{{ asset('storage/backend/pages/' . $contents->{'section_4_video_' . $middleware_language}) }}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                @elseif($contents->section_4_video_en)
-                                    <video controls>
-                                        <source src="{{ asset('storage/backend/pages/' . $contents->section_4_video_en) }}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                @else
-                                    <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}">
-                                @endif
-                            </div>
-                        </div>
+                    <div class="col-md-6 testimonials-wrapper">
+                        @foreach($testimonials as $index => $testimonial)
+                            <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
+                                
+                                <img src="{{ asset('storage/frontend/testimonial-quote.svg') }}" alt="Quote Icon" class="quote">
 
-                        <div class="col-md-6 testimonials-wrapper">
-                            @foreach($testimonials as $index => $testimonial)
-                                <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
+                                <p>{{ $testimonial->content }}</p>
+
+                                <div class="author">
+                                    @if($testimonial->image)
+                                        <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
+                                    @else
+                                        <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}">
+                                    @endif
                                     
-                                    <img src="{{ asset('storage/frontend/testimonial-quote.svg') }}" alt="Quote Icon" class="quote">
-
-                                    <p>{{ $testimonial->content }}</p>
-
-                                    <div class="author">
-                                        @if($testimonial->image)
-                                            <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
-                                        @else
-                                            <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}">
-                                        @endif
-                                        
-                                        <div>
-                                            <p>{{ $testimonial->name }}</p>
-                                            <p>{{ $testimonial->designation }}</p>
-                                        </div>
+                                    <div>
+                                        <p>{{ $testimonial->name }}</p>
+                                        <p>{{ $testimonial->designation }}</p>
                                     </div>
-
                                 </div>
-                            @endforeach
-                        </div>
+
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-        @endif
+        </div>
+    @endif
 
         @if($contents->section_5_title_en)
             <div class="faq-container">
