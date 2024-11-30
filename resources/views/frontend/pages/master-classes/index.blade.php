@@ -17,10 +17,12 @@
                 <h1 class="title">{{ $contents->{'section_1_title_' . $middleware_language} ?? $contents->section_1_title_en }}</h1>
             </section>
 
-            <section class="search-section mt-5">
-                <input type="text" class="search-field" placeholder="Search">
-                <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" class="search-icon" alt="Search Icon">
-            </section>
+            <form action="{{ route('frontend.master-classes.index') }}" method="GET">
+                <section class="search-section mt-5">
+                    <input type="text" class="search-field" name="master_class" value="{{ $master_class ?? '' }}" placeholder="Search">
+                    <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" class="search-icon" alt="Search Icon">
+                </section>
+            </form>
 
             <header class="header-section">
                 <div>

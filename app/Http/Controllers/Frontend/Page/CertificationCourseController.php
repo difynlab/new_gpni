@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\AdvisoryBoard;
 use App\Models\Course;
 use App\Models\CoursePurchase;
+use App\Models\CourseReview;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,10 +19,19 @@ class CertificationCourseController extends Controller
         if($advisory_boards->isEmpty() && $request->middleware_language_name != 'English') {
             $advisory_boards = AdvisoryBoard::where('language', 'English')->where('status', '1')->orderBy('id', 'desc')->take(9)->get();
         }
+
+        $testimonials = Testimonial::where('language', $request->middleware_language_name)->where('type', 'Certification Course')->where('status', '1')->orderBy('id', 'desc')->get();
+        if($testimonials->isEmpty() && $request->middleware_language_name != 'English') {
+            $testimonials = Testimonial::where('language', 'English')->where('type', 'Certification Course')->where('status', '1')->orderBy('id', 'desc')->get();
+        }
+
+        $course_reviews = CourseReview::where('course_id', $course->id)->where('status', '1')->get();
         
         return view('frontend.pages.certification-courses.show', [
             'course' => $course,
-            'advisory_boards' => $advisory_boards
+            'advisory_boards' => $advisory_boards,
+            'testimonials' => $testimonials,
+            'course_reviews' => $course_reviews
         ]);
     }
 

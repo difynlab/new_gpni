@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('course_id');
             $table->string('name');
             $table->text('content');
-            $table->string('video')->nullable();
+            $table->string('image')->nullable();
             $table->string('rating');
             $table->enum('status', [0, 1, 2])->index();
             $table->timestamps();

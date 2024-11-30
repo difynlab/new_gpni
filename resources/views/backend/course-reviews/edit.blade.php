@@ -35,8 +35,8 @@
                         </div>
 
                         <div>
-                            <x-backend.upload-video old_name="old_video" old_value="{{ $course_review->video ?? old('video') }}" new_name="new_video" path="courses/course-reviews"></x-backend.upload-video>
-                            <x-backend.input-error field="new_video"></x-backend.input-error>
+                            <x-backend.upload-image old_name="old_image" old_value="{{ $course_review->image ?? old('image') }}" new_name="new_image" path="courses/course-reviews"></x-backend.upload-image>
+                            <x-backend.input-error field="new_image"></x-backend.input-error>
                         </div>
                     </div>
                 </div>
@@ -49,5 +49,5 @@
 @endsection
 
 @push('after-scripts')
-    <script src="{{ asset('backend/js/drag-drop-video.js') }}"></script>
+    <script src="{{ asset('backend/js/drag-drop-image.js') }}"></script>
 @endpush

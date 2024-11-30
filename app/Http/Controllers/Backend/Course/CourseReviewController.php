@@ -49,30 +49,30 @@ class CourseReviewController extends Controller
     public function store(Request $request, Course $course)
     {
         $validator = Validator::make($request->all(), [
-            'new_video' => 'nullable|max:5120'
+            'new_image' => 'nullable|max:2048'
         ], [
-            'new_video.max' => 'Video must not be greater than 5MB'
+            'new_image.max' => 'image must not be greater than 2MB'
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Creation failed!');
         }
 
-        if($request->file('new_video')) {
-            $new_video = $request->file('new_video');
-            $video_name = Str::random(40) . '.' . $new_video->getClientOriginalExtension();
-            $new_video->storeAs('public/backend/courses/course-reviews', $video_name);
+        if($request->file('new_image')) {
+            $new_image = $request->file('new_image');
+            $image_name = Str::random(40) . '.' . $new_image->getClientOriginalExtension();
+            $new_image->storeAs('public/backend/courses/course-reviews', $image_name);
         }
         else {
-            $video_name = null;
+            $image_name = null;
         }
 
         $course_review = new CourseReview();
         $data = $request->except(
-            'old_video',
-            'new_video'
+            'old_image',
+            'new_image'
         );
-        $data['video'] = $video_name;
+        $data['image'] = $image_name;
         $data['course_id'] = $course->id;
 
         $course_review->create($data);
@@ -91,34 +91,34 @@ class CourseReviewController extends Controller
     public function update(Request $request, Course $course, CourseReview $course_review)
     {
         $validator = Validator::make($request->all(), [
-            'new_video' => 'nullable|max:5120'
+            'new_image' => 'nullable|max:2048'
         ], [
-            'new_video.max' => 'The video must not be greater than 5MB'
+            'new_image.max' => 'The image must not be greater than 2MB'
         ]);
         
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Update failed!');
         }
 
-        if($request->file('new_video')) {
-            if($request->old_video) {
-                Storage::delete('public/backend/courses/course-reviews/' . $request->old_video);
+        if($request->file('new_image')) {
+            if($request->old_image) {
+                Storage::delete('public/backend/courses/course-reviews/' . $request->old_image);
             }
 
-            $new_video = $request->file('new_video');
-            $video_name = Str::random(40) . '.' . $new_video->getClientOriginalExtension();
-            $new_video->storeAs('public/backend/courses/course-reviews', $video_name);
+            $new_image = $request->file('new_image');
+            $image_name = Str::random(40) . '.' . $new_image->getClientOriginalExtension();
+            $new_image->storeAs('public/backend/courses/course-reviews', $image_name);
         }
         else {
-            $video_name = $request->old_video;
+            $image_name = $request->old_image;
         }
 
         $data = $request->except(
-            'old_video',
-            'new_video'
+            'old_image',
+            'new_image'
         );
 
-        $data['video'] = $video_name;
+        $data['image'] = $image_name;
         $data['course_id'] = $course->id;
         $course_review->fill($data)->save();
 

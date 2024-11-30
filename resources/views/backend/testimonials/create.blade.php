@@ -51,6 +51,7 @@
                             <option value="">Select type</option>
                             <option value="Common" {{ old('type') == 'Common' ? 'selected' : '' }}>Common</option>
                             <option value="Master Class" {{ old('type') == 'Master Class' ? 'selected' : '' }}>Master Class</option>
+                            <option value="Certification Course" {{ old('type') == 'Certification Course' ? 'selected' : '' }}>Certification Course</option>
                         </select>
                     </div>
 

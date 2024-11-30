@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('designation');
             $table->enum('rate', ['1', '2', '3', '4', '5']);
-            $table->enum('type', ['Common', 'Master Class']);
+            $table->enum('type', ['Common', 'Master Class', 'Certification Course']);
             $table->string('image')->nullable();
             $table->text('content');
             $table->enum('status', [0, 1, 2])->index();

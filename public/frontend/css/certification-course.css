@@ -21,6 +21,9 @@ body {
     color: #0040c3;
     margin-bottom: 25px;
 }
+.bi-star-fill {
+    color: #fdd70c;
+}
 .certification-section .certificates-container {
     margin-bottom: 25px;
 }

@@ -492,11 +492,14 @@
                     <p class="inner-page-title">Section 14</p>
 
                     <div class="row form-input">
+                        <div class="col-12 mb-4">
+                            <label for="certification_section_14_title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="certification_section_14_title" name="certification_section_14_title" value="{{ $course->certification_section_14_title ?? '' }}" placeholder="Title">
+                        </div>
+
                         <div class="col-12">
-                            <div>
-                                <label for="certification_section_14_title" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="certification_section_14_title" name="certification_section_14_title" value="{{ $course->certification_section_14_title ?? '' }}" placeholder="Title">
-                            </div>
+                            <x-backend.upload-video old_name="old_certification_section_14_video" old_value="{{ $course->certification_section_14_video ?? '' }}" new_name="new_certification_section_14_video" path="courses/course-videos"></x-backend.upload-video>
+                            <x-backend.input-error field="new_certification_section_14_video"></x-backend.input-error>
                         </div>
                     </div>
                 </div>

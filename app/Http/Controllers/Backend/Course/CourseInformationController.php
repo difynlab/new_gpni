@@ -42,6 +42,12 @@ class CourseInformationController extends Controller
             'new_certification_section_7_video' => 'nullable|max:5120',
             'new_certification_section_9_image' => 'nullable|max:2048',
             'new_certification_section_10_video' => 'nullable|max:5120',
+            'new_certification_section_11_video' => 'nullable|max:5120',
+            'new_certification_section_14_video' => 'nullable|max:5120',
+            'new_certification_section_15_video' => 'nullable|max:5120',
+
+            'new_master_section_4_image' => 'nullable|max:2048',
+            'master_section_8_video_files.*' => 'nullable|max:5120',
         ], [
             'new_certification_section_2_image.max' => 'Image must not be greater than 2MB',
             'certification_section_3_point_files.*.max' => 'Each image must not be greater than 2MB',
@@ -50,6 +56,12 @@ class CourseInformationController extends Controller
             'new_certification_section_7_video.max' => 'Video must not be greater than 5MB',
             'new_certification_section_9_image.max' => 'Image must not be greater than 2MB',
             'new_certification_section_10_video.max' => 'Video must not be greater than 5MB',
+            'new_certification_section_11_video.max' => 'Video must not be greater than 5MB',
+            'new_certification_section_14_video.max' => 'Video must not be greater than 5MB',
+            'new_certification_section_15_video.max' => 'Video must not be greater than 5MB',
+
+            'new_master_section_4_image.max' => 'Image must not be greater than 2MB',
+            'master_section_8_video_files.*.max' => 'Each video must not be greater than 5MB',
         ]);
 
         if($validator->fails()) {
@@ -342,6 +354,26 @@ class CourseInformationController extends Controller
             }
         // Section 13 labels & links
 
+        // Section 14 video
+            if($request->file('new_certification_section_14_video')) {
+                if($request->old_certification_section_14_video) {
+                    Storage::delete('public/backend/courses/course-videos/' . $request->old_certification_section_14_video);
+                }
+
+                $new_certification_section_14_video = $request->file('new_certification_section_14_video');
+                $certification_section_14_video_name = Str::random(40) . '.' . $new_certification_section_14_video->getClientOriginalExtension();
+                $new_certification_section_14_video->storeAs('public/backend/courses/course-videos', $certification_section_14_video_name);
+            }
+            else {
+                if($course->certification_section_14_video) {
+                    $certification_section_14_video_name = $request->old_certification_section_14_video;
+                }
+                else {
+                    $certification_section_14_video_name = null;
+                }
+            }
+        // Section 14 video
+
         // Section 15 video
             if($request->file('new_certification_section_15_video')) {
                 if($request->old_certification_section_15_video) {
@@ -517,6 +549,8 @@ class CourseInformationController extends Controller
             'certification_section_13_table_third_points',
             'certification_section_13_button_labels',
             'certification_section_13_button_links',
+            'old_certification_section_14_video',
+            'new_certification_section_14_video',
             'old_certification_section_15_video',
             'new_certification_section_15_video',
             'certification_section_15_button_label',
@@ -554,6 +588,7 @@ class CourseInformationController extends Controller
         $data['certification_section_12_label_link'] = json_encode($certification_section_12_label_link);
         $data['certification_section_13_table_points'] = $certification_section_13_table_points;
         $data['certification_section_13_labels_links'] = $certification_section_13_labels_links;
+        $data['certification_section_14_video'] = $certification_section_14_video_name;
         $data['certification_section_15_video'] = $certification_section_15_video_name;
         $data['certification_section_15_label_link'] = json_encode($certification_section_15_label_link);
         $data['certification_section_15_points'] = $certification_section_15_points;

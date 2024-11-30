@@ -52,6 +52,7 @@
                         <select class="form-control form-select" id="type" name="type" required>
                             <option value="Common" {{ old('type', $testimonial->type) == 'Common' ? 'selected' : '' }}>Common</option>
                             <option value="Master Class" {{ old('type', $testimonial->type) == 'Master Class' ? 'selected' : '' }}>Master Class</option>
+                            <option value="Certification Course" {{ old('type', $testimonial->type) == 'Certification Course' ? 'selected' : '' }}>Certification Course</option>
                         </select>
                     </div>
 

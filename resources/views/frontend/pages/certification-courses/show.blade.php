@@ -34,8 +34,7 @@
 
             <div class="col-lg-5 col-md-12 mt-4 mt-lg-0">
                 <p class="description fs-16">
-                    <!-- {{ $course->short_description }} -->
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {{ $course->short_description }}
                 </p>
                 
                 @if(auth()->check())
@@ -272,37 +271,29 @@
                 </div>
 
                 <div class="tab-pane fade" id="review">
-                    <section class="testimonial-section">
-                        <div class="testimonial-header">
-                            <img src="{{ asset('storage/frontend/expert-image.svg') }}" alt="Lenka Sutra">
-                            <div>
-                                <div class="testimonial-name">Lenka Sutra</div>
-                                <div class="testimonial-stars">
-                                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating Stars">
+                    @if($course_reviews->isNotEmpty())
+                        <section class="testimonial-section">
+                            @foreach($course_reviews as $course_review)
+                                <div class="single-course-review">
+                                    <div class="testimonial-header">
+                                        <img src="{{ asset('storage/backend/courses/course-reviews/' . $course_review->image) }}" alt="{{ $course_review->name }}">
+                                        <div>
+                                            <div class="testimonial-name">{{ $course_review->name }}</div>
+                                            <div class="testimonial-stars">
+                                                @for($i = 0; $i < $course_review->rating; $i++)
+                                                    <i class="bi bi-star-fill star"></i>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="testimonial-content">{{ $course_review->content }}</div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-content">
-                            I was looking for the perfect course that combined theoretical knowledge and practical
-                            experience in
-                            sports nutrition for many years.
-                            <br><br>
-                            After much research, I chose The ISSN Sports Nutrition Specialist (SNS) on the GPNi® portal. I
-                            was
-                            greatly impressed with the new knowledge
-                            I gained also the course flow with the blend of on-demand content together with “live” online
-                            Zoom
-                            tutorials and class group.
-                            <br><br>
-                            For those in the fitness industry, I highly recommended getting ISSN certified on the GPNi®
-                            portal
-                            and upgrading your knowledge and career at the same time.
-                        </div>
-                    </section>
+                            @endforeach
+                        </section>
+                    @endif
                 </div>
             </div>
-
-
         </div>
 
         @if($course->certification_section_9_content)
@@ -455,88 +446,66 @@
                             <img src="{{ asset('storage/frontend/dash.svg') }}" alt="Line">
                             <div class="header-text fs-20">{{ $course->certification_section_14_title }}</div>
                         </div>
-                        <div class="student-testimonial-quote fs-32">“I was looking for the perfect course that combined theoretical
-                            knowledge and practical experience in sports nutrition for many years.</div>
-                        <div class="student-testimonial-author fs-16">Lenka Sutra</div>
-                        <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating Stars">
+
+                        @if($testimonials->isNotEmpty())
+                            @foreach($testimonials as $index => $testimonial)
+                                @if($index === 0)
+                                    <div class="student-testimonial-quote fs-32">"{{ $testimonial->content }}"</div>
+                                    <div class="student-testimonial-author fs-16">{{ $testimonial->name }}</div>
+
+                                    @for($i = 0; $i < $testimonial->rate; $i++)
+                                        <i class="bi bi-star-fill star"></i>
+                                    @endfor
+
+                                    @break
+                                @endif
+                            @endforeach
+                        @endif
                     </div>
-                    <div>
-                        <img src="{{ asset('storage/frontend/student-image.svg') }}" alt="Student Photo" class="img-fluid">
+
+                    <div class="video-section">
+                        <video controls class="w-100" style="border-radius: 35px;">
+                            <source src="{{ asset('storage/backend/courses/course-videos/' . $course->certification_section_14_video) }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
             </section>
 
-            <section class="student-reviews-section container">
-                <div class="row g-4">
-                    <div class="col-lg-4">
-                        <div class="student-review-card p-3">
-                            <h5 class="student-review-name fs-20">Bindi Wilson</h5>
-                            <p class="student-review-text fs-16">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <div class="student-review-footer">
-                                <div class="student-review-rating">
-                                    <span>Rated 5/5 stars</span>
-                                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Star">
+            @if(count($testimonials) > 1)
+                <section class="student-reviews-section container">
+                    <div class="row g-4">
+                        @foreach($testimonials as $index => $testimonial)
+                            @if($index !== 0)
+                                <div class="col-lg-4">
+                                    <div class="student-review-card p-3">
+                                        <h5 class="student-review-name fs-20">{{ $testimonial->name }}</h5>
+                                        <p class="student-review-text fs-16">{{ $testimonial->content }}</p>
+                                        <div class="student-review-footer">
+                                            <div class="student-review-rating">
+                                                <span>Rated {{ $testimonial->rate }}/5 stars</span>
+                                                
+                                                <span>
+                                                    @for($i = 0; $i < $testimonial->rate; $i++)
+                                                        <i class="bi bi-star-fill star"></i>
+                                                    @endfor
+                                                </span>
+                                            </div>
+                                            <!-- <div>
+                                                <p class="student-review-verified">Verified Student</p>
+                                                <p class="student-review-batch">
+                                                    <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="check" width="10px" height="10px">
+                                                    2022 Batch
+                                                </p>
+                                            </div> -->
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch">
-                                        <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="check" width="10px" height="10px">
-                                        2022 Batch
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
                     </div>
-                    <div class="col-lg-4">
-                        <div class="student-review-card p-3">
-                            <h5 class="student-review-name">Anne Marry</h5>
-                            <p class="student-review-text">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur. Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua.
-                            </p>
-                            <div class="student-review-footer">
-                                <div class="student-review-rating">
-                                    <span>Rated 5/5 stars</span>
-                                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Star">
-                                </div>
-                                <div>
-                                    <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch"> <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="check" width="10px"
-                                            height="10px">
-                                        2022 Batch</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="student-review-card p-3">
-                            <h5 class="student-review-name">Byron Rolfson</h5>
-                            <p class="student-review-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <div class="student-review-footer">
-                                <div class="student-review-rating">
-                                    <span>Rated 5/5 stars</span>
-                                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Star">
-                                </div>
-                                <div>
-                                    <p class="student-review-verified">Verified Student</p>
-                                    <p class="student-review-batch"> <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="check" width="10px"
-                                            height="10px">
-                                        2022 Batch</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            @endif
         @endif
 
         @if($course->certification_section_15_title)
