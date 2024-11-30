@@ -75,7 +75,7 @@
 
                     @if($contents->section_3_labels_contents_en)
                         <div class="accordion px-5" id="benefitsAccordion">
-                            @foreach(json_decode($contents->{'section_3_labels_contents' . $middleware_language} ?? $contents->section_3_labels_contents_en) as $key => $label_content)
+                            @foreach(json_decode($contents->{'section_3_labels_contents_' . $middleware_language} ?? $contents->section_3_labels_contents_en) as $key => $label_content)
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading{{ $key }}">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $key }}" aria-expanded="false" aria-controls="collapse{{ $key }}"> {{ $label_content->title }}</button>
