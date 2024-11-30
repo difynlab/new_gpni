@@ -25,10 +25,17 @@
                                         $all_previous_modules_completed = true;
 
                                         for($i = 0; $i < $key; $i++) {
-                                            if(
-                                                $course_modules[$i]->module_exam == 'Yes' &&
-                                                !hasStudentCompletedModuleExam($student->id, $course_modules[$i]->course_id, $course_modules[$i]->id)
-                                            ) {
+                                            $module = $course_modules[$i];
+
+                                            if($module->module_exam == 'Yes' && hasStudentCompletedModuleExam($student->id, $module->course_id, $module->id)) {
+                                                $exam_result = $module->course_module_exam['result'] ?? null;
+
+                                                if($exam_result !== 'Pass') {
+                                                    $all_previous_modules_completed = false;
+                                                    break;
+                                                }
+                                            }
+                                            elseif($module->module_exam == 'Yes' && !hasStudentCompletedModuleExam($student->id, $module->course_id, $module->id)) {
                                                 $all_previous_modules_completed = false;
                                                 break;
                                             }
@@ -38,7 +45,7 @@
                                     <div class="col-8">
                                         <h2>{{ $course_module->title }}</h2>
                                         @if($course_module->module_exam == 'Yes')
-                                            @if(hasStudentCompletedModuleExam($student->id, $course_module->course_id, $course_module->id))
+                                            @if(hasStudentCompletedModuleExam($student->id, $course_module->course_id, $course_module->id) && $course_module->course_module_exam['result'] == 'Pass')
                                                 <span class="completed-badge">Completed</span>
                                             @else
                                                 @if($all_previous_modules_completed)

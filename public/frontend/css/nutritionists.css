@@ -264,6 +264,12 @@ body {
     margin-top: 20px;
 }
 
+.pagination .page-link {
+    font-size: 14px;
+    border: none;
+    box-shadow: none;
+}
+
 /* Profile Section */
 .profile-content {
     background: #fff;

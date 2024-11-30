@@ -123,13 +123,13 @@
                 </div>
             </div>
 
-            <div class="accordion" id="Persons-accordion">
-                <button class="link accordion-dropdown collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Persons-data-collapse">
+            <div class="accordion" id="persons-accordion">
+                <button class="link accordion-dropdown collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#persons-data-collapse">
                     <img src="{{ asset('storage/backend/sidebar/user.png') }}" alt="Icon">
                     <span>Persons</span>
                 </button>
 
-                <div id="Persons-data-collapse" class="accordion-collapse collapse {{ in_array(Request::segment(3), ['admins', 'students', 'nutritionists', 'advisory-boards', 'issn-partners']) ? 'show' : '' }}" data-bs-parent="#Persons-accordion">
+                <div id="persons-data-collapse" class="accordion-collapse collapse {{ in_array(Request::segment(3), ['admins', 'students', 'nutritionists', 'advisory-boards', 'issn-partners', 'global-education-partners']) ? 'show' : '' }}" data-bs-parent="#persons-accordion">
                     <div class="accordion-body">
                         <ul>
                             <li><a href="{{ route('backend.persons.admins.index') }}" class="link {{ Request::segment(3) == 'admins' ? 'active' : null }}">Admins</a></li>

@@ -39,7 +39,11 @@
                                 <div class="flex-grow">
                                     <div class="qualified-coach">Qualified Coach</div>
 
-                                    <img src="{{ asset('storage/backend/persons/nutritionists/' . $nutritionist->image) }}" class="image" alt="User Image">
+                                    @if($nutritionist->image)
+                                        <img src="{{ asset('storage/backend/persons/nutritionists/' . $nutritionist->image) }}" class="image" alt="User Image">
+                                    @else
+                                        <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" class="image">
+                                    @endif
 
                                     <div class="coach-name fs-20">{{ $nutritionist->name }}</div>
 
@@ -48,7 +52,7 @@
                                             <img src="{{ asset('storage/frontend/globe-icon.svg') }}" alt="Location Icon" width="20px" height="20px">
                                             <span>{{ $nutritionist->country }}</span>
                                         </div>
-                                        <div class="coach-location-item" id="{{ $nutritionist->id }}">
+                                        <div class="coach-location-item coach-contact-link" id="{{ $nutritionist->id }}">
                                             <img src="{{ asset('storage/frontend/connect-icon.svg') }}" alt="Contact Icon" width="20px" height="20px">
                                             <span>Contact Coach</span>
                                         </div>
@@ -73,6 +77,8 @@
                             </div>
                         </div>
                     @endforeach
+
+                    {{ $nutritionists->links("pagination::bootstrap-5") }}
                 </div>
             </div>
         </div>
@@ -387,7 +393,7 @@
 
 @push('after-scripts')
     <script>
-        $('.coach-location-item').on('click', function() {
+        $('.coach-contact-link').on('click', function() {
             let id = $(this).attr('id');
             let url = "{{ route('frontend.nutritionists.contact', [':id']) }}";
             url = url.replace(':id', id);
@@ -401,11 +407,19 @@
             let url = "{{ route('frontend.nutritionists.fetch', [':id']) }}";
             url = url.replace(':id', id);
 
+            let noImageUrl = "{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}";
+
             $.ajax({
                 url: url,
                 type: "GET",
                 success: function(response) {
-                    $('#view-modal .coach-image').attr('src', 'storage/backend/persons/nutritionists/' + response.image);
+                    if(response.image) {
+                        $('#view-modal .coach-image').attr('src', 'storage/backend/persons/nutritionists/' + response.image);
+                    }
+                    else {
+                        $('#view-modal .coach-image').attr('src', noImageUrl);
+                    }
+                    
                     $('#view-modal .name').text(response.name);
                     $('#view-modal .age').text(response.age);
                     $('#view-modal .country').text(response.country);

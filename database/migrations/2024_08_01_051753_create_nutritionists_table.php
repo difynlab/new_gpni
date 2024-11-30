@@ -14,15 +14,20 @@ return new class extends Migration
         Schema::create('nutritionists', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('age');
+            $table->string('age')->nullable();
             $table->enum('language', ['English', 'Chinese', 'Japanese']);
-            $table->string('country');
-            $table->enum('cec_status', [1, 2])->index();
-            $table->text('credentials');
-            $table->string('certificate_number');
-            $table->enum('membership_credential_status', [1, 2])->index();
-            $table->text('area_of_interests');
-            $table->text('self_introduction');
+            $table->string('country')->nullable();
+            $table->enum('is_certified', [1, 2])->nullable();
+            $table->enum('is_sns', [1, 2])->nullable();
+            $table->enum('is_snc', [1, 2])->nullable();
+            $table->enum('is_cissn', [1, 2])->nullable();
+            $table->enum('is_asnc', [1, 2])->nullable();
+            $table->enum('cec_status', [1, 2])->nullable()->index();
+            $table->text('credentials')->nullable();
+            $table->string('certificate_number')->nullable();
+            $table->enum('membership_credential_status', [1, 2])->nullable();
+            $table->text('area_of_interests')->nullable();
+            $table->text('self_introduction')->nullable();
             $table->string('image')->nullable();
             $table->enum('status', [0, 1, 2])->index();
             $table->timestamps();

@@ -49,7 +49,7 @@ if(!function_exists('hasStudentCompletedModuleExam')) {
             return false;
         }
 
-        return CourseModuleExam::where('user_id', $user_id)->where('course_id', $course_id)->where('module_id', $course_module_id)->where('result', 'Pass')->where('status', '1')->exists();
+        return CourseModuleExam::where('user_id', $user_id)->where('course_id', $course_id)->where('module_id', $course_module_id)->where('status', '1')->exists();
     }
 }
 

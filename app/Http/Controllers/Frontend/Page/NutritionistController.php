@@ -19,16 +19,16 @@ class NutritionistController extends Controller
                     ? Nutritionist::where(function ($query) use ($request) {
                         $query->where('name', 'like', '%' . $request->nutritionist . '%')
                               ->orWhere('certificate_number', 'like', '%' . $request->nutritionist . '%');
-                    })->where('language', $request->middleware_language_name)->where('status', '1')->paginate(4)
-                    : Nutritionist::where('language', $request->middleware_language_name)->where('status', '1')->paginate(4);
+                    })->where('language', $request->middleware_language_name)->where('status', '1')->paginate(20)
+                    : Nutritionist::where('language', $request->middleware_language_name)->where('status', '1')->paginate(20);
 
         if($nutritionists->isEmpty() && $request->middleware_language_name != 'English') {
             $nutritionists = $request->nutritionist
                     ? Nutritionist::where(function ($query) use ($request) {
                         $query->where('name', 'like', '%' . $request->nutritionist . '%')
                               ->orWhere('certificate_number', 'like', '%' . $request->nutritionist . '%');
-                    })->where('language', 'English')->where('status', '1')->paginate(4)
-                    : Nutritionist::where('language', 'English')->where('status', '1')->paginate(4);
+                    })->where('language', 'English')->where('status', '1')->paginate(20)
+                    : Nutritionist::where('language', 'English')->where('status', '1')->paginate(20);
         }
 
         return view('frontend.pages.nutritionists', [
