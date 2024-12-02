@@ -379,8 +379,9 @@
 
                             <div class="bottom-section">
                                 <span class="qualified-coach">Qualified Coach</span>
-
-                                <a class="contact-now coach-location-item" id="">Contact coach Now</a>
+                                <div class="coach-location-model-item coach-contact-link" id="{{ $nutritionist->id }}">
+                                    <a class="contact-now" id="">Contact coach Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>
