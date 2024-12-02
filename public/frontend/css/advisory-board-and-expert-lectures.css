@@ -15,7 +15,7 @@
 }
 body {
     font-family: 'Poppins', sans-serif !important;
-    padding-top: 80px; /* Adjust this value to the height of your navbar */
+    /* padding-top: 80px; Adjust this value to the height of your navbar */
 }
 .card {
     background-color: #f8f8f8ff !important;
