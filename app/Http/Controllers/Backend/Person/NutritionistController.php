@@ -327,8 +327,23 @@ class NutritionistController extends Controller
 
         $nutritionist = new Nutritionist();
         $data = $request->except('old_image', 'new_image');
-        $data['credentials'] = json_encode($request->credentials);
-        $data['area_of_interests'] = json_encode($request->area_of_interests);
+
+        if(!isset($data['credentials'])) {
+            $credentials = null;
+        }
+        else {
+            $credentials = json_encode($request->credentials);
+        }
+
+        if(!isset($data['area_of_interests'])) {
+            $area_of_interests = null;
+        }
+        else {
+            $area_of_interests = json_encode($request->area_of_interests);
+        }
+
+        $data['credentials'] = $credentials;
+        $data['area_of_interests'] = $area_of_interests;
         $data['image'] = $image_name;
         $nutritionist->create($data);
 
@@ -624,8 +639,23 @@ class NutritionistController extends Controller
         }
 
         $data = $request->except('old_image', 'new_image');
-        $data['credentials'] = json_encode($request->credentials);
-        $data['area_of_interests'] = json_encode($request->area_of_interests);
+
+        if(!isset($data['credentials'])) {
+            $credentials = null;
+        }
+        else {
+            $credentials = json_encode($request->credentials);
+        }
+
+        if(!isset($data['area_of_interests'])) {
+            $area_of_interests = null;
+        }
+        else {
+            $area_of_interests = json_encode($request->area_of_interests);
+        }
+
+        $data['credentials'] = $credentials;
+        $data['area_of_interests'] = $area_of_interests;
         $data['image'] = $image_name;
         $nutritionist->fill($data)->save();
         

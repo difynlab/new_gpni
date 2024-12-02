@@ -15,9 +15,14 @@
                 <p class="inner-page-title">Nutritionist Details</p>
 
                 <div class="row form-input">
-                    <div class="col-12 mb-4">
+                    <div class="col-6 mb-4">
                         <label for="name" class="form-label">Name<span class="asterisk">*</span></label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ old('name', $nutritionist->name) }}" required>
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="email" class="form-label">Email<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email', $nutritionist->email) }}" required>
                     </div>
 
                     <div class="col-6 mb-4">
@@ -46,22 +51,67 @@
                     </div>
 
                     <div class="col-6 mb-4">
-                        <label for="cec_status" class="form-label">CEC Status<span class="asterisk">*</span></label>
-                        <select class="form-control form-select" id="cec_status" name="cec_status" required>
+                        <label for="is_certified" class="form-label">Certified Status</label>
+                        <select class="form-control form-select" id="is_certified" name="is_certified">
+                            <option value="">Select Certified Status</option>
+                            <option value="1" {{ old('is_certified', $nutritionist->is_certified) == '1' ? 'selected' : '' }}>Yes</option>
+                            <option value="2" {{ old('is_certified', $nutritionist->is_certified) == '2' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="is_sns" class="form-label">SNS Status</label>
+                        <select class="form-control form-select" id="is_sns" name="is_sns">
+                            <option value="">Select SNS Status</option>
+                            <option value="1" {{ old('is_sns', $nutritionist->is_sns) == '1' ? 'selected' : '' }}>Yes</option>
+                            <option value="2" {{ old('is_sns', $nutritionist->is_sns) == '2' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="is_snc" class="form-label">SNC Status</label>
+                        <select class="form-control form-select" id="is_snc" name="is_snc">
+                            <option value="">Select SNC Status</option>
+                            <option value="1" {{ old('is_snc', $nutritionist->is_snc) == '1' ? 'selected' : '' }}>Yes</option>
+                            <option value="2" {{ old('is_snc', $nutritionist->is_snc) == '2' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="is_cissn" class="form-label">CISSN Status</label>
+                        <select class="form-control form-select" id="is_cissn" name="is_cissn">
+                            <option value="">Select CISSN Status</option>
+                            <option value="1" {{ old('is_cissn', $nutritionist->is_cissn) == '1' ? 'selected' : '' }}>Yes</option>
+                            <option value="2" {{ old('is_cissn', $nutritionist->is_cissn) == '2' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="is_asnc" class="form-label">ASNC Status</label>
+                        <select class="form-control form-select" id="is_asnc" name="is_asnc">
+                            <option value="">Select ASNC Status</option>
+                            <option value="1" {{ old('is_asnc', $nutritionist->is_asnc) == '1' ? 'selected' : '' }}>Yes</option>
+                            <option value="2" {{ old('is_asnc', $nutritionist->is_asnc) == '2' ? 'selected' : '' }}>No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <label for="cec_status" class="form-label">CEC Status</label>
+                        <select class="form-control form-select" id="cec_status" name="cec_status">
                             <option value="">Select CEC Status</option>
                             <option value="1" {{ old('cec_status', $nutritionist->cec_status) == '1' ? 'selected' : '' }}>Active</option>
                             <option value="2" {{ old('cec_status', $nutritionist->cec_status) == '2' ? 'selected' : '' }}>Inactive</option>
                         </select>
                     </div>
 
-                    <div class="col-6 mb-4">
-                        <label for="certificate_number" class="form-label">Certificate Number<span class="asterisk">*</span></label>
-                        <input type="text" class="form-control" id="certificate_number" name="certificate_number" placeholder="Certificate Number" value="{{ old('certificate_number', $nutritionist->certificate_number) }}" required>
+                    <div class="col-4 mb-4">
+                        <label for="certificate_number" class="form-label">Certificate Number</label>
+                        <input type="text" class="form-control" id="certificate_number" name="certificate_number" placeholder="Certificate Number" value="{{ old('certificate_number', $nutritionist->certificate_number) }}">
                     </div>
 
-                    <div class="col-6 mb-4">
-                        <label for="membership_credential_status" class="form-label">Membership/ Credential Status<span class="asterisk">*</span></label>
-                        <select class="form-control form-select" id="membership_credential_status" name="membership_credential_status" required>
+                    <div class="col-4 mb-4">
+                        <label for="membership_credential_status" class="form-label">Membership/ Credential Status</label>
+                        <select class="form-control form-select" id="membership_credential_status" name="membership_credential_status">
                             <option value="">Select Membership/ Credential Status</option>
                             <option value="1" {{ old('membership_credential_status', $nutritionist->membership_credential_status) == '1' ? 'selected' : '' }}>Active</option>
                             <option value="2" {{ old('membership_credential_status', $nutritionist->membership_credential_status) == '2' ? 'selected' : '' }}>Inactive</option>
@@ -69,8 +119,8 @@
                     </div>
 
                     <div class="col-12 mb-4">
-                        <label for="self_introduction" class="form-label">Self Introduction<span class="asterisk">*</span></label>
-                        <textarea class="form-control" rows="5" id="self_introduction" name="self_introduction" placeholder="Self Introduction" required>{{ old('self_introduction', $nutritionist->self_introduction) }}</textarea>
+                        <label for="self_introduction" class="form-label">Self Introduction</label>
+                        <textarea class="form-control" rows="5" id="self_introduction" name="self_introduction" placeholder="Self Introduction">{{ old('self_introduction', $nutritionist->self_introduction) }}</textarea>
                     </div>
 
                     <div class="col-12">
@@ -101,7 +151,7 @@
                             @foreach(json_decode($nutritionist->credentials) as $credential)
                                 <div class="row single-item mt-2">
                                     <div class="col-11">
-                                        <input type="text" class="form-control" name="credentials[]" value="{{ $credential }}" placeholder="Credential" required>
+                                        <input type="text" class="form-control" name="credentials[]" value="{{ $credential }}" placeholder="Credential">
                                     </div>
                                     <div class="col-1 d-flex align-items-center">
                                         <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -127,7 +177,7 @@
                             @foreach(json_decode($nutritionist->area_of_interests) as $area_of_interest)
                                 <div class="row single-item mt-2">
                                     <div class="col-11">
-                                        <input type="text" class="form-control" name="area_of_interests[]" value="{{ $area_of_interest }}" placeholder="Area of Interest" required>
+                                        <input type="text" class="form-control" name="area_of_interests[]" value="{{ $area_of_interest }}" placeholder="Area of Interest">
                                     </div>
                                     <div class="col-1 d-flex align-items-center">
                                         <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -156,7 +206,7 @@
         $('.add-row-button.credentials').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-11">
-                                <input type="text" class="form-control" name="credentials[]" placeholder="Credential" required>
+                                <input type="text" class="form-control" name="credentials[]" placeholder="Credential">
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -169,7 +219,7 @@
         $('.add-row-button.area-of-interests').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-11">
-                                 <input type="text" class="form-control" name="area_of_interests[]" placeholder="Area of Interest" required>
+                                 <input type="text" class="form-control" name="area_of_interests[]" placeholder="Area of Interest">
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
