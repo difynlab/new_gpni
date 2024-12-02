@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Person;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -22,6 +23,16 @@ class StudentController extends Controller
             <a id="'.$student->id.'" class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>';
 
             $student->image = $student->image != null ? '<img src="'. asset('storage/backend/persons/students/' . $student->image) .'" class="table-image">' : '<img src="'. asset('storage/backend/common/' . Setting::find(1)->no_image) .'" class="table-image">';
+
+            $currency_symbol = ($student->language === 'English') ? '$' : '¥';
+            $wallet_exist = Wallet::where('user_id', $student->id)->first();
+
+            if($wallet_exist) {
+                $student->wallet = $currency_symbol . '' . $wallet_exist->balance;
+            }
+            else {
+                $student->wallet =  $currency_symbol . '0.00';
+            }
 
             $student->status = ($student->status == '1') ? '<span class="active-status">Active</span>' : '<span class="inactive-status">Inactive</span>';
         }

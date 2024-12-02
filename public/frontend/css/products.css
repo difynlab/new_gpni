@@ -136,7 +136,7 @@ body{
     padding: 8px 32px;
     margin-top: 10px;
     text-decoration: none;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     width: 100%;
     background-color: rgb(161 161 161);
 }

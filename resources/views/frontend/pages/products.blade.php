@@ -52,20 +52,26 @@
                                                     </div>
 
                                                     @if(auth()->check())
-                                                        @if(hasUserAddedToCart(auth()->user()->id, $product->id))
-                                                            <button class="cta-button-disabled" disabled>
-                                                                Added to Cart
-                                                            </button>
-                                                        @else
-                                                            <form action="{{ route('frontend.carts.store') }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                                                                <button type="submit" class="cta-button">
-                                                                    <img src="{{ asset('storage/frontend/cart.svg') }}" alt="Cart Icon">
-                                                                    Add to Cart
+                                                        @if(hasUserSelectedCorrectLanguage(auth()->user()->id, $middleware_language_name))
+                                                            @if(hasUserAddedToCart(auth()->user()->id, $product->id))
+                                                                <button class="cta-button-disabled" disabled>
+                                                                    Added to Cart
                                                                 </button>
-                                                            </form>
+                                                            @else
+                                                                <form action="{{ route('frontend.carts.store') }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                                                    <button type="submit" class="cta-button">
+                                                                        <img src="{{ asset('storage/frontend/cart.svg') }}" alt="Cart Icon">
+                                                                        Add to Cart
+                                                                    </button>
+                                                                </form>
+                                                            @endif
+                                                        @else
+                                                            <button class="cta-button-disabled" disabled>
+                                                                Not available in your primary language
+                                                            </button>
                                                         @endif
                                                     @else
                                                         <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>

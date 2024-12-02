@@ -38,10 +38,14 @@
                 </p>
                 
                 @if(auth()->check())
-                    @if(hasUserPurchasedCourse(auth()->user()->id, $course->id))
-                        <a type="submit" class="btn btn-primary fs-20">Already Purchased</a>
+                    @if(hasUserSelectedCorrectLanguage(auth()->user()->id, $middleware_language_name) && $course->language == $middleware_language_name)
+                        @if(hasUserPurchasedCourse(auth()->user()->id, $course->id))
+                            <a class="btn btn-primary fs-20">Already Purchased</a>
+                        @else
+                            <a href="{{ route('frontend.certification-courses.purchase', $course) }}" class="btn btn-primary fs-20">Enroll Now</a>
+                        @endif
                     @else
-                        <a href="{{ route('frontend.certification-courses.purchase', $course) }}" class="btn btn-primary fs-20">Enroll Now</a>
+                        <a class="btn btn-primary fs-20">This course is not available in your primary language</a>
                     @endif
                 @else
                     <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn btn-primary fs-20">Login for Purchase</a>

@@ -56,7 +56,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="primaryLanguage">Primary Language</label>
-                                        <select class="form-control" name="language" required>
+                                        <select class="form-control" name="language" disabled readonly>
                                             <option value="English" {{ old('language', $student->language) == 'English' ? 'selected' : '' }}>English</option>
                                             <option value="Japanese" {{ old('language', $student->language) == 'Japanese' ? 'selected' : '' }}>Japanese</option>
                                             <option value="Chinese" {{ old('language', $student->language) == 'Chinese' ? 'selected' : '' }}>Chinese</option>

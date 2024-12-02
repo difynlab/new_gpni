@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
 use App\Models\MaterialPurchase;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 
 class BuyStudyMaterialController extends Controller
@@ -34,6 +35,17 @@ class BuyStudyMaterialController extends Controller
     public function checkout(Request $request)
     {
         $course = Course::find($request->course_id);
+        $user = Auth::user();
+        
+        $wallet = Wallet::where('user_id', $user->id)->where('status', '1')->first();
+        $wallet_balance = $wallet ? $wallet->balance : '0.00';
+
+        if($course->material_logistic_price >= $wallet_balance) {
+            $amount = $course->material_logistic_price - $wallet_balance;
+        }
+        else {
+            $amount = '0.00';
+        }
 
         if($course->language == 'English') {
             $currency = 'usd';
@@ -52,8 +64,7 @@ class BuyStudyMaterialController extends Controller
         $material_purchase->status = '1';
         $material_purchase->save();
 
-        $course = Course::where('status', '1')->find($request->course_id);
-        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$course->material_logistic_price : (int)($course->material_logistic_price * 100);
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$amount : (int)($amount * 100);
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $session = \Stripe\Checkout\Session::create([
@@ -96,6 +107,20 @@ class BuyStudyMaterialController extends Controller
             $material_purchase->amount_paid = $session->amount_total / 100;
             $material_purchase->payment_status = 'Completed';
             $material_purchase->save();
+        }
+
+        $wallet = Wallet::where('user_id', $material_purchase->user_id)->where('status', '1')->first();
+        $course = Course::find($material_purchase->course_id);
+
+        if($wallet) {
+            if($wallet->balance >= $course->material_logistic_price) {
+                $wallet->balance = $wallet->balance - $course->material_logistic_price;
+                $wallet->save();
+            }
+            else {
+                $wallet->balance = '0.00';
+                $wallet->save();
+            }
         }
 
         return redirect()->route('frontend.buy-study-materials')->with('success', 'Material purchased successfully');

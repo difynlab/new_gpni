@@ -58,10 +58,14 @@
                             <h5 class="section-header">Order Summary</h5>
                             <div class="content">
                                 <p>No. of items: {{ $items->sum('quantity') }}</p>
-                                <p>Shipping Fee: <span>{{ $currency_symbol }}{{ number_format($shipping_cost, 2) }}</span></p>
-                                <p>Sub total: <span class="sub-total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price'), 2) }}</span></p>
 
-                                <h5>Total: <span class="price total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price') + $shipping_cost, 2) }}</span></h5>
+                                <p>Sub Total: <span class="sub-total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price'), 2) }}</span></p>
+
+                                <p>Shipping Fee: <span>{{ $currency_symbol }}{{ number_format($shipping_cost, 2) }}</span></p>
+
+                                <p>Gift Amount: <span class="gift-amount">{{ $currency_symbol }}{{ sprintf('%.2f', $wallet_balance) }}</span></p>
+
+                                <h5>Total: <span class="price total-price">{{ $currency_symbol }}{{ sprintf('%.2f', $total_price) }}</span></h5>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-custom">Place Order</button>
@@ -161,9 +165,9 @@
                 },
                 success: function(data) {
                     if(data.success) {
-                        $('#total-price-' + itemId).html('$' + data.item_total_price);
-                        $('.sub-total-price').html('$' + data.sub_total_price);
-                        $('.total-price').html('$' + data.cart_total_price);
+                        $('#total-price-' + itemId).html(data.currency_symbol + data.item_total_price);
+                        $('.sub-total-price').html(data.currency_symbol + data.sub_total_price);
+                        $('.total-price').html(data.currency_symbol + data.cart_total_price);
                     }
                     else {
                         alert('Failed to update quantity');

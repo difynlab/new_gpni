@@ -56,7 +56,7 @@
 
     <a href="{{ route('frontend.buy-study-materials') }}" class="sidebar-link">
         <div class="sidebar-item {{ Request::segment(1) == 'buy-study-materials' ? 'active' : '' }}">
-            <img src="{{ asset('storage/frontend/profile-icon.svg') }}" alt="Buy Study Material icon" width="28" height="28">
+            <img src="{{ asset('storage/frontend/buy-study-material-icon.png') }}" alt="Buy Study Material icon" width="28" height="28">
             <span>Buy Study Material</span>
         </div>
     </a>

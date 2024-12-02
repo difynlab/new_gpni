@@ -7,6 +7,7 @@ use App\Models\MembershipContent;
 use App\Models\FAQ;
 use App\Models\MembershipPurchase;
 use App\Models\Setting;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,13 +44,24 @@ class MembershipController extends Controller
             $amount = Setting::find(1)->membership_price_ja;
         }
 
+        $user = Auth::user();
+        $wallet = Wallet::where('user_id', $user->id)->where('status', '1')->first();
+        $wallet_balance = $wallet ? $wallet->balance : '0.00';
+
+        if($amount >= $wallet_balance) {
+            $final_amount = $amount - $wallet_balance;
+        }
+        else {
+            $final_amount = '0.00';
+        }
+
         $membership_purchase = new MembershipPurchase();
         $membership_purchase->user_id = Auth::user()->id;
         $membership_purchase->currency = $currency;
         $membership_purchase->status = '1';
         $membership_purchase->save();
 
-        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$amount : (int)($amount * 100);
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$final_amount : (int)($final_amount * 100);
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $session = \Stripe\Checkout\Session::create([
@@ -66,7 +78,7 @@ class MembershipController extends Controller
                 ]
             ],
             'mode' => 'payment',
-            'success_url' => route('frontend.membership.success', ['membership_purchase_id' => $membership_purchase->id]) . '&session_id={CHECKOUT_SESSION_ID}',
+            'success_url' => route('frontend.membership.success', ['membership_purchase_id' => $membership_purchase->id, 'amount' => $amount]) . '&session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => route('frontend.membership')
         ]);
 
@@ -79,6 +91,7 @@ class MembershipController extends Controller
 
         $session_id = $request->query('session_id');
         $membership_purchase_id = $request->query('membership_purchase_id');
+        $amount = $request->query('amount');
 
         $session = \Stripe\Checkout\Session::retrieve($session_id);
 
@@ -96,6 +109,19 @@ class MembershipController extends Controller
             $user = Auth::user();
             $user->member = 'Yes';
             $user->save();
+        }
+
+        $wallet = Wallet::where('user_id', $membership_purchase->user_id)->where('status', '1')->first();
+
+        if($wallet) {
+            if($wallet->balance >= $amount) {
+                $wallet->balance = $wallet->balance - $amount;
+                $wallet->save();
+            }
+            else {
+                $wallet->balance = '0.00';
+                $wallet->save();
+            }
         }
 
         return redirect()->route('frontend.membership')->with('success', 'Membership purchased successfully');

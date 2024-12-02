@@ -63,7 +63,7 @@ class GiftCardController extends Controller
         }
 
         if($request->middleware_language_name != $user->language) {
-            return redirect()->back()->withInput()->with('error', "The receiver's language is " . ' ' . $user->language . ', and the currency is ' . $user_currency . '. Please complete the purchase by selecting ' . $user->language . ' from the language dropdown, even if you switch the language.');
+            return redirect()->back()->withInput()->with('error', "The recipient's preferred language is " . ' ' . $user->language . ', and the currency is ' . $user_currency . '. Please ensure the language dropdown is set to ' . $user->language . ' when completing the purchase, even if you initially switch to another language');
         }
 
 

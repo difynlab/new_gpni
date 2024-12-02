@@ -8,6 +8,7 @@ use App\Models\ProductCategory;
 use App\Models\Product;
 use App\Models\ProductOrder;
 use App\Models\ProductOrderDetail;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +37,10 @@ class ProductController extends Controller
 
     public function checkout(Request $request)
     {
+        $user = Auth::user();
+        $wallet = Wallet::where('user_id', $user->id)->where('status', '1')->first();
+        $wallet_balance = $wallet ? $wallet->balance : '0.00';
+
         $products = $request->products;
         $quantities = $request->quantities;
 
@@ -56,7 +61,6 @@ class ProductController extends Controller
         $product_order->save();
 
         $total_order_amount = 0;
-        
         foreach($products as $key => $product) {
             $selected_product = Product::where('status', '1')->find($product);
 
@@ -72,7 +76,15 @@ class ProductController extends Controller
             $total_order_amount += $product_order_detail->total_cost;
         }
 
-        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$total_order_amount : (int)($total_order_amount * 100);
+        if($total_order_amount >= $wallet_balance) {
+            $amount = $total_order_amount - $wallet_balance;
+        }
+        else {
+            $amount = '0.00';
+        }
+
+
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$amount : (int)($amount * 100);
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
@@ -90,7 +102,7 @@ class ProductController extends Controller
                 ]
             ],
             'mode' => 'payment',
-            'success_url' => route('frontend.products.success', ['product_order_id' => $product_order->id]) . '&session_id={CHECKOUT_SESSION_ID}',
+            'success_url' => route('frontend.products.success', ['product_order_id' => $product_order->id, 'total_order_amount' => $total_order_amount]) . '&session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => route('backend.products.index'),
         ]);
 
@@ -103,6 +115,7 @@ class ProductController extends Controller
 
         $session_id = $request->query('session_id');
         $product_order_id = $request->query('product_order_id');
+        $total_order_amount = $request->query('total_order_amount');
 
         $session = \Stripe\Checkout\Session::retrieve($session_id);
 
@@ -121,6 +134,19 @@ class ProductController extends Controller
         $ordered_product_ids = ProductOrderDetail::where('product_order_id', $product_order_id)->pluck('product_id')->toArray();
 
         Cart::whereIn('product_id', $ordered_product_ids)->where('status', 'Active')->update(['status' => 'Purchased']);
+
+        $wallet = Wallet::where('user_id', $product_order->user_id)->where('status', '1')->first();
+
+        if($wallet) {
+            if($wallet->balance >= $total_order_amount) {
+                $wallet->balance = $wallet->balance - $total_order_amount;
+                $wallet->save();
+            }
+            else {
+                $wallet->balance = '0.00';
+                $wallet->save();
+            }
+        }
 
         return redirect()->route('frontend.products.index')->with('success', 'Product/s purchased successfully');
     }

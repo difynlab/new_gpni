@@ -91,12 +91,21 @@
                         <div id="course-discount">{{ $currency_symbol }}<span>0.0</span></div>
                     </div>
 
+                    @if($wallet_balance)
+                        <div class="d-flex justify-content-between my-4 title gift-amount-div">
+                            <div>Gift Amount</div>
+                            <div id="course-gift">{{ $currency_symbol }}<span>{{ $wallet_balance }}</span></div>
+                        </div>
+                    @endif
+
                     <div class="line"></div>
 
                     <div class="d-flex justify-content-between my-4 title">
                         <div>Total</div>
-                        <div id="total-amount">{{ $currency_symbol }}<span>{{ $course->price }}</span></div>
+                        <div id="total-amount">{{ $currency_symbol }}<span>{{ sprintf('%.2f', $total_amount) }}</span></div>
 
+                        <input type="hidden" id="dynamic-total-price" value="{{ $total_amount }}">
+                        <input type="hidden" id="dynamic-gift-price" value="{{ $wallet_balance }}">
                         <input type="hidden" id="dynamic-course-price" value="{{ $course->price }}">
                         <input type="hidden" id="dynamic-material-price" value="{{ $course->material_logistic_price }}">
                         <input type="hidden" id="dynamic-instalment-price" value="{{ $course->instalment_price }}">
@@ -110,7 +119,7 @@
                                 @csrf
                                 <input type="hidden" name="course_name" value="{{ $course->title }}">
                                 <input type="hidden" name="course_id" value="{{ $course->id }}">
-                                <input type="hidden" name="price" value="{{ $course->price }}">
+                                <input type="hidden" id="price" name="price" value="{{ $total_amount }}">
                                 <input type="hidden" name="material_logistic_price" value="{{ $course->material_logistic_price }}">
                                 <input type="hidden" name="price_id" value="{{ $course->instalment_price_id }}">
                                 <input type="hidden" id="material-logistic" name="material_logistic" value="No">
@@ -133,6 +142,8 @@
 @push('after-scripts')
     <script>
         $(document).ready(function() {
+            let initialTotalPrice = parseFloat($('#dynamic-total-price').val());
+            let initialGiftPrice = parseFloat($('#dynamic-gift-price').val());
             let initialCoursePrice = parseFloat($('#dynamic-course-price').val());
             let initialMaterialPrice = parseFloat($('#dynamic-material-price').val());
             let initialInstalmentPrice = parseFloat($('#dynamic-instalment-price').val());
@@ -142,17 +153,31 @@
                     $('#material-details').toggleClass('d-none');
                     $('#material-logistic').val('Yes');
 
-                    let totalPrice = parseFloat((initialCoursePrice + initialMaterialPrice)).toFixed(2);
-                    $('#sub-total span').text(totalPrice);
-                    $('#total-amount span').text(totalPrice);
+                    let subTotal = parseFloat(initialCoursePrice + initialMaterialPrice).toFixed(2);
+                    $('#sub-total span').text(subTotal);
+
+                    console.log(initialGiftPrice, initialCoursePrice, initialMaterialPrice);
+
+                    if(initialGiftPrice < (initialCoursePrice + initialMaterialPrice)) {
+                        let totalPrice = parseFloat(initialTotalPrice + initialMaterialPrice).toFixed(2);
+                        $('#total-amount span').text(totalPrice);
+                        $('#price').val(totalPrice);
+                    }
+                    else {
+                        $('#total-amount span').text('0.00');
+                        let totalPrice = '0.00';
+                        $('#price').val(totalPrice);
+                    }
                 }
                 else {
                     $('#material-details').toggleClass('d-none');
                     $('#material-logistic').val('No');
 
-                    let totalPrice = parseFloat(initialCoursePrice).toFixed(2);
-                    $('#sub-total span').text(totalPrice);
+                    let subTotal = parseFloat(initialCoursePrice).toFixed(2);
+                    let totalPrice = parseFloat((subTotal - initialGiftPrice)).toFixed(2);
+                    $('#sub-total span').text(subTotal);
                     $('#total-amount span').text(totalPrice);
+                    $('#price').val(totalPrice);
                 }
             });
 
@@ -164,10 +189,12 @@
                     $('.additional-option').toggleClass('d-none');
                     $('#payment-mode').val('payment');
 
-                    let totalPrice = (initialCoursePrice).toFixed(2);
+                    let totalPrice = (initialTotalPrice).toFixed(2);
                     $('#course-price span').text(totalPrice);
                     $('#sub-total span').text(totalPrice);
                     $('#total-amount span').text(totalPrice);
+
+                    $('.gift-amount-div').toggleClass('d-none');
                 }
                 else {
                     $('.additional-option').toggleClass('d-none');
@@ -180,6 +207,8 @@
                     $('#course-price span').text(totalPrice);
                     $('#sub-total span').text(totalPrice);
                     $('#total-amount span').text(totalPrice);
+
+                    $('.gift-amount-div').toggleClass('d-none');
                 }
             });
         });
