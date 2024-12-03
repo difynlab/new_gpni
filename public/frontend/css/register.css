@@ -3,22 +3,23 @@ body {
     background-color: #ffffff;
     color: #282828;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .container-custom {
     max-width: 100%;
-    padding: 0 111px;
+    padding: 0 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
+/* Default styles for blue section */
 .blue-section {
     background-color: #0040c3;
-    width: 300px;
-    min-height: 700px;
+    width: 100%;
+    min-height: 600px; /* Adjust the minimum height as needed */
     padding: 40px 20px;
     border-radius: 15px;
     display: flex;
@@ -26,21 +27,58 @@ body {
     align-items: center;
     color: #ffffff;
     box-sizing: border-box;
-    text-align: left;
-    position: relative;
+}
+
+/* Responsive adjustments for tablet and laptop screens */
+@media (min-width: 768px) and (max-width: 1439.98px) {
+    .blue-section {
+        display: flex; /* Show on tablets and laptops with widths of 768px to 1439.98px */
+        width: 350px; /* Adjust the width as needed */
+        height: 750px; /* Adjust the height as needed */
+        flex-shrink: 0;
+        border-radius: 15px;
+        background: #0040C3;
+        margin-top: 60px; /* Add more top space if needed */
+    }
+
+    .white-section {
+        flex: 1;
+        margin-left: 10px; /* Reduce space between blue and white sections */
+    }
+}
+
+@media (min-width: 1440px) {
+    .blue-section {
+        width: 440px;
+        height: 735px; /* Adjust the height for larger screens */
+        flex-shrink: 0;
+        border-radius: 15px;
+        background: #0040C3;
+        margin-top: 60px; /* Add more top space for larger screens */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .blue-section {
+        display: none; /* Hide the blue section on smaller devices */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .blue-section {
+        display: none; /* Hide the blue section on smaller devices */
+    }
 }
 
 .blue-section img.logo {
     max-width: 180px;
     margin-bottom: 30px;
-    text-align: center;
 }
 
 .blue-section h2 {
     font-size: 24px;
     font-weight: 500;
     line-height: 1.2;
-    text-align: center;
     margin-bottom: 30px;
 }
 
@@ -138,22 +176,64 @@ body {
 .white-section {
     padding: 60px;
     position: relative;
+    top: 60%; /* Adjust this value to move the white section down */
+    margin-top: 50px; /* Add space at the top of the white section */
 }
 
 .white-section h1 {
     font-weight: 500;
-    font-size: 39px;
     line-height: 120%;
     color: #0e0e0e;
     margin-bottom: 20px;
+    white-space: nowrap; /* Ensure the heading stays on one line */
+    font-size: 2.438rem; /* Default font size */
 }
 
 .white-section p.subtitle {
     font-weight: 400;
-    font-size: 16px;
     line-height: 24px;
     color: #505050;
     margin-bottom: 40px;
+    font-size: 1rem; /* Default font size */
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 1199.98px) {
+    .white-section h1 {
+        font-size: 2rem; /* Reduced from 2.438rem */
+    }
+
+    .white-section p.subtitle {
+        font-size: 0.875rem; /* Reduced from 1rem */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .white-section h1 {
+        font-size: 1.25rem; /* Further reduced */
+    }
+
+    .white-section p.subtitle {
+        font-size: 0.75rem; /* Further reduced */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .white-section h1 {
+        font-size: 1.5rem; /* Further reduced */
+    }
+
+    .white-section p.subtitle {
+        font-size: 0.625rem; /* Further reduced */
+    }
+}
+
+/* Media query for laptop screens with width of 1024px */
+@media (max-width: 1024px) {
+    .white-section {
+        width: 800px; /* Adjust the width as needed */
+        top: -20%; /* Move the white section up more */
+    }
 }
 
 .form-label {
@@ -213,4 +293,16 @@ body {
     color: #9a9a9a;
     max-height: 150px;
     overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Adjust the value as needed */
+}
+
+.form-input {
+    margin-bottom: 20px; /* Add space between validate captcha and submit button */
+}
+
+.submit-button {
+    margin-top: 20px; /* Add space above the submit button */
 }

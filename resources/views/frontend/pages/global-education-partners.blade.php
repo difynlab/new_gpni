@@ -23,10 +23,10 @@
 
                 @if(!$global_education_partners->isEmpty())
                     <div class="partner-logos">
-                        <div class="row justify-content-center">
-                            @foreach($global_education_partners as $global_education_partner)
-                                <div class="col-6 col-md-3">
-                                    <img src="{{ asset('storage/backend/persons/global-education-partners/' . $global_education_partner->image) }}" alt="Global Partner" class="img-fluid">
+                        <div class="row gx-4 gy-2 justify-content-center"> <!-- Adjust the gap using gx-* and gy-* classes -->
+                            @foreach($global_education_partners as $index => $global_education_partner)
+                                <div class="col-12 col-sm-6 col-md-4 mb-2 d-flex justify-content-center align-items-center">
+                                    <img src="{{ asset('storage/backend/persons/global-education-partners/' . $global_education_partner->image) }}" alt="Global Partner" class="img-fluid fixed-height">
                                 </div>
                             @endforeach
                         </div>
@@ -37,7 +37,7 @@
     @endif
     
     @if($contents->section_2_title_en)
-    <section class="education-table py-3 py-md-5">
+        <section class="education-table py-3 py-md-5">
         <div class="container px-2 px-md-3">
             <div class="text-center">
                 <h2 class="section-title fs-49">
@@ -46,8 +46,8 @@
             </div>
             
             <div class="d-flex justify-content-center">
-                <div class="table-responsive" style="min-width: auto; max-width: 100%;">
-                    <table class="table table-bordered w-auto mx-auto">
+                <div class="table-responsive">
+                    <table class="table table-bordered mx-auto custom-width-table">
                         <thead>
                             <tr class="fs-25">
                                 <th class="p-2 p-md-3 border-0">
@@ -56,7 +56,7 @@
                                 <th class="p-2 p-md-3 border-0">
                                     {{ $contents->{'section_2_second_column_title_' . $middleware_language} ?? $contents->section_2_second_column_title_en }}
                                 </th>
-                                <th class="p-2 p-md-3 border-0">
+                                <th class="p-2 p-md-3 border-0 third-column text-center">
                                     {{ $contents->{'section_2_third_column_title_' . $middleware_language} ?? $contents->section_2_third_column_title_en }}
                                 </th>
                             </tr>
@@ -64,9 +64,9 @@
                         <tbody>
                             @foreach(json_decode($contents->{'section_2_points_' . $middleware_language} ?? $contents->section_2_points_en) as $section_2_point)
                                 <tr class="fs-25 bg-transparent">
-                                    <td class="p-2 p-md-3 bg-transparent text-white">{!! $section_2_point->partner_name !!}</td>
-                                    <td class="p-2 p-md-3 bg-transparent text-white">{!! $section_2_point->course_name !!}</td>
-                                    <td class="p-2 p-md-3 bg-transparent text-white">{!! $section_2_point->points !!}</td>
+                                    <td class="p-2 p-md-3 bg-transparent text-white fs-25 fw-light">{!! $section_2_point->partner_name !!}</td>
+                                    <td class="p-2 p-md-3 bg-transparent text-white fs-25 fw-light">{!! $section_2_point->course_name !!}</td>
+                                    <td class="p-2 p-md-3 bg-transparent text-white fs-25 fw-light third-column text-center">{!! $section_2_point->points !!}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -86,7 +86,7 @@
                 <div class="language-cards row mx-0">
                     @foreach(json_decode($contents->{'section_3_languages_' . $middleware_language} ?? $contents->section_3_languages_en) as $section_3_language)
                         <div class="col-12 col-sm-6 col-md-3 mx-2 my-2 my-md-0">
-                            <div class="language-card h-100" tabindex="0">
+                            <div class="language-card h-100">
                                 <p class="fs-13 fs-md-16 mb-2">
                                     {{ $contents->{'section_3_language_title_' . $middleware_language} ?? $contents->section_3_language_title_en }}
                                 </p>

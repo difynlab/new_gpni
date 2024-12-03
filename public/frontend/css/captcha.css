@@ -8,10 +8,10 @@
 }
 .captcha .text {
     color: #0040C3;
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 .captcha .number {
-    font-size: 16px;
+    /* font-size: 16px; */
     color: #282828;
     padding-left: 1.2rem;
 }
@@ -27,7 +27,7 @@
 .captcha .verify-button {
     color: #0040C3;
     border: 1px solid #0040C3;
-    font-size: 13px;
+    /* font-size: 13px; */
     font-weight: 500;
     border-radius: 3px;
     height: 35px;
@@ -42,7 +42,7 @@
     background-color: #0040C3;
     color: white;
     border: none;
-    font-size: 13px;
+    /* font-size: 13px; */
     font-weight: 500;
     border-radius: 3px;
     height: 35px;
@@ -77,6 +77,25 @@
     }
 }
 
+/* Define a media query for mobile*/
+@media screen and (max-width: 480px) {
+    .fs-16 {
+        font-size: 12px;
+    }
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .fs-16 {
+        font-size: 12px;
+    }
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+
+  
+}
 @media (min-width: 768px) and (max-width: 991.98px) {
     .captcha .verify-button {
         margin-top: -5px; /* Move the button a little bit up */
@@ -96,3 +115,4 @@
         margin-left: 5px; /* Reduce the gap between the button and the number */
     }
 }
+
