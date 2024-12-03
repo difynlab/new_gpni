@@ -53,10 +53,10 @@ class StudentCourseController extends Controller
                                                                               
     public function store(Request $request, User $student)
     {
-        if($request->middleware_language == 'en') {
+        if($student->language == 'English') {
             $currency = 'usd';
         }
-        elseif($request->middleware_language == 'zh') {
+        elseif($student->language == 'Chinese') {
             $currency = 'cny';
         }
         else {
@@ -69,7 +69,8 @@ class StudentCourseController extends Controller
         $course_purchase->date = now()->toDateString();
         $course_purchase->time = now()->toTimeString();
         $course_purchase->currency = $currency;
-        $course_purchase->payment_status = null;
+        $course_purchase->amount_paid = 0.00;
+        $course_purchase->payment_status = 'Completed';
         $course_purchase->refund_status = null;
         $course_purchase->status = '1';
         $course_purchase->save();

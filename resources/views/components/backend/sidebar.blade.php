@@ -69,12 +69,12 @@
                 </div>
             </div>
 
-            <li>
+            <!-- <li>
                 <a href="{{ route('backend.promotions.index') }}" class="link {{ Request::segment(2) == 'promotions' ? 'active' : null }}">
                     <img src="{{ asset('storage/backend/sidebar/promotion.png') }}" alt="Icon">
                     <span>Promotions</span>
                 </a>
-            </li>
+            </li> -->
 
             <div class="accordion" id="product-accordion">
                 <button class="link accordion-dropdown collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#product-data-collapse">
