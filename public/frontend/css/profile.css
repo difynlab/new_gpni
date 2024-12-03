@@ -1,0 +1,163 @@
+.student-profile-container {
+    padding: 30px;
+    background-color: #F7F6FB;
+    border: 1px solid #e0eaff;
+    border-radius: 15px;
+}
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.profile-header h1 {
+    font-weight: 500;
+    font-size: 31px;
+    line-height: 46.5px;
+    color: #0e0e0e;
+}
+.profile-header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0040c3;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+}
+.profile-header a img {
+    margin-right: 7px;
+}
+.section-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+}
+/* .form-group {
+    margin-bottom: 20px;
+} */
+.student-profile-container .form-control {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    color: #9a9a9a;
+}
+.form-control[disabled] {
+    background: #F7F6FB;
+}
+.checkbox-inline input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+hr {
+    margin: 30px 0;
+    border: 1px solid rgb(85, 147, 205);
+}
+.row label {
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.save-button {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    padding: 5px 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: #0040C3;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 19.5px;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+
+.save-button:hover {
+    background: #0033a1;
+    transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin: 20px;
+        padding-top: 40px;
+    }
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .main-content {
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+    .student-profile-container {
+        padding: 20px;
+    }
+    .profile-header h1 {
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .sidebar-item {
+        font-size: 20px;
+        height: 60px;
+    }
+    .profile-card h2 {
+        font-size: 24px;
+    }
+    .profile-card p {
+        font-size: 16px;
+    }
+    .section-title {
+        font-size: 18px;
+    }
+    .form-group label {
+        font-size: 14px;
+    }
+    .form-control {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        margin: 10px;
+        padding-top: 51px;
+    }
+    .main-content {
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+    .student-profile-container {
+        padding: 10px;
+    }
+    .profile-header h1 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .sidebar-item {
+        font-size: 18px;
+        height: 50px;
+    }
+    .profile-card h2 {
+        font-size: 20px;
+    }
+    .profile-card p {
+        font-size: 14px;
+    }
+    .section-title {
+        font-size: 16px;
+    }
+    .form-group label {
+        font-size: 12px;
+    }
+    .form-control {
+        font-size: 12px;
+    }
+}

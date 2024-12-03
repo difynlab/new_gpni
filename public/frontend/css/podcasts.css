@@ -1,0 +1,336 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hero Section Styles */
+.hero-container {
+    background-color: #0040c3;
+    color: #ffffff;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 2rem 8rem;  /* Increased left padding to move text to the right */
+    box-sizing: border-box;
+}
+
+.hero-content {
+    max-width: 1240px;
+    width: 100%;
+}
+
+.hero-text {
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+
+.highlight {
+    color: #FBBC04;
+}
+
+.play-container {
+    display: flex;
+    align-items: center;
+}
+
+.play-button {
+    width: 47px;
+    height: 47px;
+    margin-right: 24px;
+}
+
+.play-wave {
+    width: 402px;
+    height: 67.38px;
+}
+
+.active>.page-link, .page-link.active{
+    background-color: #0040C3;
+    color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        height: auto;
+        padding: 2rem;
+    }
+
+    .hero-text {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .play-container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .play-button {
+        width: 35px;
+        height: 35px;
+        margin-right: 24px;
+    }
+
+    .play-wave {
+        width: 230px;
+        height: auto;
+    }
+
+    .hero-text {
+        font-size: 1.75rem;
+    }
+
+    .play-container {
+        /* width: 100%; */
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-text {
+        font-size: 1.5rem;
+    }
+
+    .play-button {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Podcast Section Styles */
+.podcast-section {
+    background-color: #fff;
+    color: #0E0E0E;
+    padding: 60px 8rem;  /* Matching the left padding with hero section */
+    text-align: left;
+}
+
+.podcast-card {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 60px;
+}
+
+.podcast-image {
+    width: 340px;
+    height: 260px;
+    object-fit: cover;
+}
+
+.podcast-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.podcast-header {
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.4;
+}
+
+.podcast-header img {
+    margin-right: 8px;
+}
+
+.podcast-description {
+    max-width: 732px;
+    color: #505050;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.podcast-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.podcast-link span {
+    color: #0040C3;
+}
+
+.podcast-link img {
+    width: 12px;
+    height: 12px;
+}
+
+.podcast-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 160%;
+    color: #0E0E0E;
+    margin-bottom: 30px;
+}
+
+.podcast-main-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 160%;
+    color: #0E0E0E;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #E0E0E0;
+    margin: 30px 0;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.line-clamp-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+.pagination .page-link {
+    font-size: 14px;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .podcast-section {
+        padding: 30px 2rem;
+    }
+
+    .podcast-card {
+        flex-direction: row;
+    }
+
+    .podcast-content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+/* 
+    .podcast-image {
+        width: 100%;
+    } */
+}
+
+/* Journey Section Styles */
+.journey-section {
+    width: 100%;
+    height: 409px;
+    background-color: #0040C3;
+    text-align: center;
+    padding: 40px 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.journey-section h1 {
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.journey-section p {
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.register-btn {
+    background-color: #FFFFFF;
+    color: #0040C3;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.explore-more {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    line-height: 30px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.explore-more img {
+    margin-left: 10px;
+}
+
+/* Instagram Section Styles */
+.instagram-section {
+    width: 100%;
+    max-width: 1225px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.instagram-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+}
+
+.instagram-section p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+    max-width: 1090px;
+    margin: 0 auto 50px;
+}
+
+.instagram-images {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.instagram-images img {
+    width: calc(25% - 10px);
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .instagram-images img {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .instagram-images img {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.ff-poppins-regular {
+    font-weight: 300;
+}

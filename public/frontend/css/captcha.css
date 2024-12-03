@@ -1,0 +1,118 @@
+.captcha {
+    background-color: rgba(0, 64, 195, 0.06);
+    padding: 4%;
+    align-items: center;
+}
+.captcha p {
+    margin-bottom: 0;
+}
+.captcha .text {
+    color: #0040C3;
+    /* font-size: 16px; */
+}
+.captcha .number {
+    /* font-size: 16px; */
+    color: #282828;
+    padding-left: 1.2rem;
+}
+.captcha .sum-value {
+    background-color: rgba(240, 244, 251, 1);
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    text-align: center;
+    width: 60px; /* Adjust width as needed */
+}
+.captcha .verify-button {
+    color: #0040C3;
+    border: 1px solid #0040C3;
+    /* font-size: 13px; */
+    font-weight: 500;
+    border-radius: 3px;
+    height: 35px;
+    transition: all 0.3s;
+}
+.captcha .verify-button:hover {
+    color: white;
+    background-color: #0040C3;
+    transition: all 0.3s;
+}
+.captcha .verified-button {
+    background-color: #0040C3;
+    color: white;
+    border: none;
+    /* font-size: 13px; */
+    font-weight: 500;
+    border-radius: 3px;
+    height: 35px;
+    transition: all 0.3s;
+}
+
+@media (max-width: 767.98px) {
+    .captcha {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .captcha .text {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .captcha .number,
+    .captcha .sum-value {
+        margin-bottom: 10px;
+    }
+
+    .captcha .verify-button {
+        width: auto; /* Remove fixed width */
+        padding: 10px;
+        font-size: 12px;
+        margin-top: 10px;
+        align-self: center; /* Center the button */
+        display: block;
+    }
+}
+
+/* Define a media query for mobile*/
+@media screen and (max-width: 480px) {
+    .fs-16 {
+        font-size: 12px;
+    }
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .fs-16 {
+        font-size: 12px;
+    }
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+
+  
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .captcha .verify-button {
+        margin-top: -5px; /* Move the button a little bit up */
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .captcha .verify-button {
+        margin-top: -5px; /* Move the button a little bit up */
+        margin-left: 0; /* Remove the gap between the button and the number */
+    }
+}
+
+@media (min-width: 1200px) {
+    .captcha .verify-button {
+        margin-top: -5px; /* Move the button a little bit up */
+        margin-left: 5px; /* Reduce the gap between the button and the number */
+    }
+}
+

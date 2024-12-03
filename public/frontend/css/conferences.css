@@ -1,0 +1,170 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.container {
+    padding: 40px 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.conference-card {
+    /* width: 606px;
+    height: 200px; */
+    padding: 21px 28px;
+    background: #fff;
+    border: 0.69px solid #d7d7d7;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.conference-card .text-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.conference-card .text-section .title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #0e0e0e;
+}
+
+.conference-card .text-section .item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.conference-card .text-section .item .label {
+    font-weight: 500;
+    font-size: 16px;
+    color: #505050;
+}
+
+.conference-card .text-section .item .value {
+    font-weight: 400;
+    font-size: 16px;
+    color: #505050;
+}
+
+.conference-card .view-more {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #0040c3;
+}
+
+.conference-card .view-more img {
+    width: 17px;
+    height: 17px;
+}
+
+.heading {
+    text-align: center;
+    /* Center-align the text */
+    color: #0E0E0E;
+    /* Set the text color */
+    font-family: 'Poppins', sans-serif;
+    /* Set the font family */
+    font-size: 61px;
+    /* Set the font size */
+    font-style: normal;
+    /* Set the font style */
+    font-weight: 500;
+    /* Set the font weight */
+    line-height: 120%;
+    /* Line height at 120% */
+    margin-bottom: 40px;
+}
+
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1240px) {
+    .card-container {
+        padding: 10px;
+    }
+
+    .conference-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .heading {
+        font-size: 2.5rem; /* Further reduced */
+    }
+
+    .conference-card .text-section .title {
+        font-size: 1.25rem; /* Further reduced */
+    }
+
+    .conference-card .text-section .item .label,
+    .conference-card .text-section .item .value {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .conference-card .view-more {
+        font-size: 1rem; /* Further reduced */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .heading {
+        font-size: 2rem; /* Further reduced */
+    }
+
+    .conference-card .text-section .title {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .conference-card .text-section .item .label,
+    .conference-card .text-section .item .value {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .conference-card .view-more {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .card-container{
+        justify-content: center;
+    }
+}
+
+/* Base styles for text truncation */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Apply line clamping for tablet devices */
+@media (min-width: 481px) and (max-width: 768px) {
+    .conference-card .text-section .title {
+        font-size: 1rem; /* Adjust font size if needed */
+        line-height: 1.2; /* Adjust line height if needed */
+    }
+}

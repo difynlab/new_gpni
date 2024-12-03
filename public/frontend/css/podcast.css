@@ -1,0 +1,229 @@
+.full-page-layout {
+    background-color: #ffffff;
+}
+
+.full-page-layout h1,
+.full-page-layout h2,
+.full-page-layout p {
+    font-family: 'Poppins', sans-serif;
+}
+
+.full-page-layout h1 {
+    font-weight: 500;
+    line-height: 120%;
+    /* text-align: center; */
+    color: #0e0e0e;
+}
+
+.full-page-layout h2 {
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+    text-align: center;
+}
+
+.full-page-layout p {
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+}
+
+
+.gray-section .img-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.video-section {
+    width: 100%;
+    height: 100vh;
+    /* Make the section take the full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Hide any overflow */
+}
+.video-section .container-fluid {
+    width: 100%;
+    height: 100%;
+}
+
+.video-section video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the video covers the entire section */
+}
+
+.content-section {
+    padding: 50px 0;
+}
+
+.content-section .date {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 146%;
+    display: flex;
+    align-items: center;
+    opacity: 0.4;
+    color: #0b0b0b;
+}
+
+.content-section h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-top: 20px;
+}
+
+.content-section p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.second-content-section {
+    padding: 50px 0;
+}
+
+.second-content-section .title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+}
+
+.second-content-section .description {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 250%;
+    color: #505050;
+}
+
+.second-content-section .description p {
+    margin: 0;
+}
+
+.cta-section {
+    background-color: #0040c3;
+    /* Background color for the section */
+    color: #ffffff;
+    /* Text color */
+    text-align: center;
+    /* Center align text */
+    padding: 50px 0;
+    /* Padding for the section */
+}
+
+.cta-section h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 120%;
+    color: #ffffff;
+
+}
+
+.cta-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.cta-section .cta-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: #ffffff;
+}
+
+.cta-section .btn-register {
+    background-color: #ffffff;
+    color: #0040c3;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 30px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.cta-section .btn-explore {
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    /* Remove underline */
+}
+
+/* Instagram Section Styles */
+.instagram-section {
+    width: 100%;
+    max-width: 1225px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.instagram-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+}
+
+.instagram-section p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+    max-width: 1090px;
+    margin: 0 auto 50px;
+}
+
+.instagram-images {
+    display: flex;
+    justify-content: space-between;
+}
+
+.instagram-images img {
+    width: calc(25% - 10px);
+    height: 100%;
+    object-fit: cover;
+}
+
+.cta-section .btn-explore img {
+    margin-left: 8px;
+    /* Space between text and icon */
+}
+
+.podcast-content h4{
+    font-size: 2.438rem;
+}
+
+@media (max-width: 991.98px) {
+    .podcast-content h4{
+        font-size: 1.25rem; /* Further reduced */
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    .podcast-content h4{
+        font-size: 1.5rem; /* Further reduced */
+    }
+}

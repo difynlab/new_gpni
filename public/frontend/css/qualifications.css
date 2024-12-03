@@ -1,0 +1,74 @@
+.container-main {
+    padding: 30px;
+    background-color: #F7F6FB;
+    border: 1px solid #e0eaff;
+    border-radius: 15px;
+}
+.header-section {
+    margin-bottom: 30px;
+}
+.header-section h1 {
+    font-size: 31px;
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 0;
+}
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fdfdfd;
+    border: 0.84px solid #c9dbfe;
+    border-radius: 47px;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+}
+.search-bar img {
+    margin-right: 10px;
+}
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    color: #969696;
+    background-color: #fdfdfd;
+}
+.certificate-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 100px;
+    gap: 30px;
+}
+.certificate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+}
+.certificate-header .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #0e0e0e;
+}
+.certificate-header .download-button {
+    font-size: 16px;
+    color: #1F9254;
+    text-decoration: none;
+    cursor: pointer;
+}
+.certificate-header .download-button i {
+    font-size: 20px;
+    -webkit-text-stroke: 0.5px;
+    margin-left: 10px;
+}
+.certificate-issued {
+    font-size: 16px;
+    color: #0e0e0e;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+.certificate-issued span {
+    font-weight: 500;
+    font-size: 14px;
+    color: #0040C3;
+}

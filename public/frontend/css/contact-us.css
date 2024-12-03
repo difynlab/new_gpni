@@ -1,0 +1,329 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #505050;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 81.5px 104px; /* Add space on the left and right */
+}
+
+.header-title {
+    color: #0E0E0E;
+    text-align: center;
+    font-size: 3.812rem; /* 61px */
+    font-weight: 500;
+    line-height: 120%;
+    margin-bottom: 30px;
+}
+
+.description {
+    text-align: center;
+    font-size: 1.562rem; /* 25px */
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+    margin-bottom: 40px;
+}
+
+.form-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 33px;
+}
+
+.form-group label {
+    color: #0E0E0E;
+    font-size: 1.062rem; /* 17px */
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.comments-group label {
+    margin-bottom: 1px;
+    /* Reduce margin below the label */
+}
+
+.form-control,
+.form-control:focus,
+textarea.form-textarea,
+textarea.form-textarea:focus {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    padding: 5px 0;
+    /* Reduce padding to bring it closer to the label */
+    outline: none;
+    box-shadow: none;
+    width: 100%; /* Ensure the input fields take the full width */
+}
+
+.btn-submit {
+    display: block;
+    width: 108px;
+    height: 40px;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #0040c3;
+    color: white;
+    font-weight: 500;
+    font-size: 1.25rem; /* 20px */
+    line-height: 30px;
+    margin: 30px auto;
+}
+
+textarea.form-textarea {
+    height: auto;
+    min-height: 100px;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    padding: 5px 0;
+    /* Reduce padding to bring it closer to the label */
+    border-radius: 0;
+    resize: none;
+    outline: none;
+    width: 100%; /* Ensure the textarea takes the full width */
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.info-item .icon-background {
+    background-color: #f0f4fb;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.info-item img {
+    width: 48px;
+    height: 48px;
+}
+
+.info-item-content {
+    margin-left: 15px;
+    text-align: left;
+}
+
+.info-item .title {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 500;
+    color: #505050;
+    margin: 0;
+}
+
+.info-item .info {
+    font-size: 1rem; /* 16px */
+    color: #AAAAAA;
+    margin: 0;
+}
+
+.contact-info-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Additional spacing between the form fields */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row .col-md-6 {
+    flex: 0 0 48%;
+}
+
+.form-group {
+    margin-bottom: 33px;
+}
+
+.form-group.reason-group {
+    margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) {
+
+    .header-title {
+        font-size: 3rem; /* Reduced from 3.812rem */
+    }
+
+    .description {
+        font-size: 1.25rem; /* Reduced from 1.562rem */
+    }
+
+    .btn-submit {
+        font-size: 1rem; /* Reduced from 1.25rem */
+    }
+
+    .info-item img {
+        width: 40px; /* Reduced from 48px */
+        height: 40px; /* Reduced from 48px */
+    }
+
+    .info-item .title {
+        font-size: 1rem; /* Reduced from 1.25rem */
+    }
+
+    .info-item .info {
+        font-size: 0.875rem; /* Reduced from 1rem */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .container {
+        padding: 30px 15px; /* Adjust padding for medium devices */
+    }
+
+    .header-title {
+        font-size: 2.5rem; /* Further reduced */
+    }
+
+    .description {
+        font-size: 1rem; /* Further reduced */
+    }
+
+    .btn-submit {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .info-item img {
+        width: 35px; /* Further reduced */
+        height: 35px; /* Further reduced */
+    }
+
+    .info-item .title {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .info-item .info {
+        font-size: 0.75rem; /* Further reduced */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .container {
+        padding: 20px 10px; /* Adjust padding for small devices */
+    }
+
+    .header-title {
+        font-size: 2rem; /* Further reduced */
+    }
+
+    .description {
+        font-size: 0.875rem; /* Further reduced */
+    }
+
+    .btn-submit {
+        font-size: 0.75rem; /* Further reduced */
+    }
+
+    .info-item img {
+        width: 30px; /* Further reduced */
+        height: 30px; /* Further reduced */
+    }
+
+    .info-item .title {
+        font-size: 0.75rem; /* Further reduced */
+    }
+
+    .info-item .info {
+        font-size: 0.625rem; /* Further reduced */
+    }
+
+    .form-group label {
+        line-height: 2; /* Increase line height for mobile devices */
+    }
+
+    .form-group.reason-group label,
+    .form-group.comments-group label {
+        line-height: 2.5; /* Increase line height for Reason and Comments labels */
+    }
+
+    .form-group.reason-group .form-control,
+    .form-group.comments-group .form-control,
+    .form-group.reason-group .form-textarea,
+    .form-group.comments-group .form-textarea {
+        border-bottom: 1px solid #ced4da;
+        width: 100vw; /* Increase border line length for Reason and Comments */
+        max-width: 100%; /* Ensure it doesn't overflow */
+    }
+}
+
+@media (max-width: 575.98px) {
+    .container {
+        padding: 10px 5px; /* Adjust padding for extra small devices */
+    }
+
+    .header-title {
+        font-size: 1.5rem; /* Further reduced */
+    }
+
+    .description {
+        font-size: 0.75rem; /* Further reduced */
+    }
+
+    .btn-submit {
+        font-size: 0.625rem; /* Further reduced */
+    }
+
+    .info-item img {
+        width: 25px; /* Further reduced */
+        height: 25px; /* Further reduced */
+    }
+
+    .info-item .title {
+        font-size: 0.625rem; /* Further reduced */
+    }
+
+    .info-item .info {
+        font-size: 0.5rem; /* Further reduced */
+    }
+
+    .form-group label {
+        line-height: 2; /* Increase line height for extra small devices */
+    }
+
+    .form-group.reason-group label,
+    .form-group.comments-group label {
+        line-height: 2.5; /* Increase line height for Reason and Comments labels */
+    }
+
+    .form-group.reason-group .form-control,
+    .form-group.comments-group .form-control,
+    .form-group.reason-group .form-textarea,
+    .form-group.comments-group .form-textarea {
+        border-bottom: 1px solid #ced4da;
+        width: 100vw; /* Increase border line length for Reason and Comments */
+        max-width: 100%; /* Ensure it doesn't overflow */
+    }
+}
+
+@media (min-width: 1024px) {
+    .form-container {
+        margin-top: 60px; /* Add top space for laptop screens */
+    }
+
+    .contact-info {
+        margin-top: 100px; /* Add top space for Connect with us section */
+    }
+}

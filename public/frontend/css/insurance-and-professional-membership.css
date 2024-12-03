@@ -1,0 +1,238 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+}
+
+.section {
+    padding: 50px 0;
+}
+
+.title-main {
+    width: 70%;
+    color: #0E0E0E;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 120%;
+    padding: 3rem;
+    margin-bottom: 50px;
+}
+
+.content-text {
+    color: #505050;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.content-text-white {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    line-height: 140%;
+    font-style:normal;
+    font-weight: 300;
+}
+
+
+.content-text-white h2 {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 49px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+
+.content-text-white p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    line-height: 140%;
+
+}
+
+
+.content-text-white ul {
+    list-style: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
+    line-height: 140%; 
+}
+
+.content-text-white ul li {
+    position: relative; /* Position relative for pseudo-element */
+    padding-left: 20px; /* Add padding to make space for the icon */
+}
+
+.content-text-white ul li::before {
+    content: '>'; /* Custom icon */
+    position: absolute; /* Position absolute for pseudo-element */
+    left: 0; /* Align icon to the left */
+    color: #FFF; /* Icon color */
+    /* font-weight: bold; Icon weight */
+}
+
+.insurance-text ul {
+    list-style: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
+    line-height: 140%; 
+}
+
+.insurance-text ul li::before {
+    content: '•'; /* Custom round bullet */
+
+  
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.title-white {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 120%;
+    margin-bottom: 30px;
+}
+
+.img-fluid-custom {
+    width: 100%;
+    object-fit: cover;
+}
+
+.d-flex-custom {
+    display: flex;
+    gap: 30px;
+}
+
+.approve-section .d-flex-custom {
+    align-items: center;
+    gap: 40px;
+}
+
+.approve-section-background {
+    background-color: #0040c3;
+}
+
+.img-approved{
+    width: 85%;
+    object-fit: cover;
+}
+
+.highlight-box {
+    border-radius: 10px;
+    border: 1px solid rgba(233, 233, 233, 0.69);
+    padding: 30px 38px;
+    margin-top: 20px;
+    color: #FFF;
+    background-color: #0040c3;
+    width: 100%;
+}
+
+.highlight-text-bold {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 140%;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.highlight-text-regular {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 140%;
+    text-align: left;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Define a media query for mobile devices */
+@media screen and (max-width: 480px) {
+    .section {
+        padding: 4px;
+    }
+
+
+    .title-main {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .img-fluid-custom {
+        max-width: 100%; 
+    }
+    .highlight-box {
+        text-align: center;
+    }
+
+    .content-text,
+    .content-text-white {
+        text-align: center;
+    }
+    .content-text-white h2{
+        font-size: 2rem;
+    } 
+
+    .content-text-white ul 
+    {
+        text-align: left;
+    }
+    
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .section {
+        padding: 0px;
+    }
+    
+    .title-main {
+        padding: 2rem; 
+        width: 70%;
+    }
+
+
+    .img-fluid-custom {
+        max-width: 95%; 
+    }
+
+    .highlight-box {
+        text-align: center;
+    }
+
+    .content-text-white h2{
+        font-size: 2rem;
+    } 
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+    .section {
+        padding: 50px 0;
+    }
+
+    .title-main {
+        padding: 3rem; 
+    }
+
+    .img-fluid-custom {
+        max-width: 610px; /* Adjust image width for larger screens */
+    }
+
+    .highlight-box {
+        text-align: left;
+    }
+}

@@ -1,0 +1,356 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.section-title-global {
+    width: 60%;
+    font-weight: 500;
+    color: #0e0e0e;
+    line-height: 1.4;
+    text-align: center;
+    position: relative;
+}
+
+.section-title-partners {
+    width: 100%;
+    font-weight: 500;
+    color: #0e0e0e;
+    line-height: 1.4;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::before,
+.section-title::after {
+    content: none;
+}
+
+.section-subtitle {
+    font-weight: 300;
+    color: #505050;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.section-subtitle-white {
+    color: var(--white, #FFF);
+}
+
+.education-partners p,
+.language-partners p,
+.partner-info p {
+    font-weight: 400;
+    color: #505050;
+    line-height: 1.4;
+}
+
+.partner-logos .row {
+    margin-bottom: 20px;
+}
+
+.partner-logos img {
+    max-width: 100%;
+    height: auto;
+}
+
+.partner-logos .col-6,
+.partner-logos .col-md-2 {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-logos .middle-alignment {
+    margin-top: 30px;
+}
+
+.partner-logos .same-size img {
+    max-width: 160px;
+}
+
+.education-table {
+    background-color: #0040c3;
+    padding: 60px 40px;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.education-table .section-title {
+    color: var(--white, #FFF);
+    font-weight: 500;
+}
+
+.education-table table {
+    width: 100%;
+    margin: 40px 0;
+}
+
+.education-table th,
+.education-table td {
+    border: 1px solid #e3e3e3;
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.white-text {
+    color: white !important;
+}
+
+.education-table th {
+    background-color: #f7f6fb;
+    color: #0040c3ff;
+    font-weight: 500;
+}
+
+.education-table td {
+    font-weight:lighter !important;
+}
+
+.education-table .points-column {
+    white-space: nowrap;
+}
+
+.table-responsive {
+    margin: 1rem -1rem;
+    padding: 0 1rem;
+}
+
+@media (max-width: 767.98px) {
+    .education-table {
+        padding: 30px 15px;
+    }
+    
+    .education-table th,
+    .education-table td {
+        padding: 0.5rem;
+    }
+    
+    .education-table .section-title {
+        line-height: 1.3;
+    }
+
+    .gx-4 {
+        --bs-gutter-x: 0px !important;
+    }
+    .third-column {
+        width: 15% !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .education-table th,
+    .education-table td {
+        padding: 0.75rem;
+    }
+    
+    .education-table .section-title {
+        line-height: 1.3;
+    }
+}
+
+.education-table .table-responsive {
+    max-height: none;
+    overflow-y: visible;
+}
+
+.education-table .container {
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 992px) {
+  
+    .gx-4{
+        --bs-gutter-x: -364px;
+    }
+}
+
+
+.language-partners .sub-title {
+    font-weight: 500;
+    color: #0e0e0e;
+    line-height: 1.4;
+    margin-top: 30px;
+}
+
+.language-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.language-card {
+    background-color: #f7f6fb;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: left;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.language-card h3 {
+    font-weight: 500;
+    color: #0e0e0e;
+    font-style: normal;
+    line-height: 140%;
+}
+
+.language-card p {
+    font-weight: 400;
+    color: #0e0e0e;
+}
+
+.language-card:focus {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #0040c3;
+}
+
+.journey-start {
+    background-color: #0040c3ff;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.journey-start .section-title,
+.journey-start .section-subtitle {
+    color: var(--white, #FFF);
+}
+
+.journey-start .signup-btn {
+    background-color: white;
+    color: #0040c3ff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.journey-start .signup-btn:hover {
+    background-color: #0040c3ff;
+    color: white;
+}
+
+.partner-card {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+.partner-card img {
+    flex-shrink: 0;
+    width: 150px;
+    height: auto;
+}
+
+.partner-info {
+    flex-grow: 1;
+}
+
+.partner-info h3 {
+    font-weight: 500;
+    color: #0e0e0e;
+    margin-bottom: 10px;
+}
+
+.partner-info a {
+    color: #4285f4;
+    font-weight: 400;
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.partner-info p {
+    font-weight: 400;
+    color: #505050;
+    line-height: 1.4;
+}
+
+.hr-divider {
+    margin: 60px 0;
+    border-top: 1px solid #e3e3e3;
+}
+
+.education-table .custom-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 2px;
+    margin: 40px 0;
+    min-width: 600px;
+}
+
+.education-table .custom-table thead th {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    font-weight: 500;
+    padding: 1rem;
+    border: 1px solid #ffffff;
+}
+
+.education-table .custom-table tbody tr {
+    background-color: #0040c3;
+}
+
+.education-table .custom-table td {
+    color: #ffffff;
+    font-weight: 400;
+    padding: 1rem;
+    border: 1px solid #ffffff;
+}
+
+@media (max-width: 767.98px) {
+    .education-table {
+        padding: 30px 15px;
+    }
+    
+    .education-table .custom-table th,
+    .education-table .custom-table td {
+        padding: 0.5rem;
+    }
+    
+    .education-table .custom-table {
+        margin: 20px 0;
+    }
+
+    .gx-4 {
+        --bs-gutter-x: 0px !important;
+    }
+}
+
+.education-table .table-bordered {
+    border: 1px solid #ffffff;
+}
+
+.education-table .table-bordered th,
+.education-table .table-bordered td {
+    border: 1.5px solid #ffffff;
+}
+/* 
+.gx-4 {
+    --bs-gutter-x: -364px;
+} */
+
+.fixed-height {
+    height: 200px;
+    object-fit: cover;
+    width: 200px;
+}
+
+.third-column {
+    width: 200px; /* Adjust the width as needed */
+}
+
+.custom-width-table {
+    width: 1317px;
+}

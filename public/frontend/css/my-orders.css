@@ -1,0 +1,77 @@
+.orders-container {
+    padding: 30px;
+    background-color: #F7F6FB;
+    border: 1px solid #e0eaff;
+    border-radius: 15px;
+}
+.orders-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.orders-header h1 {
+    font-weight: 500;
+    font-size: 31px;
+    line-height: 46.5px;
+    color: #0e0e0e;
+}
+.table-container {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #5b5b5b;
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 12px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0e0e0e;
+    border: 1px solid #5b5b5b;
+}
+.empty-record {
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #505050;
+}
+
+@media (max-width: 768px) {
+    .orders-container {
+        padding: 20px;
+    }
+    .orders-header h1 {
+        font-size: 24px;
+        line-height: 36px;
+    }
+    th, td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    .sidebar-item {
+        font-size: 20px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .orders-container {
+        padding: 10px;
+    }
+    .orders-header h1 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    th, td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+    .sidebar-item {
+        font-size: 18px;
+        height: 50px;
+    }
+}

@@ -1,0 +1,600 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+.error-message {
+    color: #dd0909;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.sidebar {
+    width: 100%;
+}
+
+.img-fluid {
+    width: 380px;
+    height: 285px;
+    object-fit: cover;
+}
+
+h1,
+h5 {
+    font-weight: 600;
+    color: #0e0e0e;
+}
+
+p {
+    color: #505050;
+    line-height: normal;
+    font-weight: 400;
+}
+
+.content-section {
+    margin-bottom: 15px;
+}
+
+.header-metadata {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date {
+    font-size: 13px;
+    color: #838589;
+    letter-spacing: 1.56px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.social-icons img {
+    width: 20px;
+    height: 20px;
+}
+
+.subscribe-form-opened-article {
+    display: flex;
+    background: #f1f0f0;
+    border-radius: 50px;
+    padding: 5px 25px;
+    margin-top: 10px;
+}
+
+.subscribe-form-opened-article input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #8b8989ff;
+}
+
+.subscribe-form-opened-article input:focus {
+    outline: none;
+}
+
+.subscribe-button {
+    background: #0040c3ff;
+    border-radius: 50px;
+    padding: 11px 17px;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.article-container {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    gap: 20px;
+    height: 120px;
+}
+
+.article-container img {
+    width: 184px;
+    height: 102px;
+    border-radius: 0;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.article-title {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #000;
+}
+
+.article-description {
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #505050;
+}
+
+.latest-articles-section {
+    margin-top: 20px;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.latest-articles-section img {
+    width: 184px;
+    height: 102px;
+    border-radius: 0;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.subscribe {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.subscribe h5 {
+    margin-bottom: 20px;
+    color: #0B0B0B;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.subscribe p {
+    color: #838589;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.subscribe-form-article {
+    display: flex;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.subscribe-form-article input[type="email"] {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+}
+
+.subscribe-form-article button {
+    padding: 7px 7px !important;
+    border: none;
+    background-color: #0040c3;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-weight: 400;
+}
+
+.subscribe-form-article input[type="email"]:focus,
+.subscribe-form-article button:focus {
+    outline: none;
+}
+
+.subscribe-form-article input[type="email"]::placeholder {
+    color: #999;
+}
+
+.instagram-section {
+    width: 100%;
+    max-width: 1225px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.instagram-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 120%;
+    color: #0e0e0e;
+    margin-bottom: 20px;
+}
+
+.instagram-section p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+    max-width: 1090px;
+    margin: 0 auto 50px;
+}
+
+.instagram-images {
+    display: flex;
+    justify-content: space-between;
+}
+
+.instagram-images img {
+    width: calc(25% - 10px);
+    height: 100%;
+    object-fit: cover;
+}
+
+.article-container {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+    gap: 20px;
+    height: 120px;
+}
+
+.article-container:last-child {
+    border-bottom: none;
+}
+
+.article-container img {
+    width: 184px;
+    height: 102px;
+    border-radius: 0;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.article-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    height: 100%;
+}
+
+.article-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.article-details h6 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.article-details p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.date-and-read {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.time-read {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.article-details .read-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+}
+
+.article-details .small {
+    font-size: 12px;
+    font-family: 'Poppins';
+    color: #505050;
+    font-weight: 300;
+    font-style: normal;
+    line-height: normal;
+}
+
+.title-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 250px);
+}
+
+.metadata {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.date {
+    color: #838589;
+    font-size: 13px;
+}
+
+.article-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+.article-description {
+    font-size: 14px;
+    color: #505050;
+    margin: 10px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.author-section {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.read-more {
+    color: #0040c3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+/* Add margin for A Gift for You banner */
+.banner-section {
+    margin-top: 30px;
+}
+
+/* Categories Section Styles */
+.categories {
+    margin-top: 20px;
+}
+
+.categories h5 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.categories-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.category {
+    padding: 3px 8px;
+    background: #f2f2f2;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #505050;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* Find Us On Section Styles */
+.find-us-on {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.find-us-on .title {
+    font-weight: 400;
+    line-height: 24px;
+    color: #0b0b0b;
+}
+
+.custom-text-muted {
+    color: #838589;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 1.56px;
+}
+
+.author-title {
+    color: #0E0E0E;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.social-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.social-icons img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Laptop/tablet specific styles */
+@media screen and (max-width: 1024px) {
+    .custom-text-muted {
+        line-height: 15px;
+        letter-spacing: -0.5px;
+    }
+
+    .date-and-read {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        width: 100%;
+    }
+
+    .time-read {
+        white-space: nowrap;
+    }
+
+    .read-icon {
+        min-width: 12px;
+    }
+}
+
+/* Define a media query for mobile devices */
+@media screen and (max-width: 480px) {
+    .custom-text-muted {
+        line-height: 30px;
+        letter-spacing: 1.56px;
+    }
+
+    .card-text {
+        line-height: 18px;
+        font-size: 12px !important;
+    }
+
+    .username {
+        line-height: 20px;
+        font-size: 11px !important;
+    }
+
+    .read-more-button {
+        font-size: 11px !important;
+    }
+
+    .trending-article-title {
+        font-size: 14px !important;
+    }
+
+    .trending-article-description {
+        font-size: 11px !important;
+    }
+
+    .find-us-on .title {
+        font-size: 14px !important;
+    }
+
+    .subscribe h5 {
+        font-size: 14px !important;
+    }
+
+    .subscribe p {
+        font-size: 12px !important;
+    }
+
+    .subscribe-form-article button {
+        padding: 10px 15px !important;
+    }
+
+    .subscribe-form-article input[type="email"] {
+        font-size: 12px !important;
+    }
+
+    .subscribe-form-article button {
+        font-size: 12px !important;
+    }
+
+    .content-section {
+        font-size: 12px;
+    }
+
+    .author-title {
+        font-size: 14px;
+    }
+
+    .latest-article-title {
+        font-size: 14px;
+    }
+}
+
+/* Define a media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+}
+
+/* Define a media query for desktop devices */
+@media screen and (min-width: 769px) {
+
+}
+
+

@@ -1,0 +1,186 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.issn-heading {
+    width: 50%;
+    font-weight: 500;
+    color: #0e0e0e;
+    line-height: 1.4;
+    text-align: center;
+    position: relative;
+}
+
+.partners-section {
+    background-color: #ffffff;
+    background-image: url('../../../storage/frontend/world-map-white.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.partners-section h2 {
+    font-size: 49px;
+    font-weight: 500;
+    color: #0e0e0e;
+    line-height: 120%;
+}
+
+.partner-images {
+    width: auto;
+    height: 40%;
+    object-fit: fill;
+}
+
+.custom-row-gap {
+    margin-bottom: 2rem;
+}
+
+.affiliates-section {
+    background-color: #0040c3;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.affiliates-section h2 {
+    font-weight: 500;
+    line-height: 120%;
+    color: #fff;
+}
+
+.text-subtitle {
+    width: 70%;
+}
+
+.sign-up-btn {
+    color: #0040C3;
+    border: 0;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.image-content-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.image {
+    width: 484px;
+    height: 290px;
+}
+
+.content p,
+.content ul {
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 140%;
+}
+
+.contact-us-btn{
+    padding: 20px !important;
+}
+.description-content p,
+.description-content ul,
+.description-content ol,
+.description-content li {
+    font-size: inherit;
+    margin-bottom: 1rem;
+    line-height: 140%;
+}
+
+.description-content ul,
+.description-content ol {
+    padding-left: 2rem;
+}
+
+.description-content li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .description-content {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .description-content {
+        font-size: 16px;
+    }
+    
+    .description-content ul,
+    .description-content ol {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .description-content {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .description-content {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .partners-section {
+        padding: 50px 15px;
+    }
+
+    .partners-section h2 {
+        font-size: 36px;
+    }
+
+    .image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .issn-heading {
+        width: 80%;
+    }
+    
+    .text-subtitle {
+        width: 90%;
+    }
+    
+    .image-content-container {
+        flex-direction: column;
+    }
+    
+    .content {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .issn-heading {
+        width: 100%;
+    }
+    
+    .text-subtitle {
+        width: 100%;
+    }
+    
+    .partners-section {
+        background-size: cover;
+    }
+    
+    .btn-responsive {
+        width: 100%;
+        max-width: 178px;
+        margin: 0.5rem 0;
+    }
+}
