@@ -10,6 +10,7 @@ use App\Models\Course;
 use App\Models\CoursePurchase;
 use App\Models\Setting;
 use App\Models\Testimonial;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -88,6 +89,18 @@ class MasterClassController extends Controller
             $currency = 'jpy';
         }
 
+        $user = Auth::user();
+        $course = Course::find($request->course_id);
+        $wallet = Wallet::where('user_id', $user->id)->where('status', '1')->first();
+        $wallet_balance = $wallet ? $wallet->balance : '0.00';
+
+        if($course->price >= $wallet_balance) {
+            $amount = $course->price - $wallet_balance;
+        }
+        else {
+            $amount = '0.00';
+        }
+
         $course_order = new CoursePurchase();
         $course_order->user_id = Auth::user()->id;
         $course_order->course_id = $request->course_id;
@@ -97,7 +110,7 @@ class MasterClassController extends Controller
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
-        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$request->price : (int)($request->price * 100);
+        $total_order_amount_in_cents = $currency === 'jpy' ? (int)$amount : (int)($amount * 100);
 
         $session = \Stripe\Checkout\Session::create([
             'line_items' => [
@@ -140,6 +153,20 @@ class MasterClassController extends Controller
             $course_order->material_logistic = 'No';
             $course_order->payment_status = 'Completed';
             $course_order->save();
+        }
+
+        $wallet = Wallet::where('user_id', $course_order->user_id)->where('status', '1')->first();
+        $course = Course::find($course_order->course_id);
+
+        if($wallet) {
+            if($wallet->balance >= $course->price) {
+                $wallet->balance = $wallet->balance - $course->price;
+                $wallet->save();
+            }
+            else {
+                $wallet->balance = '0.00';
+                $wallet->save();
+            }
         }
 
         return redirect()->route('frontend.master-classes.index')->with('success', 'Course purchased successfully');

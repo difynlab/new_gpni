@@ -41,10 +41,10 @@
                                                 <div class="position-relative">
                                                     @if($article->thumbnail)
                                                     <img src="{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}"
-                                                        alt="Main Image" class="img-fluid w-100">
+                                                        alt="Main Image" class="img-fluid article-image">
                                                     @else
                                                     <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}"
-                                                        alt="Main Image" class="img-fluid w-100">
+                                                        alt="Main Image" class="img-fluid article-image">
                                                     @endif
                                                     <div class="share-icon position-absolute">
                                                         <button class="btn btn-light" onclick="shareContent('{{ $article->title }}', '{{ asset('storage/backend/articles/articles/'. $article->thumbnail) }}')">

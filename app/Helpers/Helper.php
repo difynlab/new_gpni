@@ -20,7 +20,7 @@ if(!function_exists('hasUserPurchasedCourse')) {
             return false;
         }
 
-        return CoursePurchase::where('user_id', $user_id)->where('course_id', $course_id)->where('status', '1')->exists();
+        return CoursePurchase::where('user_id', $user_id)->where('course_id', $course_id)->where('payment_status', 'Completed')->where('status', '1')->exists();
     }
 }
 
@@ -102,5 +102,22 @@ if(!function_exists('hasUserPurchasedMembership')) {
         }
 
         return MembershipPurchase::where('user_id', $user_id)->where('payment_status', 'Completed')->where('status', '1')->exists();
+    }
+}
+
+if(!function_exists('hasUserSelectedCorrectLanguage')) {
+    function hasUserSelectedCorrectLanguage($user_id, $middleware_language_name)
+    {
+        $user = User::find($user_id);
+
+        if(!$user) {
+            return false;
+        }
+
+        if($user->language == $middleware_language_name) {
+            return true;
+        }
+
+        return false;
     }
 }

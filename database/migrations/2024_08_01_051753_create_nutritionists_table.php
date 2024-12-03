@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('age')->nullable();
+            $table->string('email')->nullable();
             $table->enum('language', ['English', 'Chinese', 'Japanese']);
             $table->string('country')->nullable();
             $table->enum('is_certified', [1, 2])->nullable();

@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\CoursePurchase;
 use App\Models\CourseReview;
 use App\Models\Testimonial;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,11 +38,24 @@ class CertificationCourseController extends Controller
 
     public function purchase(Request $request, Course $course)
     {
+        $user = Auth::user();
+        $wallet = Wallet::where('user_id', $user->id)->where('status', '1')->first();
         $currency_symbol = ($request->middleware_language === 'en') ? '$' : '¥';
+
+        $wallet_balance = $wallet ? $wallet->balance : '0.00';
+
+        if($course->price >= $wallet_balance) {
+            $total_amount = $course->price - $wallet_balance;
+        }
+        else {
+            $total_amount = '0.00';
+        }
         
         return view('frontend.pages.certification-courses.payment', [
             'course' => $course,
-            'currency_symbol' => $currency_symbol
+            'currency_symbol' => $currency_symbol,
+            'wallet_balance' => $wallet_balance,
+            'total_amount' => $total_amount
         ]);
     }
 
@@ -68,12 +82,7 @@ class CertificationCourseController extends Controller
 
         if($request->payment_mode == 'payment') {
 
-            if($request->material_logistic == 'No') {
-                $total_order_amount_in_cents = $currency === 'jpy' ? (int)$request->price : (int)($request->price * 100);
-            }
-            else {
-                $total_order_amount_in_cents = $currency === 'jpy' ? (int)$request->price + $request->material_logistic_price : (int)($request->price + $request->material_logistic_price * 100);
-            }
+            $total_order_amount_in_cents = $currency === 'jpy' ? (int)$request->price : (int)($request->price * 100);
 
             $session = \Stripe\Checkout\Session::create([
                 'line_items' => [
@@ -167,6 +176,27 @@ class CertificationCourseController extends Controller
             $course_order->material_logistic = $material_logistic;
             $course_order->payment_status = 'Completed';
             $course_order->save();
+        }
+
+        $wallet = Wallet::where('user_id', $course_order->user_id)->where('status', '1')->first();
+        $course = Course::find($course_order->course_id);
+
+        if($material_logistic == 'Yes') {
+            $material_logistic_price = $course->material_logistic_price;
+        }
+        else {
+            $material_logistic_price = 0;
+        }
+
+        if($wallet) {
+            if($wallet->balance >= ($course->price + $material_logistic_price)) {
+                $wallet->balance = $wallet->balance - ($course->price + $material_logistic_price);
+                $wallet->save();
+            }
+            else {
+                $wallet->balance = '0.00';
+                $wallet->save();
+            }
         }
 
         return redirect()->route('frontend.homepage')->with('success', 'Course purchased successfully');

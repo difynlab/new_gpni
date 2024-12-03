@@ -10,7 +10,6 @@
 
     @if($contents->title_en)
         <main class="container my-5 pt-5">
-
             <div class="pt-5">
                 <x-frontend.notification></x-frontend.notification>
             </div>
@@ -25,13 +24,15 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="selected-card mb-4">
                         <div class="card-image-container" id="cardImageContainer">
-                            <img src="{{ asset('storage/backend/pages/' . $images[0]) }}" alt="Gift Card" id="main-card-image" class="img-fluid">
+                            @if($images)
+                                <img src="{{ asset('storage/backend/pages/' . $images[0]) }}" alt="Gift Card" id="main-card-image" class="img-fluid">
+                            @endif
                         </div>
                     </div>
                     <div class="custom-selection">
                         <h5 class="text-primary fs-20">Choose Gift Card Style</h5>
                         <div class="d-flex flex-wrap">
-                            @if(count($images) > 0)
+                            @if($images)
                                 @foreach($images as $image)
                                     <div class="style-card">
                                         <img src="{{ asset('storage/backend/pages/' . $image) }}" alt="Gift Card Image" class="img-fluid">
@@ -58,10 +59,9 @@
                         <div class="form-group">
                             <label class="required fs-16">Select Amount</label>
                             <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(50)">{{ $currency_symbol }}50</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(100)">{{ $currency_symbol }}100</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(250)">{{ $currency_symbol }}250</button>
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount(500)">{{ $currency_symbol }}500</button>
+                                @foreach($amounts as $amount)
+                                    <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount({{ $amount }})">{{ $currency_symbol }}{{ $amount }}</button>
+                                @endforeach
                                 <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="customAmount()">Custom</button>
                             </div>
                         </div>
@@ -111,10 +111,11 @@
         }
 
         function setActiveButton(value) {
+            let currency_symbol = '<?php echo $currency_symbol; ?>';
             const buttons = document.querySelectorAll('.d-flex .btn');
             buttons.forEach(button => {
                 button.classList.remove('active');
-                if(button.textContent.trim() === `$${value}`) {
+                if(button.textContent.trim() === `${currency_symbol}${value}`) {
                     button.classList.add('active');
                 }
             });

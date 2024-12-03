@@ -57,6 +57,7 @@
                             <th scope="col">Language</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>
+                            <th scope="col">Wallet</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -72,6 +73,7 @@
                                     <td>{{ $student->language }}</td>
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->phone ?? '-' }}</td>
+                                    <td>{{ $student->wallet }}</td>
                                     <td>{!! $student->status !!}</td>
                                     <td>{!! $student->action !!}</td>
                                 </tr>

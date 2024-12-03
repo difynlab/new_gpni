@@ -57,17 +57,21 @@
                     <div class="text-center mb-5 fs-25 ff-poppins-regular">{!! $contents->{'section_3_description_' . $middleware_language} ?? $contents->section_3_description_en !!}</div>
 
                     @if(auth()->check())
-                        @if(hasUserPurchasedMembership(auth()->user()->id))
-                            @if(auth()->user()->member == 'Yes')
-                                <button type="submit" class="btn-pay-now">Already Purchased</button>
+                        @if(hasUserSelectedCorrectLanguage(auth()->user()->id, $middleware_language_name))
+                            @if(hasUserPurchasedMembership(auth()->user()->id))
+                                @if(auth()->user()->member == 'Yes')
+                                    <button class="btn-pay-now">Already Purchased</button>
+                                @else
+                                    <button class="btn-pay-now">Your membership is disabled. Please contact the support team</button>
+                                @endif
                             @else
-                                <button type="submit" class="btn-pay-now">Your membership is disabled. Please contact the support team</button>
+                                <form action="{{ route('frontend.membership.checkout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn-pay-now">{{ $contents->{'section_3_button_' . $middleware_language} ?? $contents->section_3_button_en }}</button>
+                                </form>
                             @endif
                         @else
-                            <form action="{{ route('frontend.membership.checkout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn-pay-now">{{ $contents->{'section_3_button_' . $middleware_language} ?? $contents->section_3_button_en }}</button>
-                            </form>
+                            <button class="btn-pay-now">Kindly change the website language to your primary language</button>
                         @endif
                     @else
                         <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn-pay-now text-decoration-none">Login for Purchase</a>

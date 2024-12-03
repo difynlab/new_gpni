@@ -164,7 +164,16 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    white-space: normal; 
+    height: 5rem; 
+    text-align: center;
+    width: 100px;
+}
+
+.coach-contact-link{
     cursor: pointer;
+    white-space: normal;
+
 }
 
 .coach-info-row {
@@ -266,8 +275,13 @@ body {
 
 .pagination .page-link {
     font-size: 14px;
-    border: none;
     box-shadow: none;
+    color: #0040c3;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: #0040c3; 
+    color: #ffffff; 
 }
 
 /* Profile Section */

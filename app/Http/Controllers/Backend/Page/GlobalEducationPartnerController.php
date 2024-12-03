@@ -67,12 +67,16 @@ class GlobalEducationPartnerController extends Controller
 
         // Section 2 points
             $section_2_points = [];
-            foreach($request->section_2_points_partner_name as $key => $section_2_points_partner_name) {
-                array_push($section_2_points, [
-                    'partner_name' => $section_2_points_partner_name,
-                    'course_name' => $request->section_2_points_course_name[$key],
-                    'points' => $request->section_2_points[$key]
-                ]);
+            if($section_2_points != null)
+                foreach($request->section_2_points_partner_name as $key => $section_2_points_partner_name) {
+                    array_push($section_2_points, [
+                        'partner_name' => $section_2_points_partner_name,
+                        'course_name' => $request->section_2_points_course_name[$key],
+                        'points' => $request->section_2_points[$key]
+                    ]);
+                }
+            else {
+                $section_2_points = null;
             }
         // Section 2 points
 
@@ -146,8 +150,8 @@ class GlobalEducationPartnerController extends Controller
             'section_5_point_contents'
         );
 
-        $data['section_2_points_' . '' . $short_code] = json_encode($section_2_points);
-        $data['section_3_languages_' . '' . $short_code] = json_encode($request->section_3_languages);
+        $data['section_2_points_' . '' . $short_code] = $section_2_points;
+        $data['section_3_languages_' . '' . $short_code] = $request->section_3_languages ? json_encode($request->section_3_languages) : null;
         $data['section_4_label_link_' . '' . $short_code] = json_encode($section_4_label_link);
         $data['section_5_points_' . '' . $short_code] = $section_5_points;
 

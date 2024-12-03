@@ -34,10 +34,10 @@
         <div class="col-12 col-md-4 h-100">
             @if($podcast->thumbnail)
             <img src="{{ asset('storage/backend/podcasts/'. $podcast->thumbnail) }}" alt="Main Image"
-                class="img-fluid podcast-image h-100">
+                class="img-fluid podcast-image">
             @else
             <img src="{{ asset('storage/backend/common/'. App\Models\Setting::find(1)->no_image) }}" alt="Main Image"
-                class="img-fluid podcast-image h-100">
+                class="img-fluid podcast-image">
             @endif
         </div>
         <div class="podcast-content col-12 col-md-8 d-flex flex-column justify-content-center">
