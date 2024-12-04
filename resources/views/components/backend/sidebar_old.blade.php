@@ -14,44 +14,19 @@
                 </a>
             </li>
 
-            <!-- <a href="{{ route('backend.pages.index') }}" class="link {{ Request::segment(2) == 'pages' ? 'active' : null }}">
-                                        <img src="{{ asset('storage/backend/sidebar/page.png') }}" alt="Icon">
-                                        <span>Pages</span>
-                                    </a> -->
-
             <li>
-                <div class="dropdown">
-                    <button class="link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('storage/backend/sidebar/page.png') }}" alt="Icon">
-                        Pages
-                    </button>      
-
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="{{ route('backend.pages.index') }}" class="dropdown-item link">
-                                <img src="{{ asset('storage/backend/sidebar/page.png') }}" alt="Icon">
-                                <span>Pages</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('backend.conferences.index') }}" class="dropdown-item link">
-                                <img src="{{ asset('storage/backend/sidebar/conference.png') }}" alt="Icon">
-                                <span>Conferences</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                    </ul>
-                </div>
+                <a href="{{ route('backend.pages.index') }}" class="link {{ Request::segment(2) == 'pages' ? 'active' : null }}">
+                    <img src="{{ asset('storage/backend/sidebar/page.png') }}" alt="Icon">
+                    <span>Pages</span>
+                </a>
             </li>
 
-            <!-- <li>
+            <li>
                 <a href="{{ route('backend.conferences.index') }}" class="link {{ Request::segment(2) == 'conferences' ? 'active' : null }}">
                     <img src="{{ asset('storage/backend/sidebar/conference.png') }}" alt="Icon">
                     <span>Conferences</span>
                 </a>
-            </li> -->
+            </li>
 
             <div class="accordion" id="article-accordion">
                 <button class="link accordion-dropdown collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#article-data-collapse">
