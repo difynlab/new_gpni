@@ -1,10 +1,4 @@
 <div class="sidebar">
-    <div class="p-2">
-        <a href="{{ route('backend.dashboard.index') }}">
-            <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->logo) }}" alt="Logo" class="logo">
-        </a>
-    </div>
-
     <ul class="main-menu">
         <li class="main-menu-link">
             <a href="{{ route('backend.dashboard.index') }}">
@@ -35,11 +29,17 @@
 
                     <ul class="sub-sub-menu">
                         <li class="sub-sub-menu-link">
-                            <a href="{{ route('backend.article-categories.index') }}">Article Categories</a>
+                            <a href="{{ route('backend.article-categories.index') }}">
+                                <img src="{{ asset('storage/backend/sidebar/article.png') }}" alt="Icon">
+                                <span>Article Categories</span>
+                            </a>
                         </li>
 
                         <li class="sub-sub-menu-link">
-                            <a href="{{ route('backend.articles.index') }}">Articles</a>
+                            <a href="{{ route('backend.articles.index') }}">
+                                <img src="{{ asset('storage/backend/sidebar/article.png') }}" alt="Icon">
+                                <span>Articles</span>
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -73,11 +73,17 @@
 
                     <ul class="sub-sub-menu">
                         <li class="sub-sub-menu-link">
-                            <a href="{{ route('backend.policy-categories.index') }}">Policy Categories</a>
+                            <a href="{{ route('backend.policy-categories.index') }}">
+                                <img src="{{ asset('storage/backend/sidebar/policy.png') }}" alt="Icon">
+                                <span>Policy Categories</span>
+                            </a>
                         </li>
 
                         <li class="sub-sub-menu-link">
-                            <a href="{{ route('backend.policies.index') }}">Policies</a>
+                            <a href="{{ route('backend.policies.index') }}">
+                                <img src="{{ asset('storage/backend/sidebar/policy.png') }}" alt="Icon">
+                                <span>Policies</span>
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -120,11 +126,17 @@
 
                     <ul class="sub-sub-menu">
                         <li class="sub-sub-menu-link">
-                            <a href="{{ route('backend.exam-results.module-exams') }}">Module Exams</a>
+                            <a href="{{ route('backend.exam-results.module-exams') }}">
+                                <img src="{{ asset('storage/backend/sidebar/article.png') }}" alt="Icon">
+                                <span>Module Exams</span>
+                            </a>
                         </li>
 
                         <li class="sub-sub-menu-link">
-                            <a href="{{ route('backend.exam-results.final-exams') }}">Final Exams</a>
+                            <a href="{{ route('backend.exam-results.final-exams') }}">
+                                <img src="{{ asset('storage/backend/sidebar/article.png') }}" alt="Icon">
+                                <span>Final Exams</span>
+                            </a>
                         </li>
                     </ul>
                 </li>

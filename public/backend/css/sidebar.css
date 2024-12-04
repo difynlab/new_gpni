@@ -2,13 +2,11 @@
   .wrapper .sidebar {
       position: fixed;
       z-index: 9999;
-  }
-  .wrapper .sidebar .logo {
-      width: 130px;
+      top: 100px;
   }
   .wrapper .sidebar .main-menu {
       position: relative;
-      background-color: #404E67;
+      background-color: #0040C3;
       height: 100vh;
       width: 70px;
       padding: 10px 0;
@@ -17,8 +15,7 @@
   }
   .wrapper .sidebar .main-menu .main-menu-link {
       position: relative;
-      margin-bottom: 10px;
-      padding: 10px;
+      padding: 15px 10px;
       cursor: pointer;
   }
   .wrapper .sidebar .main-menu .main-menu-link:last-child {
@@ -49,7 +46,14 @@
       display: block;
   }
   .wrapper .sidebar .main-menu .main-menu-link:hover {
-      background-color: #0040C3;
+      background-color: #F7BF2E;
+  }
+  .wrapper .sidebar .main-menu .main-menu-link:hover > a {
+      color: black;
+  }
+  .wrapper .sidebar .main-menu .main-menu-link:hover > a img {
+      filter: brightness(0);
+      height: 25px;
   }
   .wrapper .sidebar .main-menu .main-menu-link:hover > .sub-menu {
       display: block;
@@ -60,20 +64,19 @@
 /* Sub menu */
   .wrapper .sidebar .sub-menu {
       position: absolute;
-      background-color: #f7bf2e;
+      background-color: #F7BF2E;
       height: auto;
       width: 225px;
       top: 0;
       left: 100%;
-      padding: 10px 0;
+      padding: 0;
       list-style-type: none;
       display: none;
       transition: opacity 0.3s, visibility 0.3s;
   }
   .wrapper .sidebar .sub-menu .sub-menu-link {
       position: relative;
-      margin-bottom: 10px;
-      padding: 10px 20px;
+      padding: 15px 20px;
       cursor: pointer;
   }
   .wrapper .sidebar .sub-menu .sub-menu-link:last-child {
@@ -107,19 +110,18 @@
 /* Sub sub menu */
   .wrapper .sidebar .sub-sub-menu {
       position: absolute;
-      background-color: #efac48;
+      background-color: #F7BF2E;
       height: auto;
-      width: 200px;
+      width: 220px;
       top: 0;
       left: 100%;
-      padding: 10px 0;
+      padding: 0;
       list-style-type: none;
       display: none;
       transition: opacity 0.3s, visibility 0.3s;
   }
   .wrapper .sidebar .sub-sub-menu .sub-sub-menu-link {
-      margin-bottom: 10px;
-      padding: 10px 20px;
+      padding: 15px 20px;
       cursor: pointer;
   }
   .wrapper .sidebar .sub-sub-menu .sub-sub-menu-link:last-child {
@@ -135,4 +137,7 @@
   .wrapper .sidebar .sub-sub-menu .sub-sub-menu-link:hover > a {
       color: white!important;
   }
+  .wrapper .sidebar .sub-sub-menu .sub-sub-menu-link:hover > a img {
+    filter: invert(1) brightness(10);
+}
 /* Sub sub menu */

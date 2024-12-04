@@ -144,7 +144,7 @@
                         </div>
 
                         <div>
-                            <x-backend.upload-multi-images image_count="2" old_name="old_certificate_images" old_value="{{ old('old_certificate_images') }}" new_name="new_certificate_images[]" path="courses/certificate-images"></x-backend.upload-multi-images>
+                            <x-backend.upload-multi-images image_count="2" old_name="old_certificate_images" old_value="{{ old('old_certificate_images') }}" label="Certification" new_name="new_certificate_images[]" path="courses/certificate-images"></x-backend.upload-multi-images>
                             <x-backend.input-error field="new_certificate_images.*"></x-backend.input-error>
                         </div>
                     </div>

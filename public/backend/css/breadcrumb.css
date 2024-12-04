@@ -1,9 +1,22 @@
+.fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    -webkit-box-shadow: 3px -1px 3px 0px rgba(0,0,0,0.45);
+    -moz-box-shadow: 3px -1px 3px 0px rgba(0,0,0,0.45);
+    box-shadow: 3px -1px 3px 0px rgba(0,0,0,0.45);
+    height: 100px;
+}
 .breadcrumbs {
-    padding-bottom: 1%;
-    padding-left: 12%;
-    padding-top: 1%;
+    padding: 1%;
+    padding-bottom: 0;
     justify-content: space-between;
     position: relative;
+    align-items: center;
+}
+.breadcrumbs .logo {
+    width: 130px;
 }
 .breadcrumbs .page-title {
     color: #0040C3;
