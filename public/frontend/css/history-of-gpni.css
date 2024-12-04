@@ -14,7 +14,7 @@
 }
 
 .image-container {
-    padding-top: 5%; /* Default top padding */
+    margin-top: -7%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -23,6 +23,7 @@
 .image-container img {
     max-width: 100%;
     height: auto;
+    width:100%
 }
 
 .since {
@@ -404,6 +405,7 @@
     /* overflow: hidden; */
     /* text-overflow: ellipsis; */
     /* max-height: 20px;  */
+    text-align: justify;
 }
 
 .founder .title {
@@ -654,7 +656,7 @@
 /* For larger laptops with width 1440px */
 @media (min-width: 1440px) {
     .section {
-        padding-top: 15%; /* Adjust top padding for larger laptops */
+        padding-top: 5%; /* Reduce top padding for larger laptops */
     }
 
     .text-container {
@@ -663,19 +665,19 @@
     }
 
     .since {
-        font-size: 16vw; /* Adjust font size for larger laptops */
+        font-size: 160px; /* Adjust font size for larger laptops */
     }
 
     .history {
-        font-size: 8vw; /* Adjust font size for larger laptops */
+        font-size: 49px; /* Adjust font size for "Our History" */
     }
 
     .text-container .since {
-        font-size: 16vw; /* Adjust font size for "since" */
+        font-size: 124px; /* Adjust font size for "since" */
     }
 
     .text-container .history {
-        font-size: 8vw; /* Adjust font size for "our history" */
+        font-size: 6vw; /* Adjust font size for "our history" */
     }
 
     .text-container .year {
