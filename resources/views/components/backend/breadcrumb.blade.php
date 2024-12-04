@@ -20,14 +20,14 @@
 
     <div class="col-2">
         <div class="row align-items-center">
-            <div class="col-5">
+            <div class="col-4">
                 @if(auth()->user()->image)
                     <img src="{{ asset('storage/backend/persons/admins/' . auth()->user()->image) }}" alt="Image" class="profile-image">
                 @else
                     <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" alt="Image" class="profile-image">
                 @endif
             </div>
-            <div class="col-7">
+            <div class="col-8">
                 <p class="name">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
                 <p class="role">{{ ucfirst(auth()->user()->role) }}</p>
                 <form method="POST" action="{{ route('backend.logout') }}">
