@@ -25,10 +25,12 @@
 
 /* Wrapper styles */
     .wrapper {
-        padding: 40px 50px 0 50px;
+        padding: 0;
     }
     .wrapper .content {
-        padding-left: 16%;
+        /* padding-left: 10%;
+        padding-top: 1%; */
+        padding-right: 1%;
     }
 /* Wrapper styles */
 
