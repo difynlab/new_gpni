@@ -12,8 +12,8 @@
         @if ($contents->title_en)
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h2>{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h2>
-                    <div>{!! $contents->{'description_' . $middleware_language} ?? $contents->description_en !!}</div>
+                    <h2 class="heading-text">{{ $contents->{'title_' . $middleware_language} ?? $contents->title_en }}</h2>
+                    <div class="description-text">{!! $contents->{'description_' . $middleware_language} ?? $contents->description_en !!}</div>
                 </div>
             </div>
         @endif
