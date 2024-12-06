@@ -355,12 +355,12 @@ form .error-message {
 
     .nav-item {
         margin: 0 20px;
+        list-style: none;
     }
 
     .navbar-light .navbar-nav .nav-link {
         position: relative;
         padding: 40px 0;
-        font-size: 18px;
         color: #0f172b !important;
         font-weight: 200;
         outline: none;
@@ -373,8 +373,13 @@ form .error-message {
     }
 
     .navbar-light .navbar-nav .nav-link:hover {
-        color: var(--primary) !important;
+        color: #0040C3 !important;
     }
+
+    .navbar-light .navbar-nav .nav-link:focus {
+        color: #0040C3 !important;
+    }
+
 
     .navbar-light .navbar-brand img {
         max-height: 45px;
@@ -385,22 +390,19 @@ form .error-message {
     }
 
     .nav-item .badge {
-        border-radius: 50%;
-        background-color: black;
-        color: white;
-        font-size: 0.75rem;
-        top: 23px !important;
-        right: -10px !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 20px;
-        height: 20px;
-        text-align: center;
+        font-style: normal;
+        font-weight: 300;
     }
 
     .nav-link.dropdown-toggle::after {
         display: none;
+    }
+
+    .navbar-light .navbar-nav .dropdown-item:hover,
+    .navbar-light .navbar-nav .dropdown-item:focus,
+    .navbar-light .navbar-nav .dropdown-item.active {
+        color: #0040C3 !important;
+        background-color: transparent; /* Optional: to remove background color on hover/focus/active */
     }
 
     @media (max-width: 991.98px) {
@@ -413,7 +415,7 @@ form .error-message {
         .navbar-light .navbar-nav .nav-link,
         .sticky-top.navbar-light .navbar-nav .nav-link {
             padding: 10px 0;
-            margin-left: 0;
+            /* margin-left: 0; */
         }
 
         .navbar-light .navbar-brand img {
@@ -436,6 +438,12 @@ form .error-message {
         }
     }
 
+
+    @media (min-width:320px) and (max-width:768px) {
+        .sticky-top.navbar-light .navbar-brand img {
+            max-height: 26px !important;
+        }
+    }
 
     .dropdown-submenu {
         position: relative;

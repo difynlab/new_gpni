@@ -28,6 +28,23 @@ body {
     color: #ffffff;
     box-sizing: border-box;
 }
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    .container {
+        margin-top: 0.2rem !important;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+    .container {
+        margin-top: 3rem !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        margin-top: 5rem !important;
+    }
+}
 
 /* Responsive adjustments for tablet and laptop screens */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -346,7 +363,7 @@ body {
     .form-container {
         width: 100%;
         max-width: 100%;
-        padding: 20px;
+        padding: 0px;
     }
 
     .social-login-buttons {
@@ -372,7 +389,7 @@ body {
     }
 
     .remember-forget {
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
     }
 
@@ -435,14 +452,7 @@ body {
         max-height: 60px;
         margin: 0 10px;
     }
-
-    .form-container {
-        width: 320px; /* Adjust the width in pixels as needed */
-        max-width: 100%; /* Ensure it doesn't exceed the container width */
-        padding: 20px; /* Adjust padding as needed */
-    }
 }
-
 @media (max-width: 767.98px) {
     .captcha-container {
         padding: 15px;

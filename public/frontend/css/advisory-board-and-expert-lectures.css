@@ -1,55 +1,303 @@
 .card-title {
-    font-size: 20px;
+    font-size: 1.25rem; /* Default font size */
     font-weight: 500;
     margin-bottom: 16px;
+    text-align: left; /* Align the card title to the left */
+    display: block; /* Ensure the elements are displayed */
+    visibility: visible; /* Ensure visibility */
 }
+
 .card-subtitle {
-    font-size: 16px;
+    font-size: 1rem; /* Default font size */
     font-weight: 500;
     margin-bottom: 16px;
+    text-align: left; /* Align the card subtitle to the left */
+    display: block; /* Ensure the elements are displayed */
+    visibility: visible; /* Ensure visibility */
 }
+
 .card-text {
-    font-size: 16px;
+    font-size: 1rem; /* Default font size */
     font-weight: 400;
-    line-height: 29px;
+    line-height: 1.8125rem; /* 29px */
+    text-align: left; /* Align the card text to the left */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 body {
     font-family: 'Poppins', sans-serif !important;
-    /* padding-top: 80px; Adjust this value to the height of your navbar */
 }
+
+/* Styles for tablets and small laptops */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    .section-heading {
+        font-size: 2.2rem; /* Adjust as needed */
+        margin-top: 30px; /* Adjust as needed */
+    }
+
+    .section-subheading {
+        font-size: 1.1rem; /* Adjust as needed */
+        margin-top: 15px; /* Adjust as needed */
+        margin-bottom: 30px; /* Adjust as needed */
+    }
+
+    .card {
+        margin-top: 20px; /* Add space between subheading and card */
+    }
+
+    .card-title {
+        font-size: 1.125rem; 
+    }
+
+    .card-subtitle {
+        font-size: 0.875rem; 
+    }
+
+    .card-text {
+        font-size: 0.875rem; 
+        line-height: 1.5rem; /* Adjust line height */
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+    }
+
+    .modal-body {
+        flex-direction: row; /* Arrange content in a row */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .popup-image {
+        width: 50%; /* Adjust width for tablets */
+        height: 100%; /* Ensure the image covers the entire height */
+        max-width: none; /* Remove max-width */
+        max-height: none; /* Remove max-height */
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 20px; /* Add right margin for spacing */
+        border-radius: 0; /* Remove border-radius for tablets */
+        object-fit: cover; /* Ensure the image covers the entire area */
+    }
+
+    .popup-content {
+        width: 50%; /* Adjust width for tablets */
+        padding: 20px;
+    }
+
+    .popup-info {
+        text-align: left; /* Align text to the left for tablets */
+    }
+
+    .gpni-logo {
+        width: 80px; /* Adjust width for tablets */
+        height: 30px; /* Adjust height for tablets */
+    }
+}
+
+/* Styles for laptops */
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+    .section-heading {
+        font-size: 2.5rem; /* Adjust as needed */
+        margin-top: 40px; /* Adjust as needed */
+    }
+
+    .section-subheading {
+        font-size: 1.21rem; /* Adjust as needed */
+        margin-top: 20px; /* Adjust as needed */
+        margin-bottom: 40px; /* Adjust as needed */
+    }
+
+    body {
+        padding: 20px; /* Add padding for laptops */
+    }
+
+    .card {
+        width: 250px; /* Reduce width for laptops */
+        height: 556px; /* Set height for laptops */
+        margin: 20px auto; /* Center the card and add top and bottom margin */
+    }
+
+    .card + .card {
+        margin-top: 20px; /* Add space between each card */
+    }
+
+    .card-title {
+        font-size: 1.25rem; /* Use existing font size class */
+    }
+
+    .card-subtitle {
+        font-size: 1rem; /* Use existing font size class */
+    }
+
+    .card-text {
+        font-size: 1rem; /* Use existing font size class */
+        line-height: 1.8125rem; /* 29px */
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+    }
+
+    .modal-content {
+        width: 451px; /* Set width for laptops */
+        height: 608px; /* Set height for laptops */
+    }
+
+    .modal-body {
+        flex-direction: row; /* Arrange content in a row */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .popup-image {
+        width: 40%; /* Adjust width for laptops */
+        height: 100%; /* Ensure the image covers the entire height */
+        max-width: none; /* Remove max-width */
+        max-height: none; /* Remove max-height */
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 20px; /* Add right margin for spacing */
+        border-radius: 0; /* Remove border-radius for laptops */
+        object-fit: cover; /* Ensure the image covers the entire area */
+    }
+
+    .popup-content {
+        width: 60%; /* Adjust width for laptops */
+        padding: 20px;
+    }
+
+    .popup-info {
+        text-align: left; /* Align text to the left for laptops */
+    }
+}
+
+/* Styles for large laptops and desktops */
+@media (min-width: 1440px) {
+    .section-heading {
+        font-size: 3rem; /* Adjust as needed */
+        margin-top: 0; /* Remove top padding */
+        visibility: visible; /* Ensure visibility */
+    }
+
+    .section-subheading {
+        font-size: 1.5rem; /* Adjust as needed */
+        margin-top: 0; /* Remove top padding */
+        margin-bottom: 50px; /* Adjust as needed */
+        visibility: visible; /* Ensure visibility */
+    }
+
+    body {
+        padding: 60px; /* Add padding for large laptops and desktops */
+    }
+
+    .card {
+        width: 392px; /* Set width for large laptops and desktops */
+        height: 556px; /* Set height for large laptops and desktops */
+        margin: 20px auto; /* Center the card and add top and bottom margin */
+    }
+
+    .card + .card {
+        margin-top: 20px; /* Add space between each card */
+    }
+
+    .card-title {
+        font-size: 1.25rem; /* Use existing font size class */
+    }
+
+    .card-subtitle {
+        font-size: 1rem; /* Use existing font size class */
+    }
+
+    .card-text {
+        font-size: 1rem; /* Use existing font size class */
+        line-height: 1.8125rem; /* 29px */
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+    }
+
+    .modal-content {
+        width: 451px; /* Set width for large laptops and desktops */
+        height: 608px; /* Set height for large laptops and desktops */
+    }
+
+    .modal-body {
+        flex-direction: row; /* Arrange content in a row */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .popup-image {
+        width: 40%; /* Adjust width for large laptops and desktops */
+        height: 100%; /* Ensure the image covers the entire height */
+        max-width: none; /* Remove max-width */
+        max-height: none; /* Remove max-height */
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 20px; /* Add right margin for spacing */
+        border-radius: 0; /* Remove border-radius for large laptops and desktops */
+        object-fit: cover; /* Ensure the image covers the entire area */
+    }
+
+    .popup-content {
+        width: 60%; /* Adjust width for large laptops and desktops */
+        padding: 20px;
+    }
+
+    .popup-info {
+        text-align: left; /* Align text to the left for large laptops and desktops */
+    }
+}
+
 .card {
     background-color: #f8f8f8ff !important;
+    width: 392px; /* Set card width */
+    height: 556px; /* Set card height */
 }
+
+.section-heading {
+    font-size: 2.5rem; /* Adjust as needed */
+    font-weight: 600;
+    text-align: center;
+    margin-top: 40px; /* Add top padding */
+    visibility: visible; /* Ensure visibility */
+}
+
+.section-subheading {
+    font-size: 1.25rem; /* Adjust as needed */
+    margin-top: 20px; /* Adjust as needed */
+    margin-bottom: 40px; /* Adjust as needed */
+}
+
 .text-primary {
     color: #19191bff !important;
 }
+
 .text-info {
     color: #0040c3ff !important;
 }
+
 .text-muted {
     color: #898989ff !important;
 }
+
 .container {
     max-width: 1240px;
     margin-bottom: 40px;
 }
+
 .gap-32 {
     margin-bottom: 32px;
 }
+
 .modal-dialog {
     max-width: 1194px;
     margin: 30px auto;
 }
+
 .modal-content {
     border-radius: 24px;
     width: 100%;
-    height: 608px;
+    height: auto;
     background-color: #fff;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     padding: 0;
     position: relative;
 }
+
 .close {
     padding: 0;
     background: transparent;
@@ -59,56 +307,59 @@ body {
     right: 20px;
     z-index: 10;
 }
+
 .close img {
     width: 28px;
     height: 28px;
 }
+
 .modal-body {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    padding: 0;
+    padding: 20px;
 }
+
 .popup-image {
-    width: 451px;
-    height: 608px;
+    width: 100%;
+    height: auto;
+    max-width: 451px;
+    max-height: 608px;
     object-fit: cover;
     border-radius: 24px 0 0 24px;
+    margin-bottom: 20px; /* Add margin for spacing */
 }
+
 .popup-content {
-    width: calc(100% - 451px);
-    padding: 40px;
+    width: 100%;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
-.popup-info h3 {
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 42px;
-    color: #000;
-    margin-bottom: 8px;
+
+.popup-info {
+    margin-bottom: 20px;
 }
-.popup-info h4 {
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 18px;
-    color: #0040c3;
-    margin-bottom: 16px;
-}
+
 .popup-description {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 22px;
-    color: #505050;
+    text-align: left;
+    margin-bottom: 20px;
 }
+
 .social-icons {
-    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
+
 .social-icons img {
     width: 16px;
     height: 16px;
     margin-right: 16px;
 }
+
 .gpni-logo {
     width: 146px;
     height: 43px;
@@ -116,4 +367,411 @@ body {
     position: absolute;
     bottom: 20px;
     right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .section-heading {
+        font-size: 1.5rem; /* Adjust as needed */
+        margin-top: 20px; /* Adjust as needed */
+    }
+
+    .section-subheading {
+        font-size: 1rem; /* Adjust as needed */
+        margin-top: 10px; /* Adjust as needed */
+        margin-bottom: 20px; /* Adjust as needed */
+    }
+
+    .card {
+        width: 100%; /* Full width for mobile devices */
+        height: auto; /* Auto height for mobile devices */
+        margin: 10px 0; /* Add top and bottom margin */
+    }
+
+    .card-title {
+        font-size: 1rem; /* Adjust font size for mobile devices */
+    }
+
+    .card-subtitle {
+        font-size: 0.875rem; /* Adjust font size for mobile devices */
+    }
+
+    .card-text {
+        font-size: 0.875rem; /* Adjust font size for mobile devices */
+        line-height: 1.5rem; /* Adjust line height */
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .gpni-logo {
+        width: 100px; /* Adjust width for mobile devices */
+        height: 30px; /* Adjust height for mobile devices */
+    }
+
+    .heading-text {
+        margin-top: -20px!important; /* Reduce top margin for small devices */
+    }
+}
+
+@media (max-width: 575.98px) {
+    .card {
+        height: auto; /* Auto height for medium mobile devices */
+    }
+
+    .card-title, .card-subtitle, .card-text {
+        white-space: normal; /* Allow text to wrap */
+        overflow: visible; /* Show overflow text */
+        text-overflow: clip; /* Clip overflow text */
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .heading-text {
+        margin-top: -20px!important;/* Reduce top margin for small devices */
+    }
+
+    .modal-content {
+        padding: 5px;
+    }
+
+    .modal-body {
+        padding: 5px;
+    }
+
+    .popup-content {
+        padding: 5px;
+    }
+
+    .popup-image {
+        max-width: 100%;
+        max-height: 300px;
+    }
+
+    .popup-info h3 {
+        font-size: 1.25rem; /* Adjust font size for medium mobile devices */
+    }
+
+    .popup-info h4 {
+        font-size: 1rem; /* Adjust font size for medium mobile devices */
+    }
+
+    .popup-description {
+        font-size: 0.875rem; /* Adjust font size for medium mobile devices */
+    }
+}
+
+/* Styles for tablets and small laptops */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    .section-heading {
+        font-size: 2.2rem; /* Adjust as needed */
+        margin-top: 30px; /* Adjust as needed */
+    }
+
+    .section-subheading {
+        font-size: 1.1rem; /* Adjust as needed */
+        margin-top: 15px; /* Adjust as needed */
+        margin-bottom: 30px; /* Adjust as needed */
+    }
+
+    .card {
+        margin-top: 20px; /* Add space between subheading and card */
+    }
+
+    .modal-body {
+        flex-direction: row; /* Arrange content in a row */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .popup-image {
+        width: 50%; /* Adjust width for tablets */
+        height: 100%; /* Ensure the image covers the entire height */
+        max-width: none; /* Remove max-width */
+        max-height: none; /* Remove max-height */
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 20px; /* Add right margin for spacing */
+        border-radius: 0; /* Remove border-radius for tablets */
+        object-fit: cover; /* Ensure the image covers the entire area */
+    }
+
+    .popup-content {
+        width: 50%; /* Adjust width for tablets */
+        padding: 20px;
+    }
+
+    .popup-info {
+        text-align: left; /* Align text to the left for tablets */
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+    .section-heading {
+        font-size: 2.5rem; /* Adjust as needed */
+        margin-top: 40px; /* Adjust as needed */
+    }
+
+    .section-subheading {
+        font-size: 1.25rem; /* Adjust as needed */
+        margin-top: 20px; /* Adjust as needed */
+        margin-bottom: 40px; /* Adjust as needed */
+    }
+
+    body {
+        padding: 60px; /* Add padding for laptops */
+    }
+
+    .card {
+        width: 280px; /* Reduce width for laptops */
+        height: 400px; /* Set height for laptops */
+        margin: 20px auto; /* Center the card and add top and bottom margin */
+    }
+
+    .card + .card {
+        margin-top: 20px; /* Add space between each card */
+    }
+
+    .modal-body {
+        flex-direction: row; /* Arrange content in a row */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .popup-image {
+        width: 40%; /* Adjust width for laptops */
+        height: 100%; /* Ensure the image covers the entire height */
+        max-width: none; /* Remove max-width */
+        max-height: none; /* Remove max-height */
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 20px; /* Add right margin for spacing */
+        border-radius: 0; /* Remove border-radius for laptops */
+    }
+
+    .popup-content {
+        width: 60%; /* Adjust width for laptops */
+        padding: 20px;
+    }
+
+    .popup-info {
+        text-align: left; /* Align text to the left for laptops */
+    }
+}
+
+@media (min-width: 1440px) {
+    .section-heading {
+        font-size: 3rem; /* Adjust as needed */
+        margin-top: 0; /* Remove top padding */
+        visibility: visible; /* Ensure visibility */
+    }
+
+    .section-subheading {
+        font-size: 1.5rem; /* Adjust as needed */
+        margin-top: 0; /* Remove top padding */
+        margin-bottom: 50px; /* Adjust as needed */
+        visibility: visible; /* Ensure visibility */
+    }
+
+    body {
+        padding: 60px; /* Add padding for large laptops and desktops */
+    }
+
+    .card {
+        width: 392px; /* Set width for large laptops and desktops */
+        height: 556px; /* Set height for large laptops and desktops */
+        margin: 20px auto; /* Center the card and add top and bottom margin */
+    }
+
+    .card + .card {
+        margin-top: 20px; /* Add space between each card */
+    }
+
+    .modal-body {
+        flex-direction: row; /* Arrange content in a row */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .popup-image {
+        width: 40%; /* Adjust width for large laptops and desktops */
+        height: 100%; /* Ensure the image covers the entire height */
+        max-width: none; /* Remove max-width */
+        max-height: none; /* Remove max-height */
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 20px; /* Add right margin for spacing */
+        border-radius: 0; /* Remove border-radius for large laptops and desktops */
+        object-fit: cover; /* Ensure the image covers the entire area */
+    }
+
+    .popup-content {
+        width: 60%; /* Adjust width for large laptops and desktops */
+        padding: 20px;
+    }
+
+    .popup-info {
+        text-align: left; /* Align text to the left for large laptops and desktops */
+    }
+}
+
+/* Style for the description text */
+.description-text {
+    color: rgba(14, 14, 14, 0.90);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 28px */
+    margin-bottom: 20px; /* Add some space below the text */
+}
+
+/* Style for the heading text */
+.heading-text {
+    color: #0E0E0E;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 73.2px */
+    margin-top: 20px; /* Add some space above the text */
+    margin-bottom: 20px; /* Reduce space below the text */
+}
+
+/* Styles for medium mobile devices */
+@media (max-width: 575.98px) {
+    .card {
+        height: auto; /* Auto height for medium mobile devices */
+    }
+
+    .card-title, .card-subtitle, .card-text {
+        white-space: normal; /* Allow text to wrap */
+        overflow: visible; /* Show overflow text */
+        text-overflow: clip; /* Clip overflow text */
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .heading-text {
+        margin-top: -20px !important; /* Reduce top margin for small devices */
+    }
+}
+
+/* Styles for tablets and small laptops */
+@media (max-width: 1023.98px) {
+    .heading-text {
+        font-size: 2rem; /* Adjust font size for tablets */
+        line-height: 120%; /* Adjust line height for tablets */
+    }
+
+    .description-text {
+        font-size: 1.25rem; /* Adjust font size for tablets */
+        line-height: 130%; /* Adjust line height for tablets */
+    }
+
+    .card-title {
+        font-size: 1.125rem; /* Adjust font size for tablets */
+    }
+
+    .card-subtitle {
+        font-size: 0.875rem; /* Adjust font size for tablets */
+    }
+
+    .card-text {
+        font-size: 0.875rem; /* Adjust font size for tablets */
+        line-height: 1.5rem; /* Adjust line height */
+    }
+
+    .card {
+        width: 100%; /* Full width for tablets and small laptops */
+        height: auto; /* Auto height for tablets and small laptops */
+        margin: 10px 0; /* Add top and bottom margin */
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .modal-body {
+        padding: 10px;
+    }
+
+    .popup-content {
+        padding: 10px;
+    }
+
+    .popup-image {
+        max-width: 100%;
+        max-height: 400px;
+    }
+
+    .popup-info h3 {
+        font-size: 1.5rem; /* Adjust font size for tablets */
+    }
+
+    .popup-info h4 {
+        font-size: 1.25rem; /* Adjust font size for tablets */
+    }
+
+    .popup-description {
+        font-size: 1rem; /* Adjust font size for tablets */
+    }
+}
+
+/* Styles for laptops */
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+    .heading-text {
+        font-size: 61px; /* Ensure correct font size for laptops */
+        line-height: 120%; /* Ensure correct line height for laptops */
+    }
+
+    .description-text {
+        font-size: 20px; /* Ensure correct font size for laptops */
+        line-height: 140%; /* Ensure correct line height for laptops */
+    }
+
+    .card-title {
+        font-size: 1.25rem; /* Ensure correct font size for laptops */
+    }
+
+    .card-subtitle {
+        font-size: 1rem; /* Ensure correct font size for laptops */
+    }
+
+    .card-text {
+        font-size: 1rem; /* Ensure correct font size for laptops */
+        line-height: 1.8125rem; /* Ensure correct line height for laptops */
+    }
+}
+
+/* Styles for large laptops and desktops */
+@media (min-width: 1440px) {
+    .heading-text {
+        font-size: 61px; /* Ensure correct font size for large laptops and desktops */
+        line-height: 120%; /* Ensure correct line height for large laptops and desktops */
+    }
+
+    .description-text {
+        font-size: 20px; /* Ensure correct font size for large laptops and desktops */
+        line-height: 140%; /* Ensure correct line height for large laptops and desktops */
+        max-width: 800px; /* Limit the width to ensure it fits in 2 lines */
+        margin: 0 auto; /* Center the text */
+    }
+
+    .card-title {
+        font-size: 1.25rem; /* Ensure correct font size for large laptops and desktops */
+    }
+
+    .card-subtitle {
+        font-size: 1rem; /* Ensure correct font size for large laptops and desktops */
+    }
+
+    .card-text {
+        font-size: 1rem; /* Ensure correct font size for large laptops and desktops */
+        line-height: 1.8125rem; /* Ensure correct line height for large laptops and desktops */
+    }
 }
