@@ -23,13 +23,13 @@
                         </div>
                         
                         <div class="mb-4">
-                            <label for="single_article_page_name_{{ $short_code }}" class="form-label">Single Page Name<span class="asterisk">*</span></label>
-                            <input type="text" class="form-control" id="single_article_page_name_{{ $short_code }}" name="single_article_page_name_{{ $short_code }}" value="{{ $contents->{'single_article_page_name_' . $short_code} ?? '' }}" placeholder="Single Page Name" required>
+                            <label for="single_article_page_name_{{ $short_code }}" class="form-label">Single Page Name</label>
+                            <input type="text" class="form-control" id="single_article_page_name_{{ $short_code }}" name="single_article_page_name_{{ $short_code }}" value="{{ $contents->{'single_article_page_name_' . $short_code} ?? '' }}" placeholder="Single Page Name">
                         </div>
 
                         <div>
-                            <label for="single_article_author_{{ $short_code }}" class="form-label">Single Page Author<span class="asterisk">*</span></label>
-                            <input type="text" class="form-control" id="single_article_author_{{ $short_code }}" name="single_article_author_{{ $short_code }}" value="{{ $contents->{'single_article_author_' . $short_code} ?? '' }}" placeholder="Single Page Author" required>
+                            <label for="single_article_author_{{ $short_code }}" class="form-label">Single Page Author</label>
+                            <input type="text" class="form-control" id="single_article_author_{{ $short_code }}" name="single_article_author_{{ $short_code }}" value="{{ $contents->{'single_article_author_' . $short_code} ?? '' }}" placeholder="Single Page Author">
                         </div>
                     </div>
                 </div>

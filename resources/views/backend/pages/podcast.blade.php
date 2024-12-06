@@ -23,8 +23,8 @@
                         </div>
                         
                         <div>
-                            <label for="single_podcast_page_name_{{ $short_code }}" class="form-label">Single Page Name<span class="asterisk">*</span></label>
-                            <input type="text" class="form-control" id="single_podcast_page_name_{{ $short_code }}" name="single_podcast_page_name_{{ $short_code }}" value="{{ $contents->{'single_podcast_page_name_' . $short_code} ?? '' }}" placeholder="Single Page Name" required>
+                            <label for="single_podcast_page_name_{{ $short_code }}" class="form-label">Single Page Name</label>
+                            <input type="text" class="form-control" id="single_podcast_page_name_{{ $short_code }}" name="single_podcast_page_name_{{ $short_code }}" value="{{ $contents->{'single_podcast_page_name_' . $short_code} ?? '' }}" placeholder="Single Page Name">
                         </div>
                     </div>
                 </div>
