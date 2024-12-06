@@ -77,12 +77,9 @@
             <div class="col-lg-3 list-of-items">
                 <h5>Education</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#">PNE Level 1 + SNS</a></li>
-                    <li><a href="#">PNE Level 2 Masters + CISSN</a></li>
+                    <li><a href="{{ route('frontend.certification-courses.show', 6) }}">PNE Level 1 + SNS</a></li>
+                    <li><a href="{{ route('frontend.certification-courses.show', 7) }}">PNE Level 2 Masters + CISSN</a></li>
                     <li><a href="{{ route('frontend.master-classes.index') }}">Master Classes</a></li>
-                    <li><a href="#">PNE Level 1 With ISSN-SNS</a></li>
-                    <li><a href="#">PNE Level 2 With ISSN-CISSN</a></li>
-                    <!-- <li><a href="#">Small Courses & Seminars</a></li> -->
                     <li><a href="{{ route('frontend.contact-us.index') }}">Contact Us</a></li>
                 </ul>
             </div>

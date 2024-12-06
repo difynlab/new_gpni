@@ -13,12 +13,55 @@
         <form action="{{ route('backend.pages.article.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
+                <p class="inner-page-title">Page Details</p>
+
+                <div class="row form-input">
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <label for="page_name_{{ $short_code }}" class="form-label">Page Name<span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" id="page_name_{{ $short_code }}" name="page_name_{{ $short_code }}" value="{{ $contents->{'page_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="single_article_page_name_{{ $short_code }}" class="form-label">Single Page Name<span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" id="single_article_page_name_{{ $short_code }}" name="single_article_page_name_{{ $short_code }}" value="{{ $contents->{'single_article_page_name_' . $short_code} ?? '' }}" placeholder="Single Page Name" required>
+                        </div>
+
+                        <div>
+                            <label for="single_article_author_{{ $short_code }}" class="form-label">Single Page Author<span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" id="single_article_author_{{ $short_code }}" name="single_article_author_{{ $short_code }}" value="{{ $contents->{'single_article_author_' . $short_code} ?? '' }}" placeholder="Single Page Author" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
                 <p class="inner-page-title">Section 1 <span>(Introduction)</span></p>
 
                 <div class="row form-input">
                     <div class="col-6 mb-4">
                         <label for="section_1_title_{{ $short_code }}" class="form-label">Title</label>
                         <input type="text" class="form-control" id="section_1_title_{{ $short_code }}" name="section_1_title_{{ $short_code }}" value="{{ $contents->{'section_1_title_' . $short_code} ?? '' }}" placeholder="Title">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="section_1_first_tab_{{ $short_code }}" class="form-label">First tab</label>
+                        <input type="text" class="form-control" id="section_1_first_tab_{{ $short_code }}" name="section_1_first_tab_{{ $short_code }}" value="{{ $contents->{'section_1_first_tab_' . $short_code} ?? '' }}" placeholder="First tab">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="section_1_second_tab_{{ $short_code }}" class="form-label">Second tab</label>
+                        <input type="text" class="form-control" id="section_1_second_tab_{{ $short_code }}" name="section_1_second_tab_{{ $short_code }}" value="{{ $contents->{'section_1_second_tab_' . $short_code} ?? '' }}" placeholder="Second tab">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="section_1_read_{{ $short_code }}" class="form-label">Read</label>
+                        <input type="text" class="form-control" id="section_1_read_{{ $short_code }}" name="section_1_read_{{ $short_code }}" value="{{ $contents->{'section_1_read_' . $short_code} ?? '' }}" placeholder="Read">
+                    </div>
+
+                    <div class="col-6 mb-4">
+                        <label for="section_1_trend_{{ $short_code }}" class="form-label">Trend</label>
+                        <input type="text" class="form-control" id="section_1_trend_{{ $short_code }}" name="section_1_trend_{{ $short_code }}" value="{{ $contents->{'section_1_trend_' . $short_code} ?? '' }}" placeholder="Trend">
                     </div>
 
                     <div class="col-6 mb-4">

@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Master Classes')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/master-classes.css') }}">
@@ -19,7 +21,7 @@
 
             <form action="{{ route('frontend.master-classes.index') }}" method="GET">
                 <section class="search-section mt-5">
-                    <input type="text" class="search-field" name="master_class" value="{{ $master_class ?? '' }}" placeholder="Search">
+                    <input type="text" class="search-field" name="master_class" value="{{ $master_class ?? '' }}" placeholder="{{ $contents->{'section_1_search_' . $middleware_language} ?? $contents->section_1_search_en }}">
                     <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" class="search-icon" alt="Search Icon">
                 </section>
             </form>
@@ -37,10 +39,10 @@
         <section class="course-filter-section">
             <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="nav-item m-0" role="presentation">
-                    <button class="nav-link active" id="all-courses-tab" data-bs-toggle="tab" data-bs-target="#all-courses-tab-pane" type="button" role="tab" aria-controls="all-courses-tab-pane" aria-selected="true">All Courses</button>
+                    <button class="nav-link active" id="all-courses-tab" data-bs-toggle="tab" data-bs-target="#all-courses-tab-pane" type="button" role="tab" aria-controls="all-courses-tab-pane" aria-selected="true">{{ $contents->{'section_2_first_tab_' . $middleware_language} ?? $contents->section_2_first_tab_en }}</button>
                 </li>
                 <li class="nav-item my-0 ms-5" role="presentation">
-                    <button class="nav-link" id="upcoming-courses-tab" data-bs-toggle="tab" data-bs-target="#upcoming-courses-tab-pane" type="button" role="tab" aria-controls="upcoming-courses-tab-pane" aria-selected="false">Upcoming Courses</button>
+                    <button class="nav-link" id="upcoming-courses-tab" data-bs-toggle="tab" data-bs-target="#upcoming-courses-tab-pane" type="button" role="tab" aria-controls="upcoming-courses-tab-pane" aria-selected="false">{{ $contents->{'section_2_second_tab_' . $middleware_language} ?? $contents->section_2_second_tab_en }}</button>
                 </li>
             </ul>
 
@@ -57,11 +59,11 @@
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title">{{ $all_course->title }}</h5>
 
-                                                <p class="card-text">{{ \Illuminate\Support\Str::words($all_course->short_description, 6, '...') }}<a href="{{ route('frontend.master-classes.show', $all_course) }}" class="learn-more"> Learn More</a></p>
+                                                <p class="card-text">{{ \Illuminate\Support\Str::words($all_course->short_description, 6, '...') }}<a href="{{ route('frontend.master-classes.show', $all_course) }}" class="learn-more">{{ $contents->{'section_2_learn_' . $middleware_language} ?? $contents->section_2_learn_en }}</a></p>
 
                                                 <div class="card-footer">
                                                     <a href="{{ route('frontend.master-classes.show', $all_course) }}" class="enroll-button">
-                                                        <span>Enroll Now</span>
+                                                        <span>{{ $contents->{'section_2_enroll_' . $middleware_language} ?? $contents->section_2_enroll_en }}</span>
                                                         <img src="{{ asset('storage/frontend/small-arrow-right.svg') }}" alt="Arrow Icon" width="12" height="10">
                                                     </a>
                                                     <div class="card-price">{{ $currency_symbol }}{{ $all_course->price }}</div>
@@ -71,7 +73,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                <p class="no-data">No courses are available right now, but stay tuned, exciting new courses are on the way! Check back soon!</p>
+                                <p class="no-data">{{ $contents->{'section_2_no_all_courses_' . $middleware_language} ?? $contents->section_2_no_all_courses_en }}</p>
                             @endif
                         </div>
 
@@ -91,11 +93,13 @@
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title">{{ $upcoming_course->title }}</h5>
 
-                                                <p class="card-text">{{ \Illuminate\Support\Str::words($upcoming_course->short_description, 6, '...') }}<a href="{{ route('frontend.master-classes.show', $upcoming_course) }}" class="learn-more"> Learn More</a></p>
+                                                <p class="card-text">{{ \Illuminate\Support\Str::words($upcoming_course->short_description, 6, '...') }}
+                                                    <a href="{{ route('frontend.master-classes.show', $upcoming_course) }}" class="learn-more">{{ $contents->{'section_2_learn_' . $middleware_language} ?? $contents->section_2_learn_en }}</a>
+                                                </p>
 
                                                 <div class="card-footer">
                                                     <a href="{{ route('frontend.master-classes.show', $upcoming_course) }}" class="enroll-button">
-                                                        <span>Enroll Now</span>
+                                                        <span>{{ $contents->{'section_2_enroll_' . $middleware_language} ?? $contents->section_2_enroll_en }}</span>
                                                         <img src="{{ asset('storage/frontend/small-arrow-right.svg') }}" alt="Arrow Icon" width="12" height="10">
                                                     </a>
                                                     <div class="card-price">{{ $currency_symbol }}{{ $upcoming_course->price }}</div>
@@ -105,7 +109,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                <p class="no-data">No upcoming master classes are available right now, but stay tuned, exciting new courses are on the way! Check back soon or explore our current offerings to keep learning and growing!</p>
+                                <p class="no-data">{{ $contents->{'section_2_no_upcoming_courses_' . $middleware_language} ?? $contents->section_2_no_upcoming_courses_en }}</p>
                             @endif
                         </div>
 
@@ -133,65 +137,64 @@
                 </div>
             </div>
         @endif
+
         @if($contents->section_4_title_en)
-        <div class="testimonial-container">
-            <div class="container py-5">
-                <div class="text-center">
-                    <div class="mb-3 mb-md-5 testimonial-heading fs-49 fs-md-36 fs-25">
-                        {{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}
-                    </div>
-                    <b class="mb-1 testimonial-body">
-                        {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en }}
-                    </b>
-                </div>
-
-                <div class="row g-4 pt-5">
-                    <div class="col-md-6 d-flex justify-content-center align-items-center">
-                        <div class="student-video">
-                            @if($contents->{'section_4_video_' . $middleware_language})
-                                <video controls class="responsive-video">
-                                    <source src="{{ asset('storage/backend/pages/' . $contents->{'section_4_video_' . $middleware_language}) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            @elseif($contents->section_4_video_en)
-                                <video controls class="responsive-video">
-                                    <source src="{{ asset('storage/backend/pages/' . $contents->section_4_video_en) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            @else
-                                <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" class="responsive-video">
-                            @endif
+            <div class="testimonial-container">
+                <div class="container py-5">
+                    <div class="text-center">
+                        <div class="mb-3 mb-md-5 testimonial-heading fs-49 fs-md-36 fs-25">
+                            {{ $contents->{'section_4_title_' . $middleware_language} ?? $contents->section_4_title_en }}
                         </div>
+                        <b class="mb-1 testimonial-body">
+                            {{ $contents->{'section_4_description_' . $middleware_language} ?? $contents->section_4_description_en }}
+                        </b>
                     </div>
 
-                    <div class="col-md-6 testimonials-wrapper">
-                        @foreach($testimonials as $index => $testimonial)
-                            <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
-                                
-                                <img src="{{ asset('storage/frontend/testimonial-quote.svg') }}" alt="Quote Icon" class="quote">
-
-                                <p>{{ $testimonial->content }}</p>
-
-                                <div class="author">
-                                    @if($testimonial->image)
-                                        <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
-                                    @else
-                                        <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}">
-                                    @endif
-                                    
-                                    <div>
-                                        <p>{{ $testimonial->name }}</p>
-                                        <p>{{ $testimonial->designation }}</p>
-                                    </div>
-                                </div>
-
+                    <div class="row g-4 pt-5">
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <div class="student-video">
+                                @if($contents->{'section_4_video_' . $middleware_language})
+                                    <video controls class="responsive-video">
+                                        <source src="{{ asset('storage/backend/pages/' . $contents->{'section_4_video_' . $middleware_language}) }}" type="video/mp4">
+                                    </video>
+                                @elseif($contents->section_4_video_en)
+                                    <video controls class="responsive-video">
+                                        <source src="{{ asset('storage/backend/pages/' . $contents->section_4_video_en) }}" type="video/mp4">
+                                    </video>
+                                @else
+                                    <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" class="responsive-video">
+                                @endif
                             </div>
-                        @endforeach
+                        </div>
+
+                        <div class="col-md-6 testimonials-wrapper">
+                            @foreach($testimonials as $index => $testimonial)
+                                <div class="testimonial {{ $index === 0 ? 'clear' : 'blurry' }}">
+                                    
+                                    <img src="{{ asset('storage/frontend/testimonial-quote.svg') }}" alt="Quote Icon" class="quote">
+
+                                    <p>{{ $testimonial->content }}</p>
+
+                                    <div class="author">
+                                        @if($testimonial->image)
+                                            <img src="{{ asset('storage/backend/testimonials/' . $testimonial->image) }}" alt="Author Picture">
+                                        @else
+                                            <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}">
+                                        @endif
+                                        
+                                        <div>
+                                            <p>{{ $testimonial->name }}</p>
+                                            <p>{{ $testimonial->designation }}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
 
         @if($contents->section_5_title_en)
             <div class="faq-container">
@@ -238,26 +241,26 @@
             const numberOfTestimonials = testimonials.length;
             let clearIndex = Array.from(testimonials).findIndex(t => t.classList.contains('clear'));
 
-            if (clearIndex >= 0) {
+            if(clearIndex >= 0) {
                 testimonials[clearIndex].classList.remove('clear');
                 testimonials[clearIndex].classList.add('blurry');
             }
 
-            // The next clear testimonial
             const nextClearIndex = (clearIndex + 1) % numberOfTestimonials;
             testimonials[nextClearIndex].classList.add('clear');
             testimonials[nextClearIndex].classList.remove('blurry');
 
-            // Update each testimonial positioning
             testimonials.forEach((t, i) => {
                 const diff = (i - nextClearIndex + numberOfTestimonials) % numberOfTestimonials;
-                if (diff === 0) {
+                if(diff === 0) {
                     t.style.top = '50%';
                     t.style.transform = 'translateY(-50%)';
-                } else if (diff === 1) {
+                }
+                else if (diff === 1) {
                     t.style.top = '100%';
                     t.style.transform = 'translateY(-100%)';
-                } else if (diff === 2) {
+                }
+                else if (diff === 2) {
                     t.style.top = '0%';
                     t.style.transform = 'translateY(0)';
                 }

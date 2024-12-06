@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Why We Are Different')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/why-we-are-different.css') }}">
@@ -25,7 +27,6 @@
             </div>
         </div>
     @endif
-
 
     @if($contents->section_2_title_en)
         <div class="regions-languages-section" style="background-image: url({{ asset('storage/backend/pages/' . ($contents->{'section_2_image_' . $middleware_language} ?? $contents->section_2_image_en)) }}); background-size: cover;">

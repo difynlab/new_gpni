@@ -39,13 +39,13 @@ class InsuranceProfessionalMembershipController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'new_section_1_image' => 'max:2048',
-            'new_section_2_image' => 'max:2048',
-            'new_section_4_image' => 'max:2048',
+            'new_section_1_image' => 'max:5120',
+            'new_section_2_image' => 'max:5120',
+            'new_section_4_image' => 'max:5120',
         ], [
-            'new_section_1_image.max' => 'Image must not be greater than 2MB',
-            'new_section_2_image.max' => 'Image must not be greater than 2MB',
-            'new_section_4_image.max' => 'Image must not be greater than 2MB'
+            'new_section_1_image.max' => 'Image must not be greater than 5 MB',
+            'new_section_2_image.max' => 'Image must not be greater than 5 MB',
+            'new_section_4_image.max' => 'Image must not be greater than 5 MB'
         ]);
 
         if($validator->fails()) {

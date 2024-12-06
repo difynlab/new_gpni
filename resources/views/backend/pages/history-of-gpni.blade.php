@@ -13,6 +13,17 @@
         <form action="{{ route('backend.pages.history-of-gpni.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
+                <p class="inner-page-title">Page Details</p>
+
+                <div class="row form-input">
+                    <div class="col-12">
+                        <label for="page_name_{{ $short_code }}" class="form-label">Page Name<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="page_name_{{ $short_code }}" name="page_name_{{ $short_code }}" value="{{ $contents->{'page_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
                 <p class="inner-page-title">Section 1 <span>(Background banner)</span></p>
 
                 <div class="row form-input">

@@ -8,6 +8,7 @@ use App\Models\FAQ;
 use App\Models\MasterClassContent;
 use App\Models\Course;
 use App\Models\CoursePurchase;
+use App\Models\CourseReview;
 use App\Models\Setting;
 use App\Models\Testimonial;
 use App\Models\Wallet;
@@ -66,6 +67,17 @@ class MasterClassController extends Controller
             $faqs = FAQ::where('language', 'English')->where('type', 'Master Class')->where('status', '1')->get();
         }
 
+        $testimonials = Testimonial::where('language', $request->middleware_language_name)->where('type', 'Master Class')->where('status', '1')->get();
+        if($testimonials->isEmpty() && $request->middleware_language_name != 'English') {
+            $testimonials = Testimonial::where('language', 'English')->where('type', 'Master Class')->where('status', '1')->get();
+        }
+
+        $course_reviews = CourseReview::where('course_id', $course->id)->where('status', '1')->get();
+
+        $rating = $course_reviews->sum('rating') / $course_reviews->count();
+        $average_rating = round($rating);
+
+        $contents = MasterClassContent::find(1);
         $settings = Setting::find(1);
 
         return view('frontend.pages.master-classes.show', [
@@ -73,7 +85,11 @@ class MasterClassController extends Controller
             'advisory_boards' => $advisory_boards,
             'faqs' => $faqs,
             'settings' => $settings,
-            'currency_symbol' => $currency_symbol
+            'currency_symbol' => $currency_symbol,
+            'testimonials' => $testimonials,
+            'course_reviews' => $course_reviews,
+            'average_rating' => $average_rating,
+            'contents' => $contents
         ]);
     }
 

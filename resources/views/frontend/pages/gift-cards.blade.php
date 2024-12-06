@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Gift Cards')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/gift-cards.css') }}">
@@ -30,7 +32,7 @@
                         </div>
                     </div>
                     <div class="custom-selection">
-                        <h5 class="text-primary fs-20">Choose Gift Card Style</h5>
+                        <h5 class="text-primary fs-20">{{ $contents->{'choose_gift_' . $middleware_language} ?? $contents->choose_gift_en }}</h5>
                         <div class="d-flex flex-wrap">
                             @if($images)
                                 @foreach($images as $image)
@@ -47,33 +49,33 @@
                     <form action="{{ route('frontend.gift-cards.checkout') }}" method="POST" onsubmit="return validateForm()">
                         @csrf
                         <div class="form-group">
-                            <label for="receiver-name" class="fs-16">Receiver Name</label>
-                            <input type="text" class="form-control" id="receiver-name" name="receiver_name" placeholder="Enter the receiver name" required>
+                            <label for="receiver-name" class="fs-16">{{ $contents->{'receiver_name_' . $middleware_language} ?? $contents->receiver_name_en }}</label>
+                            <input type="text" class="form-control" id="receiver-name" name="receiver_name" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="receiver-email" class="required fs-16">Receiver's Email</label>
-                            <input type="email" class="form-control" id="receiver-email" name="receiver_email" placeholder="Ex: sample@gmail.com" required>
+                            <label for="receiver-email" class="required fs-16">{{ $contents->{'receiver_email_' . $middleware_language} ?? $contents->receiver_email_en }}</label>
+                            <input type="email" class="form-control" id="receiver-email" name="receiver_email" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="required fs-16">Select Amount</label>
+                            <label class="required fs-16">{{ $contents->{'select_amount_' . $middleware_language} ?? $contents->select_amount_en }}</label>
                             <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
                                 @foreach($amounts as $amount)
                                     <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="setAmount({{ $amount }})">{{ $currency_symbol }}{{ $amount }}</button>
                                 @endforeach
-                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="customAmount()">Custom</button>
+                                <button type="button" class="btn btn-outline-primary mx-1 my-2 btn-responsive" onclick="customAmount()">{{ $contents->{'custom_' . $middleware_language} ?? $contents->custom_en }}</button>
                             </div>
                         </div>
 
                         <div class="form-group d-none" id="custom-amount-section">
-                            <label for="custom-amount" class="fs-16">Enter the amount you want to proceed with</label>
-                            <input type="number" class="form-control" id="custom-amount" name="amount" placeholder="Please enter the amount here">
+                            <label for="custom-amount" class="fs-16">{{ $contents->{'enter_the_amount_' . $middleware_language} ?? $contents->enter_the_amount_en }}</label>
+                            <input type="number" class="form-control" id="custom-amount" name="amount">
                         </div>
 
                         <div class="form-group">
-                            <label for="message" class="required fs-16">Message</label>
-                            <textarea class="form-control form-textarea" id="message" rows="3" name="message" placeholder="Leave your message here" required></textarea>
+                            <label for="message" class="required fs-16">{{ $contents->{'message_' . $middleware_language} ?? $contents->message_en }}</label>
+                            <textarea class="form-control form-textarea" id="message" rows="3" name="message" required></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-submit btn-responsive">{{ $contents->{'button_' . $middleware_language} ?? $contents->button_en }}</button>

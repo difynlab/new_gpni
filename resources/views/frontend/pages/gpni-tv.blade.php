@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'GPNI TV')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/gpni-tv.css') }}">
@@ -65,7 +67,6 @@
                             <div class="col-md-4 text-center">
                                 <video controls class="img-fluid">
                                     <source src="{{ asset('storage/backend/webinars/' . $recent_webinar->video) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
                                 </video>
                             </div>
                             <div class="col-md-8">
@@ -175,12 +176,10 @@
                         @if($contents->{'section_7_video_' . $middleware_language})
                             <video controls class="img-fluid">
                                 <source src="{{ asset('storage/backend/pages/' . $contents->{'section_7_video_' . $middleware_language}) }}" type="video/mp4">
-                                Your browser does not support the video tag.
                             </video>
                         @elseif($contents->section_7_video_en)
                             <video controls class="img-fluid">
                                 <source src="{{ asset('storage/backend/pages/' . $contents->section_7_video_en) }}" type="video/mp4">
-                                Your browser does not support the video tag.
                             </video>
                         @else
                             <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" alt="On-Demand Benefits" class="img-fluid">
@@ -219,7 +218,6 @@
                                 <div class="col-12 col-md-6 col-lg-3 mb-3">
                                     <video controls class="img-fluid">
                                         <source src="{{ asset('storage/backend/webinars/' . $previous_webinar->video) }}" type="video/mp4">
-                                        Your browser does not support the video tag.
                                     </video>
                                 </div>
                             @endforeach
@@ -255,7 +253,7 @@
         <section class="contact-us">
             <div class="container">
                 <h1>{{ $contents->{'section_11_title_' . $middleware_language} ?? $contents->section_11_title_en }}</h1>
-                <p>{{ $contents->{'section_11_sub_title_' . $middleware_language} ?? $contents->section_sub_11_title_en }}</p>
+                <p>{{ $contents->{'section_11_sub_title_' . $middleware_language} ?? $contents->section_11_sub_title_en }}</p>
 
                 <div class="contact-us-icons">
                     <div class="row d-flex align-items-end">
@@ -267,43 +265,48 @@
                                 </a>
                             </div>
                         </div>
+
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->instagram }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/instagram-gray.svg') }}" alt="Instagram Icon" class="img-fluid">
-                                    <p>Instagram</p>
+                                    <p>{{ $contents->{'section_11_instagram_' . $middleware_language} ?? $contents->section_11_instagram_en }}</p>
                                 </a>
                             </div>
                         </div>
+
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->twitter }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/twitter-gray.svg') }}" alt="Twitter Icon" class="img-fluid">
-                                    <p>Twitter</p>
+                                    <p>{{ $contents->{'section_11_twitter_' . $middleware_language} ?? $contents->section_11_twitter_en }}</p>
                                 </a>
                             </div>
                         </div>
+                        
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->linkedin }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/linkedin-gray.svg') }}" alt="LinkedIn Icon" class="img-fluid">
-                                    <p>LinkedIn</p>
+                                    <p>{{ $contents->{'section_11_linkedin_' . $middleware_language} ?? $contents->section_11_linkedin_en }}</p>
                                 </a>
                             </div>
                         </div>
+
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->youtube }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/youtube-gray.svg') }}" alt="Youtube Icon" class="img-fluid">
-                                    <p>Youtube</p>
+                                    <p>{{ $contents->{'section_11_youtube_' . $middleware_language} ?? $contents->section_11_youtube_en }}</p>
                                 </a>
                             </div>
                         </div>
+
                         <div class="col-6 col-md-4 col-lg-2 mb-3">
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->fb }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/facebook-gray.svg') }}" alt="Facebook Icon" class="img-fluid">
-                                    <p>Facebook</p>
+                                    <p>{{ $contents->{'section_11_facebook_' . $middleware_language} ?? $contents->section_11_facebook_en }}</p>
                                 </a>
                             </div>
                         </div>

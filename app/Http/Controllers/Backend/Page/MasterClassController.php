@@ -53,9 +53,11 @@ class MasterClassController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'section_3_point_files.*' => 'max:2048'
+            'section_3_point_files.*' => 'max:5120',
+            'new_section_4_video' => 'max:20480',
         ], [
-            'section_3_point_files.*.max' => 'Each image must not be greater than 2MB'
+            'section_3_point_files.*.max' => 'Each image must not be greater than 5 MB',
+            'new_section_4_video.max' => 'Video must not be greater than 20 MB',
         ]);
 
         if($validator->fails()) {
@@ -111,14 +113,37 @@ class MasterClassController extends Controller
             $final_section_3_points = $section_3_points ? json_encode($section_3_points) : null;
         // Section points store function
 
+        // Section 4 video
+            if($request->file('new_section_4_video')) {
+                if($request->old_section_4_video) {
+                    Storage::delete('public/backend/pages/' . $request->old_section_4_video);
+                }
+
+                $new_section_4_video = $request->file('new_section_4_video');
+                $section_4_video_name = Str::random(40) . '.' . $new_section_4_video->getClientOriginalExtension();
+                $new_section_4_video->storeAs('public/backend/pages', $section_4_video_name);
+            }
+            else {
+                if($contents->section_4_video_ . '' . $language) {
+                    $section_4_video_name = $request->old_section_4_video;
+                }
+                else {
+                    $section_4_video_name = null;
+                }
+            }
+        // Section 4 video
+
         $data = $request->except(
             'section_3_point_descriptions',
             'old_section_3_point_descriptions',
             'section_3_point_files',
             'old_section_3_point_files',
+            'old_section_4_video',
+            'new_section_4_video',
         );
 
         $data['section_3_points_' . '' . $short_code] = $final_section_3_points ?? null;
+        $data['section_4_video_' . '' . $short_code] = $section_4_video_name;
 
         $contents->fill($data)->save();
 

@@ -778,11 +778,14 @@
                     <p class="inner-page-title">Section 7</p>
 
                     <div class="row form-input">
+                        <div class="col-12 mb-4">
+                            <label for="master_section_7_title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="master_section_7_title" name="master_section_7_title" value="{{ $course->master_section_7_title ?? '' }}" placeholder="Title">
+                        </div>
+
                         <div class="col-12">
-                            <div>
-                                <label for="master_section_7_title" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="master_section_7_title" name="master_section_7_title" value="{{ $course->master_section_7_title ?? '' }}" placeholder="Title">
-                            </div>
+                            <x-backend.upload-video old_name="old_master_section_7_video" old_value="{{ $course->master_section_7_video ?? '' }}" new_name="new_master_section_7_video" path="courses/course-videos"></x-backend.upload-video>
+                            <x-backend.input-error field="new_master_section_7_video"></x-backend.input-error>
                         </div>
                     </div>
                 </div>

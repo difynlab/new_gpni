@@ -13,6 +13,24 @@
         <form action="{{ route('backend.pages.podcast.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
+                <p class="inner-page-title">Page Details</p>
+
+                <div class="row form-input">
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <label for="page_name_{{ $short_code }}" class="form-label">Page Name<span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" id="page_name_{{ $short_code }}" name="page_name_{{ $short_code }}" value="{{ $contents->{'page_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>
+                        </div>
+                        
+                        <div>
+                            <label for="single_podcast_page_name_{{ $short_code }}" class="form-label">Single Page Name<span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" id="single_podcast_page_name_{{ $short_code }}" name="single_podcast_page_name_{{ $short_code }}" value="{{ $contents->{'single_podcast_page_name_' . $short_code} ?? '' }}" placeholder="Single Page Name" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
                 <p class="inner-page-title">Section 1 <span>(Introduction)</span></p>
 
                 <div class="row form-input">
@@ -28,8 +46,20 @@
 
                 <div class="row form-input">
                     <div class="col-12">
-                        <label for="section_2_title_{{ $short_code }}" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="section_2_title_{{ $short_code }}" name="section_2_title_{{ $short_code }}" value="{{ $contents->{'section_2_title_' . $short_code} ?? '' }}" placeholder="Title">
+                        <div class="mb-4">
+                            <label for="section_2_title_{{ $short_code }}" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="section_2_title_{{ $short_code }}" name="section_2_title_{{ $short_code }}" value="{{ $contents->{'section_2_title_' . $short_code} ?? '' }}" placeholder="Title">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="section_2_listen_{{ $short_code }}" class="form-label">Listen</label>
+                            <input type="text" class="form-control" id="section_2_listen_{{ $short_code }}" name="section_2_listen_{{ $short_code }}" value="{{ $contents->{'section_2_listen_' . $short_code} ?? '' }}" placeholder="Listen">
+                        </div>
+
+                        <div>
+                            <label for="section_2_watch_{{ $short_code }}" class="form-label">Watch</label>
+                            <input type="text" class="form-control" id="section_2_watch_{{ $short_code }}" name="section_2_watch_{{ $short_code }}" value="{{ $contents->{'section_2_watch_' . $short_code} ?? '' }}" placeholder="Watch">
+                        </div>
                     </div>
                 </div>
             </div>

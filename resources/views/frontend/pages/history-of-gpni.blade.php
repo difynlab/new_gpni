@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'History of GPNi')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/history-of-gpni.css') }}">

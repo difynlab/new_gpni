@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('article_category_id');
             $table->enum('recommending', ['Yes', 'No']);
             $table->enum('trending', ['Yes', 'No']);
-            $table->text('content')->nullable();
+            $table->mediumText('content')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('author_name')->nullable();
             $table->string('author_designation')->nullable();

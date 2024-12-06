@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'FAQs')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/faq.css') }}">

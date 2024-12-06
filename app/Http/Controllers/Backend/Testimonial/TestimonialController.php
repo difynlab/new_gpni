@@ -49,9 +49,9 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'new_image' => 'nullable|max:2048'
+            'new_image' => 'nullable|max:5120'
         ], [
-            'new_image.max' => 'The image must not be greater than 2MB'
+            'new_image.max' => 'The image must not be greater than 5 MB'
         ]);
         
         if($validator->fails()) {
@@ -89,9 +89,9 @@ class TestimonialController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         $validator = Validator::make($request->all(), [
-            'new_image' => 'nullable|max:2048'
+            'new_image' => 'nullable|max:5120'
         ], [
-            'new_image.max' => 'The image must not be greater than 2MB'
+            'new_image.max' => 'The image must not be greater than 5 MB'
         ]);
         
         if($validator->fails()) {

@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Homepage')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/homepage.css') }}">
@@ -11,7 +13,6 @@
     @if($contents->section_1_title_en)
         <div class="container-xxl bg-white p-0">
             <div class="container-xxl position-relative p-0">
-                <!-- Updated padding classes: pt-lg-5 for large screens, pt-md-4 for medium, pt-3 for small -->
                 <div class="container-xxl pt-lg-5 pt-md-4 pt-3 hero-header">
                     <div class="container my-5 py-5">
                         <div class="row align-items-center g-5">
@@ -112,7 +113,7 @@
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active pill-link"
                                 data-bs-toggle="pill" href="#tab-1">
                                 <div class="tab-text mt-n1 mb-0">
-                                    All
+                                    {{ $contents->{'section_3_first_tab_' . $middleware_language} ?? $contents->section_3_first_tab_en }}
                                 </div>
                             </a>
                         </li>
@@ -120,7 +121,7 @@
                             <a class="d-flex align-items-center text-center mx-3 pb-3 pill-link"
                                 data-bs-toggle="pill" href="#tab-2">
                                 <div class="tab-text mt-n1 mb-0">
-                                    International Certificates
+                                    {{ $contents->{'section_3_second_tab_' . $middleware_language} ?? $contents->section_3_second_tab_en }}
                                 </div>
                             </a>
                         </li>
@@ -128,7 +129,7 @@
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3 pill-link" data-bs-toggle="pill"
                                 href="#tab-3">
                                 <div class="tab-text mt-n1 mb-0">
-                                    Master Classes
+                                    {{ $contents->{'section_3_third_tab_' . $middleware_language} ?? $contents->section_3_third_tab_en }}
                                 </div>
                             </a>
                         </li>
@@ -153,7 +154,7 @@
                                                     <div class="card-body course-card-body ps-4">
                                                         <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                         <div class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                            <div class="apply-now-text">APPLY NOW</div>
+                                                            <div class="apply-now-text">{{ $contents->{'section_3_apply_' . $middleware_language} ?? $contents->section_3_apply_en }}</div>
                                                             <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
                                                         </div>
                                                     </div>
@@ -181,7 +182,7 @@
                                                             <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                             <div
                                                                 class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                                <div class="apply-now-text">APPLY NOW</div>
+                                                                <div class="apply-now-text">{{ $contents->{'section_3_apply_' . $middleware_language} ?? $contents->section_3_apply_en }}</div>
                                                                 <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
                                                             </div>
                                                         </div>
@@ -210,7 +211,7 @@
                                                             <h5 class="card-title d-flex justify-content-start text-start">{{ $course->title }}</h5>
                                                             <div
                                                                 class="apply-now-container d-flex justify-content-between align-items-center w-100">
-                                                                <div class="apply-now-text">APPLY NOW</div>
+                                                                <div class="apply-now-text">{{ $contents->{'section_3_apply_' . $middleware_language} ?? $contents->section_3_apply_en }}</div>
                                                                 <img src="{{ asset('storage/frontend/right-chevron-arrow.svg') }}" alt="right-chevron-arrow">
                                                             </div>
                                                         </div>
@@ -253,12 +254,10 @@
                             @if($contents->{'section_4_video_' . $middleware_language})
                                 <video controls class="responsive-video">
                                     <source src="{{ asset('storage/backend/pages/' . $contents->{'section_4_video_' . $middleware_language}) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
                                 </video>
                             @elseif($contents->section_4_video_en)
                                 <video controls class="responsive-video">
                                     <source src="{{ asset('storage/backend/pages/' . $contents->section_4_video_en) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
                                 </video>
                             @else
                                 <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->no_image) }}" class="responsive-video">
@@ -358,7 +357,6 @@
                 
                 @if(!$advisory_boards->isEmpty())
                     <div class="container">
-                        <!-- First two rows with 5 experts each -->
                         <div class="row text-center g-4 pt-4 d-flex justify-content-center">
                             @foreach($advisory_boards->take(10) as $index => $advisory_board)
                                 @if($index % 5 == 0 && $index != 0)
@@ -395,7 +393,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <!-- Third row with 4 experts -->
+
                         <div class="row text-center g-4 pt-4 d-flex justify-content-center">
                             @foreach($advisory_boards->slice(10, 4) as $advisory_board)
                                 <div class="col-6 col-md-2">
@@ -460,9 +458,9 @@
                                             <span class="input-group-text" id="basic-addon1">
                                                 <i class="ps-3 bi bi-search"></i>
                                             </span>
-                                            <input type="text" class="form-control form-control-lg p-3" name="nutritionist" placeholder="Search by name or certification number" aria-label="Search" aria-describedby="basic-addon1" required>
+                                            <input type="text" class="form-control form-control-lg p-3" name="nutritionist" placeholder="{{ $contents->{'section_8_placeholder_' . $middleware_language} ?? $contents->section_8_placeholder_en }}" aria-label="Search" aria-describedby="basic-addon1" required>
                                             <div class="p-2 d-flex align-items-center">
-                                                <button class="btn btn-primary btn-lg search-button btn-responsive m-2" type="submit">Search Now</button>
+                                                <button class="btn btn-primary btn-lg search-button btn-responsive m-2" type="submit">{{ $contents->{'section_8_button_' . $middleware_language} ?? $contents->section_8_button_en }}</button>
                                             </div>
                                         </div>
                                     </form>
@@ -528,26 +526,26 @@
             const numberOfTestimonials = testimonials.length;
             let clearIndex = Array.from(testimonials).findIndex(t => t.classList.contains('clear'));
 
-            if (clearIndex >= 0) {
+            if(clearIndex >= 0) {
                 testimonials[clearIndex].classList.remove('clear');
                 testimonials[clearIndex].classList.add('blurry');
             }
 
-            // The next clear testimonial
             const nextClearIndex = (clearIndex + 1) % numberOfTestimonials;
             testimonials[nextClearIndex].classList.add('clear');
             testimonials[nextClearIndex].classList.remove('blurry');
 
-            // Update each testimonial positioning
             testimonials.forEach((t, i) => {
                 const diff = (i - nextClearIndex + numberOfTestimonials) % numberOfTestimonials;
-                if (diff === 0) {
+                if(diff === 0) {
                     t.style.top = '50%';
                     t.style.transform = 'translateY(-50%)';
-                } else if (diff === 1) {
+                }
+                else if (diff === 1) {
                     t.style.top = '100%';
                     t.style.transform = 'translateY(-100%)';
-                } else if (diff === 2) {
+                }
+                else if (diff === 2) {
                     t.style.top = '0%';
                     t.style.transform = 'translateY(0)';
                 }

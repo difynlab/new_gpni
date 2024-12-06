@@ -30,7 +30,7 @@ class TvController extends Controller
                 break;
         }
 
-        return view('backend.pages.tv', [
+        return view('backend.pages.gpni-tv', [
             'contents' => $contents,
             'language' => $language,
             'short_code' => $short_code
@@ -39,19 +39,19 @@ class TvController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'new_section_1_image' => 'max:2048',
-            'new_section_3_image' => 'max:2048',
-            'new_section_5_image' => 'max:2048',
-            'new_section_6_image' => 'max:2048',
-            'new_section_7_video' => 'max:5120',
-            'new_section_10_image' => 'max:2048'
+            'new_section_1_image' => 'max:5120',
+            'new_section_3_image' => 'max:5120',
+            'new_section_5_image' => 'max:5120',
+            'new_section_6_image' => 'max:5120',
+            'new_section_7_video' => 'max:20480',
+            'new_section_10_image' => 'max:5120'
         ], [
-            'new_section_1_image.max' => 'Image must not be greater than 2MB',
-            'new_section_3_image.max' => 'Image must not be greater than 2MB',
-            'new_section_5_image.max' => 'Image must not be greater than 2MB',
-            'new_section_6_image.max' => 'Image must not be greater than 2MB',
-            'new_section_7_video.max' => 'Video must not be greater than 5MB',
-            'new_section_10_image.max' => 'Image must not be greater than 2MB',
+            'new_section_1_image.max' => 'Image must not be greater than 5 MB',
+            'new_section_3_image.max' => 'Image must not be greater than 5 MB',
+            'new_section_5_image.max' => 'Image must not be greater than 5 MB',
+            'new_section_6_image.max' => 'Image must not be greater than 5 MB',
+            'new_section_7_video.max' => 'Video must not be greater than 20 MB',
+            'new_section_10_image.max' => 'Image must not be greater than 5 MB',
         ]);
 
         if($validator->fails()) {

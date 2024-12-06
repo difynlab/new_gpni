@@ -107,6 +107,7 @@ return new class extends Migration
                 $table->text('master_section_6_description')->nullable();
                 $table->text('master_section_6_content')->nullable();
                 $table->text('master_section_7_title')->nullable();
+                $table->text('master_section_7_video')->nullable();
                 $table->text('master_section_8_title')->nullable();
                 $table->text('master_section_8_description')->nullable();
                 $table->text('master_section_8_videos')->nullable();

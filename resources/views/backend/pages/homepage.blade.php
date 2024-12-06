@@ -13,6 +13,17 @@
         <form action="{{ route('backend.pages.homepage.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
+                <p class="inner-page-title">Page Details</p>
+
+                <div class="row form-input">
+                    <div class="col-12">
+                        <label for="page_name_{{ $short_code }}" class="form-label">Page Name<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="page_name_{{ $short_code }}" name="page_name_{{ $short_code }}" value="{{ $contents->{'page_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
                 <p class="inner-page-title">Section 1 <span>(Hero section)</span></p>
 
                 <div class="row form-input">
@@ -91,6 +102,32 @@
                         <div>
                             <label for="section_3_description_{{ $short_code }}" class="form-label">Description</label>
                             <textarea class="form-control" rows="5" name="section_3_description_{{ $short_code }}" value="{{ $contents->{'section_3_description_' . $short_code} ?? '' }}" placeholder="Description">{{ $contents->{'section_3_description_' . $short_code} ?? '' }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-input">
+                    <div class="col-6">
+                        <div class="mb-4">
+                            <label for="section_3_first_tab_{{ $short_code }}" class="form-label">First Tab</label>
+                            <input type="text" class="form-control" id="section_3_first_tab_{{ $short_code }}" name="section_3_first_tab_{{ $short_code }}" value="{{ $contents->{'section_3_first_tab_' . $short_code} ?? '' }}" placeholder="First Tab">
+                        </div>
+
+                        <div>
+                            <label for="section_3_third_tab_{{ $short_code }}" class="form-label">Third Tab</label>
+                            <input type="text" class="form-control" id="section_3_third_tab_{{ $short_code }}" name="section_3_third_tab_{{ $short_code }}" value="{{ $contents->{'section_3_third_tab_' . $short_code} ?? '' }}" placeholder="Third Tab">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="mb-4">
+                            <label for="section_3_second_tab_{{ $short_code }}" class="form-label">Second Tab</label>
+                            <input type="text" class="form-control" id="section_3_second_tab_{{ $short_code }}" name="section_3_second_tab_{{ $short_code }}" value="{{ $contents->{'section_3_second_tab_' . $short_code} ?? '' }}" placeholder="Second Tab">
+                        </div>
+
+                        <div>
+                            <label for="section_3_apply_{{ $short_code }}" class="form-label">Apply</label>
+                            <input type="text" class="form-control" id="section_3_apply_{{ $short_code }}" name="section_3_apply_{{ $short_code }}" value="{{ $contents->{'section_3_apply_' . $short_code} ?? '' }}" placeholder="Apply">
                         </div>
                     </div>
                 </div>
@@ -234,7 +271,7 @@
                             <input type="text" class="form-control" id="section_8_title_{{ $short_code }}" name="section_8_title_{{ $short_code }}" value="{{ $contents->{'section_8_title_' . $short_code} ?? '' }}" placeholder="Title">
                         </div>
 
-                        <div  class="mb-4">
+                        <div class="mb-4">
                             <label for="section_8_description_{{ $short_code }}" class="form-label">Description</label>
                             <textarea class="form-control" rows="5" name="section_8_description_{{ $short_code }}" value="{{ $contents->{'section_8_description_' . $short_code} ?? '' }}" placeholder="Description">{{ $contents->{'section_8_description_' . $short_code} ?? '' }}</textarea>
                         </div>
@@ -243,6 +280,18 @@
                             <label for="section_8_sub_description_{{ $short_code }}" class="form-label">Sub Description</label>
                             <input type="text" class="form-control" id="section_8_sub_description_{{ $short_code }}" name="section_8_sub_description_{{ $short_code }}" value="{{ $contents->{'section_8_sub_description_' . $short_code} ?? '' }}" placeholder="Sub Description">
                         </div>
+                    </div>
+                </div>
+
+                <div class="row form-input">
+                    <div class="col-6">
+                        <label for="section_8_placeholder_{{ $short_code }}" class="form-label">Placeholder</label>
+                        <input type="text" class="form-control" id="section_8_placeholder_{{ $short_code }}" name="section_8_placeholder_{{ $short_code }}" value="{{ $contents->{'section_8_placeholder_' . $short_code} ?? '' }}" placeholder="Placeholder">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="section_8_button_{{ $short_code }}" class="form-label">Button</label>
+                        <input type="text" class="form-control" id="section_8_button_{{ $short_code }}" name="section_8_button_{{ $short_code }}" value="{{ $contents->{'section_8_button_' . $short_code} ?? '' }}" placeholder="Button">
                     </div>
                 </div>
 

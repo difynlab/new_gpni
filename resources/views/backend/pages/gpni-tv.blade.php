@@ -13,6 +13,17 @@
         <form action="{{ route('backend.pages.tv.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="section">
+                <p class="inner-page-title">Page Details</p>
+
+                <div class="row form-input">
+                    <div class="col-12">
+                        <label for="page_name_{{ $short_code }}" class="form-label">Page Name<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="page_name_{{ $short_code }}" name="page_name_{{ $short_code }}" value="{{ $contents->{'page_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
                 <p class="inner-page-title">Section 1 <span>(Hero section)</span></p>
 
                 <div class="row form-input">
@@ -259,6 +270,31 @@
                         <div class="mb-4">
                             <label for="section_11_sub_title_{{ $short_code }}" class="form-label">Sub Title</label>
                             <input type="text" class="form-control" id="section_11_sub_title_{{ $short_code }}" name="section_11_sub_title_{{ $short_code }}" value="{{ $contents->{'section_11_sub_title_' . $short_code} ?? '' }}" placeholder="Sub Title">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="section_11_instagram_{{ $short_code }}" class="form-label">Instagram</label>
+                            <input type="text" class="form-control" id="section_11_instagram_{{ $short_code }}" name="section_11_instagram_{{ $short_code }}" value="{{ $contents->{'section_11_instagram_' . $short_code} ?? '' }}" placeholder="Instagram">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="section_11_twitter_{{ $short_code }}" class="form-label">Twitter</label>
+                            <input type="text" class="form-control" id="section_11_twitter_{{ $short_code }}" name="section_11_twitter_{{ $short_code }}" value="{{ $contents->{'section_11_twitter_' . $short_code} ?? '' }}" placeholder="Twitter">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="section_11_linkedin_{{ $short_code }}" class="form-label">Linkedin</label>
+                            <input type="text" class="form-control" id="section_11_linkedin_{{ $short_code }}" name="section_11_linkedin_{{ $short_code }}" value="{{ $contents->{'section_11_linkedin_' . $short_code} ?? '' }}" placeholder="Linkedin">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="section_11_youtube_{{ $short_code }}" class="form-label">Youtube</label>
+                            <input type="text" class="form-control" id="section_11_youtube_{{ $short_code }}" name="section_11_youtube_{{ $short_code }}" value="{{ $contents->{'section_11_youtube_' . $short_code} ?? '' }}" placeholder="Youtube">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="section_11_facebook_{{ $short_code }}" class="form-label">Facebook</label>
+                            <input type="text" class="form-control" id="section_11_facebook_{{ $short_code }}" name="section_11_facebook_{{ $short_code }}" value="{{ $contents->{'section_11_facebook_' . $short_code} ?? '' }}" placeholder="Facebook">
                         </div>
 
                         <div class="mb-4">
