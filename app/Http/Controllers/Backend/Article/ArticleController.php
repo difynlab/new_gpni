@@ -56,11 +56,11 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'new_thumbnail' => 'nullable|max:2048',
-            'new_author_image' => 'nullable|max:2048'
+            'new_thumbnail' => 'nullable|max:5120',
+            'new_author_image' => 'nullable|max:5120'
         ], [
-            'new_thumbnail.max' => 'The thumbnail must not be greater than 2MB',
-            'new_author_image.max' => 'The author image must not be greater than 2MB'
+            'new_thumbnail.max' => 'The thumbnail must not be greater than 5 MB',
+            'new_author_image.max' => 'The author image must not be greater than 5 MB'
         ]);
         
         if($validator->fails()) {
@@ -114,11 +114,11 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         $validator = Validator::make($request->all(), [
-            'new_thumbnail' => 'nullable|max:2048',
-            'new_author_image' => 'nullable|max:2048'
+            'new_thumbnail' => 'nullable|max:5120',
+            'new_author_image' => 'nullable|max:5120'
         ], [
-            'new_thumbnail.max' => 'The thumbnail must not be greater than 2MB.',
-            'new_author_image.max' => 'The author image must not be greater than 2MB.'
+            'new_thumbnail.max' => 'The thumbnail must not be greater than 5 MB.',
+            'new_author_image.max' => 'The author image must not be greater than 5 MB.'
         ]);
         
         if($validator->fails()) {

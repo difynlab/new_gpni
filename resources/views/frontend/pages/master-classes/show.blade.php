@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Show Master Class')
+@section('title', $contents->{'single_master_class_page_name_' . $middleware_language} ?? $contents->single_master_class_page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/master-class.css') }}">
@@ -13,9 +13,11 @@
             <div class="col">
                 <h1 class="display-4">{{ $course->title }}</h1>
                 <div class="d-flex align-items-center mt-3">
-                    <span class="me-2" style="font-size: 16px; font-weight: 500; color: #898989;">5.0</span>
-                    <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating" class="me-2" style="width: 120px;">
-                    <span style="font-size: 16px; font-weight: 500; color: #898989;">(9)</span>
+                    <span class="me-2" style="font-size: 16px; font-weight: 500; color: #898989;">{{ $average_rating }}.0</span>
+                    @for($i = 0; $i < $average_rating; $i++)
+                        <i class="bi bi-star-fill star"></i>
+                    @endfor
+                    <span class="ms-2" style="font-size: 16px; font-weight: 500; color: #898989;">({{ $course_reviews->count() }})</span>
                 </div>
             </div>
         </div>
@@ -26,14 +28,14 @@
                     <div class="list-group-item bg-light d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('storage/frontend/course-duration.svg') }}" alt="Course Duration" class="me-3 img-size">
-                            <div class="common-style">Course Duration</div>
+                            <div class="common-style">{{ $contents->{'course_duration_' . $middleware_language} ?? $contents->course_duration_en }}</div>
                         </div>
                         <div class="common-text-style">{{ $course->duration }}</div>
                     </div>
                     <div class="list-group-item bg-light d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('storage/frontend/course-language.svg') }}" alt="Language" class="me-3 img-size">
-                            <div class="common-style">Language</div>
+                            <div class="common-style">{{ $contents->{'language_' . $middleware_language} ?? $contents->language_en }}</div>
                         </div>
                         <div class="common-text-style">{{ $course->language }}</div>
                     </div>
@@ -42,7 +44,7 @@
                             <div class="d-flex align-items-center">
                                 <img src="{{ asset('storage/frontend/course-type.svg') }}" alt="Course Type"
                                     class="me-3 img-size">
-                                <div class="common-style">Course Type</div>
+                                <div class="common-style">{{ $contents->{'course_type_' . $middleware_language} ?? $contents->course_type_en }}</div>
                             </div>
                             <div class="common-text-style">{{ $course->type }}</div>
                         </div>
@@ -54,14 +56,14 @@
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('storage/frontend/course-modules.svg') }}" alt="No. of Modules"
                                 class="me-3 img-size">
-                            <div class="common-style">No. of Modules</div>
+                            <div class="common-style">{{ $contents->{'no_of_modules_' . $middleware_language} ?? $contents->no_of_modules_en }}</div>
                         </div>
                         <div class="common-text-style">{{ $course->no_of_modules }}</div>
                     </div>
                     <div class="list-group-item bg-light d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('storage/frontend/course-students.svg') }}" alt="No. Of Student Enrolled" class="me-3 img-size">
-                            <div class="common-style">No. Of Student Enrolled</div>
+                            <div class="common-style">{{ $contents->{'no_of_students_enrolled_' . $middleware_language} ?? $contents->no_of_students_enrolled_en }}</div>
                         </div>
                         <div class="common-text-style">{{ $course->no_of_students_enrolled }}</div>
                     </div>
@@ -69,7 +71,7 @@
 
                 <div class="author-card bg-warning rounded d-flex align-items-center p-3 position-relative mt-3">
                     <div class="by-badge text-center">
-                        <span>By</span>
+                        <span>{{ $contents->{'by_' . $middleware_language} ?? $contents->by_en }}</span>
                     </div>
 
                     <img src="{{ asset('storage/backend/courses/course-instructors/' . $course->instructor_profile_image) }}" alt="Instructor Profile Image" class="rounded-circle ms-3"style="width: 100px; height: 100px;">
@@ -84,14 +86,13 @@
             <div class="col-md-7">
                 <video class="video-player" controls>
                     <source src="{{ asset('storage/backend/courses/course-videos/' . $course->video) }}" type="video/mp4">
-                    Your browser does not support the video tag.
                 </video>
 
                 <p class="pt-4 text-muted line-clamp-3" style="font-size: 19px; line-height: 145%;">{{ $course->short_description }}</p>
 
                 @if(auth()->check())
                     @if(hasUserPurchasedCourse(auth()->user()->id, $course->id))
-                        <button type="submit" class="btn btn-primary btn-block" style="font-size: 20px; font-weight: 500; line-height: 30px;">Already Purchased</button>
+                        <button type="submit" class="btn btn-primary btn-block" style="font-size: 20px; font-weight: 500; line-height: 30px;">{{ $contents->{'already_purchased_' . $middleware_language} ?? $contents->already_purchased_en }}</button>
                     @else
                         <form action="{{ route('frontend.master-classes.checkout') }}" method="POST">
                             @csrf
@@ -100,11 +101,11 @@
                             <input type="hidden" name="payment_mode" value="payment">
                             <input type="hidden" name="price" value="{{ $course->price }}">
 
-                            <button type="submit" class="btn btn-primary btn-block" style="font-size: 20px; font-weight: 500; line-height: 30px;">Enroll Now for {{ $currency_symbol }}{{ $course->price }}</button>
+                            <button type="submit" class="btn btn-primary btn-block" style="font-size: 20px; font-weight: 500; line-height: 30px;">{{ $contents->{'enroll_now_' . $middleware_language} ?? $contents->enroll_now_en }} {{ $currency_symbol }}{{ $course->price }}</button>
                         </form>
                     @endif
                 @else
-                    <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn btn-primary btn-block" style="font-size: 20px; font-weight: 500; line-height: 30px;">Login for Enroll</a>
+                    <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn btn-primary btn-block" style="font-size: 20px; font-weight: 500; line-height: 30px;">{{ $contents->{'login_for_enroll_' . $middleware_language} ?? $contents->login_for_enroll_en }}</a>
                 @endif
             </div>
         </div>
@@ -151,16 +152,16 @@
         <nav class="nav content-header d-flex justify-content-center">
             <ul class="nav nav-tabs flex-wrap">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#introduction" data-bs-toggle="tab">Introduction</a>
+                    <a class="nav-link active" href="#introduction" data-bs-toggle="tab">{{ $contents->{'first_tab_' . $middleware_language} ?? $contents->first_tab_en }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#course-content" data-bs-toggle="tab">Course Content</a>
+                    <a class="nav-link" href="#course-content" data-bs-toggle="tab">{{ $contents->{'second_tab_' . $middleware_language} ?? $contents->second_tab_en }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#chapters" data-bs-toggle="tab">Chapters</a>
+                    <a class="nav-link" href="#chapters" data-bs-toggle="tab">{{ $contents->{'third_tab_' . $middleware_language} ?? $contents->third_tab_en }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#review" data-bs-toggle="tab">Review</a>
+                    <a class="nav-link" href="#review" data-bs-toggle="tab">{{ $contents->{'fourth_tab_' . $middleware_language} ?? $contents->fourth_tab_en }}</a>
                 </li>
             </ul>
         </nav>
@@ -185,33 +186,27 @@
             </div>
 
             <div class="tab-pane fade" id="review">
-                <section class="testimonial-section">
-                    <div class="testimonial-header">
-                        <img src="{{ asset('storage/frontend/expert-image.svg') }}" alt="Lenka Sutra">
-                        <div>
-                            <div class="testimonial-name">Lenka Sutra</div>
-                            <div class="testimonial-stars">
-                                <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating Stars">
+                @if($course_reviews->isNotEmpty())
+                    <section class="testimonial-section">
+                        @foreach($course_reviews as $course_review)
+                            <div class="single-course-review">
+                                <div class="testimonial-header">
+                                    <img src="{{ asset('storage/backend/courses/course-reviews/' . $course_review->image) }}" alt="{{ $course_review->name }}">
+                                    <div>
+                                        <div class="testimonial-name">{{ $course_review->name }}</div>
+                                        <div class="testimonial-stars">
+                                            @for($i = 0; $i < $course_review->rating; $i++)
+                                                <i class="bi bi-star-fill star"></i>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-content">{{ $course_review->content }}</div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        I was looking for the perfect course that combined theoretical knowledge and practical
-                        experience in
-                        sports nutrition for many years.
-                        <br><br>
-                        After much research, I chose The ISSN Sports Nutrition Specialist (SNS) on the GPNi® portal. I
-                        was
-                        greatly impressed with the new knowledge
-                        I gained also the course flow with the blend of on-demand content together with “live” online
-                        Zoom
-                        tutorials and class group.
-                        <br><br>
-                        For those in the fitness industry, I highly recommended getting ISSN certified on the GPNi®
-                        portal
-                        and upgrading your knowledge and career at the same time.
-                    </div>
-                </section>
+                        @endforeach
+                    </section>
+                @endif
             </div>
         </div>
     </div>
@@ -287,9 +282,9 @@
                         <div class="languages-box">
                             <div class="language-heading text-start">Languages</div>
                             <ul class="languages-list">
-                                <li>English</li>
-                                <li>Chinese</li>
-                                <li>Japanese</li>
+                                <li>{{ $contents->{'first_language_' . $middleware_language} ?? $contents->first_language_en }}</li>
+                                <li>{{ $contents->{'second_language_' . $middleware_language} ?? $contents->second_language_en }}</li>
+                                <li>{{ $contents->{'third_language_' . $middleware_language} ?? $contents->third_language_en }}</li>
                             </ul>
                         </div>
                     </div>
@@ -306,89 +301,66 @@
                         <div class="line me-3"></div>
                         <span class="text-muted font-weight-light">{{ $course->master_section_7_title }}</span>
                     </div>
-                    <div class="quote text-primary mb-3">
-                        “I was looking for the perfect course that combined theoretical knowledge and practical experience
-                        in sports nutrition for many years.”
-                    </div>
-                    <div class="student-name mb-2">Lenka Sutra</div>
-                    <div class="stars mb-2">★★★★★</div>
+
+                    @if($testimonials->isNotEmpty())
+                        @foreach($testimonials as $index => $testimonial)
+                            @if($index === 0)
+                                <div class="quote text-primary mb-3">"{{ $testimonial->content }}"</div>
+                                <div class="student-name mb-2">{{ $testimonial->name }}</div>
+
+                                @for($i = 0; $i < $testimonial->rate; $i++)
+                                    <i class="bi bi-star-fill star"></i>
+                                @endfor
+
+                                @break
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
+
                 <div class="col-md-6 d-flex justify-content-center">
-                    <img src="{{ asset('storage/frontend/student-image.svg') }}" alt="Student" class="img-fluid rounded">
+                    <div class="video-section">
+                        <video controls class="w-100" style="border-radius: 35px;">
+                            <source src="{{ asset('storage/backend/courses/course-videos/' . $course->master_section_7_video) }}" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
             </div>
 
-            <div class="row mt-4">
-                <div class="col-md-4 mb-4">
-                    <div class="card p-4 rounded shadow-sm">
-                        <div class="card-title text-primary mb-2">Bindi Wilson</div>
-                        <div class="card-text mb-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur.
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <span class="font-weight-bold d-block mb-1">Rated 5/5 stars</span>
-                                <div class="stars text-warning">★★★★★</div>
+            @if(count($testimonials) > 1)
+                <div class="row mt-4">
+                    @foreach($testimonials as $index => $testimonial)
+                        @if($index !== 0)
+                            <div class="col-md-4 mb-4">
+                                <div class="card p-4 rounded shadow-sm">
+                                    <div class="card-title text-primary mb-2">{{ $testimonial->name }}</div>
+                                    <div class="card-text mb-3">{{ $testimonial->content }}</div>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <span class="font-weight-bold d-block mb-1">Rated {{ $testimonial->rate }}/5 stars</span>
+                                            <div class="stars text-warning">
+                                                <span>
+                                                    @for($i = 0; $i < $testimonial->rate; $i++)
+                                                        <i class="bi bi-star-fill star"></i>
+                                                    @endfor
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- <div>
+                                            <span class="font-weight-bold d-block mb-1">Verified Student</span>
+                                            <span class="d-block">
+                                                <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="Verified" class="me-2">
+                                                2022 Batch
+                                            </span>
+                                        </div> -->
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <span class="font-weight-bold d-block mb-1">Verified Student</span>
-                                <span class="d-block">
-                                    <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="Verified" class="me-2">
-                                    2022 Batch
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card p-4 rounded shadow-sm">
-                        <div class="card-title text-primary mb-2">Anne Marry</div>
-                        <div class="card-text mb-3">
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna
-                            aliqua.orem
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <span class="font-weight-bold d-block mb-1">Rated 5/5 stars</span>
-                                <div class="stars text-warning">★★★★★</div>
-                            </div>
-                            <div>
-                                <span class="font-weight-bold d-block mb-1">Verified Student</span>
-                                <span class="d-block">
-                                    <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="Verified" class="me-2">
-                                    2022 Batch
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card p-4 rounded shadow-sm">
-                        <div class="card-title text-primary mb-2">Byron Rolfson</div>
-                        <div class="card-text mb-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur.
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <span class="font-weight-bold d-block mb-1">Rated 5/5 stars</span>
-                                <div class="stars text-warning">★★★★★</div>
-                            </div>
-                            <div>
-                                <span class="font-weight-bold d-block mb-1">Verified Student</span>
-                                <span class="d-block">
-                                    <img src="{{ asset('storage/frontend/check-blue-icon.svg') }}" alt="Verified" class="me-2">
-                                    2022 Batch
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     @endif
 
@@ -404,7 +376,6 @@
                             <div class="col-md-3 mb-3">
                                 <video class="assessment-images" controls>
                                     <source src="{{ asset('storage/backend/courses/course-videos/' . $master_section_8_video) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
                                 </video>
                             </div>
                         @endforeach
@@ -434,7 +405,7 @@
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->instagram }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/instagram-white.svg') }}" alt="Instagram Icon" class="img-fluid">
-                                    <p>Instagram</p>
+                                    <p>{{ $contents->{'instagram_' . $middleware_language} ?? $contents->instagram_en }}</p>
                                 </a>
                             </div>
                         </div>
@@ -442,7 +413,7 @@
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->twitter }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/twitter-white.svg') }}" alt="Twitter Icon" class="img-fluid">
-                                    <p>Twitter</p>
+                                    <p>{{ $contents->{'twitter_' . $middleware_language} ?? $contents->twitter_en }}</p>
                                 </a>
                             </div>
                         </div>
@@ -450,7 +421,7 @@
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->linkedin }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/linkedin-white.svg') }}" alt="LinkedIn Icon" class="img-fluid">
-                                    <p>LinkedIn</p>
+                                    <p>{{ $contents->{'linkedin_' . $middleware_language} ?? $contents->linkedin_en }}</p>
                                 </a>
                             </div>
                         </div>
@@ -458,7 +429,7 @@
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->youtube }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/youtube-white.svg') }}" alt="Youtube Icon" class="img-fluid">
-                                    <p>Youtube</p>
+                                    <p>{{ $contents->{'youtube_' . $middleware_language} ?? $contents->youtube_en }}</p>
                                 </a>
                             </div>
                         </div>
@@ -466,7 +437,7 @@
                             <div class="icon-item text-center">
                                 <a href="{{ $settings->fb }}" class="text-decoration-none" target="_blank">
                                     <img src="{{ asset('storage/frontend/facebook-white.svg') }}" alt="Facebook Icon" class="img-fluid">
-                                    <p>Facebook</p>
+                                    <p>{{ $contents->{'facebook_' . $middleware_language} ?? $contents->facebook_en }}</p>
                                 </a>
                             </div>
                         </div>

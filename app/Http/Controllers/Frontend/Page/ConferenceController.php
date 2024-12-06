@@ -29,10 +29,12 @@ class ConferenceController extends Controller
     public function show(Conference $conference)
     {
         $settings = Setting::find(1);
+        $contents = ConferenceContent::find(1);
 
         return view('frontend.pages.conferences.show', [
             'conference' => $conference,
-            'settings' => $settings
+            'settings' => $settings,
+            'contents' => $contents
         ]);
     }
 }

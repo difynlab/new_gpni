@@ -35,33 +35,35 @@ class CourseInformationController extends Controller
     public function update(Request $request, Course $course)
     {
         $validator = Validator::make($request->all(), [
-            'new_certification_section_2_image' => 'nullable|max:2048',
-            'certification_section_3_point_files.*' => 'nullable|max:2048',
-            'new_certification_section_4_video' => 'nullable|max:5120',
-            'certification_section_6_team_files.*' => 'nullable|max:2048',
-            'new_certification_section_7_video' => 'nullable|max:5120',
-            'new_certification_section_9_image' => 'nullable|max:2048',
-            'new_certification_section_10_video' => 'nullable|max:5120',
-            'new_certification_section_11_video' => 'nullable|max:5120',
-            'new_certification_section_14_video' => 'nullable|max:5120',
-            'new_certification_section_15_video' => 'nullable|max:5120',
+            'new_certification_section_2_image' => 'nullable|max:5120',
+            'certification_section_3_point_files.*' => 'nullable|max:5120',
+            'new_certification_section_4_video' => 'nullable|max:20480',
+            'certification_section_6_team_files.*' => 'nullable|max:5120',
+            'new_certification_section_7_video' => 'nullable|max:20480',
+            'new_certification_section_9_image' => 'nullable|max:5120',
+            'new_certification_section_10_video' => 'nullable|max:20480',
+            'new_certification_section_11_video' => 'nullable|max:20480',
+            'new_certification_section_14_video' => 'nullable|max:20480',
+            'new_certification_section_15_video' => 'nullable|max:20480',
 
-            'new_master_section_4_image' => 'nullable|max:2048',
-            'master_section_8_video_files.*' => 'nullable|max:5120',
+            'new_master_section_4_image' => 'nullable|max:5120',
+            'new_master_section_7_video' => 'nullable|max:20480',
+            'master_section_8_video_files.*' => 'nullable|max:20480',
         ], [
-            'new_certification_section_2_image.max' => 'Image must not be greater than 2MB',
-            'certification_section_3_point_files.*.max' => 'Each image must not be greater than 2MB',
-            'new_certification_section_4_video.max' => 'Video must not be greater than 5MB',
-            'certification_section_6_team_files.*.max' => 'Each image must not be greater than 2MB',
-            'new_certification_section_7_video.max' => 'Video must not be greater than 5MB',
-            'new_certification_section_9_image.max' => 'Image must not be greater than 2MB',
-            'new_certification_section_10_video.max' => 'Video must not be greater than 5MB',
-            'new_certification_section_11_video.max' => 'Video must not be greater than 5MB',
-            'new_certification_section_14_video.max' => 'Video must not be greater than 5MB',
-            'new_certification_section_15_video.max' => 'Video must not be greater than 5MB',
+            'new_certification_section_2_image.max' => 'Image must not be greater than 5 MB',
+            'certification_section_3_point_files.*.max' => 'Each image must not be greater than 5 MB',
+            'new_certification_section_4_video.max' => 'Video must not be greater than 20 MB',
+            'certification_section_6_team_files.*.max' => 'Each image must not be greater than 5 MB',
+            'new_certification_section_7_video.max' => 'Video must not be greater than 20 MB',
+            'new_certification_section_9_image.max' => 'Image must not be greater than 5 MB',
+            'new_certification_section_10_video.max' => 'Video must not be greater than 20 MB',
+            'new_certification_section_11_video.max' => 'Video must not be greater than 20 MB',
+            'new_certification_section_14_video.max' => 'Video must not be greater than 20 MB',
+            'new_certification_section_15_video.max' => 'Video must not be greater than 20 MB',
 
-            'new_master_section_4_image.max' => 'Image must not be greater than 2MB',
-            'master_section_8_video_files.*.max' => 'Each video must not be greater than 5MB',
+            'new_master_section_4_image.max' => 'Image must not be greater than 5 MB',
+            'new_master_section_7_video.max' => 'Video must not be greater than 20 MB',
+            'master_section_8_video_files.*.max' => 'Each video must not be greater than 20 MB',
         ]);
 
         if($validator->fails()) {
@@ -480,6 +482,26 @@ class CourseInformationController extends Controller
             ];
         // Master section 5 label & link
 
+        // Master section 7 video
+            if($request->file('new_master_section_7_video')) {
+                if($request->old_master_section_7_video) {
+                    Storage::delete('public/backend/courses/course-videos/' . $request->old_master_section_7_video);
+                }
+
+                $new_master_section_7_video = $request->file('new_master_section_7_video');
+                $master_section_7_video_name = Str::random(40) . '.' . $new_master_section_7_video->getClientOriginalExtension();
+                $new_master_section_7_video->storeAs('public/backend/courses/course-videos', $master_section_7_video_name);
+            }
+            else {
+                if($course->master_section_7_video) {
+                    $master_section_7_video_name = $request->old_master_section_7_video;
+                }
+                else {
+                    $master_section_7_video_name = null;
+                }
+            }
+        // Master section 7 video
+
         // Master section 8 videos
             $master_section_8_video_files = [];
 
@@ -568,6 +590,8 @@ class CourseInformationController extends Controller
             'master_section_4_button_link',
             'master_section_5_button_label',
             'master_section_5_button_link',
+            'old_master_section_7_video',
+            'new_master_section_7_video',
             'master_section_8_video_files',
             'old_master_section_8_video_files'
         );
@@ -599,6 +623,7 @@ class CourseInformationController extends Controller
         $data['master_section_4_image'] = $master_section_4_image_name;
         $data['master_section_4_label_link'] = json_encode($master_section_4_label_link);
         $data['master_section_5_label_link'] = json_encode($master_section_5_label_link);
+        $data['master_section_7_video'] = $master_section_7_video_name;
         $data['master_section_8_videos'] = $final_master_section_8_video_files;
 
         $course->fill($data)->save();

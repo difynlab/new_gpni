@@ -30,24 +30,25 @@ class HomepageController extends Controller
                 break;
         }
 
-        return view('backend.pages.home-page', [
+        return view('backend.pages.homepage', [
             'contents' => $contents,
             'language' => $language,
             'short_code' => $short_code
         ]);
     }
 
-    public function update(Request $request, $language) {
+    public function update(Request $request, $language)
+    {
         $validator = Validator::make($request->all(), [
-            'new_section_1_image' => 'max:2048',
-            'new_section_2_video' => 'max:5120',
-            'new_section_4_video' => 'max:5120',
-            'new_section_5_images.*' => 'max:2048',
+            'new_section_1_image' => 'max:5120',
+            'new_section_2_video' => 'max:20480',
+            'new_section_4_video' => 'max:20480',
+            'new_section_5_images.*' => 'max:5120',
         ], [
-            'new_section_1_image.max' => 'Image must not be greater than 2MB',
-            'new_section_2_video.max' => 'Video must not be greater than 5MB',
-            'new_section_4_video.max' => 'Video must not be greater than 5MB',
-            'new_section_5_images.*.max' => 'Each image must not be greater than 2MB'
+            'new_section_1_image.max' => 'Image must not be greater than 5 MB',
+            'new_section_2_video.max' => 'Video must not be greater than 20 MB',
+            'new_section_4_video.max' => 'Video must not be greater than 20 MB',
+            'new_section_5_images.*.max' => 'Each image must not be greater than 5 MB'
         ]);
 
         if($validator->fails()) {

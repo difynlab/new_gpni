@@ -57,14 +57,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'new_thumbnail' => 'required|max:2048',
-            'new_images.*' => 'nullable|max:2048',
-            'downloadable_content' => 'nullable|max:2048',
+            'new_thumbnail' => 'required|max:5120',
+            'new_images.*' => 'nullable|max:5120',
+            'downloadable_content' => 'nullable|max:5120',
         ], [
-            'new_thumbnail.max' => 'The thumbnail must not be greater than 2MB',
+            'new_thumbnail.max' => 'The thumbnail must not be greater than 5 MB',
             'new_thumbnail.required' => 'Thumbnail is required',
-            'new_images.*.max' => 'Each image must not be greater than 2MB',
-            'downloadable_content.max' => 'The file must not be greater than 2MB'
+            'new_images.*.max' => 'Each image must not be greater than 5 MB',
+            'downloadable_content.max' => 'The file must not be greater than 5 MB'
         ]);
         
         if($validator->fails()) {
@@ -132,14 +132,14 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validator = Validator::make($request->all(), [
-            'old_thumbnail' => 'required|max:2048',
-            'new_images.*' => 'nullable|max:2048',
-            'downloadable_content' => 'nullable|max:2048',
+            'old_thumbnail' => 'required|max:5120',
+            'new_images.*' => 'nullable|max:5120',
+            'downloadable_content' => 'nullable|max:5120',
         ], [
-            'new_thumbnail.max' => 'The thumbnail must not be greater than 2MB',
+            'new_thumbnail.max' => 'The thumbnail must not be greater than 5 MB',
             'new_thumbnail.required' => 'Thumbnail is required',
-            'new_images.*.max' => 'Each image must not be greater than 2MB',
-            'downloadable_content.max' => 'The file must not be greater than 2MB'
+            'new_images.*.max' => 'Each image must not be greater than 5 MB',
+            'downloadable_content.max' => 'The file must not be greater than 5 MB'
         ]);
         
         if($validator->fails()) {

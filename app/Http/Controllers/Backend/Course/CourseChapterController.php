@@ -72,17 +72,17 @@ class CourseChapterController extends Controller
     public function store(Request $request, CourseModule $course_module)
     {
         $validator = Validator::make($request->all(), [
-            'book_files.*' => 'max:2048',
-            'video_files.*' => 'max:5120',
-            'additional_video_files.*' => 'max:5120',
-            'presentation_media_files.*' => 'max:2048',
-            'downloadable_resource_files.*' => 'max:2048',
+            'book_files.*' => 'max:5120',
+            'video_files.*' => 'max:20480',
+            'additional_video_files.*' => 'max:20480',
+            'presentation_media_files.*' => 'max:5120',
+            'downloadable_resource_files.*' => 'max:5120',
         ], [
-            'book_files.*.max' => 'Each book must not be greater than 2MB',
-            'video_files.*.max' => 'Each video must not be greater than 5MB',
-            'additional_video_files.*.max' => 'Each video must not be greater than 5MB',
-            'presentation_media_files.*.max' => 'Each file must not be greater than 2MB',
-            'downloadable_resource_files.*.max' => 'Each file must not be greater than 2MB'
+            'book_files.*.max' => 'Each book must not be greater than 5 MB',
+            'video_files.*.max' => 'Each video must not be greater than 20 MB',
+            'additional_video_files.*.max' => 'Each video must not be greater than 20 MB',
+            'presentation_media_files.*.max' => 'Each file must not be greater than 5 MB',
+            'downloadable_resource_files.*.max' => 'Each file must not be greater than 5 MB'
         ]);
 
         if($validator->fails()) {
@@ -247,17 +247,17 @@ class CourseChapterController extends Controller
     public function update(Request $request, CourseModule $course_module, CourseChapter $course_chapter)
     {
         $validator = Validator::make($request->all(), [
-            'book_files.*' => 'max:2048',
-            'video_files.*' => 'max:5120',
-            'additional_video_files.*' => 'max:5120',
-            'presentation_media_files.*' => 'max:2048',
-            'downloadable_resource_files.*' => 'max:2048',
+            'book_files.*' => 'max:5120',
+            'video_files.*' => 'max:20480',
+            'additional_video_files.*' => 'max:20480',
+            'presentation_media_files.*' => 'max:5120',
+            'downloadable_resource_files.*' => 'max:5120',
         ], [
-            'book_files.*.max' => 'Each book must not be greater than 2MB',
-            'video_files.*.max' => 'Each video must not be greater than 5MB',
-            'additional_video_files.*.max' => 'Each video must not be greater than 5MB',
-            'presentation_media_files.*.max' => 'Each file must not be greater than 2MB',
-            'downloadable_resource_files.*.max' => 'Each file must not be greater than 2MB'
+            'book_files.*.max' => 'Each book must not be greater than 5 MB',
+            'video_files.*.max' => 'Each video must not be greater than 20 MB',
+            'additional_video_files.*.max' => 'Each video must not be greater than 20 MB',
+            'presentation_media_files.*.max' => 'Each file must not be greater than 5 MB',
+            'downloadable_resource_files.*.max' => 'Each file must not be greater than 5 MB'
         ]);
 
         if($validator->fails()) {

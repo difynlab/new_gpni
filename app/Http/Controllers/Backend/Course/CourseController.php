@@ -64,18 +64,18 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'new_image' => 'required|max:2048',
-            'new_video' => 'required|max:5120',
-            'new_instructor_profile_image' => 'required|max:2048',
-            'new_certificate_images.*' => 'max:2048',
+            'new_image' => 'required|max:5120',
+            'new_video' => 'required|max:20480',
+            'new_instructor_profile_image' => 'required|max:5120',
+            'new_certificate_images.*' => 'max:5120',
         ], [
-            'new_image.max' => 'Image must not be greater than 2MB',
+            'new_image.max' => 'Image must not be greater than 5 MB',
             'new_image.required' => 'This field is required',
-            'new_video.max' => 'Video must not be greater than 5MB',
+            'new_video.max' => 'Video must not be greater than 20 MB',
             'new_video.required' => 'This field is required',
-            'new_instructor_profile_image.max' => 'Image must not be greater than 2MB',
+            'new_instructor_profile_image.max' => 'Image must not be greater than 5 MB',
             'new_instructor_profile_image.required' => 'Instructor profile image is required',
-            'new_certificate_images.*.max' => 'Each image must not be greater than 2MB'
+            'new_certificate_images.*.max' => 'Each image must not be greater than 5 MB'
         ]);
 
         if($validator->fails()) {
@@ -154,21 +154,21 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
         $validator = Validator::make($request->all(), [
-            'new_image' => 'max:2048',
+            'new_image' => 'max:5120',
             'new_video' => [
-                'max:5120',
+                'max:20480',
                 Rule::requiredIf(function () use ($request) {
                     return is_null($request->old_video);
                 }),
             ],
-            'new_instructor_profile_image' => 'max:2048',
-            'new_certificate_images.*' => 'max:2048'
+            'new_instructor_profile_image' => 'max:5120',
+            'new_certificate_images.*' => 'max:5120'
         ], [
-            'new_image.max' => 'Image must not be greater than 2MB',
-            'new_video.max' => 'Video must not be greater than 5MB',
+            'new_image.max' => 'Image must not be greater than 5 MB',
+            'new_video.max' => 'Video must not be greater than 20 MB',
             'new_video.required' => 'New video is required if there is no old video',
-            'new_instructor_profile_image.max' => 'Image must not be greater than 2MB',
-            'new_certificate_images.*.max' => 'Each image must not be greater than 2MB'
+            'new_instructor_profile_image.max' => 'Image must not be greater than 5 MB',
+            'new_certificate_images.*.max' => 'Each image must not be greater than 5 MB'
         ]);
 
         if($validator->fails()) {

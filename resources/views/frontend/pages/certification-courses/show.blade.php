@@ -415,9 +415,9 @@
                         <table class="payment-table">
                             <thead>
                                 <tr>
-                                    <th class="highlight-primary">{{ $course->certification_section_13_first_column }}a</th>
-                                    <th class="highlight-secondary">{{ $course->certification_section_13_second_column }}b</th>
-                                    <th class="highlight-primary">{{ $course->certification_section_13_third_column }}c</th>
+                                    <th class="highlight-primary">{{ $course->certification_section_13_first_column }}</th>
+                                    <th class="highlight-secondary">{{ $course->certification_section_13_second_column }}</th>
+                                    <th class="highlight-primary">{{ $course->certification_section_13_third_column }}</th>
                                 </tr>
                             </thead>
 

@@ -12,6 +12,16 @@
 
         <form action="{{ route('backend.pages.membership.update', $language) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="section">
+                <p class="inner-page-title">Page Details</p>
+
+                <div class="row form-input">
+                    <div class="col-12">
+                        <label for="page_name_{{ $short_code }}" class="form-label">Page Name<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="page_name_{{ $short_code }}" name="page_name_{{ $short_code }}" value="{{ $contents->{'page_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>
+                    </div>
+                </div>
+            </div>
 
             <div class="section">
                 <p class="inner-page-title">Section 1 <span>(Introduction)</span></p>
@@ -64,18 +74,43 @@
                             <input type="text" class="form-control" id="section_3_title_{{ $short_code }}" name="section_3_title_{{ $short_code }}" value="{{ $contents->{'section_3_title_' . $short_code} ?? '' }}" placeholder="Title">
                         </div>
 
-                        <div class="mb-4">
+                        <div>
                             <label for="section_3_description_{{ $short_code }}" class="form-label">Description</label>
                             <textarea class="editor" id="section_3_description_{{ $short_code }}" name="section_3_description_{{ $short_code }}" value="{{ $contents->{'section_3_description_' . $short_code} ?? '' }}">{{ $contents->{'section_3_description_' . $short_code} ?? '' }}</textarea>
-                        </div>
-
-                        <div>
-                            <label class="form-label">Button</label>
-                            <input class="form-control" type="text" id="section_3_button_{{ $short_code }}" name="section_3_button_{{ $short_code }}" value="{{ $contents->{'section_3_button_' . $short_code} ?? '' }}" placeholder="Button">
                         </div>
                     </div>
                 </div>
 
+                <div class="row form-input">
+                    <div class="col-6">
+                        <div class="mb-4">
+                            <label class="form-label">Proceed Button</label>
+                            <input class="form-control" type="text" id="section_3_proceed_{{ $short_code }}" name="section_3_proceed_{{ $short_code }}" value="{{ $contents->{'section_3_proceed_' . $short_code} ?? '' }}" placeholder="Proceed Button">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Already Purchased Button</label>
+                            <input class="form-control" type="text" id="section_3_already_purchased_{{ $short_code }}" name="section_3_already_purchased_{{ $short_code }}" value="{{ $contents->{'section_3_already_purchased_' . $short_code} ?? '' }}" placeholder="Already Purchased Button">
+                        </div>
+
+                        <div>
+                            <label class="form-label">Membership Disabled Button</label>
+                            <input class="form-control" type="text" id="section_3_membership_disabled_{{ $short_code }}" name="section_3_membership_disabled_{{ $short_code }}" value="{{ $contents->{'section_3_membership_disabled_' . $short_code} ?? '' }}" placeholder="Membership Disabled Button">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="mb-4">
+                            <label class="form-label">Change Language Button</label>
+                            <input class="form-control" type="text" id="section_3_change_language_{{ $short_code }}" name="section_3_change_language_{{ $short_code }}" value="{{ $contents->{'section_3_change_language_' . $short_code} ?? '' }}" placeholder="Change Language Button">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Login for Purchase Button</label>
+                            <input class="form-control" type="text" id="section_3_login_for_purchase_{{ $short_code }}" name="section_3_login_for_purchase_{{ $short_code }}" value="{{ $contents->{'section_3_login_for_purchase_' . $short_code} ?? '' }}" placeholder="Login for Purchase Button">
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row form-input">
                     <div class="col-12">

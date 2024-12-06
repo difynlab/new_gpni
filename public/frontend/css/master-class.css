@@ -40,6 +40,9 @@ h1.display-4 {
     margin-top: 8px;
     max-width: 100%;
 }
+.star {
+    color: gold;
+}
 
 .author-card {
     position: relative;

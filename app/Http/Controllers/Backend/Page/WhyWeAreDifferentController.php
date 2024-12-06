@@ -39,11 +39,11 @@ class WhyWeAreDifferentController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'new_section_1_video' => 'max:5120',
-            'new_section_2_image' => 'max:2048'
+            'new_section_1_video' => 'max:20480',
+            'new_section_2_image' => 'max:5120'
         ], [
-            'new_section_1_video.max' => 'The video size must not exceed 5MB',
-            'new_section_2_image.max' => 'The image size must not exceed 2MB'
+            'new_section_1_video.max' => 'The video size must not exceed 20 MB',
+            'new_section_2_image.max' => 'The image size must not exceed 5 MB'
         ]);
 
         if($validator->fails()) {

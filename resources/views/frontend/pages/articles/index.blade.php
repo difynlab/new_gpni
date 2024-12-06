@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Articles')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/articles.css') }}">
@@ -21,12 +23,12 @@
                         <li class="nav-item m-0" role="presentation">
                             <button class="nav-link category fs-20 active" id="latest-articles-tab" data-bs-toggle="tab"
                                 data-bs-target="#latest-articles-tab-pane" type="button" role="tab"
-                                aria-controls="latest-articles-tab-pane" aria-selected="true">Latest Articles</button>
+                                aria-controls="latest-articles-tab-pane" aria-selected="true">{{ $contents->{'section_1_first_tab_' . $middleware_language} ?? $contents->section_1_first_tab_en }}</button>
                         </li>
                         <li class="nav-item my-0 ms-md-5 ms-3" role="presentation">
                             <button class="nav-link category fs-20" id="recommended-tab" data-bs-toggle="tab"
                                 data-bs-target="#recommended-tab-pane" type="button" role="tab"
-                                aria-controls="recommended-tab-pane" aria-selected="false">Recommended</button>
+                                aria-controls="recommended-tab-pane" aria-selected="false">{{ $contents->{'section_1_second_tab_' . $middleware_language} ?? $contents->section_1_second_tab_en }}</button>
                         </li>
                     </ul>
 
@@ -80,11 +82,11 @@
                                                                 alt="Main Image" class="rounded-circle"
                                                                 style="width:40px; height:40px;">
                                                             @endif
-                                                            <span class="username fs-13">{{ $article->author_name ?? 'Unknown'}}</span>
+                                                            <span class="username fs-13">{{ $article->author_name }}</span>
                                                         </div>
                                                         <a href="{{ route('frontend.articles.show', $article) }}"
                                                             class="fs-13 read-more-button">
-                                                            <span>Read More</span>
+                                                            <span>{{ $contents->{'section_1_read_' . $middleware_language} ?? $contents->section_1_read_en }}</span>
                                                             <i class="fas fa-arrow-circle-right ms-2"></i>
                                                         </a>
                                                     </div>
@@ -150,12 +152,11 @@
                                                         alt="Main Image" class="rounded-circle"
                                                         style="width:40px; height:40px;">
                                                     @endif
-                                                    <span class="username fs-13">{{ $recommended_article->author_name ??
-                                                        'Unknown'}}</span>
+                                                    <span class="username fs-13">{{ $recommended_article->author_name }}</span>
                                                 </div>
                                                 <a href="{{ route('frontend.articles.show', $recommended_article) }}"
                                                     class="fs-13 text-primary read-more-button">
-                                                    <span>Read More</span>
+                                                    <span>{{ $contents->{'section_1_read_' . $middleware_language} ?? $contents->section_1_read_en }}</span>
                                                     <i class="fas fa-arrow-circle-right ms-2"></i>
                                                 </a>
                                             </div>
@@ -173,7 +174,7 @@
 
                 <div class="col-lg-4 ps-md-4 px-3">
                     <div class="trending-articles-section">
-                        <h5 class="fs-16 trending-article-title py-2">Trending Articles</h5>
+                        <h5 class="fs-16 trending-article-title py-2">{{ $contents->{'section_1_trend_' . $middleware_language} ?? $contents->section_1_trend_en }}</h5>
 
                         @if($trending_articles->isNotEmpty())
                             @foreach($trending_articles as $trending_article)

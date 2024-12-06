@@ -45,13 +45,13 @@ class PodcastController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'video' => 'max:5120',
+            'video' => 'max:20480',
             'content' => 'required',
-            'new_thumbnail' => 'image|max:2048',
+            'new_thumbnail' => 'image|max:5120',
         ], [
-            'video.max' => 'The video size must not exceed 5MB',
+            'video.max' => 'The video size must not exceed 20 MB',
             'content.required' => 'This field is required',
-            'new_thumbnail.max' => 'The thumbnail must not be greater than 2MB'
+            'new_thumbnail.max' => 'The thumbnail must not be greater than 5 MB'
         ]);
         
         if($validator->fails()) {
@@ -101,13 +101,13 @@ class PodcastController extends Controller
     public function update(Request $request, Podcast $podcast)
     {
         $validator = Validator::make($request->all(), [
-            'video' => 'nullable|max:5120',
+            'video' => 'nullable|max:20480',
             'content' => 'required',
-            'new_thumbnail' => 'nullable|max:2048'
+            'new_thumbnail' => 'nullable|max:5120'
         ], [
-            'video.max' => 'The video size must not exceed 5MB',
+            'video.max' => 'The video size must not exceed 20 MB',
             'content.required' => 'This field is required',
-            'new_thumbnail.max' => 'The thumbnail must not be greater than 2MB',
+            'new_thumbnail.max' => 'The thumbnail must not be greater than 5 MB',
         ]);
         
         if($validator->fails()) {
