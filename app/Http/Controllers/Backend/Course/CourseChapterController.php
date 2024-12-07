@@ -97,7 +97,7 @@ class CourseChapterController extends Controller
         $course_chapter->chapter_no = $request->chapter_no;
 
         // Course books store function
-            if($request->book_titles[0] != null) {
+            if($request->book_titles) {
                 $books = [];
 
                 foreach($request->book_titles as $key => $book_title) {
@@ -109,7 +109,7 @@ class CourseChapterController extends Controller
     
                     array_push($books, [
                         'title' => $book_title,
-                        'file' => $book_name ?? null
+                        'file' => $book_name
                     ]);
                 }
                 $final_books = $books ? json_encode($books) : null;
@@ -117,7 +117,7 @@ class CourseChapterController extends Controller
         // Course books store function
 
         // Course videos store function
-            if($request->video_titles[0] != null) {
+            if($request->video_titles) {
                 $videos = [];
 
                 foreach($request->video_titles as $key => $video_title) {
@@ -129,7 +129,7 @@ class CourseChapterController extends Controller
 
                     array_push($videos, [
                         'title' => $video_title,
-                        'file' => $video_name ?? null
+                        'file' => $video_name
                     ]);
                 }
                 $final_videos = $videos ? json_encode($videos) : null;
@@ -137,7 +137,7 @@ class CourseChapterController extends Controller
         // Course videos store function
 
         // Course video links store function
-            if($request->video_link_titles[0] != null) {
+            if($request->video_link_titles) {
                 $video_links = [];
 
                 foreach($request->video_link_titles as $key => $video_link_title) {
@@ -151,7 +151,7 @@ class CourseChapterController extends Controller
         // Course video links store function
 
         // Course additional videos store function
-            if($request->additional_video_titles[0] != null) {
+            if($request->additional_video_titles) {
                 $additional_videos = [];
 
                 foreach($request->additional_video_titles as $key => $additional_video_title) {
@@ -172,7 +172,7 @@ class CourseChapterController extends Controller
         // Course additional videos store function
 
         // Course presentation medias store function
-            if($request->presentation_media_titles[0] != null) {
+            if($request->presentation_media_titles) {
                 $presentation_medias = [];
 
                 foreach($request->presentation_media_titles as $key => $presentation_media_title) {
@@ -192,7 +192,7 @@ class CourseChapterController extends Controller
         // Course presentation medias store function
 
         // Course downloadable resources store function
-            if($request->downloadable_resource_titles[0] != null) {
+            if($request->downloadable_resource_titles) {
                 $downloadable_resources = [];
 
                 foreach($request->downloadable_resource_titles as $key => $downloadable_resource_title) {
@@ -220,7 +220,7 @@ class CourseChapterController extends Controller
         $course_chapter->video_links = $final_video_links ?? null;
 
         $course_chapter->additional_videos = $final_additional_videos ?? null;
-        $course_chapter->additional_video_links = $request->additional_video_links[0] != null ? json_encode($request->additional_video_links) : null;
+        $course_chapter->additional_video_links = $request->additional_video_links ? json_encode($request->additional_video_links) : null;
         $course_chapter->presentation_medias = $final_presentation_medias ?? null;
 
         $course_chapter->downloadable_resources = $final_downloadable_resources ?? null;
@@ -290,7 +290,7 @@ class CourseChapterController extends Controller
     
                     array_push($books, [
                         'title' => $book_title,
-                        'file' => $book_name ?? null
+                        'file' => $book_name
                     ]);
                 }
             }
@@ -321,7 +321,7 @@ class CourseChapterController extends Controller
 
                     array_push($videos, [
                         'title' => $video_title,
-                        'file' => $video_name ?? null
+                        'file' => $video_name
                     ]);
                 }
             }
@@ -350,7 +350,7 @@ class CourseChapterController extends Controller
                 foreach($request->old_additional_video_titles as $key => $old_additional_video_title) {
                     array_push($additional_videos, [
                         'title' => $old_additional_video_title,
-                        'file' => $request->old_additional_video_files[$key] ?? null
+                        'file' => $request->old_additional_video_files[$key]
                     ]);
                 }
             }
@@ -365,7 +365,7 @@ class CourseChapterController extends Controller
 
                     array_push($additional_videos, [
                         'title' => $additional_video_title,
-                        'file' => $additional_video_name ?? null
+                        'file' => $additional_video_name
                     ]);
                 }
             }
@@ -381,7 +381,7 @@ class CourseChapterController extends Controller
                 foreach($request->old_presentation_media_titles as $key => $old_presentation_media_title) {
                     array_push($presentation_medias, [
                         'title' => $old_presentation_media_title,
-                        'file' => $request->old_presentation_media_files[$key] ?? null
+                        'file' => $request->old_presentation_media_files[$key]
                     ]);
                 }
             }
@@ -396,7 +396,7 @@ class CourseChapterController extends Controller
     
                     array_push($presentation_medias, [
                         'title' => $presentation_media_title,
-                        'file' => $presentation_media_name ?? null
+                        'file' => $presentation_media_name
                     ]);
                 }
             }
@@ -412,7 +412,7 @@ class CourseChapterController extends Controller
                 foreach($request->old_downloadable_resource_titles as $key => $old_downloadable_resource_title) {
                     array_push($downloadable_resources, [
                         'title' => $old_downloadable_resource_title,
-                        'file' => $request->old_downloadable_resource_files[$key] ?? null
+                        'file' => $request->old_downloadable_resource_files[$key]
                     ]);
                 }
             }
@@ -427,7 +427,7 @@ class CourseChapterController extends Controller
 
                     array_push($downloadable_resources, [
                         'title' => $downloadable_resource_title,
-                        'file' => $downloadable_resource_name ?? null
+                        'file' => $downloadable_resource_name
                     ]);
                 }
             }
@@ -443,7 +443,7 @@ class CourseChapterController extends Controller
         $course_chapter->video_links = $final_video_links;
 
         $course_chapter->additional_videos = $final_additional_videos;
-        $course_chapter->additional_video_links = $request->additional_video_links != null ? json_encode($request->additional_video_links) : null;
+        $course_chapter->additional_video_links = $request->additional_video_links ? json_encode($request->additional_video_links) : null;
         $course_chapter->presentation_medias = $final_presentation_medias;
 
         $course_chapter->downloadable_resources = $final_downloadable_resources;

@@ -326,10 +326,10 @@
         $('.add-row-button.books').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-9">
-                                <input type="text" class="form-control" name="book_titles[]" placeholder="Title">
+                                <input type="text" class="form-control" name="book_titles[]" placeholder="Title" required>
                             </div>
                             <div class="col-2">
-                                <input type="file" class="form-control" name="book_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx">
+                                <input type="file" class="form-control" name="book_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx" required>
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -342,10 +342,10 @@
         $('.add-row-button.videos').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-9">
-                                <input type="text" class="form-control" name="video_titles[]" placeholder="Title">
+                                <input type="text" class="form-control" name="video_titles[]" placeholder="Title" required>
                             </div>
                             <div class="col-2">
-                                <input type="file" class="form-control" name="video_files[]" accept="video/*">
+                                <input type="file" class="form-control" name="video_files[]" accept="video/*" required>
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -358,10 +358,10 @@
         $('.add-row-button.video-links').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-6">
-                                <input type="text" class="form-control" name="video_link_titles[]" placeholder="Title">
+                                <input type="text" class="form-control" name="video_link_titles[]" placeholder="Title" required>
                             </div>
                             <div class="col-5">
-                                <input type="url" class="form-control" name="video_link_urls[]" placeholder="Link">
+                                <input type="url" class="form-control" name="video_link_urls[]" placeholder="Link" required>
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -374,10 +374,10 @@
         $('.add-row-button.additional-videos').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-9">
-                                <input type="text" class="form-control" name="additional_video_titles[]" placeholder="Title">
+                                <input type="text" class="form-control" name="additional_video_titles[]" placeholder="Title" required>
                             </div>
                             <div class="col-2">
-                                <input type="file" class="form-control" name="additional_video_files[]" accept="video/*">
+                                <input type="file" class="form-control" name="additional_video_files[]" accept="video/*" required>
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -390,8 +390,8 @@
         $('.add-row-button.additional-video-links').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-11">
-                                    <input type="url" class="form-control" name="additional_video_links[]" placeholder="Video Link">
-                                </div>
+                                <input type="url" class="form-control" name="additional_video_links[]" placeholder="Video Link" required>
+                            </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
                             </div>
@@ -403,10 +403,10 @@
         $('.add-row-button.presentation-medias').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-9">
-                                <input type="text" class="form-control" name="presentation_media_titles[]" placeholder="Title">
+                                <input type="text" class="form-control" name="presentation_media_titles[]" placeholder="Title" required>
                             </div>
                             <div class="col-2">
-                                <input type="file" class="form-control" name="presentation_media_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx">
+                                <input type="file" class="form-control" name="presentation_media_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx" required>
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
@@ -419,10 +419,10 @@
         $('.add-row-button.downloadable-resources').on('click', function() {
             let html = `<div class="row single-item mt-2">
                             <div class="col-9">
-                                <input type="text" class="form-control" name="downloadable_resource_titles[]" placeholder="Title">
+                                <input type="text" class="form-control" name="downloadable_resource_titles[]" placeholder="Title" required>
                             </div>
                             <div class="col-2">
-                                <input type="file" class="form-control" name="downloadable_resource_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx">
+                                <input type="file" class="form-control" name="downloadable_resource_files[]" accept=".pdf, .ppt, .pptx, .xlsx, .xls, .csv, .doc, .docx" required>
                             </div>
                             <div class="col-1 d-flex align-items-center">
                                 <a class="delete-button" title="Delete"><i class="bi bi-trash3"></i></a>
