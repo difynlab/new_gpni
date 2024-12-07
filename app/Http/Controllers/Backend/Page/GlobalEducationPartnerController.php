@@ -67,7 +67,7 @@ class GlobalEducationPartnerController extends Controller
 
         // Section 2 points
             $section_2_points = [];
-            if($section_2_points != null)
+            if($request->section_2_points != null)
                 foreach($request->section_2_points_partner_name as $key => $section_2_points_partner_name) {
                     array_push($section_2_points, [
                         'partner_name' => $section_2_points_partner_name,
