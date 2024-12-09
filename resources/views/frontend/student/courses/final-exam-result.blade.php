@@ -12,46 +12,46 @@
     <div class="exam-header">
         <div class="exam-title-section">
             <div>
-                <p class="exam-title">Exam Result</p>
+                <p class="exam-title">{{ $student_dashboard_contents->courses_exam_result_title }}</p>
                 <p class="exam-details">{{ $course->title }}</p>
             </div>
 
             <a href="{{ route('frontend.courses.show', $course) }}" class="return">
                 <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
-                Return to course
+                {{ $student_dashboard_contents->courses_return }}
             </a>
         </div>
         
         <div class="exam-result">
             <div class="result-item">
-                <div class="result-heading">Total Question</div>
+                <div class="result-heading">{{ $student_dashboard_contents->courses_exam_result_total_questions }}</div>
                 <div class="result-value">{{ $course_final_exam->total_questions }}</div>
             </div>
 
             <div class="result-item">
-                <div class="result-heading">Total Correct Answers</div>
+                <div class="result-heading">{{ $student_dashboard_contents->courses_exam_result_total_correct_answers }}</div>
                 <div class="result-value">{{ $course_final_exam->total_correct_answers }}</div>
             </div>
 
             <div class="result-item">
-                <div class="result-heading">Total un attended  Answers</div>
+                <div class="result-heading">{{ $student_dashboard_contents->courses_exam_result_total_unattended_answers }}</div>
                 <div class="result-value">{{ $course_final_exam->total_un_attended_answers }}</div>
             </div>
 
             <div class="result-item">
-                <div class="result-heading">Marks(%)</div>
+                <div class="result-heading">{{ $student_dashboard_contents->courses_exam_result_marks }}</div>
                 <div class="result-value">{{ $course_final_exam->marks }}</div>
             </div>
 
             @if($course_final_exam->result == 'Pass')
                 <div class="result-item result-highlight">
-                    <div class="result-heading">Result</div>
-                    <div class="result-value">PASS</div>
+                    <div class="result-heading">{{ $student_dashboard_contents->courses_exam_result_result }}</div>
+                    <div class="result-value">{{ $student_dashboard_contents->courses_exam_result_pass }}</div>
                 </div>
             @else
                 <div class="result-item result-highlight-fail">
-                    <div class="result-heading">Result</div>
-                    <div class="result-value">FAIL</div>
+                    <div class="result-heading">{{ $student_dashboard_contents->courses_exam_result_result }}</div>
+                    <div class="result-value">{{ $student_dashboard_contents->courses_exam_result_fail }}</div>
                 </div>
             @endif
         </div>
@@ -69,17 +69,17 @@
                     @if($question_answer['selected_answer'] && $question_answer['is_correct'] == 'Yes')
                         <div class="status correct">
                             <img src="https://placeholder.pics/svg/20x20" alt="Correct Icon">
-                            Correct Answer! You answered this question accurately.
+                            {{ $student_dashboard_contents->courses_exam_result_correct_answer }}
                         </div>
                     @elseif($question_answer['selected_answer'] && $question_answer['is_correct'] == 'No')
                         <div class="status incorrect">
                             <img src="https://placeholder.pics/svg/20x20" alt="Correct Icon">
-                            Incorrect Answer! The correct answer is {{ $question_answer['correct_answer'] }}.
+                            {{ $student_dashboard_contents->courses_exam_result_incorrect_answer }} {{ $question_answer['correct_answer'] }}.
                         </div>
                     @else
                         <div class="status unattempted">
                             <img src="https://placeholder.pics/svg/20x20" alt="Correct Icon">
-                            Un attempted Question! The correct answer is {{ $question_answer['correct_answer'] }}.
+                            {{ $student_dashboard_contents->courses_exam_result_un_attempted }} {{ $question_answer['correct_answer'] }}.
                         </div>
                     @endif
 

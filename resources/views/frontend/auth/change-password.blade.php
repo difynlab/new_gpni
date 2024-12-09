@@ -18,33 +18,32 @@
 
                 <div class="change-password-container">
                     <div class="text-centered">
-                        <h1 style="font-weight: 500; font-size: 31px; line-height: 46.5px; color: #0e0e0e;">Change Password
-                        </h1>
-                        <p style="font-weight: 400; font-size: 20px; line-height: 30px; color: #505050;">To change password, please fill in the fields below</p>
+                        <h1 style="font-weight: 500; font-size: 31px; line-height: 46.5px; color: #0e0e0e;">{{ $student_dashboard_contents->change_password_title }}</h1>
+                        <p style="font-weight: 400; font-size: 20px; line-height: 30px; color: #505050;">{{ $student_dashboard_contents->change_password_sub_title }}</p>
                     </div>
 
                     <div class="password-rules-container">
-                        <h5>Password should be and must contain:</h5>
+                        <h5>{{ $student_dashboard_contents->change_password_rule_title }}</h5>
                         <div class="password-rules-list">
                             <div class="password-rule-item">
-                                <span class="rule-title">8+</span>
-                                <span class="rule-desc">Characters</span>
+                                <span class="rule-title">{{ $student_dashboard_contents->change_password_rule_1_title }}</span>
+                                <span class="rule-desc">{{ $student_dashboard_contents->change_password_rule_1_description }}</span>
                             </div>
                             <div class="password-rule-item">
-                                <span class="rule-title">AA</span>
-                                <span class="rule-desc">Uppercase</span>
+                                <span class="rule-title">{{ $student_dashboard_contents->change_password_rule_2_title }}</span>
+                                <span class="rule-desc">{{ $student_dashboard_contents->change_password_rule_2_description }}</span>
                             </div>
                             <div class="password-rule-item">
-                                <span class="rule-title">aa</span>
-                                <span class="rule-desc">Lowercase</span>
+                                <span class="rule-title">{{ $student_dashboard_contents->change_password_rule_3_title }}</span>
+                                <span class="rule-desc">{{ $student_dashboard_contents->change_password_rule_3_description }}</span>
                             </div>
                             <div class="password-rule-item">
-                                <span class="rule-title">123</span>
-                                <span class="rule-desc">Numbers</span>
+                                <span class="rule-title">{{ $student_dashboard_contents->change_password_rule_4_title }}</span>
+                                <span class="rule-desc">{{ $student_dashboard_contents->change_password_rule_4_description }}</span>
                             </div>
                             <div class="password-rule-item">
-                                <span class="rule-title">@#$</span>
-                                <span class="rule-desc">Symbols</span>
+                                <span class="rule-title">{{ $student_dashboard_contents->change_password_rule_5_title }}</span>
+                                <span class="rule-desc">{{ $student_dashboard_contents->change_password_rule_5_description }}</span>
                             </div>
                         </div>
                     </div>
@@ -52,15 +51,15 @@
                     <form method="POST" action="{{ route('frontend.change-password') }}">
                         @csrf
                         <div class="form-group position-relative">
-                            <label for="new-password">New Password</label>
-                            <input type="password" class="form-control pr-5" id="new-password" name="password" placeholder="New password" required>
+                            <label for="new-password">{{ $student_dashboard_contents->change_password_new_password }}</label>
+                            <input type="password" class="form-control pr-5" id="new-password" name="password" placeholder="{{ $student_dashboard_contents->change_password_new_password }}" required>
                             <span class="bi bi-eye-slash-fill toggle-password"></span>
                             <x-frontend.input-error field="password"></x-frontend.input-error>
                         </div>
                     
                         <div class="form-group position-relative">
-                            <label for="confirm-password">Confirm Password</label>
-                            <input type="password" class="form-control pr-5" id="confirm-password" name="confirm_password" placeholder="Confirm password" required>
+                            <label for="confirm-password">{{ $student_dashboard_contents->change_password_confirm_password }}</label>
+                            <input type="password" class="form-control pr-5" id="confirm-password" name="confirm_password" placeholder="{{ $student_dashboard_contents->change_password_confirm_password }}" required>
                             <span class="bi bi-eye-slash-fill toggle-password"></span>
                             <x-frontend.input-error field="confirm_password"></x-frontend.input-error>
                         </div>
@@ -70,7 +69,7 @@
                         </div>
 
                         <div class="change-password-button">
-                            <button type="submit" class="btn btn-change-password">Change Password</button>
+                            <button type="submit" class="btn btn-change-password">{{ $student_dashboard_contents->change_password_button }}</button>
                         </div>
                     </form>
                 </div>

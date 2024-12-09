@@ -16,7 +16,7 @@
             <div class="col-12 col-md-9 main-content">
                 <div class="course-container">
                     <div class="course-header">
-                        <h1>Course List</h1>
+                        <h1>{{ $student_dashboard_contents->courses_title }}</h1>
                     </div>
 
                     @if($courses->isNotEmpty())
@@ -28,26 +28,26 @@
                                     <h2>{{ $course->title }}</h2>
 
                                     <p>
-                                        Started: {{ $course->date }} | Completed: {{ $course->completion_date ?? 'Not Yet'}}
+                                    {{ $student_dashboard_contents->courses_started }}: {{ $course->date }} | {{ $student_dashboard_contents->courses_completed }}: {{ $course->completion_date ?? $student_dashboard_contents->courses_not_yet }}
                                         
                                         @if(hasStudentCompletedFinalExam($student->id, $course->id))
-                                            <span class="badge-completed">Completed</span>
+                                            <span class="badge-completed">{{ $student_dashboard_contents->courses_completed }}</span>
                                         @else
-                                            <span class="badge-in-progress">Inprogress</span>
+                                            <span class="badge-in-progress">{{ $student_dashboard_contents->courses_inprogress }}</span>
                                         @endif
                                     </p>
                                 </div>
 
                                 <div class="course-actions">
                                     <a href="{{ route('frontend.courses.show', $course) }}">
-                                        View Details
+                                        {{ $student_dashboard_contents->courses_view_details }}
                                         <img src="{{ asset('storage/frontend/arrow-icon.svg') }}" alt="Arrow">
                                     </a>
                                 </div>
                             </div>
                         @endforeach
                     @else
-                        <p class="no-data">You need to purchase the courses first</p>
+                        <p class="no-data">{{ $student_dashboard_contents->courses_no_courses }}</p>
                     @endif
                 </div>
             </div>

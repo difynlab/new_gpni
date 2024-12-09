@@ -41,6 +41,7 @@ use App\Http\Controllers\Backend\Page\NutritionistController as PageNutritionist
 use App\Http\Controllers\Backend\Page\PageController;
 use App\Http\Controllers\Backend\Page\PodcastController as PagePodcastController;
 use App\Http\Controllers\Backend\Page\OurPolicyController;
+use App\Http\Controllers\Backend\Page\StudentDashboardController;
 use App\Http\Controllers\Backend\Page\TvController;
 use App\Http\Controllers\Backend\Page\WhyWeAreDifferentController;
 use App\Http\Controllers\Backend\Person\AdminController;
@@ -136,6 +137,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
             Route::get('master-class/{language}', [MasterClassController::class, 'index'])->name('master-class.index');
             Route::post('master-class/{language}', [MasterClassController::class, 'update'])->name('master-class.update');
+
+            Route::get('student-dashboard/{language}', [StudentDashboardController::class, 'index'])->name('student-dashboard.index');
+            Route::post('student-dashboard/{language}', [StudentDashboardController::class, 'update'])->name('student-dashboard.update');
         });
     // All page related routes
 

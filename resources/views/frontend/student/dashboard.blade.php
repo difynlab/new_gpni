@@ -18,13 +18,12 @@
                     <div class="profile-card-details">
                         <p class="date mb-0">{{ $date }}</p>
 
-                        <h1>Welcome Back, {{ $student->first_name . ' ' . $student->last_name}}!</h1>
+                        <h1>{{ $student_dashboard_contents->dashboard_welcome }}, {{ $student->first_name . ' ' . $student->last_name}}!</h1>
 
                         <div class="location">
                             <img src="{{ asset('storage/frontend/location-icon.svg') }}" alt="Location icon" width="24" height="24" class="me-2">
                             {{ $student->country }}
                         </div>
-
                     </div>
 
                     @if($student->image)
@@ -36,23 +35,23 @@
 
                 <div class="card-section">
                     <a href="{{ route('frontend.profile.index') }}" class="card">
-                        <h2>Profile</h2>
-                        <p>View or edit your profile details</p>
+                        <h2>{{ $student_dashboard_contents->dashboard_profile }}</h2>
+                        <p>{{ $student_dashboard_contents->dashboard_profile_description }}</p>
                     </a>
 
                     <a href="{{ route('frontend.change-password') }}" class="card">
-                        <h2>Change Password</h2>
-                        <p>Change your account password</p>
+                        <h2>{{ $student_dashboard_contents->dashboard_change_password }}</h2>
+                        <p>{{ $student_dashboard_contents->dashboard_change_password_description }}</p>
                     </a>
 
                     <a href="{{ route('frontend.courses.index') }}" class="card">
-                        <h2>Courses</h2>
-                        <p>Access your course related details</p>
+                        <h2>{{ $student_dashboard_contents->dashboard_courses }}</h2>
+                        <p>{{ $student_dashboard_contents->dashboard_courses_description }}</p>
                     </a>
 
                     <a href="{{ route('frontend.my-orders') }}" class="card">
-                        <h2>Billing Centre</h2>
-                        <p>Checkout billing related info</p>
+                        <h2>{{ $student_dashboard_contents->dashboard_billing_centre }}</h2>
+                        <p>{{ $student_dashboard_contents->dashboard_billing_centre_description }}</p>
                     </a>
                 </div>
             </div>

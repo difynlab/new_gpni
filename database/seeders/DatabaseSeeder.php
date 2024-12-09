@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Membership;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -32,7 +31,10 @@ class DatabaseSeeder extends Seeder
             NutritionistContentSeeder::class,
             GlobalEducationPartnerContentSeeder::class,
             TvContentSeeder::class,
-            MasterClassContentSeeder::class
+            MasterClassContentSeeder::class,
+            StudentDashboardContentENSeeder::class,
+            StudentDashboardContentZHSeeder::class,
+            StudentDashboardContentJASeeder::class,
         ]);
     }
 }

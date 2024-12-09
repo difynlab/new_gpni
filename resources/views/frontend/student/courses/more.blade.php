@@ -17,18 +17,18 @@
                 <div class="course-details-container">
                     <a href="{{ route('frontend.courses.show', $course) }}" class="return-link pt-2">
                         <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
-                        Return to course
+                        {{ $student_dashboard_contents->courses_return }}
                     </a>
 
                     <h1 class="course-title">{{ $course->title }} : {{ $course_module->title }} - {{ $course_chapter->title }}</h1>
 
-                    <div class="title">About</div>
+                    <div class="title">{{ $student_dashboard_contents->courses_about }}</div>
                     <div class="content">{!! $course_chapter->about !!}</div>
 
-                    <div class="title">Content</div>
+                    <div class="title">{{ $student_dashboard_contents->courses_content }}</div>
                     <div class="content">{!! $course_chapter->content !!}</div>
 
-                    <div class="title">Guides</div>
+                    <div class="title">{{ $student_dashboard_contents->courses_guides }}</div>
                     @if($books || $videos || $video_links)
                         <div class="content mt-2">
                             <div class="accordion" id="accordionContents">
@@ -36,7 +36,7 @@
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBooks" aria-expanded="false" aria-controls="collapseBooks">
-                                                Course Book
+                                                {{ $student_dashboard_contents->courses_course_book }}
                                             </button>
                                         </h2>
                                         <div id="collapseBooks" class="accordion-collapse collapse" data-bs-parent="#accordionContents">
@@ -44,7 +44,7 @@
                                                 @foreach($books as $book)
                                                     <div class="chapter-item">
                                                         <span>{{ $book->title }}</span>
-                                                        <a href="{{ asset('storage/backend/courses/course-chapter-books/' . $book->file) }}" download class="btn-download">Download</a>
+                                                        <a href="{{ asset('storage/backend/courses/course-chapter-books/' . $book->file) }}" download class="btn-download">{{ $student_dashboard_contents->courses_download }}</a>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -56,7 +56,7 @@
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVideos" aria-expanded="false" aria-controls="collapseVideos">
-                                                Course Video
+                                                {{ $student_dashboard_contents->courses_course_video }}
                                             </button>
                                         </h2>
                                         <div id="collapseVideos" class="accordion-collapse collapse" data-bs-parent="#accordionContents">
@@ -78,7 +78,7 @@
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVideoLinks" aria-expanded="false" aria-controls="collapseVideoLinks">
-                                                Video Links
+                                                {{ $student_dashboard_contents->courses_video_links }}
                                             </button>
                                         </h2>
                                         <div id="collapseVideoLinks" class="accordion-collapse collapse" data-bs-parent="#accordionContents">
@@ -95,10 +95,10 @@
                             </div>
                         </div>
                     @else
-                        <p class="no-data">No guides at the moment</p>
+                        <p class="no-data">{{ $student_dashboard_contents->courses_no_guides }}</p>
                     @endif
 
-                    <div class="title">Additional Resources</div>
+                    <div class="title">{{ $student_dashboard_contents->courses_additional_resources }}</div>
                     @if($additional_videos || $additional_video_links || $presentation_medias || $downloadable_resources)
                         <div class="content mt-2">
                             <div class="accordion" id="accordionAdditional">
@@ -106,7 +106,7 @@
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdditionalVideos" aria-expanded="false" aria-controls="collapseAdditionalVideos">
-                                                Additional Videos
+                                                {{ $student_dashboard_contents->courses_additional_videos }}
                                             </button>
                                         </h2>
                                         <div id="collapseAdditionalVideos" class="accordion-collapse collapse" data-bs-parent="#accordionAdditional">
@@ -128,7 +128,7 @@
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdditionalVideoLinks" aria-expanded="false" aria-controls="collapseAdditionalVideoLinks">
-                                                Additional Video Links
+                                                {{ $student_dashboard_contents->courses_additional_video_links }}
                                             </button>
                                         </h2>
                                         <div id="collapseAdditionalVideoLinks" class="accordion-collapse collapse" data-bs-parent="#accordionAdditional">
@@ -147,7 +147,7 @@
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePresentationMedias" aria-expanded="false" aria-controls="collapsePresentationMedias">
-                                                Presentation Medias
+                                                {{ $student_dashboard_contents->courses_additional_presentation_medias }}
                                             </button>
                                         </h2>
                                         <div id="collapsePresentationMedias" class="accordion-collapse collapse" data-bs-parent="#accordionAdditional">
@@ -167,7 +167,7 @@
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDownloadableResources" aria-expanded="false" aria-controls="collapseDownloadableResources">
-                                                Downloadable Resources
+                                                {{ $student_dashboard_contents->courses_additional_download_resources }}
                                             </button>
                                         </h2>
                                         <div id="collapseDownloadableResources" class="accordion-collapse collapse" data-bs-parent="#accordionAdditional">
@@ -185,7 +185,7 @@
                             </div>
                         </div>
                     @else
-                        <p class="no-data">No additional resources at the moment</p>
+                        <p class="no-data">{{ $student_dashboard_contents->courses_no_additional_resources }}</p>
                     @endif
                 </div>
             </div>
