@@ -8,8 +8,61 @@ body {
     color: #0040c3;
 }
 
+.gpni-container{
+    padding-top: 4.5rem !important;
+}
+
+.section-1 h4 {
+    color: #505050;
+    font-family: Poppins;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; 
+    margin-bottom: 20px; 
+
+}
+
+.section-1 p {
+    color: #505050;
+    font-family: Poppins;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+.section-1 ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.section-1 ul li {
+    position: relative;
+    padding-left: 2.5rem; /* Adjust based on the icon size */
+    margin-bottom: 30px; 
+    color: #505050;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 26px */
+}
+
+.section-1 ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; /* Adjust based on the icon size */
+    height: 30px; /* Adjust based on the icon size */
+    background-image: url('/storage/frontend/circle-tick-grey.svg'); /* Updated with the correct path */    
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .main-heading {
-    font-size: 49px;
     font-weight: 500;
     line-height: 120%;
     color: #0e0e0e;
@@ -47,7 +100,6 @@ body {
     border-radius: 5px;
     color: #fff;
     padding: 10px 20px;
-    font-size: 20px;
     font-weight: 500;
     line-height: 30px;
     /* display: flex; */
@@ -76,12 +128,28 @@ body {
 .speaker-text {
     color: #FFF;
     font-family: Poppins;
-    font-size: 20px;
     font-style: normal;
     font-weight: 300;
     line-height: 140%;
-    padding-top: 20px;
+    padding-top: 5px;
     padding-left: 30px;
+}
+
+.speaker-text h4{
+    color: #FFF;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 140%;
+    font-size: 20px;    
+}
+.speaker-text p{
+    color: #FFF;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 140%;
+    font-size: 20px;    
 }
 
 .divider {
@@ -101,7 +169,6 @@ body {
     color: #FFF;
     text-align: center;
     font-family: Poppins;
-    font-size: 49px;
     font-style: normal;
     font-weight: 500;
     line-height: 140%;
@@ -112,20 +179,18 @@ body {
     color: #FFF;
     text-align: center;
     font-family: Poppins;
-    font-size: 25px;
     font-weight: 300;
     line-height: 140%;
     /* 35px */
 }
 
-
-.webinars-section {
-    padding-top: 90px;
-    padding-bottom: 50px;
+.summary-section .video-container {
+    width: 388px;
+    height: 218px;
 }
 
+
 .webinars-section .main-heading {
-    font-size: 49px;
     font-weight: 500;
     text-align: center;
     line-height: 140%;
@@ -133,7 +198,6 @@ body {
 }
 
 .webinars-section .sub-heading {
-    font-size: 20px;
     font-weight: 400;
     text-align: center;
     line-height: 140%;
@@ -156,28 +220,123 @@ body {
 }
 
 
+.section-3 p {
+    color: #505050;
+    font-family: Poppins;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+.section-3 ul {
+    list-style-type: none;
+    padding-left: 0;
+    
+}
+
+.section-3 ul li {
+    position: relative;
+    padding-left: 2.5rem; /* Adjust based on the icon size */
+    margin-bottom: 30px; 
+    color: #505050;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 26px */
+    
+}
+
+.section-3 ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; /* Adjust based on the icon size */
+    height: 30px; /* Adjust based on the icon size */
+    background-image: url('/storage/frontend/circle-tick-grey.svg'); /* Updated with the correct path */    
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .Famous-Global-Speakers-Experts-section {
-    padding-top: 90px;
-    padding-bottom: 50px;
+    padding-top: 5rem !important;
     color: #FFF;
     background-color: #0040C3;
 }
 
 .Famous-Global-Speakers-Experts-section .main-heading {
-    font-size: 49px;
     font-weight: 500;
     text-align: center;
     line-height: 140%;
     color: #FFF;
 }
 
-.Famous-Global-Speakers-Experts-section .sub-heading,
-.Famous-Global-Speakers-Experts-section .additional-info {
-    font-size: 20px;
+.Famous-Global-Speakers-Experts-section .sub-heading{    
     font-weight: 300;
     text-align: center;
     line-height: 140%;
 }
+
+
+.section-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section-4 p{
+    font-size: 25px;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+
+.section-4 ul {
+    columns: 2; 
+    -webkit-columns: 2; 
+    -moz-columns: 2; 
+    column-gap: 229px; 
+    font-size: 20px;
+    list-style-type: none;
+    padding-left: 0;
+    width: 100%; 
+    max-width: 875px;
+    margin: 0 auto; /* Center the list */
+}
+.section-4 ul li {
+    position: relative;
+    break-inside: avoid;
+    padding: 5px 0 5px 40px; 
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 26px */
+    white-space: nowrap;
+
+}
+
+.section-4 ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; /* Adjust based on the icon size */
+    height: 30px; /* Adjust based on the icon size */
+    background-image: url('/storage/frontend/circle-tick-white.svg'); /* Ensure this path is correct */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 
 .expert-list {
     font-size: 20px;
@@ -186,20 +345,14 @@ body {
 }
 
 
-.Webinar-Seminar-Key-Takeaways-section {
-    padding-top: 90px;
-    padding-bottom: 50px;
-}
 
 .Webinar-Seminar-Key-Takeaways-section .main-heading {
-    font-size: 49px;
     font-weight: 500;
     line-height: 120%;
     color: #0e0e0e;
 }
 
 .Webinar-Seminar-Key-Takeaways-section .sub-heading {
-    font-size: 25px;
     font-weight: 500;
     line-height: 120%;
     color: #505050;
@@ -210,6 +363,48 @@ body {
     font-weight: 400;
     line-height: 130%;
     color: #505050;
+}
+
+.section-5 h4{
+    font-size: 49px;
+    font-weight: 500;
+    line-height: 140%;
+    color: #0e0e0e;
+}
+
+.section-5 p{
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 140%;
+    color: #505050;
+}
+
+.section-5 ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.section-5 ul li{
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 30px;
+    color: #505050;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 130%;
+}
+
+.section-5 ul li::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-image: url('/storage/frontend/circle-tick-grey.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .learn-more-earn-more {
@@ -226,10 +421,12 @@ body {
 }
 
 .learn-more-earn-more p {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 140%;
+    color: #FFF;
+    font-family: "Poppins";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; 
 }
 
 .learn-more-earn-more p.italic {
@@ -237,10 +434,14 @@ body {
     font-style: italic;
 }
 
+.learn-more-image{
+    width: 525px;
+    height: 525px;
+}
+
 .learn-grow-career-business {
     background-color: #ffffff;
     color: #0e0e0e;
-    padding: 50px 0;
 }
 
 .learn-grow-career-business h1 {
@@ -276,31 +477,60 @@ body {
 .watch-anytime-anywhere {
     background-color: #0040c3;
     color: #ffffff;
-    padding: 100px 0;
+    padding: 80px 0;
     text-align: center;
 }
 
-.watch-anytime-anywhere .container {
-    padding-left: 200px;
-    padding-right: 200px;
+.learn-grow-video{
+    width: 609px;
+    height: 609px;
+
 }
+
+.section-7 h4 {
+    font-size: 49px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #0e0e0e;
+}
+
+
+.section-7 ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.section-7 ul li{
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 30px;
+    color: #505050;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 130%;
+}
+
+.section-7 ul li::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-image: url('/storage/frontend/circle-tick-grey.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
 
 .watch-anytime-anywhere h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 49px;
     line-height: 120%;
     text-align: center;
     margin-bottom: 40px;
-}
-
-.watch-anytime-anywhere p {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 120%;
-    text-align: center;
-    margin-bottom: 50px;
 }
 
 
@@ -332,7 +562,6 @@ body {
 .previous-experts-seminars h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 49px;
     line-height: 120%;
     text-align: center;
     color: #0e0e0e;
@@ -342,11 +571,22 @@ body {
 .previous-experts-seminars p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 25px;
     line-height: 140%;
     text-align: center;
     color: #505050;
     margin-bottom: 20px;
+}
+
+.section-9-content {
+    width: 75%;
+    margin: 0 auto; /* Center the content */
+    text-align: center; /* Optional: Center the text inside the div */
+}
+
+.section-8-content {
+    width: 75%;
+    margin: 0 auto; /* Center the content */
+    text-align: center; /* Optional: Center the text inside the div */
 }
 
 .seminar-images {
@@ -368,6 +608,7 @@ body {
     padding: 50px 0;
 }
 
+
 .special-offer-members h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -385,7 +626,7 @@ body {
 .special-offer-members p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 140%;
 }
 
@@ -399,14 +640,12 @@ body {
 .contact-us h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 49px;
     line-height: 140%;
 }
 
 .contact-us p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 25px;
     line-height: 140%;
     color: #505050;
     margin-bottom: 20px;
@@ -457,4 +696,343 @@ body {
     padding: 10px 20px;
     margin-left: -105px;
     /* This accounts for button width offset */
+}
+/* Mobile devices (max-width: 767.98px) */
+@media (max-width: 767.98px) {
+    .section-1 h4,
+    .section-3 h4,
+    .section-5 h4,
+    .section-7 h4 {
+        font-size: 18px;
+    }
+
+    .section-1 p,
+    .section-3 p,
+    .section-5 p,
+    .section-7 p {
+        font-size: 14px;
+    }
+
+    .section-1 ul li,
+    .section-3 ul li,
+    .section-5 ul li,
+    .section-7 ul li {
+        padding-left: 25px;
+        font-size: 14px;
+        text-align: start;
+    }
+
+    .section-1 ul li::before,
+    .section-3 ul li::before,
+    .section-5 ul li::before,
+    .section-7 ul li::before {
+        width: 15px; /* Adjust based on the icon size */
+        height: 15px; /* Adjust based on the icon size */
+        background-image: url('/storage/frontend/circle-tick-grey.svg'); /* Path to your icon */
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .speaker-text {
+        padding-left: 0;
+    }
+
+    .speaker-text h4 {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .speaker-text p {
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    .section-3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .section-4 ul {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        column-gap: 9px;
+    }
+
+    .section-4 ul li {
+        padding: 10px 0 6px 30px;
+        font-size: 12px !important;
+        white-space: wrap;
+    }
+
+    .section-4 p {
+        font-size: 16px !important;
+    }
+
+    .section-4 ul li::before {
+        width: 15px; /* Adjust based on the icon size */
+        height: 15px; /* Adjust based on the icon size */
+        background-image: url('/storage/frontend/circle-tick-white.svg'); /* Path to your icon */
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .learn-more-image {
+        max-width: 300px;
+        height: 300px;
+    }
+
+    .learn-more-earn-more p {
+        color: #FFF;
+        font-family: "Poppins";
+        font-size: 14px;
+    }
+
+    .content-section {
+        padding-top: 2rem; /* Equivalent to Bootstrap's pt-2 */
+        text-align: center; /* Center the content */
+    }
+
+    .section-7 {
+        text-align: center; /* Center the content */
+    }
+
+    .learn-grow-video {
+        width: 300px;
+        height: 300px;
+    }
+
+    .section-10-content p {
+        font-size: 14px;
+    }
+
+    .section-10-content h1,
+    .section-10-content h2,
+    .section-10-content h3,
+    .section-10-content h4 {
+        font-size: 16px; /* Adjust the size as needed */
+    }
+
+    .special-offer-members p{
+        font-size: 18px;
+    }
+}
+
+/* Tablet devices (min-width: 768px) and (max-width: 1024px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .section-1 h4,
+    .section-3 h4,
+    .section-4 h1,
+    .section-4 h2,
+    .section-4 h3,
+    .section-4 h4,
+    .section-5 h1,
+    .section-5 h2,
+    .section-5 h3,
+    .section-5 h4 {
+        font-size: 18px;
+    }
+
+    .section-1 p,
+    .section-3 p,
+    .section-4 p,
+    .section-5 p {
+        font-size: 16px !important;
+    }
+
+    .section-1 ul li,
+    .section-3 ul li,
+    .section-5 ul li {
+        padding-left: 25px;
+        font-size: 14px;
+        text-align: start;
+    }
+
+    .section-1 ul li::before,
+    .section-3 ul li::before,
+    .section-5 ul li::before {
+        width: 15px;
+        height: 15px;
+        background-image: url('/storage/frontend/circle-tick-grey.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .section-3 ul li {
+        margin-bottom: 10px;
+    }
+
+    .section-4 ul {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        column-gap: 9px;
+        padding-left: 6rem;
+    }
+
+    .section-4 ul li {
+        padding: 5px 0 5px 30px;
+        font-size: 12px !important;
+        white-space: wrap;
+    }
+
+    .section-4 ul li::before {
+        width: 15px;
+        height: 15px;
+        background-image: url('/storage/frontend/circle-tick-white.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .learn-more-image {
+        max-width: 330px;
+        max-height: 330px;
+    }
+
+    .learn-more-earn-more p {
+        font-family: "Poppins";
+        font-size: 14px;
+    }
+
+    .learn-grow-career-business p {
+        font-size: 14px;
+        color: #505050;
+    }
+    .learn-grow-video {
+        width: 409px;
+        height: 409px;
+    }
+
+    .section-7 ul li {
+        padding-left: 25px;
+        font-size: 14px;
+        text-align: start;
+    }
+
+    .section-7 ul li::before {
+        width: 15px;
+        height: 15px;
+        background-image: url('/storage/frontend/circle-tick.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    
+    .section-10-content p {
+        font-size: 18px;
+    }
+
+    .section-10-content h1,
+    .section-10-content h2,
+    .section-10-content h3,
+    .section-10-content h4 {
+        font-size: 20px; /* Adjust the size as needed */
+    }
+
+    .special-offer-members p{
+        font-size: 18px;
+
+    }
+}
+
+@media (max-width: 1023px) {
+    .section-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center; /* Optional: Center text inside the section */
+    }
+    .hide-on-small {
+        display: none;
+    }
+
+    .gpni-container {
+        padding: 2rem;
+    }
+
+    .section-4 p {
+        font-size: 20px;
+    }
+
+}
+/* Laptop devices (min-width: 1024px) and (max-width: 1440px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .section-1 h4,
+    .section-3 h4,
+    .section-4 h4,
+    .section-5 h4 {
+        font-size: 20px;
+    }
+
+    .section-1 p,
+    .section-3 p,
+    .section-4 p,
+    .section-5 p {
+        font-size: 20px;
+    }
+
+    .section-1 ul li,
+    .section-3 ul li,
+    .section-4 ul li,
+    .section-5 ul li {
+        padding-left: 35px;
+        font-size: 20px;
+        text-align: start;
+    }
+
+    .section-1 ul li::before,
+    .section-3 ul li::before,
+    .section-4 ul li::before,
+    .section-5 ul li::before {
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .section-1 ul li::before {
+        background-image: url('/storage/frontend/circle-tick-grey.svg');
+    }
+
+    .section-3 ul li::before,
+    .section-5 ul li::before {
+        background-image: url('/storage/frontend/circle-tick-grey.svg');
+    }
+
+    .section-4 ul li::before {
+        background-image: url('/storage/frontend/circle-tick-white.svg');
+    }
+
+    .learn-more-earn-more p {
+        color: #FFF;
+        font-family: "Poppins";
+        font-size: 20px;
+    }
+}
+
+/* Desktop devices (min-width: 1440px) */
+@media (min-width: 1440px) {
+    .section-1 h4 {
+        font-size: 24px;
+    }
+
+    .section-1 p {
+        font-size: 20px;
+    }
+
+    .section-1 ul li {
+        padding-left: 40px;
+    }
+
+    .section-1 ul li::before {
+        width: 30px;
+        height: 30px;
+        background-image: url('/storage/frontend/circle-tick-grey.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 }

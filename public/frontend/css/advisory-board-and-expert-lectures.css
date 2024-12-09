@@ -108,7 +108,7 @@ body {
     }
 
     body {
-        padding: 20px; /* Add padding for laptops */
+        padding-top: 20px; /* Add padding for laptops */
     }
 
     .card {
@@ -182,7 +182,7 @@ body {
     }
 
     body {
-        padding: 60px; /* Add padding for large laptops and desktops */
+        padding-top: 60px; /* Add padding for large laptops and desktops */
     }
 
     .card {
@@ -270,11 +270,6 @@ body {
 
 .text-muted {
     color: #898989ff !important;
-}
-
-.container {
-    max-width: 1240px;
-    margin-bottom: 40px;
 }
 
 .gap-32 {
@@ -522,7 +517,7 @@ body {
     }
 
     body {
-        padding: 60px; /* Add padding for laptops */
+        padding-top: 60px; /* Add padding for laptops */
     }
 
     .card {
@@ -575,7 +570,7 @@ body {
     }
 
     body {
-        padding: 60px; /* Add padding for large laptops and desktops */
+        padding-top: 60px; /* Add padding for large laptops and desktops */
     }
 
     .card {
