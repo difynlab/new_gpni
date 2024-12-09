@@ -39,19 +39,19 @@ class TvController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'new_section_1_image' => 'max:5120',
-            'new_section_3_image' => 'max:5120',
-            'new_section_5_image' => 'max:5120',
-            'new_section_6_image' => 'max:5120',
-            'new_section_7_video' => 'max:20480',
-            'new_section_10_image' => 'max:5120'
+            'new_section_1_image' => 'max:30720',
+            'new_section_3_image' => 'max:30720',
+            'new_section_5_image' => 'max:30720',
+            'new_section_6_image' => 'max:30720',
+            'new_section_7_video' => 'max:102400',
+            'new_section_10_image' => 'max:30720'
         ], [
-            'new_section_1_image.max' => 'Image must not be greater than 5 MB',
-            'new_section_3_image.max' => 'Image must not be greater than 5 MB',
-            'new_section_5_image.max' => 'Image must not be greater than 5 MB',
-            'new_section_6_image.max' => 'Image must not be greater than 5 MB',
-            'new_section_7_video.max' => 'Video must not be greater than 20 MB',
-            'new_section_10_image.max' => 'Image must not be greater than 5 MB',
+            'new_section_1_image.max' => 'Image must not be greater than 30 MB',
+            'new_section_3_image.max' => 'Image must not be greater than 30 MB',
+            'new_section_5_image.max' => 'Image must not be greater than 30 MB',
+            'new_section_6_image.max' => 'Image must not be greater than 30 MB',
+            'new_section_7_video.max' => 'Video must not be greater than 100 MB',
+            'new_section_10_image.max' => 'Image must not be greater than 30 MB',
         ]);
 
         if($validator->fails()) {

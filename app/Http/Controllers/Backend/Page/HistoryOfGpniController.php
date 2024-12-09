@@ -39,10 +39,10 @@ class HistoryOfGpniController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'new_section_1_image' => 'max:5120',
-            'new_section_3_image' => 'max:5120',
-            'new_section_5_image' => 'max:5120',
-            'new_section_6_image' => 'max:5120',
+            'new_section_1_image' => 'max:30720',
+            'new_section_3_image' => 'max:30720',
+            'new_section_5_image' => 'max:30720',
+            'new_section_6_image' => 'max:30720',
         ]);
 
         if($validator->fails()) {

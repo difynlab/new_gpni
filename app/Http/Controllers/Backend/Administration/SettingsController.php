@@ -22,17 +22,17 @@ class SettingsController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'new_logo' => 'max:5120',
-            'new_favicon' => 'max:5120',
-            'new_guest_image' => 'max:5120',
-            'new_no_image' => 'max:5120',
-            'new_no_profile_image' => 'max:5120'
+            'new_logo' => 'max:30720',
+            'new_favicon' => 'max:30720',
+            'new_guest_image' => 'max:30720',
+            'new_no_image' => 'max:30720',
+            'new_no_profile_image' => 'max:30720'
         ], [
-            'new_logo.max' => 'Image must not be greater than 5 MB',
-            'new_favicon.max' => 'Image must not be greater than 5 MB',
-            'new_guest_image.max' => 'Image must not be greater than 5 MB',
-            'new_no_image.max' => 'Image must not be greater than 5 MB',
-            'new_no_profile_image.max' => 'Image must not be greater than 5 MB'
+            'new_logo.max' => 'Image must not be greater than 30 MB',
+            'new_favicon.max' => 'Image must not be greater than 30 MB',
+            'new_guest_image.max' => 'Image must not be greater than 30 MB',
+            'new_no_image.max' => 'Image must not be greater than 30 MB',
+            'new_no_profile_image.max' => 'Image must not be greater than 30 MB'
         ]);
 
         if($validator->fails()) {

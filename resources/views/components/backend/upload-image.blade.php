@@ -21,7 +21,7 @@
         </div>
     </div>
     <label for="{{ $new_name }}" class="button">Browse File</label>
-    <p class="condition">Maximum file size is 5 MB</p>
+    <p class="condition">Maximum file size is 30 MB</p>
     <input type="file" id="{{ $new_name }}" class="image-file-element" name="{{ $new_name }}" accept="image/*" style="display:none">
     <input type="hidden" name="{{ $old_name }}" value="{{ $old_value }}">
 

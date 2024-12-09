@@ -39,9 +39,9 @@ class GiftCardController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'new_images.*' => 'max:5120'
+            'new_images.*' => 'max:30720'
         ], [
-            'new_images.*.max' => 'Each image must not be greater than 5 MB'
+            'new_images.*.max' => 'Each image must not be greater than 30 MB'
         ]);
 
         if($validator->fails()) {

@@ -54,9 +54,9 @@ class GlobalEducationPartnerController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'section_5_point_images.*' => 'max:5120'
+            'section_5_point_images.*' => 'max:30720'
         ], [
-            'section_5_point_images.*.max' => 'Each image must not be greater than 5 MB'
+            'section_5_point_images.*.max' => 'Each image must not be greater than 30 MB'
         ]);
 
         if($validator->fails()) {

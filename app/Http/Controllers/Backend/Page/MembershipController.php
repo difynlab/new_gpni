@@ -39,9 +39,9 @@ class MembershipController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'new_section_2_image' => 'nullable|max:5120'
+            'new_section_2_image' => 'nullable|max:30720'
         ], [
-            'new_section_2_image.max' => 'Image must not be greater than 5 MB'
+            'new_section_2_image.max' => 'Image must not be greater than 30 MB'
         ]);
 
         if($validator->fails()) {

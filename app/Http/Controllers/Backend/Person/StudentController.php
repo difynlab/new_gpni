@@ -322,7 +322,7 @@ class StudentController extends Controller
             'phone' => 'nullable|unique:users,phone',
             'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
-            'new_image' => 'nullable|max:5120'
+            'new_image' => 'nullable|max:30720'
         ], [
             'email.unique' => 'The email address is already in use',
             'phone.unique' => 'The phone number is already in use',
@@ -330,7 +330,7 @@ class StudentController extends Controller
             'password.min' => 'The password must be at least 8 characters long',
             'confirm_password.required' => 'The confirm password field is required',
             'confirm_password.same' => 'The confirm password must match the password',
-            'new_image.max' => 'The image must not be greater than 5 MB'
+            'new_image.max' => 'The image must not be greater than 30 MB'
         ]);
         
         if($validator->fails()) {
@@ -623,11 +623,11 @@ class StudentController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,email,'.$student->id,
             'phone' => 'nullable|unique:users,phone,'.$student->id,
-            'new_image' => 'nullable|max:5120'
+            'new_image' => 'nullable|max:30720'
         ], [
             'email.unique' => 'The email address is already in use',
             'phone.unique' => 'The phone number is already in use',
-            'new_image.max' => 'The image size must not exceed 5 MB'
+            'new_image.max' => 'The image size must not exceed 30 MB'
         ]);
 
         if($validator->fails()) {

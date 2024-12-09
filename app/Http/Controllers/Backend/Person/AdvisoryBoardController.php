@@ -49,10 +49,10 @@ class AdvisoryBoardController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'description' => 'required',
-            'new_image' => 'required|max:5120'
+            'new_image' => 'required|max:30720'
         ], [
             'description.required' => 'The description field is required',
-            'new_image.max' => 'The image must not be greater than 5 MB',
+            'new_image.max' => 'The image must not be greater than 30 MB',
             'new_image.required' => 'The image field is required',
         ]);
         
@@ -88,10 +88,10 @@ class AdvisoryBoardController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'description' => 'required',
-            'new_image' => 'nullable|max:5120'
+            'new_image' => 'nullable|max:30720'
         ], [
             'description.required' => 'The description field is required',
-            'new_image.max' => 'The image must not be greater than 5 MB'
+            'new_image.max' => 'The image must not be greater than 30 MB'
         ]);
 
         if($validator->fails()) {

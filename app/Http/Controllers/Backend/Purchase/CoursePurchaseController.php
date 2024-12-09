@@ -136,9 +136,9 @@ class CoursePurchaseController extends Controller
     public function certificateUpdate(Request $request, CourseCertificate $course_certificate)
     {
         $validator = Validator::make($request->all(), [
-            'new_certificate' => 'nullable|max:5120'
+            'new_certificate' => 'nullable|max:30720'
         ], [
-            'new_certificate.max' => 'The file must not be greater than 5 MB'
+            'new_certificate.max' => 'The file must not be greater than 30 MB'
         ]);
         
         if($validator->fails()) {

@@ -53,11 +53,11 @@ class MasterClassController extends Controller
 
     public function update(Request $request, $language) {
         $validator = Validator::make($request->all(), [
-            'section_3_point_files.*' => 'max:5120',
-            'new_section_4_video' => 'max:20480',
+            'section_3_point_files.*' => 'max:30720',
+            'new_section_4_video' => 'max:102400',
         ], [
-            'section_3_point_files.*.max' => 'Each image must not be greater than 5 MB',
-            'new_section_4_video.max' => 'Video must not be greater than 20 MB',
+            'section_3_point_files.*.max' => 'Each image must not be greater than 30 MB',
+            'new_section_4_video.max' => 'Video must not be greater than 100 MB',
         ]);
 
         if($validator->fails()) {

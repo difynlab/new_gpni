@@ -45,21 +45,21 @@ class MediaController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'image' => 'nullable|image|max:5120',
-            'video' => 'nullable|max:20480',
-            'pdf' => 'nullable|max:5120',
-            'word' => 'nullable|max:5120',
-            'excel' => 'nullable|max:5120',
-            'ppt' => 'nullable|max:5120',
-            'audio' => 'nullable|max:5120',
+            'image' => 'nullable|image|max:30720',
+            'video' => 'nullable|max:102400',
+            'pdf' => 'nullable|max:30720',
+            'word' => 'nullable|max:30720',
+            'excel' => 'nullable|max:30720',
+            'ppt' => 'nullable|max:30720',
+            'audio' => 'nullable|max:30720',
         ], [
-            'image.max' => 'The image size must not exceed 5 MB',
-            'video.max' => 'The video size must not exceed 20 MB',
-            'pdf.max' => 'The pdf size must not exceed 5 MB',
-            'word.max' => 'The word size must not exceed 5 MB',
-            'excel.max' => 'The excel size must not exceed 5 MB',
-            'ppt.max' => 'The powerpoint size must not exceed 5 MB',
-            'audio.max' => 'The audio size must not exceed 5 MB'
+            'image.max' => 'The image size must not exceed 30 MB',
+            'video.max' => 'The video size must not exceed 100 MB',
+            'pdf.max' => 'The pdf size must not exceed 30 MB',
+            'word.max' => 'The word size must not exceed 30 MB',
+            'excel.max' => 'The excel size must not exceed 30 MB',
+            'ppt.max' => 'The powerpoint size must not exceed 30 MB',
+            'audio.max' => 'The audio size must not exceed 30 MB'
         ]);
         
         if($validator->fails()) {
@@ -154,21 +154,21 @@ class MediaController extends Controller
     public function update(Request $request, Media $media)
     {
         $validator = Validator::make($request->all(), [
-            'new_image' => 'nullable|image|max:5120',
-            'new_video' => 'nullable|max:20480',
-            'new_pdf' => 'nullable|max:5120',
-            'new_word' => 'nullable|max:5120',
-            'new_excel' => 'nullable|max:5120',
-            'new_ppt' => 'nullable|max:5120',
-            'new_audio' => 'nullable|max:5120',
+            'new_image' => 'nullable|image|max:30720',
+            'new_video' => 'nullable|max:102400',
+            'new_pdf' => 'nullable|max:30720',
+            'new_word' => 'nullable|max:30720',
+            'new_excel' => 'nullable|max:30720',
+            'new_ppt' => 'nullable|max:30720',
+            'new_audio' => 'nullable|max:30720',
         ], [
-            'new_image.max' => 'The image size must not exceed 5 MB',
-            'new_video.max' => 'The video size must not exceed 20 MB',
-            'new_pdf.max' => 'The pdf size must not exceed 5 MB',
-            'new_word.max' => 'The word size must not exceed 5 MB',
-            'new_excel.max' => 'The excel size must not exceed 5 MB',
-            'new_ppt.max' => 'The powerpoint size must not exceed 5 MB',
-            'new_audio.max' => 'The audio size must not exceed 5 MB'
+            'new_image.max' => 'The image size must not exceed 30 MB',
+            'new_video.max' => 'The video size must not exceed 100 MB',
+            'new_pdf.max' => 'The pdf size must not exceed 30 MB',
+            'new_word.max' => 'The word size must not exceed 30 MB',
+            'new_excel.max' => 'The excel size must not exceed 30 MB',
+            'new_ppt.max' => 'The powerpoint size must not exceed 30 MB',
+            'new_audio.max' => 'The audio size must not exceed 30 MB'
         ]);
         
         if($validator->fails()) {

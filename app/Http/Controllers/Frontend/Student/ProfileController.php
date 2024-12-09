@@ -282,11 +282,11 @@ class ProfileController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,email,'.$student->id,
             'phone' => 'nullable|unique:users,phone,'.$student->id,
-            'new_image' => 'nullable|max:5120'
+            'new_image' => 'nullable|max:30720'
         ], [
             'email.unique' => 'The email address is already in use',
             'phone.unique' => 'The phone number is already in use',
-            'new_image.max' => 'The image size must not exceed 5 MB'
+            'new_image.max' => 'The image size must not exceed 30 MB'
         ]);
 
         if($validator->fails()) {

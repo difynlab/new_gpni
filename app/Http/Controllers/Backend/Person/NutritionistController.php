@@ -307,9 +307,9 @@ class NutritionistController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'new_image' => 'nullable|max:5120'
+            'new_image' => 'nullable|max:30720'
         ], [
-            'new_image.max' => 'The image must not be greater than 5 MB'
+            'new_image.max' => 'The image must not be greater than 30 MB'
         ]);
         
         if($validator->fails()) {
@@ -616,9 +616,9 @@ class NutritionistController extends Controller
     public function update(Request $request, Nutritionist $nutritionist)
     {
         $validator = Validator::make($request->all(), [
-            'new_image' => 'nullable|max:5120'
+            'new_image' => 'nullable|max:30720'
         ], [
-            'new_image.max' => 'The image must not be greater than 5 MB'
+            'new_image.max' => 'The image must not be greater than 30 MB'
         ]);
 
         if($validator->fails()) {
