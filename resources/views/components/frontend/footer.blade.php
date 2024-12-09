@@ -114,7 +114,7 @@
     <div class="footer-bottom d-flex justify-content-center align-content-center">
         <div class="footer-bottom-content">
             <img src="{{ asset('storage/frontend/pin-icon.svg') }}" alt="Map Icon">
-            USA &nbsp; • &nbsp; Copyright © 2023 by GPNi&reg; Corporation Limited. All Rights Reserved &nbsp; •
+            USA &nbsp; • &nbsp; Copyright © 2024 by GPNi&reg; Corporation Limited. All Rights Reserved &nbsp; •
             &nbsp;
             <a href="{{ route('frontend.our-policies') }}">Privacy Policy</a>
             &nbsp; • &nbsp;

@@ -57,7 +57,7 @@ body {
     transform: translateY(-50%);
     width: 30px; /* Adjust based on the icon size */
     height: 30px; /* Adjust based on the icon size */
-    background-image: url('/storage/frontend/circle-tick-grey.svg'); /* Updated with the correct path */    
+    background-image: url('/storage/frontend/circle-tick.svg'); /* Updated with the correct path */    
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -256,7 +256,7 @@ body {
     transform: translateY(-50%);
     width: 30px; /* Adjust based on the icon size */
     height: 30px; /* Adjust based on the icon size */
-    background-image: url('/storage/frontend/circle-tick-grey.svg'); /* Updated with the correct path */    
+    background-image: url('/storage/frontend/circle-tick.svg'); /* Updated with the correct path */    
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -402,7 +402,7 @@ body {
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
-    background-image: url('/storage/frontend/circle-tick-grey.svg');
+    background-image: url('/storage/frontend/circle-tick.svg');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -518,7 +518,7 @@ body {
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
-    background-image: url('/storage/frontend/circle-tick-grey.svg');
+    background-image: url('/storage/frontend/circle-tick.svg');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -728,7 +728,7 @@ body {
     .section-7 ul li::before {
         width: 15px; /* Adjust based on the icon size */
         height: 15px; /* Adjust based on the icon size */
-        background-image: url('/storage/frontend/circle-tick-grey.svg'); /* Path to your icon */
+        background-image: url('/storage/frontend/circle-tick.svg'); /* Path to your icon */
         background-size: contain;
         background-repeat: no-repeat;
     }
@@ -856,7 +856,7 @@ body {
     .section-5 ul li::before {
         width: 15px;
         height: 15px;
-        background-image: url('/storage/frontend/circle-tick-grey.svg');
+        background-image: url('/storage/frontend/circle-tick.svg');
         background-size: contain;
         background-repeat: no-repeat;
     }
@@ -995,12 +995,12 @@ body {
     }
 
     .section-1 ul li::before {
-        background-image: url('/storage/frontend/circle-tick-grey.svg');
+        background-image: url('/storage/frontend/circle-tick.svg');
     }
 
     .section-3 ul li::before,
     .section-5 ul li::before {
-        background-image: url('/storage/frontend/circle-tick-grey.svg');
+        background-image: url('/storage/frontend/circle-tick.svg');
     }
 
     .section-4 ul li::before {
@@ -1031,7 +1031,7 @@ body {
     .section-1 ul li::before {
         width: 30px;
         height: 30px;
-        background-image: url('/storage/frontend/circle-tick-grey.svg');
+        background-image: url('/storage/frontend/circle-tick.svg');
         background-size: contain;
         background-repeat: no-repeat;
     }
