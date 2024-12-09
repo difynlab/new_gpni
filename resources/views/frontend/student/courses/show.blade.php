@@ -46,12 +46,12 @@
                                         <h2>{{ $course_module->title }}</h2>
                                         @if($course_module->module_exam == 'Yes')
                                             @if(hasStudentCompletedModuleExam($student->id, $course_module->course_id, $course_module->id) && $course_module->course_module_exam['result'] == 'Pass')
-                                                <span class="completed-badge">Completed</span>
+                                                <span class="completed-badge">{{ $student_dashboard_contents->courses_completed }}</span>
                                             @else
                                                 @if($all_previous_modules_completed)
-                                                    <span class="in-progress-badge">In Progress</span>
+                                                    <span class="in-progress-badge">{{ $student_dashboard_contents->courses_inprogress }}</span>
                                                 @else
-                                                    <span class="in-pending-badge">Pending</span>
+                                                    <span class="in-pending-badge">{{ $student_dashboard_contents->courses_pending }}</span>
                                                 @endif
                                             @endif
                                         @endif
@@ -62,23 +62,23 @@
                                             @if(hasStudentCompletedModuleExam($student->id, $course_module->course_id, $course_module->id))
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <a href="{{ route('frontend.module-exams.results', [$course, $course_module, $course_module->course_module_exam]) }}" class="results-button text-decoration-none">View Results</a>
+                                                        <a href="{{ route('frontend.module-exams.results', [$course, $course_module, $course_module->course_module_exam]) }}" class="results-button text-decoration-none">{{ $student_dashboard_contents->courses_view_results }}</a>
                                                     </div>
 
                                                     @if($course_module->course_module_exam['result'] == 'Pass')
                                                         <div class="col-6">
-                                                            <button class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You already passed this module exam" data-bs-custom-class="custom-tooltip" disabled>Exam Completed</button>
+                                                            <button class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="{{ $student_dashboard_contents->courses_module_exam_completed_tooltip }}" data-bs-custom-class="custom-tooltip" disabled>{{ $student_dashboard_contents->courses_module_exam_completed }}</button>
                                                         </div>
                                                     @else
                                                         <div class="col-6">
-                                                            <a href="{{ route('frontend.module-exams.index', [$course, $course_module]) }}" class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You can proceed to the next module only after passing this test exam" data-bs-custom-class="custom-tooltip">Take Again</a>
+                                                            <a href="{{ route('frontend.module-exams.index', [$course, $course_module]) }}" class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="{{ $student_dashboard_contents->courses_module_take_again_tooltip }}" data-bs-custom-class="custom-tooltip">{{ $student_dashboard_contents->courses_module_take_again }}</a>
                                                         </div>
                                                     @endif
                                                 </div>
                                             @elseif($all_previous_modules_completed)
-                                                <a href="{{ route('frontend.module-exams.index', [$course, $course_module]) }}" class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You can proceed to the next module only after passing this test exam" data-bs-custom-class="custom-tooltip">Take Module Exam</a>
+                                                <a href="{{ route('frontend.module-exams.index', [$course, $course_module]) }}" class="exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="{{ $student_dashboard_contents->courses_module_take_module_exam_tooltip }}" data-bs-custom-class="custom-tooltip">{{ $student_dashboard_contents->courses_module_take_module_exam }}</a>
                                             @else
-                                                <button class="exam-locked-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You must complete all previous module exams first" data-bs-custom-class="custom-tooltip" disabled>Exam Locked</button>
+                                                <button class="exam-locked-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="{{ $student_dashboard_contents->courses_module_exam_locked_tooltip }}" data-bs-custom-class="custom-tooltip" disabled>{{ $student_dashboard_contents->courses_module_exam_locked }}</button>
                                             @endif
                                         </div>
                                     @endif
@@ -89,7 +89,7 @@
                                         <div class="module-card">
                                             @foreach($course_module->chapters as $chapter)
                                                 <a href="{{ route('frontend.courses.show-more', ['course' => $course, 'course_module' => $course_module, 'course_chapter' => $chapter]) }}">
-                                                    Module Chapters: {{ $chapter->title }}
+                                                    {{ $student_dashboard_contents->courses_module_chapters }}: {{ $chapter->title }}
                                                 </a>
                                             @endforeach
                                         </div>
@@ -97,7 +97,7 @@
                                         <div class="module-card disabled">
                                             @foreach($course_module->chapters as $chapter)
                                                 <button class="disabled-button" disabled>
-                                                    Module Chapters: {{ $chapter->title }}
+                                                    {{ $student_dashboard_contents->courses_module_chapters }}: {{ $chapter->title }}
                                                 </button>
                                             @endforeach
                                         </div>
@@ -111,33 +111,33 @@
                                 @if(hasStudentCompletedFinalExam($student->id, $course->id))
                                     <div class="row">
                                         <div class="col-6">
-                                            <a href="{{ route('frontend.final-exam.results', [$course, $course->course_final_exam]) }}" class="final-results-button text-decoration-none">View Results</a>
+                                            <a href="{{ route('frontend.final-exam.results', [$course, $course->course_final_exam]) }}" class="final-results-button text-decoration-none">{{ $student_dashboard_contents->courses_view_results }}</a>
                                         </div>
 
                                         @if($course->course_final_exam['result'] == 'Pass')
                                             <div class="col-6">
-                                                <button class="final-exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="You already passed this final exam" data-bs-custom-class="custom-tooltip" disabled>Exam Completed</button>
+                                                <button class="final-exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="{{ $student_dashboard_contents->courses_final_exam_completed_tooltip }}" data-bs-custom-class="custom-tooltip" disabled>{{ $student_dashboard_contents->courses_final_exam_completed }}</button>
                                             </div>
                                         @else
                                             <div class="col-6">
-                                                <a href="{{ route('frontend.final-exam.index', $course) }}" class="final-exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="Take the final exam to obtain the certificate" data-bs-custom-class="custom-tooltip">Take Final Exam Again</a>
+                                                <a href="{{ route('frontend.final-exam.index', $course) }}" class="final-exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="{{ $student_dashboard_contents->courses_final_take_again_tooltip }}" data-bs-custom-class="custom-tooltip">{{ $student_dashboard_contents->courses_final_take_again }}</a>
                                             </div>
                                         @endif
                                     </div>
                                 @else
-                                    <a href="{{ route('frontend.final-exam.index', $course) }}" class="final-exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="Take the final exam to obtain the certificate" data-bs-custom-class="custom-tooltip">Take Final Exam</a>
+                                    <a href="{{ route('frontend.final-exam.index', $course) }}" class="final-exam-button text-decoration-none" data-bs-toggle="tooltip" data-bs-title="{{ $student_dashboard_contents->courses_final_take_final_exam_tooltip }}" data-bs-custom-class="custom-tooltip">{{ $student_dashboard_contents->courses_final_take_final_exam }}</a>
                                 @endif
                             @else
-                                <button class="final-exam-locked-button" data-bs-toggle="tooltip" data-bs-title="You must complete all the module exams" data-bs-custom-class="custom-tooltip" disabled>Final Exam Locked</button>
+                                <button class="final-exam-locked-button" data-bs-toggle="tooltip" data-bs-title="{{ $student_dashboard_contents->courses_final_exam_locked_tooltip }}" data-bs-custom-class="custom-tooltip" disabled>{{ $student_dashboard_contents->courses_final_exam_locked }}</button>
                             @endif
                         @endif
                     @else
-                        <p class="no-data">No modules at the moment</p>
+                        <p class="no-data">{{ $student_dashboard_contents->courses_no_modules }}</p>
                     @endif
 
                     <a href="{{ route('frontend.courses.index') }}" class="return-link">
                         <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
-                        Return to course
+                        {{ $student_dashboard_contents->courses_return }}
                     </a>
                 </div>
             </div>

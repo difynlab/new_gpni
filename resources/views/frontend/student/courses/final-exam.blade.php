@@ -12,27 +12,18 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body text-center">
-                    <p class="title">Are you ready?</p>
-                    <p class="description">Please click the button when you are ready</p>
+                    <p class="title">{{ $student_dashboard_contents->courses_exam_start_modal_title }}</p>
+                    <p class="description">{{ $student_dashboard_contents->courses_exam_start_modal_description }}</p>
                     
-                    <ul>
-                        <li>Read all questions carefully</li>
-                        <li>Do not press any keys during the exam unnecessarily</li>
-                        <li>Each question carries equal marks</li>
-                        <li>A minimum score of 75.00% is required to pass the exam</li>
-                        <li>Each question has only one correct answer</li>
-                        <li>Avoid switching between tabs during the exam. If detected, the exam will be automatically submitted</li>
-                        <li>Keep an eye on the remaining time</li>
-                        <li>Once the time is up, you cannot answer any more questions. You will only be able to submit your answers</li>
-                    </ul>
+                    {!! $student_dashboard_contents->courses_exam_start_modal_instructions !!}
                 </div>
 
                 <div class="modal-footer text-center">
                     <a href="{{ route('frontend.courses.show', $course) }}" class="return-link mx-3">
                         <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
-                        Return to course
+                        {{ $student_dashboard_contents->courses_return }}
                     </a>
-                    <button class="btn confirm-button start-exam-button mx-3">Start Exam</button>
+                    <button class="btn confirm-button start-exam-button mx-3">{{ $student_dashboard_contents->courses_exam_start_modal_start_exam }}</button>
                 </div>
             </div>
         </div>
@@ -47,17 +38,14 @@
                             <h1>{{ $course->title }}</h1>
                         </div>
                         <div class="instructions">
-                            <ul>
-                                <li>Please refrain from pressing any keys during the exam.</li>
-                                <li>Click the submit button to send all your answers when you're ready.</li>
-                            </ul>
+                            {!! $student_dashboard_contents->courses_exam_instructions !!}
                         </div>
                     </div>
                     
                     @if($course->exam_time)
                         <div class="col-3">
                             <div class="timer-section">
-                                <p class="remaining-time">Remaining Time</p>
+                                <p class="remaining-time">{{ $student_dashboard_contents->courses_exam_remaining_time }}</p>
                                 <p id="countdown" class="countdown">{{ $course->exam_time }}</p>
                             </div>
                         </div>
@@ -135,8 +123,8 @@
                                         </div>
 
                                         <div class="navigation">
-                                            <div class="button prev-button disabled">← Prev</div>
-                                            <div class="button next-button disabled">Next →</div>
+                                            <div class="button prev-button disabled">← {{ $student_dashboard_contents->courses_exam_previous }}</div>
+                                            <div class="button next-button disabled">{{ $student_dashboard_contents->courses_exam_next }} →</div>
                                         </div>
 
                                     </div>
@@ -203,8 +191,8 @@
                                         </div>
 
                                         <div class="navigation">
-                                            <div class="button prev-button">← Prev</div>
-                                            <div class="button next-button">Next →</div>
+                                            <div class="button prev-button">← {{ $student_dashboard_contents->courses_exam_previous }}</div>
+                                            <div class="button next-button">{{ $student_dashboard_contents->courses_exam_next }} →</div>
                                         </div>
                                     </div>
                                 @endif
@@ -213,7 +201,7 @@
 
                         <div class="col-4">
                             <div class="remaining-questions">
-                                <p class="remaining-questions-count">Remaining Questions: <span>{{ $questions->count() }}</span></p>
+                                <p class="remaining-questions-count">{{ $student_dashboard_contents->courses_exam_remaining_questions }}: <span>{{ $questions->count() }}</span></p>
 
                                 <div class="question-nav">
                                     @foreach($questions as $key => $question)
@@ -230,19 +218,19 @@
                                 <div class="legend-container">
                                     <div class="legend-section">
                                         <img src="{{ asset('storage/frontend/attempted.svg') }}">
-                                        <span class="legend">Attempted</span>
+                                        <span class="legend">{{ $student_dashboard_contents->courses_exam_attempted }}</span>
                                     </div>
                                     <div class="legend-section">
                                         <img src="{{ asset('storage/frontend/not-attempted.svg') }}">
-                                        <span class="legend">Not Attempted</span>
+                                        <span class="legend">{{ $student_dashboard_contents->courses_exam_not_attempted }}</span>
                                     </div>
                                     <div class="legend-section">
                                         <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}">
-                                        <span class="legend">Incomplete</span>
+                                        <span class="legend">{{ $student_dashboard_contents->courses_exam_incomplete }}</span>
                                     </div>
                                 </div>
 
-                                <button class="finish-exam-btn" data-bs-toggle="modal" data-bs-target="#submit-modal">Finish Exam</button>
+                                <button class="finish-exam-btn" data-bs-toggle="modal" data-bs-target="#submit-modal">{{ $student_dashboard_contents->courses_exam_finish_exam }}</button>
                             </div>
                         </div>
                     </div>
@@ -259,15 +247,15 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-center">
-                            <p class="dialog-header">Are you sure?</p>
-                            <p class="dialog-message">Once submitted, you will not be able to make any changes to your answers. Click <strong>"Confirm"</strong> to proceed or <strong>"Cancel"</strong> to go back and review your answers.</p>
+                            <p class="dialog-header">{{ $student_dashboard_contents->courses_exam_submit_modal_title }}</p>
+                            <p class="dialog-message">{!! $student_dashboard_contents->courses_exam_submit_modal_description !!}</p>
                         </div>
 
                         <div id="normal-answers-container"></div>
 
                         <div class="modal-footer text-center">
-                            <button type="button" class="btn cancel-button" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn confirm-button">Confirm</button>
+                            <button type="button" class="btn cancel-button" data-bs-dismiss="modal">{{ $student_dashboard_contents->courses_exam_modal_close }}</button>
+                            <button type="submit" class="btn confirm-button">{{ $student_dashboard_contents->courses_exam_modal_confirm }}</button>
                         </div>
                     </div>
                 </div>
@@ -280,13 +268,13 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body text-center">
-                            <p class="title">Time Up</p>
-                            <p class="description">Please submit the answers</p>
+                            <p class="title">{{ $student_dashboard_contents->courses_exam_time_modal_title }}</p>
+                            <p class="description">{{ $student_dashboard_contents->courses_exam_time_modal_description }}</p>
                             <div id="time-up-answers-container"></div>
                         </div>
 
                         <div class="modal-footer text-center">
-                            <button type="submit" class="btn confirm-button">Confirm</button>
+                            <button type="submit" class="btn confirm-button">{{ $student_dashboard_contents->courses_exam_modal_confirm }}</button></button>
                         </div>
                     </div>
                 </div>
@@ -298,14 +286,14 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body text-center">
-                    <p class="title">Success!</p>
-                    <p class="description">Your answers have been successfully submitted. Click the “View Results” button to see your scores.</p>
+                    <p class="title">{{ $student_dashboard_contents->courses_exam_success_modal_title }}</p>
+                    <p class="description">{{ $student_dashboard_contents->courses_exam_success_modal_description }}</p>
                 </div>
 
                 <div class="modal-footer text-center">
                     @if(session('course_final_exam_id'))
                         <a href="{{ route('frontend.final-exam.results', [$course, session('course_final_exam_id')]) }}" 
-                        class="btn confirm-button">View Results</a>
+                        class="btn confirm-button">{{ $student_dashboard_contents->courses_view_results }}</a>
                     @endif
                 </div>
             </div>

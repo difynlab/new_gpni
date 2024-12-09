@@ -16,24 +16,24 @@
             <div class="col-12 col-md-9 main-content">
                 <div class="orders-container">
                     <div class="orders-header">
-                        <h1>My Orders</h1>
+                        <h1>{{ $student_dashboard_contents->my_orders_title }}</h1>
                     </div>
                     <div class="table-container">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Order Type</th>
-                                    <th>Transaction ID</th>
-                                    <th>Amount</th>
-                                    <th>Date & Time</th>
-                                    <th>Payment Status</th>
+                                    <th>{{ $student_dashboard_contents->my_orders_first_tab }}</th>
+                                    <th>{{ $student_dashboard_contents->my_orders_second_tab }}</th>
+                                    <th>{{ $student_dashboard_contents->my_orders_third_tab }}</th>
+                                    <th>{{ $student_dashboard_contents->my_orders_fourth_tab }}</th>
+                                    <th>{{ $student_dashboard_contents->my_orders_fifth_tab }}</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @if($purchases->isEmpty())
                                     <tr>
-                                        <td colspan="5" class="empty-record">Records Not Available</td>
+                                        <td colspan="5" class="empty-record">{{ $student_dashboard_contents->my_orders_no_records }}</td>
                                     </tr>
                                 @else
                                     @foreach($purchases as $purchase)
