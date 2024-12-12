@@ -18,33 +18,33 @@
                     <x-frontend.notification></x-frontend.notification>
 
                     <div class="header-section">
-                        <h1>Refer a Friend</h1>
+                        <h1>{{ $student_dashboard_contents->refer_friends_title }}</h1>
                     </div>
 
                     <form action="{{ route('frontend.refer-friends.store') }}" method="POST">
                         @csrf
                         <div class="row align-items-end">
                             <div class="col-10">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter the email address of the friend you'd like to refer" required>
+                                <label for="email" class="form-label">{{ $student_dashboard_contents->refer_friends_email }}</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="{{ $student_dashboard_contents->refer_friends_email_placeholder }}" required>
                             </div>
                             <div class="col-2">
-                                <button type="submit" class="btn btn-submit">Send Invite</button>
+                                <button type="submit" class="btn btn-submit">{{ $student_dashboard_contents->refer_friends_button }}</button>
                             </div>
                         </div>
                     </form>
 
                     <a class="view-history" style="cursor: pointer;">
                         <img src="{{ asset('storage/frontend/history-clock-icon.svg') }}" class="icon-history" alt="History Icon" width="22" height="22">
-                        View History
+                        {{ $student_dashboard_contents->refer_friends_view_history }}
                     </a>
                     
                     <div class="history d-none">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Email Address</th>
+                                    <th>{{ $student_dashboard_contents->refer_friends_first_column }}</th>
+                                    <th>{{ $student_dashboard_contents->refer_friends_second_column }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,7 +57,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="2" style="text-align: center;">No data available in table</td>
+                                        <td colspan="2" style="text-align: center;">{{ $student_dashboard_contents->refer_friends_no_data }}</td>
                                     </tr>
                                 @endif
                             </tbody>

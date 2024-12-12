@@ -209,7 +209,8 @@ return new class extends Migration
                 'qualifications_issued',
                 'qualifications_no_certificates',
 
-                'my_storage_corner_title',
+                'my_storage_title',
+                'member_corner_title',
                 'my_storage_corner_first_tab',
                 'my_storage_corner_second_tab',
                 'my_storage_corner_third_tab',
@@ -225,10 +226,10 @@ return new class extends Migration
                 'my_storage_corner_watch_on_vimeo',
                 'my_storage_corner_download',
 
-                'buy_study_material_corner_title',
-                'buy_study_material_corner_select',
-                'buy_study_material_corner_choose',
-                'buy_study_material_corner_button',
+                'buy_study_material_title',
+                'buy_study_material_select',
+                'buy_study_material_choose',
+                'buy_study_material_button',
 
                 'ask_the_experts_title',
                 'ask_the_experts_sub_title',
@@ -257,6 +258,9 @@ return new class extends Migration
                 'refer_friends_email_placeholder',
                 'refer_friends_button',
                 'refer_friends_view_history',
+                'refer_friends_first_column',
+                'refer_friends_second_column',
+                'refer_friends_no_data',
             ];
 
             foreach($columns as $column) {

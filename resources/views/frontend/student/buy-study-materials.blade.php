@@ -18,15 +18,15 @@
                     <x-frontend.notification></x-frontend.notification>
 
                     <div class="header-section">
-                        <h1>Material & Logistics</h1>
+                        <h1>{{ $student_dashboard_contents->buy_study_material_title }}</h1>
                     </div>
 
                     <form action="{{ route('frontend.buy-study-materials.checkout') }}" method="POST">
                         @csrf
                         <div class="mb-4 text-left">
-                            <label for="course" class="form-label">Select your course</label>
+                            <label for="course" class="form-label">{{ $student_dashboard_contents->buy_study_material_select }}</label>
                             <select class="form-control form-select custom-select" name="course_id" required>
-                                <option value="">Choose your course</option>
+                                <option value="">{{ $student_dashboard_contents->buy_study_material_choose }}</option>
                                 @if($courses->isNotEmpty())
                                     @foreach($courses as $course)
                                         <option value="{{ $course->id }}">{{ $course->title }}</option>
@@ -34,7 +34,7 @@
                                 @endif
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-pay-now">Pay Now</button>
+                        <button type="submit" class="btn btn-pay-now">{{ $student_dashboard_contents->buy_study_material_button }}</button>
                     </form>
                 </div>
             </div>

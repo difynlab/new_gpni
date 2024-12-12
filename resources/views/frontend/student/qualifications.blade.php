@@ -16,13 +16,13 @@
             <div class="col-12 col-md-9 main-content">
                 <div class="container-main">
                     <div class="header-section">
-                        <h1>Qualifications</h1>
+                        <h1>{{ $student_dashboard_contents->qualifications_title }}</h1>
                     </div>
 
                     <form action="{{ route('frontend.qualifications') }}" method="GET">
                         <div class="search-bar">
                             <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" alt="Search Icon" width="18" height="18">
-                            <input type="text" name="qualification" placeholder="Search for Qualifications" value="{{ $qualification ?? '' }}">
+                            <input type="text" name="qualification" placeholder="{{ $student_dashboard_contents->qualifications_search }}" value="{{ $qualification ?? '' }}">
                         </div>
                     </form>
 
@@ -34,15 +34,15 @@
                                         <div class="certificate-header">
                                             <div class="title">{{ $obtained_certificate['course_title'] }}</div>
 
-                                            <a href="{{ asset('storage/backend/courses/course-certificates/' . $obtained_certificate['certificate_url']) }}" class="download-button" download>Download<i class="bi bi-download"></i></a>
+                                            <a href="{{ asset('storage/backend/courses/course-certificates/' . $obtained_certificate['certificate_url']) }}" class="download-button" download>{{ $student_dashboard_contents->qualifications_download }}<i class="bi bi-download"></i></a>
                                         </div>
 
-                                        <p class="certificate-issued">Issued on: <span>{{ $obtained_certificate['issued_date_time'] }}</span></p>
+                                        <p class="certificate-issued">{{ $student_dashboard_contents->qualifications_issued }}: <span>{{ $obtained_certificate['issued_date_time'] }}</span></p>
                                     </div>
                                 @endif
                             @endforeach
                         @else
-                            <p class="no-data">No certificates provided</p>
+                            <p class="no-data">{{ $student_dashboard_contents->qualifications_no_certificates }}</p>
                         @endif
                     </div>
                 </div>

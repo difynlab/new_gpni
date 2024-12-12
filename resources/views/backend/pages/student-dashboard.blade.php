@@ -989,12 +989,17 @@
             </div>
 
             <div class="section">
-                <p class="inner-page-title">My Storage</p>
+                <p class="inner-page-title">My Storage & Member Corner</p>
 
                 <div class="row form-input">
                     <div class="col-4 mb-3">
-                        <label for="my_storage_corner_title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="my_storage_corner_title" name="my_storage_corner_title" value="{{ $contents->my_storage_corner_title ?? '' }}" placeholder="Title">
+                        <label for="my_storage_title" class="form-label">My Storage Title</label>
+                        <input type="text" class="form-control" id="my_storage_title" name="my_storage_title" value="{{ $contents->my_storage_title ?? '' }}" placeholder="My Storage Title">
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <label for="member_corner_title" class="form-label">Member Corner Title</label>
+                        <input type="text" class="form-control" id="member_corner_title" name="member_corner_title" value="{{ $contents->member_corner_title ?? '' }}" placeholder="Member Corner Title">
                     </div>
 
                     <div class="col-4 mb-3">
@@ -1074,23 +1079,23 @@
 
                 <div class="row form-input">
                     <div class="col-4 mb-3">
-                        <label for="buy_study_material_corner_title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="buy_study_material_corner_title" name="buy_study_material_corner_title" value="{{ $contents->buy_study_material_corner_title ?? '' }}" placeholder="Title">
+                        <label for="buy_study_material_title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="buy_study_material_title" name="buy_study_material_title" value="{{ $contents->buy_study_material_title ?? '' }}" placeholder="Title">
                     </div>
 
                     <div class="col-4 mb-3">
-                        <label for="buy_study_material_corner_select" class="form-label">Select</label>
-                        <input type="text" class="form-control" id="buy_study_material_corner_select" name="buy_study_material_corner_select" value="{{ $contents->buy_study_material_corner_select ?? '' }}" placeholder="Select">
+                        <label for="buy_study_material_select" class="form-label">Select</label>
+                        <input type="text" class="form-control" id="buy_study_material_select" name="buy_study_material_select" value="{{ $contents->buy_study_material_select ?? '' }}" placeholder="Select">
                     </div>
 
                     <div class="col-4 mb-3">
-                        <label for="buy_study_material_corner_choose" class="form-label">Choose</label>
-                        <input type="text" class="form-control" id="buy_study_material_corner_choose" name="buy_study_material_corner_choose" value="{{ $contents->buy_study_material_corner_choose ?? '' }}" placeholder="Choose">
+                        <label for="buy_study_material_choose" class="form-label">Choose</label>
+                        <input type="text" class="form-control" id="buy_study_material_choose" name="buy_study_material_choose" value="{{ $contents->buy_study_material_choose ?? '' }}" placeholder="Choose">
                     </div>
 
                     <div class="col-4">
-                        <label for="buy_study_material_corner_button" class="form-label">Button</label>
-                        <input type="text" class="form-control" id="buy_study_material_corner_button" name="buy_study_material_corner_button" value="{{ $contents->buy_study_material_corner_button ?? '' }}" placeholder="Button">
+                        <label for="buy_study_material_button" class="form-label">Button</label>
+                        <input type="text" class="form-control" id="buy_study_material_button" name="buy_study_material_button" value="{{ $contents->buy_study_material_button ?? '' }}" placeholder="Button">
                     </div>
                 </div>
             </div>
@@ -1226,14 +1231,29 @@
                         <input type="text" class="form-control" id="refer_friends_email_placeholder" name="refer_friends_email_placeholder" value="{{ $contents->refer_friends_email_placeholder ?? '' }}" placeholder="Email Placeholder">
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-4 mb-3">
                         <label for="refer_friends_button" class="form-label">Button</label>
                         <input type="text" class="form-control" id="refer_friends_button" name="refer_friends_button" value="{{ $contents->refer_friends_button ?? '' }}" placeholder="Button">
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-4 mb-3">
                         <label for="refer_friends_view_history" class="form-label">View History</label>
                         <input type="text" class="form-control" id="refer_friends_view_history" name="refer_friends_view_history" value="{{ $contents->refer_friends_view_history ?? '' }}" placeholder="View History">
+                    </div>
+
+                    <div class="col-4 mb-3">
+                        <label for="refer_friends_first_column" class="form-label">First Column</label>
+                        <input type="text" class="form-control" id="refer_friends_first_column" name="refer_friends_first_column" value="{{ $contents->refer_friends_first_column ?? '' }}" placeholder="First Column">
+                    </div>
+
+                    <div class="col-4">
+                        <label for="refer_friends_second_column" class="form-label">Second Column</label>
+                        <input type="text" class="form-control" id="refer_friends_second_column" name="refer_friends_second_column" value="{{ $contents->refer_friends_second_column ?? '' }}" placeholder="Second Column">
+                    </div>
+
+                    <div class="col-4">
+                        <label for="refer_friends_no_data" class="form-label">No Data</label>
+                        <input type="text" class="form-control" id="refer_friends_no_data" name="refer_friends_no_data" value="{{ $contents->refer_friends_no_data ?? '' }}" placeholder="No Data">
                     </div>
                 </div>
             </div>

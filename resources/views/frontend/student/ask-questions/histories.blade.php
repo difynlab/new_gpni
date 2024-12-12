@@ -16,11 +16,11 @@
             <div class="col-12 col-md-9 main-content">
                 <div class="container-main">
                     <div class="header-section">
-                        <h1>History & Replies</h1>
+                        <h1>{{ $student_dashboard_contents->ask_the_experts_history_title }}</h1>
 
                         <a href="{{ route('frontend.ask-questions.index') }}">
                             <img src="{{ asset('storage/frontend/question-icon.svg') }}" class="icon-question" alt="Question Icon" width="28" height="28">
-                            Ask a Question Now
+                            {{ $student_dashboard_contents->ask_the_experts_history_sub_title }}
                         </a>
                     </div>
 
@@ -34,9 +34,9 @@
                                                 <div class="title">{{ $ask_question->subject }}</div>
 
                                                 @if($ask_question->replied)
-                                                    <div class="answered-status-badge">Answered Question</div>
+                                                    <div class="answered-status-badge"> {{ $student_dashboard_contents->ask_the_experts_history_answered }}</div>
                                                 @else
-                                                    <div class="unanswered-status-badge">Unanswered Question</div>
+                                                    <div class="unanswered-status-badge"> {{ $student_dashboard_contents->ask_the_experts_history_unanswered }}</div>
                                                 @endif
                                             </div>
                                             

@@ -16,10 +16,10 @@
             <div class="col-12 col-md-9 main-content">
                 <div class="container-main">
                     <div class="header-section">
-                        <h1>Question & Answer</h1>
+                        <h1>{{ $student_dashboard_contents->ask_the_experts_chat_title }}</h1>
                         <a href="{{ route('frontend.ask-questions.histories') }}">
                             <img src="{{ asset('storage/frontend/history-clock-icon.svg') }}" class="icon-history" alt="History Icon" width="22" height="22">
-                            Return to History
+                            {{ $student_dashboard_contents->ask_the_experts_chat_sub_title }}
                         </a>
                     </div>
 
@@ -77,9 +77,9 @@
                     <form action="{{ route('frontend.ask-questions.update', $ask_question) }}" method="POST">
                         @csrf
                         <div class="message-input">
-                            <label for="message" class="form-label">Leave Message</label>
-                            <textarea class="form-control textarea" id="message" rows="3" name="message" placeholder="Continue the conversation by leaving a message" required></textarea>
-                            <button type="submit" class="btn-send">Send Message</button>
+                            <label for="message" class="form-label">{{ $student_dashboard_contents->ask_the_experts_chat_leave_message }}</label>
+                            <textarea class="form-control textarea" id="message" rows="3" name="message" placeholder="{{ $student_dashboard_contents->ask_the_experts_chat_leave_message_placeholder }}" required></textarea>
+                            <button type="submit" class="btn-send">{{ $student_dashboard_contents->ask_the_experts_chat_button }}</button>
                         </div>
                     </form>
                 </div>
