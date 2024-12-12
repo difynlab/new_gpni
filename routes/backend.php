@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\FAQ\FAQController;
 use App\Http\Controllers\Backend\Media\MediaController;
 use App\Http\Controllers\Backend\Page\AdvisoryBoardExpertLectureController;
 use App\Http\Controllers\Backend\Page\ArticleController as PageArticleController;
+use App\Http\Controllers\Backend\Page\AuthenticationController;
 use App\Http\Controllers\Backend\Page\ConferenceController as PageConferenceController;
 use App\Http\Controllers\Backend\Page\ContactUsController;
 use App\Http\Controllers\Backend\Page\FAQController as PageFAQController;
@@ -140,6 +141,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
             Route::get('student-dashboard/{language}', [StudentDashboardController::class, 'index'])->name('student-dashboard.index');
             Route::post('student-dashboard/{language}', [StudentDashboardController::class, 'update'])->name('student-dashboard.update');
+
+            Route::get('authentication/{language}', [AuthenticationController::class, 'index'])->name('authentication.index');
+            Route::post('authentication/{language}', [AuthenticationController::class, 'update'])->name('authentication.update');
         });
     // All page related routes
 

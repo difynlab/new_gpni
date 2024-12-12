@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             StudentDashboardContentENSeeder::class,
             StudentDashboardContentZHSeeder::class,
             StudentDashboardContentJASeeder::class,
+            AuthenticationContentSeeder::class
         ]);
     }
 }

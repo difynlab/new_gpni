@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuthenticationContent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -267,8 +268,11 @@ class RegisterController extends Controller
             "Zimbabwe"
         ];
 
+        $contents = AuthenticationContent::find(1);
+
         return view('frontend.auth.register', [
-            'countries' => $countries
+            'countries' => $countries,
+            'contents' => $contents
         ]);
     }
 

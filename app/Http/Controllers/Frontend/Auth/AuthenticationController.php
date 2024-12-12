@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuthenticationContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,11 +11,17 @@ class AuthenticationController extends Controller
 {
     public function login()
     {
-        return view('frontend.auth.login');
+        $contents = AuthenticationContent::find(1);
+
+        return view('frontend.auth.login', [
+            'contents' => $contents
+        ]);
     }
 
     public function store(Request $request)
     {
+        $contents = AuthenticationContent::find(1);
+
         if(Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
 
@@ -26,6 +33,7 @@ class AuthenticationController extends Controller
         }
 
         return back()->withErrors([
+            'contents' => $contents,
             'login_failed' => 'These credentials do not match our records',
         ]);
     }

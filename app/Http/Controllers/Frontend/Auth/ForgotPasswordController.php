@@ -10,12 +10,17 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ResetPasswordMail;
+use App\Models\AuthenticationContent;
 
 class ForgotPasswordController extends Controller
 {
     public function index()
     { 
-        return view('frontend.auth.forgot-password');
+        $contents = AuthenticationContent::find(1);
+        
+        return view('frontend.auth.forgot-password', [
+            'contents' => $contents
+        ]);
     }
 
     public function store(Request $request)

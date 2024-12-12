@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuthenticationContent;
 use App\Models\PasswordResetToken;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,6 +13,8 @@ class ResetPasswordController extends Controller
 {
     public function index($email, $token)
     {
+        $contents = AuthenticationContent::find(1);
+        
         $reset_password = PasswordResetToken::where('email', $email)->whereNotNull('token')->orderBy('created_at', 'desc')->first();
 
         if(!$reset_password || $reset_password->token !== $token) {
@@ -20,7 +23,8 @@ class ResetPasswordController extends Controller
 
         return view('frontend.auth.reset-password', [
             'email' => $email,
-            'token' => $token
+            'token' => $token,
+            'contents' => $contents
         ]);
     }
 
