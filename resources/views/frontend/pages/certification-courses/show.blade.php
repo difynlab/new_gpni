@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Show Certification Course')
+@section('title', $contents->{'single_page_name_' . $middleware_language} ?? $contents->single_page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/certification-course.css') }}">
@@ -25,9 +25,11 @@
                     @endif
 
                     <div class="rating pt-4">
-                        <span>5.0</span>
-                        <img src="{{ asset('storage/frontend/stars.svg') }}" alt="Rating Stars">
-                        <span>(9)</span>
+                        <span>{{ $average_rating }}.0</span>
+                        @for($i = 0; $i < $average_rating; $i++)
+                            <i class="bi bi-star-fill star"></i>
+                        @endfor
+                        <span>({{ $course_reviews->count() }})</span>
                     </div>
                 </section>
             </div>
@@ -40,15 +42,15 @@
                 @if(auth()->check())
                     @if(hasUserSelectedCorrectLanguage(auth()->user()->id, $middleware_language_name) && $course->language == $middleware_language_name)
                         @if(hasUserPurchasedCourse(auth()->user()->id, $course->id))
-                            <a class="btn btn-primary fs-20">Already Purchased</a>
+                            <a class="btn btn-primary fs-20">{{ $contents->{'single_page_already_purchased_' . $middleware_language} ?? $contents->single_page_already_purchased_en }}</a>
                         @else
-                            <a href="{{ route('frontend.certification-courses.purchase', $course) }}" class="btn btn-primary fs-20">Enroll Now</a>
+                            <a href="{{ route('frontend.certification-courses.purchase', $course) }}" class="btn btn-primary fs-20">{{ $contents->{'single_page_enroll_now_' . $middleware_language} ?? $contents->single_page_enroll_now_en }}</a>
                         @endif
                     @else
-                        <a class="btn btn-primary fs-20">This course is not available in your primary language</a>
+                        <a class="btn btn-primary fs-20">{{ $contents->{'single_page_not_available_' . $middleware_language} ?? $contents->single_page_not_available_en }}</a>
                     @endif
                 @else
-                    <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn btn-primary fs-20">Login for Purchase</a>
+                    <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="btn btn-primary fs-20">{{ $contents->{'single_page_login_for_enroll_' . $middleware_language} ?? $contents->single_page_login_for_enroll_en }}</a>
                 @endif
                 
             </div>
@@ -60,28 +62,28 @@
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="col-12 col-md-6 col-lg-3 mb-3 d-flex align-items-center justify-content-center position-relative">
                     <div class="course-item text-center">
-                        <div class="label fs-20">No of Modules</div>
+                        <div class="label fs-20">{{ $contents->{'single_page_no_of_modules_' . $middleware_language} ?? $contents->single_page_no_of_modules_en }}</div>
                         <div class="value">{{ $course->no_of_modules }}</div>
                     </div>
                     <div class="vertical-line d-none d-md-block"></div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 mb-3 d-flex align-items-center justify-content-center position-relative">
                     <div class="course-item text-center">
-                        <div class="label fs-20">Course Type</div>
+                        <div class="label fs-20">{{ $contents->{'single_page_course_type_' . $middleware_language} ?? $contents->single_page_course_type_en }}</div>
                         <div class="value fs-20">{{ $course->type }}</div>
                     </div>
                     <div class="vertical-line d-none d-md-block"></div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 mb-3 d-flex align-items-center justify-content-center position-relative">
                     <div class="course-item text-center">
-                        <div class="label fs-20">Course Duration</div>
+                        <div class="label fs-20">{{ $contents->{'single_page_course_duration_' . $middleware_language} ?? $contents->single_page_course_duration_en }}</div>
                         <div class="value fs-20">{{ $course->duration }}</div>
                     </div>
                     <div class="vertical-line d-none d-md-block"></div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 mb-3 d-flex align-items-center justify-content-center position-relative">
                     <div class="course-item text-center">
-                        <div class="label fs-20">Course Language</div>
+                        <div class="label fs-20">{{ $contents->{'single_page_course_language_' . $middleware_language} ?? $contents->single_page_course_language_en }}</div>
                         <div class="value fs-20">{{ $course->language }}</div>
                     </div>
                 </div>
@@ -155,7 +157,6 @@
                             <div class="video-container">
                                 <video controls class="section-4-video">
                                     <source src="{{ asset('storage/backend/courses/course-videos/' . $course->certification_section_4_video) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
                                 </video>
                             </div>
                         </div>
@@ -178,12 +179,12 @@
                             @endfor
                         </div>
 
-                        <div class="testimonial-text"> {{  $course->certification_section_5_content }}</div>
+                        <div class="testimonial-text"> {{ $course->certification_section_5_content }}</div>
 
                         <div class="testimonial-author">
                             <div class="name">{{ $course->certification_section_5_name }}</div>
 
-                            <div class="role">{{  $course->certification_section_5_designation }}</div>
+                            <div class="role">{{ $course->certification_section_5_designation }}</div>
                         </div>
                     </div>
                 </div>
@@ -229,7 +230,6 @@
                         <div class="col-12 col-lg-6 d-flex justify-content-center">
                             <video controls class="section-7-video">
                                 <source src="{{ asset('storage/backend/courses/course-videos/' . $course->certification_section_7_video) }}" type="video/mp4">
-                                Your browser does not support the video tag.
                             </video>
                         </div>
                     </div>
@@ -241,16 +241,16 @@
             <nav class="nav content-header d-flex justify-content-center">
                 <ul class="nav nav-tabs flex-column flex-md-row">
                     <li class="nav-item">
-                        <a class="nav-link active fs-20 fs-md-16" href="#introduction" data-bs-toggle="tab">Introduction</a>
+                        <a class="nav-link active fs-20 fs-md-16" href="#introduction" data-bs-toggle="tab">{{ $contents->{'single_page_first_tab_' . $middleware_language} ?? $contents->single_page_first_tab_en }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-20 fs-md-16" href="#course-content" data-bs-toggle="tab">Course Content</a>
+                        <a class="nav-link fs-20 fs-md-16" href="#course-content" data-bs-toggle="tab">{{ $contents->{'single_page_second_tab_' . $middleware_language} ?? $contents->single_page_second_tab_en }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-20 fs-md-16" href="#chapters" data-bs-toggle="tab">Chapters</a>
+                        <a class="nav-link fs-20 fs-md-16" href="#chapters" data-bs-toggle="tab">{{ $contents->{'single_page_third_tab_' . $middleware_language} ?? $contents->single_page_third_tab_en }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-20 fs-md-16" href="#review" data-bs-toggle="tab">Review</a>
+                        <a class="nav-link fs-20 fs-md-16" href="#review" data-bs-toggle="tab">{{ $contents->{'single_page_fourth_tab_' . $middleware_language} ?? $contents->single_page_fourth_tab_en }}</a>
                     </li>
                 </ul>
             </nav>
@@ -329,7 +329,6 @@
                     <div class="col-lg-6">
                         <video controls class="section-10-video">
                             <source src="{{ asset('storage/backend/courses/course-videos/' . $course->certification_section_10_video) }}" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
                         
                         @if($course->certification_section_10_points)
@@ -363,7 +362,6 @@
                         <div class="video-section">
                             <video controls class="w-100">
                                 <source src="{{ asset('storage/backend/courses/course-videos/' . $course->certification_section_11_video) }}" type="video/mp4">
-                                Your browser does not support the video tag.
                             </video>
                         </div>
                     </div>
@@ -470,7 +468,6 @@
                     <div class="video-section">
                         <video controls class="w-100" style="border-radius: 35px;">
                             <source src="{{ asset('storage/backend/courses/course-videos/' . $course->certification_section_14_video) }}" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
                     </div>
                 </div>
@@ -487,7 +484,7 @@
                                         <p class="student-review-text fs-16">{{ $testimonial->content }}</p>
                                         <div class="student-review-footer">
                                             <div class="student-review-rating">
-                                                <span>Rated {{ $testimonial->rate }}/5 stars</span>
+                                                <span>{{ $contents->{'single_page_rated_' . $middleware_language} ?? $contents->single_page_rated_en }} {{ $testimonial->rate }}/5 {{ $contents->{'single_page_stars_' . $middleware_language} ?? $contents->single_page_stars_en }}</span>
                                                 
                                                 <span>
                                                     @for($i = 0; $i < $testimonial->rate; $i++)
@@ -519,7 +516,6 @@
                     <div class="col-lg-6">
                         <video controls class="section-15-video">
                             <source src="{{ asset('storage/backend/courses/course-videos/' . $course->certification_section_15_video) }}" type="video/mp4">
-                            Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="col-lg-6">

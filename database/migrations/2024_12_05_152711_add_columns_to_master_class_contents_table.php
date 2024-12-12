@@ -68,6 +68,8 @@ return new class extends Migration
             $table->text('linkedin_en')->nullable();
             $table->text('youtube_en')->nullable();
             $table->text('facebook_en')->nullable();
+            $table->text('rated_en')->nullable();
+            $table->text('stars_en')->nullable();
 
             $table->text('course_duration_zh')->nullable();
             $table->text('language_zh')->nullable();
@@ -90,6 +92,8 @@ return new class extends Migration
             $table->text('linkedin_zh')->nullable();
             $table->text('youtube_zh')->nullable();
             $table->text('facebook_zh')->nullable();
+            $table->text('rated_zh')->nullable();
+            $table->text('stars_zh')->nullable();
 
             $table->text('course_duration_ja')->nullable();
             $table->text('language_ja')->nullable();
@@ -112,6 +116,8 @@ return new class extends Migration
             $table->text('linkedin_ja')->nullable();
             $table->text('youtube_ja')->nullable();
             $table->text('facebook_ja')->nullable();
+            $table->text('rated_ja')->nullable();
+            $table->text('stars_ja')->nullable();
 
             $table->timestamps();
         });

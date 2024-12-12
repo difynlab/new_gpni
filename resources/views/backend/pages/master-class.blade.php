@@ -244,9 +244,14 @@
                             <input type="text" class="form-control" id="first_tab_{{ $short_code }}" name="first_tab_{{ $short_code }}" value="{{ $contents->{'first_tab_' . $short_code} ?? '' }}" placeholder="First Tab">
                         </div>
 
-                        <div>
+                        <div class="mb-4">
                             <label for="second_tab_{{ $short_code }}" class="form-label">Second Tab</label>
                             <input type="text" class="form-control" id="second_tab_{{ $short_code }}" name="second_tab_{{ $short_code }}" value="{{ $contents->{'second_tab_' . $short_code} ?? '' }}" placeholder="Second Tab">
+                        </div>
+
+                        <div>
+                            <label for="stars_{{ $short_code }}" class="form-label">Stars</label>
+                            <input type="text" class="form-control" id="stars_{{ $short_code }}" name="stars_{{ $short_code }}" value="{{ $contents->{'stars_' . $short_code} ?? '' }}" placeholder="Stars">
                         </div>
                     </div>
 
@@ -296,9 +301,14 @@
                             <input type="text" class="form-control" id="youtube_{{ $short_code }}" name="youtube_{{ $short_code }}" value="{{ $contents->{'youtube_' . $short_code} ?? '' }}" placeholder="Youtube">
                         </div>
 
-                        <div>
+                        <div class="mb-4">
                             <label for="facebook_{{ $short_code }}" class="form-label">Facebook</label>
                             <input type="text" class="form-control" id="facebook_{{ $short_code }}" name="facebook_{{ $short_code }}" value="{{ $contents->{'facebook_' . $short_code} ?? '' }}" placeholder="Facebook">
+                        </div>
+
+                        <div>
+                            <label for="rated_{{ $short_code }}" class="form-label">Rated</label>
+                            <input type="text" class="form-control" id="rated_{{ $short_code }}" name="rated_{{ $short_code }}" value="{{ $contents->{'rated_' . $short_code} ?? '' }}" placeholder="Rated">
                         </div>
                     </div>
                 </div>

@@ -337,7 +337,7 @@
                                     <div class="card-text mb-3">{{ $testimonial->content }}</div>
                                     <div class="d-flex justify-content-between">
                                         <div>
-                                            <span class="font-weight-bold d-block mb-1">Rated {{ $testimonial->rate }}/5 stars</span>
+                                            <span class="font-weight-bold d-block mb-1">{{ $contents->{'rated_' . $middleware_language} ?? $contents->rated_en }} {{ $testimonial->rate }}/5 {{ $contents->{'stars_' . $middleware_language} ?? $contents->stars_en }}</span>
                                             <div class="stars text-warning">
                                                 <span>
                                                     @for($i = 0; $i < $testimonial->rate; $i++)

@@ -320,6 +320,57 @@
                         </tr>
 
                         <tr>
+                            <td>Certification Course</td>
+                            <td>
+                                <a href="{{ route('backend.pages.certification-course.index', 'english') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>English
+                                </a>
+
+                                <a href="{{ route('backend.pages.certification-course.index', 'chinese') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>Chinese
+                                </a>
+
+                                <a href="{{ route('backend.pages.certification-course.index', 'japanese') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>Japanese
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Product</td>
+                            <td>
+                                <a href="{{ route('backend.pages.product.index', 'english') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>English
+                                </a>
+
+                                <a href="{{ route('backend.pages.product.index', 'chinese') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>Chinese
+                                </a>
+
+                                <a href="{{ route('backend.pages.product.index', 'japanese') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>Japanese
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Cart</td>
+                            <td>
+                                <a href="{{ route('backend.pages.cart.index', 'english') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>English
+                                </a>
+
+                                <a href="{{ route('backend.pages.cart.index', 'chinese') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>Chinese
+                                </a>
+
+                                <a href="{{ route('backend.pages.cart.index', 'japanese') }}" title="Edit" class="ms-4">
+                                    <i class="bi bi-pencil-square me-1"></i>Japanese
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
                             <td>Student Dashboard</td>
                             <td>
                                 <a href="{{ route('backend.pages.student-dashboard.index', 'english') }}" title="Edit" class="ms-4">

@@ -26,6 +26,8 @@ use App\Http\Controllers\Backend\Media\MediaController;
 use App\Http\Controllers\Backend\Page\AdvisoryBoardExpertLectureController;
 use App\Http\Controllers\Backend\Page\ArticleController as PageArticleController;
 use App\Http\Controllers\Backend\Page\AuthenticationController;
+use App\Http\Controllers\Backend\Page\CartController;
+use App\Http\Controllers\Backend\Page\CertificationCourseController;
 use App\Http\Controllers\Backend\Page\ConferenceController as PageConferenceController;
 use App\Http\Controllers\Backend\Page\ContactUsController;
 use App\Http\Controllers\Backend\Page\FAQController as PageFAQController;
@@ -42,6 +44,7 @@ use App\Http\Controllers\Backend\Page\NutritionistController as PageNutritionist
 use App\Http\Controllers\Backend\Page\PageController;
 use App\Http\Controllers\Backend\Page\PodcastController as PagePodcastController;
 use App\Http\Controllers\Backend\Page\OurPolicyController;
+use App\Http\Controllers\Backend\Page\ProductController as PageProductController;
 use App\Http\Controllers\Backend\Page\StudentDashboardController;
 use App\Http\Controllers\Backend\Page\TvController;
 use App\Http\Controllers\Backend\Page\WhyWeAreDifferentController;
@@ -138,6 +141,15 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
             Route::get('master-class/{language}', [MasterClassController::class, 'index'])->name('master-class.index');
             Route::post('master-class/{language}', [MasterClassController::class, 'update'])->name('master-class.update');
+
+            Route::get('certification-course/{language}', [CertificationCourseController::class, 'index'])->name('certification-course.index');
+            Route::post('certification-course/{language}', [CertificationCourseController::class, 'update'])->name('certification-course.update');
+
+            Route::get('product/{language}', [PageProductController::class, 'index'])->name('product.index');
+            Route::post('product/{language}', [PageProductController::class, 'update'])->name('product.update');
+
+            Route::get('cart/{language}', [CartController::class, 'index'])->name('cart.index');
+            Route::post('cart/{language}', [CartController::class, 'update'])->name('cart.update');
 
             Route::get('student-dashboard/{language}', [StudentDashboardController::class, 'index'])->name('student-dashboard.index');
             Route::post('student-dashboard/{language}', [StudentDashboardController::class, 'update'])->name('student-dashboard.update');

@@ -152,12 +152,14 @@
             <ul class="sub-menu">
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.product-categories.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/product.png') }}" alt="Icon">
                         <span>Product Categories</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.products.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/product.png') }}" alt="Icon">
                         <span>Products</span>
                     </a>
                 </li>
@@ -180,30 +182,35 @@
             <ul class="sub-menu">
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.purchases.gift-card-purchases.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/order.png') }}" alt="Icon">
                         <span>Gift Card Purchases</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.purchases.course-purchases.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/order.png') }}" alt="Icon">
                         <span>Course Purchases</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.purchases.product-purchases.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/order.png') }}" alt="Icon">
                         <span>Product Purchases</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.purchases.material-purchases.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/order.png') }}" alt="Icon">
                         <span>Material Purchases</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.purchases.membership-purchases.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/order.png') }}" alt="Icon">
                         <span>Membership Purchases</span>
                     </a>
                 </li>
@@ -219,36 +226,42 @@
             <ul class="sub-menu">
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.persons.admins.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/user.png') }}" alt="Icon">
                         <span>Admins</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.persons.students.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/user.png') }}" alt="Icon">
                         <span>Students</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.persons.nutritionists.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/user.png') }}" alt="Icon">
                         <span>Nutritionists</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.persons.advisory-boards.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/user.png') }}" alt="Icon">
                         <span>Advisory Boards</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.persons.issn-partners.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/user.png') }}" alt="Icon">
                         <span>ISSN Partners</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.persons.global-education-partners.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/user.png') }}" alt="Icon">
                         <span>Global Education Partners</span>
                     </a>
                 </li>
@@ -264,36 +277,42 @@
             <ul class="sub-menu">
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.communications.contact-coaches.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/communication.png') }}" alt="Icon">
                         <span>Contact Coaches</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.communications.ask-questions.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/communication.png') }}" alt="Icon">
                         <span>Ask Questions</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.communications.connections.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/communication.png') }}" alt="Icon">
                         <span>Inquiries from Users</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.communications.refer-friends.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/communication.png') }}" alt="Icon">
                         <span>Refer Friends</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.communications.technical-supports.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/communication.png') }}" alt="Icon">
                         <span>Technical Supports</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.communications.subscriptions.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/communication.png') }}" alt="Icon">
                         <span>Subscriptions</span>
                     </a>
                 </li>
@@ -309,12 +328,14 @@
             <ul class="sub-menu">
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.settings.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/settings.png') }}" alt="Icon">
                         <span>Settings</span>
                     </a>
                 </li>
 
                 <li class="sub-menu-link">
                     <a href="{{ route('backend.my-profile.index') }}">
+                        <img src="{{ asset('storage/backend/sidebar/settings.png') }}" alt="Icon">
                         <span>My Profile</span>
                     </a>
                 </li>

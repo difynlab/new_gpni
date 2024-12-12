@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdvisoryBoard;
+use App\Models\CertificationCourseContent;
 use App\Models\Course;
 use App\Models\CoursePurchase;
 use App\Models\CourseReview;
@@ -27,12 +28,24 @@ class CertificationCourseController extends Controller
         }
 
         $course_reviews = CourseReview::where('course_id', $course->id)->where('status', '1')->get();
+
+        if($course_reviews->isNotEmpty()) {
+            $rating = $course_reviews->sum('rating') / $course_reviews->count();
+            $average_rating = round($rating);
+        }
+        else {
+            $average_rating = 0;
+        }
+
+        $contents = CertificationCourseContent::find(1);
         
         return view('frontend.pages.certification-courses.show', [
+            'contents' => $contents,
             'course' => $course,
             'advisory_boards' => $advisory_boards,
             'testimonials' => $testimonials,
-            'course_reviews' => $course_reviews
+            'course_reviews' => $course_reviews,
+            'average_rating' => $average_rating,
         ]);
     }
 
@@ -50,8 +63,11 @@ class CertificationCourseController extends Controller
         else {
             $total_amount = '0.00';
         }
+
+        $contents = CertificationCourseContent::find(1);
         
         return view('frontend.pages.certification-courses.payment', [
+            'contents' => $contents,
             'course' => $course,
             'currency_symbol' => $currency_symbol,
             'wallet_balance' => $wallet_balance,

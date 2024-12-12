@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\ProductCategory;
 use App\Models\Product;
+use App\Models\ProductContent;
 use App\Models\ProductOrder;
 use App\Models\ProductOrderDetail;
 use App\Models\Wallet;
@@ -18,6 +19,8 @@ class ProductController extends Controller
     {
         $currency_symbol = ($request->middleware_language === 'en') ? '$' : '¥';
 
+        $contents = ProductContent::find(1);
+
         $categories = ProductCategory::where('language', $request->middleware_language_name)->where('status', '1')->get();
         // if($categories->isEmpty() && $request->middleware_language_name != 'English') {
         //     $categories = ProductCategory::where('language', 'English')->where('status', '1')->get();
@@ -29,6 +32,7 @@ class ProductController extends Controller
         // }
 
         return view('frontend.pages.products', [
+            'contents' => $contents,
             'categories' => $categories,
             'products' => $products,
             'currency_symbol' => $currency_symbol

@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Carts')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/carts.css') }}">
@@ -15,7 +17,7 @@
                 <div class="row justify-content-between mb-5">
                     <div class="col-6">
                         <div class="card">
-                            <h5 class="section-header">Items ({{ $items->count() }})</h5>
+                            <h5 class="section-header">{{ $contents->{'page_items_' . $middleware_language} ?? $contents->page_items_en }} ({{ $items->count() }})</h5>
 
                             <hr>
 
@@ -55,24 +57,24 @@
 
                     <div class="col-6">
                         <div class="card mb-3">
-                            <h5 class="section-header">Order Summary</h5>
+                            <h5 class="section-header">{{ $contents->{'page_order_summary_' . $middleware_language} ?? $contents->page_order_summary_en }}</h5>
                             <div class="content">
-                                <p>No. of items: {{ $items->sum('quantity') }}</p>
+                                <p>{{ $contents->{'page_no_of_items_' . $middleware_language} ?? $contents->page_no_of_items_en }}: {{ $items->sum('quantity') }}</p>
 
-                                <p>Sub Total: <span class="sub-total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price'), 2) }}</span></p>
+                                <p>{{ $contents->{'page_sub_total_' . $middleware_language} ?? $contents->page_sub_total_en }}: <span class="sub-total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price'), 2) }}</span></p>
 
-                                <p>Shipping Fee: <span>{{ $currency_symbol }}{{ number_format($shipping_cost, 2) }}</span></p>
+                                <p>{{ $contents->{'page_shipping_fee_' . $middleware_language} ?? $contents->page_shipping_fee_en }}: <span>{{ $currency_symbol }}{{ number_format($shipping_cost, 2) }}</span></p>
 
-                                <p>Gift Amount: <span class="gift-amount">{{ $currency_symbol }}{{ sprintf('%.2f', $wallet_balance) }}</span></p>
+                                <p>{{ $contents->{'page_gift_amount_' . $middleware_language} ?? $contents->page_gift_amount_en }}: <span class="gift-amount">{{ $currency_symbol }}{{ sprintf('%.2f', $wallet_balance) }}</span></p>
 
-                                <h5>Total: <span class="price total-price">{{ $currency_symbol }}{{ sprintf('%.2f', $total_price) }}</span></h5>
+                                <h5>{{ $contents->{'page_total_' . $middleware_language} ?? $contents->page_total_en }}: <span class="price total-price">{{ $currency_symbol }}{{ sprintf('%.2f', $total_price) }}</span></h5>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-custom">Place Order</button>
+                            <button type="submit" class="btn btn-primary btn-custom">{{ $contents->{'page_button_' . $middleware_language} ?? $contents->page_button_en }}</button>
                         </div>
 
                         <div class="card payment-methods">
-                            <h5 class="section-header">We accept</h5>
+                            <h5 class="section-header">{{ $contents->{'page_we_accept_' . $middleware_language} ?? $contents->page_we_accept_en }}</h5>
                             <div class="payment-icons">
                                 <img src="{{ asset('storage/frontend/visa-card.svg') }}" alt="Visa">
                                 <img src="{{ asset('storage/frontend/mastercard.svg') }}" alt="MasterCard">

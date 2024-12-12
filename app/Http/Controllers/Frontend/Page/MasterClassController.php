@@ -74,8 +74,13 @@ class MasterClassController extends Controller
 
         $course_reviews = CourseReview::where('course_id', $course->id)->where('status', '1')->get();
 
-        $rating = $course_reviews->sum('rating') / $course_reviews->count();
-        $average_rating = round($rating);
+        if($course_reviews->isNotEmpty()) {
+            $rating = $course_reviews->sum('rating') / $course_reviews->count();
+            $average_rating = round($rating);
+        }
+        else {
+            $average_rating = 0;
+        }
 
         $contents = MasterClassContent::find(1);
         $settings = Setting::find(1);

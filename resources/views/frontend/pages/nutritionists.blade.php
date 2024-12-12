@@ -379,8 +379,8 @@
 
                             <div class="bottom-section">
                                 <span class="qualified-coach">Qualified Coach</span>
-                                <div class="coach-location-model-item coach-contact-link" id="{{ $nutritionist->id }}">
-                                    <a class="contact-now" id="">Contact coach Now</a>
+                                <div class="coach-location-model-item coach-contact-link">
+                                    <a class="contact-now">Contact coach Now</a>
                                 </div>
                             </div>
                         </div>
@@ -439,7 +439,7 @@
                         areaOfInterestContainer.append('<span class="interest-btn">' + interest + '</span>');
                     });
 
-                    $('#view-modal .coach-location-item').attr('id', response.id);
+                    $('#view-modal .coach-contact-link').attr('id', response.id);
                 },
                 error: function(xhr) {
                     console.log("An error occurred: " + xhr.status + " " + xhr.statusText);

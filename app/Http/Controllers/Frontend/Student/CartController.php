@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
+use App\Models\CartContent;
 use App\Models\Product;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -36,7 +37,10 @@ class CartController extends Controller
         $item_ids = $items->pluck('product_id')->toArray();
         $other_products = Product::whereNotIn('id', $item_ids)->inRandomOrder()->limit(4)->get();
 
+        $contents = CartContent::find(1);
+
         return view('frontend.pages.carts', [
+            'contents' => $contents,
             'items' => $items,
             'other_products' => $other_products,
             'total_price' => $total_price,
