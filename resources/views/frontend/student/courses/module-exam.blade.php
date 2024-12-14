@@ -5,6 +5,7 @@
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/course-exam.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/sidebar.css') }}">
 @endpush
 
 @section('content')
@@ -14,7 +15,7 @@
                 <div class="modal-body text-center">
                     <p class="title">{{ $student_dashboard_contents->courses_exam_start_modal_title }}</p>
                     <p class="description">{{ $student_dashboard_contents->courses_exam_start_modal_description }}</p>
-                    
+
                     {!! $student_dashboard_contents->courses_exam_start_modal_instructions !!}
                 </div>
 
@@ -33,21 +34,21 @@
         <div class="container-fluid top-section">
             <div class="container">
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-md-6 col-12">
                         <div class="title-section">
-                            <h1>{{ $course->title }}</h1>
-                            <p>{{ $course_module->title }}</p>
+                            <h1 class="fs-39">{{ $course->title }}</h1>
+                            <p class="fs-20">{{ $course_module->title }}</p>
                         </div>
                         <div class="instructions">
                             {!! $student_dashboard_contents->courses_exam_instructions !!}
                         </div>
                     </div>
-                    
+
                     @if($course_module->exam_time)
-                        <div class="col-3">
+                        <div class="col-md-6 col-12">
                             <div class="timer-section">
                                 <p class="remaining-time">{{ $student_dashboard_contents->courses_exam_remaining_time }}</p>
-                                <p id="countdown" class="countdown">{{ $course_module->exam_time }}</p>
+                                <p id="countdown" class="countdown fs-39">{{ $course_module->exam_time }}</p> 
                             </div>
                         </div>
                     @endif
@@ -59,7 +60,7 @@
             <div class="container-fluid bottom-section">
                 <div class="container">
                     <div class="row justify-content-between">
-                        <div class="col-7">
+                        <div class="col-lg-7 col-12">
                             @foreach($questions as $key => $question)
                                 @if($key == 0)
                                     <div class="question-section" data-question-id="{{ $question->id }}" id="question{{$key}}">
@@ -73,61 +74,36 @@
                                                 <div class="radio">
                                                     <div class="radio-inner"></div>
                                                 </div>
-
-                                                <p>
-                                                    A)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_a !!}
-                                                </div>
+                                                <p>A)</p>
+                                                <div>{!! $question->option_a !!}</div>
                                             </div>
                                             <div class="option" data-answer="B">
                                                 <div class="radio">
                                                     <div class="radio-inner"></div>
                                                 </div>
-                                                
-                                                <p>
-                                                    B)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_b !!}
-                                                </div>
+                                                <p>B)</p>
+                                                <div>{!! $question->option_b !!}</div>
                                             </div>
                                             <div class="option" data-answer="C">
                                                 <div class="radio">
                                                     <div class="radio-inner"></div>
                                                 </div>
-                                                
-                                                <p>
-                                                    C)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_c !!}
-                                                </div>
+                                                <p>C)</p>
+                                                <div>{!! $question->option_c !!}</div>
                                             </div>
                                             <div class="option" data-answer="D">
                                                 <div class="radio">
                                                     <div class="radio-inner"></div>
                                                 </div>
-                                                
-                                                <p>
-                                                    D)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_d !!}
-                                                </div>
+                                                <p>D)</p>
+                                                <div>{!! $question->option_d !!}</div>
                                             </div>
                                         </div>
 
                                         <div class="navigation">
                                             <div class="button prev-button disabled">← {{ $student_dashboard_contents->courses_exam_previous }}</div>
-                                            <div class="button next-button disabled">{{ $student_dashboard_contents->courses_exam_next }} →</div>
+                                            <div class="button next-button disabled">{{ $student_dashboard_contents->courses_exam_next }} →</div> 
                                         </div>
-
                                     </div>
                                 @else
                                     <div class="question-section d-none" data-question-id="{{ $question->id }}" id="question{{$key}}">
@@ -141,53 +117,29 @@
                                                 <div class="radio">
                                                     <div class="radio-inner"></div>
                                                 </div>
-                                                
-                                                <p>
-                                                    A)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_a !!}
-                                                </div>
+                                                <p>A)</p>
+                                                <div>{!! $question->option_a !!}</div>
                                             </div>
                                             <div class="option" data-answer="B">
                                                 <div class="radio">
                                                     <div class="radio-inner"></div>
                                                 </div>
-                                                
-                                                <p>
-                                                    B)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_b !!}
-                                                </div>
+                                                <p>B)</p>
+                                                <div>{!! $question->option_b !!}</div>
                                             </div>
                                             <div class="option" data-answer="C">
                                                 <div class="radio">
                                                     <div class="radio-inner"></div>
                                                 </div>
-                                                
-                                                <p>
-                                                    C)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_c !!}
-                                                </div>
+                                                <p>C)</p>
+                                                <div>{!! $question->option_c !!}</div>
                                             </div>
                                             <div class="option" data-answer="D">
                                                 <div class="radio">
                                                     <div class="radio-inner"></div>
                                                 </div>
-                                                
-                                                <p>
-                                                    D)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_d !!}
-                                                </div>
+                                                <p>D)</p>
+                                                <div>{!! $question->option_d !!}</div>
                                             </div>
                                         </div>
 
@@ -200,14 +152,15 @@
                             @endforeach
                         </div>
 
-                        <div class="col-4">
-                            <div class="remaining-questions">
+                        <div class="col-lg-5 col-12">
+                            <div class="remaining-questions mt-5 mt-lg-0">
                                 <p class="remaining-questions-count">{{ $student_dashboard_contents->courses_exam_remaining_questions }}: <span>{{ $questions->count() }}</span></p>
-
+                                <h2 class="all-questions-heading">All question</h2>
+                                <hr class="divider-line">
                                 <div class="question-nav">
                                     @foreach($questions as $key => $question)
                                         <div class="box text-center">
-                                            <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}" class="invisible">
+                                            <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}" class="invisible"> 
 
                                             <div class="question-box" id="questionBox{{ $key + 1 }}">
                                                 <span>{{ $key + 1 }}</span>
@@ -252,7 +205,7 @@
                             <p class="dialog-message">{!! $student_dashboard_contents->courses_exam_submit_modal_description !!}</p>
                         </div>
 
-                        <div id="normal-answers-container"></div>
+                        <div id="normal-answers-container"></div> 
 
                         <div class="modal-footer text-center">
                             <button type="button" class="btn cancel-button" data-bs-dismiss="modal">{{ $student_dashboard_contents->courses_exam_modal_close }}</button>
@@ -271,7 +224,7 @@
                         <div class="modal-body text-center">
                             <p class="title">{{ $student_dashboard_contents->courses_exam_time_modal_title }}</p>
                             <p class="description">{{ $student_dashboard_contents->courses_exam_time_modal_description }}</p>
-                            <div id="time-up-answers-container"></div>
+                            <div id="time-up-answers-container"></div> 
                         </div>
 
                         <div class="modal-footer text-center">
@@ -293,8 +246,9 @@
 
                 <div class="modal-footer text-center">
                     @if(session('course_module_exam_id'))
-                        <a href="{{ route('frontend.module-exams.results', [$course, $course_module, session('course_module_exam_id')]) }}" 
-                        class="btn confirm-button">{{ $student_dashboard_contents->courses_view_results }}</a>
+                        <a href="{{ route('frontend.module-exams.results', [$course, $course_module, session('course_module_exam_id')]) }}" class="btn confirm-button">
+                            {{ $student_dashboard_contents->courses_view_results }}
+                        </a>
                     @endif
                 </div>
             </div>

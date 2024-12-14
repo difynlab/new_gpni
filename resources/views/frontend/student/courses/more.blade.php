@@ -5,15 +5,16 @@
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/course-chapters.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/sidebar.css') }}">
 @endpush
 
 @section('content')
 
-    <div class="container-fluid">
-        <div class="row p-5">
+    <div class="container-fluid dashboard">
+        <div class="row p-lg-5 p-3">
             <x-frontend.sidebar :student="$student"></x-frontend.sidebar>
 
-            <div class="col-12 col-md-9 main-content">
+            <div class="col-12 col-lg-8 main-content ps-lg-5 ps-md-4 ps-3">
                 <div class="course-details-container">
                     <a href="{{ route('frontend.courses.show', $course) }}" class="return-link pt-2">
                         <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">

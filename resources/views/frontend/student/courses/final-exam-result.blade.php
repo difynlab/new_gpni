@@ -5,6 +5,7 @@
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/course-exam-result.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/sidebar.css') }}">
 @endpush
 
 @section('content')
@@ -12,11 +13,11 @@
     <div class="exam-header">
         <div class="exam-title-section">
             <div>
-                <p class="exam-title">{{ $student_dashboard_contents->courses_exam_result_title }}</p>
-                <p class="exam-details">{{ $course->title }}</p>
+                <p class="exam-title fs-39">{{ $student_dashboard_contents->courses_exam_result_title }}</p>
+                <p class="exam-details fs-20">{{ $course->title }}</p>
             </div>
 
-            <a href="{{ route('frontend.courses.show', $course) }}" class="return">
+            <a href="{{ route('frontend.courses.show', $course) }}" class="return fs-20">
                 <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
                 {{ $student_dashboard_contents->courses_return }}
             </a>

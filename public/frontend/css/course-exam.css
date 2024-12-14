@@ -7,19 +7,49 @@
 .top-section {
     background-color: #f3f7ff;
     margin-bottom: 45px;
-    padding: 30px;
+    padding-top: 7rem;
+}
+
+@media (max-width: 768px) {
+    .top-section {
+        margin-bottom: 30px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .question{
+        font-size: 16px !important;
+    }
+    .options{
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .top-section {
+        margin-bottom: 20px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .instructions {
+        font-size: 14px;
+    }
+    .question{
+        font-size: 14px !important;
+    }
+    .options{
+        font-size: 14px !important;
+    }
 }
 .title-section {
     color: #0040c3;
 }
 .title-section h1 {
     font-weight: 500;
-    font-size: 40px;
     margin: 0;
 }
 .title-section p {
     font-weight: 400;
-    font-size: 20px;
     margin-top: 10px;
 }
 .instructions {
@@ -49,10 +79,6 @@
 .remaining-time {
     font-size: 12px;
 }
-.countdown {
-    font-size: 40px;
-}
-
 .bottom-section {
     margin-bottom: 45px;
 }
@@ -79,8 +105,8 @@
     margin-bottom: 0;
 }
 .radio {
-    width: 26px;
-    height: 26px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: 2px solid #B8D0FF;
     /* margin-right: 12px; */
@@ -145,7 +171,6 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
-    justify-content: center;
     gap: 10px;
 }
 .question-box {
@@ -269,4 +294,33 @@
 }
 #start-exam-modal ul li {
     margin-bottom: 5px;
+}
+
+.all-questions-heading{
+    color: #303030;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media (max-width: 576px) {
+    .remaining-questions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .remaining-questions .question-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .remaining-questions .legend-container {
+        justify-content: center;
+    }
 }
