@@ -66,6 +66,8 @@ return new class extends Migration
 
                 'choose_gift_ja', 'receiver_name_ja', 'receiver_email_ja', 'select_amount_ja', 'custom_ja', 'enter_the_amount_ja', 'message_ja', 'button_ja'
             ]);
+
+            $table->dropTimestamps();
         });
 
         Schema::table('gift_card_contents', function (Blueprint $table) {

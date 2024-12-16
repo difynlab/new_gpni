@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('certification_course_contents', function (Blueprint $table) {
             $table->id();
 
+            $table->text('page_name_en');
             $table->text('single_page_name_en')->nullable();
             $table->text('single_page_already_purchased_en')->nullable();
             $table->text('single_page_enroll_now_en')->nullable();
@@ -51,6 +52,7 @@ return new class extends Migration
             $table->text('payment_page_pay_en')->nullable();
             $table->text('payment_page_login_for_pay_en')->nullable();
 
+            $table->text('page_name_zh');
             $table->text('single_page_name_zh')->nullable();
             $table->text('single_page_already_purchased_zh')->nullable();
             $table->text('single_page_enroll_now_zh')->nullable();
@@ -88,6 +90,7 @@ return new class extends Migration
             $table->text('payment_page_pay_zh')->nullable();
             $table->text('payment_page_login_for_pay_zh')->nullable();
 
+            $table->text('page_name_ja');
             $table->text('single_page_name_ja')->nullable();
             $table->text('single_page_already_purchased_ja')->nullable();
             $table->text('single_page_enroll_now_ja')->nullable();

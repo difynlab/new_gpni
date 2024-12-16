@@ -28,6 +28,7 @@ use App\Http\Controllers\Backend\Page\ArticleController as PageArticleController
 use App\Http\Controllers\Backend\Page\AuthenticationController;
 use App\Http\Controllers\Backend\Page\CartController;
 use App\Http\Controllers\Backend\Page\CertificationCourseController;
+use App\Http\Controllers\Backend\Page\CommonController;
 use App\Http\Controllers\Backend\Page\ConferenceController as PageConferenceController;
 use App\Http\Controllers\Backend\Page\ContactUsController;
 use App\Http\Controllers\Backend\Page\FAQController as PageFAQController;
@@ -156,6 +157,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
             Route::get('authentication/{language}', [AuthenticationController::class, 'index'])->name('authentication.index');
             Route::post('authentication/{language}', [AuthenticationController::class, 'update'])->name('authentication.update');
+
+            Route::get('common/{language}', [CommonController::class, 'index'])->name('common.index');
+            Route::post('common/{language}', [CommonController::class, 'update'])->name('common.update');
         });
     // All page related routes
 

@@ -38,7 +38,8 @@ class DatabaseSeeder extends Seeder
             AuthenticationContentSeeder::class,
             ProductContentSeeder::class,
             CartContentSeeder::class,
-            CertificationCourseContentSeeder::class
+            CertificationCourseContentSeeder::class,
+            CommonContentSeeder::class,
         ]);
     }
 }

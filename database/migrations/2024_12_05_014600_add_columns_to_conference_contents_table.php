@@ -123,6 +123,8 @@ return new class extends Migration
                 'question_ja', 'comments_ja', 'button_ja', 'contact_email_ja',
                 'contact_phone_ja', 'contact_fax_ja'
             ]);
+
+            $table->dropTimestamps();
         });
 
         Schema::table('conference_contents', function (Blueprint $table) {

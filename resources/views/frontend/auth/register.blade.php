@@ -90,12 +90,12 @@
                                     <label for="language" class="form-label">{{ $contents->{'register_page_language_' . $middleware_language} ?? $contents->register_page_language_en }}</label>
                                     <select class="form-select country-select" id="language" name="language" required>
                                         <option value="">{{ $contents->{'register_page_language_select_' . $middleware_language} ?? $contents->register_page_language_select_en }}</option>
-                                        <option value="{{ $contents->{'register_page_first_language_' . $middleware_language} ?? $contents->register_page_first_language_en }}" {{ old('language') == ($contents->{'register_page_first_language_' . $middleware_language} ?? $contents->register_page_first_language_en) ? 'selected' : '' }}>{{ $contents->{'register_page_first_language_' . $middleware_language} ?? $contents->register_page_first_language_en }}
-                                        </option>
-                                        <option value="{{ $contents->{'register_page_second_language_' . $middleware_language} ?? $contents->register_page_second_language_en }}" {{ old('language') == ($contents->{'register_page_second_language_' . $middleware_language} ?? $contents->register_page_second_language_en) ? 'selected' : '' }}>{{ $contents->{'register_page_second_language_' . $middleware_language} ?? $contents->register_page_second_language_en }}
-                                        </option>
-                                        <option value="{{ $contents->{'register_page_third_language_' . $middleware_language} ?? $contents->register_page_third_language_en }}" {{ old('language') == ($contents->{'register_page_third_language_' . $middleware_language} ?? $contents->register_page_third_language_en) ? 'selected' : '' }}>{{ $contents->{'register_page_third_language_' . $middleware_language} ?? $contents->register_page_third_language_en }}
-                                        </option>
+
+                                        <option value="English">{{ $contents->{'register_page_first_language_' . $middleware_language} ?? $contents->register_page_first_language_en }}</option>
+
+                                        <option value="Chinese">{{ $contents->{'register_page_second_language_' . $middleware_language} ?? $contents->register_page_second_language_en }}</option>
+
+                                        <option value="Japanese">{{ $contents->{'register_page_third_language_' . $middleware_language} ?? $contents->register_page_third_language_en }}</option>
                                     </select>
                                 </div>
                             </div>

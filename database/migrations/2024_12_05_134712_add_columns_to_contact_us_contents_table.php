@@ -12,6 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('contact_us_contents', function (Blueprint $table) {
+            $table->dropColumn(['created_at', 'updated_at']);
+        });
+
+        Schema::table('contact_us_contents', function (Blueprint $table) {
             $table->text('page_name_en')->after('id');
             $table->text('page_name_zh')->after('page_name_en');
             $table->text('page_name_ja')->after('page_name_zh');
@@ -48,6 +52,8 @@ return new class extends Migration
             $table->text('contact_email_ja')->nullable();
             $table->text('contact_phone_ja')->nullable();
             $table->text('contact_fax_ja')->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -72,6 +78,12 @@ return new class extends Migration
                 'question_ja', 'comments_ja', 'button_ja', 'contact_email_ja',
                 'contact_phone_ja', 'contact_fax_ja'
             ]);
+
+            $table->dropTimestamps();
+        });
+
+        Schema::table('contact_us_contents', function (Blueprint $table) {
+            $table->timestamps();
         });
     }
 };

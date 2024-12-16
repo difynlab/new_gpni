@@ -16,12 +16,17 @@
                 <p class="inner-page-title">Page Details</p>
 
                 <div class="row form-input">
-                    <div class="col-6">
+                    <div class="col-4">
+                        <label for="page_name_{{ $short_code }}" class="form-label">Page Name<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="page_name_{{ $short_code }}" name="page_name_{{ $short_code }}" value="{{ $contents->{'page_name_' . $short_code} ?? '' }}" placeholder="Page Name" required>
+                    </div>
+
+                    <div class="col-4">
                         <label for="single_page_name_{{ $short_code }}" class="form-label">Single Page Name<span class="asterisk">*</span></label>
                         <input type="text" class="form-control" id="single_page_name_{{ $short_code }}" name="single_page_name_{{ $short_code }}" value="{{ $contents->{'single_page_name_' . $short_code} ?? '' }}" placeholder="Single Page Name" required>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-4">
                         <label for="payment_page_name_{{ $short_code }}" class="form-label">Payment Page Name<span class="asterisk">*</span></label>
                         <input type="text" class="form-control" id="payment_page_name_{{ $short_code }}" name="payment_page_name_{{ $short_code }}" value="{{ $contents->{'payment_page_name_' . $short_code} ?? '' }}" placeholder="Payment Page Name" required>
                     </div>

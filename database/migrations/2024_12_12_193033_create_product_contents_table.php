@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('product_contents', function (Blueprint $table) {
             $table->id();
 
-            $table->text('page_name_en')->nullable();
+            $table->text('page_name_en');
             $table->text('page_title_en')->nullable();
             $table->text('page_first_tab_en')->nullable();
             $table->text('page_added_to_cart_en')->nullable();
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('page_login_for_purchase_en')->nullable();
             $table->text('page_no_products_en')->nullable();
 
-            $table->text('page_name_zh')->nullable();
+            $table->text('page_name_zh');
             $table->text('page_title_zh')->nullable();
             $table->text('page_first_tab_zh')->nullable();
             $table->text('page_added_to_cart_zh')->nullable();
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->text('page_login_for_purchase_zh')->nullable();
             $table->text('page_no_products_zh')->nullable();
 
-            $table->text('page_name_ja')->nullable();
+            $table->text('page_name_ja');
             $table->text('page_title_ja')->nullable();
             $table->text('page_first_tab_ja')->nullable();
             $table->text('page_added_to_cart_ja')->nullable();

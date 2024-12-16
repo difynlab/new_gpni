@@ -1,6 +1,8 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Nutritionists')
+@section('title', $contents->{'page_name_' . $middleware_language} !== '' 
+    ? $contents->{'page_name_' . $middleware_language} 
+    : $contents->page_name_en)
 
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/nutritionists.css') }}">
@@ -21,7 +23,7 @@
                     <form action="{{ route('frontend.nutritionists.index') }}" method="GET">
                         <div class="search-field">
                             <img src="{{ asset('storage/frontend/search-icon-gray.svg') }}" alt="Search Icon">
-                            <input type="text" name="nutritionist" value="{{ $nutritionist ?? '' }}" placeholder="Search">
+                            <input type="text" name="nutritionist" value="{{ $nutritionist ?? '' }}" placeholder="{{ $contents->{'search_' . $middleware_language} ?? $contents->search_en }}">
                         </div>
                     </form>
                 </div>
@@ -37,7 +39,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                             <div class="coach-card">
                                 <div class="flex-grow">
-                                    <div class="qualified-coach">Qualified Coach</div>
+                                    <div class="qualified-coach">{{ $contents->{'qualified_coach_' . $middleware_language} ?? $contents->qualified_coach_en }}</div>
 
                                     @if($nutritionist->image)
                                         <img src="{{ asset('storage/backend/persons/nutritionists/' . $nutritionist->image) }}" class="image" alt="User Image">
@@ -54,26 +56,26 @@
                                         </div>
                                         <div class="coach-location-item coach-contact-link" id="{{ $nutritionist->id }}">
                                             <img src="{{ asset('storage/frontend/connect-icon.svg') }}" alt="Contact Icon" width="20px" height="20px">
-                                            <span>Contact Coach</span>
+                                            <span>{{ $contents->{'contact_coach_' . $middleware_language} ?? $contents->contact_coach_en }}</span>
                                         </div>
                                     </div>
 
                                     <div class="coach-info-row">
-                                        <div class="coach-info fs-16">Age: {{ $nutritionist->age }}</div>
+                                        <div class="coach-info fs-16">{{ $contents->{'age_' . $middleware_language} ?? $contents->age_en }}: {{ $nutritionist->age }}</div>
 
                                         @if($nutritionist->credentials)
-                                            <div class="coach-info">Credentials: 
+                                            <div class="coach-info">{{ $contents->{'credentials_' . $middleware_language} ?? $contents->credentials_en }}: 
                                                 @foreach(json_decode($nutritionist->credentials) as $credential)
                                                     {{ $credential }}
                                                 @endforeach
                                             </div>
                                         @endif
 
-                                        <div class="coach-info">CEC Status: <span class="cec-status">{{ $nutritionist->cec_status == '1' ? 'Active' : 'Inactive' }}</span></div>
+                                        <div class="coach-info">{{ $contents->{'cec_status_' . $middleware_language} ?? $contents->cec_status_en }}: <span class="cec-status">{{ $nutritionist->cec_status == '1' ? $contents->{'active_' . $middleware_language} ?? $contents->active_en : $contents->{'inactive_' . $middleware_language} ?? $contents->inactive_en }}</span></div>
                                     </div>
                                 </div>
 
-                                <span class="view-profile-btn btn-responsive" id="{{ $nutritionist->id }}" data-bs-toggle="modal" data-bs-target="#view-modal">View Profile</span>
+                                <span class="view-profile-btn btn-responsive" id="{{ $nutritionist->id }}" data-bs-toggle="modal" data-bs-target="#view-modal">{{ $contents->{'view_profile_' . $middleware_language} ?? $contents->view_profile_en }}</span>
                             </div>
                         </div>
                     @endforeach
@@ -90,15 +92,15 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Coach</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $contents->{'contact_coach_' . $middleware_language} ?? $contents->contact_coach_en }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
                         <div class="form-group mb-4">
-                            <label for="country">Country</label>
+                            <label for="country">{{ $contents->{'country_' . $middleware_language} ?? $contents->country_en }}</label>
                             <select class="form-select" id="country" name="country" required>
-                                <option value="">Choose the country</option>
+                                <option value="">{{ $contents->{'choose_country_' . $middleware_language} ?? $contents->choose_country_en }}</option>
                                 <option value="Afghanistan">Afghanistan</option>
                                 <option value="Albania">Albania</option>
                                 <option value="Algeria">Algeria</option>
@@ -300,37 +302,37 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="city">City</label>
-                            <input type="text" class="form-control" id="city" name="city" placeholder="Enter the city" required>
+                            <label for="city">{{ $contents->{'city_' . $middleware_language} ?? $contents->city_en }}</label>
+                            <input type="text" class="form-control" id="city" name="city" required>
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="phone-number">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone-number" name="phone_number" placeholder="Enter your phone number" required>
+                            <label for="phone-number">{{ $contents->{'phone_' . $middleware_language} ?? $contents->phone_en }}</label>
+                            <input type="tel" class="form-control" id="phone-number" name="phone_number" required>
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            <label for="email">{{ $contents->{'email_' . $middleware_language} ?? $contents->email_en }}</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="appChat">Choice of App chat</label>
+                            <label for="appChat">{{ $contents->{'app_chat_' . $middleware_language} ?? $contents->app_chat_en }}</label>
                             <select class="form-select" id="appChat" name="app" required>
-                                <option value="">Choose your choice of App</option>
-                                <option value="WhatsApp">WhatsApp</option>
-                                <option value="Skype">Skype</option>
-                                <option value="WeChat">WeChat</option>
-                                <option value="Other">Other</option>
+                                <option value="">{{ $contents->{'choose_app_chat_' . $middleware_language} ?? $contents->choose_app_chat_en }}</option>
+                                <option value="WhatsApp">{{ $contents->{'app_chat_first_' . $middleware_language} ?? $contents->app_chat_first_en }}</option>
+                                <option value="Skype">{{ $contents->{'app_chat_second_' . $middleware_language} ?? $contents->app_chat_second_en }}</option>
+                                <option value="WeChat">{{ $contents->{'app_chat_third_' . $middleware_language} ?? $contents->app_chat_third_en }}</option>
+                                <option value="Other">{{ $contents->{'app_chat_fourth_' . $middleware_language} ?? $contents->app_chat_fourth_en }}</option>
                             </select>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label for="app-id">App ID</label>
-                            <input type="text" class="form-control" id="app-id" name="app_id" placeholder="Enter your app ID" required>
+                            <label for="app-id">{{ $contents->{'app_chat_id_' . $middleware_language} ?? $contents->app_chat_id_en }}</label>
+                            <input type="text" class="form-control" id="app-id" name="app_id" required>
                         </div>
 
-                        <button type="submit" class="btn submit-btn">Submit</button>
+                        <button type="submit" class="btn submit-btn">{{ $contents->{'button_' . $middleware_language} ?? $contents->button_en }}</button>
                     </div>
                 </div>
             </div>
@@ -352,35 +354,35 @@
                         <div class="details-content">
                             <img src="{{ asset('storage/frontend/qr.png') }}" alt="QR Code" class="qr-code">
 
-                            <h5 class="mb-2 name">Name of the Coach</h5>
+                            <h5 class="mb-2 name">{{ $contents->{'coach_name_' . $middleware_language} ?? $contents->coach_name_en }}</h5>
                             
-                            <p><strong>Age:</strong> <span class="age"></span></p>
+                            <p><strong>{{ $contents->{'age_' . $middleware_language} ?? $contents->age_en }}:</strong> <span class="age"></span></p>
 
-                            <p><strong>Country/Region:</strong> <span class="country"></span></p>
+                            <p><strong>{{ $contents->{'country_' . $middleware_language} ?? $contents->country_en }}:</strong> <span class="country"></span></p>
 
-                            <p><strong>CEC status:</strong> <span class="highlight cec-status"></span></p>
+                            <p><strong>{{ $contents->{'cec_status_' . $middleware_language} ?? $contents->cec_status_en }}:</strong> <span class="highlight cec-status"></span></p>
 
-                            <p><strong>Credentials:</strong> <span class="credentials"></span></p>
+                            <p><strong>{{ $contents->{'credentials_' . $middleware_language} ?? $contents->credentials_en }}:</strong> <span class="credentials"></span></p>
 
-                            <p><strong>Certificate number:</strong> <span class="certificate-number"></span></p>
+                            <p><strong>{{ $contents->{'certificate_number_' . $middleware_language} ?? $contents->certificate_number_en }}:</strong> <span class="certificate-number"></span></p>
 
-                            <p><strong>Membership/Credential status:</strong> <span class="membership-credential-status"></span></p>
+                            <p><strong>{{ $contents->{'membership_credential_status_' . $middleware_language} ?? $contents->membership_credential_status_en }}:</strong> <span class="membership-credential-status"></span></p>
 
                             <div>
-                                <strong>Area Of Interest</strong>
+                                <strong>{{ $contents->{'area_of_interest_' . $middleware_language} ?? $contents->area_of_interest_en }}</strong>
                                 <div class="mt-2 d-flex flex-wrap area-of-interest">
                                 </div>
                             </div>
 
                             <div class="mt-3">
-                                <strong>Self Introduction</strong>
+                                <strong>{{ $contents->{'self_introduction_' . $middleware_language} ?? $contents->self_introduction_en }}</strong>
                                 <p class="mt-2 intro-paragraph"></p>
                             </div>
 
                             <div class="bottom-section">
-                                <span class="qualified-coach">Qualified Coach</span>
+                                <span class="qualified-coach">{{ $contents->{'qualified_coach_' . $middleware_language} ?? $contents->qualified_coach_en }}</span>
                                 <div class="coach-location-model-item coach-contact-link">
-                                    <a class="contact-now">Contact coach Now</a>
+                                    <a class="contact-now">{{ $contents->{'contact_coach_' . $middleware_language} ?? $contents->contact_coach_en }}</a>
                                 </div>
                             </div>
                         </div>

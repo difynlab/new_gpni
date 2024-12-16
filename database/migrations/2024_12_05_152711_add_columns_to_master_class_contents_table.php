@@ -227,6 +227,12 @@ return new class extends Migration
                 'youtube_ja',
                 'facebook_ja',
             ]);
+
+            $table->dropTimestamps();
+        });
+
+        Schema::table('master_class_contents', function (Blueprint $table) {
+            $table->timestamps();
         });
     }
 };
