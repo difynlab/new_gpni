@@ -123,13 +123,27 @@
                 <h5>{{ $contents->{'footer_education_' . $middleware_language} ?? $contents->footer_education_en }}</h5>
                 <ul class="list-unstyled">
 
-                    <li>
-                        <a href="{{ route('frontend.certification-courses.show', 6) }}">PNE Level 1 + SNS</a>
-                    </li>
+                    @if($middleware_language == 'en')
+                        <li>
+                            <a href="{{ route('frontend.certification-courses.show', 6) }}">PNE Level-1 + SNS</a>
+                        </li>
 
-                    <li>
-                        <a href="{{ route('frontend.certification-courses.show', 7) }}">PNE Level 2 Masters + CISSN</a>
-                    </li>
+                        <li>
+                            <a href="{{ route('frontend.certification-courses.show', 7) }}">PNE Level-2 Masters + CISSN</a>
+                        </li>
+                    @elseif($middleware_language == 'zh')
+                        <li>
+                            <a href="{{ route('frontend.certification-courses.show', 25) }}">PNE L1 + ISSN-SNS 中文版</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('frontend.certification-courses.show', 23) }}">PNE LEVEL-2 MASTERS + CISSN 中文</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('frontend.certification-courses.show', 24) }}">スポーツ栄養スペシャリスト（PNE L1 + ISSN-SNS）資格認定講座</a>
+                        </li>
+                    @endif
 
                     <li>
                         @php
