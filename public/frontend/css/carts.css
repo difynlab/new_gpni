@@ -1,8 +1,14 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
-    padding-top: 120px;
 }
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+    body {
+        padding-top: 120px;
+    }
+}
+
 .card {
     border-radius: 20px;
     border: 1px solid #CFCFCF;
@@ -35,8 +41,9 @@ body {
 }
 .payment-icons {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap; /* Ensure icons are in one line */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
 .payment-icons img {
     width: 60px;
@@ -178,9 +185,7 @@ body {
     .card, .item-box {
         width: 100%;
     }
-    .d-flex {
-        flex-direction: column;
-    }
+    
     .product-card {
         width: 100%;
         margin-bottom: 20px;
@@ -189,10 +194,10 @@ body {
         font-size: 20px;
     }
     .order-summary .content {
-        font-size: 12px;
+        font-size: 16px; /* Increase font size for mobile */
     }
     .btn-custom {
-        width: 174px;
+        width: 100%;
         margin: 10px auto;
     }
 }
@@ -201,10 +206,10 @@ body {
         font-size: 18px;
     }
     .order-summary .content {
-        font-size: 11px;
+        font-size: 14px; /* Increase font size for smaller mobile screens */
     }
     .btn-custom {
-        width: 150px;
+        width: 100%;
         margin-bottom: 15px;
     }
 }
@@ -213,9 +218,14 @@ body {
         font-size: 16px;
     }
     .order-summary .content {
-        font-size: 10px;
+        font-size: 12px; /* Increase font size for the smallest screens */
     }
     .btn-custom {
-        width: 140px;
+        width: 100%;
+    }
+}
+@media (max-width: 767.98px) {
+    .fs-16 {
+        font-size: 0.8rem;
     }
 }
