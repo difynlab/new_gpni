@@ -102,7 +102,7 @@ class MembershipController extends Controller
             $membership_purchase->time = now()->toTimeString();
             $membership_purchase->mode = $session->mode;
             $membership_purchase->transaction_id = $session->id;
-            $membership_purchase->amount_paid = $session->amount_total / 100;
+            $membership_purchase->amount_paid = $session->currency == 'jpy' ? $session->amount_total : $session->amount_total / 100;
             $membership_purchase->payment_status = 'Completed';
             $membership_purchase->save();
 

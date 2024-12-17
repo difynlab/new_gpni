@@ -175,15 +175,21 @@
                         <i class="bi bi-search"></i>
                     </a> -->
 
-                    <a href="{{ route('frontend.carts.index') }}" class="nav-item nav-link fs-20">
-                        <i class="bi bi-cart position-relative">
-                            @if(auth()->check())
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{{ App\Models\Cart::where('user_id', auth()->user()->id)->where('status', 'Active')->count() }}</span>
-                            @else
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
-                            @endif
-                        </i>
-                    </a>
+                    @if(auth()->check())
+                        @if(App\Models\Cart::where('user_id', auth()->user()->id)->where('status', 'Active')->count() > 0)
+                            <a href="{{ route('frontend.carts.index') }}" class="nav-item nav-link fs-20">
+                                <i class="bi bi-cart position-relative">
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{{ App\Models\Cart::where('user_id', auth()->user()->id)->where('status', 'Active')->count() }}</span>
+                                </i>
+                            </a>
+                        @else
+                            <a href="#" class="nav-item nav-link fs-20">
+                                <i class="bi bi-cart position-relative">
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
+                                </i>
+                            </a>
+                        @endif
+                    @endif
 
                     <div class="nav-item dropdown">
                         @if(auth()->check())

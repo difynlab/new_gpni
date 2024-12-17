@@ -104,7 +104,7 @@ class BuyStudyMaterialController extends Controller
             $material_purchase->time = now()->toTimeString();
             $material_purchase->mode = $session->mode;
             $material_purchase->transaction_id = $session->id;
-            $material_purchase->amount_paid = $session->amount_total / 100;
+            $material_purchase->amount_paid = $session->currency == 'jpy' ? $session->amount_total : $session->amount_total / 100;
             $material_purchase->payment_status = 'Completed';
             $material_purchase->save();
         }

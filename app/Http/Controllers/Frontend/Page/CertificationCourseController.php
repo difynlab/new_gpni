@@ -188,7 +188,7 @@ class CertificationCourseController extends Controller
             $course_order->time = now()->toTimeString();
             $course_order->mode = $session->mode;
             $course_order->transaction_id = $session->id;
-            $course_order->amount_paid = $session->amount_total / 100;
+            $course_order->amount_paid = $session->currency == 'jpy' ? $session->amount_total : $session->amount_total / 100;
             $course_order->material_logistic = $material_logistic;
             $course_order->payment_status = 'Completed';
             $course_order->save();
