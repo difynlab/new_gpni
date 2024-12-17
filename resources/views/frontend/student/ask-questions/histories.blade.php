@@ -5,15 +5,16 @@
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/histories.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/sidebar.css') }}">
 @endpush
 
 @section('content')
 
-    <div class="container-fluid">
-        <div class="row p-5">
+    <div class="container-fluid dashboard">
+        <div class="row p-lg-5 p-3">
             <x-frontend.sidebar :student="$student"></x-frontend.sidebar>
 
-            <div class="col-12 col-md-9 main-content">
+            <div class="col-12 col-lg-8 main-content ps-lg-5 ps-md-4 ps-3">
                 <div class="container-main">
                     <div class="header-section">
                         <h1>{{ $student_dashboard_contents->ask_the_experts_history_title }}</h1>

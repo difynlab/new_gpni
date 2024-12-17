@@ -20,8 +20,8 @@
 }
 .profile-card-details h1 {
     color: #FFF;
-    text-align: center;
-    font-size: 31px;
+
+
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -37,7 +37,6 @@
 }
 .profile-card-details .location {
     color: #FFF;
-    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -56,8 +55,6 @@
 .card {
     background-color: #f7f6fb;
     border-radius: 15px;
-    width: 46%;
-    margin: 20px 0;
     padding: 30px;
     text-align: center;
     border: 1px solid #E0EAFF;
@@ -67,7 +64,6 @@
 .card h2 {
     color: var(--Colors-Neutral, #0E0E0E);
     text-align: center;
-    font-size: 25px;
     font-style: normal;
     font-weight: 500;
     line-height: 140%;
@@ -79,3 +75,33 @@
     font-weight: 400;
     line-height: 140%;
 }
+
+@media screen and (max-width: 767px) {
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      text-align: center;
+    }
+  
+    .profile-card-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+  
+    .profile-card .location {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  
+    .profile-card img {
+      margin: 0 auto;
+      display: block;
+    }
+  }

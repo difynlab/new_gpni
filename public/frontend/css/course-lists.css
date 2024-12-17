@@ -58,6 +58,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 .course-actions a img {
     margin-left: 4px;
@@ -100,15 +101,7 @@
     .course-header h1 {
         font-size: 24px;
         line-height: 36px;
-    }
-    .course-card {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-    }
-    .course-card img {
-        margin-bottom: 10px;
-    }
+    } 
     .course-info h2 {
         font-size: 14px;
     }
@@ -148,11 +141,11 @@
     }
     .course-card {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         height: auto;
-    }
-    .course-card img {
-        margin-bottom: 10px;
+        gap:1rem;
+        text-align: center;
+        white-space: nowrap;
     }
     .course-info h2 {
         font-size: 12px;

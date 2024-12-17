@@ -221,7 +221,7 @@ body {
     }
 
     .fs-49 {
-        font-size: 1.7rem; /* Further reduced */
+        font-size: 1.2rem; /* Further reduced */
     }
 
     .fs-39 {
@@ -259,6 +259,13 @@ body {
 
     .fs-10 {
         font-size: 0.5rem; /* Further reduced */
+    }
+
+    .modal-dialog {
+        margin: 0 auto;
+        max-width: 70%;
+        top: 10%;
+        transform: translateY(-50%);
     }
 }
 /* Responsive Button Sizes */

@@ -3,305 +3,323 @@
 @section('title', 'Final Exam')
 
 @push('after-styles')
-    <link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/course-exam.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/css/course-exam.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/css/sidebar.css') }}">
 @endpush
 
 @section('content')
-    <div class="modal fade" id="start-exam-modal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <p class="title">{{ $student_dashboard_contents->courses_exam_start_modal_title }}</p>
-                    <p class="description">{{ $student_dashboard_contents->courses_exam_start_modal_description }}</p>
-                    
-                    {!! $student_dashboard_contents->courses_exam_start_modal_instructions !!}
+<div class="modal fade" id="start-exam-modal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p class="title">{{ $student_dashboard_contents->courses_exam_start_modal_title }}</p>
+                <p class="description">{{ $student_dashboard_contents->courses_exam_start_modal_description }}</p>
+
+                {!! $student_dashboard_contents->courses_exam_start_modal_instructions !!}
+            </div>
+
+            <div class="modal-footer text-center">
+                <a href="{{ route('frontend.courses.show', $course) }}" class="return-link mx-3">
+                    <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20"
+                        height="20">
+                    {{ $student_dashboard_contents->courses_return }}
+                </a>
+                <button class="btn confirm-button start-exam-button mx-3">{{
+                    $student_dashboard_contents->courses_exam_start_modal_start_exam }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="exam-container">
+    <div class="container-fluid top-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-9">
+                    <div class="title-section">
+                        <h1>{{ $course->title }}</h1>
+                    </div>
+                    <div class="instructions">
+                        {!! $student_dashboard_contents->courses_exam_instructions !!}
+                    </div>
                 </div>
 
-                <div class="modal-footer text-center">
-                    <a href="{{ route('frontend.courses.show', $course) }}" class="return-link mx-3">
-                        <img src="{{ asset('storage/frontend/left-chevron-icon.svg') }}" alt="Arrow Left" width="20" height="20">
-                        {{ $student_dashboard_contents->courses_return }}
-                    </a>
-                    <button class="btn confirm-button start-exam-button mx-3">{{ $student_dashboard_contents->courses_exam_start_modal_start_exam }}</button>
+                @if($course->exam_time)
+                <div class="col-3">
+                    <div class="timer-section">
+                        <p class="remaining-time">{{ $student_dashboard_contents->courses_exam_remaining_time }}</p>
+                        <p id="countdown" class="countdown">{{ $course->exam_time }}</p>
+                    </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
 
-    <div id="exam-container">
-        <div class="container-fluid top-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-9">
-                        <div class="title-section">
-                            <h1>{{ $course->title }}</h1>
+    @if($questions->isNotEmpty())
+    <div class="container-fluid bottom-section">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-7">
+                    @foreach($questions as $key => $question)
+                    @if($key == 0)
+                    <div class="question-section" data-question-id="{{ $question->id }}" id="question{{$key}}">
+                        <div class="question">
+                            <p>Q1.</p>
+                            <div>{!! $question->question !!}</div>
                         </div>
-                        <div class="instructions">
-                            {!! $student_dashboard_contents->courses_exam_instructions !!}
-                        </div>
-                    </div>
-                    
-                    @if($course->exam_time)
-                        <div class="col-3">
-                            <div class="timer-section">
-                                <p class="remaining-time">{{ $student_dashboard_contents->courses_exam_remaining_time }}</p>
-                                <p id="countdown" class="countdown">{{ $course->exam_time }}</p>
+
+                        <div class="options">
+                            <div class="option" data-answer="A">
+                                <div class="radio">
+                                    <div class="radio-inner"></div>
+                                </div>
+
+                                <p>
+                                    A)
+                                </p>
+
+                                <div>
+                                    {!! $question->option_a !!}
+                                </div>
+                            </div>
+                            <div class="option" data-answer="B">
+                                <div class="radio">
+                                    <div class="radio-inner"></div>
+                                </div>
+
+                                <p>
+                                    B)
+                                </p>
+
+                                <div>
+                                    {!! $question->option_b !!}
+                                </div>
+                            </div>
+                            <div class="option" data-answer="C">
+                                <div class="radio">
+                                    <div class="radio-inner"></div>
+                                </div>
+
+                                <p>
+                                    C)
+                                </p>
+
+                                <div>
+                                    {!! $question->option_c !!}
+                                </div>
+                            </div>
+                            <div class="option" data-answer="D">
+                                <div class="radio">
+                                    <div class="radio-inner"></div>
+                                </div>
+
+                                <p>
+                                    D)
+                                </p>
+
+                                <div>
+                                    {!! $question->option_d !!}
+                                </div>
                             </div>
                         </div>
+
+                        <div class="navigation">
+                            <div class="button prev-button disabled">← {{
+                                $student_dashboard_contents->courses_exam_previous }}</div>
+                            <div class="button next-button disabled">{{ $student_dashboard_contents->courses_exam_next
+                                }} →</div>
+                        </div>
+
+                    </div>
+                    @else
+                    <div class="question-section d-none" data-question-id="{{ $question->id }}" id="question{{$key}}">
+                        <div class="question">
+                            <p>Q{{ $key + 1 }}.</p>
+                            <div>{!! $question->question !!}</div>
+                        </div>
+
+                        <div class="options">
+                            <div class="option" data-answer="A">
+                                <div class="radio">
+                                    <div class="radio-inner"></div>
+                                </div>
+
+                                <p>
+                                    A)
+                                </p>
+
+                                <div>
+                                    {!! $question->option_a !!}
+                                </div>
+                            </div>
+                            <div class="option" data-answer="B">
+                                <div class="radio">
+                                    <div class="radio-inner"></div>
+                                </div>
+
+                                <p>
+                                    B)
+                                </p>
+
+                                <div>
+                                    {!! $question->option_b !!}
+                                </div>
+                            </div>
+                            <div class="option" data-answer="C">
+                                <div class="radio">
+                                    <div class="radio-inner"></div>
+                                </div>
+
+                                <p>
+                                    C)
+                                </p>
+
+                                <div>
+                                    {!! $question->option_c !!}
+                                </div>
+                            </div>
+                            <div class="option" data-answer="D">
+                                <div class="radio">
+                                    <div class="radio-inner"></div>
+                                </div>
+
+                                <p>
+                                    D)
+                                </p>
+
+                                <div>
+                                    {!! $question->option_d !!}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="navigation">
+                            <div class="button prev-button">← {{ $student_dashboard_contents->courses_exam_previous }}
+                            </div>
+                            <div class="button next-button">{{ $student_dashboard_contents->courses_exam_next }} →</div>
+                        </div>
+                    </div>
                     @endif
+                    @endforeach
                 </div>
-            </div>
-        </div>
 
-        @if($questions->isNotEmpty())
-            <div class="container-fluid bottom-section">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-7">
+                <div class="col-4">
+                    <div class="remaining-questions">
+                        <p class="remaining-questions-count">{{
+                            $student_dashboard_contents->courses_exam_remaining_questions }}: <span>{{
+                                $questions->count() }}</span></p>
+
+                        <div class="question-nav">
                             @foreach($questions as $key => $question)
-                                @if($key == 0)
-                                    <div class="question-section" data-question-id="{{ $question->id }}" id="question{{$key}}">
-                                        <div class="question">
-                                            <p>Q1.</p>
-                                            <div>{!! $question->question !!}</div>
-                                        </div>
+                            <div class="box text-center">
+                                <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}" class="invisible">
 
-                                        <div class="options">
-                                            <div class="option" data-answer="A">
-                                                <div class="radio">
-                                                    <div class="radio-inner"></div>
-                                                </div>
-
-                                                <p>
-                                                    A)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_a !!}
-                                                </div>
-                                            </div>
-                                            <div class="option" data-answer="B">
-                                                <div class="radio">
-                                                    <div class="radio-inner"></div>
-                                                </div>
-                                                
-                                                <p>
-                                                    B)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_b !!}
-                                                </div>
-                                            </div>
-                                            <div class="option" data-answer="C">
-                                                <div class="radio">
-                                                    <div class="radio-inner"></div>
-                                                </div>
-                                                
-                                                <p>
-                                                    C)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_c !!}
-                                                </div>
-                                            </div>
-                                            <div class="option" data-answer="D">
-                                                <div class="radio">
-                                                    <div class="radio-inner"></div>
-                                                </div>
-                                                
-                                                <p>
-                                                    D)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_d !!}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="navigation">
-                                            <div class="button prev-button disabled">← {{ $student_dashboard_contents->courses_exam_previous }}</div>
-                                            <div class="button next-button disabled">{{ $student_dashboard_contents->courses_exam_next }} →</div>
-                                        </div>
-
-                                    </div>
-                                @else
-                                    <div class="question-section d-none" data-question-id="{{ $question->id }}" id="question{{$key}}">
-                                        <div class="question">
-                                            <p>Q{{ $key + 1 }}.</p>
-                                            <div>{!! $question->question !!}</div>
-                                        </div>
-
-                                        <div class="options">
-                                            <div class="option" data-answer="A">
-                                                <div class="radio">
-                                                    <div class="radio-inner"></div>
-                                                </div>
-                                                
-                                                <p>
-                                                    A)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_a !!}
-                                                </div>
-                                            </div>
-                                            <div class="option" data-answer="B">
-                                                <div class="radio">
-                                                    <div class="radio-inner"></div>
-                                                </div>
-                                                
-                                                <p>
-                                                    B)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_b !!}
-                                                </div>
-                                            </div>
-                                            <div class="option" data-answer="C">
-                                                <div class="radio">
-                                                    <div class="radio-inner"></div>
-                                                </div>
-                                                
-                                                <p>
-                                                    C)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_c !!}
-                                                </div>
-                                            </div>
-                                            <div class="option" data-answer="D">
-                                                <div class="radio">
-                                                    <div class="radio-inner"></div>
-                                                </div>
-                                                
-                                                <p>
-                                                    D)
-                                                </p>
-
-                                                <div>
-                                                    {!! $question->option_d !!}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="navigation">
-                                            <div class="button prev-button">← {{ $student_dashboard_contents->courses_exam_previous }}</div>
-                                            <div class="button next-button">{{ $student_dashboard_contents->courses_exam_next }} →</div>
-                                        </div>
-                                    </div>
-                                @endif
+                                <div class="question-box" id="questionBox{{ $key + 1 }}">
+                                    <span>{{ $key + 1 }}</span>
+                                </div>
+                            </div>
                             @endforeach
                         </div>
 
-                        <div class="col-4">
-                            <div class="remaining-questions">
-                                <p class="remaining-questions-count">{{ $student_dashboard_contents->courses_exam_remaining_questions }}: <span>{{ $questions->count() }}</span></p>
-
-                                <div class="question-nav">
-                                    @foreach($questions as $key => $question)
-                                        <div class="box text-center">
-                                            <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}" class="invisible">
-
-                                            <div class="question-box" id="questionBox{{ $key + 1 }}">
-                                                <span>{{ $key + 1 }}</span>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-
-                                <div class="legend-container">
-                                    <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/attempted.svg') }}">
-                                        <span class="legend">{{ $student_dashboard_contents->courses_exam_attempted }}</span>
-                                    </div>
-                                    <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/not-attempted.svg') }}">
-                                        <span class="legend">{{ $student_dashboard_contents->courses_exam_not_attempted }}</span>
-                                    </div>
-                                    <div class="legend-section">
-                                        <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}">
-                                        <span class="legend">{{ $student_dashboard_contents->courses_exam_incomplete }}</span>
-                                    </div>
-                                </div>
-
-                                <button class="finish-exam-btn" data-bs-toggle="modal" data-bs-target="#submit-modal">{{ $student_dashboard_contents->courses_exam_finish_exam }}</button>
+                        <div class="legend-container">
+                            <div class="legend-section">
+                                <img src="{{ asset('storage/frontend/attempted.svg') }}">
+                                <span class="legend">{{ $student_dashboard_contents->courses_exam_attempted }}</span>
+                            </div>
+                            <div class="legend-section">
+                                <img src="{{ asset('storage/frontend/not-attempted.svg') }}">
+                                <span class="legend">{{ $student_dashboard_contents->courses_exam_not_attempted
+                                    }}</span>
+                            </div>
+                            <div class="legend-section">
+                                <img src="{{ asset('storage/frontend/incomplete-flag.svg') }}">
+                                <span class="legend">{{ $student_dashboard_contents->courses_exam_incomplete }}</span>
                             </div>
                         </div>
+
+                        <button class="finish-exam-btn" data-bs-toggle="modal" data-bs-target="#submit-modal">{{
+                            $student_dashboard_contents->courses_exam_finish_exam }}</button>
                     </div>
-                </div>
-            </div>
-        @endif
-
-        <form action="{{ route('frontend.final-exam.store', $course) }}" method="POST">
-            @csrf
-            <div class="modal fade" id="submit-modal" tabindex="-1" aria-labelledby="submit-modal-label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header pb-0">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <p class="dialog-header">{{ $student_dashboard_contents->courses_exam_submit_modal_title }}</p>
-                            <p class="dialog-message">{!! $student_dashboard_contents->courses_exam_submit_modal_description !!}</p>
-                        </div>
-
-                        <div id="normal-answers-container"></div>
-
-                        <div class="modal-footer text-center">
-                            <button type="button" class="btn cancel-button" data-bs-dismiss="modal">{{ $student_dashboard_contents->courses_exam_modal_close }}</button>
-                            <button type="submit" class="btn confirm-button">{{ $student_dashboard_contents->courses_exam_modal_confirm }}</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-        <form action="{{ route('frontend.final-exam.store', $course) }}" method="POST" id="timer-modal-form">
-            @csrf
-            <div class="modal fade" id="timer-modal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body text-center">
-                            <p class="title">{{ $student_dashboard_contents->courses_exam_time_modal_title }}</p>
-                            <p class="description">{{ $student_dashboard_contents->courses_exam_time_modal_description }}</p>
-                            <div id="time-up-answers-container"></div>
-                        </div>
-
-                        <div class="modal-footer text-center">
-                            <button type="submit" class="btn confirm-button">{{ $student_dashboard_contents->courses_exam_modal_confirm }}</button></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="modal fade" id="success-modal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <p class="title">{{ $student_dashboard_contents->courses_exam_success_modal_title }}</p>
-                    <p class="description">{{ $student_dashboard_contents->courses_exam_success_modal_description }}</p>
-                </div>
-
-                <div class="modal-footer text-center">
-                    @if(session('course_final_exam_id'))
-                        <a href="{{ route('frontend.final-exam.results', [$course, session('course_final_exam_id')]) }}" 
-                        class="btn confirm-button">{{ $student_dashboard_contents->courses_view_results }}</a>
-                    @endif
                 </div>
             </div>
         </div>
     </div>
+    @endif
+
+    <form action="{{ route('frontend.final-exam.store', $course) }}" method="POST">
+        @csrf
+        <div class="modal fade" id="submit-modal" tabindex="-1" aria-labelledby="submit-modal-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header pb-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p class="dialog-header">{{ $student_dashboard_contents->courses_exam_submit_modal_title }}</p>
+                        <p class="dialog-message">{!! $student_dashboard_contents->courses_exam_submit_modal_description
+                            !!}</p>
+                    </div>
+
+                    <div id="normal-answers-container"></div>
+
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn cancel-button" data-bs-dismiss="modal">{{
+                            $student_dashboard_contents->courses_exam_modal_close }}</button>
+                        <button type="submit" class="btn confirm-button">{{
+                            $student_dashboard_contents->courses_exam_modal_confirm }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form action="{{ route('frontend.final-exam.store', $course) }}" method="POST" id="timer-modal-form">
+        @csrf
+        <div class="modal fade" id="timer-modal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+            data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <p class="title">{{ $student_dashboard_contents->courses_exam_time_modal_title }}</p>
+                        <p class="description">{{ $student_dashboard_contents->courses_exam_time_modal_description }}
+                        </p>
+                        <div id="time-up-answers-container"></div>
+                    </div>
+
+                    <div class="modal-footer text-center">
+                        <button type="submit" class="btn confirm-button">{{
+                            $student_dashboard_contents->courses_exam_modal_confirm }}</button></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="success-modal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p class="title">{{ $student_dashboard_contents->courses_exam_success_modal_title }}</p>
+                <p class="description">{{ $student_dashboard_contents->courses_exam_success_modal_description }}</p>
+            </div>
+
+            <div class="modal-footer text-center">
+                @if(session('course_final_exam_id'))
+                <a href="{{ route('frontend.final-exam.results', [$course, session('course_final_exam_id')]) }}"
+                    class="btn confirm-button">{{ $student_dashboard_contents->courses_view_results }}</a>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
-
+<!-- 
 @push('after-scripts')
     <script>
         $(document).ready(function() {
@@ -555,4 +573,4 @@
             });
         </script>
     @endif
-@endpush
+@endpush -->

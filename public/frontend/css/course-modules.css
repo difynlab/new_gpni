@@ -10,7 +10,7 @@
 }
 .module-card {
     border: 0.94px solid #e4e4e4;
-    border-radius: 0;
+    border-radius: 10px;
     padding: 20px 25px;
 }
 .module h2 {
@@ -23,7 +23,6 @@
 .module-card a {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     font-size: 18px;
     color: black;
     text-decoration: none;
@@ -93,20 +92,21 @@
 }
 .exam-button {
     background-color: #0040c3;
-    color: #FFF;
+    color: #FFF !important;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     height: 45px;
     border-radius: 5px;
     border: none;
     margin-top: 10px;
     transition: all 0.3s;
+    font-size: 12px !important;
 }
 .exam-locked-button {
     background-color: #858990;
-    color: #FFF;
+    color: #FFF !important;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -157,7 +157,7 @@
 }
 .results-button {
     background-color: #2b8b05;
-    color: #FFF;
+    color: #FFF !important;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -166,7 +166,10 @@
     border-radius: 5px;
     border: none;
     margin-top: 10px;
+    padding: 1rem;
     transition: all 0.3s;
+    white-space: nowrap;
+    font-size: 12px !important;
 }
 .results-button:hover {
     background-color: #2d7411;
@@ -174,7 +177,7 @@
 }
 .final-results-button {
     background-color: #2b8b05;
-    color: #FFF;
+    color: #FFF !important;
     width: 100%;
     font-size: 20px;
     margin-bottom: 30px;
@@ -293,4 +296,48 @@
     .profile-card p {
         font-size: 14px;
     }
+}
+
+.module-card.disabled {
+    opacity: 0.6;
+    filter: grayscale(100%);
+    pointer-events: none;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+}
+
+.module-card.disabled h2,
+.module-card.disabled span,
+.module-card.disabled button,
+.module-card.disabled .chapter-links {
+    color: #888;
+}
+
+.disabled-button {
+    background: none;
+    border: none;
+    color: #888;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    padding: 8px;
+    cursor: not-allowed;
+}
+
+.module-card.disabled .in-pending-badge {
+    background-color: #ddd;
+}
+.disabled-module {
+    opacity: 0.6;
+    pointer-events: none;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+}
+
+/* .disabled-module * {
+    color: #888 !important;
+} */
+
+.disabled-module .disabled button {
+    cursor: not-allowed;
 }

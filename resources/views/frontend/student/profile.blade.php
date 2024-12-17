@@ -5,15 +5,16 @@
 @push('after-styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/student-main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/sidebar.css') }}">
 @endpush
 
 @section('content')
 
-    <div class="container-fluid">
-        <div class="row p-5">
+    <div class="container-fluid dashboard">
+        <div class="row p-lg-5 p-3">
             <x-frontend.sidebar :student="$student"></x-frontend.sidebar>
 
-            <div class="col-12 col-md-9 main-content">
+            <div class="col-12 col-lg-8 main-content ps-lg-5">
                 <div class="student-profile-container">
                     <div class="profile-header">
                         <x-frontend.notification></x-frontend.notification>
@@ -279,22 +280,23 @@
                             
 
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    @if($student->image)
-                                        <img src="{{ asset('storage/backend/persons/students/' . $student->image) }}" alt="Profile image" style="width: 100%; height: 400px; object-fit: contain;">
-                                    @else
-                                        <img src="{{ asset('storage/frontend/sample-profile-image.svg') }}" alt="Profile image" style="width: 100%; height: 400px; object-fit: contain;">
-                                    @endif
-
-                                    <input type="hidden" name="old_image" value="{{ $student->image }}">
-
-                                    <div class="mt-2">
+                                <div class="form-group image-upload-container">
+                                    <div class="upload-section">
                                         <label class="form-label">{{ $student_dashboard_contents->student_profile_image }}</label>
-                                        <input type="file" class="form-control new-image" name="new_image" accept="image/*">
+                                        <input type="file" class="form-control new-image" name="new_image" accept="image/*" id="imageInput">
                                         <x-frontend.input-error field="new_image"></x-frontend.input-error>
                                     </div>
+                                    
+                                    <div class="preview-section">
+                                        @if($student->image)
+                                            <img src="{{ asset('storage/backend/persons/students/' . $student->image) }}" alt="Profile image">
+                                        @else
+                                            <img src="{{ asset('storage/frontend/sample-profile-image.svg') }}" alt="Profile image">
+                                        @endif
+                                    </div>
+                                    <input type="hidden" name="old_image" value="{{ $student->image }}">
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
 
                         <div class="section">
