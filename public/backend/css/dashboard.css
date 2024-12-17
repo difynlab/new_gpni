@@ -1,0 +1,53 @@
+.dashboard {
+    padding: 8% 0 3% 6%;
+}
+.dashboard .section {
+    padding-bottom: 3%;
+}
+.dashboard .section .single-box {
+    border: 2px solid #d7e0f3;
+    border-radius: 15px;
+    padding: 4% 5%;
+}
+.dashboard .section .single-box .title {
+    font-size: 12px;
+    color: #A0AEC0;
+    margin-bottom: 3px;
+}
+.dashboard .section .single-box .value {
+    color: #2D3748;
+    font-size: 18px;
+    font-weight: 600;
+}
+.dashboard .section .single-box .value span {
+    font-size: 15px;
+    color: rgb(12, 189, 12);
+}
+.dashboard .section .single-box .image-div {
+    background-color: #d7e0f3;
+    border-radius: 15px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard .section .single-box img {
+    height: 40px;
+}
+
+.dashboard .section .title {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+.dashboard .section .description {
+    font-size: 16px;
+    color: #9da0a6;
+    margin-bottom: 15px;
+}
+.dashboard .section .description span {
+    color: rgb(12, 189, 12);
+}
+.dashboard .section canvas {
+    height: 350px!important;
+}
