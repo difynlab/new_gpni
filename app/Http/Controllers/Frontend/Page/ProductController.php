@@ -130,7 +130,7 @@ class ProductController extends Controller
             $product_order->time = now()->toTimeString();
             $product_order->mode = $session->mode;
             $product_order->transaction_id = $session->id;
-            $product_order->amount_paid = $session->amount_total / 100;
+            $product_order->amount_paid = $session->currency == 'jpy' ? $session->amount_total : $session->amount_total / 100;
             $product_order->payment_status = 'Completed';
             $product_order->save();
         }

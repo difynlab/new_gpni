@@ -128,7 +128,7 @@ class GiftCardController extends Controller
             $gift_card_purchase->time = now()->toTimeString();
             $gift_card_purchase->mode = $session->mode;
             $gift_card_purchase->transaction_id = $session->id;
-            $gift_card_purchase->amount_paid = $session->amount_total / 100;
+            $gift_card_purchase->amount_paid = $session->currency == 'jpy' ? $session->amount_total : $session->amount_total / 100;
             $gift_card_purchase->payment_status = 'Completed';
             $gift_card_purchase->buyer_name = $session->customer_details['name'];
             $gift_card_purchase->buyer_email = $session->customer_details['email'];
@@ -139,14 +139,14 @@ class GiftCardController extends Controller
         $wallet_exist = Wallet::where('user_id', $user->id)->first();
 
         if($wallet_exist) {
-            $wallet_exist->balance = $wallet_exist->balance + ($session->amount_total / 100);
+            $wallet_exist->balance = $wallet_exist->balance + ($session->currency == 'jpy' ? $session->amount_total : $session->amount_total / 100);
             $wallet_exist->save();
         }
         else {
             $wallet = new Wallet();
             $wallet->user_id = $user->id;
             $wallet->currency = $gift_card_purchase->currency;
-            $wallet->balance = $session->amount_total / 100;
+            $wallet->balance = $session->currency == 'jpy' ? $session->amount_total : $session->amount_total / 100;
             $wallet->status = '1';
             $wallet->save();
         }
