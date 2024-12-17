@@ -35,6 +35,7 @@
                 <script>
                     const uploadUrl = "{{ route('backend.ckeditor.upload') }}?_token={{ csrf_token() }}";
                 </script>
+                <script src="{{ asset('backend/js/chart.js') }}"></script>
                 <script src="{{ asset('backend/js/main.js') }}"></script>
             @stack('after-scripts')
         </div>
