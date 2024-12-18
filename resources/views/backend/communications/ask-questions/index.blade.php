@@ -25,7 +25,7 @@
                             <input type="date" class="form-control" name="date" value="{{ $date ?? '' }}" placeholder="Date">
                         </div>
 
-                        <div class="col-2 d-flex justify-content-between">
+                        <div class="col-4 col-xl-2 d-flex justify-content-between">
                             <button type="submit" class="filter-search-button" name="action" value="search">SEARCH</button>
 
                             <button type="submit" class="filter-reset-button" name="action" value="reset">RESET</button>
@@ -39,7 +39,8 @@
             <div class="col-12">
                 <x-backend.pagination-form items="{{ $items }}"></x-backend.pagination-form>
             
-                <table class="table table-striped w-100">
+                <div class="table-container mb-3">
+                    <table class="table table-striped w-100">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -72,6 +73,7 @@
                         @endif
                     </tbody>
                 </table>
+                </div>
 
                 {{ $ask_questions->links("pagination::bootstrap-5") }}
             </div>

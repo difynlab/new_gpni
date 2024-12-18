@@ -76,7 +76,7 @@ textarea.form-textarea:focus {
     color: white;
     font-weight: 500;
     font-size: 1.25rem; /* 20px */
-    line-height: 30px;
+    /* line-height: 30px; */
     margin: 30px auto;
 }
 

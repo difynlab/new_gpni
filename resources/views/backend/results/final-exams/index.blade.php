@@ -12,15 +12,15 @@
                 <form action="{{ route('backend.exam-results.final-exam-filter') }}" method="POST" class="filter-form">
                     @csrf
                     <div class="row align-items-center">
-                        <div class="col-5">
+                        <div class="col-4 col-xl-5">
                             <input type="text" class="form-control" name="user" value="{{ $user ?? '' }}" placeholder="User">
                         </div>
 
-                        <div class="col-5">
+                        <div class="col-4 col-xl-5">
                             <input type="text" class="form-control" name="course" value="{{ $course ?? '' }}" placeholder="Course">
                         </div>
 
-                        <div class="col-2 d-flex justify-content-between">
+                        <div class="col-4 col-xl-2 d-flex justify-content-between">
                             <button type="submit" class="filter-search-button" name="action" value="search">SEARCH</button>
 
                             <button type="submit" class="filter-reset-button" name="action" value="reset">RESET</button>
@@ -34,7 +34,8 @@
             <div class="col-12">
                 <x-backend.pagination-form items="{{ $items }}"></x-backend.pagination-form>
             
-                <table class="table table-striped w-100">
+                <div class="table-container mb-3">
+                    <table class="table table-striped w-100">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -65,6 +66,7 @@
                         @endif
                     </tbody>
                 </table>
+                </div>
 
                 {{ $results->links("pagination::bootstrap-5") }}
             </div>

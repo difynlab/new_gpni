@@ -14,11 +14,11 @@
                         <div class="col-6">
                             <div class="single-box mb-3">
                                 <div class="row align-items-center">
-                                    <div class="col-9">
+                                    <div class="col-8 col-xl-9">
                                         <p class="title">Total Registered Users</p>
                                         <p class="value">{{ $total_registered_users }} <span>{{ $users_percentage_increase }}</span></p>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4 col-xl-3">
                                         <div class="image-div">
                                             <img src="{{ asset('storage/backend/common/users.png') }}" alt="Users">
                                         </div>
@@ -28,11 +28,11 @@
                             
                             <div class="single-box">
                                 <div class="row align-items-center">
-                                    <div class="col-9">
+                                    <div class="col-8 col-xl-9">
                                         <p class="title">Total Courses</p>
                                         <p class="value">{{ $total_courses }}</p>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4 col-xl-3">
                                         <div class="image-div">
                                             <img src="{{ asset('storage/backend/common/courses.png') }}" alt="Users">
                                         </div>
@@ -44,11 +44,11 @@
                         <div class="col-6">
                             <div class="single-box mb-3">
                                 <div class="row align-items-center">
-                                    <div class="col-9">
+                                    <div class="col-8 col-xl-9">
                                         <p class="title">Total Products</p>
                                         <p class="value">{{ $total_products }}</p>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4 col-xl-3">
                                         <div class="image-div">
                                             <img src="{{ asset('storage/backend/common/products.png') }}" alt="Users">
                                         </div>
@@ -58,11 +58,11 @@
 
                             <div class="single-box">
                                 <div class="row align-items-center">
-                                    <div class="col-9">
+                                    <div class="col-8 col-xl-9">
                                         <p class="title">Total Affiliate Products</p>
                                         <p class="value">{{ $total_affiliate_products }}</p>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-4 col-xl-3">
                                         <div class="image-div">
                                             <img src="{{ asset('storage/backend/common/affiliate-products.png') }}" alt="Users">
                                         </div>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="col-5 ps-5">
+                <div class="col-5 ps-3 ps-xl-5">
                     <div class="row">
                         <div class="col-6">
                             <div class="single-item mb-5">
@@ -105,13 +105,13 @@
 
         <div class="section">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-xl-6 mb-4 mb-xl-0">
                     <p class="title">Monthly Registered Users</p>
                     <p class="description"><span>({{ $users_year_difference }})</span> in {{ $current_year }}</p>
                     <canvas id="user-year-chart"></canvas>
                 </div>
 
-                <div class="col-6">
+                <div class="col-12 col-xl-6">
                     <p class="title">Monthly Purchased Courses</p>
                     <p class="description"><span>({{ $course_purchases_year_difference }})</span> in {{ $current_year }}</p>
                     <canvas id="course-year-chart"></canvas>
@@ -121,23 +121,23 @@
 
         <div class="section">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-xl-6 mb-4 mb-xl-0">
                     <p class="title">User Countries</p>
                     <p class="description">in {{ $current_year }}</p>
                     <canvas id="user-country-chart"></canvas>
                 </div>
 
-                <div class="col-6 p-4">
+                <div class="col-12 col-xl-6 p-xl-4">
                     @foreach($country_users_percentages as $key => $country_users_percentage)
                         <div class="single-country">
                             <div class="row align-items-center">
-                                <div class="col-10">
+                                <div class="col-11 col-xl-10">
                                     <p class="text">{{ $key }}</p>
                                     <div class="progress-bar">
                                         <div class="progress-fill {{ $loop->index % 2 == 0 ? 'yellow-fill' : 'blue-fill' }}" style="width: {{ $country_users_percentage }}%;"></div>
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1 col-xl-2">
                                     <p class="percentage-text">{{ $country_users_percentage }}%</p>
                                 </div>
                             </div>

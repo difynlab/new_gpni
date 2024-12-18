@@ -52,7 +52,8 @@
             <div class="col-12">
                 <x-backend.pagination-form items="{{ $items }}"></x-backend.pagination-form>
             
-                <table class="table table-striped w-100">
+                <div class="table-container mb-3">
+                    <table class="table table-striped w-100">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -72,7 +73,7 @@
                                     <td>#{{ $webinar->id }}</td>
                                     <td>{!! $webinar->video !!}</td>
                                     <td>
-                                        <div class="line-clamp-5">
+                                        <div class="line-clamp-1">
                                             {!! $webinar->content !!}
                                         </div>
                                     </td>
@@ -89,6 +90,7 @@
                         @endif
                     </tbody>
                 </table>
+                </div>
 
                 {{ $webinars->links("pagination::bootstrap-5") }}
             </div>
