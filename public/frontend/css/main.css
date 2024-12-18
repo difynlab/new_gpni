@@ -694,8 +694,18 @@ form .error-message {
     }
 
     .footer-bottom-content {
+        display: flex;
+        align-items: center;
         margin: 0;
         padding: 0;
+    }
+
+    .footer-bottom-content a {
+        font-size: 13px;
+    }
+    .footer-bottom-content i {
+        font-size: 4px;
+        margin: 0 15px;
     }
 
 
