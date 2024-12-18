@@ -18,12 +18,12 @@
 
     <body>
         <div class="guest-page">
-            <div class="container">
+            <div class="container-fluid container-lg">
                 <div class="row justify-content-between align-items-center">
-                    <div class="col-5">
+                    <div class="d-none d-lg-block col-5">
                         <img src="{{ asset('storage/backend/common/' . App\Models\Setting::find(1)->guest_image) }}" alt="Image" class="image">
                     </div>
-                    <div class="col-7">
+                    <div class="col-12 col-lg-7">
                         @yield('content')
                     </div>
                 </div>
