@@ -15,28 +15,28 @@
             <form action="{{ route('frontend.products.checkout') }}" method="POST">
                 @csrf
                 <div class="row justify-content-between mb-5">
-                    <div class="col-6">
+                    <div class="col-12 col-md-6 mb-3">
                         <div class="card">
-                            <h5 class="section-header">{{ $contents->{'page_items_' . $middleware_language} ?? $contents->page_items_en }} ({{ $items->count() }})</h5>
+                            <h5 class="section-header fs-25">{{ $contents->{'page_items_' . $middleware_language} ?? $contents->page_items_en }} ({{ $items->count() }})</h5>
 
                             <hr>
 
                             @if($items->isNotEmpty())
                                 @foreach($items as $item)
                                     <div class="d-flex align-items-center my-2">
-                                        <img src="{{ asset('storage/backend/products/products/' . $item->product->thumbnail) }}" alt="{{ $item->product->name }}" style="width: 30%; height: 30%; margin-right: 20px; object-fit: cover;">
+                                        <img src="{{ asset('storage/backend/products/products/' . $item->product->thumbnail) }}" alt="{{ $item->product->name }}" class="img-fluid" style="width: 30%; height: 30%; margin-right: 20px; object-fit: cover;">
 
                                         <div class="item-details">
-                                            <h5 style="font-size: 18px; font-weight: 600;">{{ $item->product->name }}</h5>
+                                            <h5 class="fs-20 fw-medium">{{ $item->product->name }}</h5>
 
                                             @if($item->product->colors || $item->product->available_sizes)
-                                                <p style="font-size: 13px; margin: 0;">{{ $item->product->colors }} / {{ $item->product->available_sizes }}</p>
+                                                <p class="fs-13">{{ $item->product->colors }} / {{ $item->product->available_sizes }}</p>
                                             @endif
 
                                             <div class="d-flex align-items-center my-2">
                                                 <i class="bi bi-dash-circle" onclick="updateQuantity({{ $item->id }}, 'decrease')" style="cursor: pointer;"></i>
                                                 
-                                                <span class="mx-3" style="width: 15px; text-align: center;" id="quantity-{{ $item->id }}">{{ $item->quantity }}</span>
+                                                <span class="mx-3 fs-16" id="quantity-{{ $item->id }}">{{ $item->quantity }}</span>
 
                                                 <input type="hidden" name="quantities[]" id="quantity-input-{{ $item->id }}" value="{{ $item->quantity }}">
 
@@ -45,7 +45,7 @@
                                                 <i class="bi bi-plus-circle" onclick="updateQuantity({{ $item->id }}, 'increase')" style="cursor: pointer;"></i>
                                             </div>
 
-                                            <span class="price total-product-price" id="total-price-{{ $item->id }}" style="font-size: 20px;">{{ $currency_symbol }}{{ $item->total_price }}</span>
+                                            <span class="price total-product-price fs-20" id="total-price-{{ $item->id }}">{{ $currency_symbol }}{{ $item->total_price }}</span>
                                         </div>
                                     
                                         <i class="bi bi-trash-fill fs-5" onclick="deleteItem({{ $item->id }})" style="cursor: pointer;"></i>
@@ -55,26 +55,26 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <div class="card mb-3">
-                            <h5 class="section-header">{{ $contents->{'page_order_summary_' . $middleware_language} ?? $contents->page_order_summary_en }}</h5>
+                            <h5 class="section-header fs-25">{{ $contents->{'page_order_summary_' . $middleware_language} ?? $contents->page_order_summary_en }}</h5>
                             <div class="content">
-                                <p>{{ $contents->{'page_no_of_items_' . $middleware_language} ?? $contents->page_no_of_items_en }}: {{ $items->sum('quantity') }}</p>
+                                <p class="fs-16">{{ $contents->{'page_no_of_items_' . $middleware_language} ?? $contents->page_no_of_items_en }}: {{ $items->sum('quantity') }}</p>
 
-                                <p>{{ $contents->{'page_sub_total_' . $middleware_language} ?? $contents->page_sub_total_en }}: <span class="sub-total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price'), 2) }}</span></p>
+                                <p class="fs-16">{{ $contents->{'page_sub_total_' . $middleware_language} ?? $contents->page_sub_total_en }}: <span class="sub-total-price">{{ $currency_symbol }}{{ number_format($items->sum('total_price'), 2) }}</span></p>
 
-                                <p>{{ $contents->{'page_shipping_fee_' . $middleware_language} ?? $contents->page_shipping_fee_en }}: <span>{{ $currency_symbol }}{{ number_format($shipping_cost, 2) }}</span></p>
+                                <p class="fs-16">{{ $contents->{'page_shipping_fee_' . $middleware_language} ?? $contents->page_shipping_fee_en }}: <span>{{ $currency_symbol }}{{ number_format($shipping_cost, 2) }}</span></p>
 
-                                <p>{{ $contents->{'page_gift_amount_' . $middleware_language} ?? $contents->page_gift_amount_en }}: <span class="gift-amount">{{ $currency_symbol }}{{ sprintf('%.2f', $wallet_balance) }}</span></p>
+                                <p class="fs-16">{{ $contents->{'page_gift_amount_' . $middleware_language} ?? $contents->page_gift_amount_en }}: <span class="gift-amount">{{ $currency_symbol }}{{ sprintf('%.2f', $wallet_balance) }}</span></p>
 
-                                <h5>{{ $contents->{'page_total_' . $middleware_language} ?? $contents->page_total_en }}: <span class="price total-price">{{ $currency_symbol }}{{ sprintf('%.2f', $total_price) }}</span></h5>
+                                <h5 class="fs-20">{{ $contents->{'page_total_' . $middleware_language} ?? $contents->page_total_en }}: <span class="price total-price">{{ $currency_symbol }}{{ sprintf('%.2f', $total_price) }}</span></h5>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-custom">{{ $contents->{'page_button_' . $middleware_language} ?? $contents->page_button_en }}</button>
+                            <button type="submit" class="btn btn-primary btn-custom btn-responsive">{{ $contents->{'page_button_' . $middleware_language} ?? $contents->page_button_en }}</button>
                         </div>
 
                         <div class="card payment-methods">
-                            <h5 class="section-header">{{ $contents->{'page_we_accept_' . $middleware_language} ?? $contents->page_we_accept_en }}</h5>
+                            <h5 class="section-header fs-25">{{ $contents->{'page_we_accept_' . $middleware_language} ?? $contents->page_we_accept_en }}</h5>
                             <div class="payment-icons">
                                 <img src="{{ asset('storage/frontend/visa-card.svg') }}" alt="Visa">
                                 <img src="{{ asset('storage/frontend/mastercard.svg') }}" alt="MasterCard">
@@ -87,57 +87,6 @@
             </form>
         </div>
     </div>
-
-    <!-- <div class="container-fluid mb-5">
-        <div class="row mb-4">
-            <div class="col-12">
-                <h1>You may also like</h1>
-            </div>
-        </div>
-        <div class="row">
-            @if($other_products->isNotEmpty())
-                @foreach($other_products as $product)
-                    <div class="col-3">
-                        <div class="product-card">
-                            <img src="{{ asset('storage/backend/products/products/' . $product ->thumbnail) }}" alt="Product Image" class="card-img">
-                            <div class="product-info">
-                                <div class="d-flex justify-content-between">
-                                    <span class="category"></span>
-                                    <span class="rating">
-                                        <img src="{{ asset('storage/frontend/products/rating.svg') }}" alt="Rating">
-                                    </span>
-                                </div>
-                                <span class="product-name py-2">{{ $product->name }}</span>
-                                <div class="product-details">
-                                    <span class="price">{{ $currency_symbol }}{{ $product->price }}</span>
-                                </div>
-                            </div>
-
-                            @if(auth()->check())
-                                @if(hasUserAddedToCart(auth()->user()->id, $product->id))
-                                    <button class="cta-button-disabled" disabled>
-                                        Added to Cart
-                                    </button>
-                                @else
-                                    <form action="{{ route('frontend.carts.store') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                                        <button type="submit" class="cta-button">
-                                            <img src="{{ asset('storage/frontend/products/cart.svg') }}" alt="Cart Icon">
-                                            Add to Cart
-                                        </button>
-                                    </form>
-                                @endif
-                            @else
-                                <a href="{{ route('frontend.login', ['redirect' => url()->current()]) }}" class="cta-button">Login for Purchase</a>
-                            @endif
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-        </div>
-    </div> -->
 
 @endsection
 
