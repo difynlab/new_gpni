@@ -134,6 +134,7 @@
     }
     .guest-page .form .captcha .sum-value {
         background-color: rgba(240, 244, 251, 1);
+        padding: 0;
         height: 30px;
         border: none;
         border-bottom: 1px solid black;
