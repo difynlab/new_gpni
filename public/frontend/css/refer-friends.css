@@ -9,13 +9,13 @@
     margin-bottom: 30px;
 }
 .header-section h1 {
-    font-size: 31px;
+    font-size: 1.938rem; /* fs-31 */
     font-weight: 500;
     color: #0e0e0e;
     margin-bottom: 10px;
 }
 .form-label {
-    font-size: 20px;
+    font-size: 1.250rem; /* fs-20 */
     font-weight: 400;
     color: #505050;
     margin-bottom: 15px;
@@ -26,12 +26,12 @@
 }
 .form-control::placeholder {
     color: #b9b9b9;
-    font-size: 13px;
+    font-size: 0.812rem; /* fs-13 */
     font-weight: 400;
 }
 .view-history {
     color: #0040c3;
-    font-size: 16px;
+    font-size: 1rem; /* fs-16 */
     font-weight: 400;
     text-decoration: none;
     display: flex;
@@ -45,13 +45,160 @@
 .icon-history {
     margin-right: 5px;
 }
+/* Ensure the button is centered and the text inside is vertically centered */
 .btn-submit {
-    background-color: #0040c3;
+    background-color: #0040c3; /* Ensure blue background color */
     color: white;
-    font-size: 15px;
+    font-size: 0.8rem; /* Set font size */
     font-weight: 500;
     border-radius: 5px;
-    width: 100%;
+    width: 100px; /* Set width */
+    height: 30px; /* Set height */
     border: none;
-    height: 50px;
+    line-height: 30px; /* Vertically center the text */
+    padding-top: 2px; /* Adjust padding to move text slightly up */
+    margin: 10px auto; /* Center the button */
+    display: block; /* Ensure the button is a block element */
+    text-align: center; /* Center the text */
+}
+.button {
+    background-color: #0040c3;
+    color: #ffffff;
+    width: 100px; /* Set width */
+    height: 30px; /* Set height */
+    border-radius: 5px;
+    font-size: 1rem; /* fs-16 */
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    display: inline-block; /* Ensure it is in one line */
+    text-align: center;
+    line-height: 30px; /* Vertically center the text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) {
+    .header-section h1 {
+        font-size: 1.562rem; /* fs-25 */
+    }
+    .form-label {
+        font-size: 1rem; /* fs-16 */
+    }
+    .button {
+        width: 90px; /* Adjust width */
+        height: 28px; /* Adjust height */
+        font-size: 0.875rem; /* fs-14 */
+        line-height: 28px; /* Adjust line height */
+    }
+}
+
+@media (max-width: 991.98px) {
+    .header-section h1 {
+        font-size: 1.25rem; /* fs-20 */
+    }
+    .form-label {
+        font-size: 0.812rem; /* fs-13 */
+    }
+    .button {
+        width: 80px; /* Adjust width */
+        height: 26px; /* Adjust height */
+        font-size: 0.75rem; /* fs-12 */
+        line-height: 26px; /* Adjust line height */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .header-section h1 {
+        font-size: 1rem; /* fs-16 */
+    }
+    .form-label {
+        font-size: 0.75rem; /* fs-12 */
+    }
+    .btn-submit {
+        width: 100px; /* Set width */
+        height: 30px; /* Set height */
+        font-size: 0.8rem; /* Set font size */
+        line-height: 30px; /* Vertically center the text */
+        padding-top: 2px; /* Adjust padding to move text slightly up */
+        margin: 10px auto; /* Center the button */
+        display: block; /* Ensure the button is a block element */
+    }
+    .form-control-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .header-section h1 {
+        font-size: 0.875rem; /* fs-14 */
+    }
+    .form-label {
+        font-size: 0.6875rem; /* fs-11 */
+    }
+    .button {
+        width: 60px; /* Adjust width */
+        height: 22px; /* Adjust height */
+        font-size: 0.5625rem; /* fs-9 */
+        line-height: 22px; /* Adjust line height */
+        margin: 0 auto; /* Center the button */
+    }
+    .form-control-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-control::placeholder {
+        font-size: 0.6875rem; /* fs-11 */
+    }
+    .btn-submit {
+        font-size: 0.6875rem; /* fs-11 */
+    }
+}
+
+@media (min-width: 768px) {
+    .header-section h1 {
+        font-size: 1.562rem; /* fs-25 */
+    }
+    .form-label {
+        font-size: 1rem; /* fs-16 */
+    }
+    .btn-submit {
+        width: 100px; /* Set width */
+        height: 30px; /* Set height */
+        font-size: 0.8rem; /* Set font size */
+        line-height: 30px; /* Vertically center the text */
+        padding-top: 2px; /* Adjust padding to move text slightly up */
+        margin: 10px auto; /* Center the button */
+        display: block; /* Ensure the button is a block element */
+    }
+    .form-control-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header-section h1 {
+        font-size: 1.938rem; /* fs-31 */
+    }
+    .form-label {
+        font-size: 1.250rem; /* fs-20 */
+    }
+    .btn-submit {
+        width: 100px; /* Set width */
+        height: 30px; /* Set height */
+        font-size: 0.8rem; /* Set font size */
+        line-height: 30px; /* Vertically center the text */
+        padding-top: 2px; /* Adjust padding to move text slightly up */
+        margin: 10px auto; /* Center the button */
+        display: block; /* Ensure the button is a block element */
+    }
+    .form-control-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

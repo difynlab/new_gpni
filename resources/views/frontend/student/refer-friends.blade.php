@@ -24,12 +24,12 @@
 
                     <form action="{{ route('frontend.refer-friends.store') }}" method="POST">
                         @csrf
-                        <div class="row align-items-end">
-                            <div class="col-10">
+                        <div class="row form-control-container">
+                            <div class="col-12">
                                 <label for="email" class="form-label">{{ $student_dashboard_contents->refer_friends_email }}</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="{{ $student_dashboard_contents->refer_friends_email_placeholder }}" required>
                             </div>
-                            <div class="col-2">
+                            <div class="col-12 mt-3">
                                 <button type="submit" class="btn btn-submit">{{ $student_dashboard_contents->refer_friends_button }}</button>
                             </div>
                         </div>
