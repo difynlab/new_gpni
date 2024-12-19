@@ -21,11 +21,11 @@
                 <form action="{{ route('backend.article-categories.filter') }}" method="POST" class="filter-form">
                     @csrf
                     <div class="row align-items-center">
-                        <div class="col-5">
+                        <div class="col-4 col-xl-5">
                             <input type="text" class="form-control" name="name" value="{{ $name ?? '' }}" placeholder="Name">
                         </div>
 
-                        <div class="col-5">
+                        <div class="col-4 col-xl-5">
                             <select class="form-control form-select" name="language">
                                 <option value="All" selected>All languages</option>
                                 <option value="English" {{ isset($language) && $language == 'English' ? "selected" : "" }}>English</option>
@@ -34,7 +34,7 @@
                             </select>
                         </div>
 
-                        <div class="col-2 d-flex justify-content-between">
+                        <div class="col-4 col-xl-2 d-flex justify-content-between">
                             <button type="submit" class="filter-search-button" name="action" value="search">SEARCH</button>
 
                             <button type="submit" class="filter-reset-button" name="action" value="reset">RESET</button>
@@ -48,35 +48,37 @@
             <div class="col-12">
                 <x-backend.pagination-form items="{{ $items }}"></x-backend.pagination-form>
             
-                <table class="table table-striped w-100">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Language</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @if(count($article_categories) > 0)
-                            @foreach($article_categories as $article_category)
-                                <tr>
-                                    <td>#{{ $article_category->id }}</td>
-                                    <td>{{ $article_category->name }}</td>
-                                    <td>{{ $article_category->language }}</td>
-                                    <td>{!! $article_category->status !!}</td>
-                                    <td>{!! $article_category->action !!}</td>
-                                </tr>
-                            @endforeach
-                        @else
+                <div class="table-container mb-3">
+                    <table class="table table-striped w-100">
+                        <thead>
                             <tr>
-                                <td colspan="5" style="text-align: center;">No data available in table</td>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Language</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
-                        @endif
-                    </tbody>
-                </table>
+                        </thead>
+
+                        <tbody>
+                            @if(count($article_categories) > 0)
+                                @foreach($article_categories as $article_category)
+                                    <tr>
+                                        <td>#{{ $article_category->id }}</td>
+                                        <td>{{ $article_category->name }}</td>
+                                        <td>{{ $article_category->language }}</td>
+                                        <td>{!! $article_category->status !!}</td>
+                                        <td>{!! $article_category->action !!}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="5" style="text-align: center;">No data available in table</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
 
                 {{ $article_categories->links("pagination::bootstrap-5") }}
             </div>

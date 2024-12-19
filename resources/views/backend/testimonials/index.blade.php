@@ -59,7 +59,8 @@
             <div class="col-12">
                 <x-backend.pagination-form items="{{ $items }}"></x-backend.pagination-form>
             
-                <table class="table table-striped w-100">
+                <div class="table-container mb-3">
+                    <table class="table table-striped w-100">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -94,6 +95,7 @@
                         @endif
                     </tbody>
                 </table>
+                </div>
 
                 {{ $testimonials->links("pagination::bootstrap-5") }}
             </div>

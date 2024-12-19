@@ -226,12 +226,25 @@
 
     <div class="footer-bottom d-flex justify-content-center align-content-center">
         <div class="footer-bottom-content">
-            <img src="{{ asset('storage/frontend/pin-icon.svg') }}" alt="Map Icon">
-            USA &nbsp; • &nbsp; Copyright © 2024 by GPNi&reg; Corporation Limited. All Rights Reserved &nbsp; •
-            &nbsp;
-            <a href="{{ route('frontend.our-policies') }}">Privacy Policy</a>
-            &nbsp; • &nbsp;
-            <a href="{{ route('frontend.faqs') }}">FAQs</a>
+            <img src="{{ asset('storage/frontend/pin-icon.svg') }}" alt="Map Icon" class="me-2">
+            
+            <p class="mb-0">{{ $contents->{'footer_country_' . $middleware_language} ?? $contents->footer_country_en }}</p>
+            
+            <i class="bi bi-circle-fill"></i>
+            
+            <p class="mb-0">{!! $contents->{'footer_copyright_' . $middleware_language} ?? $contents->footer_copyright_en !!}</p>
+            
+            <i class="bi bi-circle-fill"></i>
+
+            @php
+                $eighth = App\Models\OurPolicyContent::find(1);
+            @endphp
+            <a href="{{ route('frontend.our-policies') }}" class="me-3">{{ $eighth->{'page_name_' . $middleware_language} !== '' ? $eighth->{'page_name_' . $middleware_language} : $eighth->page_name_en }}</a>
+
+            @php
+                $ninth = App\Models\FAQContent::find(1);
+            @endphp
+            <a href="{{ route('frontend.faqs') }}">{{ $ninth->{'page_name_' . $middleware_language} !== '' ? $ninth->{'page_name_' . $middleware_language} : $ninth->page_name_en }}</a>
         </div>
     </div>
 </div>

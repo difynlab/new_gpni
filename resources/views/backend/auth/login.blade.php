@@ -28,13 +28,13 @@
 
             <div class="form-input">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12 col-sm-6">
                         <div class="form-check mb-0">
                             <input class="form-check-input remember-password" type="checkbox" id="remember-password">
                             <label class="form-check-label remember-password" for="remember-password">Remember password</label>
                         </div>
                     </div>
-                    <div class="col-6 text-end">
+                    <div class="col-12 col-sm-6 text-end">
                         @if(Route::has('backend.password.request'))
                             <a href="{{ route('backend.password.request') }}" class="forgot-password-text">Forgot password?</a>
                         @endif

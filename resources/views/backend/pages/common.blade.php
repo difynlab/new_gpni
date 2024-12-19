@@ -113,14 +113,24 @@
                         <input type="text" class="form-control" id="footer_education_{{ $short_code }}" name="footer_education_{{ $short_code }}" value="{{ $contents->{'footer_education_' . $short_code} ?? '' }}" placeholder="Education">
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-4 mb-4">
                         <label for="footer_partners_{{ $short_code }}" class="form-label">Partners</label>
                         <input type="text" class="form-control" id="footer_partners_{{ $short_code }}" name="footer_partners_{{ $short_code }}" value="{{ $contents->{'footer_partners_' . $short_code} ?? '' }}" placeholder="Partners">
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-4 mb-4">
                         <label for="footer_other_{{ $short_code }}" class="form-label">Other</label>
                         <input type="text" class="form-control" id="footer_other_{{ $short_code }}" name="footer_other_{{ $short_code }}" value="{{ $contents->{'footer_other_' . $short_code} ?? '' }}" placeholder="Other">
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <label for="footer_country_{{ $short_code }}" class="form-label">Country</label>
+                        <input type="text" class="form-control" id="footer_country_{{ $short_code }}" name="footer_country_{{ $short_code }}" value="{{ $contents->{'footer_country_' . $short_code} ?? '' }}" placeholder="Country">
+                    </div>
+
+                    <div class="col-4">
+                        <label for="footer_copyright_{{ $short_code }}" class="form-label">Copyright</label>
+                        <input type="text" class="form-control" id="footer_copyright_{{ $short_code }}" name="footer_copyright_{{ $short_code }}" value="{{ $contents->{'footer_copyright_' . $short_code} ?? '' }}" placeholder="Copyright">
                     </div>
                 </div>
             </div>

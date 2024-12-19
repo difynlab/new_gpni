@@ -74,8 +74,8 @@
 }
 
 .dashboard .section canvas#user-country-chart {
-    height: 500px !important;
-    width: 520px !important;
+    height: 500px!important;
+    width: 520px!important;
     margin: auto;
 }
 
@@ -137,3 +137,99 @@
     font-size: 21px;
     font-weight: 600;
 }
+
+
+
+
+/* Responsive */
+    @media screen and (max-width: 1921px) {
+    }
+    @media screen and (max-width: 1901px) {
+    }
+    @media screen and (max-width: 1851px) {
+    }
+    @media screen and (max-width: 1801px) {
+    }
+    @media screen and (max-width: 1751px) {
+    }
+    @media screen and (max-width: 1751px) and (max-height: 875px) {
+    }
+    @media screen and (max-width: 1681px) {
+    }
+    @media screen and (max-width: 1601px) {
+    }
+    @media screen and (max-width: 1537px) {
+    }
+    /* Height: 900 */
+    @media screen and (max-width: 1441px) {
+    }
+    /* Height: 768 */
+    @media screen and (max-width: 1367px) {
+        .dashboard {
+            padding: 9% 0 3% 7%;
+        }
+    }
+    @media screen and (max-width: 1367px) and (max-height: 730px) {
+    }
+    @media screen and (max-width: 1367px) and (max-height: 660px) {
+    }
+    /* Height: 768 */
+    @media screen and (max-width: 1367px) {
+    }
+    /* Height: 800 */
+    @media screen and (max-width: 1281px) {
+    }
+    /* Height: 768 */
+    @media screen and (max-width: 1025px) {
+        .dashboard {
+            padding: 12% 0 3% 9%;
+        }
+        .dashboard .section .single-item .link {
+            font-size: 18px;
+        }
+        .dashboard .section .single-item .line {
+            margin-top: 10px;
+        }
+        .dashboard .section canvas {
+            width: 100%!important;
+            height: 400px!important;
+        }
+    }
+    /* Height: 1024 */
+    @media screen and (max-width: 992px) { 
+    }
+    /* Height: 1024 */
+    @media screen and (max-width: 845px) {
+    }
+    /* Height: 1024 */
+    @media screen and (max-width: 769px) {
+    }
+    /* Height: 1080 */
+    @media screen and (max-width: 721px) {
+    }
+    /* Height: 960 */
+    @media screen and (max-width: 651px) {
+    }
+    @media screen and (max-width: 576px) {
+    }
+    @media screen and (max-width: 481px) {
+    }
+    /* Height: 736 */
+    @media screen and (max-width: 429px) {
+    }
+    /* Height: 736 */
+    @media screen and (max-width: 415px) {
+    }
+    /* Height: 667 */
+    @media screen and (max-width: 396px) {
+    }
+    /* Height: 667 */
+    @media screen and (max-width: 377px) {
+    }
+    /* Height: 720 */
+    @media screen and (max-width: 361px) {   
+    }
+    /* Height: 568 */
+    @media screen and (max-width: 321px) {
+    }
+/* Responsive */

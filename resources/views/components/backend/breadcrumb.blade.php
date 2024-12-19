@@ -8,7 +8,7 @@
             </a>
         </div>
         
-        <div class="col-8">
+        <div class="col-7 col-xl-8">
             <ul class="breadcrumb">
                 @if($page_name == 'Dashboard')
                     <li class="breadcrumb-item"><a href="{{ route('backend.dashboard.index') }}">Dashboard</a></li>
@@ -25,7 +25,7 @@
             <p class="page-title">{{ $page_name }}</p>
         </div>
 
-        <div class="col-2">
+        <div class="col-3 col-xl-2">
             <div class="row align-items-center">
                 <div class="col-4">
                     @if(auth()->user()->image)
