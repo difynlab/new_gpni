@@ -9,8 +9,7 @@
     <div class="pages">
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.communications.technical-supports.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.communications.technical-supports.filter') }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
                         <div class="col-8 col-xl-10">
                             <input type="text" class="form-control" name="name" value="{{ $name ?? '' }}" placeholder="User Name">
@@ -62,7 +61,7 @@
                 </table>
                 </div>
 
-                {{ $technical_supports->links("pagination::bootstrap-5") }}
+                {{ $technical_supports->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

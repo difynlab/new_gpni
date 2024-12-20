@@ -18,14 +18,17 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.persons.students.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.persons.students.filter') }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
-                        <div class="col-4 col-xl-5">
+                        <div class="col-3">
                             <input type="text" class="form-control" name="name" value="{{ $name ?? '' }}" placeholder="Name">
                         </div>
 
-                        <div class="col-4 col-xl-5">
+                        <div class="col-3">
+                            <input type="text" class="form-control" name="email" value="{{ $email ?? '' }}" placeholder="Email">
+                        </div>
+
+                        <div class="col-3">
                             <select class="form-control form-select" name="language">
                                 <option value="All" selected>All languages</option>
                                 <option value="English" {{ isset($language) && $language == 'English' ? "selected" : "" }}>English</option>
@@ -34,7 +37,7 @@
                             </select>
                         </div>
 
-                        <div class="col-4 col-xl-2 d-flex justify-content-between">
+                        <div class="col-3 d-flex justify-content-between">
                             <button type="submit" class="filter-search-button" name="action" value="search">SEARCH</button>
 
                             <button type="submit" class="filter-reset-button" name="action" value="reset">RESET</button>
@@ -50,45 +53,45 @@
             
                 <div class="table-container mb-3">
                     <table class="table table-striped w-100">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Language</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Wallet</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @if(count($students) > 0)
-                            @foreach($students as $student)
-                                <tr>
-                                    <td>#{{ $student->id }}</td>
-                                    <td>{!! $student->image !!}</td>
-                                    <td>{{ $student->first_name }} {{ $student->last_name }}</td>
-                                    <td>{{ $student->language }}</td>
-                                    <td>{{ $student->email }}</td>
-                                    <td>{{ $student->phone ?? '-' }}</td>
-                                    <td>{{ $student->wallet }}</td>
-                                    <td>{!! $student->status !!}</td>
-                                    <td>{!! $student->action !!}</td>
-                                </tr>
-                            @endforeach
-                        @else
+                        <thead>
                             <tr>
-                                <td colspan="8" style="text-align: center;">No data available in table</td>
+                                <th scope="col">ID</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Language</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Wallet</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
                             </tr>
-                        @endif
-                    </tbody>
-                </table>
+                        </thead>
+
+                        <tbody>
+                            @if(count($students) > 0)
+                                @foreach($students as $student)
+                                    <tr>
+                                        <td>#{{ $student->id }}</td>
+                                        <td>{!! $student->image !!}</td>
+                                        <td>{{ $student->first_name }} {{ $student->last_name }}</td>
+                                        <td>{{ $student->language }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->phone ?? '-' }}</td>
+                                        <td>{{ $student->wallet }}</td>
+                                        <td>{!! $student->status !!}</td>
+                                        <td>{!! $student->action !!}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="9" style="text-align: center;">No data available in table</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
                 </div>
 
-                {{ $students->links("pagination::bootstrap-5") }}
+                {{ $students->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

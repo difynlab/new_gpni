@@ -18,8 +18,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.persons.students.courses.filter', $student) }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.persons.students.courses.filter', $student) }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <input type="text" class="form-control" name="title" value="{{ $title ?? '' }}" placeholder="Title">
@@ -70,7 +69,7 @@
                 </table>
                 </div>
 
-                {{ $course_purchases->links("pagination::bootstrap-5") }}
+                {{ $course_purchases->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

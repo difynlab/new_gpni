@@ -677,12 +677,17 @@ class NutritionistController extends Controller
         }
 
         $name = $request->name;
+        $email = $request->email;
         $language = $request->language;
 
         $nutritionists = Nutritionist::where('status', '!=', '0')->orderBy('id', 'desc');
 
         if($name != null) {
             $nutritionists->where('name', 'like', '%' . $name . '%');
+        }
+
+        if($email != null) {
+            $nutritionists->where('email', 'like', '%' . $email . '%');
         }
 
         if($language != 'All') {
@@ -697,6 +702,7 @@ class NutritionistController extends Controller
             'nutritionists' => $nutritionists,
             'items' => $items,
             'name' => $name,
+            'email' => $email,
             'language' => $language
         ]);
     }

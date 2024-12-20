@@ -172,7 +172,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     // All course related routes
         Route::resource('courses', CourseController::class)->except('show');
-        Route::post('courses/filter', [CourseController::class, 'filter'])->name('courses.filter');
+        Route::get('courses/filter', [CourseController::class, 'filter'])->name('courses.filter');
 
         Route::prefix('courses')->name('courses.')->group(function() {
             Route::get('information/{course}', [CourseInformationController::class, 'index'])->name('information.index');
@@ -219,49 +219,49 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     // All article related routes
         Route::resource('article-categories', ArticleCategoryController::class)->except(['show']);
-        Route::post('article-categories/filter', [ArticleCategoryController::class, 'filter'])->name('article-categories.filter');
+        Route::get('article-categories/filter', [ArticleCategoryController::class, 'filter'])->name('article-categories.filter');
 
         Route::resource('articles', ArticleController::class)->except(['show']);
-        Route::post('articles/filter', [ArticleController::class, 'filter'])->name('articles.filter');
+        Route::get('articles/filter', [ArticleController::class, 'filter'])->name('articles.filter');
     // All article related routes
 
 
     // Conferences routes
         Route::resource('conferences', ConferenceController::class)->except('show');
-        Route::post('conferences/filter', [ConferenceController::class, 'filter'])->name('conferences.filter');
+        Route::get('conferences/filter', [ConferenceController::class, 'filter'])->name('conferences.filter');
     // Conferences routes
 
 
     // FAQs routes
         Route::resource('faqs', FAQController::class)->except('show');
-        Route::post('faqs/filter', [FAQController::class, 'filter'])->name('faqs.filter');
+        Route::get('faqs/filter', [FAQController::class, 'filter'])->name('faqs.filter');
     // FAQs routes
 
 
     // Testimonials routes
         Route::resource('testimonials', TestimonialController::class)->except('show');
-        Route::post('testimonials/filter', [TestimonialController::class, 'filter'])->name('testimonials.filter');
+        Route::get('testimonials/filter', [TestimonialController::class, 'filter'])->name('testimonials.filter');
     // Testimonials routes
 
 
     // All product related routes
         Route::resource('product-categories', ProductCategoryController::class)->except(['show']);
-        Route::post('product-categories/filter', [ProductCategoryController::class, 'filter'])->name('product-categories.filter');
+        Route::get('product-categories/filter', [ProductCategoryController::class, 'filter'])->name('product-categories.filter');
 
         Route::resource('products', ProductController::class)->except('show');
-        Route::post('products/filter', [ProductController::class, 'filter'])->name('products.filter');
+        Route::get('products/filter', [ProductController::class, 'filter'])->name('products.filter');
     // All product related routes
 
 
     // Medias routes
         Route::resource('medias', MediaController::class)->except('show');
-        Route::post('medias/filter', [MediaController::class, 'filter'])->name('medias.filter');
+        Route::get('medias/filter', [MediaController::class, 'filter'])->name('medias.filter');
     // Medias routes
 
 
     // Podcast routes
         Route::resource('podcasts', PodcastController::class)->except('show');
-        Route::post('podcasts/filter', [PodcastController::class, 'filter'])->name('podcasts.filter');
+        Route::get('podcasts/filter', [PodcastController::class, 'filter'])->name('podcasts.filter');
     // Podcast routes
 
 
@@ -269,12 +269,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         Route::prefix('persons')->name('persons.')->group(function() {
             // Nutritionists routes
                 Route::resource('nutritionists', NutritionistController::class)->except('show');
-                Route::post('nutritionists/filter', [NutritionistController::class, 'filter'])->name('nutritionists.filter');
+                Route::get('nutritionists/filter', [NutritionistController::class, 'filter'])->name('nutritionists.filter');
             // Nutritionists routes
 
             // Students routes
                 Route::resource('students', StudentController::class)->except(['show']);
-                Route::post('students/filter', [StudentController::class, 'filter'])->name('students.filter');
+                Route::get('students/filter', [StudentController::class, 'filter'])->name('students.filter');
 
                 Route::prefix('students')->name('students.')->group(function() {
                     Route::get('{student}/information', [StudentController::class, 'informationIndex'])->name('information.index');
@@ -286,7 +286,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
                             Route::get('create', [StudentCourseController::class, 'create'])->name('create');
                             Route::post('/', [StudentCourseController::class, 'store'])->name('store');
                             Route::get('{course_purchase}/edit', [StudentCourseController::class, 'edit'])->name('edit');
-                            Route::post('filter', [StudentCourseController::class, 'filter'])->name('filter');
+                            Route::get('filter', [StudentCourseController::class, 'filter'])->name('filter');
                             Route::post('{course_purchase}', [StudentCourseController::class, 'update'])->name('update');
                             Route::delete('{course_purchase}', [StudentCourseController::class, 'destroy'])->name('destroy');
                         // Student courses routes
@@ -296,22 +296,22 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
             // Admins routes
                 Route::resource('admins', AdminController::class)->except(['show']);
-                Route::post('admins/filter', [AdminController::class, 'filter'])->name('admins.filter');
+                Route::get('admins/filter', [AdminController::class, 'filter'])->name('admins.filter');
             // Admins routes
 
             // Advisory board routes
                 Route::resource('advisory-boards', PersonAdvisoryBoardController::class)->except('show');
-                Route::post('advisory-boards/filter', [PersonAdvisoryBoardController::class, 'filter'])->name('advisory-boards.filter');
+                Route::get('advisory-boards/filter', [PersonAdvisoryBoardController::class, 'filter'])->name('advisory-boards.filter');
             // Advisory board routes
 
             // ISSN partner routes
                 Route::resource('issn-partners', ISSNPartnerController::class)->except('show');
-                Route::post('issn-partners/filter', [ISSNPartnerController::class, 'filter'])->name('issn-partners.filter');
+                Route::get('issn-partners/filter', [ISSNPartnerController::class, 'filter'])->name('issn-partners.filter');
             // ISSN partner routes
 
             // Global education partners routes
                 Route::resource('global-education-partners', GlobalEducationPartnerController::class)->except('show');
-                Route::post('global-education-partners/filter', [GlobalEducationPartnerController::class, 'filter'])->name('global-education-partners.filter');
+                Route::get('global-education-partners/filter', [GlobalEducationPartnerController::class, 'filter'])->name('global-education-partners.filter');
             // Global education partners routes
         });
     // All users routes
@@ -321,12 +321,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         Route::prefix('communications')->name('communications.')->group(function() {
             Route::prefix('contact-coaches')->name('contact-coaches.')->group(function() {
                 Route::get('/', [ContactCoachController::class, 'index'])->name('index');
-                Route::post('/filter', [ContactCoachController::class, 'filter'])->name('filter');
-                Route::delete('/{contact_coach}', [ContactCoachController::class, 'destroy'])->name('destroy');
+                Route::get('filter', [ContactCoachController::class, 'filter'])->name('filter');
+                Route::delete('{contact_coach}', [ContactCoachController::class, 'destroy'])->name('destroy');
             });
 
             Route::resource('ask-questions', AskQuestionController::class)->except(['create', 'show']);
-            Route::post('ask-questions/filter', [AskQuestionController::class, 'filter'])->name('ask-questions.filter');
+            Route::get('ask-questions/filter', [AskQuestionController::class, 'filter'])->name('ask-questions.filter');
 
             Route::resource('connections', ConnectionController::class)->except(['create', 'show']);
             
@@ -334,8 +334,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
             Route::prefix('technical-supports')->name('technical-supports.')->group(function() {
                 Route::get('/', [TechnicalSupportController::class, 'index'])->name('index');
-                Route::post('/filter', [TechnicalSupportController::class, 'filter'])->name('filter');
-                Route::delete('/{technical_support}', [TechnicalSupportController::class, 'destroy'])->name('destroy');
+                Route::get('filter', [TechnicalSupportController::class, 'filter'])->name('filter');
+                Route::delete('{technical_support}', [TechnicalSupportController::class, 'destroy'])->name('destroy');
             });
 
             Route::resource('subscriptions', SubscriptionController::class)->only(['index', 'destroy']);
@@ -347,46 +347,46 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         Route::prefix('purchases')->name('purchases.')->group(function() {
             Route::prefix('gift-card-purchases')->name('gift-card-purchases.')->group(function() {
                 Route::get('/', [GiftCardPurchaseController::class, 'index'])->name('index');
-                Route::get('/{gift_card_purchase}/show', [GiftCardPurchaseController::class, 'show'])->name('show');
-                Route::post('/filter', [GiftCardPurchaseController::class, 'filter'])->name('filter');
-                Route::delete('/{gift_card_purchase}', [GiftCardPurchaseController::class, 'destroy'])->name('destroy');
+                Route::get('{gift_card_purchase}/show', [GiftCardPurchaseController::class, 'show'])->name('show');
+                Route::get('filter', [GiftCardPurchaseController::class, 'filter'])->name('filter');
+                Route::delete('{gift_card_purchase}', [GiftCardPurchaseController::class, 'destroy'])->name('destroy');
             });
 
             Route::prefix('course-purchases')->name('course-purchases.')->group(function() {
                 Route::get('/', [CoursePurchaseController::class, 'index'])->name('index');
-                Route::get('/{course_purchase}/show', [CoursePurchaseController::class, 'show'])->name('show');
-                Route::post('/filter', [CoursePurchaseController::class, 'filter'])->name('filter');
-                Route::delete('/{course_purchase}', [CoursePurchaseController::class, 'destroy'])->name('destroy');
+                Route::get('{course_purchase}/show', [CoursePurchaseController::class, 'show'])->name('show');
+                Route::get('filter', [CoursePurchaseController::class, 'filter'])->name('filter');
+                Route::delete('{course_purchase}', [CoursePurchaseController::class, 'destroy'])->name('destroy');
 
                 Route::prefix('certificates')->name('certificates.')->group(function() {
-                    Route::get('/{course_purchase}', [CoursePurchaseController::class, 'certificate'])->name('index');
-                    Route::post('/{course_certificate}/update', [CoursePurchaseController::class, 'certificateUpdate'])->name('update');
+                    Route::get('{course_purchase}', [CoursePurchaseController::class, 'certificate'])->name('index');
+                    Route::post('{course_certificate}/update', [CoursePurchaseController::class, 'certificateUpdate'])->name('update');
                 });
             });
 
             Route::prefix('product-purchases')->name('product-purchases.')->group(function() {
                 Route::get('/', [ProductPurchaseController::class, 'index'])->name('index');
-                Route::get('/{product_purchase}/show', [ProductPurchaseController::class, 'show'])->name('show');
+                Route::get('{product_purchase}/show', [ProductPurchaseController::class, 'show'])->name('show');
                 Route::delete('/{product_purchase}', [ProductPurchaseController::class, 'destroy'])->name('destroy');
-                Route::post('/filter', [ProductPurchaseController::class, 'filter'])->name('filter');
+                Route::get('filter', [ProductPurchaseController::class, 'filter'])->name('filter');
 
-                Route::get('/products/{product_purchase}', [ProductPurchaseController::class, 'products'])->name('products');
+                Route::get('products/{product_purchase}', [ProductPurchaseController::class, 'products'])->name('products');
             });
 
             Route::prefix('material-purchases')->name('material-purchases.')->group(function() {
                 Route::get('/', [MaterialPurchaseController::class, 'index'])->name('index');
-                Route::get('/{material_purchase}/show', [MaterialPurchaseController::class, 'show'])->name('show');
-                Route::post('/{material_purchase}/send', [MaterialPurchaseController::class, 'send'])->name('send');
-                Route::post('/filter', [MaterialPurchaseController::class, 'filter'])->name('filter');
-                Route::delete('/{material_purchase}', [MaterialPurchaseController::class, 'destroy'])->name('destroy');
+                Route::get('{material_purchase}/show', [MaterialPurchaseController::class, 'show'])->name('show');
+                Route::post('{material_purchase}/send', [MaterialPurchaseController::class, 'send'])->name('send');
+                Route::get('filter', [MaterialPurchaseController::class, 'filter'])->name('filter');
+                Route::delete('{material_purchase}', [MaterialPurchaseController::class, 'destroy'])->name('destroy');
             });
 
             Route::prefix('membership-purchases')->name('membership-purchases.')->group(function() {
                 Route::get('/', [MembershipPurchaseController::class, 'index'])->name('index');
-                Route::get('/{membership_purchase}/show', [MembershipPurchaseController::class, 'show'])->name('show');
-                Route::post('/{membership_purchase}/send', [MembershipPurchaseController::class, 'send'])->name('send');
-                Route::post('/filter', [MembershipPurchaseController::class, 'filter'])->name('filter');
-                Route::delete('/{membership_purchase}', [MembershipPurchaseController::class, 'destroy'])->name('destroy');
+                Route::get('{membership_purchase}/show', [MembershipPurchaseController::class, 'show'])->name('show');
+                Route::post('{membership_purchase}/send', [MembershipPurchaseController::class, 'send'])->name('send');
+                Route::get('filter', [MembershipPurchaseController::class, 'filter'])->name('filter');
+                Route::delete('{membership_purchase}', [MembershipPurchaseController::class, 'destroy'])->name('destroy');
             });
         });
     // All purchase routes
@@ -394,31 +394,30 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     // All policies related routes
         Route::resource('policy-categories', PolicyCategoryController::class)->except(['show']);
-        Route::post('policy-categories/filter', [PolicyCategoryController::class, 'filter'])->name('policy-categories.filter');
+        Route::get('policy-categories/filter', [PolicyCategoryController::class, 'filter'])->name('policy-categories.filter');
 
         Route::resource('policies', PolicyController::class)->except(['show']);
-        Route::post('policies/filter', [PolicyController::class, 'filter'])->name('policies.filter');
+        Route::get('policies/filter', [PolicyController::class, 'filter'])->name('policies.filter');
     // All policies related routes
 
 
     // Webinars routes
         Route::resource('webinars', WebinarController::class)->except('show');
-        Route::post('webinars/filter', [WebinarController::class, 'filter'])->name('webinars.filter');
+        Route::get('webinars/filter', [WebinarController::class, 'filter'])->name('webinars.filter');
     // Webinars routes
 
 
     // Exam results routes
         Route::prefix('exam-results')->name('exam-results.')->group(function() {
             Route::get('module-exams', [ExamResultController::class, 'moduleExams'])->name('module-exams');
+            Route::get('module-exams/filter', [ExamResultController::class, 'moduleExamsFilter'])->name('module-exam-filter');
             Route::get('module-exams/{course_module_exam}', [ExamResultController::class, 'moduleExamResult'])->name('module-exam-result');
             Route::delete('module-exams/{course_module_exam}', [ExamResultController::class, 'moduleExamResultDestroy'])->name('module-exam-result-destroy');
-            Route::post('module-exams', [ExamResultController::class, 'moduleExamsFilter'])->name('module-exam-filter');
             
-
             Route::get('final-exams', [ExamResultController::class, 'finalExams'])->name('final-exams');
+            Route::get('final-exams/filter', [ExamResultController::class, 'finalExamsFilter'])->name('final-exam-filter');
             Route::get('final-exams/{course_final_exam}', [ExamResultController::class, 'finalExamResult'])->name('final-exam-result');
             Route::delete('final-exams/{course_final_exam}', [ExamResultController::class, 'finalExamResultDestroy'])->name('final-exam-result-destroy');
-            Route::post('final-exams', [ExamResultController::class, 'finalExamsFilter'])->name('final-exam-filter');
         });
     // Exam results routes
 });

@@ -56,7 +56,7 @@
                 </table>
                 </div>
 
-                {{ $course_module_exam_questions->links("pagination::bootstrap-5") }}
+                {{ $course_module_exam_questions->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

@@ -56,7 +56,7 @@
                 </table>
                 </div>
 
-                {{ $course_reviews->links("pagination::bootstrap-5") }}
+                {{ $course_reviews->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

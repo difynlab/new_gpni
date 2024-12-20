@@ -80,7 +80,7 @@
                         </div>
                     @endforeach
 
-                    {{ $nutritionists->links("pagination::bootstrap-5") }}
+                    {{ $nutritionists->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
                 </div>
             </div>
         </div>

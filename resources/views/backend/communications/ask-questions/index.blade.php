@@ -9,8 +9,7 @@
     <div class="pages">
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.communications.ask-questions.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.communications.ask-questions.filter') }}" method="GET" class="filter-form">
 
                     <div class="row align-items-center">
                         <div class="col">
@@ -75,7 +74,7 @@
                 </table>
                 </div>
 
-                {{ $ask_questions->links("pagination::bootstrap-5") }}
+                {{ $ask_questions->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

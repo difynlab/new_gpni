@@ -39,7 +39,7 @@
                 </table>
                 </div>
 
-                {{ $subscriptions->links("pagination::bootstrap-5") }}
+                {{ $subscriptions->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

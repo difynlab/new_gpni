@@ -18,14 +18,17 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.persons.admins.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.persons.admins.filter') }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
-                        <div class="col-4 col-xl-5">
+                        <div class="col-3">
                             <input type="text" class="form-control" name="name" value="{{ $name ?? '' }}" placeholder="Name">
                         </div>
 
-                        <div class="col-4 col-xl-5">
+                        <div class="col-3">
+                            <input type="text" class="form-control" name="email" value="{{ $email ?? '' }}" placeholder="Email">
+                        </div>
+
+                        <div class="col-3">
                             <select class="form-control form-select" name="language">
                                 <option value="All" selected>All languages</option>
                                 <option value="English" {{ isset($language) && $language == 'English' ? "selected" : "" }}>English</option>
@@ -34,7 +37,7 @@
                             </select>
                         </div>
 
-                        <div class="col-4 col-xl-2 d-flex justify-content-between">
+                        <div class="col-3 d-flex justify-content-between">
                             <button type="submit" class="filter-search-button" name="action" value="search">SEARCH</button>
 
                             <button type="submit" class="filter-reset-button" name="action" value="reset">RESET</button>
@@ -86,7 +89,7 @@
                 </table>
                 </div>
 
-                {{ $admins->links("pagination::bootstrap-5") }}
+                {{ $admins->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

@@ -41,7 +41,7 @@
                 </table>
                 </div>
 
-                {{ $refer_friends->links("pagination::bootstrap-5") }}
+                {{ $refer_friends->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

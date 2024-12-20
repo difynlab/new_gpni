@@ -49,7 +49,7 @@
                 </table>
                 </div>
 
-                {{ $ordered_products->links("pagination::bootstrap-5") }}
+                {{ $ordered_products->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
     </div>

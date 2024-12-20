@@ -18,8 +18,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.persons.global-education-partners.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.persons.global-education-partners.filter') }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <select class="form-control form-select" name="language">
@@ -76,7 +75,7 @@
                 </table>
                 </div>
 
-                {{ $global_education_partners->links("pagination::bootstrap-5") }}
+                {{ $global_education_partners->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

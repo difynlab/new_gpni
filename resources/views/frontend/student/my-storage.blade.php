@@ -88,7 +88,7 @@
                                 </tbody>
                             </table>
 
-                            {{ $medias->appends(['type' => $type])->links("pagination::bootstrap-5") }}
+                            {{ $medias->appends(['type' => $type])->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
                         </div>
                     </div>
                 </div>

@@ -9,8 +9,7 @@
     <div class="pages">
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.communications.contact-coaches.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.communications.contact-coaches.filter') }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
                         <div class="col-8 col-xl-10">
                             <input type="text" class="form-control" name="name" value="{{ $name ?? '' }}" placeholder="Nutritionist Name">
@@ -72,7 +71,7 @@
                 </table>
                 </div>
 
-                {{ $contact_coaches->links("pagination::bootstrap-5") }}
+                {{ $contact_coaches->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

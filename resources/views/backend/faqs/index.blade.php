@@ -18,8 +18,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.faqs.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.faqs.filter') }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
                         <div class="col-4 col-xl-5">
                             <input type="text" class="form-control" name="question" value="{{ $question ?? '' }}" placeholder="Question">
@@ -82,7 +81,7 @@
                 </table>
                 </div>
 
-                {{ $faqs->links("pagination::bootstrap-5") }}
+                {{ $faqs->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

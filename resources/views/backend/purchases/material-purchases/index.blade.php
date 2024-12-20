@@ -9,8 +9,7 @@
     <div class="pages">
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.purchases.material-purchases.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.purchases.material-purchases.filter') }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
                         <div class="col">
                             <input type="text" class="form-control" name="transaction_id" value="{{ $transaction_id ?? '' }}" placeholder="Transaction ID">
@@ -74,7 +73,7 @@
                 </table>
                 </div>
 
-                {{ $material_purchases->links("pagination::bootstrap-5") }}
+                {{ $material_purchases->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

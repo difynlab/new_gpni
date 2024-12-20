@@ -66,7 +66,7 @@
                 </table>
                 </div>
 
-                {{ $promotions->links("pagination::bootstrap-5") }}
+                {{ $promotions->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

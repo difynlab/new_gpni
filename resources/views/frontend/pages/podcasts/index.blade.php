@@ -66,7 +66,7 @@
                     <div class="divider"></div>
                 @endforeach
 
-                {{ $podcasts->links("pagination::bootstrap-5") }}
+                {{ $podcasts->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             @endif
         </div>
     @endif

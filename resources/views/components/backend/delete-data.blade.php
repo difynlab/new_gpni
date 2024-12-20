@@ -10,7 +10,7 @@
                 <p class="modal-message">Are you sure you want to delete?</p>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn close-button" data-bs-dismiss="modal" title="Cancel">Cancel</button>
+                <button type="button" class="btn close-button" data-bs-dismiss="modal" title="Cancel">Cancel</button>
                 <form action="" method="POST">
                     @csrf
                     @method('DELETE')

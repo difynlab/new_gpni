@@ -77,7 +77,7 @@
                             @endif
                         </div>
 
-                        {{ $all_courses->links("pagination::bootstrap-5") }}
+                        {{ $all_courses->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
                     </div>
                 </div>
 
@@ -113,7 +113,7 @@
                             @endif
                         </div>
 
-                        {{ $upcoming_courses->links("pagination::bootstrap-5") }}
+                        {{ $upcoming_courses->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
                     </div>
                 </div>
             </div>

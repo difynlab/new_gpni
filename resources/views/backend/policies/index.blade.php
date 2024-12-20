@@ -18,8 +18,7 @@
 
         <div class="row mb-4">
             <div class="col-12">
-                <form action="{{ route('backend.policies.filter') }}" method="POST" class="filter-form">
-                    @csrf
+                <form action="{{ route('backend.policies.filter') }}" method="GET" class="filter-form">
                     <div class="row align-items-center">
                         <div class="col-4 col-xl-5">
                             <input type="text" class="form-control" name="title" value="{{ $title ?? '' }}" placeholder="Title">
@@ -82,7 +81,7 @@
                 </table>
                 </div>
 
-                {{ $policies->links("pagination::bootstrap-5") }}
+                {{ $policies->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

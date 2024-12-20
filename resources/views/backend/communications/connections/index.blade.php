@@ -49,7 +49,7 @@
                 </table>
                 </div>
 
-                {{ $connections->links("pagination::bootstrap-5") }}
+                {{ $connections->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
             </div>
         </div>
 

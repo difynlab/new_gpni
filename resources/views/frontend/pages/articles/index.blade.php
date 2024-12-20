@@ -97,7 +97,7 @@
                                 @endif
                             </div>
 
-                            {{ $articles->links("pagination::bootstrap-5") }}
+                            {{ $articles->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
                         </div>
 
                         <div class="tab-pane fade" id="recommended-tab-pane" role="tabpanel" aria-labelledby="recommended-tab"
@@ -167,7 +167,7 @@
                                 @endif
                             </div>
 
-                            {{ $recommended_articles->links("pagination::bootstrap-5") }}
+                            {{ $recommended_articles->appends(request()->except('page'))->links("pagination::bootstrap-5") }}
                         </div>
                     </div>
                 </div>

@@ -686,6 +686,7 @@ class StudentController extends Controller
         }
 
         $name = $request->name;
+        $email = $request->email;
         $language = $request->language;
 
         $students = User::where('role', 'student')->where('status', '!=', '0')->orderBy('id', 'desc');
@@ -695,6 +696,10 @@ class StudentController extends Controller
                 $query->where('first_name', 'like', '%' . $name . '%')
                       ->orWhere('last_name', 'like', '%' . $name . '%');
             });
+        }
+
+        if($email != null) {
+            $students->where('email', 'like', '%' . $email . '%');
         }
 
         if($language != 'All') {
@@ -709,6 +714,7 @@ class StudentController extends Controller
             'students' => $students,
             'items' => $items,
             'name' => $name,
+            'email' => $email,
             'language' => $language
         ]);
     }
