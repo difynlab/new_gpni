@@ -8,6 +8,7 @@ use App\Models\FAQ;
 use App\Models\MembershipPurchase;
 use App\Models\Setting;
 use App\Models\Wallet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,15 +34,15 @@ class MembershipController extends Controller
     {
         if($request->middleware_language == 'en') {
             $currency = 'usd';
-            $amount = Setting::find(1)->membership_price_en;
+            $amount = $request->type == 'Lifetime' ? Setting::find(1)->lifetime_membership_price_en : Setting::find(1)->annual_membership_price_en;
         }
         elseif($request->middleware_language == 'zh') {
             $currency = 'cny';
-            $amount = Setting::find(1)->membership_price_zh;
+            $amount = $request->type == 'Lifetime' ? Setting::find(1)->lifetime_membership_price_zh : Setting::find(1)->annual_membership_price_zh;
         }
         else {
             $currency = 'jpy';
-            $amount = Setting::find(1)->membership_price_ja;
+            $amount = $request->type == 'Lifetime' ? Setting::find(1)->lifetime_membership_price_ja : Setting::find(1)->annual_membership_price_ja;
         }
 
         $user = Auth::user();
@@ -78,7 +79,7 @@ class MembershipController extends Controller
                 ]
             ],
             'mode' => 'payment',
-            'success_url' => route('frontend.membership.success', ['membership_purchase_id' => $membership_purchase->id, 'amount' => $amount]) . '&session_id={CHECKOUT_SESSION_ID}',
+            'success_url' => route('frontend.membership.success', ['membership_purchase_id' => $membership_purchase->id, 'amount' => $amount, 'type' => $request->type]) . '&session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => route('frontend.membership')
         ]);
 
@@ -92,6 +93,7 @@ class MembershipController extends Controller
         $session_id = $request->query('session_id');
         $membership_purchase_id = $request->query('membership_purchase_id');
         $amount = $request->query('amount');
+        $type = $request->query('type');
 
         $session = \Stripe\Checkout\Session::retrieve($session_id);
 
@@ -108,6 +110,8 @@ class MembershipController extends Controller
 
             $user = Auth::user();
             $user->member = 'Yes';
+            $user->member_type = $type;
+            $user->member_annual_expiry_date = ($type == 'Annual') ? Carbon::now()->addYear()->toDateString() : null;
             $user->save();
         }
 

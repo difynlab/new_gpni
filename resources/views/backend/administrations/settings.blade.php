@@ -21,18 +21,33 @@
                     </div>
 
                     <div class="col-4 mb-4">
-                        <label for="membership_price_en" class="form-label">Membership Price (English)<span class="asterisk">*</span></label>
-                        <input type="text" class="form-control" id="membership_price_en" name="membership_price_en" value="{{ old('membership_price_en', $settings->membership_price_en) }}" placeholder="Membership Price (English)" required>
+                        <label for="lifetime_membership_price_en" class="form-label">Lifetime Membership Price (English)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="lifetime_membership_price_en" name="lifetime_membership_price_en" value="{{ old('lifetime_membership_price_en', $settings->lifetime_membership_price_en) }}" placeholder="Lifetime Membership Price (English)" required>
                     </div>
 
                     <div class="col-4 mb-4">
-                        <label for="membership_price_zh" class="form-label">Membership Price (Chinese)<span class="asterisk">*</span></label>
-                        <input type="text" class="form-control" id="membership_price_zh" name="membership_price_zh" value="{{ old('membership_price_zh', $settings->membership_price_zh) }}" placeholder="Membership Price (Chinese)" required>
+                        <label for="lifetime_membership_price_zh" class="form-label">Lifetime Membership Price (Chinese)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="lifetime_membership_price_zh" name="lifetime_membership_price_zh" value="{{ old('lifetime_membership_price_zh', $settings->lifetime_membership_price_zh) }}" placeholder="Lifetime Membership Price (Chinese)" required>
                     </div>
 
                     <div class="col-4 mb-4">
-                        <label for="membership_price_ja" class="form-label">Membership Price (Japanese)<span class="asterisk">*</span></label>
-                        <input type="text" class="form-control" id="membership_price_ja" name="membership_price_ja" value="{{ old('membership_price_ja', $settings->membership_price_ja) }}" placeholder="Membership Price (Japanese)" required>
+                        <label for="lifetime_membership_price_ja" class="form-label">Lifetime Membership Price (Japanese)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="lifetime_membership_price_ja" name="lifetime_membership_price_ja" value="{{ old('lifetime_membership_price_ja', $settings->lifetime_membership_price_ja) }}" placeholder="Lifetime Membership Price (Japanese)" required>
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <label for="annual_membership_price_en" class="form-label">Annual Membership Price (English)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="annual_membership_price_en" name="annual_membership_price_en" value="{{ old('annual_membership_price_en', $settings->annual_membership_price_en) }}" placeholder="Annual Membership Price (English)" required>
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <label for="annual_membership_price_zh" class="form-label">Annual Membership Price (Chinese)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="annual_membership_price_zh" name="annual_membership_price_zh" value="{{ old('annual_membership_price_zh', $settings->annual_membership_price_zh) }}" placeholder="Annual Membership Price (Chinese)" required>
+                    </div>
+
+                    <div class="col-4 mb-4">
+                        <label for="annual_membership_price_ja" class="form-label">Annual Membership Price (Japanese)<span class="asterisk">*</span></label>
+                        <input type="text" class="form-control" id="annual_membership_price_ja" name="annual_membership_price_ja" value="{{ old('annual_membership_price_ja', $settings->annual_membership_price_ja) }}" placeholder="Annual Membership Price (Japanese)" required>
                     </div>
 
                     <div class="col-4 mb-4">

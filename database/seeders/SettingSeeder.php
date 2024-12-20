@@ -32,9 +32,13 @@ class SettingSeeder extends Seeder
             'no_image' => 'no-image.jpg',
             'no_profile_image' => 'no-profile-image.png',
 
-            'membership_price_en' => '249.00',
-            'membership_price_zh' => '1850.00',
-            'membership_price_ja' => '37350.00',
+            'lifetime_membership_price_en' => '249.00',
+            'lifetime_membership_price_zh' => '1850.00',
+            'lifetime_membership_price_ja' => '37350.00',
+
+            'annual_membership_price_en' => '99.00',
+            'annual_membership_price_zh' => '700.00',
+            'annual_membership_price_ja' => '15500.00',
 
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

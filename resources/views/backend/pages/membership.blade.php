@@ -84,8 +84,8 @@
                 <div class="row form-input">
                     <div class="col-6">
                         <div class="mb-4">
-                            <label class="form-label">Proceed Button</label>
-                            <input class="form-control" type="text" id="section_3_proceed_{{ $short_code }}" name="section_3_proceed_{{ $short_code }}" value="{{ $contents->{'section_3_proceed_' . $short_code} ?? '' }}" placeholder="Proceed Button">
+                            <label class="form-label">Lifetime Proceed Button</label>
+                            <input class="form-control" type="text" id="section_3_lifetime_proceed_{{ $short_code }}" name="section_3_lifetime_proceed_{{ $short_code }}" value="{{ $contents->{'section_3_lifetime_proceed_' . $short_code} ?? '' }}" placeholder="Lifetime Proceed Button">
                         </div>
 
                         <div class="mb-4">
@@ -100,6 +100,11 @@
                     </div>
 
                     <div class="col-6">
+                        <div class="mb-4">
+                            <label class="form-label">Annual Proceed Button</label>
+                            <input class="form-control" type="text" id="section_3_annual_proceed_{{ $short_code }}" name="section_3_annual_proceed_{{ $short_code }}" value="{{ $contents->{'section_3_annual_proceed_' . $short_code} ?? '' }}" placeholder="Annual Proceed Button">
+                        </div>
+
                         <div class="mb-4">
                             <label class="form-label">Change Language Button</label>
                             <input class="form-control" type="text" id="section_3_change_language_{{ $short_code }}" name="section_3_change_language_{{ $short_code }}" value="{{ $contents->{'section_3_change_language_' . $short_code} ?? '' }}" placeholder="Change Language Button">

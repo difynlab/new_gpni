@@ -65,7 +65,11 @@
         </div>
     </a>
 
-    @if(auth()->user()->member =='Yes' )
+    @if(
+            (auth()->user()->member == 'Yes' && auth()->user()->member_type == "Lifetime")
+            ||
+            (auth()->user()->member == 'Yes' && auth()->user()->member_type == "Annual" && auth()->user()->member_annual_expiry_date >= Carbon\Carbon::now()->toDateString())
+        )
         <a href="{{ route('frontend.member-corner') }}" class="sidebar-link">
             <div class="sidebar-item {{ Request::segment(1) == 'member-corner' ? 'active' : '' }}">
                 <img src="{{ asset('storage/frontend/profile-icon.svg') }}" alt="Member COrner" width="28" height="28">

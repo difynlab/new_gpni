@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->enum('role', ['admin', 'student']);
             $table->enum('member', ['Yes', 'No'])->default('No');
+            $table->enum('member_type', ['Lifetime', 'Annual'])->nullable();
+            $table->date('member_annual_expiry_date')->nullable();
             $table->enum('status', [0, 1, 2])->index();
 
             $table->string('business_name')->nullable();

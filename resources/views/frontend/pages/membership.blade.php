@@ -69,7 +69,9 @@
                             @else
                                 <form action="{{ route('frontend.membership.checkout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn-pay-now">{{ $contents->{'section_3_proceed_' . $middleware_language} ?? $contents->section_3_proceed_en }}</button>
+                                    <button type="submit" class="btn-pay-now" name="type" value="Lifetime">{{ $contents->{'section_3_lifetime_proceed_' . $middleware_language} ?? $contents->section_3_lifetime_proceed_en }}</button>
+
+                                    <button type="submit" class="btn-pay-now" name="type" value="Annual">{{ $contents->{'section_3_annual_proceed_' . $middleware_language} ?? $contents->section_3_annual_proceed_en }}</button>
                                 </form>
                             @endif
                         @else
